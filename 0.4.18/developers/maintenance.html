@@ -8,7 +8,7 @@
     <link type="image/svg+xml" href="../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="../_static/favicon/logo-noborder-180.png" type="image/png">
-    <title>Benchmarks &#8212; napari</title>
+    <title>Maintenance &#8212; napari</title>
   <link rel="stylesheet" href="../_static/fa/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/webfonts/fa-brands-400.woff2">
@@ -36,8 +36,8 @@
     <script src="../_static/design-tabs.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Packaging" href="packaging.html" />
-    <link rel="prev" title="Profiling" href="profiling.html" />
+    <link rel="next" title="Release notes" href="../release/index.html" />
+    <link rel="prev" title="Packaging" href="packaging.html" />
     <script async defer data-domain="napari.org" src="https://plausible.io/js/plausible.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -133,14 +133,14 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables developers/benchmarks and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': 'latest'}.
+     variables developers/maintenance and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': 'latest'}.
 -->
 
 <script type="text/javascript">
 // Check if corresponding page path exists in other version of docs
 // and, if so, go there instead of the homepage of the other docs version
 function checkPageExistsAndRedirect(event) {
-    const currentFilePath = "developers/benchmarks.html",
+    const currentFilePath = "developers/maintenance.html",
           tryUrl = event.target.getAttribute("href");
     let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
     $.ajax({
@@ -161,7 +161,7 @@ function checkPageExistsAndRedirect(event) {
 // Populate the version switcher from the JSON config file
 (function () {
     $.getJSON("https://napari.org/dev/_static/version_switcher.json", function(data, textStatus, jqXHR) {
-        const currentFilePath = "developers/benchmarks.html";
+        const currentFilePath = "developers/maintenance.html";
         // create links to the corresponding page in the other docs versions
         $.each(data, function(index, entry) {
             // if no custom name specified (e.g., "latest"), use version string
@@ -351,8 +351,8 @@ function checkPageExistsAndRedirect(event) {
    Profiling
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmarks.html">
    Benchmarks
   </a>
  </li>
@@ -361,8 +361,8 @@ function checkPageExistsAndRedirect(event) {
    Packaging
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="maintenance.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Maintenance
   </a>
  </li>
@@ -642,51 +642,14 @@ function checkPageExistsAndRedirect(event) {
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
+  <a class="reference internal nav-link" href="#refreshing-tokens-for-the-auto-upgrade-of-test-constraints-and-vendored-packages">
+   Refreshing tokens for the auto upgrade of test constraints and vendored packages.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-benchmark">
-   Writing a benchmark
+  <a class="reference internal nav-link" href="#refreshing-the-token">
+   Refreshing the token
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-the-benchmarks-locally">
-   Testing the benchmarks locally
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-your-benchmark">
-   Running your benchmark
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comparing-results-to-main">
-   Comparing results to main
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#profiling">
-   Profiling
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-benchmarks-on-ci">
-   Running benchmarks on CI
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-benchmark-action">
-     The Benchmark Action
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#benchmark-reporting-action">
-     Benchmark Reporting Action
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -709,165 +672,56 @@ function checkPageExistsAndRedirect(event) {
             
             <div>
               
-  <section class="tex2jax_ignore mathjax_ignore" id="benchmarks">
-<span id="napari-benchmarks"></span><h1>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this headline">¶</a></h1>
-<p>While not mandatory for most pull requests, we ask that performance related
-PRs include a benchmark in order to clearly depict the use-case that is being
-optimized for.</p>
-<p>In this section we will review how to setup the benchmarks,
-and three commands <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">dev</span></code>, <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">continuous</span></code>.</p>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>Begin by installing <a class="reference external" href="https://asv.readthedocs.io/en/stable/">airspeed velocity</a>
-in your development environment. Prior to installation, be sure to activate your
-development environment, then if using <code class="docutils literal notranslate"><span class="pre">venv</span></code> you may install the requirement with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>napari-dev/bin/activate
-python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>asv
-</pre></div>
-</div>
-<p>If you are using conda, then the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>napari-dev
-conda<span class="w"> </span>install<span class="w"> </span>asv
-</pre></div>
-</div>
-<p>is more appropriate. Once installed, it is useful to run the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>asv<span class="w"> </span>machine
-</pre></div>
-</div>
-<p>To let airspeed velocity know more information about your machine.</p>
-</section>
-<section id="writing-a-benchmark">
-<h2>Writing a benchmark<a class="headerlink" href="#writing-a-benchmark" title="Permalink to this headline">¶</a></h2>
-<p>To write  benchmark, add a file in the <code class="docutils literal notranslate"><span class="pre">napari/_benchmarks</span></code> directory which
-contains a class with one <code class="docutils literal notranslate"><span class="pre">setup</span></code> method and at least one method prefixed
-with <code class="docutils literal notranslate"><span class="pre">time_</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">time_</span></code> method should only contain code you wish to benchmark.
-Therefore it is useful to move everything that prepares the benchmark scenario
-into the <code class="docutils literal notranslate"><span class="pre">setup</span></code> method. This function is called before calling a <code class="docutils literal notranslate"><span class="pre">time_</span></code>
-method and its execution time is not factored into the benchmarks.</p>
-<p>Take for example the <code class="docutils literal notranslate"><span class="pre">ViewImageSuite</span></code> benchmark:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
-
-
-<span class="k">class</span> <span class="nc">ViewImageSuite</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Benchmarks for viewing images in the viewer.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span> <span class="ow">or</span> <span class="n">QApplication</span><span class="p">([])</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">time_view_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Time to view an image.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">view_image</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Here, the creation of the image is completed in the <code class="docutils literal notranslate"><span class="pre">setup</span></code> method, and not
-included in the reported time of the benchmark.</p>
-<p>It is also possible to benchmark features such as peak memory usage. To learn
-more about the features of <code class="docutils literal notranslate"><span class="pre">asv</span></code>, please refer to the official
-<a class="reference external" href="https://asv.readthedocs.io/en/latest/writing_benchmarks.html">airspeed velocity documentation</a>.</p>
-</section>
-<section id="testing-the-benchmarks-locally">
-<h2>Testing the benchmarks locally<a class="headerlink" href="#testing-the-benchmarks-locally" title="Permalink to this headline">¶</a></h2>
-<p>Prior to running the true benchmark, it is often worthwhile to test that the
-code is free of typos. To do so, you may use the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>asv<span class="w"> </span>dev<span class="w"> </span>-b<span class="w"> </span>ViewImageSuite
-</pre></div>
-</div>
-<p>Where the <code class="docutils literal notranslate"><span class="pre">ViewImageSuite</span></code> above will be run once in your current environment
-to test that everything is in order.</p>
-</section>
-<section id="running-your-benchmark">
-<h2>Running your benchmark<a class="headerlink" href="#running-your-benchmark" title="Permalink to this headline">¶</a></h2>
-<p>The command above is fast, but doesn’t test the performance of the code
-adequately. To do that you may want to run the benchmark in your current
-environment to see the performance of your change as you are developing new
-features. The command <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">run</span> <span class="pre">-E</span> <span class="pre">existing</span></code> will specify that you wish to run
-the benchmark in your existing environment. This will save a significant amount
-of time since building napari can be a time consuming task:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>asv<span class="w"> </span>run<span class="w"> </span>-E<span class="w"> </span>existing<span class="w"> </span>-b<span class="w"> </span>ViewImageSuite
-</pre></div>
-</div>
-</section>
-<section id="comparing-results-to-main">
-<h2>Comparing results to main<a class="headerlink" href="#comparing-results-to-main" title="Permalink to this headline">¶</a></h2>
-<p>Often, the goal of a PR is to compare the results of the modifications in terms
-of speed to a snapshot of the code that is in the main branch of the
-<code class="docutils literal notranslate"><span class="pre">napari</span></code> repository. The command <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">continuous</span></code> is of help here:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>asv<span class="w"> </span>continuous<span class="w"> </span>main<span class="w"> </span>your-current-branch<span class="w"> </span>-b<span class="w"> </span>ViewImageSuite
-</pre></div>
-</div>
-<p>This call will build out the environments specified in the <code class="docutils literal notranslate"><span class="pre">asv.conf.json</span></code>
-file and compare the performance of the benchmark between your current commit
-and the code in the main branch.</p>
-<p>The output may look something like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>asv<span class="w"> </span>continuous<span class="w"> </span>main<span class="w"> </span>your-current-branch<span class="w"> </span>-b<span class="w"> </span>ViewImageSuite
-·<span class="w"> </span>Creating<span class="w"> </span>environments
-·<span class="w"> </span>Discovering<span class="w"> </span>benchmarks
-··<span class="w"> </span>Uninstalling<span class="w"> </span>from<span class="w"> </span>conda-py3.7-cython-numpy1.15-scipy
-··<span class="w"> </span>Installing<span class="w"> </span>544c0fe3<span class="w"> </span>&lt;benchmark_docs&gt;<span class="w"> </span>into<span class="w"> </span>conda-py3.7-cython-numpy1.15-scipy.
-·<span class="w"> </span>Running<span class="w"> </span><span class="m">4</span><span class="w"> </span>total<span class="w"> </span>benchmarks<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>commits<span class="w"> </span>*<span class="w"> </span><span class="m">2</span><span class="w"> </span>environments<span class="w"> </span>*<span class="w"> </span><span class="m">1</span><span class="w"> </span>benchmarks<span class="o">)</span>
-<span class="o">[</span><span class="w">  </span><span class="m">0</span>.00%<span class="o">]</span><span class="w"> </span>·<span class="w"> </span>For<span class="w"> </span>napari<span class="w"> </span>commit<span class="w"> </span>37c764cb<span class="w"> </span>&lt;benchmark_docs~1&gt;<span class="w"> </span><span class="o">(</span>round<span class="w"> </span><span class="m">1</span>/2<span class="o">)</span>:
-<span class="o">[</span>...<span class="o">]</span>
-<span class="o">[</span><span class="m">100</span>.00%<span class="o">]</span><span class="w"> </span>···<span class="w"> </span>...Image.ViewImageSuite.time_view_image<span class="w">           </span><span class="m">33</span>.2±2ms
-
-BENCHMARKS<span class="w"> </span>NOT<span class="w"> </span>SIGNIFICANTLY<span class="w"> </span>CHANGED.
-</pre></div>
-</div>
-<p>In this case, the differences between HEAD on your-current-branch and main are not significant
-enough for airspeed velocity to report.</p>
-</section>
-<section id="profiling">
-<h2>Profiling<a class="headerlink" href="#profiling" title="Permalink to this headline">¶</a></h2>
-<p>The airspeed velocity tool also supports code profiling using <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile"><code class="docutils literal notranslate"><span class="pre">cProfile</span></code></a>. For detailed instructions on how to use the profiling functionality see the
-<a class="reference external" href="https://asv.readthedocs.io/en/stable/using.html#running-a-benchmark-in-the-profiler">asv profiling documentation</a>.</p>
-<p>To profile a particular benchmark in napari you can run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>asv<span class="w"> </span>profile<span class="w"> </span>benchmark_qt_viewer.QtViewerSuite.time_create_viewer<span class="w"> </span>-g<span class="w"> </span>snakeviz<span class="w"> </span>--python<span class="o">=</span>same
-</pre></div>
-</div>
-<p>where <code class="docutils literal notranslate"><span class="pre">benchmark_qt_viewer</span></code> is the file name, <code class="docutils literal notranslate"><span class="pre">QtViewerSuite</span></code> is the test suite class name,
-and <code class="docutils literal notranslate"><span class="pre">time_create_viewer</span></code> is the test method.</p>
-<p>To profile a particular parameterized benchmark you can run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>asv<span class="w"> </span>profile<span class="w"> </span><span class="s2">&quot;benchmark_image_layer.Image2DSuite.time_create_layer\(512\)&quot;</span><span class="w"> </span>-g<span class="w"> </span>snakeviz<span class="w"> </span>--python<span class="o">=</span>same
-</pre></div>
-</div>
-<p>where <code class="docutils literal notranslate"><span class="pre">benchmark_image_layer</span></code> is the file name, <code class="docutils literal notranslate"><span class="pre">Image2DSuite</span></code> is the test suite class name,
-and <code class="docutils literal notranslate"><span class="pre">time_to_create_layer</span></code> is the test method and <code class="docutils literal notranslate"><span class="pre">512</span></code> is a valid parameter input to the test method.</p>
-<p>Note that we in both these cases we have sent the output of the profiling to <a class="reference external" href="http://jiffyclub.github.io/snakeviz/">snakeviz</a>
-which you can pip install with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>snakeviz
-</pre></div>
-</div>
-<p>and we use <code class="docutils literal notranslate"><span class="pre">--python=same</span></code> to profile against our current python environment.</p>
-</section>
-<section id="running-benchmarks-on-ci">
-<h2>Running benchmarks on CI<a class="headerlink" href="#running-benchmarks-on-ci" title="Permalink to this headline">¶</a></h2>
-<p>Benchmarking on CI has two main parts - the Benchmark Action and the Benchmark Reporting Action.</p>
-<section id="the-benchmark-action">
-<h3>The Benchmark Action<a class="headerlink" href="#the-benchmark-action" title="Permalink to this headline">¶</a></h3>
-<p>The benchmarks are set to run:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="maintenance">
+<h1>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h1>
+<p>This document describes maintenance tasks that need to be performed from time to time. Its purpose is to avoid relying on personal memory alone, and it should be updated regularly.</p>
+<section id="refreshing-tokens-for-the-auto-upgrade-of-test-constraints-and-vendored-packages">
+<h2>Refreshing tokens for the auto upgrade of test constraints and vendored packages.<a class="headerlink" href="#refreshing-tokens-for-the-auto-upgrade-of-test-constraints-and-vendored-packages" title="Permalink to this headline">¶</a></h2>
+<p>Because of the security GitHub policy, the commits and pull requests created by an action that uses default <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+will not trigger another action’s runs. The possible workaround for this is to close and then reopen the pull request.
+But this requires additional actions by core devs.</p>
+<p>To get automatically running workflows, we need to create a personal access token (PAT) and add it to the repository secrets.
+For security reasons, it is recommended to create a <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token">fine-grained token</a>. It allows us to provide only the required permissions.</p>
+<p>The token should have a one-year expiration date. After that, it needs to be refreshed.</p>
+<p>The token should be named <code class="docutils literal notranslate"><span class="pre">GHA_TOKEN</span></code> and the required permissions are:</p>
 <ul class="simple">
-<li><p>On a schedule: once a week on Sunday</p></li>
-<li><p>On PRs with the <code class="docutils literal notranslate"><span class="pre">run-benchmark</span></code> label</p></li>
-<li><p>On workflow dispatch (manual trigger)</p></li>
+<li><p><strong>read</strong> to repository metadata</p></li>
+<li><p><strong>read and write</strong> to pull requests</p></li>
+<li><p><strong>read and write</strong> to code</p></li>
 </ul>
-<p>If the benchmarks fail during the scheduled run, an issue is opened in the repo to flag the occurrence.
-If an issue has already been opened, it will add to the existing issue.</p>
-<p>The contender SHA is a Github PR merge commit - a fake commit not available to users.
-Every time you want the benchmark CI to run in a PR, you’ll need to remove and re-add the <code class="docutils literal notranslate"><span class="pre">run-benchmark</span></code> label.</p>
+<p><img alt="screenshot of token permissions in GitHub UI" src="../_images/update_token_permissions.png" /></p>
+<p>At the moment of writing this document, there is a difference in names between the summary of the token and the list of permissions.
+The <strong>code</strong> permission is called <strong>Contents</strong> in the Edit view of the token.</p>
+<p><img alt="screenshot of token permissions" src="../_images/edit_token_permissions.png" /></p>
 </section>
-<section id="benchmark-reporting-action">
-<h3>Benchmark Reporting Action<a class="headerlink" href="#benchmark-reporting-action" title="Permalink to this headline">¶</a></h3>
-<p>The benchmark Reporting Action will only run after the successful completion of the Benchmark Action.
-(regardless of comparison failures).</p>
-</section>
+<section id="refreshing-the-token">
+<h2>Refreshing the token<a class="headerlink" href="#refreshing-the-token" title="Permalink to this headline">¶</a></h2>
+<p>To create a new token, go to the personal settings page and select <em>Developer settings</em> at the bottom of the left menu. On the visible screen, expand the <em>Personal access tokens</em> section and click the <em>Fine-grained token</em> link.</p>
+<p><img alt="View on list of fine-grained tokens" src="../_images/fine_grained_token.png" /></p>
+<p>Then click the <em>Generate new token</em> button in the upper right corner.</p>
+<p>Fill the form:</p>
+<ol class="arabic simple">
+<li><p>Set expiration to custom and then select the proper date</p></li>
+<li><p>Select <strong>napari</strong> to be the resource owner</p></li>
+<li><p>Select <em>Only selected repositories</em> and then select <strong>napari/napari</strong> repository</p></li>
+</ol>
+<p><img alt="screenshot of the token creation form" src="../_images/token_permission_form.png" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Select the required permissions for repository metadata, pull requests, and code (contents)</p></li>
+</ol>
+<p><img alt="screenshot of the token creation form" src="../_images/token_permission_selection.png" /></p>
+<ol class="arabic simple" start="5">
+<li><p>Click the <em>Generate token</em> button</p></li>
+<li><p>Copy token</p></li>
+<li><p>Go to the napari repository settings</p></li>
+<li><p>Expand the <em>Secrets and variables</em> section and select <em>Actions</em></p></li>
+<li><p>Click the edit button for the <code class="docutils literal notranslate"><span class="pre">GHA_TOKEN</span></code> secret</p></li>
+</ol>
+<p><img alt="screenshot of the token creation form" src="../_images/secrets_section.png" /></p>
+<ol class="arabic simple" start="10">
+<li><p>Paste a new token to the value field</p></li>
+</ol>
+<p>To validate if the token is working, you can run the “Upgrade test constraints” workflow manually. Ensure that there will be some packages to update.</p>
 </section>
 </section>
 
@@ -877,7 +731,7 @@ Every time you want the benchmark CI to run in a PR, you’ll need to remove and
             
             <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="profiling.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="packaging.html" title="previous page">
         <svg
             width="10"
             height="16"
@@ -893,13 +747,13 @@ Every time you want the benchmark CI to run in a PR, you’ll need to remove and
         </svg>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Profiling</p>
+            <p class="prev-next-title">Packaging</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="packaging.html" title="next page">
+    <a class='right-next' id="next-link" href="../release/index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Packaging</p>
+        <p class="prev-next-title">Release notes</p>
     </div>
 
     <svg

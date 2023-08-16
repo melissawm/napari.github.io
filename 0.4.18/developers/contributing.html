@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="napari Advancement Proposals (NAPs)" href="../naps/index.html" />
-    <link rel="prev" title="Contributing resources" href="index.html" />
+    <link rel="prev" title="Contributing" href="index.html" />
     <script async defer data-domain="napari.org" src="https://plausible.io/js/plausible.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,9 +87,15 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../community/index.html">
   Community
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Contributing
  </a>
 </li>
 
@@ -114,7 +120,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.4.18</span></span>
+        <span>version <span id="version_switcher_button_text">latest</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -127,7 +133,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables developers/contributing and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': '0.4.18'}.
+     variables developers/contributing and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': 'latest'}.
 -->
 
 <script type="text/javascript">
@@ -178,10 +184,10 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.4.18 variable.
+            // this version, rather than using sphinx's dev variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.4.18") {
+            if (entry.version == "latest") {
                 node.classList.add("active");
                 let btn = document.getElementById("version_switcher_button");
                 btn.innerText = btn.dataset["activeVersionName"] = entry.name;
@@ -243,162 +249,126 @@ function checkPageExistsAndRedirect(event) {
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/mission_and_values.html">
-   Mission and Values
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Contributing guide
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/team.html">
-   About the project and team
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/code_of_conduct.html">
-   Code of Conduct
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/code_of_conduct_reporting.html">
-   Handling Code of Conduct reports
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/governance.html">
-   Governance model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/working_groups.html">
-   Working groups
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/meeting_schedule.html">
-   Meeting schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+ <li class="toctree-l1 has-children">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <img src="../_static/icons/sidebar-triangle.png"/>
   </label>
-  <a class="reference internal" href="index.html">
-   Contributing resources
+  <a class="reference internal" href="../naps/index.html">
+   napari Advancement Proposals (NAPs)
   </a>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Contributing guide
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <img src="../_static/icons/sidebar-triangle.png"/>
-    </label>
-    <a class="reference internal" href="../naps/index.html">
-     napari Advancement Proposals (NAPs)
-    </a>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/0-nap-process.html">
-       NAP 0 — Purpose and Process
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/1-institutional-funding-partners.html">
-       NAP-1 — Institutional and Funding Partners
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/2-conda-based-packaging.html">
-       NAP-2 — Distributing napari with conda-based packaging
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/3-spaces.html">
-       NAP-3 — Spaces
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/4-async-slicing.html">
-       NAP-4: Asynchronous slicing
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/5-new-logo.html">
-       NAP-5 — New logo (2022)
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/6-contributable-menus.html">
-       NAP-6 — Contributable Menus
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/template.html">
-       NAP-X — Template and Instructions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <img src="../_static/icons/sidebar-triangle.png"/>
-    </label>
-    <a class="reference internal" href="documentation/index.html">
-     Contributing Documentation
-    </a>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="documentation/docs_template.html">
-       Docs template
-      </a>
-     </li>
-    </ul>
-   </li>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="translations.html">
-     Translations
+    <a class="reference internal" href="../naps/0-nap-process.html">
+     NAP 0 — Purpose and Process
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="core_dev_guide.html">
-     Core Developer guide
+    <a class="reference internal" href="../naps/1-institutional-funding-partners.html">
+     NAP-1 — Institutional and Funding Partners
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="release.html">
-     Release guide
+    <a class="reference internal" href="../naps/2-conda-based-packaging.html">
+     NAP-2 — Distributing napari with conda-based packaging
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="testing.html">
-     Testing
+    <a class="reference internal" href="../naps/3-spaces.html">
+     NAP-3 — Spaces
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="profiling.html">
-     Profiling
+    <a class="reference internal" href="../naps/4-async-slicing.html">
+     NAP-4: Asynchronous slicing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="benchmarks.html">
-     Benchmarks
+    <a class="reference internal" href="../naps/5-new-logo.html">
+     NAP-5 — New logo (2022)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="packaging.html">
-     Packaging
+    <a class="reference internal" href="../naps/6-contributable-menus.html">
+     NAP-6 — Contributable Menus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../naps/7-key-binding-dispatch.html">
+     NAP-7 — Key Binding Dispatch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../naps/template.html">
+     NAP-X — Template and Instructions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <img src="../_static/icons/sidebar-triangle.png"/>
+  </label>
+  <a class="reference internal" href="documentation/index.html">
+   Contributing Documentation
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="documentation/docs_template.html">
+     Docs template
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="translations.html">
+   Translations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="core_dev_guide.html">
+   Core Developer guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="release.html">
+   Release guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="profiling.html">
+   Profiling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmarks.html">
+   Benchmarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="packaging.html">
+   Packaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="maintenance.html">
+   Maintenance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <img src="../_static/icons/sidebar-triangle.png"/>
   </label>
   <a class="reference internal" href="../release/index.html">
@@ -623,8 +593,8 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <img src="../_static/icons/sidebar-triangle.png"/>
   </label>
   <a class="reference internal" href="../roadmaps/index.html">
@@ -647,11 +617,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/licensing.html">
-   Licensing
-  </a>
  </li>
 </ul>
 
@@ -684,6 +649,14 @@ function checkPageExistsAndRedirect(event) {
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#contributing-documentation">
    Contributing documentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-examples-to-the-gallery">
+   Adding examples to the
+   <span class="xref myst">
+    Gallery
+   </span>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -765,6 +738,7 @@ function checkPageExistsAndRedirect(event) {
 <span id="napari-contributing"></span><h1>Contributing guide<a class="headerlink" href="#contributing-guide" title="Permalink to this headline">¶</a></h1>
 <p>We welcome your contributions! Please see the provided steps below and never hesitate to contact us.</p>
 <p>If you are a new user, we recommend checking out the detailed <a class="reference external" href="https://docs.github.com/en">Github Docs</a>.</p>
+<p>You can see the general direction for napari development and possible work plans in our current <a class="reference internal" href="../roadmaps/index.html"><span class="doc std std-doc">Roadmap</span></a>.</p>
 <section id="setting-up-a-development-installation">
 <span id="dev-installation"></span><h2>Setting up a development installation<a class="headerlink" href="#setting-up-a-development-installation" title="Permalink to this headline">¶</a></h2>
 <p>In order to make changes to <code class="docutils literal notranslate"><span class="pre">napari</span></code>, you will need to <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects#forking-a-repository">fork</a> the
@@ -812,7 +786,7 @@ development environment.</p>
 </li>
 <li><p>Install the package in editable mode, along with all of the developer tools.</p>
 <p>If you only want to use napari, you can install it on most macOS, Linux and
-Windows systems with Python 3.8-3.10
+Windows systems with Python 3.8–3.10
 by following the directions on the
 <a class="reference internal" href="../tutorials/fundamentals/installation.html#install-as-python-package-recommended"><span class="std std-doc">instructions page</span></a>.</p>
 <p>napari supports different Qt backends, and you can choose which one to install and use.</p>
@@ -861,6 +835,57 @@ please do not ignore errors lightly.</p>
 <section id="contributing-documentation">
 <h2>Contributing documentation<a class="headerlink" href="#contributing-documentation" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to contribute documentation changes to napari, please read the <a class="reference internal" href="documentation/index.html"><span class="doc std std-doc">guide on contributing documentation</span></a>.</p>
+</section>
+<section id="adding-examples-to-the-gallery">
+<span id="add-examples"></span><h2>Adding examples to the <a class="reference internal" href="../gallery.html#gallery"><span class="std std-ref">Gallery</span></a><a class="headerlink" href="#adding-examples-to-the-gallery" title="Permalink to this headline">¶</a></h2>
+<p>All of the examples in the <a class="reference internal" href="../gallery.html#gallery"><span class="std std-ref">examples Gallery</span></a> are Python scripts that
+live under <a class="reference external" href="https://github.com/napari/napari/tree/main/examples">the <code class="docutils literal notranslate"><span class="pre">examples</span></code> folder of the napari repository</a>.
+Because of how this gallery is built, every such Python script needs a docstring
+containing at least a title (following the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> format of docstrings in
+Python) and one or more <em>tags</em>. This ensures the example will be shown in the
+correct place in the table of contents for the gallery (see, for example, the
+<a class="reference internal" href="../_tags/tagsindex.html#tagoverview"><span class="std std-ref">Tags</span></a> page.)</p>
+<p>Here’s an example of what that means. The example file
+<a class="reference external" href="https://github.com/napari/napari/blob/main/examples/add_image.py">add_image.py</a>
+contains the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Add image</span>
+<span class="sd">=========</span>
+
+<span class="sd">Display one image using the :func:`view_image` API.</span>
+
+<span class="sd">.. tags:: visualization-basic</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">import</span> <span class="nn">napari</span>
+
+<span class="c1"># create the viewer with an image</span>
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">view_image</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">(),</span> <span class="n">rgb</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">napari</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The equals signs under “Add image” mark this as the example title. The text
+below is a short description of the example, and the tags are assigned by the
+use of the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tags::</span></code> directive. In this case, the only tag associated with
+this example is <code class="docutils literal notranslate"><span class="pre">visualization-basic</span></code>. Multiple tags can be separated with a
+comma.</p>
+<p>Note that the examples are <code class="docutils literal notranslate"><span class="pre">.py</span></code> source files, and any outputs and images will
+be autogenerated when the documentation site is built.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are running any of these examples in an interactive environment (e.g. a Jupyter notebook or
+IPython console), the block</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">napari</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>is not necessary—you can copy-paste the code above it. However, it is required when running examples as scripts, using for example <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">add_image.py</span></code>.
+Because our example gallery is built from Python scripts, you need to ensure this
+block is present in all contributed examples.</p>
+</div>
 </section>
 <section id="adding-icons">
 <h2>Adding icons<a class="headerlink" href="#adding-icons" title="Permalink to this headline">¶</a></h2>
@@ -1027,7 +1052,7 @@ You can find a comprehensive guide <a class="reference external" href="https://d
         </svg>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Contributing resources</p>
+            <p class="prev-next-title">Contributing</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../naps/index.html" title="next page">

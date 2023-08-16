@@ -87,9 +87,15 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../community/index.html">
   Community
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Contributing
  </a>
 </li>
 
@@ -114,7 +120,7 @@
       <div class="navbar-end-item">
         <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">0.4.18</span></span>
+        <span>version <span id="version_switcher_button_text">latest</span></span>
 
         <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
@@ -127,7 +133,7 @@
 
 <!-- NOTE: this JS must live here (not in our global JS file) because it relies
      on being processed by Jinja before it is run (specifically for replacing
-     variables developers/translations and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': '0.4.18'}.
+     variables developers/translations and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': 'latest'}.
 -->
 
 <script type="text/javascript">
@@ -178,10 +184,10 @@ function checkPageExistsAndRedirect(event) {
 
             $("#version_switcher_menu").append(node);
             // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's 0.4.18 variable.
+            // this version, rather than using sphinx's dev variable.
             // also highlight the dropdown entry for the currently-viewed
             // version's entry
-            if (entry.version == "0.4.18") {
+            if (entry.version == "latest") {
                 node.classList.add("active");
                 let btn = document.getElementById("version_switcher_button");
                 btn.innerText = btn.dataset["activeVersionName"] = entry.name;
@@ -244,161 +250,125 @@ function checkPageExistsAndRedirect(event) {
   <div class="bd-toc-item active">
     <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../community/mission_and_values.html">
-   Mission and Values
+  <a class="reference internal" href="contributing.html">
+   Contributing guide
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/team.html">
-   About the project and team
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/code_of_conduct.html">
-   Code of Conduct
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/code_of_conduct_reporting.html">
-   Handling Code of Conduct reports
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/governance.html">
-   Governance model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/working_groups.html">
-   Working groups
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/meeting_schedule.html">
-   Meeting schedule
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+ <li class="toctree-l1 has-children">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <img src="../_static/icons/sidebar-triangle.png"/>
   </label>
-  <a class="reference internal" href="index.html">
-   Contributing resources
+  <a class="reference internal" href="../naps/index.html">
+   napari Advancement Proposals (NAPs)
   </a>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="contributing.html">
-     Contributing guide
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <img src="../_static/icons/sidebar-triangle.png"/>
-    </label>
-    <a class="reference internal" href="../naps/index.html">
-     napari Advancement Proposals (NAPs)
-    </a>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/0-nap-process.html">
-       NAP 0 — Purpose and Process
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/1-institutional-funding-partners.html">
-       NAP-1 — Institutional and Funding Partners
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/2-conda-based-packaging.html">
-       NAP-2 — Distributing napari with conda-based packaging
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/3-spaces.html">
-       NAP-3 — Spaces
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/4-async-slicing.html">
-       NAP-4: Asynchronous slicing
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/5-new-logo.html">
-       NAP-5 — New logo (2022)
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/6-contributable-menus.html">
-       NAP-6 — Contributable Menus
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../naps/template.html">
-       NAP-X — Template and Instructions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <img src="../_static/icons/sidebar-triangle.png"/>
-    </label>
-    <a class="reference internal" href="documentation/index.html">
-     Contributing Documentation
-    </a>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="documentation/docs_template.html">
-       Docs template
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Translations
+    <a class="reference internal" href="../naps/0-nap-process.html">
+     NAP 0 — Purpose and Process
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="core_dev_guide.html">
-     Core Developer guide
+    <a class="reference internal" href="../naps/1-institutional-funding-partners.html">
+     NAP-1 — Institutional and Funding Partners
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="release.html">
-     Release guide
+    <a class="reference internal" href="../naps/2-conda-based-packaging.html">
+     NAP-2 — Distributing napari with conda-based packaging
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="testing.html">
-     Testing
+    <a class="reference internal" href="../naps/3-spaces.html">
+     NAP-3 — Spaces
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="profiling.html">
-     Profiling
+    <a class="reference internal" href="../naps/4-async-slicing.html">
+     NAP-4: Asynchronous slicing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="benchmarks.html">
-     Benchmarks
+    <a class="reference internal" href="../naps/5-new-logo.html">
+     NAP-5 — New logo (2022)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="packaging.html">
-     Packaging
+    <a class="reference internal" href="../naps/6-contributable-menus.html">
+     NAP-6 — Contributable Menus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../naps/7-key-binding-dispatch.html">
+     NAP-7 — Key Binding Dispatch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../naps/template.html">
+     NAP-X — Template and Instructions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <img src="../_static/icons/sidebar-triangle.png"/>
+  </label>
+  <a class="reference internal" href="documentation/index.html">
+   Contributing Documentation
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="documentation/docs_template.html">
+     Docs template
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Translations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="core_dev_guide.html">
+   Core Developer guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="release.html">
+   Release guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
+   Testing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="profiling.html">
+   Profiling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmarks.html">
+   Benchmarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="packaging.html">
+   Packaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="maintenance.html">
+   Maintenance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <img src="../_static/icons/sidebar-triangle.png"/>
   </label>
   <a class="reference internal" href="../release/index.html">
@@ -623,8 +593,8 @@ function checkPageExistsAndRedirect(event) {
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <img src="../_static/icons/sidebar-triangle.png"/>
   </label>
   <a class="reference internal" href="../roadmaps/index.html">
@@ -647,11 +617,6 @@ function checkPageExistsAndRedirect(event) {
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../community/licensing.html">
-   Licensing
-  </a>
  </li>
 </ul>
 
@@ -778,7 +743,7 @@ below explains this in more detail.</p>
 <span class="k">class</span> <span class="nc">SomeWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">channel_combo_box</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">channel_combo_box</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">channel_combo_box</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">),</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">channel_combo_box</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">),</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">channel_combo_box</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">),</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
@@ -823,7 +788,7 @@ insruments.</p></li>
 <span class="k">class</span> <span class="nc">SomeWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">context_combo_box</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">context_combo_box</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">context_combo_box</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_p</span><span class="p">(</span><span class="s2">&quot;character&quot;</span><span class="p">,</span> <span class="s2">&quot;tab&quot;</span><span class="p">,</span> <span class="p">),</span> <span class="s2">&quot;tab&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">context_combo_box</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_p</span><span class="p">(</span><span class="s2">&quot;music&quot;</span><span class="p">,</span> <span class="s2">&quot;tab&quot;</span><span class="p">),</span> <span class="s2">&quot;tab&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">context_combo_box</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_p</span><span class="p">(</span><span class="s2">&quot;ui-element&quot;</span><span class="p">,</span> <span class="s2">&quot;tab&quot;</span><span class="p">),</span> <span class="s2">&quot;tab&quot;</span><span class="p">)</span>
