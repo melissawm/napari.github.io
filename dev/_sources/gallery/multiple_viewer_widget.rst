@@ -43,7 +43,7 @@ current dims point (`viewer.dims.point`).
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from copy import deepcopy
@@ -92,7 +92,7 @@ current dims point (`viewer.dims.point`).
 
 
     def copy_layer(layer: Layer, name: str = ""):
-        if NAPARI_GE_4_16:
+        if not NAPARI_GE_4_16:
             return copy_layer_le_4_16(layer, name)
 
         res_layer = Layer.create(*layer.as_layer_data_tuple())
@@ -505,16 +505,13 @@ current dims point (`viewer.dims.point`).
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: multiple_viewer_widget.ipynb <multiple_viewer_widget.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: multiple_viewer_widget.py <multiple_viewer_widget.py>`
-
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-      :download:`Download Jupyter notebook: multiple_viewer_widget.ipynb <multiple_viewer_widget.ipynb>`
 
 
 .. only:: html

@@ -1,272 +1,477 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>napari._qt.qt_viewer &#8212; napari</title>
-  <link rel="stylesheet" href="../../../_static/fa/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/webfonts/fa-brands-400.woff2">
-  <link href="../../../_static/styles/theme.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/napari-sphinx-theme.css" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/napari-sphinx-theme.css?v=f7c3b9e7" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=fccfeeb7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../../_static/documentation_options.js?v=2e3faad9"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/napari/_qt/qt_viewer';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'latest';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <script async defer data-domain="napari.org" src="https://plausible.io/js/plausible.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
+    <meta name="docsearch:language" content="en">
     
 
   </head>
-  <body>
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  <div id="navbar-start">
-    
-    <!-- A small template snippet for theme testing -->
-<a class="navbar-brand" href="../../../index.html">
-  napari
-</a>
-    
-  </div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M20 2H0" stroke="black" stroke-width="3"/>
-  <path d="M20 10H0" stroke="black" stroke-width="3"/>
-  <path d="M20 18H0" stroke="black" stroke-width="3"/>
-</svg>
+  
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
   </button>
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../usage.html">
-  Usage
- </a>
-</li>
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="search"
+         aria-label="search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../plugins/index.html">
-  Plugins
- </a>
-</li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../community/index.html">
-  Community
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../developers/index.html">
-  Contributing
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../api/index.html">
-  API Reference
- </a>
-</li>
-
+<script>
+document.write(`<div class="bd-header-announcement"></div>`);
+fetch("https://napari.org/dev/_static/announcement.html")
+  .then(res => {return res.text();})
+  .then(data => {
+    div = document.querySelector(".bd-header-announcement");
+    div.classList.add(...["bd-header-announcement", "container-fluid"]);
+    div.innerHTML = `<div class="bd-header-announcement__content">${data}</div>`;
+  })
+  .catch(error => {
+    console.log("[PST]: Failed to load announcement at: https://napari.org/dev/_static/announcement.html");
+  });
+</script>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
-    <li class="nav-item">
-        <a class="nav-link nav-external" href="https://napari-hub.org">napari hub<i class="fas fa-external-link-alt"></i></a>
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="napari - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="napari - Home"/>`);</script>
+  
+  
+</a></div>
+    
+      <div class="navbar-item"><!-- A small template snippet for theme testing -->
+<a class="navbar-brand" href="../../../index.html">
+  napari
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../plugins/index.html">
+                        Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../community/index.html">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../developers/index.html">
+                        Contributing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../api/index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://napari-hub.org">
+                    napari hub
+                  </a>
+                </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/napari/napari" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../plugins/index.html">
+                        Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../community/index.html">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../developers/index.html">
+                        Contributing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../api/index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://napari-hub.org">
+                    napari hub
+                  </a>
+                </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/napari/napari" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="search"
+         aria-label="search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
     </li>
     
-</ul>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <div class="dropdown" id="version_switcher">
-    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">latest</span></span>
-
-        <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
-        </svg>
-    </button>
-    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
-    <!-- dropdown will be populated by javascript on page load -->
-    </div>
-</div>
-
-<!-- NOTE: this JS must live here (not in our global JS file) because it relies
-     on being processed by Jinja before it is run (specifically for replacing
-     variables _modules/napari/_qt/qt_viewer and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': 'latest'}.
--->
-
-<script type="text/javascript">
-// Check if corresponding page path exists in other version of docs
-// and, if so, go there instead of the homepage of the other docs version
-function checkPageExistsAndRedirect(event) {
-    const currentFilePath = "_modules/napari/_qt/qt_viewer.html",
-          tryUrl = event.target.getAttribute("href");
-    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
-    $.ajax({
-        type: 'HEAD',
-        url: tryUrl,
-        // if the page exists, go there
-        success: function() {
-            location.href = tryUrl;
-        }
-    }).fail(function() {
-        location.href = otherDocsHomepage;
-    });
-    // this prevents the browser from following the href of the clicked node
-    // (which is fine because this function takes care of redirecting)
-    return false;
-}
-
-// Populate the version switcher from the JSON config file
-(function () {
-    $.getJSON("https://napari.org/dev/_static/version_switcher.json", function(data, textStatus, jqXHR) {
-        const currentFilePath = "_modules/napari/_qt/qt_viewer.html";
-        // create links to the corresponding page in the other docs versions
-        $.each(data, function(index, entry) {
-            // if no custom name specified (e.g., "latest"), use version string
-            if (!("name" in entry)) {
-                entry.name = entry.version;
-            }
-            // create the node
-            const node = document.createElement("a");
-            node.setAttribute("class", "list-group-item list-group-item-action py-1");
-            node.textContent = `${entry.name}`;
-            node.setAttribute("href", `${entry.url}${currentFilePath}`);
-            // on click, AJAX calls will check if the linked page exists before
-            // trying to redirect, and if not, will redirect to the homepage
-            // for that version of the docs.
-            node.onclick = checkPageExistsAndRedirect;
-            // Add dataset values for the version and name in case people want
-            // to apply CSS styling based on this information.
-            node.dataset["versionName"] = entry.name;
-            node.dataset["version"] = entry.version;
-
-            $("#version_switcher_menu").append(node);
-            // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's dev variable.
-            // also highlight the dropdown entry for the currently-viewed
-            // version's entry
-            if (entry.version == "latest") {
-                node.classList.add("active");
-                let btn = document.getElementById("version_switcher_button");
-                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
-                btn.dataset["activeVersion"] = entry.version;
-            }
-        });
-    });
-})();
-</script>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/napari/napari" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label></a>
-        </li>
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-    </nav>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
     
-
-    <div class="napari-page">
-        
-          
-          <!-- Only show if we have sidebars configured, else just a small margin  -->
-          <div class="bd-sidebar">
-            <div class="sidebar-start-items"><form
-  class="search"
-  action="../../../search.html"
-  method="get"
->
-  <input
-    type="search"
-    name="q"
-    placeholder="search"
-    aria-label="search"
-    autocomplete="off"
-  />
-
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M8.32001 7.67998L0.746674 15.2533M10.6667 9.59998C13.0133 9.59998 14.9333 7.67998 14.9333 5.33332C14.9333 2.98665 13.0133 1.06665 10.6667 1.06665C8.32001 1.06665 6.40001 2.98665 6.40001 5.33332C6.40001 7.67998 8.32001 9.59998 10.6667 9.59998Z"
-      stroke="black"
-      stroke-width="2"
-    />
-  </svg>
-  </button>
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-  </div>
+    <li class="breadcrumb-item active" aria-current="page">napari._qt.qt_viewer</li>
+  </ul>
 </nav>
-            </div>
-            <div class="sidebar-end-items">
-            </div>
-          </div>
-          
-        
-
-        
-        <div class="bd-toc">
-          
-        </div>
-        
-
-        
-        
-          
-        
-        <main class="col-md-9 col-xl-7 bd-content" role="main">
-            
-            <div>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
               
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <h1>Source code for napari._qt.qt_viewer</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
@@ -275,11 +480,24 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">import</span> <span class="nn">typing</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">weakref</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">FrameType</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TYPE_CHECKING</span><span class="p">,</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">weakref</span> <span class="kn">import</span> <span class="n">WeakSet</span><span class="p">,</span> <span class="n">ref</span>
 
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QCoreApplication</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Qt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QCoreApplication</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QUrl</span>
 <span class="kn">from</span> <span class="nn">qtpy.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
 <span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QFileDialog</span><span class="p">,</span> <span class="n">QSplitter</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QWidget</span>
 <span class="kn">from</span> <span class="nn">superqt</span> <span class="kn">import</span> <span class="n">ensure_main_thread</span>
@@ -314,12 +532,15 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">napari.utils.io</span> <span class="kn">import</span> <span class="n">imsave</span>
 <span class="kn">from</span> <span class="nn">napari.utils.key_bindings</span> <span class="kn">import</span> <span class="n">KeymapHandler</span>
 <span class="kn">from</span> <span class="nn">napari.utils.misc</span> <span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span>
+<span class="kn">from</span> <span class="nn">napari.utils.naming</span> <span class="kn">import</span> <span class="n">CallerFrame</span>
+<span class="kn">from</span> <span class="nn">napari.utils.notifications</span> <span class="kn">import</span> <span class="n">show_info</span>
 <span class="kn">from</span> <span class="nn">napari.utils.translations</span> <span class="kn">import</span> <span class="n">trans</span>
 <span class="kn">from</span> <span class="nn">napari_builtins.io</span> <span class="kn">import</span> <span class="n">imsave_extensions</span>
 
 <span class="kn">from</span> <span class="nn">napari._vispy</span> <span class="kn">import</span> <span class="n">VispyCanvas</span><span class="p">,</span> <span class="n">create_vispy_layer</span>  <span class="c1"># isort:skip</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">napari_console</span> <span class="kn">import</span> <span class="n">QtConsole</span>
     <span class="kn">from</span> <span class="nn">npe2.manifest.contributions</span> <span class="kn">import</span> <span class="n">WriterContribution</span>
 
     <span class="kn">from</span> <span class="nn">napari._qt.layer_controls</span> <span class="kn">import</span> <span class="n">QtLayerControlsContainer</span>
@@ -393,7 +614,9 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">return</span> <span class="n">ext_str</span><span class="p">,</span> <span class="p">[]</span>
 
 
-<div class="viewcode-block" id="QtViewer"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer">[docs]</a><span class="k">class</span> <span class="nc">QtViewer</span><span class="p">(</span><span class="n">QSplitter</span><span class="p">):</span>
+<div class="viewcode-block" id="QtViewer">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer">[docs]</a>
+<span class="k">class</span> <span class="nc">QtViewer</span><span class="p">(</span><span class="n">QSplitter</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Qt view for the napari Viewer model.</span>
 
 <span class="sd">    Parameters</span>
@@ -749,7 +972,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">unwrapped</span> <span class="o">=</span> <span class="n">value</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ref</span><span class="p">)</span> <span class="k">else</span> <span class="n">value</span>
         <span class="k">return</span> <span class="n">unwrapped</span>
 
-<div class="viewcode-block" id="QtViewer.add_to_console_backlog"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.add_to_console_backlog">[docs]</a>    <span class="k">def</span> <span class="nf">add_to_console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+<div class="viewcode-block" id="QtViewer.add_to_console_backlog">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.add_to_console_backlog">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_to_console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save variables for pushing to console when it is instantiated.</span>
 
 <span class="sd">        This function will create weakrefs when possible to avoid holding on to</span>
@@ -788,54 +1013,81 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weakref_if_possible</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vdict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">console_backlog</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_dict</span><span class="p">)</span></div>
 
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List: items to push to console when instantiated.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console_backlog</span>
 
+    <span class="k">def</span> <span class="nf">_get_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtConsole</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function for setup console.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        _____</span>
+<span class="sd">        extracted to separated function for simplify testing</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+            <span class="c1"># QtConsole imports debugpy that overwrites default breakpoint.</span>
+            <span class="c1"># It makes problems with debugging if you do not know this.</span>
+            <span class="c1"># So we do not want to overwrite it if it is already set.</span>
+            <span class="n">breakpoint_handler</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">breakpointhook</span>
+            <span class="kn">from</span> <span class="nn">napari_console</span> <span class="kn">import</span> <span class="n">QtConsole</span>
+
+            <span class="n">sys</span><span class="o">.</span><span class="n">breakpointhook</span> <span class="o">=</span> <span class="n">breakpoint_handler</span>
+
+            <span class="kn">import</span> <span class="nn">napari</span>
+
+            <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+                <span class="n">console</span> <span class="o">=</span> <span class="n">QtConsole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">)</span>
+                <span class="n">console</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
+                    <span class="p">{</span><span class="s1">&#39;napari&#39;</span><span class="p">:</span> <span class="n">napari</span><span class="p">,</span> <span class="s1">&#39;action_manager&#39;</span><span class="p">:</span> <span class="n">action_manager</span><span class="p">}</span>
+                <span class="p">)</span>
+                <span class="k">with</span> <span class="n">CallerFrame</span><span class="p">(</span><span class="n">_in_napari</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">f_globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;__name__&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+                        <span class="n">console</span><span class="o">.</span><span class="n">push</span><span class="p">({</span><span class="s2">&quot;np&quot;</span><span class="p">:</span> <span class="n">np</span><span class="p">})</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">console_backlog</span><span class="p">:</span>
+                    <span class="c1"># recover weak refs</span>
+                    <span class="n">console</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
+                        <span class="p">{</span>
+                            <span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unwrap_if_weakref</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unwrap_if_weakref</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+                <span class="k">return</span> <span class="n">console</span>
+        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;napari-console not found. It can be installed with&#39;</span>
+                    <span class="s1">&#39; &quot;pip install napari_console&quot;&#39;</span>
+                <span class="p">),</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;error importing napari-console. See console for full error.&#39;</span>
+                <span class="p">),</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;QtConsole: iPython console terminal integrated into the napari GUI.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="kn">from</span> <span class="nn">napari_console</span> <span class="kn">import</span> <span class="n">QtConsole</span>
-
-                <span class="kn">import</span> <span class="nn">napari</span>
-
-                <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-                    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">console</span> <span class="o">=</span> <span class="n">QtConsole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
-                        <span class="p">{</span><span class="s1">&#39;napari&#39;</span><span class="p">:</span> <span class="n">napari</span><span class="p">,</span> <span class="s1">&#39;action_manager&#39;</span><span class="p">:</span> <span class="n">action_manager</span><span class="p">}</span>
-                    <span class="p">)</span>
-                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">console_backlog</span><span class="p">:</span>
-                        <span class="c1"># recover weak refs</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
-                            <span class="p">{</span>
-                                <span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unwrap_if_weakref</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-                                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unwrap_if_weakref</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                            <span class="p">}</span>
-                        <span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_console_backlog</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                    <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                        <span class="s1">&#39;napari-console not found. It can be installed with&#39;</span>
-                        <span class="s1">&#39; &quot;pip install napari_console&quot;&#39;</span>
-                    <span class="p">),</span>
-                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_console</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-                <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                    <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                        <span class="s1">&#39;error importing napari-console. See console for full error.&#39;</span>
-                    <span class="p">),</span>
-                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_console</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">console</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_console</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_console_backlog</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console</span>
 
     <span class="nd">@console</span><span class="o">.</span><span class="n">setter</span>
@@ -852,21 +1104,22 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Provides updates after slicing using the slice response data.</span>
 <span class="sd">        This only gets triggered on the async slicing path.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">responses</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">responses</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">weakref</span><span class="o">.</span><span class="n">ReferenceType</span><span class="p">[</span><span class="n">Layer</span><span class="p">],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;QtViewer._on_slice_ready: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">responses</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">layer</span><span class="p">,</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="c1"># Update the layer slice state to temporarily support behavior</span>
-            <span class="c1"># that depends on it.</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">_update_slice_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-            <span class="c1"># Update the layer&#39;s loaded state before everything else,</span>
-            <span class="c1"># because they may rely on its updated value.</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">_update_loaded_slice_id</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">request_id</span><span class="p">)</span>
-            <span class="c1"># The rest of `Layer.refresh` after `set_view_slice`, where</span>
-            <span class="c1"># `set_data` notifies the corresponding vispy layer of the new</span>
-            <span class="c1"># slice.</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">set_data</span><span class="p">()</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">_update_thumbnail</span><span class="p">()</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">_set_highlight</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">weak_layer</span><span class="p">,</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">layer</span> <span class="o">:=</span> <span class="n">weak_layer</span><span class="p">():</span>
+                <span class="c1"># Update the layer slice state to temporarily support behavior</span>
+                <span class="c1"># that depends on it.</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">_update_slice_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+                <span class="c1"># Update the layer&#39;s loaded state before everything else,</span>
+                <span class="c1"># because they may rely on its updated value.</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">_update_loaded_slice_id</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">request_id</span><span class="p">)</span>
+                <span class="c1"># The rest of `Layer.refresh` after `set_view_slice`, where</span>
+                <span class="c1"># `set_data` notifies the corresponding vispy layer of the new</span>
+                <span class="c1"># slice.</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">set_data</span><span class="p">()</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">_update_thumbnail</span><span class="p">()</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">_set_highlight</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_on_active_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;When active layer changes change keymap handler.&quot;&quot;&quot;</span>
@@ -1001,7 +1254,6 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Flag to indicate whether flash animation should be shown after</span>
 <span class="sd">            the screenshot was captured.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># CAN REMOVE THIS AFTER DEPRECATION IS DONE, see self.screenshot.</span>
         <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">napari._qt.utils</span> <span class="kn">import</span> <span class="n">add_flash_animation</span>
@@ -1013,7 +1265,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">add_flash_animation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">img</span>
 
-<div class="viewcode-block" id="QtViewer.screenshot"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.screenshot">[docs]</a>    <span class="k">def</span> <span class="nf">screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="QtViewer.screenshot">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.screenshot">[docs]</a>
+    <span class="k">def</span> <span class="nf">screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take currently displayed screen and convert to an image array.</span>
 
 <span class="sd">        Parameters</span>
@@ -1036,7 +1290,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">imsave</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>  <span class="c1"># scikit-image imsave method</span>
         <span class="k">return</span> <span class="n">img</span></div>
 
-<div class="viewcode-block" id="QtViewer.clipboard"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.clipboard">[docs]</a>    <span class="k">def</span> <span class="nf">clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QtViewer.clipboard">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.clipboard">[docs]</a>
+    <span class="k">def</span> <span class="nf">clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a screenshot of the currently displayed screen and copy the</span>
 <span class="sd">        image to the clipboard.</span>
 
@@ -1048,6 +1305,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cb</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span>
         <span class="n">cb</span><span class="o">.</span><span class="n">setImage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_screenshot</span><span class="p">(</span><span class="n">flash</span><span class="p">))</span></div>
+
 
     <span class="k">def</span> <span class="nf">_screenshot_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save screenshot of current display, default .png&quot;&quot;&quot;</span>
@@ -1079,25 +1337,22 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="k">return</span> <span class="n">dlg</span><span class="o">.</span><span class="n">getOpenFileNames</span><span class="p">(</span><span class="o">**</span><span class="n">open_kwargs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_open_files_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_open_files_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add files from the menubar.&quot;&quot;&quot;</span>
         <span class="n">filenames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_file_dialog_uni</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Select file(s)...&#39;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">filenames</span> <span class="o">!=</span> <span class="p">[])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filenames</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_qt_open</span><span class="p">(</span>
-                    <span class="p">[</span><span class="n">filename</span><span class="p">],</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span>
+                    <span class="p">[</span><span class="n">filename</span><span class="p">],</span>
+                    <span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">,</span>
+                    <span class="n">stack</span><span class="o">=</span><span class="n">stack</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="n">update_open_history</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">_open_files_dialog_as_stack_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add files as a stack, from the menubar.&quot;&quot;&quot;</span>
-
-        <span class="n">filenames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_file_dialog_uni</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Select files...&#39;</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">filenames</span> <span class="o">!=</span> <span class="p">[])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">filenames</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_qt_open</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">)</span>
-            <span class="n">update_open_history</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files_dialog</span><span class="p">(</span><span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_open_folder_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a folder of files from the menubar.&quot;&quot;&quot;</span>
@@ -1175,7 +1430,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">except</span> <span class="n">MultipleReaderError</span><span class="p">:</span>
             <span class="n">handle_gui_reading</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="QtViewer.toggle_console_visibility"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.toggle_console_visibility">[docs]</a>    <span class="k">def</span> <span class="nf">toggle_console_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QtViewer.toggle_console_visibility">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.toggle_console_visibility">[docs]</a>
+    <span class="k">def</span> <span class="nf">toggle_console_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle console visible and not visible.</span>
 
 <span class="sd">        Imports the console the first time it is requested.</span>
@@ -1206,12 +1463,18 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">viewerButtons</span><span class="o">.</span><span class="n">consoleButton</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="QtViewer.set_welcome_visible"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.set_welcome_visible">[docs]</a>    <span class="k">def</span> <span class="nf">set_welcome_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visible</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QtViewer.set_welcome_visible">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.set_welcome_visible">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_welcome_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visible</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Show welcome screen widget.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_show_welcome_screen</span> <span class="o">=</span> <span class="n">visible</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="o">.</span><span class="n">set_welcome_visible</span><span class="p">(</span><span class="n">visible</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QtViewer.keyPressEvent"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.keyPressEvent">[docs]</a>    <span class="k">def</span> <span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QtViewer.keyPressEvent">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.keyPressEvent">[docs]</a>
+    <span class="k">def</span> <span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Called whenever a key is pressed.</span>
 
 <span class="sd">        Parameters</span>
@@ -1224,7 +1487,10 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span>
         <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="QtViewer.keyReleaseEvent"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.keyReleaseEvent">[docs]</a>    <span class="k">def</span> <span class="nf">keyReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QtViewer.keyReleaseEvent">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.keyReleaseEvent">[docs]</a>
+    <span class="k">def</span> <span class="nf">keyReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Called whenever a key is released.</span>
 
 <span class="sd">        Parameters</span>
@@ -1237,7 +1503,10 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">)</span>
         <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="QtViewer.dragEnterEvent"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.dragEnterEvent">[docs]</a>    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QtViewer.dragEnterEvent">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.dragEnterEvent">[docs]</a>
+    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Ignore event if not dragging &amp; dropping a file or URL to open.</span>
 
 <span class="sd">        Using event.ignore() here allows the event to pass through the</span>
@@ -1255,13 +1524,53 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">else</span><span class="p">:</span>
             <span class="n">event</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span></div>
 
+
     <span class="k">def</span> <span class="nf">_set_drag_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set dedicated status message when dragging files into viewer&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
             <span class="s1">&#39;Hold &lt;Alt&gt; key to open plugin selection. Hold &lt;Shift&gt; to open files as stack.&#39;</span>
         <span class="p">)</span>
 
-<div class="viewcode-block" id="QtViewer.dropEvent"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.dropEvent">[docs]</a>    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_image_from_clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert image from clipboard as a new layer if clipboard contains an image or link.&quot;&quot;&quot;</span>
+        <span class="n">cb</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasImage</span><span class="p">():</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">cb</span><span class="o">.</span><span class="n">image</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">isNull</span><span class="p">():</span>
+                <span class="k">return</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">QImg2array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasUrls</span><span class="p">():</span>
+            <span class="n">show_info</span><span class="p">(</span><span class="s2">&quot;No image in clipboard, trying to open link instead.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_open_from_list_of_urls_data</span><span class="p">(</span>
+                <span class="n">cb</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">urls</span><span class="p">(),</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasText</span><span class="p">():</span>
+            <span class="n">show_info</span><span class="p">(</span>
+                <span class="s2">&quot;No image in clipboard, trying to parse text in clipboard as a link.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">url_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">cb</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">QUrl</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">scheme</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                    <span class="n">url</span><span class="o">.</span><span class="n">setScheme</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">isLocalFile</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">toLocalFile</span><span class="p">())</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                    <span class="k">break</span>
+                <span class="n">url_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_open_from_list_of_urls_data</span><span class="p">(</span>
+                    <span class="n">url_list</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+        <span class="n">show_info</span><span class="p">(</span><span class="s2">&quot;No image or link in clipboard.&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="QtViewer.dropEvent">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.dropEvent">[docs]</a>
+    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add local files and web URLS with drag and drop.</span>
 
 <span class="sd">        For each file, attempt to open with existing associated reader</span>
@@ -1283,8 +1592,18 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">keyboardModifiers</span><span class="p">()</span>
             <span class="o">&amp;</span> <span class="n">Qt</span><span class="o">.</span><span class="n">KeyboardModifier</span><span class="o">.</span><span class="n">AltModifier</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_open_from_list_of_urls_data</span><span class="p">(</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">urls</span><span class="p">(),</span>
+            <span class="n">stack</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">shift_down</span><span class="p">),</span>
+            <span class="n">choose_plugin</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">alt_down</span><span class="p">),</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_open_from_list_of_urls_data</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">urls_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QUrl</span><span class="p">],</span> <span class="n">stack</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="p">):</span>
         <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">urls</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls_list</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">isLocalFile</span><span class="p">():</span>
                 <span class="c1"># directories get a trailing &quot;/&quot;, Path conversion removes it</span>
                 <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">toLocalFile</span><span class="p">())))</span>
@@ -1293,11 +1612,13 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_qt_open</span><span class="p">(</span>
             <span class="n">filenames</span><span class="p">,</span>
-            <span class="n">stack</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">shift_down</span><span class="p">),</span>
-            <span class="n">choose_plugin</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">alt_down</span><span class="p">),</span>
-        <span class="p">)</span></div>
+            <span class="n">stack</span><span class="o">=</span><span class="n">stack</span><span class="p">,</span>
+            <span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">,</span>
+        <span class="p">)</span>
 
-<div class="viewcode-block" id="QtViewer.closeEvent"><a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.closeEvent">[docs]</a>    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="viewcode-block" id="QtViewer.closeEvent">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.closeEvent">[docs]</a>
+    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cleanup and close.</span>
 
 <span class="sd">        Parameters</span>
@@ -1316,7 +1637,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dockConsole</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
-        <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span></div></div>
+        <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span></div>
+</div>
+
 
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
@@ -1392,24 +1715,56 @@ function checkPageExistsAndRedirect(event) {
     <span class="n">qt_poll</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">monitor</span><span class="o">.</span><span class="n">on_poll</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">manager</span>
+
+
+<span class="k">def</span> <span class="nf">_in_napari</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frame</span><span class="p">:</span> <span class="n">FrameType</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines whether we are in napari by looking at:</span>
+<span class="sd">        1) the frames modules names:</span>
+<span class="sd">        2) the min_depth</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="c1"># in-n-out is used in napari for dependency injection.</span>
+    <span class="k">for</span> <span class="n">pref</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;napari.&quot;</span><span class="p">,</span> <span class="s2">&quot;in_n_out.&quot;</span><span class="p">}:</span>
+        <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;__name__&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pref</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
             </div>
             
             
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
+              
             
-        </main>
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
         
-
+      </main>
     </div>
-
-    <script src="../../../_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+<footer class="napari-footer">
   
     <div class="footer-item">
-      <a href="/">
+      <a class="footer-icon__hover-blue" href="https://napari.org" target="_blank" rel="noreferrer">
   <svg
   width="30"
   height="30"
@@ -1874,7 +2229,7 @@ function checkPageExistsAndRedirect(event) {
     </div>
 
     
-      <span>4.5.0</span>
+      <span>7.2.6</span>
     
   </div>
 </div>

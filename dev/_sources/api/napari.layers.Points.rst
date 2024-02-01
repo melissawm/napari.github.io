@@ -122,6 +122,7 @@ napari.layers.Points
       ~Points.features
       ~Points.help
       ~Points.interactive
+      ~Points.keymap
       ~Points.loaded
       ~Points.metadata
       ~Points.mode
@@ -132,6 +133,7 @@ napari.layers.Points
       ~Points.ndim
       ~Points.opacity
       ~Points.out_of_slice_display
+      ~Points.projection_mode
       ~Points.properties
       ~Points.property_choices
       ~Points.rotate
@@ -147,6 +149,7 @@ napari.layers.Points
       ~Points.thumbnail
       ~Points.translate
       ~Points.visible
+      
       
       
       

@@ -95,6 +95,7 @@ napari.layers.Tracks
       ~Tracks.head_length
       ~Tracks.help
       ~Tracks.interactive
+      ~Tracks.keymap
       ~Tracks.loaded
       ~Tracks.metadata
       ~Tracks.mode
@@ -103,6 +104,7 @@ napari.layers.Tracks
       ~Tracks.name
       ~Tracks.ndim
       ~Tracks.opacity
+      ~Tracks.projection_mode
       ~Tracks.properties
       ~Tracks.properties_to_color_by
       ~Tracks.rotate
@@ -119,6 +121,7 @@ napari.layers.Tracks
       ~Tracks.translate
       ~Tracks.use_fade
       ~Tracks.visible
+      
       
       
       

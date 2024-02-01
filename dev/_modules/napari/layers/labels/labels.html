@@ -1,277 +1,492 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../../../" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>napari.layers.labels.labels &#8212; napari</title>
-  <link rel="stylesheet" href="../../../../_static/fa/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/webfonts/fa-brands-400.woff2">
-  <link href="../../../../_static/styles/theme.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/napari-sphinx-theme.css" />
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/napari-sphinx-theme.css?v=f7c3b9e7" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/design-tabs.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=fccfeeb7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=2e3faad9"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/napari/layers/labels/labels';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.14.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'latest';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <script async defer data-domain="napari.org" src="https://plausible.io/js/plausible.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
+    <meta name="docsearch:language" content="en">
     
 
   </head>
-  <body>
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  <div id="navbar-start">
-    
-    <!-- A small template snippet for theme testing -->
-<a class="navbar-brand" href="../../../../index.html">
-  napari
-</a>
-    
-  </div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M20 2H0" stroke="black" stroke-width="3"/>
-  <path d="M20 10H0" stroke="black" stroke-width="3"/>
-  <path d="M20 18H0" stroke="black" stroke-width="3"/>
-</svg>
+  
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
   </button>
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../../usage.html">
-  Usage
- </a>
-</li>
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="search"
+         aria-label="search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../../plugins/index.html">
-  Plugins
- </a>
-</li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../../community/index.html">
-  Community
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../../developers/index.html">
-  Contributing
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../../api/index.html">
-  API Reference
- </a>
-</li>
-
+<script>
+document.write(`<div class="bd-header-announcement"></div>`);
+fetch("https://napari.org/dev/_static/announcement.html")
+  .then(res => {return res.text();})
+  .then(data => {
+    div = document.querySelector(".bd-header-announcement");
+    div.classList.add(...["bd-header-announcement", "container-fluid"]);
+    div.innerHTML = `<div class="bd-header-announcement__content">${data}</div>`;
+  })
+  .catch(error => {
+    console.log("[PST]: Failed to load announcement at: https://napari.org/dev/_static/announcement.html");
+  });
+</script>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
-    <li class="nav-item">
-        <a class="nav-link nav-external" href="https://napari-hub.org">napari hub<i class="fas fa-external-link-alt"></i></a>
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt="napari - Home"/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt="napari - Home"/>`);</script>
+  
+  
+</a></div>
+    
+      <div class="navbar-item"><!-- A small template snippet for theme testing -->
+<a class="navbar-brand" href="../../../../index.html">
+  napari
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../plugins/index.html">
+                        Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../community/index.html">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../developers/index.html">
+                        Contributing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../api/index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://napari-hub.org">
+                    napari hub
+                  </a>
+                </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/napari/napari" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../usage.html">
+                        Usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../plugins/index.html">
+                        Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../community/index.html">
+                        Community
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../developers/index.html">
+                        Contributing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../api/index.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://napari-hub.org">
+                    napari hub
+                  </a>
+                </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/napari/napari" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="search"
+         aria-label="search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
     </li>
     
-</ul>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <div class="dropdown" id="version_switcher">
-    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        <span>version <span id="version_switcher_button_text">latest</span></span>
-
-        <svg class="version-switcher-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.27197 1.5L8.34304 8.57107L15.4141 1.5" stroke="black" stroke-width="2"/>
-        </svg>
-    </button>
-    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
-    <!-- dropdown will be populated by javascript on page load -->
-    </div>
-</div>
-
-<!-- NOTE: this JS must live here (not in our global JS file) because it relies
-     on being processed by Jinja before it is run (specifically for replacing
-     variables _modules/napari/layers/labels/labels and {'json_url': 'https://napari.org/dev/_static/version_switcher.json', 'version_match': 'latest'}.
--->
-
-<script type="text/javascript">
-// Check if corresponding page path exists in other version of docs
-// and, if so, go there instead of the homepage of the other docs version
-function checkPageExistsAndRedirect(event) {
-    const currentFilePath = "_modules/napari/layers/labels/labels.html",
-          tryUrl = event.target.getAttribute("href");
-    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
-    $.ajax({
-        type: 'HEAD',
-        url: tryUrl,
-        // if the page exists, go there
-        success: function() {
-            location.href = tryUrl;
-        }
-    }).fail(function() {
-        location.href = otherDocsHomepage;
-    });
-    // this prevents the browser from following the href of the clicked node
-    // (which is fine because this function takes care of redirecting)
-    return false;
-}
-
-// Populate the version switcher from the JSON config file
-(function () {
-    $.getJSON("https://napari.org/dev/_static/version_switcher.json", function(data, textStatus, jqXHR) {
-        const currentFilePath = "_modules/napari/layers/labels/labels.html";
-        // create links to the corresponding page in the other docs versions
-        $.each(data, function(index, entry) {
-            // if no custom name specified (e.g., "latest"), use version string
-            if (!("name" in entry)) {
-                entry.name = entry.version;
-            }
-            // create the node
-            const node = document.createElement("a");
-            node.setAttribute("class", "list-group-item list-group-item-action py-1");
-            node.textContent = `${entry.name}`;
-            node.setAttribute("href", `${entry.url}${currentFilePath}`);
-            // on click, AJAX calls will check if the linked page exists before
-            // trying to redirect, and if not, will redirect to the homepage
-            // for that version of the docs.
-            node.onclick = checkPageExistsAndRedirect;
-            // Add dataset values for the version and name in case people want
-            // to apply CSS styling based on this information.
-            node.dataset["versionName"] = entry.name;
-            node.dataset["version"] = entry.version;
-
-            $("#version_switcher_menu").append(node);
-            // replace dropdown button text with the preferred display name of
-            // this version, rather than using sphinx's dev variable.
-            // also highlight the dropdown entry for the currently-viewed
-            // version's entry
-            if (entry.version == "latest") {
-                node.classList.add("active");
-                let btn = document.getElementById("version_switcher_button");
-                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
-                btn.dataset["activeVersion"] = entry.version;
-            }
-        });
-    });
-})();
-</script>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/napari/napari" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label></a>
-        </li>
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-    </nav>
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
     
-
-    <div class="napari-page">
-        
-          
-          <!-- Only show if we have sidebars configured, else just a small margin  -->
-          <div class="bd-sidebar">
-            <div class="sidebar-start-items"><form
-  class="search"
-  action="../../../../search.html"
-  method="get"
->
-  <input
-    type="search"
-    name="q"
-    placeholder="search"
-    aria-label="search"
-    autocomplete="off"
-  />
-
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M8.32001 7.67998L0.746674 15.2533M10.6667 9.59998C13.0133 9.59998 14.9333 7.67998 14.9333 5.33332C14.9333 2.98665 13.0133 1.06665 10.6667 1.06665C8.32001 1.06665 6.40001 2.98665 6.40001 5.33332C6.40001 7.67998 8.32001 9.59998 10.6667 9.59998Z"
-      stroke="black"
-      stroke-width="2"
-    />
-  </svg>
-  </button>
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-  </div>
+    <li class="breadcrumb-item active" aria-current="page">napari.layer...</li>
+  </ul>
 </nav>
-            </div>
-            <div class="sidebar-end-items">
-            </div>
-          </div>
-          
-        
-
-        
-        <div class="bd-toc">
-          
-        </div>
-        
-
-        
-        
-          
-        
-        <main class="col-md-9 col-xl-7 bd-content" role="main">
-            
-            <div>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
               
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <h1>Source code for napari.layers.labels.labels</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">ClassVar</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
@@ -279,6 +494,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 <span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">polygon2mask</span>
 
+<span class="kn">from</span> <span class="nn">napari.layers._data_protocols</span> <span class="kn">import</span> <span class="n">LayerDataProtocol</span>
+<span class="kn">from</span> <span class="nn">napari.layers._multiscale_data</span> <span class="kn">import</span> <span class="n">MultiScaleData</span>
 <span class="kn">from</span> <span class="nn">napari.layers.base</span> <span class="kn">import</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">no_op</span>
 <span class="kn">from</span> <span class="nn">napari.layers.base._base_mouse_bindings</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">highlight_box_handles</span><span class="p">,</span>
@@ -304,24 +521,33 @@ function checkPageExistsAndRedirect(event) {
     <span class="n">interpolate_coordinates</span><span class="p">,</span>
     <span class="n">sphere_indices</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari.layers.utils.color_transformations</span> <span class="kn">import</span> <span class="n">transform_color</span>
 <span class="kn">from</span> <span class="nn">napari.layers.utils.layer_utils</span> <span class="kn">import</span> <span class="n">_FeatureTable</span>
-<span class="kn">from</span> <span class="nn">napari.utils._dtype</span> <span class="kn">import</span> <span class="n">normalize_dtype</span>
+<span class="kn">from</span> <span class="nn">napari.utils._dtype</span> <span class="kn">import</span> <span class="n">normalize_dtype</span><span class="p">,</span> <span class="n">vispy_texture_dtype</span>
+<span class="kn">from</span> <span class="nn">napari.utils._indexing</span> <span class="kn">import</span> <span class="n">elements_in_slice</span><span class="p">,</span> <span class="n">index_in_slice</span>
 <span class="kn">from</span> <span class="nn">napari.utils.colormaps</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">direct_colormap</span><span class="p">,</span>
     <span class="n">label_colormap</span><span class="p">,</span>
-    <span class="n">low_discrepancy_image</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari.utils.events</span> <span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">from</span> <span class="nn">napari.utils.colormaps.colormap</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CyclicLabelColormap</span><span class="p">,</span>
+    <span class="n">DirectLabelColormap</span><span class="p">,</span>
+    <span class="n">LabelColormapBase</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">napari.utils.colormaps.colormap_utils</span> <span class="kn">import</span> <span class="n">shuffle_and_extend_colormap</span>
+<span class="kn">from</span> <span class="nn">napari.utils.events</span> <span class="kn">import</span> <span class="n">EmitterGroup</span><span class="p">,</span> <span class="n">Event</span>
 <span class="kn">from</span> <span class="nn">napari.utils.events.custom_types</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">napari.utils.events.event</span> <span class="kn">import</span> <span class="n">WarningEmitter</span>
 <span class="kn">from</span> <span class="nn">napari.utils.geometry</span> <span class="kn">import</span> <span class="n">clamp_point_to_bounding_box</span>
+<span class="kn">from</span> <span class="nn">napari.utils.migrations</span> <span class="kn">import</span> <span class="n">deprecated_constructor_arg_by_attr</span>
 <span class="kn">from</span> <span class="nn">napari.utils.misc</span> <span class="kn">import</span> <span class="n">StringEnum</span><span class="p">,</span> <span class="n">_is_array_type</span>
 <span class="kn">from</span> <span class="nn">napari.utils.naming</span> <span class="kn">import</span> <span class="n">magic_name</span>
 <span class="kn">from</span> <span class="nn">napari.utils.status_messages</span> <span class="kn">import</span> <span class="n">generate_layer_coords_status</span>
 <span class="kn">from</span> <span class="nn">napari.utils.translations</span> <span class="kn">import</span> <span class="n">trans</span>
 
 
-<div class="viewcode-block" id="Labels"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels">[docs]</a><span class="k">class</span> <span class="nc">Labels</span><span class="p">(</span><span class="n">_ImageBase</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels">[docs]</a>
+<span class="k">class</span> <span class="nc">Labels</span><span class="p">(</span><span class="n">_ImageBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Labels (or segmentation) layer.</span>
 
 <span class="sd">    An image-like layer where every pixel contains an integer ID</span>
@@ -333,59 +559,34 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Labels data as an array or multiscale. Must be integer type or bools.</span>
 <span class="sd">        Please note multiscale rendering is only supported in 2D. In 3D, only</span>
 <span class="sd">        the lowest resolution scale is displayed.</span>
-<span class="sd">    num_colors : int</span>
-<span class="sd">        Number of unique colors to use in colormap.</span>
-<span class="sd">    features : dict[str, array-like] or DataFrame</span>
-<span class="sd">        Features table where each row corresponds to a label and each column</span>
-<span class="sd">        is a feature. The first row corresponds to the background label.</span>
-<span class="sd">    properties : dict {str: array (N,)} or DataFrame</span>
-<span class="sd">        Properties for each label. Each property should be an array of length</span>
-<span class="sd">        N, where N is the number of labels, and the first property corresponds</span>
-<span class="sd">        to background.</span>
-<span class="sd">    color : dict of int to str or array</span>
-<span class="sd">        Custom label to color mapping. Values must be valid color names or RGBA</span>
-<span class="sd">        arrays.</span>
-<span class="sd">    seed : float</span>
-<span class="sd">        Seed for colormap random generator.</span>
-<span class="sd">    name : str</span>
-<span class="sd">        Name of the layer.</span>
-<span class="sd">    metadata : dict</span>
-<span class="sd">        Layer metadata.</span>
-<span class="sd">    scale : tuple of float</span>
-<span class="sd">        Scale factors for the layer.</span>
-<span class="sd">    translate : tuple of float</span>
-<span class="sd">        Translation values for the layer.</span>
-<span class="sd">    rotate : float, 3-tuple of float, or n-D array.</span>
-<span class="sd">        If a float convert into a 2D rotation matrix using that value as an</span>
-<span class="sd">        angle. If 3-tuple convert into a 3D rotation matrix, using a yaw,</span>
-<span class="sd">        pitch, roll convention. Otherwise assume an nD rotation. Angles are</span>
-<span class="sd">        assumed to be in degrees. They can be converted from radians with</span>
-<span class="sd">        np.degrees if needed.</span>
-<span class="sd">    shear : 1-D array or n-D array</span>
-<span class="sd">        Either a vector of upper triangular values, or an nD shear matrix with</span>
-<span class="sd">        ones along the main diagonal.</span>
 <span class="sd">    affine : n-D array or napari.utils.transforms.Affine</span>
 <span class="sd">        (N+1, N+1) affine transformation matrix in homogeneous coordinates.</span>
 <span class="sd">        The first (N, N) entries correspond to a linear transform and</span>
 <span class="sd">        the final column is a length N translation vector and a 1 or a napari</span>
 <span class="sd">        `Affine` transform object. Applied as an extra transform on top of the</span>
 <span class="sd">        provided scale, rotate, and shear values.</span>
-<span class="sd">    opacity : float</span>
-<span class="sd">        Opacity of the layer visual, between 0.0 and 1.0.</span>
 <span class="sd">    blending : str</span>
 <span class="sd">        One of a list of preset blending modes that determines how RGB and</span>
 <span class="sd">        alpha values of the layer visual get mixed. Allowed values are</span>
 <span class="sd">        {&#39;opaque&#39;, &#39;translucent&#39;, and &#39;additive&#39;}.</span>
-<span class="sd">    rendering : str</span>
-<span class="sd">        3D Rendering mode used by vispy. Must be one {&#39;translucent&#39;, &#39;iso_categorical&#39;}.</span>
-<span class="sd">        &#39;translucent&#39; renders without lighting. &#39;iso_categorical&#39; uses isosurface</span>
-<span class="sd">        rendering to calculate lighting effects on labeled surfaces.</span>
-<span class="sd">        The default value is &#39;iso_categorical&#39;.</span>
+<span class="sd">    cache : bool</span>
+<span class="sd">        Whether slices of out-of-core datasets should be cached upon retrieval.</span>
+<span class="sd">        Currently, this only applies to dask arrays.</span>
+<span class="sd">    colormap : CyclicLabelColormap or DirectLabelColormap or None</span>
+<span class="sd">        Colormap to use for the labels. If None, a random colormap will be</span>
+<span class="sd">        used.</span>
 <span class="sd">    depiction : str</span>
 <span class="sd">        3D Depiction mode. Must be one of {&#39;volume&#39;, &#39;plane&#39;}.</span>
 <span class="sd">        The default value is &#39;volume&#39;.</span>
-<span class="sd">    visible : bool</span>
-<span class="sd">        Whether the layer visual is currently being displayed.</span>
+<span class="sd">    experimental_clipping_planes : list of dicts, list of ClippingPlane, or ClippingPlaneList</span>
+<span class="sd">        Each dict defines a clipping plane in 3D in data coordinates.</span>
+<span class="sd">        Valid dictionary keys are {&#39;position&#39;, &#39;normal&#39;, and &#39;enabled&#39;}.</span>
+<span class="sd">        Values on the negative side of the normal are discarded if the plane is enabled.</span>
+<span class="sd">    features : dict[str, array-like] or DataFrame</span>
+<span class="sd">        Features table where each row corresponds to a label and each column</span>
+<span class="sd">        is a feature. The first row corresponds to the background label.</span>
+<span class="sd">    metadata : dict</span>
+<span class="sd">        Layer metadata.</span>
 <span class="sd">    multiscale : bool</span>
 <span class="sd">        Whether the data is a multiscale image or not. Multiscale data is</span>
 <span class="sd">        represented by a list of array like image data. If not specified by</span>
@@ -394,17 +595,41 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        should be the largest. Please note multiscale rendering is only</span>
 <span class="sd">        supported in 2D. In 3D, only the lowest resolution scale is</span>
 <span class="sd">        displayed.</span>
-<span class="sd">    cache : bool</span>
-<span class="sd">        Whether slices of out-of-core datasets should be cached upon retrieval.</span>
-<span class="sd">        Currently, this only applies to dask arrays.</span>
+<span class="sd">    name : str</span>
+<span class="sd">        Name of the layer.</span>
+<span class="sd">    opacity : float</span>
+<span class="sd">        Opacity of the layer visual, between 0.0 and 1.0.</span>
 <span class="sd">    plane : dict or SlicingPlane</span>
 <span class="sd">        Properties defining plane rendering in 3D. Properties are defined in</span>
 <span class="sd">        data coordinates. Valid dictionary keys are</span>
 <span class="sd">        {&#39;position&#39;, &#39;normal&#39;, &#39;thickness&#39;, and &#39;enabled&#39;}.</span>
-<span class="sd">    experimental_clipping_planes : list of dicts, list of ClippingPlane, or ClippingPlaneList</span>
-<span class="sd">        Each dict defines a clipping plane in 3D in data coordinates.</span>
-<span class="sd">        Valid dictionary keys are {&#39;position&#39;, &#39;normal&#39;, and &#39;enabled&#39;}.</span>
-<span class="sd">        Values on the negative side of the normal are discarded if the plane is enabled.</span>
+<span class="sd">    properties : dict {str: array (N,)} or DataFrame</span>
+<span class="sd">        Properties for each label. Each property should be an array of length</span>
+<span class="sd">        N, where N is the number of labels, and the first property corresponds</span>
+<span class="sd">        to background.</span>
+<span class="sd">    projection_mode : str</span>
+<span class="sd">        How data outside the viewed dimensions but inside the thick Dims slice will</span>
+<span class="sd">        be projected onto the viewed dimensions</span>
+<span class="sd">    rendering : str</span>
+<span class="sd">        3D Rendering mode used by vispy. Must be one {&#39;translucent&#39;, &#39;iso_categorical&#39;}.</span>
+<span class="sd">        &#39;translucent&#39; renders without lighting. &#39;iso_categorical&#39; uses isosurface</span>
+<span class="sd">        rendering to calculate lighting effects on labeled surfaces.</span>
+<span class="sd">        The default value is &#39;iso_categorical&#39;.</span>
+<span class="sd">    rotate : float, 3-tuple of float, or n-D array.</span>
+<span class="sd">        If a float convert into a 2D rotation matrix using that value as an</span>
+<span class="sd">        angle. If 3-tuple convert into a 3D rotation matrix, using a yaw,</span>
+<span class="sd">        pitch, roll convention. Otherwise assume an nD rotation. Angles are</span>
+<span class="sd">        assumed to be in degrees. They can be converted from radians with</span>
+<span class="sd">        np.degrees if needed.</span>
+<span class="sd">    scale : tuple of float</span>
+<span class="sd">        Scale factors for the layer.</span>
+<span class="sd">    shear : 1-D array or n-D array</span>
+<span class="sd">        Either a vector of upper triangular values, or an nD shear matrix with</span>
+<span class="sd">        ones along the main diagonal.</span>
+<span class="sd">    translate : tuple of float</span>
+<span class="sd">        Translation values for the layer.</span>
+<span class="sd">    visible : bool</span>
+<span class="sd">        Whether the layer visual is currently being displayed.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
@@ -423,7 +648,8 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">    metadata : dict</span>
 <span class="sd">        Labels metadata.</span>
 <span class="sd">    num_colors : int</span>
-<span class="sd">        Number of unique colors to use in colormap.</span>
+<span class="sd">        Number of unique colors to use in colormap. DEPRECATED: set</span>
+<span class="sd">        ``colormap`` directly, using `napari.utils.colormaps.label_colormap`.</span>
 <span class="sd">    features : Dataframe-like</span>
 <span class="sd">        Features table where each row corresponds to a label and each column</span>
 <span class="sd">        is a feature. The first row corresponds to the background label.</span>
@@ -435,9 +661,11 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        Custom label to color mapping. Values must be valid color names or RGBA</span>
 <span class="sd">        arrays. While there is no limit to the number of custom labels, the</span>
 <span class="sd">        the layer will render incorrectly if they map to more than 1024 distinct</span>
-<span class="sd">        colors.</span>
+<span class="sd">        colors. DEPRECATED: set ``colormap`` directly, using</span>
+<span class="sd">        `napari.utils.colormaps.DirectLabelColormap`.</span>
 <span class="sd">    seed : float</span>
-<span class="sd">        Seed for colormap random generator.</span>
+<span class="sd">        Seed for colormap random generator. DEPRECATED: set ``colormap``</span>
+<span class="sd">        directly, using `napari.utils.colormaps.label_colormap`.</span>
 <span class="sd">    opacity : float</span>
 <span class="sd">        Opacity of the labels, must be between 0 and 1.</span>
 <span class="sd">    contiguous : bool</span>
@@ -486,6 +714,9 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        background label `0` is selected.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">events</span><span class="p">:</span> <span class="n">EmitterGroup</span>
+    <span class="n">_colormap</span><span class="p">:</span> <span class="n">LabelColormapBase</span>
+
     <span class="n">_modeclass</span> <span class="o">=</span> <span class="n">Mode</span>
 
     <span class="n">_drag_modes</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">Mode</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="s2">&quot;Labels&quot;</span><span class="p">,</span> <span class="n">Event</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># type: ignore[assignment]</span>
@@ -522,58 +753,58 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="n">_history_limit</span> <span class="o">=</span> <span class="mi">100</span>
 
+    <span class="nd">@deprecated_constructor_arg_by_attr</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
+    <span class="nd">@deprecated_constructor_arg_by_attr</span><span class="p">(</span><span class="s2">&quot;num_colors&quot;</span><span class="p">)</span>
+    <span class="nd">@deprecated_constructor_arg_by_attr</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">num_colors</span><span class="o">=</span><span class="mi">49</span><span class="p">,</span>
-        <span class="n">features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">seed</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">translate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">rotate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">shear</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">affine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
         <span class="n">blending</span><span class="o">=</span><span class="s1">&#39;translucent&#39;</span><span class="p">,</span>
-        <span class="n">rendering</span><span class="o">=</span><span class="s1">&#39;iso_categorical&#39;</span><span class="p">,</span>
-        <span class="n">depiction</span><span class="o">=</span><span class="s1">&#39;volume&#39;</span><span class="p">,</span>
-        <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">multiscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">plane</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">depiction</span><span class="o">=</span><span class="s1">&#39;volume&#39;</span><span class="p">,</span>
         <span class="n">experimental_clipping_planes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">multiscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">plane</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">projection_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+        <span class="n">rendering</span><span class="o">=</span><span class="s1">&#39;iso_categorical&#39;</span><span class="p">,</span>
+        <span class="n">rotate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">shear</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">translate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="n">magic_name</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="n">seed</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_colors</span> <span class="o">=</span> <span class="n">num_colors</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span> <span class="o">=</span> <span class="n">label_colormap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_colors</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span> <span class="o">=</span> <span class="n">direct_colormap</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="c1"># We use 50 colors (49 + transparency) by default for historical</span>
+        <span class="c1"># consistency. This may change in future versions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span> <span class="o">=</span> <span class="n">label_colormap</span><span class="p">(</span>
+            <span class="mi">49</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">,</span> <span class="n">background_value</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_original_random_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span> <span class="o">=</span> <span class="n">direct_colormap</span><span class="p">(</span>
+            <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;transparent&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">AUTO</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_show_selected_label</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_contour</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_int_labels</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">data</span><span class="p">,</span>
-            <span class="n">rgb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">colormap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span><span class="p">,</span>
-            <span class="n">contrast_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">23</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">],</span>
-            <span class="n">interpolation2d</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span>
-            <span class="n">interpolation3d</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span>
             <span class="n">rendering</span><span class="o">=</span><span class="n">rendering</span><span class="p">,</span>
             <span class="n">depiction</span><span class="o">=</span><span class="n">depiction</span><span class="p">,</span>
-            <span class="n">iso_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
             <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
             <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
@@ -588,22 +819,32 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
             <span class="n">plane</span><span class="o">=</span><span class="n">plane</span><span class="p">,</span>
             <span class="n">experimental_clipping_planes</span><span class="o">=</span><span class="n">experimental_clipping_planes</span><span class="p">,</span>
+            <span class="n">projection_mode</span><span class="o">=</span><span class="n">projection_mode</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">preserve_labels</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">show_selected_label</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">properties</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">n_edit_dimensions</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">contiguous</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">brush_size</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">selected_label</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">color_mode</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">brush_shape</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">brush_size</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">color_mode</span><span class="o">=</span><span class="n">WarningEmitter</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;Labels.events.color_mode is deprecated since 0.4.19 and &#39;</span>
+                    <span class="s1">&#39;will be removed in 0.5.0, please use &#39;</span>
+                    <span class="s1">&#39;Labels.events.colormap.&#39;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">type_name</span><span class="o">=</span><span class="s1">&#39;color_mode&#39;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">colormap</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">contiguous</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">contour</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">features</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">paint</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">labels_update</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">n_edit_dimensions</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">paint</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">preserve_labels</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">properties</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">selected_label</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">show_selected_label</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="kn">from</span> <span class="nn">napari.components.overlays.labels_polygon</span> <span class="kn">import</span> <span class="p">(</span>
@@ -627,13 +868,14 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_prev_selected_label</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_selected_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">if</span> <span class="n">colormap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_colormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_preserve_labels</span> <span class="o">=</span> <span class="kc">False</span>
 
+    <span class="k">def</span> <span class="nf">_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset_history</span><span class="p">()</span>
-
         <span class="c1"># Trigger generation of view slice and thumbnail</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset_editable</span><span class="p">()</span>
@@ -719,45 +961,120 @@ function checkPageExistsAndRedirect(event) {
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">seed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;float: Seed for colormap random generator.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;seed is deprecated since 0.4.19 and will be removed in 0.5.0, &quot;</span>
+            <span class="s2">&quot;please check Labels.colormap directly.&quot;</span><span class="p">,</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span><span class="o">.</span><span class="n">seed</span>
 
     <span class="nd">@seed</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="n">seed</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;seed is deprecated since 0.4.19 and will be removed in 0.5.0, &quot;</span>
+            <span class="s2">&quot;please use the new_colormap method instead, or set the colormap &quot;</span>
+            <span class="s2">&quot;directly.&quot;</span><span class="p">,</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span> <span class="o">=</span> <span class="n">label_colormap</span><span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+            <span class="n">background_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">new_colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">32</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">orig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_random_colormap</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span> <span class="o">=</span> <span class="n">shuffle_and_extend_colormap</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_original_random_colormap</span><span class="p">,</span> <span class="n">seed</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_original_random_colormap</span> <span class="o">=</span> <span class="n">orig</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LabelColormapBase</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span>
+
+    <span class="nd">@colormap</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colormap</span><span class="p">:</span> <span class="n">LabelColormapBase</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_colormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colormap</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colormap</span><span class="p">,</span> <span class="n">CyclicLabelColormap</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span> <span class="o">=</span> <span class="n">colormap</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_original_random_colormap</span> <span class="o">=</span> <span class="n">colormap</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span>
+            <span class="n">color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">AUTO</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span> <span class="o">=</span> <span class="n">colormap</span>
+            <span class="c1"># `self._direct_colormap.color_dict` may contain just the default None and background label</span>
+            <span class="c1"># colors, in which case we need to be in AUTO color mode. Otherwise,</span>
+            <span class="c1"># `self._direct_colormap.color_dict` contains colors for all labels, and we should be in DIRECT</span>
+            <span class="c1"># mode.</span>
+
+            <span class="c1"># For more information</span>
+            <span class="c1"># - https://github.com/napari/napari/issues/2479</span>
+            <span class="c1"># - https://github.com/napari/napari/issues/2953</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_default_colors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span><span class="o">.</span><span class="n">color_dict</span><span class="p">):</span>
+                <span class="n">color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">AUTO</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">DIRECT</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># invalidate the cached color mapping</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color_mode</span> <span class="o">=</span> <span class="n">color_mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">colormap</span><span class="p">()</span>  <span class="c1"># Will update the LabelVispyColormap shader</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">selected_label</span><span class="p">()</span>
-
-    <span class="nd">@_ImageBase</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colormap</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_set_colormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_selected_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;int: Number of unique colors to use in colormap.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_colors</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                <span class="s1">&#39;Labels.num_colors is deprecated since 0.4.19 and will be &#39;</span>
+                <span class="s1">&#39;removed in 0.5.0, please use len(Labels.colormap) &#39;</span>
+                <span class="s1">&#39;instead.&#39;</span><span class="p">,</span>
+                <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="p">)</span>
 
     <span class="nd">@num_colors</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">num_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_colors</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_colors</span> <span class="o">=</span> <span class="n">num_colors</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span> <span class="o">=</span> <span class="n">label_colormap</span><span class="p">(</span><span class="n">num_colors</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_selected_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">selected_label</span><span class="p">()</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                <span class="s1">&#39;Setting Labels.num_colors is deprecated since 0.4.19 and &#39;</span>
+                <span class="s1">&#39;will be removed in 0.5.0, please set Labels.colormap &#39;</span>
+                <span class="s1">&#39;instead.&#39;</span><span class="p">,</span>
+                <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span> <span class="o">=</span> <span class="n">label_colormap</span><span class="p">(</span>
+            <span class="n">num_colors</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+            <span class="n">background_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">,</span>
+        <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataProtocol</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;array: Image data.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
 
     <span class="nd">@data</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">LayerDataProtocol</span><span class="p">,</span> <span class="n">MultiScaleData</span><span class="p">]):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_int_labels</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_dims</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset_editable</span><span class="p">()</span>
@@ -809,47 +1126,39 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">return</span> <span class="n">label_index</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;dict: custom color dict for label coloring&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Labels.color is deprecated since 0.4.19 and will be removed in &quot;</span>
+            <span class="s2">&quot;0.5.0, please use Labels.colormap.color_dict instead. Note: this&quot;</span>
+            <span class="s2">&quot;will only work when the colormap is a DirectLabelsColormap.&quot;</span><span class="p">,</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span><span class="o">.</span><span class="n">color_dict</span><span class="p">}</span>
 
     <span class="nd">@color</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">color</span><span class="p">:</span>
-            <span class="n">color</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Labels.color is deprecated since 0.4.19 and will be removed in &quot;</span>
+            <span class="s2">&quot;0.5.0, please set Labels.colormap directly with an instance &quot;</span>
+            <span class="s2">&quot;of napari.utils.colormaps.DirectLabelColormap instead.&quot;</span><span class="p">,</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="k">if</span> <span class="n">color</span> <span class="k">else</span> <span class="p">{}</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">color</span><span class="p">:</span>
-            <span class="n">color</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;transparent&#39;</span>
-        <span class="k">if</span> <span class="kc">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">color</span><span class="p">:</span>
-            <span class="n">color</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
-
-        <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">label</span><span class="p">:</span> <span class="n">transform_color</span><span class="p">(</span><span class="n">color_str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">color_str</span> <span class="ow">in</span> <span class="n">color</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">colors</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span> <span class="o">=</span> <span class="n">direct_colormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
-
-        <span class="c1"># `colors` may contain just the default None and background label</span>
-        <span class="c1"># colors, in which case we need to be in AUTO color mode. Otherwise,</span>
-        <span class="c1"># `colors` contains colors for all labels, and we should be in DIRECT</span>
-        <span class="c1"># mode.</span>
-
-        <span class="c1"># For more information</span>
-        <span class="c1"># - https://github.com/napari/napari/issues/2479</span>
-        <span class="c1"># - https://github.com/napari/napari/issues/2953</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_default_colors</span><span class="p">(</span><span class="n">colors</span><span class="p">):</span>
-            <span class="n">color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">AUTO</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">DIRECT</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">color_mode</span> <span class="o">=</span> <span class="n">color_mode</span>
+        <span class="n">color</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">,</span> <span class="s1">&#39;transparent&#39;</span>
+        <span class="p">)</span>
+        <span class="n">color</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span> <span class="o">=</span> <span class="n">DirectLabelColormap</span><span class="p">(</span><span class="n">color_dict</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_is_default_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if color contains only default colors, otherwise False.</span>
 
 <span class="sd">        Default colors are black for `None` and transparent for</span>
-<span class="sd">        `self._background_label`.</span>
+<span class="sd">        `self.colormap.background_value`.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -861,19 +1170,15 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        bool</span>
 <span class="sd">            True if color contains only default colors, otherwise False.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">{</span><span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">}</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_color&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
             <span class="k">return</span> <span class="kc">False</span>
-
-        <span class="n">default_keys</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">default_keys</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span>
+            <span class="n">color</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
-
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">default_keys</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="n">key</span><span class="p">]):</span>
-                <span class="k">return</span> <span class="kc">False</span>
 
         <span class="k">return</span> <span class="kc">True</span>
 
@@ -914,7 +1219,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="p">{</span>
                 <span class="s1">&#39;multiscale&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiscale</span><span class="p">,</span>
-                <span class="s1">&#39;num_colors&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_colors</span><span class="p">,</span>
                 <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span>
                 <span class="s1">&#39;rendering&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rendering</span><span class="p">,</span>
                 <span class="s1">&#39;depiction&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">depiction</span><span class="p">,</span>
@@ -922,10 +1226,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="s1">&#39;experimental_clipping_planes&#39;</span><span class="p">:</span> <span class="p">[</span>
                     <span class="n">plane</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">plane</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experimental_clipping_planes</span>
                 <span class="p">],</span>
-                <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
                 <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
                 <span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span>
+                <span class="s1">&#39;colormap&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">state</span>
@@ -948,15 +1251,17 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">selected_label</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">show_selected_label</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># invalidates labels cache</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Labels.swap_selected_and_background_labels"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.swap_selected_and_background_labels">[docs]</a>    <span class="k">def</span> <span class="nf">swap_selected_and_background_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.swap_selected_and_background_labels">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.swap_selected_and_background_labels">[docs]</a>
+    <span class="k">def</span> <span class="nf">swap_selected_and_background_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Swap between the selected label and the background label.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_selected_label</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -966,20 +1271,44 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="sd">        DIRECT allows color of each label to be set directly by a color dict.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                <span class="s1">&#39;Labels.color_mode is deprecated since 0.4.19 and will be &#39;</span>
+                <span class="s1">&#39;removed in 0.5.0. Please check type(Labels.colormap) &#39;</span>
+                <span class="s1">&#39;instead. napari.utils.colormaps.CyclicLabelColormap &#39;</span>
+                <span class="s1">&#39;corresponds to AUTO color mode, and &#39;</span>
+                <span class="s1">&#39;napari.utils.colormaps.DirectLabelColormap&#39;</span>
+                <span class="s1">&#39; corresponds to DIRECT color mode.&#39;</span><span class="p">,</span>
+                <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color_mode</span><span class="p">)</span>
 
     <span class="nd">@color_mode</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">LabelColorMode</span><span class="p">]):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                <span class="s1">&#39;Labels.color_mode is deprecated since 0.4.19 and will be &#39;</span>
+                <span class="s1">&#39;removed in 0.5.0. Please set Labels.colormap instead, to an&#39;</span>
+                <span class="s1">&#39;instance of napari.utils.colormaps.CyclicLabelColormap for &#39;</span>
+                <span class="s1">&#39;&quot;auto&quot; mode, or napari.utils.colormaps.DirectLabelColormap &#39;</span>
+                <span class="s1">&#39;for &quot;direct&quot; mode.&#39;</span><span class="p">,</span>
+                <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
         <span class="n">color_mode</span> <span class="o">=</span> <span class="n">LabelColorMode</span><span class="p">(</span><span class="n">color_mode</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># invalidates labels cache</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_color_mode</span> <span class="o">=</span> <span class="n">color_mode</span>
         <span class="k">if</span> <span class="n">color_mode</span> <span class="o">==</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">:</span>
-            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_set_colormap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_colormap</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_set_colormap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_colormap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">color_mode</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">colormap</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">colormap</span><span class="p">()</span>  <span class="c1"># If remove this emitting, connect shader update to color_mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">selected_label</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 
@@ -992,8 +1321,8 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">show_selected_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show_selected</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_show_selected_label</span> <span class="o">=</span> <span class="n">show_selected</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">use_selection</span> <span class="o">=</span> <span class="n">show_selected</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">show_selected_label</span><span class="p">(</span><span class="n">show_selected_label</span><span class="o">=</span><span class="n">show_selected</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 
     <span class="c1"># Only overriding to change the docstring</span>
@@ -1054,16 +1383,6 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_preserve_labels</span> <span class="o">=</span> <span class="n">preserve_labels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">preserve_labels</span><span class="p">(</span><span class="n">preserve_labels</span><span class="o">=</span><span class="n">preserve_labels</span><span class="p">)</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">contrast_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contrast_limits</span>
-
-    <span class="nd">@contrast_limits</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">contrast_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="c1"># Setting contrast_limits of labels layers leads to wrong visualization</span>
-        <span class="c1"># of the layer, so we ignore the value</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_contrast_limits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">_reset_editable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">editable</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiscale</span>
 
@@ -1072,31 +1391,16 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">Mode</span><span class="o">.</span><span class="n">PAN_ZOOM</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_reset_history</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_lookup_with_low_discrepancy_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">selected_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns display version of im using low_discrepancy_image.</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_to_vispy_texture_dtype</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert data to a dtype that can be used as a VisPy texture.</span>
 
-<span class="sd">        Passes the image through low_discrepancy_image, only coloring</span>
-<span class="sd">        selected_label if it&#39;s not None.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        im : array or int</span>
-<span class="sd">            Raw integer input image.</span>
-<span class="sd">        selected_label : int, optional</span>
-<span class="sd">            Value of selected label to color, by default None</span>
+<span class="sd">        Labels layers allow all integer dtypes for data, but only a subset</span>
+<span class="sd">        are supported by VisPy textures. For now, we convert all data to</span>
+<span class="sd">        float32 as it can represent all input values (though not losslessly,</span>
+<span class="sd">        see https://github.com/napari/napari/issues/6084).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">selected_label</span><span class="p">:</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
-                <span class="n">im</span> <span class="o">==</span> <span class="n">selected_label</span><span class="p">,</span>
-                <span class="n">low_discrepancy_image</span><span class="p">(</span><span class="n">selected_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">),</span>
-                <span class="mi">0</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">im</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">low_discrepancy_image</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">image</span>
-
-    <span class="k">def</span> <span class="nf">_as_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">selected_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">vispy_texture_dtype</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_update_slice_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">_ImageSliceResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Override to convert raw slice data to displayed label colors.&quot;&quot;&quot;</span>
@@ -1114,21 +1418,75 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="c1"># Keep only the dimensions that correspond to the current view</span>
         <span class="n">updated_slice</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">dims_displayed</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">dims_displayed</span>
         <span class="p">)</span>
 
         <span class="n">offset</span> <span class="o">=</span> <span class="p">[</span><span class="n">axis_slice</span><span class="o">.</span><span class="n">start</span> <span class="k">for</span> <span class="n">axis_slice</span> <span class="ow">in</span> <span class="n">updated_slice</span><span class="p">]</span>
 
-        <span class="n">colors_sliced</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_to_displayed</span><span class="p">(</span>
-            <span class="n">raw_displayed</span><span class="p">,</span> <span class="n">data_slice</span><span class="o">=</span><span class="n">updated_slice</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contour</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">colors_sliced</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_to_displayed</span><span class="p">(</span>
+                <span class="n">raw_displayed</span><span class="p">,</span> <span class="n">data_slice</span><span class="o">=</span><span class="n">updated_slice</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors_sliced</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">view</span><span class="p">[</span><span class="n">updated_slice</span><span class="p">]</span>
+        <span class="c1"># The next line is needed to make the following tests pass in</span>
+        <span class="c1"># napari/_vispy/_tests/:</span>
+        <span class="c1"># - test_vispy_labels_layer.py::test_labels_painting</span>
+        <span class="c1"># - test_vispy_labels_layer.py::test_labels_fill_slice</span>
+        <span class="c1"># See https://github.com/napari/napari/pull/6112/files#r1291613760</span>
+        <span class="c1"># and https://github.com/napari/napari/issues/6185</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">view</span><span class="p">[</span><span class="n">updated_slice</span><span class="p">]</span> <span class="o">=</span> <span class="n">colors_sliced</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">labels_update</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">colors_sliced</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="k">def</span> <span class="nf">_calculate_contour</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the contour of a given label array within the specified data slice.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        labels : np.ndarray</span>
+<span class="sd">            The label array.</span>
+<span class="sd">        data_slice : Tuple[slice, ...]</span>
+<span class="sd">            The slice of the label array on which to calculate the contour.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Optional[np.ndarray]</span>
+<span class="sd">            The calculated contour as a boolean mask array.</span>
+<span class="sd">            Returns None if the contour parameter is less than 1,</span>
+<span class="sd">            or if the label array has more than 2 dimensions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contour</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">labels</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s2">&quot;Contours are not displayed during 3D rendering&quot;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">expanded_slice</span> <span class="o">=</span> <span class="n">expand_slice</span><span class="p">(</span><span class="n">data_slice</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">sliced_labels</span> <span class="o">=</span> <span class="n">get_contours</span><span class="p">(</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">expanded_slice</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">contour</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Remove the latest one-pixel border from the result</span>
+        <span class="n">delta_slice</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="nb">slice</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_slice</span><span class="p">,</span> <span class="n">expanded_slice</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">sliced_labels</span><span class="p">[</span><span class="n">delta_slice</span><span class="p">]</span>
+
     <span class="k">def</span> <span class="nf">_raw_to_displayed</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">):</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Determine displayed image from a saved raw image and a saved seed.</span>
 
 <span class="sd">        This function ensures that the 0 label gets mapped to the 0 displayed</span>
@@ -1143,80 +1501,26 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Slice that specifies the portion of the input image that</span>
 <span class="sd">            should be computed and displayed.</span>
 <span class="sd">            If None, the whole input image will be processed.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        mapped_labels : array</span>
 <span class="sd">            Encoded colors mapped between 0 and 1 to be displayed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="n">data_slice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">data_slice</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">raw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
         <span class="n">labels</span> <span class="o">=</span> <span class="n">raw</span>  <span class="c1"># for readability</span>
-        <span class="n">sliced_labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">sliced_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_contour</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">)</span>
 
         <span class="c1"># lookup function -&gt; self._as_type</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contour</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">labels</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="c1"># Add one more pixel for the correct borders computation</span>
-                <span class="n">expanded_slice</span> <span class="o">=</span> <span class="n">expand_slice</span><span class="p">(</span><span class="n">data_slice</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="n">sliced_labels</span> <span class="o">=</span> <span class="n">get_contours</span><span class="p">(</span>
-                    <span class="n">labels</span><span class="p">[</span><span class="n">expanded_slice</span><span class="p">],</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">contour</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span><span class="p">,</span>
-                <span class="p">)</span>
-
-                <span class="c1"># Remove the latest one-pixel border from the result</span>
-                <span class="n">delta_slice</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-                    <span class="p">[</span>
-                        <span class="nb">slice</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
-                        <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_slice</span><span class="p">,</span> <span class="n">expanded_slice</span><span class="p">)</span>
-                    <span class="p">]</span>
-                <span class="p">)</span>
-                <span class="n">sliced_labels</span> <span class="o">=</span> <span class="n">sliced_labels</span><span class="p">[</span><span class="n">delta_slice</span><span class="p">]</span>
-            <span class="k">elif</span> <span class="n">labels</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                    <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                        <span class="s2">&quot;Contours are not displayed during 3D rendering&quot;</span><span class="p">,</span>
-                        <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="p">)</span>
-                <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">sliced_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">sliced_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">]</span>
 
-        <span class="c1"># cache the labels and keep track of when values are changed</span>
-        <span class="n">update_mask</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span>
-        <span class="p">):</span>
-            <span class="n">update_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">]</span> <span class="o">!=</span> <span class="n">sliced_labels</span>
-            <span class="c1"># Select only a subset with changes for further computations</span>
-            <span class="n">labels_to_map</span> <span class="o">=</span> <span class="n">sliced_labels</span><span class="p">[</span><span class="n">update_mask</span><span class="p">]</span>
-            <span class="c1"># Update the cache</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">][</span><span class="n">update_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_to_map</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">_cached_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-            <span class="n">_cached_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">]</span> <span class="o">=</span> <span class="n">sliced_labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_labels</span> <span class="o">=</span> <span class="n">_cached_labels</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span>
-                <span class="n">labels</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
-            <span class="p">)</span>
-            <span class="n">labels_to_map</span> <span class="o">=</span> <span class="n">sliced_labels</span>
-
-        <span class="c1"># If there are no changes, just return the cached image</span>
-        <span class="k">if</span> <span class="n">labels_to_map</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">]</span>
-
-        <span class="n">mapped_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_as_type</span><span class="p">(</span><span class="n">labels_to_map</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">update_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">][</span><span class="n">update_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mapped_labels</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">]</span> <span class="o">=</span> <span class="n">mapped_labels</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_mapped_labels</span><span class="p">[</span><span class="n">data_slice</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">_data_to_texture</span><span class="p">(</span><span class="n">sliced_labels</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_update_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the thumbnail with current data and colormap.</span>
@@ -1230,7 +1534,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="c1"># Is there a nicer way to prevent this from getting called?</span>
             <span class="k">return</span>
 
-        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">thumbnail</span><span class="o">.</span><span class="n">view</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">thumbnail</span><span class="o">.</span><span class="n">raw</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice_input</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="c1"># we are only using the current slice so `image` will never be</span>
             <span class="c1"># bigger than 3. If we are in this clause, it is exactly 3, so we</span>
@@ -1247,35 +1551,30 @@ function checkPageExistsAndRedirect(event) {
         <span class="n">zoom_factor</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">new_shape</span> <span class="o">/</span> <span class="n">imshape</span><span class="p">)</span>
 
         <span class="n">downsampled</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">zoom_factor</span><span class="p">,</span> <span class="n">prefilter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">color_mode</span> <span class="o">==</span> <span class="n">LabelColorMode</span><span class="o">.</span><span class="n">AUTO</span><span class="p">:</span>
-            <span class="n">color_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">downsampled</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># direct</span>
-            <span class="n">color_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_direct_colormap</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">downsampled</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-        <span class="n">colormapped</span> <span class="o">=</span> <span class="n">color_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">downsampled</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
-        <span class="n">colormapped</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opacity</span>
+        <span class="n">color_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">downsampled</span><span class="p">)</span>
+        <span class="n">color_array</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opacity</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">thumbnail</span> <span class="o">=</span> <span class="n">colormapped</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thumbnail</span> <span class="o">=</span> <span class="n">color_array</span>
 
-    <span class="k">def</span> <span class="nf">new_colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
-
-<div class="viewcode-block" id="Labels.get_color"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.get_color">[docs]</a>    <span class="k">def</span> <span class="nf">get_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.get_color">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.get_color">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the color corresponding to a specific label.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">:</span>
             <span class="n">col</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">elif</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">show_selected_label</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span>
         <span class="p">):</span>
-            <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">map</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_as_type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">label</span><span class="p">]))</span>
-            <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">val</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">col</span></div>
+
 
     <span class="k">def</span> <span class="nf">_get_value_ray</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">start_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-        <span class="n">end_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">start_point</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">end_point</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
         <span class="n">dims_displayed</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the first non-background value encountered along a ray.</span>
@@ -1302,8 +1601,18 @@ function checkPageExistsAndRedirect(event) {
             <span class="c1"># we use dims_displayed because the image slice</span>
             <span class="c1"># has its dimensions  in th same order as the vispy</span>
             <span class="c1"># Volume</span>
-            <span class="n">start_point</span> <span class="o">=</span> <span class="n">start_point</span><span class="p">[</span><span class="n">dims_displayed</span><span class="p">]</span>
-            <span class="n">end_point</span> <span class="o">=</span> <span class="n">end_point</span><span class="p">[</span><span class="n">dims_displayed</span><span class="p">]</span>
+            <span class="c1"># Account for downsampling in the case of multiscale</span>
+            <span class="c1"># -1 means lowest resolution here.</span>
+            <span class="n">start_point</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">start_point</span><span class="p">[</span><span class="n">dims_displayed</span><span class="p">]</span>
+                <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample_factors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">dims_displayed</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">end_point</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">end_point</span><span class="p">[</span><span class="n">dims_displayed</span><span class="p">]</span>
+                <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample_factors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">dims_displayed</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">start_point</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">start_point</span><span class="p">)</span>
+            <span class="n">end_point</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">end_point</span><span class="p">)</span>
             <span class="n">sample_ray</span> <span class="o">=</span> <span class="n">end_point</span> <span class="o">-</span> <span class="n">start_point</span>
             <span class="n">length_sample_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">sample_ray</span><span class="p">)</span>
             <span class="n">n_points</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">length_sample_vector</span><span class="p">)</span>
@@ -1311,7 +1620,10 @@ function checkPageExistsAndRedirect(event) {
                 <span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="n">n_points</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">)</span>
             <span class="n">im_slice</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">raw</span>
-            <span class="n">bounding_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_bounding_box</span><span class="p">(</span><span class="n">dims_displayed</span><span class="p">)</span>
+            <span class="c1"># ensure the bounding box is for the proper multiscale level</span>
+            <span class="n">bounding_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_bounding_box_at_level</span><span class="p">(</span>
+                <span class="n">dims_displayed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_level</span>
+            <span class="p">)</span>
             <span class="c1"># the display bounding box is returned as a closed interval</span>
             <span class="c1"># (i.e. the endpoint is included) by the method, but we need</span>
             <span class="c1"># open intervals in the code that follows, so we add 1.</span>
@@ -1331,8 +1643,8 @@ function checkPageExistsAndRedirect(event) {
 
     <span class="k">def</span> <span class="nf">_get_value_3d</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">start_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-        <span class="n">end_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">start_point</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">end_point</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
         <span class="n">dims_displayed</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the first non-background value encountered along a ray.</span>
@@ -1367,7 +1679,9 @@ function checkPageExistsAndRedirect(event) {
         <span class="bp">self</span><span class="o">.</span><span class="n">_staged_history</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_block_history</span> <span class="o">=</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="Labels.block_history"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.block_history">[docs]</a>    <span class="nd">@contextmanager</span>
+<div class="viewcode-block" id="Labels.block_history">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.block_history">[docs]</a>
+    <span class="nd">@contextmanager</span>
     <span class="k">def</span> <span class="nf">block_history</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Context manager to group history-editing operations together.</span>
 
@@ -1383,6 +1697,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_commit_staged_history</span><span class="p">()</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_block_history</span> <span class="o">=</span> <span class="n">prev</span></div>
+
 
     <span class="k">def</span> <span class="nf">_commit_staged_history</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save staged history to undo history and clear it.&quot;&quot;&quot;</span>
@@ -1467,7 +1782,9 @@ function checkPageExistsAndRedirect(event) {
             <span class="bp">self</span><span class="o">.</span><span class="n">_redo_history</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_undo_history</span><span class="p">,</span> <span class="n">undoing</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
-<div class="viewcode-block" id="Labels.fill"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.fill">[docs]</a>    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.fill">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.fill">[docs]</a>
+    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace an existing label with a new label, either just at the</span>
 <span class="sd">        connected component if the `contiguous` flag is `True` or everywhere</span>
 <span class="sd">        if it is `False`, working in the number of dimensions specified by</span>
@@ -1493,7 +1810,8 @@ function checkPageExistsAndRedirect(event) {
         <span class="c1"># If requested new label doesn&#39;t change old label then return</span>
         <span class="n">old_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">int_coord</span><span class="p">])</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">old_label</span> <span class="o">==</span> <span class="n">new_label</span> <span class="ow">or</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">preserve_labels</span> <span class="ow">and</span> <span class="n">old_label</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">preserve_labels</span>
+            <span class="ow">and</span> <span class="n">old_label</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span>
         <span class="p">):</span>
             <span class="k">return</span>
 
@@ -1537,6 +1855,7 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="bp">self</span><span class="o">.</span><span class="n">data_setitem</span><span class="p">(</span><span class="n">match_indices</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="p">)</span></div>
 
+
     <span class="k">def</span> <span class="nf">_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">last_cursor_coord</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Paint into coordinates, accounting for mode and cursor movement.</span>
 
@@ -1568,7 +1887,9 @@ function checkPageExistsAndRedirect(event) {
                 <span class="bp">self</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_partial_labels_refresh</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Labels.paint"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.paint">[docs]</a>    <span class="k">def</span> <span class="nf">paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Labels.paint">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.paint">[docs]</a>
+    <span class="k">def</span> <span class="nf">paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Paint over existing labels with a new label, using the selected</span>
 <span class="sd">        brush shape and size, either only on the visible slice or in all</span>
 <span class="sd">        n dimensions.</span>
@@ -1607,7 +1928,10 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">mask_indices</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dims_to_paint</span><span class="p">,</span> <span class="n">slice_coord</span><span class="p">,</span> <span class="n">refresh</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Labels.paint_polygon"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.paint_polygon">[docs]</a>    <span class="k">def</span> <span class="nf">paint_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">new_label</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Labels.paint_polygon">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.paint_polygon">[docs]</a>
+    <span class="k">def</span> <span class="nf">paint_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">new_label</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Paint a polygon over existing labels with a new label.</span>
 
 <span class="sd">        Parameters</span>
@@ -1639,6 +1963,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span></div>
 
+
     <span class="k">def</span> <span class="nf">_paint_indices</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">mask_indices</span><span class="p">,</span>
@@ -1659,7 +1984,7 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">            Value of the new label to be filled in.</span>
 <span class="sd">        shape : list</span>
 <span class="sd">            The label data shape upon which painting is performed.</span>
-<span class="sd">        dims_to_paint: list</span>
+<span class="sd">        dims_to_paint : list</span>
 <span class="sd">            List of dimensions of the label data that are used for painting.</span>
 <span class="sd">        refresh : bool</span>
 <span class="sd">            Whether to refresh view slice or not. Set to False to batch paint</span>
@@ -1690,17 +2015,19 @@ function checkPageExistsAndRedirect(event) {
         <span class="c1"># subset it if we want to only paint into background/only erase</span>
         <span class="c1"># current label</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preserve_labels</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">new_label</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">new_label</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">:</span>
                 <span class="n">keep_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slice_coord</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">keep_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slice_coord</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_label</span>
+                <span class="n">keep_coords</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slice_coord</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span>
+                <span class="p">)</span>
             <span class="n">slice_coord</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sc</span><span class="p">[</span><span class="n">keep_coords</span><span class="p">]</span> <span class="k">for</span> <span class="n">sc</span> <span class="ow">in</span> <span class="n">slice_coord</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">data_setitem</span><span class="p">(</span><span class="n">slice_coord</span><span class="p">,</span> <span class="n">new_label</span><span class="p">,</span> <span class="n">refresh</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get_shape_and_dims_to_paint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
         <span class="n">dims_to_paint</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_dims_to_paint</span><span class="p">())</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_edit_dimensions</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
             <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dims_to_paint</span><span class="p">]</span>
@@ -1710,14 +2037,26 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">def</span> <span class="nf">_get_dims_to_paint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_slice_input</span><span class="o">.</span><span class="n">order</span><span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">n_edit_dimensions</span> <span class="p">:])</span>
 
-<div class="viewcode-block" id="Labels.data_setitem"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.data_setitem">[docs]</a>    <span class="k">def</span> <span class="nf">data_setitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_pt_not_disp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get indices of current visible slice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">slice_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">slice_input</span>
+        <span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">world_to_data</span><span class="p">(</span><span class="n">slice_input</span><span class="o">.</span><span class="n">world_slice</span><span class="o">.</span><span class="n">point</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">dim</span><span class="p">:</span> <span class="n">point</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">slice_input</span><span class="o">.</span><span class="n">not_displayed</span><span class="p">}</span>
+
+<div class="viewcode-block" id="Labels.data_setitem">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.data_setitem">[docs]</a>
+    <span class="k">def</span> <span class="nf">data_setitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set `indices` in `data` to `value`, while writing to edit history.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        indices : tuple of int, slice, or sequence of int</span>
-<span class="sd">            Indices in data to overwrite. Can be any valid NumPy indexing</span>
-<span class="sd">            expression [1]_.</span>
+<span class="sd">        indices : tuple of arrays of int</span>
+<span class="sd">            Indices in data to overwrite. Must be a tuple of arrays of length</span>
+<span class="sd">            equal to the number of data dimensions. (Fancy indexing in [1]_).</span>
 <span class="sd">        value : int or array of int</span>
 <span class="sd">            New label value(s). If more than one value, must match or</span>
 <span class="sd">            broadcast with the given indices.</span>
@@ -1729,7 +2068,16 @@ function checkPageExistsAndRedirect(event) {
 <span class="sd">        ..[1] https://numpy.org/doc/stable/user/basics.indexing.html</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">changed_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">!=</span> <span class="n">value</span>
-        <span class="n">indices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">changed_indices</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">])</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">changed_indices</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="c1"># Resize value array to remove unchanged elements</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">changed_indices</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">indices</span> <span class="ow">or</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
@@ -1744,6 +2092,26 @@ function checkPageExistsAndRedirect(event) {
 
         <span class="c1"># update the labels image</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="n">pt_not_disp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pt_not_disp</span><span class="p">()</span>
+        <span class="n">displayed_indices</span> <span class="o">=</span> <span class="n">index_in_slice</span><span class="p">(</span>
+            <span class="n">indices</span><span class="p">,</span> <span class="n">pt_not_disp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">slice_input</span><span class="o">.</span><span class="n">order</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">visible_values</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">elements_in_slice</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">pt_not_disp</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">visible_values</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>  <span class="c1"># if not a numpy array or numpy-backed xarray</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="c1"># In the absence of slicing, the current slice becomes</span>
+            <span class="c1"># invalidated by data_setitem; only in the special case of a NumPy</span>
+            <span class="c1"># array, or a NumPy-array-backed Xarray, is the slice a view and</span>
+            <span class="c1"># therefore updated automatically.</span>
+            <span class="c1"># For other types, we update it manually here.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">raw</span><span class="p">[</span><span class="n">displayed_indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">visible_values</span>
 
         <span class="c1"># tensorstore and xarray do not return their indices in</span>
         <span class="c1"># np.ndarray format, so they need to be converted explicitly</span>
@@ -1762,6 +2130,11 @@ function checkPageExistsAndRedirect(event) {
             <span class="c1"># the original slice because of the morphological dilation</span>
             <span class="c1"># (1 pixel because get_countours always applies 1 pixel dilation)</span>
             <span class="n">updated_slice</span> <span class="o">=</span> <span class="n">expand_slice</span><span class="p">(</span><span class="n">updated_slice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># update data view</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">view</span><span class="p">[</span>
+                <span class="n">displayed_indices</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">_data_to_texture</span><span class="p">(</span><span class="n">visible_values</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span> <span class="o">=</span> <span class="n">updated_slice</span>
@@ -1776,7 +2149,10 @@ function checkPageExistsAndRedirect(event) {
         <span class="k">if</span> <span class="n">refresh</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_partial_labels_refresh</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Labels.get_status"><a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.get_status">[docs]</a>    <span class="k">def</span> <span class="nf">get_status</span><span class="p">(</span>
+
+<div class="viewcode-block" id="Labels.get_status">
+<a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.get_status">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_status</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1833,6 +2209,7 @@ function checkPageExistsAndRedirect(event) {
             <span class="n">source_info</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;; &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">properties</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">source_info</span></div>
+
 
     <span class="k">def</span> <span class="nf">_get_tooltip_text</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1909,6 +2286,7 @@ function checkPageExistsAndRedirect(event) {
         <span class="p">]</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">_coerce_indices_for_vectorization</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Coerces indices so that they can be used for vectorized indexing in the given data array.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">_is_array_type</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="s1">&#39;xarray.DataArray&#39;</span><span class="p">):</span>
@@ -1924,22 +2302,39 @@ function checkPageExistsAndRedirect(event) {
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 </pre></div>
 
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
             </div>
             
             
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
+              
             
-        </main>
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
         
-
+      </main>
     </div>
-
-    <script src="../../../../_static/scripts/napari-sphinx-theme.js"></script><footer class="napari-footer">
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+<footer class="napari-footer">
   
     <div class="footer-item">
-      <a href="/">
+      <a class="footer-icon__hover-blue" href="https://napari.org" target="_blank" rel="noreferrer">
   <svg
   width="30"
   height="30"
@@ -2404,7 +2799,7 @@ function checkPageExistsAndRedirect(event) {
     </div>
 
     
-      <span>4.5.0</span>
+      <span>7.2.6</span>
     
   </div>
 </div>

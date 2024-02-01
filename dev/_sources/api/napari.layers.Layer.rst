@@ -82,6 +82,7 @@ napari.layers.Layer
       ~Layer.extent
       ~Layer.help
       ~Layer.interactive
+      ~Layer.keymap
       ~Layer.loaded
       ~Layer.metadata
       ~Layer.mode
@@ -90,6 +91,7 @@ napari.layers.Layer
       ~Layer.name
       ~Layer.ndim
       ~Layer.opacity
+      ~Layer.projection_mode
       ~Layer.rotate
       ~Layer.scale
       ~Layer.shear
@@ -97,6 +99,7 @@ napari.layers.Layer
       ~Layer.thumbnail
       ~Layer.translate
       ~Layer.visible
+      
       
       
       

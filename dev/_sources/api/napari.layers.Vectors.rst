@@ -93,6 +93,7 @@ napari.layers.Vectors
       ~Vectors.features
       ~Vectors.help
       ~Vectors.interactive
+      ~Vectors.keymap
       ~Vectors.length
       ~Vectors.loaded
       ~Vectors.metadata
@@ -103,6 +104,7 @@ napari.layers.Vectors
       ~Vectors.ndim
       ~Vectors.opacity
       ~Vectors.out_of_slice_display
+      ~Vectors.projection_mode
       ~Vectors.properties
       ~Vectors.property_choices
       ~Vectors.rotate
@@ -113,6 +115,7 @@ napari.layers.Vectors
       ~Vectors.translate
       ~Vectors.vector_style
       ~Vectors.visible
+      
       
       
       
