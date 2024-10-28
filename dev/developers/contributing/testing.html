@@ -797,12 +797,53 @@ is playing before we make any assertions.</p>
 </pre></div>
 </div>
 </section>
+<section id="qt-viewer-and-viewer-model">
+<span id="qt-viewer"></span><h4><code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> and <code class="docutils literal notranslate"><span class="pre">viewer_model</span></code><a class="headerlink" href="#qt-viewer-and-viewer-model" title="Link to this heading">#</a></h4>
+<p>Since <code class="docutils literal notranslate"><span class="pre">napari==0.5.4</span></code> we have implemented the <code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> <a class="reference external" href="https://docs.pytest.org/en/stable/explanation/fixtures.html">pytest fixture</a> which can be used for tests that are only using the <code class="docutils literal notranslate"><span class="pre">ViewerModel</span></code> api or are only checking rendering of the viewer.
+For the current moment, it is only for internal use and is not exported to the global scope,
+as it is defined in <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> file.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> fixture returns the instance of the <a class="reference internal" href="../../api/napari.qt.QtViewer.html#napari.qt.QtViewer" title="napari.qt.QtViewer"><code class="xref py py-class docutils literal notranslate"><span class="pre">QtViewer</span></code></a> class.
+This class does not provide the same api as the <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewerModel</span></code> class,
+but has an associated <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewerModel</span></code> instance, which can be accessed by the <code class="docutils literal notranslate"><span class="pre">viewer</span></code> attribute.
+Alternatively, you could use the <code class="docutils literal notranslate"><span class="pre">viewer_model</span></code> fixture, which returns this instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewerModel</span></code> class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="n">qt_viewer</span><span class="p">):</span>
+    <span class="n">qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Image&#39;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="n">qt_viewer</span><span class="p">,</span> <span class="n">viewer_model</span><span class="p">):</span>
+    <span class="n">viewer_model</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Image&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> fixture takes care of proper teardown of all qt widgets related to the viewer.
+If you need to adjust the QtViewer for a given <a class="reference external" href="https://docs.pytest.org/en/stable/how-to/fixtures.html#override-a-fixture-on-a-test-module-level">test file</a> you can use the <code class="docutils literal notranslate"><span class="pre">qt_viewer_</span></code> fixture.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
+    <span class="c1"># in this file we need to have added data and 3d view for all tests in file</span>
+    <span class="n">qt_viewer_</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+    <span class="n">qt_viewer_</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">return</span> <span class="n">qt_viewer_</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
+    <span class="c1"># Make bigger viewer for all tests in file</span>
+    <span class="n">qt_viewer_</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">qt_viewer_</span>
+</pre></div>
+</div>
+</section>
 <section id="make-napari-viewer">
 <span id="id3"></span><h4><code class="docutils literal notranslate"><span class="pre">make_napari_viewer</span></code><a class="headerlink" href="#make-napari-viewer" title="Link to this heading">#</a></h4>
-<p>We provide a
-<a class="reference external" href="https://docs.pytest.org/en/stable/explanation/fixtures.html">pytest fixture</a> called
-<code class="docutils literal notranslate"><span class="pre">make_napari_viewer</span></code> for tests that require the <a class="reference internal" href="../../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Viewer</span></code></a>. This
-fixture is available globally and to all tests in the same environment that <code class="docutils literal notranslate"><span class="pre">napari</span></code>
+<p>For more complex test cases where we need to fully test application behaviour
+(for example, using the <code class="docutils literal notranslate"><span class="pre">viewer.window</span></code> API) we can use <code class="docutils literal notranslate"><span class="pre">make_napari_viewer</span></code> <a class="reference external" href="https://docs.pytest.org/en/stable/explanation/fixtures.html">pytest fixture</a>.
+However, the creating and teardown of the whole viewer is more fragile and slower than using just the <code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> fixture.
+This fixture is available globally and to all tests in the same environment that <code class="docutils literal notranslate"><span class="pre">napari</span></code>
 is in (see <a class="reference internal" href="#test-organization"><span class="std std-ref">Test organization</span></a> for details). Thus, there is no need to import it,
 you simply include <code class="docutils literal notranslate"><span class="pre">make_napari_viewer</span></code> as a test function parameter, as shown in the
 <strong>Examples</strong> section below:</p>
@@ -978,6 +1019,7 @@ so certain tests have been disabled from windows in CI, see
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-based-testing-with-hypothesis">Property-based testing with Hypothesis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-qt-and-napari-viewer">Testing with <code class="docutils literal notranslate"><span class="pre">Qt</span></code> and <code class="docutils literal notranslate"><span class="pre">napari.Viewer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qapp-and-qtbot">qapp and qtbot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qt-viewer-and-viewer-model"><code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> and <code class="docutils literal notranslate"><span class="pre">viewer_model</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#make-napari-viewer"><code class="docutils literal notranslate"><span class="pre">make_napari_viewer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils._testsupport.make_napari_viewer"><code class="docutils literal notranslate"><span class="pre">make_napari_viewer()</span></code></a></li>
 </ul>
