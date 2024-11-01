@@ -11,7 +11,8 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_gallery_add_multiscale_image.py>`
-        to download the full example code.
+        to download the full example as a Python script or as a
+        Jupyter notebook.
 
 .. rst-class:: sphx-glr-example-title
 

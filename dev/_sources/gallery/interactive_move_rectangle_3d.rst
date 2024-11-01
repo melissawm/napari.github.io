@@ -11,7 +11,8 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_gallery_interactive_move_rectangle_3d.py>`
-        to download the full example code.
+        to download the full example as a Python script or as a
+        Jupyter notebook.
 
 .. rst-class:: sphx-glr-example-title
 
