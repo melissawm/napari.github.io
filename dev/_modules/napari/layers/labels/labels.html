@@ -43,7 +43,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=ce22aab0"></script>
+    <script src="../../../../_static/documentation_options.js?v=2df2e77c"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -712,6 +712,11 @@ document.write(`
 <span class="sd">        with a thickness equal to its value. Must be &gt;= 0.</span>
 <span class="sd">    brush_size : float</span>
 <span class="sd">        Size of the paint brush in data coordinates.</span>
+<span class="sd">    iso_gradient_mode : str</span>
+<span class="sd">        Method for calulating the gradient (used to get the surface normal) in the</span>
+<span class="sd">        &#39;iso_categorical&#39; rendering mode. Must be one of {&#39;fast&#39;, &#39;smooth&#39;}.</span>
+<span class="sd">        &#39;fast&#39; uses a simple finite difference gradient in x, y, and z. &#39;smooth&#39; uses an</span>
+<span class="sd">        isotropic Sobel gradient, which is smoother but more computationally expensive.</span>
 <span class="sd">    selected_label : int</span>
 <span class="sd">        Index of selected label. Can be greater than the current maximum label.</span>
 <span class="sd">    mode : str</span>
@@ -895,7 +900,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">_contiguous</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_brush_size</span> <span class="o">=</span> <span class="mi">10</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_iso_gradient_mode</span> <span class="o">=</span> <span class="n">IsoCategoricalGradientMode</span><span class="o">.</span><span class="n">FAST</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_iso_gradient_mode</span> <span class="o">=</span> <span class="n">IsoCategoricalGradientMode</span><span class="p">(</span><span class="n">iso_gradient_mode</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_label</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected_label</span>
@@ -942,7 +947,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">rendering</span><span class="p">()</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">iso_gradient_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">iso_gradient_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return current gradient mode for isosurface rendering.</span>
 
 <span class="sd">        Selects the finite-difference gradient method for the isosurface shader. Options include:</span>
@@ -958,7 +963,7 @@ document.write(`
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iso_gradient_mode</span><span class="p">)</span>
 
     <span class="nd">@iso_gradient_mode</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">iso_gradient_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">iso_gradient_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">IsoCategoricalGradientMode</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_iso_gradient_mode</span> <span class="o">=</span> <span class="n">IsoCategoricalGradientMode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">iso_gradient_mode</span><span class="p">()</span>
 

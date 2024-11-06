@@ -46,7 +46,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=ce22aab0"></script>
+    <script src="../_static/documentation_options.js?v=2df2e77c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -868,6 +868,20 @@ with a thickness equal to its value. Must be &gt;= 0.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="napari.layers.Labels.iso_gradient_mode">
+<span class="sig-name descname"><span class="pre">iso_gradient_mode</span></span><a class="headerlink" href="#napari.layers.Labels.iso_gradient_mode" title="Link to this definition">#</a></dt>
+<dd><p>Method for calulating the gradient (used to get the surface normal) in the
+‘iso_categorical’ rendering mode. Must be one of {‘fast’, ‘smooth’}.
+‘fast’ uses a simple finite difference gradient in x, y, and z. ‘smooth’ uses an
+isotropic Sobel gradient, which is smoother but more computationally expensive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="napari.layers.Labels.selected_label">
 <span class="sig-name descname"><span class="pre">selected_label</span></span><a class="headerlink" href="#napari.layers.Labels.selected_label" title="Link to this definition">#</a></dt>
 <dd><p>Index of selected label. Can be greater than the current maximum label.</p>
@@ -1113,7 +1127,7 @@ background label <cite>0</cite> is selected.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">interactive</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.iso_gradient_mode" title="napari.layers.Labels.iso_gradient_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso_gradient_mode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id10" title="napari.layers.Labels.iso_gradient_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso_gradient_mode</span></code></a></p></td>
 <td><p>Return current gradient mode for isosurface rendering.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keymap</span></code></p></td>
@@ -1125,10 +1139,10 @@ background label <cite>0</cite> is selected.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Labels.loaded" title="napari.layers.Labels.loaded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loaded</span></code></a></p></td>
 <td><p>True if this layer is fully loaded in memory, False otherwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id10" title="napari.layers.Labels.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id11" title="napari.layers.Labels.metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
 <td><p>Key/value map for user-stored data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id11" title="napari.layers.Labels.mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id12" title="napari.layers.Labels.mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mode</span></code></a></p></td>
 <td><p>Interactive mode.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.mouse_pan" title="napari.layers.Labels.mouse_pan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mouse_pan</span></code></a></p></td>
@@ -1146,7 +1160,7 @@ background label <cite>0</cite> is selected.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.ndim" title="napari.layers.Labels.ndim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndim</span></code></a></p></td>
 <td><p>Number of dimensions in the data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id12" title="napari.layers.Labels.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id13" title="napari.layers.Labels.opacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opacity</span></code></a></p></td>
 <td><p>Opacity value between 0.0 and 1.0.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.plane" title="napari.layers.Labels.plane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plane</span></code></a></p></td>
@@ -1158,7 +1172,7 @@ background label <cite>0</cite> is selected.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.projection_mode" title="napari.layers.Labels.projection_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">projection_mode</span></code></a></p></td>
 <td><p>Mode of projection of the thick slice onto the viewed dimensions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id13" title="napari.layers.Labels.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id14" title="napari.layers.Labels.properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">properties</span></code></a></p></td>
 <td><p>Properties for each label.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.rendering" title="napari.layers.Labels.rendering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rendering</span></code></a></p></td>
@@ -1170,7 +1184,7 @@ background label <cite>0</cite> is selected.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.scale" title="napari.layers.Labels.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Anisotropy factors to scale data into world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id14" title="napari.layers.Labels.selected_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selected_label</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id15" title="napari.layers.Labels.selected_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selected_label</span></code></a></p></td>
 <td><p>Index of selected label.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Labels.shear" title="napari.layers.Labels.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
@@ -1191,7 +1205,7 @@ background label <cite>0</cite> is selected.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Labels.unique_id" title="napari.layers.Labels.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
 <td><p>Unique ID of the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id15" title="napari.layers.Labels.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id16" title="napari.layers.Labels.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
 <td><p>List of units for the layer.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Labels.visible" title="napari.layers.Labels.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
@@ -1704,8 +1718,8 @@ and converted into data coordinates. False by default.</p></li>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="napari.layers.Labels.iso_gradient_mode">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">iso_gradient_mode</span></span><a class="headerlink" href="#napari.layers.Labels.iso_gradient_mode" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">iso_gradient_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#id10" title="Link to this definition">#</a></dt>
 <dd><p>Return current gradient mode for isosurface rendering.</p>
 <dl class="simple">
 <dt>Selects the finite-difference gradient method for the isosurface shader. Options include:</dt><dd><ul class="simple">
@@ -1746,14 +1760,14 @@ while slicing is occurring.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id10">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></em><a class="headerlink" href="#id10" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id11">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></em><a class="headerlink" href="#id11" title="Link to this definition">#</a></dt>
 <dd><p>Key/value map for user-stored data.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id11">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#id11" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#id12" title="Link to this definition">#</a></dt>
 <dd><p>Interactive mode. The normal, default mode is PAN_ZOOM, which
 allows for normal interactivity with the canvas.</p>
 <p>In PICK mode the cursor functions like a color picker, setting the
@@ -1824,8 +1838,8 @@ paint with background label, which effectively removes the label.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id12">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#id12" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">opacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#id13" title="Link to this definition">#</a></dt>
 <dd><p>Opacity value between 0.0 and 1.0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -1911,8 +1925,8 @@ The projection mode controls the projection logic.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id13">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.1)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id13" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.1)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id14" title="Link to this definition">#</a></dt>
 <dd><p>Properties for each label.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -2001,8 +2015,8 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id14">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selected_label</span></span><a class="headerlink" href="#id14" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selected_label</span></span><a class="headerlink" href="#id15" title="Link to this definition">#</a></dt>
 <dd><p>Index of selected label.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -2065,8 +2079,8 @@ over the lifetime of the program.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id15">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Unit</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id15" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Unit</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id16" title="Link to this definition">#</a></dt>
 <dd><p>List of units for the layer.</p>
 </dd></dl>
 
@@ -2165,6 +2179,7 @@ dimensions will be used.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.n_edit_dimensions"><code class="docutils literal notranslate"><span class="pre">Labels.n_edit_dimensions</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.contour"><code class="docutils literal notranslate"><span class="pre">Labels.contour</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.brush_size"><code class="docutils literal notranslate"><span class="pre">Labels.brush_size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.iso_gradient_mode"><code class="docutils literal notranslate"><span class="pre">Labels.iso_gradient_mode</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.selected_label"><code class="docutils literal notranslate"><span class="pre">Labels.selected_label</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.mode"><code class="docutils literal notranslate"><span class="pre">Labels.mode</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.plane"><code class="docutils literal notranslate"><span class="pre">Labels.plane</span></code></a></li>
@@ -2198,35 +2213,35 @@ dimensions will be used.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.get_status"><code class="docutils literal notranslate"><span class="pre">Labels.get_status()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.get_value"><code class="docutils literal notranslate"><span class="pre">Labels.get_value()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.help"><code class="docutils literal notranslate"><span class="pre">Labels.help</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.iso_gradient_mode"><code class="docutils literal notranslate"><span class="pre">Labels.iso_gradient_mode</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">Labels.iso_gradient_mode</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.level_shapes"><code class="docutils literal notranslate"><span class="pre">Labels.level_shapes</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.loaded"><code class="docutils literal notranslate"><span class="pre">Labels.loaded</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">Labels.metadata</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">Labels.mode</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">Labels.metadata</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><code class="docutils literal notranslate"><span class="pre">Labels.mode</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.mouse_pan"><code class="docutils literal notranslate"><span class="pre">Labels.mouse_pan</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.mouse_zoom"><code class="docutils literal notranslate"><span class="pre">Labels.mouse_zoom</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.name"><code class="docutils literal notranslate"><span class="pre">Labels.name</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.ndim"><code class="docutils literal notranslate"><span class="pre">Labels.ndim</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><code class="docutils literal notranslate"><span class="pre">Labels.opacity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">Labels.opacity</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.paint"><code class="docutils literal notranslate"><span class="pre">Labels.paint()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.paint_polygon"><code class="docutils literal notranslate"><span class="pre">Labels.paint_polygon()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.preserve_labels"><code class="docutils literal notranslate"><span class="pre">Labels.preserve_labels</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.projected_distance_from_mouse_drag"><code class="docutils literal notranslate"><span class="pre">Labels.projected_distance_from_mouse_drag()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.projection_mode"><code class="docutils literal notranslate"><span class="pre">Labels.projection_mode</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">Labels.properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">Labels.properties</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.refresh"><code class="docutils literal notranslate"><span class="pre">Labels.refresh()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.rendering"><code class="docutils literal notranslate"><span class="pre">Labels.rendering</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.rotate"><code class="docutils literal notranslate"><span class="pre">Labels.rotate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.save"><code class="docutils literal notranslate"><span class="pre">Labels.save()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.scale"><code class="docutils literal notranslate"><span class="pre">Labels.scale</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">Labels.selected_label</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">Labels.selected_label</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.shear"><code class="docutils literal notranslate"><span class="pre">Labels.shear</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.show_selected_label"><code class="docutils literal notranslate"><span class="pre">Labels.show_selected_label</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.swap_selected_and_background_labels"><code class="docutils literal notranslate"><span class="pre">Labels.swap_selected_and_background_labels()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.thumbnail"><code class="docutils literal notranslate"><span class="pre">Labels.thumbnail</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.translate"><code class="docutils literal notranslate"><span class="pre">Labels.translate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.unique_id"><code class="docutils literal notranslate"><span class="pre">Labels.unique_id</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">Labels.units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><code class="docutils literal notranslate"><span class="pre">Labels.units</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.visible"><code class="docutils literal notranslate"><span class="pre">Labels.visible</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Labels.world_to_data"><code class="docutils literal notranslate"><span class="pre">Labels.world_to_data()</span></code></a></li>
 </ul>
