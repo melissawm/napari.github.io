@@ -18,17 +18,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
@@ -41,12 +43,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6a8a2890" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=2f2a0bf6"></script>
+    <script src="../_static/documentation_options.js?v=7a733fd8"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -55,7 +58,7 @@
     <script data-domain="napari.org" defer="defer" src="https://plausible.io/js/plausible.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/preferences';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
@@ -66,6 +69,7 @@
     <link rel="prev" title="napari performance" href="performance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="dev" />
   </head>
   
   
@@ -78,19 +82,8 @@
   <div id="pst-scroll-pixel-helper"></div>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -98,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="search"
          aria-label="search"
          autocomplete="off"
@@ -106,8 +98,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -140,7 +132,7 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="napari - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="napari - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="napari - Home"/>
   
   
 </a></div>
@@ -240,28 +232,24 @@
       
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -300,7 +288,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -388,28 +377,24 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -440,7 +425,6 @@ document.write(`
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="search"
          aria-label="search"
          autocomplete="off"
@@ -731,8 +715,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -747,7 +729,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">In-depth explanations</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Preferences</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Preferences</span></li>
   </ul>
 </nav>
 </div>
@@ -817,7 +799,7 @@ document.write(`
 <ul class="simple">
 <li><p><small>Access programmatically with <code class="docutils literal notranslate"><span class="pre">SETTINGS.application.dask</span></code>.</small></p></li>
 <li><p><small>Type: <code class="docutils literal notranslate"><span class="pre">DaskSettings</span></code>.</small></p></li>
-<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">DaskSettings(enabled=True,</span> <span class="pre">cache=4.189335552)</span></code>.</small></p></li>
+<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">DaskSettings(enabled=True,</span> <span class="pre">cache=4.189334528)</span></code>.</small></p></li>
 <li><p><small>UI: This setting can be configured via the preferences dialog.</small></p></li>
 </ul>
 </section>
@@ -1159,7 +1141,7 @@ like an npe2 plugin (with delayed imports, etc…)</em></p>
 <ul class="simple">
 <li><p><small>Access programmatically with <code class="docutils literal notranslate"><span class="pre">SETTINGS.shortcuts.shortcuts</span></code>.</small></p></li>
 <li><p><small>Type: <code class="docutils literal notranslate"><span class="pre">Mapping[str,</span> <span class="pre">list[app_model.types._keys._keybindings.KeyBinding]]</span></code>.</small></p></li>
-<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">{'napari:toggle_console_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6bf0:</span> <span class="pre">Ctrl+Shift+C&gt;],</span> <span class="pre">'napari:reset_scroll_progress':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6b00:</span> <span class="pre">Ctrl&gt;],</span> <span class="pre">'napari:toggle_ndisplay':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6830:</span> <span class="pre">Ctrl+Y&gt;],</span> <span class="pre">'napari:toggle_theme':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6c20:</span> <span class="pre">Ctrl+Shift+T&gt;],</span> <span class="pre">'napari:reset_view':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6d70:</span> <span class="pre">Ctrl+R&gt;],</span> <span class="pre">'napari:delete_selected_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6ec0:</span> <span class="pre">Ctrl+Delete&gt;],</span> <span class="pre">'napari:show_shortcuts':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7010:</span> <span class="pre">Ctrl+Alt+/&gt;],</span> <span class="pre">'napari:increment_dims_left':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7160:</span> <span class="pre">Left&gt;],</span> <span class="pre">'napari:increment_dims_right':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b070:</span> <span class="pre">Right&gt;],</span> <span class="pre">'napari:focus_axes_up':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7aa10:</span> <span class="pre">Alt+Up&gt;],</span> <span class="pre">'napari:focus_axes_down':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7acb0:</span> <span class="pre">Alt+Down&gt;],</span> <span class="pre">'napari:roll_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7ae60:</span> <span class="pre">Ctrl+E&gt;],</span> <span class="pre">'napari:transpose_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b640:</span> <span class="pre">Ctrl+T&gt;],</span> <span class="pre">'napari:rotate_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b010:</span> <span class="pre">Ctrl+Alt+T&gt;],</span> <span class="pre">'napari:toggle_grid':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b250:</span> <span class="pre">Ctrl+G&gt;],</span> <span class="pre">'napari:toggle_selected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b700:</span> <span class="pre">V&gt;],</span> <span class="pre">'napari:toggle_unselected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b820:</span> <span class="pre">Shift+V&gt;],</span> <span class="pre">'napari:show_only_layer_above':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7b9a0:</span> <span class="pre">Shift+Alt+Up&gt;],</span> <span class="pre">'napari:show_only_layer_below':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7bca0:</span> <span class="pre">Shift+Alt+Down&gt;],</span> <span class="pre">'napari:hold_for_pan_zoom':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508df7bee0:</span> <span class="pre">Space&gt;],</span> <span class="pre">'napari:activate_labels_erase_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa6770:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7340:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_labels_paint_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7520:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa76a0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_labels_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7790:</span> <span class="pre">3&gt;],</span> <span class="pre">'napari:activate_labels_fill_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa78e0:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7a30:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:activate_labels_picker_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7b80:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7cd0:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_labels_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7e20:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa7f70:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_labels_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0100:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:new_label':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0250:</span> <span class="pre">M&gt;],</span> <span class="pre">'napari:swap_selected_and_background_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa03a0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:decrease_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa04f0:</span> <span class="pre">-&gt;],</span> <span class="pre">'napari:increase_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0640:</span> <span class="pre">=&gt;],</span> <span class="pre">'napari:decrease_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0790:</span> <span class="pre">[&gt;],</span> <span class="pre">'napari:increase_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa08e0:</span> <span class="pre">]&gt;],</span> <span class="pre">'napari:toggle_preserve_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0a30:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:reset_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0b80:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:complete_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0cd0:</span> <span class="pre">Enter&gt;],</span> <span class="pre">'napari:activate_points_add_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0e20:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa0f70:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_points_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa10f0:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1210:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_points_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1330:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1420:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_points_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa15a0:</span> <span class="pre">5&gt;],</span> <span class="pre">'napari:select_all_in_slice':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa16c0:</span> <span class="pre">A&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa17e0:</span> <span class="pre">Ctrl+A&gt;],</span> <span class="pre">'napari:select_all_data':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa18d0:</span> <span class="pre">Shift+A&gt;],</span> <span class="pre">'napari:delete_selected_points':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1a50:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1b70:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1c90:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:activate_add_rectangle_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1db0:</span> <span class="pre">R&gt;],</span> <span class="pre">'napari:activate_add_ellipse_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa1ea0:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_add_line_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2020:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_add_path_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2140:</span> <span class="pre">T&gt;],</span> <span class="pre">'napari:activate_add_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2260:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_add_polygon_lasso_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2380:</span> <span class="pre">Shift+P&gt;],</span> <span class="pre">'napari:activate_direct_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa24a0:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa25c0:</span> <span class="pre">D&gt;],</span> <span class="pre">'napari:activate_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa26e0:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa27d0:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_shapes_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2950:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2a70:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_shapes_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2b90:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:activate_vertex_insert_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2cb0:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2dd0:</span> <span class="pre">I&gt;],</span> <span class="pre">'napari:activate_vertex_remove_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2ef0:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa2fe0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:copy_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3160:</span> <span class="pre">Ctrl+C&gt;],</span> <span class="pre">'napari:paste_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3280:</span> <span class="pre">Ctrl+V&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_front':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa33a0:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_back':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa34c0:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:select_all_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa35e0:</span> <span class="pre">A&gt;],</span> <span class="pre">'napari:delete_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3700:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3820:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3940:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:finish_drawing_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3a60:</span> <span class="pre">Enter&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3b80:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_x':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3ca0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_y':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3dc0:</span> <span class="pre">Y&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_z':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfa3ee0:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_view_direction':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4040:</span> <span class="pre">O&gt;],</span> <span class="pre">'napari:activate_image_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4160:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_image_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4250:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_vectors_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd43d0:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_vectors_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd44f0:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_tracks_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4610:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_tracks_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4730:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_surface_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4850:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_surface_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f508dfd4970:</span> <span class="pre">2&gt;]}</span></code>.</small></p></li>
+<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">{'napari:toggle_console_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374efbb0:</span> <span class="pre">Ctrl+Shift+C&gt;],</span> <span class="pre">'napari:reset_scroll_progress':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374efac0:</span> <span class="pre">Ctrl&gt;],</span> <span class="pre">'napari:toggle_ndisplay':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ef7f0:</span> <span class="pre">Ctrl+Y&gt;],</span> <span class="pre">'napari:toggle_theme':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374efbe0:</span> <span class="pre">Ctrl+Shift+T&gt;],</span> <span class="pre">'napari:reset_view':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374efd30:</span> <span class="pre">Ctrl+R&gt;],</span> <span class="pre">'napari:delete_selected_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374efe80:</span> <span class="pre">Ctrl+Delete&gt;],</span> <span class="pre">'napari:show_shortcuts':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc040:</span> <span class="pre">Ctrl+Alt+/&gt;],</span> <span class="pre">'napari:increment_dims_left':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc160:</span> <span class="pre">Left&gt;],</span> <span class="pre">'napari:increment_dims_right':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc2b0:</span> <span class="pre">Right&gt;],</span> <span class="pre">'napari:focus_axes_up':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc400:</span> <span class="pre">Alt+Up&gt;],</span> <span class="pre">'napari:focus_axes_down':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc550:</span> <span class="pre">Alt+Down&gt;],</span> <span class="pre">'napari:roll_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc6a0:</span> <span class="pre">Ctrl+E&gt;],</span> <span class="pre">'napari:transpose_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc7f0:</span> <span class="pre">Ctrl+T&gt;],</span> <span class="pre">'napari:rotate_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fc940:</span> <span class="pre">Ctrl+Alt+T&gt;],</span> <span class="pre">'napari:toggle_grid':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fcac0:</span> <span class="pre">Ctrl+G&gt;],</span> <span class="pre">'napari:toggle_selected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fcbe0:</span> <span class="pre">V&gt;],</span> <span class="pre">'napari:toggle_unselected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374cb7c0:</span> <span class="pre">Shift+V&gt;],</span> <span class="pre">'napari:show_only_layer_above':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374cb940:</span> <span class="pre">Shift+Alt+Up&gt;],</span> <span class="pre">'napari:show_only_layer_below':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374cba60:</span> <span class="pre">Shift+Alt+Down&gt;],</span> <span class="pre">'napari:hold_for_pan_zoom':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374cbeb0:</span> <span class="pre">Space&gt;],</span> <span class="pre">'napari:activate_labels_erase_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374cbd90:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374cbf70:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_labels_paint_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fcee0:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd060:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_labels_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd150:</span> <span class="pre">3&gt;],</span> <span class="pre">'napari:activate_labels_fill_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd2a0:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd3f0:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:activate_labels_picker_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd540:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd690:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_labels_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd7e0:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fd930:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_labels_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fda80:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:new_label':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fdbd0:</span> <span class="pre">M&gt;],</span> <span class="pre">'napari:swap_selected_and_background_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fdd20:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:decrease_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fde70:</span> <span class="pre">-&gt;],</span> <span class="pre">'napari:increase_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fdfc0:</span> <span class="pre">=&gt;],</span> <span class="pre">'napari:decrease_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe110:</span> <span class="pre">[&gt;],</span> <span class="pre">'napari:increase_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe260:</span> <span class="pre">]&gt;],</span> <span class="pre">'napari:toggle_preserve_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe3b0:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:reset_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe500:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:complete_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe650:</span> <span class="pre">Enter&gt;],</span> <span class="pre">'napari:activate_points_add_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe7a0:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fe8f0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_points_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fea70:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374feb90:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_points_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fecb0:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374feda0:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_points_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fef20:</span> <span class="pre">5&gt;],</span> <span class="pre">'napari:select_all_in_slice':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff040:</span> <span class="pre">A&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff160:</span> <span class="pre">Ctrl+A&gt;],</span> <span class="pre">'napari:select_all_data':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff250:</span> <span class="pre">Shift+A&gt;],</span> <span class="pre">'napari:delete_selected_points':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff3d0:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff4f0:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff610:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:activate_add_rectangle_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff730:</span> <span class="pre">R&gt;],</span> <span class="pre">'napari:activate_add_ellipse_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff820:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_add_line_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ff9a0:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_add_path_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ffac0:</span> <span class="pre">T&gt;],</span> <span class="pre">'napari:activate_add_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ffbe0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_add_polygon_lasso_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ffd00:</span> <span class="pre">Shift+P&gt;],</span> <span class="pre">'napari:activate_direct_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374ffe20:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e374fff40:</span> <span class="pre">D&gt;],</span> <span class="pre">'napari:activate_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375200a0:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520190:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_shapes_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520310:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520430:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_shapes_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520550:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:activate_vertex_insert_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520670:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520790:</span> <span class="pre">I&gt;],</span> <span class="pre">'napari:activate_vertex_remove_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375208b0:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375209a0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:copy_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520b20:</span> <span class="pre">Ctrl+C&gt;],</span> <span class="pre">'napari:paste_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520c40:</span> <span class="pre">Ctrl+V&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_front':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520d60:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_back':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520e80:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:select_all_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37520fa0:</span> <span class="pre">A&gt;],</span> <span class="pre">'napari:delete_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375210c0:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375211e0:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521300:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:finish_drawing_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521420:</span> <span class="pre">Enter&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521540:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_x':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521660:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_y':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521780:</span> <span class="pre">Y&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_z':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375218a0:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_view_direction':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375219c0:</span> <span class="pre">O&gt;],</span> <span class="pre">'napari:activate_image_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521ae0:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_image_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521bd0:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_vectors_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521d50:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_vectors_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521e70:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_tracks_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e37521f90:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_tracks_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375220b0:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_surface_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375221d0:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_surface_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f7e375222f0:</span> <span class="pre">2&gt;]}</span></code>.</small></p></li>
 <li><p><small>UI: This setting can be configured via the preferences dialog.</small></p></li>
 </ul>
 </section>
@@ -1305,7 +1287,8 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1404,8 +1387,8 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="napari-footer">
 <div class="bd-footer__inner bd-page-width">
