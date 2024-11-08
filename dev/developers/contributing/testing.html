@@ -801,7 +801,8 @@ Alternatively, you could use the <code class="docutils literal notranslate"><spa
     <span class="k">assert</span> <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Image&#39;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> fixture takes care of proper teardown of all qt widgets related to the viewer.
+<p>The <code class="docutils literal notranslate"><span class="pre">qt_viewer</span></code> fixture takes care of proper teardown of all qt widgets related to the viewer,
+including hiding and clearing any references to viewer instances.
 If you need to adjust the QtViewer for a given <a class="reference external" href="https://docs.pytest.org/en/stable/how-to/fixtures.html#override-a-fixture-on-a-test-module-level">test file</a> you can use the <code class="docutils literal notranslate"><span class="pre">qt_viewer_</span></code> fixture.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span> <span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
