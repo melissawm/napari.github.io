@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../dev/_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../dev/_static/documentation_options.js?v=88fa0512"></script>
+    <script src="../../../dev/_static/documentation_options.js?v=938dd0ef"></script>
     <script src="../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -613,26 +613,21 @@ by following the directions on the
 <p>Note that in this last case you will need to install your Qt backend separately.</p>
 </li>
 <li><p>We use <a class="reference external" href="https://pre-commit.com"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> to format code with
-<a class="reference external" href="https://github.com/psf/black"><code class="docutils literal notranslate"><span class="pre">black</span></code></a> and lint with
+<a class="reference external" href="https://docs.astral.sh/ruff/formatter/"><code class="docutils literal notranslate"><span class="pre">ruff-format</span></code></a> and lint with
 <a class="reference external" href="https://github.com/astral-sh/ruff"><code class="docutils literal notranslate"><span class="pre">ruff</span></code></a> automatically prior to each commit.
 To minimize test errors when submitting pull requests, please install <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>
 in your environment as follows:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
 </pre></div>
 </div>
-<p>Upon committing, your code will be formatted according to our <a class="reference external" href="https://github.com/napari/napari/blob/main/pyproject.toml"><code class="docutils literal notranslate"><span class="pre">black</span></code>
-configuration</a>, which includes the settings
-<code class="docutils literal notranslate"><span class="pre">skip-string-normalization</span> <span class="pre">=</span> <span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">max-line-length</span> <span class="pre">=</span> <span class="pre">79</span></code>. To learn more,
-see <a class="reference external" href="https://black.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">black</span></code>’s documentation</a>.</p>
+<p>Upon committing, your code will be formatted according to our <a class="reference external" href="https://github.com/napari/napari/blob/main/pyproject.toml"><code class="docutils literal notranslate"><span class="pre">ruff-format</span></code>
+configuration</a>.</p>
 <p>Code will also be linted to enforce the stylistic and logistical rules specified
-in our <a class="reference external" href="https://github.com/napari/napari/blob/main/pyproject.toml"><code class="docutils literal notranslate"><span class="pre">flake8</span></code> configuration</a>, which currently ignores
-<a class="reference external" href="https://lintlyci.github.io/Flake8Rules/rules/E203.html">E203</a>,
-<a class="reference external" href="https://lintlyci.github.io/Flake8Rules/rules/E501.html">E501</a>,
-<a class="reference external" href="https://lintlyci.github.io/Flake8Rules/rules/W503.html">W503</a> and
-<a class="reference external" href="https://lintlyci.github.io/Flake8Rules/rules/C901.html">C901</a>.  For information
-on any specific flake8 error code, see the <a class="reference external" href="https://lintlyci.github.io/Flake8Rules/">Flake8
-Rules</a>.  You may also wish to refer to
-the <a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8 style guide</a>.</p>
+in the <code class="docutils literal notranslate"><span class="pre">[tool.ruff]</span></code> section of
+<a class="reference external" href="https://github.com/napari/napari/blob/main/pyproject.toml">our <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file</a>.
+For information on any specific <code class="docutils literal notranslate"><span class="pre">ruff</span></code> error code, see the
+<a class="reference external" href="https://docs.astral.sh/ruff/rules/">Ruff Rules</a>.  You may also wish to refer
+to the <a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8 style guide</a>.</p>
 <p>If you wish to tell the linter to ignore a specific line use the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">noqa</span></code>
 comment along with the specific error code (e.g. <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span>&#160; <span class="pre">#</span> <span class="pre">noqa:</span> <span class="pre">E402</span></code>) but
 please do not ignore errors lightly.</p>
