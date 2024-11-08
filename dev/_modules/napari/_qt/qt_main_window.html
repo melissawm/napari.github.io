@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../_static/documentation_options.js?v=7a733fd8"></script>
+    <script src="../../../_static/documentation_options.js?v=88fa0512"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -2064,11 +2064,13 @@
                     <span class="p">{</span><span class="s1">&#39;font_size&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">settings</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">font_size</span><span class="si">}</span><span class="s1">pt&#39;</span><span class="p">}</span>
                 <span class="p">)</span>
             <span class="c1"># set the style sheet with the theme name and extra_variables</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span>
-                <span class="n">get_stylesheet</span><span class="p">(</span>
-                    <span class="n">actual_theme_name</span><span class="p">,</span> <span class="n">extra_variables</span><span class="o">=</span><span class="n">extra_variables</span>
-                <span class="p">)</span>
+            <span class="n">style_sheet</span> <span class="o">=</span> <span class="n">get_stylesheet</span><span class="p">(</span>
+                <span class="n">actual_theme_name</span><span class="p">,</span> <span class="n">extra_variables</span><span class="o">=</span><span class="n">extra_variables</span>
             <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">style_sheet</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">style_sheet</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">_console</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">_console</span><span class="o">.</span><span class="n">_update_theme</span><span class="p">(</span><span class="n">style_sheet</span><span class="o">=</span><span class="n">style_sheet</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_status_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update status bar.</span>
