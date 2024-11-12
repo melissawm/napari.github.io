@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../_static/documentation_options.js?v=89137e27"></script>
+    <script src="../../_static/documentation_options.js?v=988f4fb4"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -554,7 +554,7 @@
 <a class="reference external" href="https://peps.python.org/pep-0484/">type hints</a> to infer the appropriate widget type
 for a given function parameter. It allows third party packages
 (like <code class="docutils literal notranslate"><span class="pre">napari</span></code>) to <a class="reference external" href="https://pyapp-kit.github.io/magicgui/type_map/#registering-support-for-custom-types">register</a> support for their types using
-<a class="reference external" href="https://pyapp-kit.github.io/magicgui/api/type_map/#magicgui.type_map.register_type" title="(in magicgui v0.0.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_type()</span></code></a>. <code class="docutils literal notranslate"><span class="pre">napari</span></code> registers
+<code class="xref py py-func docutils literal notranslate"><span class="pre">register_type()</span></code>. <code class="docutils literal notranslate"><span class="pre">napari</span></code> registers
 a number of types, additionally specifying, where appropriate:</p>
 <ul class="simple">
 <li><p>widget type for the parameter type</p></li>
@@ -572,7 +572,7 @@ in <code class="docutils literal notranslate"><span class="pre">magicgui</span><
 <section id="registration-details">
 <h2>Registration details<a class="headerlink" href="#registration-details" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">napari</span></code> types are either registered via the
-<a class="reference external" href="https://pyapp-kit.github.io/magicgui/api/type_map/#magicgui.type_map.register_type" title="(in magicgui v0.0.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;register_type</span></code></a> decorator when they are
+<code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;register_type</span></code> decorator when they are
 defined or in
 <a class="reference external" href="https://github.com/napari/napari/blob/main/napari/types.py"><code class="docutils literal notranslate"><span class="pre">napari/types.py</span></code></a>.
 For the full list of types registered, see <a class="reference internal" href="../../howtos/extending/magicgui.html#magicgui-parameter-annotations"><span class="std std-ref">Parameter annotations</span></a>.</p>
