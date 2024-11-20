@@ -629,9 +629,13 @@ version numbers <code class="docutils literal notranslate"><span class="pre">0.x
 <li><p><strong>Documentation and tutorials:</strong> All new methods should have appropriate doc
 strings following <a class="reference external" href="https://peps.python.org/pep-0257/">PEP257</a> and the
 <a class="reference external" href="https://numpy.org/devdocs/dev/howto-docs.html#documentation-style">NumPy documentation guide</a>.
-For any major new features, accompanying changes should be made to our
-<a class="reference internal" href="../../tutorials/index.html#tutorials"><span class="std std-ref">tutorials</span></a>. These should not only
-illustrates the new feature, but explains it. Titles for all documents in napari should follow <a class="reference external" href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case">sentence case capitalization</a>, but the name <code class="docutils literal notranslate"><span class="pre">napari</span></code> should always be written in lowercase.</p></li>
+For API changes, make sure to check that a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">versionadded::</span></code> or
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">versionchanged::</span></code> directive has been added to the appropriate docstring. For
+any major new features, accompanying changes should be made to our
+<a class="reference internal" href="../../tutorials/index.html#tutorials"><span class="std std-ref">tutorials</span></a>. These should not only illustrate the new feature, but
+explain it. Titles for all documents in napari should follow
+<a class="reference external" href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case">sentence case capitalization</a>,
+but the name <code class="docutils literal notranslate"><span class="pre">napari</span></code> should always be written in lowercase.</p></li>
 <li><p><strong>Implementations and algorithms:</strong> You should understand the code being modified
 or added before approving it.  (See <a class="reference internal" href="#merge-only-changes-you-understand">Merge Only Changes You Understand</a>
 below.) Implementations should do what they claim and be simple, readable, and efficient
