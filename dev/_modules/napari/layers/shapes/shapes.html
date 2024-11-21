@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../../_static/documentation_options.js?v=5a3c81d9"></script>
+    <script src="../../../../_static/documentation_options.js?v=486d4a73"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -511,6 +511,7 @@
     <span class="n">shape_classes</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">napari.layers.shapes._shapes_mouse_bindings</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_set_highlight</span><span class="p">,</span>
     <span class="n">add_ellipse</span><span class="p">,</span>
     <span class="n">add_line</span><span class="p">,</span>
     <span class="n">add_path_polygon</span><span class="p">,</span>
@@ -1095,6 +1096,8 @@
         <span class="p">)</span>
 
         <span class="c1"># Trigger generation of view slice and thumbnail</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_wheel_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_set_highlight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_drag_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_set_highlight</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_initialize_current_color_for_empty_layer</span><span class="p">(</span>
@@ -1771,6 +1774,8 @@
             <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">unique_properties</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
                 <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_update_properties</span><span class="p">():</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">current_properties</span> <span class="o">=</span> <span class="n">unique_properties</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_highlight</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_is_moving</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -3305,16 +3310,6 @@
             <span class="n">cur_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">handle_vec</span><span class="p">)</span>
             <span class="n">box</span><span class="p">[</span><span class="n">Box</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">]</span> <span class="o">=</span> <span class="n">box</span><span class="p">[</span><span class="n">Box</span><span class="o">.</span><span class="n">TOP_CENTER</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="n">handle_vec</span> <span class="o">/</span> <span class="n">cur_len</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_box</span> <span class="o">=</span> <span class="n">box</span> <span class="o">+</span> <span class="n">center</span>
-
-    <span class="k">def</span> <span class="nf">_update_draw</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">,</span> <span class="n">corner_pixels_displayed</span><span class="p">,</span> <span class="n">shape_threshold</span>
-    <span class="p">):</span>
-        <span class="n">prev_scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_update_draw</span><span class="p">(</span>
-            <span class="n">scale_factor</span><span class="p">,</span> <span class="n">corner_pixels_displayed</span><span class="p">,</span> <span class="n">shape_threshold</span>
-        <span class="p">)</span>
-        <span class="c1"># update highlight only if scale has changed, otherwise causes a cycle</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_highlight</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="p">(</span><span class="n">prev_scale</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Value of the data at a position in data coordinates.</span>
