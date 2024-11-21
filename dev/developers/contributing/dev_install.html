@@ -589,24 +589,33 @@ napari, to prevent issues with outdated or conflicting packages in your
 development environment.</p>
 </div>
 </li>
-<li><p>Install the package in editable mode, along with all of the developer tools.</p>
+<li><p>Install the package in editable mode, along with all of the developer tools (<code class="docutils literal notranslate"><span class="pre">dev</span></code>)
+and optionally a Qt backend (<code class="docutils literal notranslate"><span class="pre">pyqt</span></code>, <code class="docutils literal notranslate"><span class="pre">pyside</span></code>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you only want to use napari, you can install it on most macOS, Linux and
+<p>If you only want to use napari and do not wish to develop napari itself,
+you can install napari on most macOS, Linux and
 Windows systems with Python 3.9-3.12
-by following the directions on the
+by following the steps on the
 <a class="reference internal" href="../../tutorials/fundamentals/installation.html#install-python-package"><span class="std std-ref">instructions page</span></a>.</p>
 </div>
-<p>napari supports different Qt backends, and you can choose which one to install and use.</p>
-<p>For example, for PyQt5, the default, you would use the following:</p>
+<p>napari supports different Qt backends and Qt versions. In this step, choose one of the following
+commands to install the developer tools and your preferred Qt backend.</p>
+<p>For PyQt5, the default Qt backend, use:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[pyqt,dev]&quot;</span><span class="w">  </span><span class="c1"># (quotes only needed for zsh shell)</span>
 </pre></div>
 </div>
-<p>If you want to use PySide2 instead, you would use:</p>
+<p>To use PySide2 instead of the PyQt5, use:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[pyside,dev]&quot;</span><span class="w">  </span><span class="c1"># (quotes only needed for zsh shell)</span>
 </pre></div>
 </div>
-<p>Finally, if you already have a Qt backend installed or want to use an experimental one like Qt6 use:</p>
+<p>For PyOt6, use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[pyqt6,dev]&quot;</span><span class="w">  </span><span class="c1"># (quotes only needed for zsh shell)</span>
+</pre></div>
+</div>
+<p>If you wish to install the developer tools only, use the following. Choose
+this option if you wish to install your Qt backend separately, such as if you already have
+a Qt backend installed or if you use an experimental backend like PySide6:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span><span class="w">  </span><span class="c1"># (quotes only needed for zsh shell)</span>
 </pre></div>
 </div>
