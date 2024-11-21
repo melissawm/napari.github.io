@@ -28,7 +28,7 @@ This is useful e.g. when proofreading segmentations within a time series.
 
 .. tags:: analysis
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-35
+.. GENERATED FROM PYTHON SOURCE LINES 11-34
 
 
 
@@ -63,7 +63,6 @@ This is useful e.g. when proofreading segmentations within a time series.
     labels.n_edit_dimensions = 3
     labels.brush_size = 15
     labels.mode = 'paint'
-    labels.n_dimensional = True
 
     if __name__ == '__main__':
         napari.run()
