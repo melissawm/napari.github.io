@@ -13,7 +13,7 @@ gui (16) <gui>
 historical (4) <historical>
 interactivity (5) <interactivity>
 layers (6) <layers>
-visualization-advanced (15) <visualization-advanced>
+visualization-advanced (16) <visualization-advanced>
 visualization-basic (22) <visualization-basic>
 visualization-nD (21) <visualization-nd>
 ```

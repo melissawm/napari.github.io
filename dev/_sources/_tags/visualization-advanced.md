@@ -16,6 +16,7 @@ caption: With this tag
 ../gallery/nD_multiscale_image.rst
 ../gallery/nD_multiscale_image_non_uniform.rst
 ../gallery/points-over-time.rst
+../gallery/screenshot_and_export_figure.rst
 ../gallery/show_points_based_on_feature.rst
 ../gallery/to_screenshot.rst
 ../gallery/tracks_3d.rst
