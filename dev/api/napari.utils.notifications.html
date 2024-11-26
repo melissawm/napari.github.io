@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=793337f3"></script>
+    <script src="../_static/documentation_options.js?v=577234c9"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -65,7 +65,7 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="napari.utils.notifications.NotificationSeverity" href="napari.utils.notifications.NotificationSeverity.html" />
+    <link rel="next" title="napari.utils.notifications.ErrorNotification" href="napari.utils.notifications.ErrorNotification.html" />
     <link rel="prev" title="napari.utils.events.TypedMutableSequence" href="napari.utils.events.TypedMutableSequence.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -450,18 +450,18 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="napari.view_layers.html">napari.view_layers</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.types.html">napari.types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="napari.types.ArrayBase.html">napari.types.ArrayBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.types.FullLayerData.html">napari.types.FullLayerData</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.types.SampleDict.html">napari.types.SampleDict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.types.ArrayBase.html">napari.types.ArrayBase</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.utils.html">napari.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.Colormap.html">napari.utils.Colormap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.utils.DirectLabelColormap.html">napari.utils.DirectLabelColormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.CyclicLabelColormap.html">napari.utils.CyclicLabelColormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="napari.utils.DirectLabelColormap.html">napari.utils.DirectLabelColormap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="napari.utils.NotebookScreenshot.html">napari.utils.NotebookScreenshot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.cancelable_progress.html">napari.utils.cancelable_progress</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.nbscreenshot.html">napari.utils.nbscreenshot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.utils.NotebookScreenshot.html">napari.utils.NotebookScreenshot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.progress.html">napari.utils.progress</a></li>
 </ul>
 </details></li>
@@ -503,11 +503,11 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.utils.events.html">napari.utils.events</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EmitterGroup.html">napari.utils.events.EmitterGroup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.Event.html">napari.utils.events.Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EventEmitter.html">napari.utils.events.EventEmitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EventedDict.html">napari.utils.events.EventedDict</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EventedList.html">napari.utils.events.EventedList</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EventedModel.html">napari.utils.events.EventedModel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EventedSet.html">napari.utils.events.EventedSet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.utils.events.EventEmitter.html">napari.utils.events.EventEmitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.NestableEventedList.html">napari.utils.events.NestableEventedList</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.SelectableEventedList.html">napari.utils.events.SelectableEventedList</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.events.Selection.html">napari.utils.events.Selection</a></li>
@@ -516,11 +516,11 @@
 </ul>
 </details></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">napari.utils.notifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.NotificationSeverity.html">napari.utils.notifications.NotificationSeverity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.Notification.html">napari.utils.notifications.Notification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.ErrorNotification.html">napari.utils.notifications.ErrorNotification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.WarningNotification.html">napari.utils.notifications.WarningNotification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.Notification.html">napari.utils.notifications.Notification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.NotificationManager.html">napari.utils.notifications.NotificationManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.NotificationSeverity.html">napari.utils.notifications.NotificationSeverity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="napari.utils.notifications.WarningNotification.html">napari.utils.notifications.WarningNotification</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.utils.perf.html">napari.utils.perf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -599,29 +599,41 @@
 <p class="rubric">Classes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.utils.notifications.NotificationSeverity.html#napari.utils.notifications.NotificationSeverity" title="napari.utils.notifications.NotificationSeverity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotificationSeverity</span></code></a></p></td>
-<td><p>Severity levels for the notification dialog.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="napari.utils.notifications.ErrorNotification.html#napari.utils.notifications.ErrorNotification" title="napari.utils.notifications.ErrorNotification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorNotification</span></code></a></p></td>
+<td><p>Notification at an Error severity level.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="napari.utils.notifications.Notification.html#napari.utils.notifications.Notification" title="napari.utils.notifications.Notification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Notification</span></code></a></p></td>
 <td><p>A Notifcation event.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.utils.notifications.ErrorNotification.html#napari.utils.notifications.ErrorNotification" title="napari.utils.notifications.ErrorNotification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorNotification</span></code></a></p></td>
-<td><p>Notification at an Error severity level.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="napari.utils.notifications.WarningNotification.html#napari.utils.notifications.WarningNotification" title="napari.utils.notifications.WarningNotification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WarningNotification</span></code></a></p></td>
-<td><p>Notification at a Warning severity level.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="napari.utils.notifications.NotificationManager.html#napari.utils.notifications.NotificationManager" title="napari.utils.notifications.NotificationManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotificationManager</span></code></a></p></td>
 <td><p>A notification manager, to route all notifications through.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="napari.utils.notifications.NotificationSeverity.html#napari.utils.notifications.NotificationSeverity" title="napari.utils.notifications.NotificationSeverity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotificationSeverity</span></code></a></p></td>
+<td><p>Severity levels for the notification dialog.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="napari.utils.notifications.WarningNotification.html#napari.utils.notifications.WarningNotification" title="napari.utils.notifications.WarningNotification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WarningNotification</span></code></a></p></td>
+<td><p>Notification at a Warning severity level.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <p class="rubric">Functions</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="napari.utils.notifications.show_console_notification">
+<span class="sig-prename descclassname"><span class="pre">napari.utils.notifications.</span></span><span class="sig-name descname"><span class="pre">show_console_notification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notification</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="napari.utils.notifications.Notification.html#napari.utils.notifications.Notification" title="napari.utils.notifications.Notification"><span class="pre">Notification</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/utils/notifications.html#show_console_notification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.utils.notifications.show_console_notification" title="Link to this definition">#</a></dt>
+<dd><p>Show a notification in the console.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="napari.utils.notifications.show_debug">
 <span class="sig-prename descclassname"><span class="pre">napari.utils.notifications.</span></span><span class="sig-name descname"><span class="pre">show_debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/utils/notifications.html#show_debug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.utils.notifications.show_debug" title="Link to this definition">#</a></dt>
 <dd><p>Show a debug message in the notification manager.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="napari.utils.notifications.show_error">
+<span class="sig-prename descclassname"><span class="pre">napari.utils.notifications.</span></span><span class="sig-name descname"><span class="pre">show_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/utils/notifications.html#show_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.utils.notifications.show_error" title="Link to this definition">#</a></dt>
+<dd><p>Show an error in the notification manager.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -634,18 +646,6 @@
 <dt class="sig sig-object py" id="napari.utils.notifications.show_warning">
 <span class="sig-prename descclassname"><span class="pre">napari.utils.notifications.</span></span><span class="sig-name descname"><span class="pre">show_warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/utils/notifications.html#show_warning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.utils.notifications.show_warning" title="Link to this definition">#</a></dt>
 <dd><p>Show a warning in the notification manager.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="napari.utils.notifications.show_error">
-<span class="sig-prename descclassname"><span class="pre">napari.utils.notifications.</span></span><span class="sig-name descname"><span class="pre">show_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/utils/notifications.html#show_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.utils.notifications.show_error" title="Link to this definition">#</a></dt>
-<dd><p>Show an error in the notification manager.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="napari.utils.notifications.show_console_notification">
-<span class="sig-prename descclassname"><span class="pre">napari.utils.notifications.</span></span><span class="sig-name descname"><span class="pre">show_console_notification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notification</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="napari.utils.notifications.Notification.html#napari.utils.notifications.Notification" title="napari.utils.notifications.Notification"><span class="pre">Notification</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/utils/notifications.html#show_console_notification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.utils.notifications.show_console_notification" title="Link to this definition">#</a></dt>
-<dd><p>Show a notification in the console.</p>
 </dd></dl>
 
 </section>
@@ -670,11 +670,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="napari.utils.notifications.NotificationSeverity.html"
+       href="napari.utils.notifications.ErrorNotification.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">napari.utils.notifications.NotificationSeverity</p>
+        <p class="prev-next-title">napari.utils.notifications.ErrorNotification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -697,11 +697,11 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_console_notification"><code class="docutils literal notranslate"><span class="pre">show_console_notification()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_debug"><code class="docutils literal notranslate"><span class="pre">show_debug()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_error"><code class="docutils literal notranslate"><span class="pre">show_error()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_info"><code class="docutils literal notranslate"><span class="pre">show_info()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_warning"><code class="docutils literal notranslate"><span class="pre">show_warning()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_error"><code class="docutils literal notranslate"><span class="pre">show_error()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.utils.notifications.show_console_notification"><code class="docutils literal notranslate"><span class="pre">show_console_notification()</span></code></a></li>
 </ul>
   </nav></div>
 

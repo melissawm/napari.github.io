@@ -16,11 +16,11 @@
       :toctree:
    
       Colormap
-      DirectLabelColormap
       CyclicLabelColormap
+      DirectLabelColormap
+      NotebookScreenshot
       cancelable_progress
       nbscreenshot
-      NotebookScreenshot
       progress
    
    

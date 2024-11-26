@@ -15,11 +15,11 @@
       :nosignatures:
       :toctree:
    
-      NotificationSeverity
-      Notification
       ErrorNotification
-      WarningNotification
+      Notification
       NotificationManager
+      NotificationSeverity
+      WarningNotification
    
    
 
@@ -28,11 +28,11 @@
    .. rubric:: Functions
 
    
+   .. autofunction:: show_console_notification
    .. autofunction:: show_debug
+   .. autofunction:: show_error
    .. autofunction:: show_info
    .. autofunction:: show_warning
-   .. autofunction:: show_error
-   .. autofunction:: show_console_notification
    
    
 

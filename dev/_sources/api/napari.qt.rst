@@ -28,12 +28,12 @@
 
    
    .. autofunction:: create_worker
-   .. autofunction:: thread_worker
    .. autofunction:: get_app
+   .. autofunction:: get_current_stylesheet
    .. autofunction:: get_qapp
    .. autofunction:: get_stylesheet
-   .. autofunction:: get_current_stylesheet
    .. autofunction:: run
+   .. autofunction:: thread_worker
    
    
 
