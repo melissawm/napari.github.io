@@ -156,7 +156,7 @@ your shapes.
     layer = viewer.add_vectors(pos, edge_width=2)
 
     # take screenshot
-    screenshot = viewer.screenshot()
+    screenshot = viewer.screenshot(flash=False) # bug: default flash=True causes the canvas to be grayscale in docs
     viewer.add_image(screenshot, rgb=True, name='screenshot')
 
     # from skimage.io import imsave

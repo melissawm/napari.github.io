@@ -134,8 +134,8 @@ your shapes.
     # are not in the exported figure.
     viewer.theme = "light"
     # Optionally for saving the exported figure: viewer.export_figure(path="export_figure.png")
-    export_figure = viewer.export_figure()
-    scaled_export_figure = viewer.export_figure(scale_factor=5)
+    export_figure = viewer.export_figure(flash=False) # bug: default flash=True causes the canvas to be grayscale in docs
+    scaled_export_figure = viewer.export_figure(scale_factor=5, flash=False)
     viewer.theme = "dark"
 
     viewer.add_image(export_figure, rgb=True, name='exported_figure')
