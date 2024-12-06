@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../../../_static/documentation_options.js?v=4ade98ff"></script>
+    <script src="../../../../_static/documentation_options.js?v=415bdc9a"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -2200,6 +2200,47 @@
         <span class="n">vector_data_ndisplay</span> <span class="o">=</span> <span class="n">vector_data_nd</span><span class="p">[</span><span class="n">dims_displayed</span><span class="p">]</span>
         <span class="n">vector_data_ndisplay</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vector_data_ndisplay</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">vector_data_ndisplay</span>
+
+    <span class="k">def</span> <span class="nf">_world_to_displayed_data_normal</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">vector_world</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a normal vector defining an orientation from world coordinates to data coordinates.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vector_world : tuple, list, 1D array</span>
+<span class="sd">            A vector in world coordinates.</span>
+<span class="sd">        dims_displayed : list[int]</span>
+<span class="sd">            Indices of displayed dimensions of the data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Transformed normal vector (unit vector) in data coordinates.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method is adapted from napari-threedee under BSD-3-Clause License.</span>
+<span class="sd">        For more information see also:</span>
+<span class="sd">        https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry/transforming-normals.html</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># the napari transform is from layer -&gt; world.</span>
+        <span class="c1"># We want the inverse of the world -&gt;  layer, so we just take the napari transform</span>
+        <span class="n">inverse_transform</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transforms</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">simplified</span><span class="o">.</span><span class="n">linear_matrix</span>
+
+        <span class="c1"># Extract the relevant submatrix based on dims_displayed</span>
+        <span class="n">submatrix</span> <span class="o">=</span> <span class="n">inverse_transform</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">dims_displayed</span><span class="p">,</span> <span class="n">dims_displayed</span><span class="p">)]</span>
+        <span class="n">transpose_inverse_transform</span> <span class="o">=</span> <span class="n">submatrix</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># transform the vector</span>
+        <span class="n">transformed_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+            <span class="n">transpose_inverse_transform</span><span class="p">,</span> <span class="n">vector_world</span>
+        <span class="p">)</span>
+
+        <span class="n">transformed_vector</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">transformed_vector</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">transformed_vector</span>
 
     <span class="k">def</span> <span class="nf">_world_to_layer_dims</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">world_dims</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">,</span> <span class="n">ndim_world</span><span class="p">:</span> <span class="nb">int</span>
