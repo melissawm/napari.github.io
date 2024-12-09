@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=e7415585"></script>
+    <script src="../_static/documentation_options.js?v=3544c531"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -757,9 +757,10 @@ Jupyter notebook.</p>
 </div>
 <section class="sphx-glr-example-title" id="export-figure">
 <span id="sphx-glr-gallery-export-figure-py"></span><h1>Export Figure<a class="headerlink" href="#export-figure" title="Link to this heading">#</a></h1>
-<p>Display one shapes layer ontop of one image layer using the <code class="docutils literal notranslate"><span class="pre">add_shapes</span></code> and
-<code class="docutils literal notranslate"><span class="pre">add_image</span></code> APIs. When the window is closed it will print the coordinates of
-your shapes.</p>
+<p>Display a variety of layer types in the napari viewer and export the figure with <cite>viewer.export_figure()</cite>.
+The exported figure is then added back as an image layer.</p>
+<p>Exported figures include the extent of all data in 2D view, and does not presently work for 3D views.
+To capture the extent of the canvas, instead of the layers, see <cite>viewer.screenshot()</cite>: <a class="reference internal" href="to_screenshot.html#sphx-glr-gallery-to-screenshot-py"><span class="std std-ref">To screenshot</span></a> and <a class="reference internal" href="screenshot_and_export_figure.html#sphx-glr-gallery-screenshot-and-export-figure-py"><span class="std std-ref">Comparison of Screenshot and Figure Export</span></a>.</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/visualization-advanced.html">visualization-advanced</a></p>
 <img src="../_images/sphx_glr_export_figure_001.png" srcset="../_images/sphx_glr_export_figure_001.png" alt="export figure" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
