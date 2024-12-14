@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=81d508ab"></script>
+    <script src="../_static/documentation_options.js?v=69dd1656"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="nD vectors image" href="nD_vectors_image.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5rc1" />
+  <meta name="docsearch:version" content="0.5.5" />
   </head>
   
   
@@ -798,7 +798,7 @@ coordinates, and may require resizing the textures to match each other.</p>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pooch</span>
-<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">read_mesh</span>
+<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.imread" title="vispy.io.imread" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">imread</span></a><span class="p">,</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.read_mesh" title="vispy.io.read_mesh" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">read_mesh</span></a>
 
 <span class="kn">import</span> <span class="nn">napari</span>
 </pre></div>
@@ -833,60 +833,72 @@ coordinates, and may require resizing the textures to match each other.</p>
 downloading PocilloporaDamicornisSkin.obj
 
   0%|                                              | 0.00/93.8M [00:00&lt;?, ?B/s]
-  0%|                                      | 18.4k/93.8M [00:00&lt;12:11, 128kB/s]
-  0%|                                       | 111k/93.8M [00:00&lt;03:13, 483kB/s]
-  0%|                                       | 270k/93.8M [00:00&lt;01:45, 882kB/s]
-  1%|▏                                     | 613k/93.8M [00:00&lt;01:00, 1.53MB/s]
-  2%|▋                                    | 1.71M/93.8M [00:00&lt;00:20, 4.39MB/s]
-  4%|█▎                                   | 3.48M/93.8M [00:00&lt;00:10, 8.37MB/s]
-  7%|██▌                                  | 6.57M/93.8M [00:00&lt;00:05, 15.1MB/s]
- 10%|███▉                                 | 9.83M/93.8M [00:00&lt;00:04, 20.4MB/s]
- 14%|█████▎                               | 13.3M/93.8M [00:01&lt;00:03, 24.8MB/s]
- 18%|██████▋                              | 16.9M/93.8M [00:01&lt;00:02, 28.1MB/s]
- 22%|████████                             | 20.3M/93.8M [00:01&lt;00:02, 30.0MB/s]
- 25%|█████████▎                           | 23.7M/93.8M [00:01&lt;00:02, 27.2MB/s]
- 29%|██████████▉                          | 27.6M/93.8M [00:01&lt;00:02, 30.6MB/s]
- 33%|████████████▎                        | 31.3M/93.8M [00:01&lt;00:01, 32.2MB/s]
- 37%|█████████████▊                       | 34.9M/93.8M [00:01&lt;00:01, 33.2MB/s]
- 41%|███████████████▎                     | 38.7M/93.8M [00:01&lt;00:01, 34.6MB/s]
- 45%|████████████████▋                    | 42.2M/93.8M [00:01&lt;00:01, 34.5MB/s]
- 49%|██████████████████▎                  | 46.3M/93.8M [00:01&lt;00:01, 36.2MB/s]
- 53%|███████████████████▋                 | 49.9M/93.8M [00:02&lt;00:01, 36.2MB/s]
- 57%|█████████████████████▏               | 53.6M/93.8M [00:02&lt;00:01, 31.8MB/s]
- 61%|██████████████████████▍              | 56.9M/93.8M [00:02&lt;00:01, 32.2MB/s]
- 65%|███████████████████████▉             | 60.7M/93.8M [00:02&lt;00:00, 33.9MB/s]
- 68%|█████████████████████████▎           | 64.2M/93.8M [00:02&lt;00:00, 34.0MB/s]
- 72%|██████████████████████████▊          | 67.9M/93.8M [00:02&lt;00:00, 34.3MB/s]
- 77%|████████████████████████████▎        | 71.8M/93.8M [00:02&lt;00:00, 35.8MB/s]
- 80%|█████████████████████████████▊       | 75.4M/93.8M [00:02&lt;00:00, 35.8MB/s]
- 84%|███████████████████████████████▏     | 79.0M/93.8M [00:02&lt;00:00, 31.5MB/s]
- 88%|████████████████████████████████▌    | 82.5M/93.8M [00:03&lt;00:00, 32.3MB/s]
- 92%|██████████████████████████████████   | 86.2M/93.8M [00:03&lt;00:00, 33.6MB/s]
- 96%|███████████████████████████████████▎ | 89.6M/93.8M [00:03&lt;00:00, 33.9MB/s]
-100%|████████████████████████████████████▊| 93.3M/93.8M [00:03&lt;00:00, 34.8MB/s]
+  0%|                                      | 14.3k/93.8M [00:00&lt;14:40, 106kB/s]
+  0%|                                      | 46.1k/93.8M [00:00&lt;10:16, 152kB/s]
+  0%|                                       | 115k/93.8M [00:00&lt;05:14, 298kB/s]
+  0%|                                       | 237k/93.8M [00:00&lt;03:13, 484kB/s]
+  1%|▏                                      | 513k/93.8M [00:00&lt;01:38, 945kB/s]
+  1%|▍                                    | 1.07M/93.8M [00:00&lt;00:50, 1.82MB/s]
+  2%|▊                                    | 2.16M/93.8M [00:01&lt;00:26, 3.50MB/s]
+  5%|█▋                                   | 4.36M/93.8M [00:01&lt;00:13, 6.79MB/s]
+  7%|██▊                                  | 7.02M/93.8M [00:01&lt;00:08, 9.94MB/s]
+ 10%|███▊                                 | 9.65M/93.8M [00:01&lt;00:07, 12.0MB/s]
+ 13%|████▉                                | 12.6M/93.8M [00:01&lt;00:05, 13.9MB/s]
+ 17%|██████▏                              | 15.5M/93.8M [00:01&lt;00:05, 15.4MB/s]
+ 20%|███████▎                             | 18.5M/93.8M [00:02&lt;00:04, 16.4MB/s]
+ 23%|████████▍                            | 21.4M/93.8M [00:02&lt;00:04, 16.9MB/s]
+ 26%|█████████▋                           | 24.5M/93.8M [00:02&lt;00:03, 17.6MB/s]
+ 29%|██████████▋                          | 27.2M/93.8M [00:02&lt;00:03, 17.6MB/s]
+ 32%|███████████▉                         | 30.3M/93.8M [00:02&lt;00:03, 18.1MB/s]
+ 35%|█████████████                        | 33.1M/93.8M [00:02&lt;00:03, 17.9MB/s]
+ 39%|██████████████▎                      | 36.2M/93.8M [00:02&lt;00:03, 18.5MB/s]
+ 42%|███████████████▍                     | 39.0M/93.8M [00:03&lt;00:03, 18.2MB/s]
+ 45%|████████████████▍                    | 41.8M/93.8M [00:03&lt;00:02, 18.0MB/s]
+ 48%|█████████████████▋                   | 44.8M/93.8M [00:03&lt;00:02, 18.4MB/s]
+ 51%|██████████████████▊                  | 47.8M/93.8M [00:03&lt;00:02, 18.4MB/s]
+ 54%|███████████████████▊                 | 50.2M/93.8M [00:03&lt;00:02, 19.7MB/s]
+ 56%|████████████████████▌                | 52.2M/93.8M [00:03&lt;00:02, 18.1MB/s]
+ 59%|█████████████████████▋               | 55.0M/93.8M [00:04&lt;00:02, 18.0MB/s]
+ 62%|██████████████████████▉              | 58.3M/93.8M [00:04&lt;00:01, 18.9MB/s]
+ 66%|████████████████████████▎            | 61.6M/93.8M [00:04&lt;00:01, 22.1MB/s]
+ 68%|█████████████████████████▏           | 63.9M/93.8M [00:04&lt;00:01, 20.0MB/s]
+ 71%|██████████████████████████▎          | 66.5M/93.8M [00:04&lt;00:01, 19.0MB/s]
+ 75%|███████████████████████████▌         | 69.9M/93.8M [00:04&lt;00:01, 22.3MB/s]
+ 77%|████████████████████████████▌        | 72.3M/93.8M [00:04&lt;00:01, 19.9MB/s]
+ 79%|█████████████████████████████▎       | 74.4M/93.8M [00:04&lt;00:01, 18.6MB/s]
+ 83%|██████████████████████████████▌      | 77.6M/93.8M [00:05&lt;00:00, 19.1MB/s]
+ 86%|███████████████████████████████▉     | 80.8M/93.8M [00:05&lt;00:00, 22.2MB/s]
+ 89%|████████████████████████████████▊    | 83.2M/93.8M [00:05&lt;00:00, 20.2MB/s]
+ 91%|█████████████████████████████████▊   | 85.6M/93.8M [00:05&lt;00:00, 21.2MB/s]
+ 94%|██████████████████████████████████▋  | 87.9M/93.8M [00:05&lt;00:00, 19.5MB/s]
+ 97%|███████████████████████████████████▋ | 90.5M/93.8M [00:05&lt;00:00, 18.9MB/s]
+100%|████████████████████████████████████▉| 93.7M/93.8M [00:05&lt;00:00, 19.3MB/s]
   0%|                                              | 0.00/93.8M [00:00&lt;?, ?B/s]
-100%|██████████████████████████████████████| 93.8M/93.8M [00:00&lt;00:00, 491GB/s]
+100%|██████████████████████████████████████| 93.8M/93.8M [00:00&lt;00:00, 401GB/s]
 downloading PocilloporaDamicornisSkin_Texture_0.jpg
 
   0%|                                              | 0.00/17.3M [00:00&lt;?, ?B/s]
-  0%|                                      | 18.4k/17.3M [00:00&lt;01:41, 170kB/s]
-  1%|▎                                      | 116k/17.3M [00:00&lt;00:37, 455kB/s]
-  2%|▌                                      | 271k/17.3M [00:00&lt;00:19, 857kB/s]
-  4%|█▎                                    | 610k/17.3M [00:00&lt;00:09, 1.68MB/s]
- 10%|███▌                                 | 1.64M/17.3M [00:00&lt;00:03, 4.47MB/s]
- 19%|███████▏                             | 3.36M/17.3M [00:00&lt;00:01, 8.50MB/s]
- 37%|█████████████▌                       | 6.36M/17.3M [00:00&lt;00:00, 15.2MB/s]
- 56%|████████████████████▊                | 9.76M/17.3M [00:00&lt;00:00, 18.1MB/s]
- 78%|████████████████████████████▊        | 13.5M/17.3M [00:01&lt;00:00, 23.4MB/s]
- 97%|███████████████████████████████████▉ | 16.8M/17.3M [00:01&lt;00:00, 26.2MB/s]
+  0%|                                     | 18.4k/17.3M [00:00&lt;03:06, 92.8kB/s]
+  0%|                                      | 53.2k/17.3M [00:00&lt;01:49, 158kB/s]
+  1%|▎                                      | 136k/17.3M [00:00&lt;00:55, 311kB/s]
+  2%|▋                                      | 290k/17.3M [00:00&lt;00:30, 554kB/s]
+  3%|█▎                                    | 604k/17.3M [00:00&lt;00:16, 1.04MB/s]
+  7%|██▋                                  | 1.24M/17.3M [00:01&lt;00:07, 2.01MB/s]
+ 15%|█████▍                               | 2.52M/17.3M [00:01&lt;00:03, 3.90MB/s]
+ 29%|██████████▉                          | 5.09M/17.3M [00:01&lt;00:01, 7.66MB/s]
+ 47%|█████████████████▍                   | 8.16M/17.3M [00:01&lt;00:00, 11.1MB/s]
+ 66%|████████████████████████▎            | 11.4M/17.3M [00:01&lt;00:00, 13.8MB/s]
+ 83%|██████████████████████████████▌      | 14.3M/17.3M [00:01&lt;00:00, 15.1MB/s]
+100%|████████████████████████████████████▉| 17.3M/17.3M [00:01&lt;00:00, 16.0MB/s]
   0%|                                              | 0.00/17.3M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 17.3M/17.3M [00:00&lt;00:00, 86.7GB/s]
+100%|█████████████████████████████████████| 17.3M/17.3M [00:00&lt;00:00, 80.3GB/s]
 downloading PocilloporaDamicornisSkin_GeneratedMat2.png
 
   0%|                                               | 0.00/120k [00:00&lt;?, ?B/s]
- 38%|██████████████▉                        | 46.1k/120k [00:00&lt;00:00, 361kB/s]
+ 15%|█████▊                                | 18.4k/120k [00:00&lt;00:01, 90.1kB/s]
+ 48%|██████████████████▋                    | 57.3k/120k [00:00&lt;00:00, 168kB/s]
   0%|                                               | 0.00/120k [00:00&lt;?, ?B/s]
-100%|████████████████████████████████████████| 120k/120k [00:00&lt;00:00, 374MB/s]
+100%|████████████████████████████████████████| 120k/120k [00:00&lt;00:00, 359MB/s]
 </pre></div>
 </div>
 </section>
@@ -896,7 +908,7 @@ downloading PocilloporaDamicornisSkin_GeneratedMat2.png
 support reading material properties (.mtl files) nor separate texture and
 vertex indices (i.e. repeated vertices). Normal vectors read from the file
 are also ignored and re-calculated from the faces.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_normals</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">texcoords</span></a> <span class="o">=</span> <span class="n">read_mesh</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmp_dir</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_files</span></a><span class="p">[</span><span class="s1">&#39;mesh&#39;</span><span class="p">])</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_normals</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">texcoords</span></a> <span class="o">=</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.read_mesh" title="vispy.io.read_mesh" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">read_mesh</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmp_dir</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_files</span></a><span class="p">[</span><span class="s1">&#39;mesh&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
@@ -905,8 +917,8 @@ are also ignored and re-calculated from the faces.</p>
 <p>This model comes with two textures: <cite>Texture_0</cite> is generated from
 photogrammetry of the actual object, and <cite>GeneratedMat2</cite> is a generated
 material to fill in  parts of the model lacking photographic texture.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">photo_texture</span></a> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmp_dir</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_files</span></a><span class="p">[</span><span class="s1">&#39;Texture_0&#39;</span><span class="p">])</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">generated_texture</span></a> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmp_dir</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_files</span></a><span class="p">[</span><span class="s1">&#39;GeneratedMat2&#39;</span><span class="p">])</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">photo_texture</span></a> <span class="o">=</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.imread" title="vispy.io.imread" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">imread</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmp_dir</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_files</span></a><span class="p">[</span><span class="s1">&#39;Texture_0&#39;</span><span class="p">])</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">generated_texture</span></a> <span class="o">=</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.imread" title="vispy.io.imread" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">imread</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmp_dir</span></a> <span class="o">/</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data_files</span></a><span class="p">[</span><span class="s1">&#39;GeneratedMat2&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>This is what the texture images look like in 2D:</p>
@@ -959,7 +971,7 @@ sphinx_gallery_thumbnail_number = 2</p>
     <a href="../api/napari.html#napari.run" title="napari.run" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-function"><span class="n">napari</span><span class="o">.</span><span class="n">run</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_surface_multi_texture_002.png" srcset="../_images/sphx_glr_surface_multi_texture_002.png" alt="surface multi texture" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 29.159 seconds)</p>
+<img src="../_images/sphx_glr_surface_multi_texture_002.png" srcset="../_images/sphx_glr_surface_multi_texture_002.png" alt="surface multi texture" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 35.290 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-surface-multi-texture-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5cad0060d7849fbe4473ff3a108a0774/surface_multi_texture.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">surface_multi_texture.ipynb</span></code></a></p>

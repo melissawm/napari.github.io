@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../_static/documentation_options.js?v=81d508ab"></script>
+    <script src="../../_static/documentation_options.js?v=69dd1656"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="Annotation" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5rc1" />
+  <meta name="docsearch:version" content="0.5.5" />
   </head>
   
   
@@ -1070,7 +1070,7 @@ To ensure the points layer is updated whenever the GUI selection is changed, we 
 <p>For convenience, we can also define functions to increment and decrement the currently selected label and bind them to key presses using the napari keybindings framework.</p>
 <p>First, we define a function to increment to the next label and decorate it with the viewer key binding decorator.
 The decorator requires that we pass the key to bind the function to as a string and the decorated function should take an event as an input argument.
-In this case, we are binding <code class="docutils literal notranslate"><span class="pre">next_label()</span></code> to the <code class="docutils literal notranslate"><span class="pre">.</span></code> key.</p>
+In this case, we are binding <code class="docutils literal notranslate"><span class="pre">next_label()</span></code> to the <kbd class="kbd docutils literal notranslate">.</kbd> key.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@viewer</span><span class="o">.</span><span class="n">bind_key</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">next_label</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Keybinding to advance to the next label with wraparound&quot;&quot;&quot;</span>
@@ -1105,7 +1105,7 @@ In this case, we are binding <code class="docutils literal notranslate"><span cl
 Here, we create a function that will increment the label after a point is added (i.e., the mouse is clicked in the viewer canvas when in the point adding mode).
 This is convenient for quickly adding all labels to a frame, as one can simply click each feature in order without having to manually swap labels.
 To achieve this, we first check if the points layer is the the adding mode (<code class="docutils literal notranslate"><span class="pre">layer.mode</span> <span class="pre">==</span> <span class="pre">'add'</span></code>).
-If so, we then reuse the next_label() function we defined above in the keybindings to increment the label.
+If so, we then reuse the <code class="docutils literal notranslate"><span class="pre">next_label()</span></code> function we defined above in the keybindings to increment the label.
 Finally,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">next_on_click</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Mouse click binding to advance the label when a point is added&quot;&quot;&quot;</span>
@@ -1141,7 +1141,7 @@ see the examples [<a class="reference external" href="https://github.com/napari/
 <section id="saving-the-annotations">
 <h3>Saving the annotations<a class="headerlink" href="#saving-the-annotations" title="Link to this heading">#</a></h3>
 <p>Once we are happy with the annotations, we can save them to a CSV file using the builing CSV writer for the points layer.
-To do so, first, select the “Points” layer in the layer list and then click “Save Selected layer(s)”  in the “File” menu or press control+S (cmd+S on Mac OS)  to bring up the file save dialog.
+To do so, first, select the “Points” layer in the layer list and then click “Save Selected layer(s)”  in the “File” menu or press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">control</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">cmd</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd> on Mac OS)  to bring up the file save dialog.
 From here you can enter the file path and save the annotation coordinates as a CSV.</p>
 <p><img alt="Viewer with green box around a points layer in layer list. Label in green says &quot;1. Select Points layer in the layer list&quot;. Dialog in the middle of the viewer has options to add save file name and choose save location, with Cancel and Save buttons in the bottom right." src="../../_images/points_save_dialog.png" /></p>
 <p>Alternatively, we can use the <code class="docutils literal notranslate"><span class="pre">points_layer.save()</span></code> method to save the coordinates from the points layer to a CSV file.

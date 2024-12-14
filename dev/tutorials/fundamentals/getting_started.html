@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../_static/documentation_options.js?v=81d508ab"></script>
+    <script src="../../_static/documentation_options.js?v=69dd1656"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="How to install napari as a bundled app" href="installation_bundle_conda.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5rc1" />
+  <meta name="docsearch:version" content="0.5.5" />
   </head>
   
   
@@ -906,9 +906,9 @@ in <a class="reference internal" href="installation.html#choosing-qt-backend"><s
 </pre></div>
 </div>
 <p>If napari is successfully launched after this command, it means that on your machine
-the LD_LIBRARY_PATH environment variable is set to a directory that contains
+the <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> environment variable is set to a directory that contains
 a Qt dynamic dependency that is incompatible with the one that napari uses.
-As linkers first search in LD_LIBRARY_PATH directories, this may cause napari to crash.</p>
+As linkers first search in <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> directories, this may cause napari to crash.</p>
 <p>If you want to debug this issue for your specific use case, you
 should start with manually importing the <code class="docutils literal notranslate"><span class="pre">qt</span></code> package in Python.
 This will provide you with more information about problem.</p>

@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=81d508ab"></script>
+    <script src="../_static/documentation_options.js?v=69dd1656"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="Spherical points" href="spherical_points.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5rc1" />
+  <meta name="docsearch:version" content="0.5.5" />
   </head>
   
   
@@ -771,11 +771,11 @@ File saved as /home/runner/.vispy/data/orig/triceratops.obj.gz.
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">load_data_file</span><span class="p">,</span> <span class="n">read_mesh</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.load_data_file" title="vispy.io.load_data_file" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">load_data_file</span></a><span class="p">,</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.read_mesh" title="vispy.io.read_mesh" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">read_mesh</span></a>
 
 <span class="kn">import</span> <span class="nn">napari</span>
 
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vert</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">read_mesh</span><span class="p">(</span><span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;orig/triceratops.obj.gz&#39;</span><span class="p">))</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vert</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="https://vispy.org/api/vispy.io.html#vispy.io.read_mesh" title="vispy.io.read_mesh" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">read_mesh</span></a><span class="p">(</span><a href="https://vispy.org/api/vispy.io.html#vispy.io.load_data_file" title="vispy.io.load_data_file" class="sphx-glr-backref-module-vispy-io sphx-glr-backref-type-py-function"><span class="n">load_data_file</span></a><span class="p">(</span><span class="s1">&#39;orig/triceratops.obj.gz&#39;</span><span class="p">))</span>
 
 <span class="c1"># put the mesh right side up, scale it up (napari#3477) and fix faces handedness</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vert</span></a> <span class="o">*=</span> <span class="o">-</span><span class="mi">100</span>
