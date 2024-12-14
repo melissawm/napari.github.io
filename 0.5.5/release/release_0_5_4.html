@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=81d508ab"></script>
+    <script src="../_static/documentation_options.js?v=69dd1656"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="napari 0.5.5" href="release_0_5_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5rc1" />
+  <meta name="docsearch:version" content="0.5.5" />
   </head>
   
   
@@ -753,7 +753,7 @@
 <p><em>Monday, Sep 30, 2024</em></p>
 <p>We’re happy to announce the release of napari 0.5.4!</p>
 <p>napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and analyzing multi-dimensional images. It’s built on Qt (for the GUI), VisPy (for performant GPU-based rendering), and the scientific Python stack (NumPy, SciPy, and friends).</p>
-<p>For more information, examples, and documentation, please visit our website: https://napari.org/</p>
+<p>For more information, examples, and documentation, please visit our website: <a class="reference external" href="https://napari.org/">https://napari.org/</a></p>
 <section id="highlights">
 <h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 <p>Another release with a lot of bug fixes, but also some (more!) improvements to
@@ -844,7 +844,7 @@ other in the UI (<a class="reference external" href="https://github.com/napari/n
 <li><p>Add autouse fixture that clears cached property <code class="docutils literal notranslate"><span class="pre">Action.injected</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7224">#7224</a>)</p></li>
 <li><p>Update <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7235">#7235</a>)</p></li>
 <li><p>CI benchmark run comment will now include results table (<a class="reference external" href="https://github.com/napari/napari/pull/7237">#7237</a>)</p></li>
-<li><p>[pre-commit.ci] pre-commit autoupdate (<a class="reference external" href="https://github.com/napari/napari/pull/7239">#7239</a>)</p></li>
+<li><p>[<a class="reference external" href="http://pre-commit.ci">pre-commit.ci</a>] pre-commit autoupdate (<a class="reference external" href="https://github.com/napari/napari/pull/7239">#7239</a>)</p></li>
 <li><p>Fix coverage and debug artifacts upload (<a class="reference external" href="https://github.com/napari/napari/pull/7241">#7241</a>)</p></li>
 <li><p>Replaced broken link to the “Translations” page :) (<a class="reference external" href="https://github.com/napari/napari/pull/7243">#7243</a>)</p></li>
 <li><p>Alow to call benchmark that do not have params (<a class="reference external" href="https://github.com/napari/napari/pull/7252">#7252</a>)</p></li>
@@ -854,7 +854,7 @@ other in the UI (<a class="reference external" href="https://github.com/napari/n
 <li><p>Deprecate usage of <code class="docutils literal notranslate"><span class="pre">get_app</span></code> functions to get <code class="docutils literal notranslate"><span class="pre">QApplication</span></code> or <code class="docutils literal notranslate"><span class="pre">NapariApplication</span></code> instances (<a class="reference external" href="https://github.com/napari/napari/pull/7269">#7269</a>)</p></li>
 <li><p>Block <code class="docutils literal notranslate"><span class="pre">zarr==3.0.0a4</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7271">#7271</a>)</p></li>
 <li><p>Update <code class="docutils literal notranslate"><span class="pre">dask</span></code>, <code class="docutils literal notranslate"><span class="pre">hypothesis</span></code>, <code class="docutils literal notranslate"><span class="pre">napari-plugin-manager</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">pydantic</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, <code class="docutils literal notranslate"><span class="pre">rich</span></code>, <code class="docutils literal notranslate"><span class="pre">tifffile</span></code>, <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>, <code class="docutils literal notranslate"><span class="pre">xarray</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7274">#7274</a>)</p></li>
-<li><p>[pre-commit.ci] pre-commit autoupdate (<a class="reference external" href="https://github.com/napari/napari/pull/7276">#7276</a>)</p></li>
+<li><p>[<a class="reference external" href="http://pre-commit.ci">pre-commit.ci</a>] pre-commit autoupdate (<a class="reference external" href="https://github.com/napari/napari/pull/7276">#7276</a>)</p></li>
 <li><p>Fix <code class="docutils literal notranslate"><span class="pre">test_windows_grouping_overwrite</span></code> skip condition and asserts (<a class="reference external" href="https://github.com/napari/napari/pull/7281">#7281</a>)</p></li>
 <li><p>Update menu sorting tests still using <code class="docutils literal notranslate"><span class="pre">mock_app</span></code> and <code class="docutils literal notranslate"><span class="pre">get_app</span></code> instead of <code class="docutils literal notranslate"><span class="pre">mock_app_model</span></code> and <code class="docutils literal notranslate"><span class="pre">get_app_model</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7283">#7283</a>)</p></li>
 <li><p>Remove obsolete self from layout argument (<a class="reference external" href="https://github.com/napari/napari/pull/7291">#7291</a>)</p></li>

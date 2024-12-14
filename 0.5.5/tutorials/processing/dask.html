@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../../_static/documentation_options.js?v=81d508ab"></script>
+    <script src="../../_static/documentation_options.js?v=69dd1656"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="Processing" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5rc1" />
+  <meta name="docsearch:version" content="0.5.5" />
   </head>
   
   
@@ -762,15 +762,14 @@ Data may also be stored in some proprietary format.
 As the size of the dataset grows,
 viewing arbitrary slices (in time, channel, z) of these datasets can become cumbersome.</p>
 <p>Chunked file formats exist (such as <a class="reference external" href="https://support.hdfgroup.org/HDF5/">hdf5</a> and <a class="reference external" href="https://zarr.readthedocs.io/en/stable/">zarr</a>) that store data in a way that makes it easier to retrieve arbitrary subsets of the dataset, but they require either data duplication, or “committing” to a new file standard.</p>
-<blockquote>
-<div><p><strong>Note</strong>: This tutorial is not meant to promote a folder of TIFFs as a “good way” to store large datasets on disk;
-but it is undoubtedly a common scenario in microscopy.
-Chunked formats such as <code class="docutils literal notranslate"><span class="pre">hdf5</span></code> or <code class="docutils literal notranslate"><span class="pre">zarr</span></code> are superior in many ways,
-but they do require the user to either duplicate their data
-or go “all in” and delete the original data after conversion.
-And while <code class="docutils literal notranslate"><span class="pre">napari</span></code> can easily handle something like a <code class="docutils literal notranslate"><span class="pre">zarr</span></code> store,
-it can be a bit more limiting inasmuch as it requires programs that are capable of viewing it (i.e. you can’t necessarily just drag it into Fiji …)</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial is not meant to promote a folder of TIFFs as a “good way” to store large datasets on disk; but it is
+undoubtedly a common scenario in microscopy. Chunked formats such as <code class="docutils literal notranslate"><span class="pre">hdf5</span></code> or <code class="docutils literal notranslate"><span class="pre">zarr</span></code> are superior in many ways, but
+they do require the user to either duplicate their data or go “all in” and delete the original data after conversion.
+And while <code class="docutils literal notranslate"><span class="pre">napari</span></code> can easily handle something like a <code class="docutils literal notranslate"><span class="pre">zarr</span></code> store, it can be a bit more limiting inasmuch as it
+requires programs that are capable of viewing it (i.e. you can’t necessarily just drag it into Fiji …)</p>
+</div>
 <p>The first part of this tutorial demonstrates how to use <a class="reference external" href="https://docs.dask.org/en/latest/"><code class="docutils literal notranslate"><span class="pre">Dask</span></code></a>
 and <a class="reference external" href="https://docs.dask.org/en/latest/delayed.html"><code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a>
 (or <a class="reference external" href="https://github.com/dask/dask-image"><code class="docutils literal notranslate"><span class="pre">dask_image</span></code></a>) to feed <code class="docutils literal notranslate"><span class="pre">napari</span></code> image data “<a class="reference external" href="https://en.wikipedia.org/wiki/Lazy_evaluation">lazily</a>”:
