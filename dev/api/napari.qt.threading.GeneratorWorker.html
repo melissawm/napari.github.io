@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script src="../_static/documentation_options.js?v=69dd1656"></script>
+    <script src="../_static/documentation_options.js?v=1a42c9a9"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.5';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="napari.qt.threading.FunctionWorker" href="napari.qt.threading.FunctionWorker.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.5" />
+  <meta name="docsearch:version" content="dev" />
   </head>
   
   
@@ -601,7 +601,7 @@
 <h1>napari.qt.threading.GeneratorWorker<a class="headerlink" href="#napari-qt-threading-generatorworker" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="napari.qt.threading.GeneratorWorker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">napari.qt.threading.</span></span><span class="sig-name descname"><span class="pre">GeneratorWorker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func:</span> <span class="pre">~typing.Callable[[~_P],</span> <span class="pre">~typing.Generator[~superqt.utils._qthreading._Y,</span> <span class="pre">~superqt.utils._qthreading._S</span> <span class="pre">|</span> <span class="pre">None,</span> <span class="pre">~superqt.utils._qthreading._R]],</span> <span class="pre">*args,</span> <span class="pre">SignalsClass:</span> <span class="pre">type[~superqt.utils._qthreading.WorkerBaseSignals]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'superqt.utils._qthreading.GeneratorWorkerSignals'&gt;,</span> <span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/_qt/qthreading.html#GeneratorWorker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.qt.threading.GeneratorWorker" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">napari.qt.threading.</span></span><span class="sig-name descname"><span class="pre">GeneratorWorker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func:</span> <span class="pre">Callable[_P,</span> <span class="pre">Generator[_Y,</span> <span class="pre">_S</span> <span class="pre">|</span> <span class="pre">None,</span> <span class="pre">_R]],</span> <span class="pre">*args,</span> <span class="pre">SignalsClass:</span> <span class="pre">type[WorkerBaseSignals]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'superqt.utils._qthreading.GeneratorWorkerSignals'&gt;,</span> <span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/_qt/qthreading.html#GeneratorWorker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.qt.threading.GeneratorWorker" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratorWorker</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">_Y</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">_S</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">_R</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">_NotifyingMixin</span></code></p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
