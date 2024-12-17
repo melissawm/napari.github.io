@@ -1072,6 +1072,14 @@ IPython console), the block</p>
 Because our example gallery is built from Python scripts, you need to ensure this
 block is present in all contributed examples.</p>
 </div>
+<section id="cross-referencing-gallery-examples">
+<h3>Cross-referencing Gallery examples<a class="headerlink" href="#cross-referencing-gallery-examples" title="Link to this heading">#</a></h3>
+<p>If you want to generate links to Gallery examples from anywhere in the docs, then the cross-referencing format you use will depend on the format of the doc you are writing. Note that the gallery examples live in <code class="docutils literal notranslate"><span class="pre">/gallery</span></code> despite being in <code class="docutils literal notranslate"><span class="pre">napari/examples</span></code> because <a class="reference external" href="https://github.com/napari/docs/blob/main/docs/conf.py"><code class="docutils literal notranslate"><span class="pre">docs/docs/conf.py</span></code></a> specificies that examples are built into the <code class="docutils literal notranslate"><span class="pre">gallery</span></code> directory. The <a class="reference external" href="https://sphinx-gallery.github.io/stable/advanced.html#know-your-gallery-files">Sphinx cross-reference namespace</a> is generated with the <code class="docutils literal notranslate"><span class="pre">sphx_glr</span></code> prefix, then path separators are converted to underscores, for example <code class="docutils literal notranslate"><span class="pre">/gallery/add_image.py</span></code> becomes <code class="docutils literal notranslate"><span class="pre">_gallery_add_image.py</span></code> to get the end result <code class="docutils literal notranslate"><span class="pre">sphx_glr_gallery_add_image.py</span></code>.</p>
+<ul class="simple">
+<li><p>For <code class="docutils literal notranslate"><span class="pre">.md</span></code> files (myst, used in the majority of docs), use the <code class="docutils literal notranslate"><span class="pre">{ref}</span></code> directive. <code class="docutils literal notranslate"><span class="pre">{ref}`sphx_glr_gallery_add_image.py`</span> </code> displays as: <a class="reference internal" href="../../../gallery/add_image.html#sphx-glr-gallery-add-image-py"><span class="std std-ref">Add image</span></a></p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">.py</span></code> files (rst, used in the example gallery), cross-reference with the <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> directive: <code class="docutils literal notranslate"><span class="pre">:ref:`sphx_glr_gallery_example.py`</span></code>.</p></li>
+</ul>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -1148,7 +1156,10 @@ block is present in all contributed examples.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-subsystem-for-linux-wsl">Windows Subsystem for Linux (WSL)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-examples-to-the-gallery">Adding examples to the <span class="xref myst">Gallery</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-examples-to-the-gallery">Adding examples to the <span class="xref myst">Gallery</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-referencing-gallery-examples">Cross-referencing Gallery examples</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
