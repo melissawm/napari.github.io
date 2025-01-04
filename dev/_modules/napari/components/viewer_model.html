@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f1591b93"></script>
+    <script src="../../../_static/documentation_options.js?v=6de49a08"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -492,7 +492,7 @@
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
@@ -544,7 +544,7 @@
     <span class="n">Tracks</span><span class="p">,</span>
     <span class="n">Vectors</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari.layers._source</span> <span class="kn">import</span> <span class="n">layer_source</span>
+<span class="kn">from</span> <span class="nn">napari.layers._source</span> <span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">layer_source</span>
 <span class="kn">from</span> <span class="nn">napari.layers.image._image_key_bindings</span> <span class="kn">import</span> <span class="n">image_fun_to_mode</span>
 <span class="kn">from</span> <span class="nn">napari.layers.image._image_utils</span> <span class="kn">import</span> <span class="n">guess_labels</span>
 <span class="kn">from</span> <span class="nn">napari.layers.labels._labels_key_bindings</span> <span class="kn">import</span> <span class="n">labels_fun_to_mode</span>
@@ -1962,12 +1962,18 @@
         <span class="n">plugin</span> <span class="o">=</span> <span class="n">hookimpl</span><span class="o">.</span><span class="n">plugin_name</span> <span class="k">if</span> <span class="n">hookimpl</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">layer_data</span><span class="p">,</span> <span class="n">filenames</span><span class="p">):</span>
             <span class="n">basename</span><span class="p">,</span> <span class="n">_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
-            <span class="n">_data</span> <span class="o">=</span> <span class="n">_unify_data_and_user_kwargs</span><span class="p">(</span>
-                <span class="n">data</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">layer_type</span><span class="p">,</span> <span class="n">fallback_name</span><span class="o">=</span><span class="n">basename</span>
-            <span class="p">)</span>
             <span class="c1"># actually add the layer</span>
-            <span class="k">with</span> <span class="n">layer_source</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">reader_plugin</span><span class="o">=</span><span class="n">plugin</span><span class="p">):</span>
-                <span class="n">added</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_add_layer_from_data</span><span class="p">(</span><span class="o">*</span><span class="n">_data</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Layer</span><span class="p">):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">_set_source</span><span class="p">(</span><span class="n">Source</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">reader_plugin</span><span class="o">=</span><span class="n">plugin</span><span class="p">))</span>
+                <span class="n">lyr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="n">current_added</span> <span class="o">=</span> <span class="p">[</span><span class="n">lyr</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_data</span> <span class="o">=</span> <span class="n">_unify_data_and_user_kwargs</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">layer_type</span><span class="p">,</span> <span class="n">fallback_name</span><span class="o">=</span><span class="n">basename</span>
+                <span class="p">)</span>
+                <span class="k">with</span> <span class="n">layer_source</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">reader_plugin</span><span class="o">=</span><span class="n">plugin</span><span class="p">):</span>
+                    <span class="n">current_added</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_layer_from_data</span><span class="p">(</span><span class="o">*</span><span class="n">_data</span><span class="p">)</span>
+            <span class="n">added</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">current_added</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">added</span>
 
     <span class="k">def</span> <span class="nf">_add_layer_from_data</span><span class="p">(</span>
@@ -2086,10 +2092,10 @@
 
     <span class="n">_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">MutableMapping</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                    <span class="s1">&#39;The second item in a LayerData tuple must be a dict&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;The second item in a LayerData tuple must be a dict or other MutableMapping.&#39;</span><span class="p">,</span>
                     <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="p">)</span>

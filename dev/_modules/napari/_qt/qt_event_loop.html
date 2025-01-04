@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f1591b93"></script>
+    <script src="../../../_static/documentation_options.js?v=6de49a08"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -491,13 +491,13 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">cast</span>
 <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
 
 <span class="kn">from</span> <span class="nn">qtpy</span> <span class="kn">import</span> <span class="n">PYQT5</span><span class="p">,</span> <span class="n">PYSIDE2</span>
 <span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QDir</span><span class="p">,</span> <span class="n">Qt</span>
 <span class="kn">from</span> <span class="nn">qtpy.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
+<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span>
 
 <span class="kn">from</span> <span class="nn">napari</span> <span class="kn">import</span> <span class="n">Viewer</span><span class="p">,</span> <span class="n">__version__</span>
 <span class="kn">from</span> <span class="nn">napari._qt.dialogs.qt_notification</span> <span class="kn">import</span> <span class="n">NapariQtNotification</span>
@@ -547,6 +547,34 @@
 <span class="c1"># store reference to QApplication to prevent garbage collection</span>
 <span class="n">_app_ref</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">_IPYTHON_WAS_HERE_FIRST</span> <span class="o">=</span> <span class="s1">&#39;IPython&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
+
+
+<span class="k">def</span> <span class="nf">_focus_changed</span><span class="p">(</span><span class="n">old</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QWidget</span><span class="p">],</span> <span class="n">new</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QWidget</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="n">old</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">new</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="c1"># ignore focus changes between two widgets</span>
+    <span class="k">if</span> <span class="n">old</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">new</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="c1"># this should not happen</span>
+    <span class="k">if</span> <span class="n">old</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start_timer</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">start_timer</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="n">old</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
+
+    <span class="kn">from</span> <span class="nn">napari._qt.qt_main_window</span> <span class="kn">import</span> <span class="n">_QtMainWindow</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">_QtMainWindow</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">notifications</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">[</span><span class="n">NapariQtNotification</span><span class="p">],</span> <span class="n">window</span><span class="o">.</span><span class="n">findChildren</span><span class="p">(</span><span class="n">NapariQtNotification</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">notifications</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">start_timer</span><span class="p">:</span>
+        <span class="n">notifications</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">timer_start</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">notification</span> <span class="ow">in</span> <span class="n">notifications</span><span class="p">:</span>
+            <span class="n">notification</span><span class="o">.</span><span class="n">timer_stop</span><span class="p">()</span>
 
 
 <span class="c1"># TODO: Remove in napari 0.6.0</span>
@@ -696,11 +724,6 @@
     <span class="k">if</span> <span class="n">_IPYTHON_WAS_HERE_FIRST</span><span class="p">:</span>
         <span class="n">_try_enable_ipython_gui</span><span class="p">(</span><span class="s1">&#39;qt&#39;</span> <span class="k">if</span> <span class="n">ipy_interactive</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
 
-    <span class="n">notification_manager</span><span class="o">.</span><span class="n">notification_ready</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">NapariQtNotification</span><span class="o">.</span><span class="n">show_notification</span>
-    <span class="p">)</span>
-    <span class="n">notification_manager</span><span class="o">.</span><span class="n">notification_ready</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">show_console_notification</span><span class="p">)</span>
-
     <span class="k">if</span> <span class="n">perf_config</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">perf_config</span><span class="o">.</span><span class="n">patched</span><span class="p">:</span>
         <span class="c1"># Will patch based on config file.</span>
         <span class="n">perf_config</span><span class="o">.</span><span class="n">patch_callables</span><span class="p">()</span>
@@ -722,6 +745,15 @@
             <span class="n">QDir</span><span class="o">.</span><span class="n">addSearchPath</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;theme_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_theme_path</span><span class="p">(</span><span class="n">name</span><span class="p">)))</span>
 
         <span class="n">register_threadworker_processors</span><span class="p">()</span>
+
+        <span class="n">notification_manager</span><span class="o">.</span><span class="n">notification_ready</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="n">NapariQtNotification</span><span class="o">.</span><span class="n">show_notification</span>
+        <span class="p">)</span>
+        <span class="n">notification_manager</span><span class="o">.</span><span class="n">notification_ready</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="n">show_console_notification</span>
+        <span class="p">)</span>
+
+        <span class="n">app</span><span class="o">.</span><span class="n">focusChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_focus_changed</span><span class="p">)</span>
 
     <span class="n">_app_ref</span> <span class="o">=</span> <span class="n">app</span>  <span class="c1"># prevent garbage collection</span>
 
