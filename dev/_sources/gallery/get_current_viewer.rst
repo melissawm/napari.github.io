@@ -29,7 +29,7 @@ viewer when the viewer is out of scope.
 
 .. tags:: gui
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-23
+.. GENERATED FROM PYTHON SOURCE LINES 12-35
 
 
 
@@ -44,6 +44,7 @@ viewer when the viewer is out of scope.
 
 .. code-block:: Python
 
+    import numpy as np
 
     import napari
 
@@ -55,6 +56,17 @@ viewer when the viewer is out of scope.
 
     # get that reference again
     viewer = napari.current_viewer()
+
+    # work with the viewer
+    x = np.arange(256)
+    y = np.arange(256).reshape((256, 1))
+    # from: https://botsin.space/@bitartbot/113553754823363986
+    image = (-(~((y - x) ^ (y + x)))) % 11
+    layer = viewer.add_image(image)
+    layer.contrast_limits = (8.5, 10)
+
+    if __name__ == '__main__':
+        napari.run()
 
 
 .. _sphx_glr_download_gallery_get_current_viewer.py:
