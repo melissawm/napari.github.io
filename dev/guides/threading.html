@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -765,8 +765,8 @@ until one of the events takes a very long time to process.  A long-running
 function (such as training a machine learning model or running a complicated
 analysis routine) may “block” the event loop in the main thread, leading to a
 completely unresponsive viewer.  The example used there was:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
@@ -811,14 +811,14 @@ methods in another thread.</p>
 your function with the
 <a class="reference internal" href="../api/napari.qt.threading.html#napari.qt.threading.thread_worker" title="napari.qt.threading.thread_worker"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;thread_worker</span></code></a> decorator.
 Continuing with the example above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">thread_worker</span>
+<span class="hll"><span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">thread_worker</span>
 </span>
 
 <span class="hll"><span class="nd">@thread_worker</span>
-</span><span class="k">def</span> <span class="nf">average_large_image</span><span class="p">():</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">average_large_image</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
@@ -846,7 +846,7 @@ the above example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 
 <span class="nd">@thread_worker</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;returned&quot;</span><span class="p">:</span> <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">})</span>
-<span class="k">def</span> <span class="nf">average_large_image</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">average_large_image</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">average_large_image</span><span class="p">()</span>
@@ -883,14 +883,14 @@ default behavior of a <code class="docutils literal notranslate"><span class="pr
 any exceptions in the main thread.  But just as we connected the
 <code class="docutils literal notranslate"><span class="pre">worker.returned</span></code> event above to the <code class="docutils literal notranslate"><span class="pre">viewer.add_image</span></code> method, you can
 also connect your own custom handler to the <code class="docutils literal notranslate"><span class="pre">worker.errored</span></code> event:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_handler</span><span class="p">(</span><span class="n">exc</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_handler</span><span class="p">(</span><span class="n">exc</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exc</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We had a minor problem </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">exc</span>
 
 <span class="nd">@thread_worker</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;errored&quot;</span><span class="p">:</span> <span class="n">my_handler</span><span class="p">})</span>
-<span class="k">def</span> <span class="nf">error_prone_function</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">error_prone_function</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -904,7 +904,7 @@ also connect your own custom handler to the <code class="docutils literal notran
 <a class="reference external" href="https://realpython.com/introduction-to-python-generators/">special kind of function</a>
 that returns a lazy iterator. To make a generator, you “yield”
 results rather than (or in addition to) “returning” them:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_generator</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_generator</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="k">yield</span> <span class="n">i</span>
 </pre></div>
@@ -935,14 +935,14 @@ intermediate results back in the main thread.  Continuing with our example of
 taking the mean projection of a large stack, if we yield the cumulative average
 as it is generated (rather than taking the average of the fully generated
 stack) we can watch the mean projection as it builds:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">thread_worker</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">thread_worker</span>
 
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">update_layer</span><span class="p">(</span><span class="n">new_image</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_layer</span><span class="p">(</span><span class="n">new_image</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># if the layer exists, update the data</span>
         <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">new_image</span>
@@ -953,7 +953,7 @@ stack) we can watch the mean projection as it builds:</p>
         <span class="p">)</span>
 
 <span class="nd">@thread_worker</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;yielded&#39;</span><span class="p">:</span> <span class="n">update_layer</span><span class="p">})</span>
-<span class="hll"><span class="k">def</span> <span class="nf">large_random_images</span><span class="p">():</span>
+<span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">large_random_images</span><span class="p">():</span>
 </span>    <span class="n">cumsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1024</span><span class="p">):</span>
         <span class="n">cumsum</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
@@ -983,14 +983,14 @@ our long running function.  When you use the
 generator function, the ability to stop, start, and quit a thread comes for
 free.  In the example below we decorate what would normally be an infinitely
 yielding generator, but add a button that aborts the worker when clicked:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">thread_worker</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QPushButton</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">thread_worker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QPushButton</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">update_layer</span><span class="p">(</span><span class="n">new_image</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_layer</span><span class="p">(</span><span class="n">new_image</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">new_image</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -999,7 +999,7 @@ yielding generator, but add a button that aborts the worker when clicked:</p>
         <span class="p">)</span>
 
 <span class="nd">@thread_worker</span>
-<span class="k">def</span> <span class="nf">yield_random_images_forever</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">yield_random_images_forever</span><span class="p">():</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># infinite loop!</span>
 <span class="hll">        <span class="k">yield</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">)</span>
@@ -1048,16 +1048,16 @@ pattern.  This next example ties together a number of concepts and demonstrates
 two-thread communication with conditional flow control.  It’s a simple
 cumulative multiplier that runs in another thread, and exits if the product
 hits “0”:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">thread_worker</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtGui</span> <span class="kn">import</span> <span class="n">QDoubleValidator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">thread_worker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QDoubleValidator</span>
 
 
 <span class="hll"><span class="nd">@thread_worker</span>
-</span><span class="k">def</span> <span class="nf">multiplier</span><span class="p">():</span>
+</span><span class="k">def</span><span class="w"> </span><span class="nf">multiplier</span><span class="p">():</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -1084,17 +1084,17 @@ hits “0”:</p>
 <span class="n">worker</span> <span class="o">=</span> <span class="n">multiplier</span><span class="p">()</span>
 <span class="hll">
 </span><span class="c1"># define some callbacks</span>
-<span class="k">def</span> <span class="nf">on_yielded</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_yielded</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="n">worker</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
 <span class="hll">    <span class="n">result_label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
 </span>    <span class="n">line_edit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">on_return</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_return</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="n">line_edit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="n">line_edit</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">result_label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">send_next_value</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">send_next_value</span><span class="p">():</span>
     <span class="n">worker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line_edit</span><span class="o">.</span><span class="n">text</span><span class="p">()))</span>
 <span class="hll">    <span class="n">worker</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
 </span><span class="hll">
@@ -1140,28 +1140,28 @@ your function.  In turn, <a class="reference internal" href="../api/napari.qt.th
 convenient “factory function” that creates the right subtype of <code class="docutils literal notranslate"><span class="pre">Worker</span></code>
 depending on your function type. The following three examples are equivalent:</p>
 <p><strong>Using the</strong> <code class="docutils literal notranslate"><span class="pre">&#64;thread_worker</span></code> <strong>decorator:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">thread_worker</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">thread_worker</span>
 
 <span class="nd">@thread_worker</span>
-<span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="o">...</span>
 
 <span class="n">worker</span> <span class="o">=</span> <span class="n">my_function</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Using the</strong> <code class="docutils literal notranslate"><span class="pre">create_worker</span></code> <strong>function:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">create_worker</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_worker</span>
 
-<span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="o">...</span>
 
 <span class="n">worker</span> <span class="o">=</span> <span class="n">create_worker</span><span class="p">(</span><span class="n">my_function</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Using a</strong> <code class="docutils literal notranslate"><span class="pre">Worker</span></code> <strong>class:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">FunctionWorker</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionWorker</span>
 
-<span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="o">...</span>
 
 <span class="n">worker</span> <span class="o">=</span> <span class="n">FunctionWorker</span><span class="p">(</span><span class="n">my_function</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -1192,7 +1192,7 @@ order is always
 it is important that you periodically check <code class="docutils literal notranslate"><span class="pre">self.abort_requested</span></code> in your
 thread loop, and exit the thread accordingly, otherwise <code class="docutils literal notranslate"><span class="pre">napari</span></code> will not
 be able to gracefully exit a long-running thread.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">work</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">work</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">abort_requested</span><span class="p">:</span>
@@ -1225,36 +1225,36 @@ due to challenges with multiple inheritance in Qt, the signals for
 worker namespace).  To add custom signals to a
 <a class="reference internal" href="../api/napari.qt.threading.WorkerBase.html#napari.qt.threading.WorkerBase" title="napari.qt.threading.WorkerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkerBase</span></code></a> subclass you must first create a new
 <code class="docutils literal notranslate"><span class="pre">QObject</span></code> with signals as class attributes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span>
 
-<span class="k">class</span> <span class="nc">MyWorkerSignals</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWorkerSignals</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
     <span class="n">signal_name</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
 
 <span class="c1"># or subclass one of the existing signals objects to &quot;add&quot;</span>
 <span class="c1"># additional signals:</span>
 
-<span class="kn">from</span> <span class="nn">napari.qt.threading</span> <span class="kn">import</span> <span class="n">WorkerBaseSignals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt.threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">WorkerBaseSignals</span>
 
 <span class="c1"># WorkerBaseSignals already has started, finished, errored...</span>
-<span class="k">class</span> <span class="nc">MyWorkerSignals</span><span class="p">(</span><span class="n">WorkerBaseSignals</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWorkerSignals</span><span class="p">(</span><span class="n">WorkerBaseSignals</span><span class="p">):</span>
     <span class="n">signal_name</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>and then either directly override the <code class="docutils literal notranslate"><span class="pre">self._signals</span></code> attribute on the
 <a class="reference internal" href="../api/napari.qt.threading.WorkerBase.html#napari.qt.threading.WorkerBase" title="napari.qt.threading.WorkerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkerBase</span></code></a> class with an instance of your
 signals class:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyWorker</span><span class="p">(</span><span class="n">WorkerBase</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWorker</span><span class="p">(</span><span class="n">WorkerBase</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_signals</span> <span class="o">=</span> <span class="n">MyWorkerSignals</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>… or pass the signals class as the <code class="docutils literal notranslate"><span class="pre">SignalsClass</span></code> argument when
 initializing the superclass in your <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyWorker</span><span class="p">(</span><span class="n">WorkerBase</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyWorker</span><span class="p">(</span><span class="n">WorkerBase</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SignalsClass</span><span class="o">=</span><span class="n">MyWorkerSignals</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -764,14 +764,14 @@
 <h2>Reading images with ImageJ and viewing them with napari<a class="headerlink" href="#reading-images-with-imagej-and-viewing-them-with-napari" title="Link to this heading">#</a></h2>
 <p>Here we first cut at reading images with SCIFIO+Bio-Formats via PyimageJ into NumPy arrays
 and then display them with Napari.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please specify one or more images as arguments.&#39;</span><span class="p">)</span>
     <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">imagej</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">imagej</span>
 <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;This example uses ImageJ but pyimagej is not</span>
 <span class="s2">    installed. To install try &#39;conda install pyimagej&#39;.&quot;&quot;&quot;</span><span class="p">)</span>
@@ -816,12 +816,12 @@ and then display them with Napari.</p>
 <section id="running-napari-imagej-from-plain-python">
 <h4>1. Running napari+ImageJ from plain Python<a class="headerlink" href="#running-napari-imagej-from-plain-python" title="Link to this heading">#</a></h4>
 <p>Firstly import napari:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>When napari comes up, open the Jupyter Qt console and type:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imagej</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">imagej</span>
 <span class="n">ij</span> <span class="o">=</span> <span class="n">imagej</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ij</span><span class="o">.</span><span class="n">ui</span><span class="p">()</span><span class="o">.</span><span class="n">showUI</span><span class="p">()</span>
 </pre></div>
@@ -833,15 +833,15 @@ and then display them with Napari.</p>
 <p>To fix this we can use either of these 3 following methods :</p>
 <ol class="arabic">
 <li><p>Use Java’s EventQueue to queue the task on the Java event dispatch thread:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jnius</span> <span class="kn">import</span> <span class="n">PythonJavaClass</span><span class="p">,</span> <span class="n">java_method</span><span class="p">,</span> <span class="n">autoclass</span>
-<span class="k">class</span> <span class="nc">JavaRunnable</span><span class="p">(</span><span class="n">PythonJavaClass</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jnius</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonJavaClass</span><span class="p">,</span> <span class="n">java_method</span><span class="p">,</span> <span class="n">autoclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">JavaRunnable</span><span class="p">(</span><span class="n">PythonJavaClass</span><span class="p">):</span>
     <span class="n">__javainterfaces__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;java/lang/Runnable&#39;</span><span class="p">]</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">JavaRunnable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">f</span>
 
     <span class="nd">@java_method</span><span class="p">(</span><span class="s1">&#39;()V&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_f</span><span class="p">()</span>
 
 <span class="n">EventQueue</span> <span class="o">=</span> <span class="n">autoclass</span><span class="p">(</span><span class="s1">&#39;java.awt.EventQueue&#39;</span><span class="p">)</span>
@@ -860,14 +860,14 @@ and then display them with Napari.</p>
 <section id="starting-napari-imagej-from-plain-python-without-napari-s-qt-console">
 <h4>2. Starting napari + ImageJ from plain Python (without napari’s Qt Console)<a class="headerlink" href="#starting-napari-imagej-from-plain-python-without-napari-s-qt-console" title="Link to this heading">#</a></h4>
 <p>Here is a plain Python script that starts up Qt and spins up ImageJ without use of napari’s Qt Console.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtWidgets</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt5</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtWidgets</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">([])</span>
     <span class="n">app</span><span class="o">.</span><span class="n">setQuitOnLastWindowClosed</span><span class="p">(</span> <span class="kc">True</span> <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">start_imagej</span><span class="p">():</span>
-        <span class="kn">import</span> <span class="nn">imagej</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_imagej</span><span class="p">():</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">imagej</span>
         <span class="n">ij</span> <span class="o">=</span> <span class="n">imagej</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ij</span><span class="o">.</span><span class="n">getVersion</span><span class="p">())</span>
         <span class="n">ij</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
@@ -886,13 +886,13 @@ and then display them with Napari.</p>
 <h4>3. Starting napari+ImageJ from IPython<a class="headerlink" href="#starting-napari-imagej-from-ipython" title="Link to this heading">#</a></h4>
 <p>A code that successfully starts ImageJ from IPython</p>
 <p><strong>NOTE:</strong> First initialize Qt using %gui qt or at launch via ipython –gui=qt</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">start_imagej</span><span class="p">():</span>
-    <span class="kn">import</span> <span class="nn">imagej</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">start_imagej</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">imagej</span>
     <span class="k">global</span> <span class="n">ij</span>
     <span class="n">ij</span> <span class="o">=</span> <span class="n">imagej</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ij</span><span class="o">.</span><span class="n">ui</span><span class="p">()</span><span class="o">.</span><span class="n">showUI</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ij</span><span class="o">.</span><span class="n">getVersion</span><span class="p">())</span>
-<span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt5</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtCore</span>
 <span class="n">QtCore</span><span class="o">.</span><span class="n">QTimer</span><span class="o">.</span><span class="n">singleShot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start_imagej</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -29,7 +29,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -486,77 +486,77 @@
                 <article class="bd-article">
                   
   <h1>Source code for napari._qt.qt_viewer</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">traceback</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">weakref</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">FrameType</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">weakref</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">weakref</span> <span class="kn">import</span> <span class="n">WeakSet</span><span class="p">,</span> <span class="n">ref</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">weakref</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakSet</span><span class="p">,</span> <span class="n">ref</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QCoreApplication</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QUrl</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QFileDialog</span><span class="p">,</span> <span class="n">QSplitter</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">superqt</span> <span class="kn">import</span> <span class="n">ensure_main_thread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QCoreApplication</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QUrl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QGuiApplication</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QFileDialog</span><span class="p">,</span> <span class="n">QSplitter</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">superqt</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensure_main_thread</span>
 
-<span class="kn">from</span> <span class="nn">napari._qt.containers</span> <span class="kn">import</span> <span class="n">QtLayerList</span>
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.qt_reader_dialog</span> <span class="kn">import</span> <span class="n">handle_gui_reading</span>
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.screenshot_dialog</span> <span class="kn">import</span> <span class="n">ScreenshotDialog</span>
-<span class="kn">from</span> <span class="nn">napari._qt.perf.qt_performance</span> <span class="kn">import</span> <span class="n">QtPerformance</span>
-<span class="kn">from</span> <span class="nn">napari._qt.utils</span> <span class="kn">import</span> <span class="n">QImg2array</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_dims</span> <span class="kn">import</span> <span class="n">QtDims</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_viewer_buttons</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.containers</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtLayerList</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.qt_reader_dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">handle_gui_reading</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.screenshot_dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScreenshotDialog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.perf.qt_performance</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtPerformance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">QImg2array</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_dims</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtDims</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_viewer_buttons</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">QtLayerButtons</span><span class="p">,</span>
     <span class="n">QtViewerButtons</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_viewer_dock_widget</span> <span class="kn">import</span> <span class="n">QtViewerDockWidget</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_welcome</span> <span class="kn">import</span> <span class="n">QtWidgetOverlay</span>
-<span class="kn">from</span> <span class="nn">napari.components.camera</span> <span class="kn">import</span> <span class="n">Camera</span>
-<span class="kn">from</span> <span class="nn">napari.components.layerlist</span> <span class="kn">import</span> <span class="n">LayerList</span>
-<span class="kn">from</span> <span class="nn">napari.errors</span> <span class="kn">import</span> <span class="n">MultipleReaderError</span><span class="p">,</span> <span class="n">ReaderPluginError</span>
-<span class="kn">from</span> <span class="nn">napari.layers.base.base</span> <span class="kn">import</span> <span class="n">Layer</span>
-<span class="kn">from</span> <span class="nn">napari.plugins</span> <span class="kn">import</span> <span class="n">_npe2</span>
-<span class="kn">from</span> <span class="nn">napari.settings</span> <span class="kn">import</span> <span class="n">get_settings</span>
-<span class="kn">from</span> <span class="nn">napari.settings._application</span> <span class="kn">import</span> <span class="n">DaskSettings</span>
-<span class="kn">from</span> <span class="nn">napari.utils</span> <span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">perf</span><span class="p">,</span> <span class="n">resize_dask_cache</span>
-<span class="kn">from</span> <span class="nn">napari.utils.action_manager</span> <span class="kn">import</span> <span class="n">action_manager</span>
-<span class="kn">from</span> <span class="nn">napari.utils.history</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_viewer_dock_widget</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtViewerDockWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_welcome</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtWidgetOverlay</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">Camera</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.layerlist</span><span class="w"> </span><span class="kn">import</span> <span class="n">LayerList</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultipleReaderError</span><span class="p">,</span> <span class="n">ReaderPluginError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.base.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Layer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">_npe2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings._application</span><span class="w"> </span><span class="kn">import</span> <span class="n">DaskSettings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">perf</span><span class="p">,</span> <span class="n">resize_dask_cache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.history</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">get_open_history</span><span class="p">,</span>
     <span class="n">get_save_history</span><span class="p">,</span>
     <span class="n">update_open_history</span><span class="p">,</span>
     <span class="n">update_save_history</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari.utils.io</span> <span class="kn">import</span> <span class="n">imsave</span>
-<span class="kn">from</span> <span class="nn">napari.utils.key_bindings</span> <span class="kn">import</span> <span class="n">KeymapHandler</span>
-<span class="kn">from</span> <span class="nn">napari.utils.misc</span> <span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span>
-<span class="kn">from</span> <span class="nn">napari.utils.naming</span> <span class="kn">import</span> <span class="n">CallerFrame</span>
-<span class="kn">from</span> <span class="nn">napari.utils.notifications</span> <span class="kn">import</span> <span class="n">show_info</span>
-<span class="kn">from</span> <span class="nn">napari.utils.translations</span> <span class="kn">import</span> <span class="n">trans</span>
-<span class="kn">from</span> <span class="nn">napari_builtins.io</span> <span class="kn">import</span> <span class="n">imsave_extensions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imsave</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.key_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeymapHandler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.naming</span><span class="w"> </span><span class="kn">import</span> <span class="n">CallerFrame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.notifications</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_info</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_builtins.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imsave_extensions</span>
 
-<span class="kn">from</span> <span class="nn">napari._vispy</span> <span class="kn">import</span> <span class="n">VispyCanvas</span><span class="p">,</span> <span class="n">create_vispy_layer</span>  <span class="c1"># isort:skip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">VispyCanvas</span><span class="p">,</span> <span class="n">create_vispy_layer</span>  <span class="c1"># isort:skip</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">napari_console</span> <span class="kn">import</span> <span class="n">QtConsole</span>
-    <span class="kn">from</span> <span class="nn">npe2.manifest.contributions</span> <span class="kn">import</span> <span class="n">WriterContribution</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari_console</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtConsole</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">npe2.manifest.contributions</span><span class="w"> </span><span class="kn">import</span> <span class="n">WriterContribution</span>
 
-    <span class="kn">from</span> <span class="nn">napari._qt.layer_controls</span> <span class="kn">import</span> <span class="n">QtLayerControlsContainer</span>
-    <span class="kn">from</span> <span class="nn">napari.components</span> <span class="kn">import</span> <span class="n">ViewerModel</span>
-    <span class="kn">from</span> <span class="nn">napari.utils.events</span> <span class="kn">import</span> <span class="n">Event</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.layer_controls</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtLayerControlsContainer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components</span><span class="w"> </span><span class="kn">import</span> <span class="n">ViewerModel</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
 
 
-<span class="k">def</span> <span class="nf">_npe2_decode_selected_filter</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_npe2_decode_selected_filter</span><span class="p">(</span>
     <span class="n">ext_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">selected_filter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">writers</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine the writer that should be invoked to save data.</span>
@@ -576,7 +576,7 @@
     <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">_extension_string_for_layers</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_extension_string_for_layers</span><span class="p">(</span>
     <span class="n">layers</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Layer</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an extension string and the list of corresponding writers.</span>
@@ -624,7 +624,7 @@
 
 <div class="viewcode-block" id="QtViewer">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer">[docs]</a>
-<span class="k">class</span> <span class="nc">QtViewer</span><span class="p">(</span><span class="n">QSplitter</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QtViewer</span><span class="p">(</span><span class="n">QSplitter</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Qt view for the napari Viewer model.</span>
 
 <span class="sd">    Parameters</span>
@@ -661,7 +661,7 @@
 
     <span class="n">_instances</span> <span class="o">=</span> <span class="n">WeakSet</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">viewer</span><span class="p">:</span> <span class="n">ViewerModel</span><span class="p">,</span>
         <span class="n">show_welcome_screen</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -755,7 +755,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Rectangular  vispy viewbox widget in which a subscene is rendered. Access directly within the QtViewer will</span>
 <span class="sd">        become deprecated.</span>
@@ -770,7 +770,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">view</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">camera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">camera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The Vispy camera class which contains both the 2d and 3d camera used to describe the perspective by which a</span>
 <span class="sd">        scene is viewed and interacted with. Access directly within the QtViewer will become deprecated.</span>
@@ -785,7 +785,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">camera</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">chunk_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">chunk_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
                 <span class="s1">&#39;QtViewer.chunk_receiver is deprecated in version 0.5 and will be removed in a later version. &#39;</span>
@@ -796,7 +796,7 @@
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_update_dask_cache_settings</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_dask_cache_settings</span><span class="p">(</span>
         <span class="n">dask_setting</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">DaskSettings</span><span class="p">,</span> <span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update dask cache to match settings.&quot;&quot;&quot;</span>
@@ -810,38 +810,38 @@
         <span class="n">resize_dask_cache</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">enabled</span><span class="p">)</span> <span class="o">*</span> <span class="n">size</span> <span class="o">*</span> <span class="mf">1e9</span><span class="p">))</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtLayerControlsContainer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">controls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtLayerControlsContainer</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Qt view for GUI controls.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># Avoid circular import.</span>
-            <span class="kn">from</span> <span class="nn">napari._qt.layer_controls</span> <span class="kn">import</span> <span class="n">QtLayerControlsContainer</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.layer_controls</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtLayerControlsContainer</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_controls</span> <span class="o">=</span> <span class="n">QtLayerControlsContainer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controls</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">layers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtLayerList</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtLayerList</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Qt view for LayerList controls.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span> <span class="o">=</span> <span class="n">QtLayerList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">layerButtons</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtLayerButtons</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layerButtons</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtLayerButtons</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Button controls for napari layers.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layersButtons</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_layersButtons</span> <span class="o">=</span> <span class="n">QtLayerButtons</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layersButtons</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">viewerButtons</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerButtons</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">viewerButtons</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerButtons</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Button controls for the napari viewer.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewerButtons</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_viewerButtons</span> <span class="o">=</span> <span class="n">QtViewerButtons</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewerButtons</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">dockLayerList</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dockLayerList</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;QWidget wrapped in a QDockWidget with forwarded viewer events.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockLayerList</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">layerList</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
@@ -864,7 +864,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockLayerList</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">dockLayerControls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dockLayerControls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;QWidget wrapped in a QDockWidget with forwarded viewer events.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockLayerControls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dockLayerControls</span> <span class="o">=</span> <span class="n">QtViewerDockWidget</span><span class="p">(</span>
@@ -879,7 +879,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockLayerControls</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">dockConsole</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dockConsole</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;QWidget wrapped in a QDockWidget with forwarded viewer events.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockConsole</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dockConsole</span> <span class="o">=</span> <span class="n">QtViewerDockWidget</span><span class="p">(</span>
@@ -896,38 +896,38 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockConsole</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">dockPerformance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dockPerformance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtViewerDockWidget</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockPerformance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dockPerformance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_performance_dock_widget</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dockPerformance</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">layer_to_visual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layer_to_visual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mapping of Napari layer to Vispy layer. Added for backward compatibility&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">layer_to_visual</span>
 
-    <span class="k">def</span> <span class="nf">_leave_canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_leave_canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;disable status on canvas leave&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">mouse_over_canvas</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="k">def</span> <span class="nf">_enter_canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_enter_canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;enable status on canvas enter&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;Ready&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">mouse_over_canvas</span> <span class="o">=</span> <span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">_ensure_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># lazy load console</span>
         <span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">console</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_bind_shortcuts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_bind_shortcuts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Bind shortcuts stored in SETTINGS to actions.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">action</span><span class="p">,</span> <span class="n">shortcuts</span> <span class="ow">in</span> <span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">shortcuts</span><span class="o">.</span><span class="n">shortcuts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">action_manager</span><span class="o">.</span><span class="n">unbind_shortcut</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">shortcut</span> <span class="ow">in</span> <span class="n">shortcuts</span><span class="p">:</span>
                 <span class="n">action_manager</span><span class="o">.</span><span class="n">bind_shortcut</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">shortcut</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_create_performance_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_performance_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the dock widget that shows performance metrics.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">perf</span><span class="o">.</span><span class="n">perf_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">QtViewerDockWidget</span><span class="p">(</span>
@@ -938,7 +938,7 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">_weakref_if_possible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_weakref_if_possible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a weakref to obj.</span>
 
 <span class="sd">        Parameters</span>
@@ -964,7 +964,7 @@
             <span class="n">newref</span> <span class="o">=</span> <span class="n">obj</span>
         <span class="k">return</span> <span class="n">newref</span>
 
-    <span class="k">def</span> <span class="nf">_unwrap_if_weakref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_unwrap_if_weakref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return value or if that is weakref the object referenced by value.</span>
 
 <span class="sd">        Parameters</span>
@@ -982,7 +982,7 @@
 
 <div class="viewcode-block" id="QtViewer.add_to_console_backlog">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.add_to_console_backlog">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_to_console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_to_console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save variables for pushing to console when it is instantiated.</span>
 
 <span class="sd">        This function will create weakrefs when possible to avoid holding on to</span>
@@ -1024,11 +1024,11 @@
 
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">console_backlog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List: items to push to console when instantiated.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console_backlog</span>
 
-    <span class="k">def</span> <span class="nf">_get_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtConsole</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtConsole</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to setup console.</span>
 
 <span class="sd">        Returns</span>
@@ -1042,17 +1042,17 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
             <span class="c1"># QtConsole imports debugpy that overwrites default breakpoint.</span>
             <span class="c1"># It makes problems with debugging if you do not know this.</span>
             <span class="c1"># So we do not want to overwrite it if it is already set.</span>
             <span class="n">breakpoint_handler</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">breakpointhook</span>
-            <span class="kn">from</span> <span class="nn">napari_console</span> <span class="kn">import</span> <span class="n">QtConsole</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">napari_console</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtConsole</span>
 
             <span class="n">sys</span><span class="o">.</span><span class="n">breakpointhook</span> <span class="o">=</span> <span class="n">breakpoint_handler</span>
 
-            <span class="kn">import</span> <span class="nn">napari</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
             <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -1093,7 +1093,7 @@
             <span class="k">return</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;QtConsole: iPython console terminal integrated into the napari GUI.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">console</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_console</span><span class="p">()</span>
@@ -1101,14 +1101,14 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console</span>
 
     <span class="nd">@console</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">console</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">console</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_console</span> <span class="o">=</span> <span class="n">console</span>
         <span class="k">if</span> <span class="n">console</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dockConsole</span><span class="o">.</span><span class="n">setWidget</span><span class="p">(</span><span class="n">console</span><span class="p">)</span>
             <span class="n">console</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dockConsole</span><span class="p">)</span>
 
     <span class="nd">@ensure_main_thread</span>
-    <span class="k">def</span> <span class="nf">_on_slice_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_slice_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Callback connected to `viewer._layer_slicer.events.ready`.</span>
 
 <span class="sd">        Provides updates after slicing using the slice response data.</span>
@@ -1131,7 +1131,7 @@
                 <span class="n">layer</span><span class="o">.</span><span class="n">_update_thumbnail</span><span class="p">()</span>
                 <span class="n">layer</span><span class="o">.</span><span class="n">_set_highlight</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_on_active_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_active_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;When active layer changes change keymap handler.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_key_map_handler</span><span class="o">.</span><span class="n">keymap_providers</span> <span class="o">=</span> <span class="p">(</span>
             <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">]</span>
@@ -1139,7 +1139,7 @@
             <span class="k">else</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">active</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="p">]</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_on_add_layer_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_add_layer_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;When a layer is added, set its parent and order.</span>
 
 <span class="sd">        Parameters</span>
@@ -1150,7 +1150,7 @@
         <span class="n">layer</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_add_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;When a layer is added, set its parent and order.</span>
 
 <span class="sd">        Parameters</span>
@@ -1174,7 +1174,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">add_layer_visual_mapping</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">vispy_layer</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_remove_invalid_chars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected_layer_name</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_remove_invalid_chars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected_layer_name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes invalid characters from selected layer name to suggest a filename.</span>
 
 <span class="sd">        Parameters</span>
@@ -1228,7 +1228,7 @@
         <span class="n">suggested_name</span> <span class="o">=</span> <span class="n">selected_layer_name</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">translation_table</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">suggested_name</span>
 
-    <span class="k">def</span> <span class="nf">_save_layers_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_save_layers_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save layers (all or selected) to disk, using ``LayerList.save()``.</span>
 
 <span class="sd">        Parameters</span>
@@ -1312,12 +1312,12 @@
 
             <span class="n">update_save_history</span><span class="p">(</span><span class="n">saved</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">_update_welcome_screen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_welcome_screen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update welcome screen display based on layer count.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_show_welcome_screen</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="o">.</span><span class="n">set_welcome_visible</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Capture a screenshot of the Vispy canvas.</span>
 
 <span class="sd">        Parameters</span>
@@ -1328,7 +1328,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">napari._qt.utils</span> <span class="kn">import</span> <span class="n">add_flash_animation</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_flash_animation</span>
 
             <span class="c1"># Here we are actually applying the effect to the `_welcome_widget`</span>
             <span class="c1"># and not # the `native` widget because it does not work on the</span>
@@ -1339,7 +1339,7 @@
 
 <div class="viewcode-block" id="QtViewer.screenshot">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.screenshot">[docs]</a>
-    <span class="k">def</span> <span class="nf">screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take currently displayed screen and convert to an image array.</span>
 
 <span class="sd">        Parameters</span>
@@ -1365,7 +1365,7 @@
 
 <div class="viewcode-block" id="QtViewer.clipboard">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.clipboard">[docs]</a>
-    <span class="k">def</span> <span class="nf">clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a screenshot of the currently displayed screen and copy the</span>
 <span class="sd">        image to the clipboard.</span>
 
@@ -1379,14 +1379,14 @@
         <span class="n">cb</span><span class="o">.</span><span class="n">setImage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_screenshot</span><span class="p">(</span><span class="n">flash</span><span class="p">))</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_screenshot_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_screenshot_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save screenshot of current display, default .png&quot;&quot;&quot;</span>
         <span class="n">hist</span> <span class="o">=</span> <span class="n">get_save_history</span><span class="p">()</span>
         <span class="n">dial</span> <span class="o">=</span> <span class="n">ScreenshotDialog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">screenshot</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">dial</span><span class="o">.</span><span class="n">exec_</span><span class="p">():</span>
             <span class="n">update_save_history</span><span class="p">(</span><span class="n">dial</span><span class="o">.</span><span class="n">selectedFiles</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">_open_file_dialog_uni</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caption</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_file_dialog_uni</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caption</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Open dialog to get list of files from user</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1409,7 +1409,7 @@
 
         <span class="k">return</span> <span class="n">dlg</span><span class="o">.</span><span class="n">getOpenFileNames</span><span class="p">(</span><span class="o">**</span><span class="n">open_kwargs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_open_files_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_files_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add files from the menubar.&quot;&quot;&quot;</span>
         <span class="n">filenames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_file_dialog_uni</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Select file(s)...&#39;</span><span class="p">))</span>
 
@@ -1417,11 +1417,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_qt_open</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="n">stack</span><span class="p">)</span>
             <span class="n">update_open_history</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">_open_files_dialog_as_stack_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_files_dialog_as_stack_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add files as a stack, from the menubar.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files_dialog</span><span class="p">(</span><span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_open_folder_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_folder_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a folder of files from the menubar.&quot;&quot;&quot;</span>
         <span class="n">dlg</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="p">()</span>
         <span class="n">hist</span> <span class="o">=</span> <span class="n">get_open_history</span><span class="p">()</span>
@@ -1442,7 +1442,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_qt_open</span><span class="p">([</span><span class="n">folder</span><span class="p">],</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="o">=</span><span class="n">choose_plugin</span><span class="p">)</span>
             <span class="n">update_open_history</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_qt_open</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_qt_open</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
         <span class="n">stack</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]],</span>
@@ -1499,7 +1499,7 @@
 
 <div class="viewcode-block" id="QtViewer.toggle_console_visibility">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.toggle_console_visibility">[docs]</a>
-    <span class="k">def</span> <span class="nf">toggle_console_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toggle_console_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle console visible and not visible.</span>
 
 <span class="sd">        Imports the console the first time it is requested.</span>
@@ -1533,7 +1533,7 @@
 
 <div class="viewcode-block" id="QtViewer.set_welcome_visible">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.set_welcome_visible">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_welcome_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visible</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_welcome_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visible</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Show welcome screen widget.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_show_welcome_screen</span> <span class="o">=</span> <span class="n">visible</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="o">.</span><span class="n">set_welcome_visible</span><span class="p">(</span><span class="n">visible</span><span class="p">)</span></div>
@@ -1541,7 +1541,7 @@
 
 <div class="viewcode-block" id="QtViewer.keyPressEvent">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.keyPressEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Called whenever a key is pressed.</span>
 
 <span class="sd">        Parameters</span>
@@ -1557,7 +1557,7 @@
 
 <div class="viewcode-block" id="QtViewer.keyReleaseEvent">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.keyReleaseEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">keyReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keyReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Called whenever a key is released.</span>
 
 <span class="sd">        Parameters</span>
@@ -1573,7 +1573,7 @@
 
 <div class="viewcode-block" id="QtViewer.dragEnterEvent">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.dragEnterEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Ignore event if not dragging &amp; dropping a file or URL to open.</span>
 
 <span class="sd">        Using event.ignore() here allows the event to pass through the</span>
@@ -1592,13 +1592,13 @@
             <span class="n">event</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_set_drag_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_drag_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set dedicated status message when dragging files into viewer&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
             <span class="s1">&#39;Hold &lt;Alt&gt; key to open plugin selection. Hold &lt;Shift&gt; to open files as stack.&#39;</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_image_from_clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_image_from_clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert image from clipboard as a new layer if clipboard contains an image or link.&quot;&quot;&quot;</span>
         <span class="n">cb</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasImage</span><span class="p">():</span>
@@ -1637,7 +1637,7 @@
 
 <div class="viewcode-block" id="QtViewer.dropEvent">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.dropEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add local files and web URLS with drag and drop.</span>
 
 <span class="sd">        For each file, attempt to open with existing associated reader</span>
@@ -1666,7 +1666,7 @@
         <span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_open_from_list_of_urls_data</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_from_list_of_urls_data</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">urls_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">QUrl</span><span class="p">],</span> <span class="n">stack</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">choose_plugin</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="p">):</span>
         <span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1685,7 +1685,7 @@
 
 <div class="viewcode-block" id="QtViewer.closeEvent">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.closeEvent">[docs]</a>
-    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cleanup and close.</span>
 
 <span class="sd">        Parameters</span>
@@ -1712,11 +1712,11 @@
 
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">napari._qt.experimental.qt_poll</span> <span class="kn">import</span> <span class="n">QtPoll</span>
-    <span class="kn">from</span> <span class="nn">napari.components.experimental.remote</span> <span class="kn">import</span> <span class="n">RemoteManager</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.experimental.qt_poll</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtPoll</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.experimental.remote</span><span class="w"> </span><span class="kn">import</span> <span class="n">RemoteManager</span>
 
 
-<span class="k">def</span> <span class="nf">_create_qt_poll</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">camera</span><span class="p">:</span> <span class="n">Camera</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtPoll</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_qt_poll</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">camera</span><span class="p">:</span> <span class="n">Camera</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtPoll</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create and return a QtPoll instance, if needed.</span>
 
 <span class="sd">    Create a QtPoll instance for the monitor.</span>
@@ -1740,14 +1740,14 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">monitor</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-    <span class="kn">from</span> <span class="nn">napari._qt.experimental.qt_poll</span> <span class="kn">import</span> <span class="n">QtPoll</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.experimental.qt_poll</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtPoll</span>
 
     <span class="n">qt_poll</span> <span class="o">=</span> <span class="n">QtPoll</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
     <span class="n">camera</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">qt_poll</span><span class="o">.</span><span class="n">on_camera</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">qt_poll</span>
 
 
-<span class="k">def</span> <span class="nf">_create_remote_manager</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_remote_manager</span><span class="p">(</span>
     <span class="n">layers</span><span class="p">:</span> <span class="n">LayerList</span><span class="p">,</span> <span class="n">qt_poll</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RemoteManager</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create and return a RemoteManager instance, if we need one.</span>
@@ -1762,8 +1762,8 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">monitor</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Not using the monitor at all</span>
 
-    <span class="kn">from</span> <span class="nn">napari.components.experimental.monitor</span> <span class="kn">import</span> <span class="n">monitor</span>
-    <span class="kn">from</span> <span class="nn">napari.components.experimental.remote</span> <span class="kn">import</span> <span class="n">RemoteManager</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.experimental.monitor</span><span class="w"> </span><span class="kn">import</span> <span class="n">monitor</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.experimental.remote</span><span class="w"> </span><span class="kn">import</span> <span class="n">RemoteManager</span>
 
     <span class="c1"># Start the monitor so we can access its events. The monitor has no</span>
     <span class="c1"># dependencies to napari except to utils.Event.</span>
@@ -1786,7 +1786,7 @@
     <span class="k">return</span> <span class="n">manager</span>
 
 
-<span class="k">def</span> <span class="nf">_in_napari</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frame</span><span class="p">:</span> <span class="n">FrameType</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_in_napari</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frame</span><span class="p">:</span> <span class="n">FrameType</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether we are in napari by looking at:</span>
 <span class="sd">        1) the frames modules names:</span>

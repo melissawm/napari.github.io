@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -594,7 +594,7 @@
 <p>There are no specific requirements for the contents of the array in this case. We just need some sort of file to save to this temporary directory. The test file will not appear anywhere unless there is a pause during test execution.</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">napari_get_reader</span></code> with this path, we assert that the reader is callable. A function should be returned. If it isn’t, we could put an error message here.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># tmp_path is a pytest fixture</span>
-<span class="k">def</span> <span class="nf">test_get_reader_returns_callable</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_get_reader_returns_callable</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calling get_reader on numpy file returns callable&quot;&quot;&quot;</span>
 
     <span class="c1"># write some fake data</span>
@@ -611,7 +611,7 @@
 <p><img alt="pytest passed" src="../../_images/napari_plugins_3rd_pytest_passed.png" /></p>
 <p>If the file did not end in <code class="docutils literal notranslate"><span class="pre">.npy</span></code> the test would fail because what was returned wasn’t callable. This code has been modified to produce an error:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># tmp_path is a pytest fixture</span>
-<span class="k">def</span> <span class="nf">test_get_reader_returns_callable</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_get_reader_returns_callable</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calling get_reader on numpy file returns callable&quot;&quot;&quot;</span>
 
     <span class="c1"># write some fake data</span>
@@ -636,9 +636,9 @@
 <p>The benefit of creating this fixture is that whenever we want to write our own test data we don’t have to copy three lines of code, we can just use the fixture. This is useful in testing data with different structures like integers or a specific layer type. Those arguments could be passed to further customize your fixture.</p>
 <p>We still want to make sure we get a reader when we call <code class="docutils literal notranslate"><span class="pre">napari_get_reader</span></code> with the file. We call that <code class="docutils literal notranslate"><span class="pre">reader</span></code> function with the file we created to see if it returns what we expect. Based on the <a class="reference internal" href="../building_a_plugin/guides.html#plugin-readers-guide"><span class="std std-ref">reader spec</span></a>, it should return a layer data list. Here is the full test, with the fixture:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span> <span class="nf">write_im_to_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_im_to_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">write_func</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_func</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
         <span class="n">my_test_file</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tmp_path</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span>
         <span class="n">original_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
         <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">my_test_file</span><span class="p">,</span> <span class="n">original_data</span><span class="p">)</span>
@@ -647,7 +647,7 @@
 
     <span class="k">return</span> <span class="n">write_func</span>
 
-<span class="k">def</span> <span class="nf">test_reader_round_trip</span><span class="p">(</span><span class="n">write_im_to_file</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_reader_round_trip</span><span class="p">(</span><span class="n">write_im_to_file</span><span class="p">):</span>
     <span class="n">my_test_file</span><span class="p">,</span> <span class="n">original_data</span> <span class="o">=</span> <span class="n">write_im_to_file</span><span class="p">(</span><span class="s2">&quot;myfile.npy&quot;</span><span class="p">)</span>
 
     <span class="n">reader</span> <span class="o">=</span> <span class="n">napari_get_reader</span><span class="p">(</span><span class="n">my_test_file</span><span class="p">)</span>
@@ -664,7 +664,7 @@
 <p>We’re going to assert a list length greater than zero. There must be a layer in there; otherwise, we didn’t read it correctly. We also assert that it is a list.</p>
 <p>We will test that inside that list is what we expected - layer data tuples. The first item of a layer data tuple is the actual data. We’re going to test that explicitly.</p>
 <p>Then we assert, using <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s asserting mechanism, <code class="docutils literal notranslate"><span class="pre">np.testing.assert_allclose</span></code> that they are all close, even though they should be exactly the same. This is standard practice when working with floating point precision. NumPy also has <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.testing.html">other assertion options</a> you may find useful. The layer data we read back with the reader function should be the same as the original data. If that’s true, then we made the entire round trip. We saved the file and we used the reader to read the file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_reader_round_trip</span><span class="p">(</span><span class="n">write_im_to_file</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_reader_round_trip</span><span class="p">(</span><span class="n">write_im_to_file</span><span class="p">):</span>
     <span class="n">my_test_file</span><span class="p">,</span> <span class="n">original_data</span> <span class="o">=</span> <span class="n">write_im_to_file</span><span class="p">(</span><span class="s2">&quot;myfile.npy&quot;</span><span class="p">)</span>
 
     <span class="n">reader</span> <span class="o">=</span> <span class="n">napari_get_reader</span><span class="p">(</span><span class="n">my_test_file</span><span class="p">)</span>

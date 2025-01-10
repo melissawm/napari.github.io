@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -771,13 +771,13 @@ Jupyter notebook.</p>
 1. overriding the default widget type with a custom class
 2. the <cite>auto_call</cite> option, which calls the function whenever a parameter changes</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/gui.html">gui</a></p>
-<img src="../_images/sphx_glr_magic_parameter_sweep_001.png" srcset="../_images/sphx_glr_magic_parameter_sweep_001.png" alt="magic parameter sweep" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">typing</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/typing.html#typing.Annotated" title="typing.Annotated" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Annotated</span></a>
+<img src="../_images/sphx_glr_magic_parameter_sweep_001.png" srcset="../_images/sphx_glr_magic_parameter_sweep_001.png" alt="magic parameter sweep" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/typing.html#typing.Annotated" title="typing.Annotated" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Annotated</span></a>
 
-<span class="kn">import</span> <span class="nn">skimage.data</span>
-<span class="kn">import</span> <span class="nn">skimage.filters</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">skimage.data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">skimage.filters</span>
 
-<span class="kn">import</span> <span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
 
 <span class="c1"># Define our gaussian_blur function.</span>
@@ -791,7 +791,7 @@ Jupyter notebook.</p>
 <span class="c1"># to aid widget generation. The keys of the dictionary are keyword arguments to</span>
 <span class="c1"># the corresponding magicgui widget type. For more information see</span>
 <span class="c1"># https://napari.org/magicgui/api/widgets.html.</span>
-<span class="k">def</span> <span class="nf">gaussian_blur</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian_blur</span><span class="p">(</span>
     <span class="n">layer</span><span class="p">:</span> <span class="s1">&#39;napari.layers.Image&#39;</span><span class="p">,</span>
     <span class="n">sigma</span><span class="p">:</span> <a href="https://docs.python.org/3/library/typing.html#typing.Annotated" title="typing.Annotated" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Annotated</span></a><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;widget_type&#39;</span><span class="p">:</span> <span class="s1">&#39;FloatSlider&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <a href="https://docs.python.org/3/library/typing.html#typing.Annotated" title="typing.Annotated" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Annotated</span></a><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;choices&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;reflect&#39;</span><span class="p">,</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="s1">&#39;mirror&#39;</span><span class="p">,</span> <span class="s1">&#39;wrap&#39;</span><span class="p">]}]</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span>

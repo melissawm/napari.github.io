@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -801,8 +801,8 @@ such as <code class="docutils literal notranslate"><span class="pre">skimage.io.
 you can create a “lazy” version of that function by calling <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> on the function itself.
 This <em>new</em> function, when handed a filename,
 will not actually read the file until explicitly asked with the <code class="docutils literal notranslate"><span class="pre">compute()</span></code> method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dask</span><span class="w"> </span><span class="kn">import</span> <span class="n">delayed</span>
 
 <span class="n">lazy_imread</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">imread</span><span class="p">)</span>
 <span class="n">reader</span> <span class="o">=</span> <span class="n">lazy_imread</span><span class="p">(</span><span class="s1">&#39;/path/to/file.tif&#39;</span><span class="p">)</span>  <span class="c1"># doesn&#39;t actually read the file</span>
@@ -816,11 +816,11 @@ simply substitute it for <code class="docutils literal notranslate"><span class=
 for <em>all</em> of the files in our multidimensional experiment using the <code class="docutils literal notranslate"><span class="pre">dask.array.from_delayed</span></code> function
 and a <a class="reference external" href="https://docs.python.org/3/library/glob.html"><code class="docutils literal notranslate"><span class="pre">glob</span></code></a> filename pattern
 (<em>this example assumes that all files are of the same <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">dtype</span></code>!</em>):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">skimage.io.collection</span> <span class="kn">import</span> <span class="n">alphanumeric_key</span>
-<span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
-<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io.collection</span><span class="w"> </span><span class="kn">import</span> <span class="n">alphanumeric_key</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dask</span><span class="w"> </span><span class="kn">import</span> <span class="n">delayed</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dask.array</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">da</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
 
 <span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/path/to/experiment/*.tif&quot;</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">alphanumeric_key</span><span class="p">)</span>
 <span class="c1"># read the first file to get the shape and dtype</span>
@@ -847,7 +847,7 @@ and a <a class="reference external" href="https://docs.python.org/3/library/glob
 so you can simply call <code class="docutils literal notranslate"><span class="pre">napari.view_image</span></code> on this <code class="docutils literal notranslate"><span class="pre">stack</span></code> and behind the scenes,
 Dask will take care of reading the data from disk
 and handing a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array to <code class="docutils literal notranslate"><span class="pre">napari</span></code> each time a new timepoint or channel is requested.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
 <span class="c1"># specify contrast_limits and multiscale=False with big data</span>
 <span class="c1"># to avoid unnecessary computations</span>
@@ -866,8 +866,8 @@ that does all this for you,
 provided your image format can be read by the <a class="reference external" href="https://github.com/soft-matter/pims"><code class="docutils literal notranslate"><span class="pre">pims</span></code></a> (Python Image Sequence) reader
 (if not, see note above about providing your own reader function with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>).</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask-image</span></code>, <em>all</em> of the above code can be simplified to 5 lines:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">dask_image.imread</span> <span class="kn">import</span> <span class="n">imread</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dask_image.imread</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
 
 <span class="n">stack</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;/path/to/experiment/*.tif&quot;</span><span class="p">)</span>
 <span class="n">napari</span><span class="o">.</span><span class="n">view_image</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2000</span><span class="p">],</span> <span class="n">multiscale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -889,7 +889,7 @@ provided your image format can be read by the <a class="reference external" href
 A standard approach to deal with that sort of thing in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> would be to <code class="docutils literal notranslate"><span class="pre">reshape</span></code> the array after instantiation.
 With Dask, reshaping arrays can <em>sometimes</em> lead to unexpected read events if you’re not careful.</p>
 <p>For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_image.imread</span> <span class="kn">import</span> <span class="n">imread</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask_image.imread</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
 <span class="n">stack</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;/path/to/experiment/*.tif&#39;</span><span class="p">)</span>
 <span class="n">stack</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># -&gt; something like (1200, 64, 256, 280)</span>
 <span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># incurs a single file read</span>
@@ -904,8 +904,8 @@ With Dask, reshaping arrays can <em>sometimes</em> lead to unexpected read event
 but one possible solution to this is to avoid reshaping
 Dask arrays altogether, by constructing multiple Dask arrays using <code class="docutils literal notranslate"><span class="pre">dask-image</span></code>, and then using
 <code class="docutils literal notranslate"><span class="pre">da.stack</span></code> to combine them:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask_image.imread</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask_image.imread</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dask.array</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">da</span>
 
 <span class="c1"># # instead of this</span>
 <span class="c1"># stack = imread(&#39;/path/to/experiment/*.tif&#39;)</span>
@@ -943,8 +943,8 @@ will <a class="reference internal" href="#make-your-life-easier-with-dask-image"
 <code class="docutils literal notranslate"><span class="pre">dask-image</span></code>.</p>
 <p>Using <a class="reference external" href="https://image.dask.org/en/latest/dask_image.imread.html#module-dask_image.imread">dask_image.imread</a>,
 loading the entire dataset to view in napari is straightforward.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">dask_image.imread</span> <span class="kn">import</span> <span class="n">imread</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dask_image.imread</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
 
 <span class="c1"># Load images</span>
 <span class="n">images</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span>
@@ -974,11 +974,11 @@ we do not have to wait for it to process the entire dataset.</p>
 <p>Here is an example of a script that will take a folder of raw tiff files,
 and lazily read, deskew, deconvolve, crop,
 and display them, <em>on demand</em> as you move the <code class="docutils literal notranslate"><span class="pre">napari</span></code> dimensions sliders around.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">import</span> <span class="nn">pycudadecon</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">dask_image.imread</span> <span class="kn">import</span> <span class="n">imread</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pycudadecon</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dask_image.imread</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
 
 <span class="c1"># load stacks with dask_image, and psf with skimage</span>
 <span class="n">stack</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;/path/to/experiment/*.tif&quot;</span><span class="p">)</span>
@@ -987,15 +987,15 @@ and display them, <em>on demand</em> as you move the <code class="docutils liter
 <span class="c1"># prepare some functions that accept a numpy array</span>
 <span class="c1"># and return a processed array</span>
 
-<span class="k">def</span> <span class="nf">last3dims</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">last3dims</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="c1"># this is just a wrapper because the pycudadecon function</span>
     <span class="c1"># expects ndims==3 but our blocks will have ndim==4</span>
-    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">func</span>
 
 
-<span class="k">def</span> <span class="nf">crop</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">crop</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="c1"># simple cropping function</span>
     <span class="k">return</span> <span class="n">array</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:,</span> <span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="p">:</span><span class="mi">500</span><span class="p">]</span>
 

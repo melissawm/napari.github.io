@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -599,7 +599,7 @@ hook (our primary “reader plugin” hook) as an example. It is defined as:</p>
    <span class="n">ReaderFunction</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">LayerData</span><span class="p">]]</span>
 
    <span class="nd">@napari_hook_specification</span><span class="p">(</span><span class="n">firstresult</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-   <span class="k">def</span> <span class="nf">napari_get_reader</span><span class="p">(</span>
+   <span class="k">def</span><span class="w"> </span><span class="nf">napari_get_reader</span><span class="p">(</span>
        <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ReaderFunction</span><span class="p">]:</span>
        <span class="o">...</span>
@@ -624,10 +624,10 @@ hook specification signature and returns a value with the expected return type.<
 <a class="reference internal" href="#napari.plugins.hook_specifications.napari_get_reader" title="napari.plugins.hook_specifications.napari_get_reader"><code class="xref py py-func docutils literal notranslate"><span class="pre">napari_get_reader()</span></code></a> that enables
 napari to open a numpy binary file with a <code class="docutils literal notranslate"><span class="pre">.npy</span></code> extension (previously saved
 with <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.save.html#numpy.save" title="(in NumPy v2.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.save()</span></code></a>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-   <span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+   <span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 
-   <span class="k">def</span> <span class="nf">npy_file_reader</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+   <span class="k">def</span><span class="w"> </span><span class="nf">npy_file_reader</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
       <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
       <span class="c1"># return it as a list of LayerData tuples,</span>
       <span class="c1"># here with no optional metadata</span>
@@ -635,7 +635,7 @@ with <a class="reference external" href="https://numpy.org/doc/stable/reference/
 
    <span class="c1"># this line is explained below in &quot;Decorating your function...&quot;</span>
    <span class="nd">@napari_hook_implementation</span>
-   <span class="k">def</span> <span class="nf">napari_get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+   <span class="k">def</span><span class="w"> </span><span class="nf">napari_get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
       <span class="c1"># remember, path can be a list, so we check its type first...</span>
       <span class="c1"># (this example plugin doesn&#39;t handle lists)</span>
       <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.npy&quot;</span><span class="p">):</span>
@@ -657,7 +657,7 @@ the example above.</p>
 writing a plugin. You can import a <code class="docutils literal notranslate"><span class="pre">napari_hook_implementation</span></code> decorator
 directly from <code class="docutils literal notranslate"><span class="pre">napari_plugin_engine</span></code> (a very lightweight dependency that uses
 only standard lib python).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 </pre></div>
 </div>
 <section id="matching-hook-implementations-to-specifications">
@@ -668,7 +668,7 @@ example above, because the hook implementation was literally
 named <code class="docutils literal notranslate"><span class="pre">napari_get_reader</span></code>, it gets interpreted as an implementation for the
 hook specification of the same name.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="nd">@napari_hook_implementation</span>
-   <span class="k">def</span> <span class="nf">napari_get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+   <span class="k">def</span><span class="w"> </span><span class="nf">napari_get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
       <span class="o">...</span>
 </pre></div>
 </div>
@@ -677,7 +677,7 @@ hook specification (regardless of the function’s name) by providing the name o
 the target hook specification to the <code class="docutils literal notranslate"><span class="pre">specname</span></code> argument in your
 implementation decorator:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="nd">@napari_hook_implementation</span><span class="p">(</span><span class="n">specname</span><span class="o">=</span><span class="s2">&quot;napari_get_reader&quot;</span><span class="p">)</span>
-   <span class="k">def</span> <span class="nf">whatever_name_you_want</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+   <span class="k">def</span><span class="w"> </span><span class="nf">whatever_name_you_want</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
       <span class="o">...</span>
 </pre></div>
 </div>
@@ -801,15 +801,15 @@ layers).  If the value is a string, it will be opened with
 </li>
 </ol>
 </div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 
-<span class="k">def</span> <span class="nf">_generate_random_data</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_generate_random_data</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[(</span><span class="n">data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;random data&#39;</span><span class="p">})]</span>
 
 <span class="nd">@napari_hook_implementation</span>
-<span class="k">def</span> <span class="nf">napari_provide_sample_data</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_provide_sample_data</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;random data&#39;</span><span class="p">:</span> <span class="n">_generate_random_data</span><span class="p">,</span>
         <span class="s1">&#39;random image&#39;</span><span class="p">:</span> <span class="s1">&#39;https://picsum.photos/1024&#39;</span><span class="p">,</span>
@@ -902,7 +902,7 @@ being saved in the form of <code class="docutils literal notranslate"><span clas
 </div>
 <p>An example function signature for a <code class="docutils literal notranslate"><span class="pre">WriterFunction</span></code> that might be
 returned by this hook specification is as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">writer_function</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">writer_function</span><span class="p">(</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">layer_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="o">...</span>
@@ -1131,16 +1131,16 @@ them.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">napari.types</span> <span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LayerDataTuple</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageData</span><span class="p">,</span> <span class="n">LayerDataTuple</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">image</span> <span class="p">:</span> <span class="n">ImageData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataTuple</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">image</span> <span class="p">:</span> <span class="n">ImageData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataTuple</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># process the image</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="n">image</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># return it + some layer properties</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;colormap&#39;</span><span class="p">:</span><span class="s1">&#39;turbo&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@napari_hook_implementation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">napari_experimental_provide_function</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_function</span><span class="p">():</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">my_function</span>
 </pre></div>
 </div>
@@ -1170,7 +1170,7 @@ You can replace existing themes by using the same names.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">get_new_theme</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">]]:</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">get_new_theme</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">]]:</span>
 <span class="gp">... </span>    <span class="c1"># specify theme(s) that should be added to napari</span>
 <span class="gp">... </span>    <span class="n">themes</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span>        <span class="s2">&quot;super_dark&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1192,7 +1192,7 @@ You can replace existing themes by using the same names.</p>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">themes</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@napari_hook_implementation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">napari_experimental_provide_theme</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_theme</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">get_new_theme</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1227,11 +1227,11 @@ or class.</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>An example with a QtWidget:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">napari_viewer</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari_viewer</span>
 <span class="gp">... </span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <span class="gp">...</span>
@@ -1240,7 +1240,7 @@ or class.</p>
 <span class="gp">...</span>
 <span class="gp">... </span>        <span class="c1"># add a button</span>
 <span class="gp">... </span>        <span class="n">btn</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Click me!&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="k">def</span> <span class="nf">trigger</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="k">def</span><span class="w"> </span><span class="nf">trigger</span><span class="p">():</span>
 <span class="gp">... </span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;napari has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">napari_viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">),</span> <span class="s2">&quot;layers&quot;</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="n">btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">trigger</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
@@ -1249,22 +1249,22 @@ or class.</p>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@napari_hook_implementation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">MyWidget</span>
 </pre></div>
 </div>
 <p>An example using magicgui:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magic_factory</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="kn">import</span> <span class="n">magic_factory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@magic_factory</span><span class="p">(</span><span class="n">auto_call</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">16</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">threshold</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">data</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span>
 <span class="gp">... </span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.LabelsData&#39;</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nd">@napari_hook_implementation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">threshold</span>
 </pre></div>
 </div>

@@ -29,7 +29,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -491,14 +491,14 @@
 <span class="sd">wrap.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">contextlib</span>
-<span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">contextlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
     <span class="n">ClassVar</span><span class="p">,</span>
@@ -507,10 +507,10 @@
     <span class="n">Union</span><span class="p">,</span>
     <span class="n">cast</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">weakref</span> <span class="kn">import</span> <span class="n">WeakValueDictionary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">weakref</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakValueDictionary</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">QEvent</span><span class="p">,</span>
     <span class="n">QEventLoop</span><span class="p">,</span>
     <span class="n">QPoint</span><span class="p">,</span>
@@ -520,8 +520,8 @@
     <span class="n">Qt</span><span class="p">,</span>
     <span class="n">Slot</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtGui</span> <span class="kn">import</span> <span class="n">QHideEvent</span><span class="p">,</span> <span class="n">QIcon</span><span class="p">,</span> <span class="n">QShowEvent</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QHideEvent</span><span class="p">,</span> <span class="n">QIcon</span><span class="p">,</span> <span class="n">QShowEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">QApplication</span><span class="p">,</span>
     <span class="n">QDialog</span><span class="p">,</span>
     <span class="n">QDockWidget</span><span class="p">,</span>
@@ -533,60 +533,60 @@
     <span class="n">QWidget</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">napari._app_model.constants</span> <span class="kn">import</span> <span class="n">MenuId</span>
-<span class="kn">from</span> <span class="nn">napari._app_model.context</span> <span class="kn">import</span> <span class="n">create_context</span><span class="p">,</span> <span class="n">get_context</span>
-<span class="kn">from</span> <span class="nn">napari._qt._qapp_model</span> <span class="kn">import</span> <span class="n">build_qmodel_menu</span>
-<span class="kn">from</span> <span class="nn">napari._qt._qapp_model.qactions</span> <span class="kn">import</span> <span class="n">add_dummy_actions</span><span class="p">,</span> <span class="n">init_qactions</span>
-<span class="kn">from</span> <span class="nn">napari._qt._qapp_model.qactions._debug</span> <span class="kn">import</span> <span class="n">_is_set_trace_active</span>
-<span class="kn">from</span> <span class="nn">napari._qt._qplugins</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">MenuId</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_context</span><span class="p">,</span> <span class="n">get_context</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt._qapp_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_qmodel_menu</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt._qapp_model.qactions</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_dummy_actions</span><span class="p">,</span> <span class="n">init_qactions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt._qapp_model.qactions._debug</span><span class="w"> </span><span class="kn">import</span> <span class="n">_is_set_trace_active</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt._qplugins</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">_rebuild_npe1_plugins_menu</span><span class="p">,</span>
     <span class="n">_rebuild_npe1_samples_menu</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.confirm_close_dialog</span> <span class="kn">import</span> <span class="n">ConfirmCloseDialog</span>
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.preferences_dialog</span> <span class="kn">import</span> <span class="n">PreferencesDialog</span>
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.qt_activity_dialog</span> <span class="kn">import</span> <span class="n">QtActivityDialog</span>
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.qt_notification</span> <span class="kn">import</span> <span class="n">NapariQtNotification</span>
-<span class="kn">from</span> <span class="nn">napari._qt.qt_event_loop</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.confirm_close_dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfirmCloseDialog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.preferences_dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">PreferencesDialog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.qt_activity_dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtActivityDialog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.qt_notification</span><span class="w"> </span><span class="kn">import</span> <span class="n">NapariQtNotification</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.qt_event_loop</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">NAPARI_ICON_PATH</span><span class="p">,</span>
     <span class="n">get_qapp</span><span class="p">,</span>
     <span class="n">quit_app</span> <span class="k">as</span> <span class="n">quit_app_</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari._qt.qt_resources</span> <span class="kn">import</span> <span class="n">get_stylesheet</span>
-<span class="kn">from</span> <span class="nn">napari._qt.qt_viewer</span> <span class="kn">import</span> <span class="n">QtViewer</span>
-<span class="kn">from</span> <span class="nn">napari._qt.threads.status_checker</span> <span class="kn">import</span> <span class="n">StatusChecker</span>
-<span class="kn">from</span> <span class="nn">napari._qt.utils</span> <span class="kn">import</span> <span class="n">QImg2array</span><span class="p">,</span> <span class="n">qbytearray_to_str</span><span class="p">,</span> <span class="n">str_to_qbytearray</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_viewer_dock_widget</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.qt_resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_stylesheet</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.qt_viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtViewer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.threads.status_checker</span><span class="w"> </span><span class="kn">import</span> <span class="n">StatusChecker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">QImg2array</span><span class="p">,</span> <span class="n">qbytearray_to_str</span><span class="p">,</span> <span class="n">str_to_qbytearray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_viewer_dock_widget</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">_SHORTCUT_DEPRECATION_STRING</span><span class="p">,</span>
     <span class="n">QtViewerDockWidget</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_viewer_status_bar</span> <span class="kn">import</span> <span class="n">ViewerStatusBar</span>
-<span class="kn">from</span> <span class="nn">napari.plugins</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_viewer_status_bar</span><span class="w"> </span><span class="kn">import</span> <span class="n">ViewerStatusBar</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">menu_item_template</span> <span class="k">as</span> <span class="n">plugin_menu_item_template</span><span class="p">,</span>
     <span class="n">plugin_manager</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari.plugins._npe2</span> <span class="kn">import</span> <span class="n">index_npe1_adapters</span>
-<span class="kn">from</span> <span class="nn">napari.settings</span> <span class="kn">import</span> <span class="n">get_settings</span>
-<span class="kn">from</span> <span class="nn">napari.utils</span> <span class="kn">import</span> <span class="n">perf</span>
-<span class="kn">from</span> <span class="nn">napari.utils._proxies</span> <span class="kn">import</span> <span class="n">PublicOnlyProxy</span>
-<span class="kn">from</span> <span class="nn">napari.utils.events</span> <span class="kn">import</span> <span class="n">Event</span>
-<span class="kn">from</span> <span class="nn">napari.utils.io</span> <span class="kn">import</span> <span class="n">imsave</span>
-<span class="kn">from</span> <span class="nn">napari.utils.misc</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.plugins._npe2</span><span class="w"> </span><span class="kn">import</span> <span class="n">index_npe1_adapters</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">perf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._proxies</span><span class="w"> </span><span class="kn">import</span> <span class="n">PublicOnlyProxy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imsave</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">in_ipython</span><span class="p">,</span>
     <span class="n">in_jupyter</span><span class="p">,</span>
     <span class="n">in_python_repl</span><span class="p">,</span>
     <span class="n">running_as_constructor_app</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">napari.utils.notifications</span> <span class="kn">import</span> <span class="n">Notification</span>
-<span class="kn">from</span> <span class="nn">napari.utils.theme</span> <span class="kn">import</span> <span class="n">_themes</span><span class="p">,</span> <span class="n">get_system_theme</span>
-<span class="kn">from</span> <span class="nn">napari.utils.translations</span> <span class="kn">import</span> <span class="n">trans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.notifications</span><span class="w"> </span><span class="kn">import</span> <span class="n">Notification</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.theme</span><span class="w"> </span><span class="kn">import</span> <span class="n">_themes</span><span class="p">,</span> <span class="n">get_system_theme</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
 <span class="n">_sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">magicgui.widgets</span> <span class="kn">import</span> <span class="n">Widget</span>
-    <span class="kn">from</span> <span class="nn">qtpy.QtGui</span> <span class="kn">import</span> <span class="n">QImage</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">magicgui.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">Widget</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QImage</span>
 
-    <span class="kn">from</span> <span class="nn">napari.viewer</span> <span class="kn">import</span> <span class="n">Viewer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span>
 
 
 <span class="n">MenuStr</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span>
@@ -599,7 +599,7 @@
 <span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">_QtMainWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_QtMainWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
     <span class="c1"># This was added so that someone can patch</span>
     <span class="c1"># `napari._qt.qt_main_window._QtMainWindow._window_icon`</span>
     <span class="c1"># to their desired window icon</span>
@@ -614,7 +614,7 @@
     <span class="c1"># `window` is passed through on construction, so it&#39;s available to a window</span>
     <span class="c1"># provider for dependency injection</span>
     <span class="c1"># See https://github.com/napari/napari/pull/4826</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="s1">&#39;Window&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -699,13 +699,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_toggle_status_thread</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_toggle_status_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_status_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">status_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">status_thread</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">showEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QShowEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">showEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QShowEvent</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Override to handle window state changes.&quot;&quot;&quot;</span>
         <span class="n">settings</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span>
         <span class="c1"># if event loop is not running, we don&#39;t want to start the thread</span>
@@ -717,7 +717,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">status_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">showEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">enterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a0</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a0</span><span class="p">):</span>
         <span class="c1"># as we call show in Viewer constructor, we need to start the thread</span>
         <span class="c1"># when the mouse enters the window</span>
         <span class="c1"># as first call of showEvent is before the event loop is running</span>
@@ -728,11 +728,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">status_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">enterEvent</span><span class="p">(</span><span class="n">a0</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">hideEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QHideEvent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hideEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">QHideEvent</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status_thread</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">hideEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">set_status_and_tooltip</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_status_and_tooltip</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">status_and_tooltip</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="n">status_and_tooltip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -744,19 +744,19 @@
         <span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">help</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">help</span>
 
-    <span class="k">def</span> <span class="nf">statusBar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ViewerStatusBar&#39;</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">statusBar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ViewerStatusBar&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">current</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;_QtMainWindow&#39;</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;_QtMainWindow&#39;</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span> <span class="k">else</span> <span class="kc">None</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">current_viewer</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current_viewer</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="n">window</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">window</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span> <span class="k">if</span> <span class="n">window</span> <span class="k">else</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">QEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QEvent</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">ToolTip</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">tooltip</span><span class="o">.</span><span class="n">visible</span>
@@ -784,7 +784,7 @@
 
         <span class="k">return</span> <span class="n">res</span>
 
-    <span class="k">def</span> <span class="nf">showFullScreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">showFullScreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">showFullScreen</span><span class="p">()</span>
         <span class="c1"># Handle OpenGL based windows fullscreen issue on Windows.</span>
         <span class="c1"># For more info see:</span>
@@ -793,8 +793,8 @@
         <span class="c1">#  * https://bugreports.qt.io/browse/QTBUG-104511</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="kn">import</span> <span class="nn">win32con</span>
-        <span class="kn">import</span> <span class="nn">win32gui</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">win32con</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">win32gui</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">windowHandle</span><span class="p">():</span>
             <span class="n">handle</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowHandle</span><span class="p">()</span><span class="o">.</span><span class="n">winId</span><span class="p">())</span>
@@ -805,7 +805,7 @@
                 <span class="o">|</span> <span class="n">win32con</span><span class="o">.</span><span class="n">WS_BORDER</span><span class="p">,</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c1"># Handle showing hidden menubar on mouse move event.</span>
         <span class="c1"># We do not hide menubar when a menu is being shown or</span>
         <span class="c1"># we are not in menubar toggled state</span>
@@ -832,7 +832,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">menuBar</span><span class="p">()</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">eventFilter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_load_window_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_window_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load window layout settings from configuration.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -858,7 +858,7 @@
             <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">window_fullscreen</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_get_window_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_window_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return current window settings.</span>
 
 <span class="sd">        Symmetric to the &#39;set_window_settings&#39; setter.</span>
@@ -879,7 +879,7 @@
             <span class="n">window_fullscreen</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_set_window_settings</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_window_settings</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">window_state</span><span class="p">,</span>
         <span class="n">window_size</span><span class="p">,</span>
@@ -919,7 +919,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">setUpdatesEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_save_current_window_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_save_current_window_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the current geometry of the main window.&quot;&quot;&quot;</span>
         <span class="p">(</span>
             <span class="n">window_state</span><span class="p">,</span>
@@ -942,7 +942,7 @@
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">save_window_state</span><span class="p">:</span>
             <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">window_state</span> <span class="o">=</span> <span class="n">window_state</span>
 
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quit_app</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">confirm_need</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quit_app</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">confirm_need</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Override to handle closing app or just the window.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">quit_app</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -964,7 +964,7 @@
         <span class="k">return</span> <span class="kc">None</span>
         <span class="c1"># here we inform that confirmation dialog is not open</span>
 
-    <span class="k">def</span> <span class="nf">close_window</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close_window</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Close active dialog or active window.&quot;&quot;&quot;</span>
         <span class="n">parent</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">focusWidget</span><span class="p">()</span>
         <span class="k">while</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -981,14 +981,14 @@
             <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
                 <span class="n">parent</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="s1">&#39;_parent&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ev</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ev</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">changeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">changeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle window state changes.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QEvent</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">WindowStateChange</span><span class="p">:</span>
             <span class="c1"># TODO: handle maximization issue. When double clicking on the</span>
@@ -1014,7 +1014,7 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">changeEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Called whenever a key is pressed.</span>
 
 <span class="sd">        Parameters</span>
@@ -1027,7 +1027,7 @@
         <span class="p">)</span>
         <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">keyReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keyReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Called whenever a key is released.</span>
 
 <span class="sd">        Parameters</span>
@@ -1040,7 +1040,7 @@
         <span class="p">)</span>
         <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resizeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Override to handle original size before maximizing.&quot;&quot;&quot;</span>
         <span class="c1"># the first resize event will have nonsense positions that we don&#39;t</span>
         <span class="c1"># want to store (and potentially restore)</span>
@@ -1054,7 +1054,7 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">resizeEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method will be called when the main window is closing.</span>
 
 <span class="sd">        Regardless of whether cmd Q, cmd W, or the close button is used...</span>
@@ -1097,7 +1097,7 @@
 
         <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Restart the napari application in a detached process.&quot;&quot;&quot;</span>
         <span class="n">process</span> <span class="o">=</span> <span class="n">QProcess</span><span class="p">()</span>
         <span class="n">process</span><span class="o">.</span><span class="n">setProgram</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
@@ -1108,7 +1108,7 @@
         <span class="n">process</span><span class="o">.</span><span class="n">startDetached</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">quit_app</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">toggle_menubar_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">toggle_menubar_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Change menubar to be shown or to be hidden and shown on mouse movement.</span>
 
@@ -1120,14 +1120,14 @@
 
     <span class="nd">@staticmethod</span>
     <span class="nd">@Slot</span><span class="p">(</span><span class="n">Notification</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">show_notification</span><span class="p">(</span><span class="n">notification</span><span class="p">:</span> <span class="n">Notification</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_notification</span><span class="p">(</span><span class="n">notification</span><span class="p">:</span> <span class="n">Notification</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Show notification coming from a thread.&quot;&quot;&quot;</span>
         <span class="n">NapariQtNotification</span><span class="o">.</span><span class="n">show_notification</span><span class="p">(</span><span class="n">notification</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Window">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window">[docs]</a>
-<span class="k">class</span> <span class="nc">Window</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Window</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Application window that contains the menu bar and viewer.</span>
 
 <span class="sd">    Parameters</span>
@@ -1149,7 +1149,7 @@
 <span class="sd">        Window menu.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># create QApplication if it doesn&#39;t already exist</span>
         <span class="n">qapp</span> <span class="o">=</span> <span class="n">get_qapp</span><span class="p">()</span>
 
@@ -1222,7 +1222,7 @@
                 <span class="n">Qt</span><span class="o">.</span><span class="n">Orientation</span><span class="o">.</span><span class="n">Vertical</span><span class="p">,</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_setup_existing_themes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_existing_themes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is only executed once at the startup of napari</span>
 <span class="sd">        to connect events to themes that have not been connected yet.</span>
 
@@ -1237,7 +1237,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect_theme</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_connect_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_connect_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
         <span class="c1"># connect events to update theme. Here, we don&#39;t want to pass the event</span>
         <span class="c1"># since it won&#39;t have the right `value` attribute.</span>
         <span class="n">theme</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_theme_no_event</span><span class="p">)</span>
@@ -1264,7 +1264,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">_update_theme</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_disconnect_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_disconnect_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theme</span><span class="p">):</span>
         <span class="n">theme</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_theme_no_event</span><span class="p">)</span>
         <span class="n">theme</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">foreground</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_theme_no_event</span><span class="p">)</span>
         <span class="n">theme</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">primary</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_theme_no_event</span><span class="p">)</span>
@@ -1290,18 +1290,18 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">_update_theme</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_add_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add new theme and connect events.&quot;&quot;&quot;</span>
         <span class="n">theme</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_connect_theme</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_remove_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_remove_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove theme and disconnect events.&quot;&quot;&quot;</span>
         <span class="n">theme</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect_theme</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">qt_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">qt_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
                 <span class="s1">&#39;Public access to Window.qt_viewer is deprecated and will be removed in</span><span class="se">\n</span><span class="s1">&#39;</span>
@@ -1316,45 +1316,45 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">_qt_viewer</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_qt_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_qt_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># this is starting to be &quot;vestigial&quot;... this property could be removed</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">_qt_viewer</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">_status_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_status_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># TODO: remove from window</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">statusBar</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_update_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">menu</span><span class="p">:</span> <span class="n">MenuStr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">menu</span><span class="p">:</span> <span class="n">MenuStr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update enabled/visible state of menu item with context.&quot;&quot;&quot;</span>
         <span class="n">layerlist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span>
         <span class="n">menu_model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">menu</span><span class="p">)</span>
         <span class="n">menu_model</span><span class="o">.</span><span class="n">update_from_context</span><span class="p">(</span><span class="n">get_context</span><span class="p">(</span><span class="n">layerlist</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">_update_file_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_file_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_menu_state</span><span class="p">(</span><span class="s1">&#39;file_menu&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_view_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_view_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_menu_state</span><span class="p">(</span><span class="s1">&#39;view_menu&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_layers_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_layers_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_menu_state</span><span class="p">(</span><span class="s1">&#39;layers_menu&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_window_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_window_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_menu_state</span><span class="p">(</span><span class="s1">&#39;window_menu&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_plugins_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_plugins_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_menu_state</span><span class="p">(</span><span class="s1">&#39;plugins_menu&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_help_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_help_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_menu_state</span><span class="p">(</span><span class="s1">&#39;help_menu&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_debug_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_debug_menu_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">viewer_ctx</span> <span class="o">=</span> <span class="n">get_context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_debug_menu</span><span class="o">.</span><span class="n">update_from_context</span><span class="p">(</span><span class="n">viewer_ctx</span><span class="p">)</span>
 
     <span class="c1"># TODO: Remove once npe1 deprecated</span>
-    <span class="k">def</span> <span class="nf">_setup_npe1_samples_menu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_npe1_samples_menu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Register npe1 sample data, build menu and connect to events.&quot;&quot;&quot;</span>
         <span class="n">plugin_manager</span><span class="o">.</span><span class="n">discover_sample_data</span><span class="p">()</span>
         <span class="n">plugin_manager</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">enabled</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_rebuild_npe1_samples_menu</span><span class="p">)</span>
@@ -1364,7 +1364,7 @@
         <span class="n">_rebuild_npe1_samples_menu</span><span class="p">()</span>
 
     <span class="c1"># TODO: Remove once npe1 deprecated</span>
-    <span class="k">def</span> <span class="nf">_setup_npe1_plugins_menu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_npe1_plugins_menu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Register npe1 widgets, build menu and connect to events&quot;&quot;&quot;</span>
         <span class="n">plugin_manager</span><span class="o">.</span><span class="n">discover_widgets</span><span class="p">()</span>
         <span class="n">plugin_manager</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">registered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_rebuild_npe1_plugins_menu</span><span class="p">)</span>
@@ -1372,9 +1372,9 @@
         <span class="n">plugin_manager</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">unregistered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_rebuild_npe1_plugins_menu</span><span class="p">)</span>
         <span class="n">_rebuild_npe1_plugins_menu</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_handle_trace_file_on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_trace_file_on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Start trace of `trace_file_on_start` config set.&quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">napari._qt._qapp_model.qactions._debug</span> <span class="kn">import</span> <span class="n">_start_trace</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt._qapp_model.qactions._debug</span><span class="w"> </span><span class="kn">import</span> <span class="n">_start_trace</span>
 
         <span class="k">if</span> <span class="n">perf</span><span class="o">.</span><span class="n">perf_config</span><span class="p">:</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">perf</span><span class="o">.</span><span class="n">perf_config</span><span class="o">.</span><span class="n">trace_file_on_start</span>
@@ -1385,7 +1385,7 @@
                 <span class="c1"># without having to start it from the debug menu.</span>
                 <span class="n">_start_trace</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_add_menus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_menus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add menubar to napari app.&quot;&quot;&quot;</span>
         <span class="c1"># TODO: move this to _QMainWindow... but then all of the Menu()</span>
         <span class="c1"># items will not have easy access to the methods on this Window obj.</span>
@@ -1471,7 +1471,7 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">main_menu</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">help_menu</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_toggle_menubar_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_menubar_visible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle visibility of app menubar.</span>
 
 <span class="sd">        This function also disables or enables a global keyboard shortcut to</span>
@@ -1481,14 +1481,14 @@
         <span class="n">toggle_menubar_visibility</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">toggle_menubar_visibility</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main_menu_shortcut</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">toggle_menubar_visibility</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_toggle_fullscreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_fullscreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle fullscreen mode.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">isFullScreen</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">showNormal</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">showFullScreen</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_toggle_play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle play.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">is_playing</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
@@ -1498,7 +1498,7 @@
 
 <div class="viewcode-block" id="Window.add_plugin_dock_widget">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.add_plugin_dock_widget">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_plugin_dock_widget</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_plugin_dock_widget</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">widget_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1523,7 +1523,7 @@
 <span class="sd">            A 2-tuple containing (the DockWidget instance, the plugin widget</span>
 <span class="sd">            instance).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">napari.plugins</span> <span class="kn">import</span> <span class="n">_npe2</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">_npe2</span>
 
         <span class="n">widget_class</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">dock_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1561,7 +1561,7 @@
         <span class="k">return</span> <span class="n">dock_widget</span><span class="p">,</span> <span class="n">wdg</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_add_plugin_function_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">widget_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_plugin_function_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">widget_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add plugin function widget if not already added.</span>
 
 <span class="sd">        Parameters</span>
@@ -1586,7 +1586,7 @@
 
 <div class="viewcode-block" id="Window.add_dock_widget">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.add_dock_widget">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_dock_widget</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_dock_widget</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">widget</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">QWidget</span><span class="p">,</span> <span class="s1">&#39;Widget&#39;</span><span class="p">],</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1696,7 +1696,7 @@
         <span class="k">return</span> <span class="n">dock_widget</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_add_viewer_dock_widget</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_viewer_dock_widget</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">dock_widget</span><span class="p">:</span> <span class="n">QtViewerDockWidget</span><span class="p">,</span>
         <span class="n">tabify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -1743,7 +1743,7 @@
             <span class="n">action</span> <span class="o">=</span> <span class="n">dock_widget</span><span class="o">.</span><span class="n">toggleViewAction</span><span class="p">()</span>
             <span class="n">action</span><span class="o">.</span><span class="n">setStatusTip</span><span class="p">(</span><span class="n">dock_widget</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">action</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">dock_widget</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-            <span class="kn">import</span> <span class="nn">warnings</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
             <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
@@ -1757,7 +1757,7 @@
         <span class="c1"># see #3663, to fix #3624 more generally</span>
         <span class="n">dock_widget</span><span class="o">.</span><span class="n">setFloating</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_remove_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_remove_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">widget_name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="n">widget_name</span><span class="p">:</span>
@@ -1767,7 +1767,7 @@
 
 <div class="viewcode-block" id="Window.remove_dock_widget">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.remove_dock_widget">[docs]</a>
-    <span class="k">def</span> <span class="nf">remove_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">:</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes specified dock widget.</span>
 
 <span class="sd">        If a QDockWidget is not provided, the existing QDockWidgets will be</span>
@@ -1822,7 +1822,7 @@
 
 <div class="viewcode-block" id="Window.add_function_widget">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.add_function_widget">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_function_widget</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_function_widget</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">function</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -1860,7 +1860,7 @@
 <span class="sd">        dock_widget : QtViewerDockWidget</span>
 <span class="sd">            `dock_widget` that can pass viewer events.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magicgui</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="kn">import</span> <span class="n">magicgui</span>
 
         <span class="k">if</span> <span class="n">magic_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">magic_kwargs</span> <span class="o">=</span> <span class="p">{</span>
@@ -1894,7 +1894,7 @@
 
 <div class="viewcode-block" id="Window.resize">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.resize">[docs]</a>
-    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Resize the window.</span>
 
 <span class="sd">        Parameters</span>
@@ -1909,7 +1909,7 @@
 
 <div class="viewcode-block" id="Window.set_geometry">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.set_geometry">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the geometry of the widget</span>
 
 <span class="sd">        Parameters</span>
@@ -1928,7 +1928,7 @@
 
 <div class="viewcode-block" id="Window.geometry">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.geometry">[docs]</a>
-    <span class="k">def</span> <span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the geometry of the widget</span>
 
 <span class="sd">        Returns</span>
@@ -1948,7 +1948,7 @@
 
 <div class="viewcode-block" id="Window.show">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.show">[docs]</a>
-    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Resize, show, and bring forward the window.</span>
 
 <span class="sd">        Raises</span>
@@ -1965,7 +1965,7 @@
                     <span class="s1">&#39;This viewer has already been closed and deleted. Please create a new one.&#39;</span><span class="p">,</span>
                     <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="p">)</span>
-            <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
 
         <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">first_time</span><span class="p">:</span>
             <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">first_time</span> <span class="o">=</span> <span class="kc">False</span>
@@ -1977,7 +1977,7 @@
                         <span class="s1">&#39;This viewer has already been closed and deleted. Please create a new one.&#39;</span><span class="p">,</span>
                         <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="p">)</span>
-                <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">save_window_geometry</span><span class="p">:</span>
@@ -1985,7 +1985,7 @@
                         <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">_load_window_settings</span><span class="p">()</span>
                     <span class="p">)</span>
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>  <span class="c1"># noqa: BLE001</span>
-                <span class="kn">import</span> <span class="nn">warnings</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
                     <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
@@ -2017,22 +2017,22 @@
 
 <div class="viewcode-block" id="Window.activate">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.activate">[docs]</a>
-    <span class="k">def</span> <span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Make the viewer the currently active window.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">raise_</span><span class="p">()</span>  <span class="c1"># for macOS</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">activateWindow</span><span class="p">()</span>  <span class="c1"># for Windows</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_update_theme_no_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_theme_no_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_theme</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_update_theme_font_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_theme_font_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">settings</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span>
         <span class="n">font_size</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">event</span> <span class="k">else</span> <span class="n">settings</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">font_size</span>
         <span class="n">extra_variables</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;font_size&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">font_size</span><span class="si">}</span><span class="s1">pt&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_theme</span><span class="p">(</span><span class="n">extra_variables</span><span class="o">=</span><span class="n">extra_variables</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_variables</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_theme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_variables</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update widget color theme.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">extra_variables</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">extra_variables</span> <span class="o">=</span> <span class="p">{}</span>
@@ -2058,7 +2058,7 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">_console</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">_console</span><span class="o">.</span><span class="n">_update_theme</span><span class="p">(</span><span class="n">style_sheet</span><span class="o">=</span><span class="n">style_sheet</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_status_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_status_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update status bar.</span>
 
 <span class="sd">        Parameters</span>
@@ -2077,7 +2077,7 @@
                 <span class="n">coordinates</span><span class="o">=</span><span class="n">status_info</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">],</span>
             <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_title_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_title_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update window title.</span>
 
 <span class="sd">        Parameters</span>
@@ -2087,7 +2087,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_help_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_help_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update help message on status bar.</span>
 
 <span class="sd">        Parameters</span>
@@ -2097,11 +2097,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_status_bar</span><span class="o">.</span><span class="n">setHelpText</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Restart the napari application.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_screenshot</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_screenshot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">scale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2137,7 +2137,7 @@
 <span class="sd">        -------</span>
 <span class="sd">        img : QImage</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">napari._qt.utils</span> <span class="kn">import</span> <span class="n">add_flash_animation</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_flash_animation</span>
 
         <span class="n">canvas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">canvas</span>
         <span class="n">prev_size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span>
@@ -2213,7 +2213,7 @@
 
 <div class="viewcode-block" id="Window.export_figure">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.export_figure">[docs]</a>
-    <span class="k">def</span> <span class="nf">export_figure</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_figure</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -2267,7 +2267,7 @@
 
 <div class="viewcode-block" id="Window.screenshot">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.screenshot">[docs]</a>
-    <span class="k">def</span> <span class="nf">screenshot</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">screenshot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">canvas_only</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take currently displayed viewer and convert to an image array.</span>
@@ -2306,7 +2306,7 @@
 
 <div class="viewcode-block" id="Window.clipboard">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.clipboard">[docs]</a>
-    <span class="k">def</span> <span class="nf">clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">canvas_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clipboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">canvas_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Copy screenshot of current viewer to the clipboard.</span>
 
 <span class="sd">        Parameters</span>
@@ -2323,7 +2323,7 @@
         <span class="n">QApplication</span><span class="o">.</span><span class="n">clipboard</span><span class="p">()</span><span class="o">.</span><span class="n">setImage</span><span class="p">(</span><span class="n">img</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Carry out various teardown tasks such as event disconnection.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setup_existing_themes</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">_themes</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">added</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_add_theme</span><span class="p">)</span>
@@ -2331,7 +2331,7 @@
 
 <div class="viewcode-block" id="Window.close">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.close">[docs]</a>
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the viewer window and cleanup sub-widgets.&quot;&quot;&quot;</span>
         <span class="c1"># Someone is closing us twice? Only try to delete self._qt_window</span>
         <span class="c1"># if we still have one.</span>
@@ -2342,7 +2342,7 @@
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_open_preferences_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PreferencesDialog</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_preferences_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PreferencesDialog</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Edit preferences from the menubar.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pref_dialog</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">win</span> <span class="o">=</span> <span class="n">PreferencesDialog</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="p">)</span>
@@ -2353,10 +2353,10 @@
                 <span class="n">win</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="o">*</span><span class="n">app_pref</span><span class="o">.</span><span class="n">preferences_size</span><span class="p">)</span>
 
             <span class="nd">@win</span><span class="o">.</span><span class="n">resized</span><span class="o">.</span><span class="n">connect</span>
-            <span class="k">def</span> <span class="nf">_save_size</span><span class="p">(</span><span class="n">sz</span><span class="p">:</span> <span class="n">QSize</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">_save_size</span><span class="p">(</span><span class="n">sz</span><span class="p">:</span> <span class="n">QSize</span><span class="p">):</span>
                 <span class="n">app_pref</span><span class="o">.</span><span class="n">preferences_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">sz</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="n">sz</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
 
-            <span class="k">def</span> <span class="nf">_clean_pref_dialog</span><span class="p">():</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">_clean_pref_dialog</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_pref_dialog</span> <span class="o">=</span> <span class="kc">None</span>
 
             <span class="n">win</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_clean_pref_dialog</span><span class="p">)</span>
@@ -2366,10 +2366,10 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pref_dialog</span>
 
-    <span class="k">def</span> <span class="nf">_screenshot_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_screenshot_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save screenshot of current display with viewer, default .png&quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">napari._qt.dialogs.screenshot_dialog</span> <span class="kn">import</span> <span class="n">ScreenshotDialog</span>
-        <span class="kn">from</span> <span class="nn">napari.utils.history</span> <span class="kn">import</span> <span class="n">get_save_history</span><span class="p">,</span> <span class="n">update_save_history</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.screenshot_dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScreenshotDialog</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.history</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_save_history</span><span class="p">,</span> <span class="n">update_save_history</span>
 
         <span class="n">hist</span> <span class="o">=</span> <span class="n">get_save_history</span><span class="p">()</span>
         <span class="n">dial</span> <span class="o">=</span> <span class="n">ScreenshotDialog</span><span class="p">(</span>
@@ -2380,9 +2380,9 @@
 
 
 
-<span class="k">def</span> <span class="nf">_instantiate_dock_widget</span><span class="p">(</span><span class="n">wdg_cls</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_instantiate_dock_widget</span><span class="p">(</span><span class="n">wdg_cls</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">):</span>
     <span class="c1"># if the signature is looking a for a napari viewer, pass it.</span>
-    <span class="kn">from</span> <span class="nn">napari.viewer</span> <span class="kn">import</span> <span class="n">Viewer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span>
 
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">try</span><span class="p">:</span>

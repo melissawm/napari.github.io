@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -774,19 +774,19 @@
 <section id="extracting-the-tracks-from-the-dataset">
 <h3>Extracting the tracks from the dataset<a class="headerlink" href="#extracting-the-tracks-from-the-dataset" title="Link to this heading">#</a></h3>
 <p>We need to extract the centroids of each cell and their associated track labels from the annotated dataset. We start by loading the images containing the centroids and unique track labels:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">napari</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">regionprops_table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.measure</span><span class="w"> </span><span class="kn">import</span> <span class="n">regionprops_table</span>
 
 <span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;/path/to/Fluo-N3DH-CE/&#39;</span>
 <span class="n">NUM_IMAGES</span> <span class="o">=</span> <span class="mi">195</span>
 
-<span class="k">def</span> <span class="nf">load_image</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_image</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load an image from the sequence.</span>
 
 <span class="sd">    Parameters</span>
@@ -806,7 +806,7 @@
 </pre></div>
 </div>
 <p>For each image in the time-lapse sequence, we will now extract the unique track label (<code class="docutils literal notranslate"><span class="pre">track_id</span></code>), centroid and timestamp in order to create the track data we will pass to the <code class="docutils literal notranslate"><span class="pre">Tracks</span></code> layer. For more information on the format of the track data, please see the “tracks data” section of the <a class="reference internal" href="../../howtos/layers/tracks.html#layers-tracks"><span class="std std-ref">tracks layer guide</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">regionprops_plus_time</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">regionprops_plus_time</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the unique track label, centroid and time for each track vertex.</span>
 
 <span class="sd">    Parameters</span>
@@ -873,7 +873,7 @@ P - label of the parent track (0 is used when no parent is defined)</p>
 <h3>Traversing the lineage trees to identify the root nodes<a class="headerlink" href="#traversing-the-lineage-trees-to-identify-the-root-nodes" title="Link to this heading">#</a></h3>
 <p>One property that is useful to visualize in single cell tracking is the <code class="docutils literal notranslate"><span class="pre">track_id</span></code> of the root node of the lineage trees, <em>i.e.</em> the founder cell.
 We create it with the following code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursive function to determine the root node of each subgraph.</span>
 
 <span class="sd">    Parameters</span>
@@ -933,7 +933,7 @@ We create it with the following code:</p>
 <section id="using-btrack-to-track-cells">
 <h2>2. Using <code class="docutils literal notranslate"><span class="pre">btrack</span></code> to track cells<a class="headerlink" href="#using-btrack-to-track-cells" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">btrack</span></code> library can be used for cell tracking. It provides a convenient <code class="docutils literal notranslate"><span class="pre">to_napari()</span></code> function to enable rapid visualization of the tracking results. You can learn more about the <code class="docutils literal notranslate"><span class="pre">btrack</span></code> library <a class="reference external" href="https://github.com/quantumjot/btrack">here</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">btrack</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">btrack</span>
 </pre></div>
 </div>
 <p>We start by loading a file containing the centroids of all the found cells in each frame of the source movie. Note that this file only contains the locations of cells in the movie, there are no tracks yet. We can use the <code class="docutils literal notranslate"><span class="pre">btrack</span></code> library to load this file as a list of <code class="docutils literal notranslate"><span class="pre">objects</span></code> that contain information about each found cell, including the TZYX position.  The example dataset can be downloaded <a class="reference external" href="https://github.com/quantumjot/btrack/blob/0f8bbd937535193bde20e3ebe91a323f6bb915e9/examples/napari_example.csv">here</a>.</p>

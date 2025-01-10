@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -941,7 +941,7 @@ to slicing and some new methods that redefine the core logic of slicing.</p>
 <section id="request-and-response">
 <h3>Request and response<a class="headerlink" href="#request-and-response" title="Link to this heading">#</a></h3>
 <p>First, we introduce a request to encapsulate the required input to slicing.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LayerSliceRequest</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LayerSliceRequest</span><span class="p">:</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">ArrayLike</span>
     <span class="n">world_to_data</span><span class="p">:</span> <span class="n">Transform</span>
     <span class="n">point</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
@@ -958,7 +958,7 @@ Given our understanding about the existing slice input state, each layer type
 should extend this request type to capture the input it needs for slicing, such
 as <code class="docutils literal notranslate"><span class="pre">Points.face_color</span></code>.</p>
 <p>Second, we introduce a response to encapsulate the output of slicing.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LayerSliceResponse</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LayerSliceResponse</span><span class="p">:</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">ArrayLike</span>
     <span class="n">data_to_world</span><span class="p">:</span> <span class="n">Transform</span>
 </pre></div>
@@ -972,13 +972,13 @@ thread without blocking other operations for long.</p>
 <p>For each layer type, we need to extend the request and response types to include
 state that is specific to slicing those types of layers. For example, the image
 request type should look something like the following.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ImageSliceRequest</span><span class="p">(</span><span class="n">LayerSliceRequest</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ImageSliceRequest</span><span class="p">(</span><span class="n">LayerSliceRequest</span><span class="p">):</span>
     <span class="n">rgb</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">multiscale</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">corner_pixels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">data_level</span><span class="p">:</span> <span class="nb">int</span>
 
-<span class="k">class</span> <span class="nc">ImageSliceResponse</span><span class="p">(</span><span class="n">LayerSliceResponse</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ImageSliceResponse</span><span class="p">(</span><span class="n">LayerSliceResponse</span><span class="p">)</span>
     <span class="n">thumbnail</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </pre></div>
 </div>
@@ -987,7 +987,7 @@ know what data should be accessed to generate the desired slice for the canvas.
 And the thumbnail needs to access the layer data as well, so should do so while
 we are slicing asynchronous to avoid any blocking behavior.</p>
 <p>The points request and response types should look something like the following.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PointsSliceRequest</span><span class="p">(</span><span class="n">LayerSliceRequest</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PointsSliceRequest</span><span class="p">(</span><span class="n">LayerSliceRequest</span><span class="p">):</span>
     <span class="n">out_of_slice_display</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">shown</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
@@ -995,7 +995,7 @@ we are slicing asynchronous to avoid any blocking behavior.</p>
     <span class="n">edge_color</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">edge_width</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 
-<span class="k">class</span> <span class="nc">PointsSliceResponse</span><span class="p">(</span><span class="n">LayerSliceResponse</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PointsSliceResponse</span><span class="p">(</span><span class="n">LayerSliceResponse</span><span class="p">):</span>
     <span class="n">indices</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">view_size_scale</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>
@@ -1015,16 +1015,16 @@ materialized array as in the response.</p>
 <section id="layer-methods">
 <h3>Layer methods<a class="headerlink" href="#layer-methods" title="Link to this heading">#</a></h3>
 <p>We require that each Layer type implements two methods related to slicing.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Layer</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Layer</span><span class="p">:</span>
     <span class="o">...</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">_make_slice_request</span><span class="p">(</span><span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerSliceRequest</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_slice_request</span><span class="p">(</span><span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerSliceRequest</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
     <span class="nd">@abstractmethod</span>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_get_slice</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">LayerSliceRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerSliceResponse</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_slice</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">LayerSliceRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerSliceResponse</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1056,11 +1056,11 @@ about mutations to the layer that might occur on the main thread.</p>
 <p>The main consumer of a layer slice response is the corresponding vispy
 layer. We require that a vispy layer type implement <code class="docutils literal notranslate"><span class="pre">_set_slice</span></code> to handle
 how it consumes the slice output.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VispyBaseLayer</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">VispyBaseLayer</span><span class="p">:</span>
     <span class="o">...</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">_set_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">LayerSliceResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">LayerSliceResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1073,16 +1073,16 @@ avoid the associated state and logic leaking into the already complex
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ViewerSliceRequest</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Layer</span><span class="p">,</span> <span class="n">LayerSliceRequest</span><span class="p">]</span>
 <span class="n">ViewerSliceResponse</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Layer</span><span class="p">,</span> <span class="n">LayerSliceResponse</span><span class="p">]</span>
 
-<span class="k">class</span> <span class="nc">LayerSlicer</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LayerSlicer</span><span class="p">:</span>
     <span class="o">...</span>
 
     <span class="n">_executor</span><span class="p">:</span> <span class="n">Executor</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">_task</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Future</span><span class="p">[</span><span class="n">ViewerSliceResponse</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">EmitterGroup</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">slice_ready</span><span class="o">=</span><span class="n">Event</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">slice_layers_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">:</span> <span class="n">LayerList</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Future</span><span class="p">[</span><span class="n">ViewerSliceResponse</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">slice_layers_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">:</span> <span class="n">LayerList</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Future</span><span class="p">[</span><span class="n">ViewerSliceResponse</span><span class="p">]:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
         <span class="n">requests</span> <span class="o">=</span> <span class="p">{</span>
@@ -1093,10 +1093,10 @@ avoid the associated state and logic leaking into the already complex
         <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_slice_done</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span>
 
-    <span class="k">def</span> <span class="nf">slice_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requests</span><span class="p">:</span> <span class="n">ViewerSliceRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ViewerSliceResponse</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">slice_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requests</span><span class="p">:</span> <span class="n">ViewerSliceRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ViewerSliceResponse</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span><span class="n">layer</span><span class="p">:</span> <span class="n">layer</span><span class="o">.</span><span class="n">_get_slice</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="k">for</span> <span class="n">layer</span><span class="p">,</span> <span class="n">request</span> <span class="ow">in</span> <span class="n">requests</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 
-    <span class="k">def</span> <span class="nf">_on_slice_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">ViewerSliceResponse</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_slice_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">ViewerSliceResponse</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">cancelled</span><span class="p">():</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">slice_ready</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
@@ -1111,19 +1111,19 @@ to the vispy layers so that the canvas can be updated.</p>
 <p>Using Python’s standard library threads in the <code class="docutils literal notranslate"><span class="pre">ViewerModel</span></code>
 means that we have a portable way to perform asynchronous slicing
 in napari without an explicit dependency on Qt.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ViewerModel</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ViewerModel</span><span class="p">:</span>
     <span class="o">...</span>
 
     <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span>
     <span class="n">_slicer</span><span class="p">:</span> <span class="n">LayerSlicer</span> <span class="o">=</span> <span class="n">LayerSlicer</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
         <span class="o">...</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">current_step</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_slice_layers_async</span><span class="p">)</span>
 
     <span class="o">...</span>
 
-    <span class="k">def</span> <span class="nf">_slice_layers_async</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_slice_layers_async</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_slicer</span><span class="o">.</span><span class="n">slice_layers_async</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1135,18 +1135,18 @@ to slice independently.</p>
 <p>The main response to the slice being ready occurs on the <code class="docutils literal notranslate"><span class="pre">QtViewer</span></code>
 because <code class="docutils literal notranslate"><span class="pre">QtViewer.layer_to_visual</span></code> provides a way to map from
 a layer to its corresponding vispy layer.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QtViewer</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">QtViewer</span><span class="p">:</span>
     <span class="o">...</span>
 
     <span class="n">viewer</span><span class="p">:</span> <span class="n">ViewerModel</span>
     <span class="n">layer_to_visual</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Layer</span><span class="p">,</span> <span class="n">VispyBaseLayer</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
         <span class="o">...</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_slicer</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">slice_ready</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_slice_ready</span><span class="p">)</span>
 
     <span class="nd">@ensure_main_thread</span>
-    <span class="k">def</span> <span class="nf">_on_slice_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">responses</span><span class="p">:</span> <span class="n">ViewerSliceResponse</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_slice_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">responses</span><span class="p">:</span> <span class="n">ViewerSliceResponse</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">layer</span><span class="p">,</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">visual</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer_to_visual</span><span class="p">[</span><span class="n">layer</span><span class="p">]:</span>
                 <span class="n">visual</span><span class="o">.</span><span class="n">_set_slice</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
@@ -1295,35 +1295,35 @@ but it is still quite new.</p></li>
 <p>Instead of making the <code class="docutils literal notranslate"><span class="pre">ViewerModel</span></code> the driver of slicing, we could instead drive it from the vispy layers.
 A rough implementation of this approach could look like the following.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="k">class</span> <span class="nc">QtViewer</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QtViewer</span><span class="p">:</span>
     <span class="o">...</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="o">...</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">current_step</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slice_layers</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">slice_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">slice_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layer_to_visual</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">_slice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Image</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Image</span><span class="p">:</span>
     <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">_make_slice_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImageSliceRequest</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_slice_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImageSliceRequest</span><span class="p">:</span>
         <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">_get_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">ImageSliceRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImageSliceResponse</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">ImageSliceRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImageSliceResponse</span><span class="p">:</span>
         <span class="o">...</span>
 
-<span class="k">class</span> <span class="nc">VispyImageLayer</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VispyImageLayer</span><span class="p">:</span>
     <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">_make_slice_request</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
         <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">_get_slice</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
         <span class="n">task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_slice_done</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_on_slice_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">ImageSliceResponse</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_slice_done</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">ImageSliceResponse</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_slice</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
 
     <span class="nd">@ensure_main_thread</span>
-    <span class="k">def</span> <span class="nf">_set_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">ImageSliceResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">ImageSliceResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="o">...</span>
 </pre></div>
 </div>

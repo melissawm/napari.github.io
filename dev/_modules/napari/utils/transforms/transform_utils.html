@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -486,14 +486,14 @@
                 <article class="bd-article">
                   
   <h1>Source code for napari.utils.transforms.transform_utils</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
-<span class="kn">import</span> <span class="nn">scipy.linalg</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">npt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span>
 
-<span class="kn">from</span> <span class="nn">napari.utils.translations</span> <span class="kn">import</span> <span class="n">trans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
 
-<span class="k">def</span> <span class="nf">compose_linear_matrix</span><span class="p">(</span><span class="n">rotate</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">shear</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compose_linear_matrix</span><span class="p">(</span><span class="n">rotate</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">shear</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compose linear transform matrix from rotate, shear, scale.</span>
 
 <span class="sd">    Parameters</span>
@@ -530,7 +530,7 @@
     <span class="k">return</span> <span class="n">full_rotate</span> <span class="o">@</span> <span class="n">full_shear</span> <span class="o">@</span> <span class="n">full_scale</span>
 
 
-<span class="k">def</span> <span class="nf">infer_ndim</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">infer_ndim</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shear</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linear_matrix</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Infer the dimensionality of a transformation from its input components.</span>
@@ -579,7 +579,7 @@
     <span class="k">return</span> <span class="n">ndim</span>
 
 
-<span class="k">def</span> <span class="nf">translate_to_vector</span><span class="p">(</span><span class="n">translate</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">translate_to_vector</span><span class="p">(</span><span class="n">translate</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a translate input into an n-dimensional transform component.</span>
 
 <span class="sd">    Parameters</span>
@@ -603,7 +603,7 @@
     <span class="k">return</span> <span class="n">translate_arr</span>
 
 
-<span class="k">def</span> <span class="nf">scale_to_vector</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scale_to_vector</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a scale input into an n-dimensional transform component.</span>
 
 <span class="sd">    Parameters</span>
@@ -627,7 +627,7 @@
     <span class="k">return</span> <span class="n">scale_arr</span>
 
 
-<span class="k">def</span> <span class="nf">rotate_to_matrix</span><span class="p">(</span><span class="n">rotate</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rotate_to_matrix</span><span class="p">(</span><span class="n">rotate</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a rotate input into an n-dimensional transform component.</span>
 
 <span class="sd">    Parameters</span>
@@ -654,7 +654,7 @@
     <span class="k">return</span> <span class="n">full_rotate_mat</span>
 
 
-<span class="k">def</span> <span class="nf">_make_rotate_mat</span><span class="p">(</span><span class="n">rotate</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_make_rotate_mat</span><span class="p">(</span><span class="n">rotate</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">rotate</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_make_2d_rotation</span><span class="p">(</span><span class="n">rotate</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rotate</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">rotate</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
@@ -662,13 +662,13 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rotate</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_make_2d_rotation</span><span class="p">(</span><span class="n">theta_degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_make_2d_rotation</span><span class="p">(</span><span class="n">theta_degrees</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Makes a 2D rotation matrix from an angle in degrees.&quot;&quot;&quot;</span>
     <span class="n">cos_theta</span><span class="p">,</span> <span class="n">sin_theta</span> <span class="o">=</span> <span class="n">_cos_sin_degrees</span><span class="p">(</span><span class="n">theta_degrees</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos_theta</span><span class="p">,</span> <span class="o">-</span><span class="n">sin_theta</span><span class="p">],</span> <span class="p">[</span><span class="n">sin_theta</span><span class="p">,</span> <span class="n">cos_theta</span><span class="p">]])</span>
 
 
-<span class="k">def</span> <span class="nf">_make_3d_rotation</span><span class="p">(</span><span class="n">alpha_degrees</span><span class="p">,</span> <span class="n">beta_degrees</span><span class="p">,</span> <span class="n">gamma_degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_make_3d_rotation</span><span class="p">(</span><span class="n">alpha_degrees</span><span class="p">,</span> <span class="n">beta_degrees</span><span class="p">,</span> <span class="n">gamma_degrees</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Makes a 3D rotation matrix from roll, pitch, and yaw in degrees.</span>
 
 <span class="sd">    For more details, see: https://en.wikipedia.org/wiki/Rotation_matrix#General_rotations</span>
@@ -703,12 +703,12 @@
     <span class="k">return</span> <span class="n">R_alpha</span> <span class="o">@</span> <span class="n">R_beta</span> <span class="o">@</span> <span class="n">R_gamma</span>
 
 
-<span class="k">def</span> <span class="nf">_cos_sin_degrees</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_cos_sin_degrees</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">):</span>
     <span class="n">angle_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle_radians</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle_radians</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">shear_to_matrix</span><span class="p">(</span><span class="n">shear</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">shear_to_matrix</span><span class="p">(</span><span class="n">shear</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a shear input into an n-dimensional transform component.</span>
 
 <span class="sd">    Parameters</span>
@@ -732,7 +732,7 @@
     <span class="k">return</span> <span class="n">full_shear_mat</span>
 
 
-<span class="k">def</span> <span class="nf">_make_shear_mat</span><span class="p">(</span><span class="n">shear</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_make_shear_mat</span><span class="p">(</span><span class="n">shear</span><span class="p">):</span>
     <span class="c1"># Check if an upper-triangular representation of shear or</span>
     <span class="c1"># a full nD shear matrix has been passed</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">shear</span><span class="p">):</span>
@@ -756,7 +756,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shear</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">expand_upper_triangular</span><span class="p">(</span><span class="n">vector</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">expand_upper_triangular</span><span class="p">(</span><span class="n">vector</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Expand a vector into an upper triangular matrix.</span>
 
 <span class="sd">    Decomposition is based on code from https://github.com/matthew-brett/transforms3d.</span>
@@ -791,7 +791,7 @@
     <span class="k">return</span> <span class="n">upper_tri</span>
 
 
-<span class="k">def</span> <span class="nf">embed_in_identity_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">embed_in_identity_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Embed an MxM matrix bottom right of larger NxN identity matrix.</span>
 
 <span class="sd">    Parameters</span>
@@ -823,7 +823,7 @@
     <span class="k">return</span> <span class="n">full_matrix</span>
 
 
-<span class="k">def</span> <span class="nf">decompose_linear_matrix</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">decompose_linear_matrix</span><span class="p">(</span>
     <span class="n">matrix</span><span class="p">,</span> <span class="n">upper_triangular</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">,</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">,</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decompose linear transform matrix into rotate, scale, shear.</span>
@@ -886,7 +886,7 @@
 
 <div class="viewcode-block" id="shear_matrix_from_angle">
 <a class="viewcode-back" href="../../../../api/napari.utils.transforms.html#napari.utils.transforms.shear_matrix_from_angle">[docs]</a>
-<span class="k">def</span> <span class="nf">shear_matrix_from_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">shear_matrix_from_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a shear matrix from an angle.</span>
 
 <span class="sd">    Parameters</span>
@@ -910,7 +910,7 @@
 
 
 
-<span class="k">def</span> <span class="nf">is_matrix_upper_triangular</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_upper_triangular</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a matrix is upper triangular.</span>
 
 <span class="sd">    Parameters</span>
@@ -926,7 +926,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">is_matrix_lower_triangular</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_lower_triangular</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a matrix is lower triangular.</span>
 
 <span class="sd">    Parameters</span>
@@ -942,7 +942,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">is_matrix_triangular</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_triangular</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a matrix is triangular.</span>
 
 <span class="sd">    Parameters</span>
@@ -960,7 +960,7 @@
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">is_diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine whether a matrix is diagonal up to some tolerance.</span>
 
 <span class="sd">    Parameters</span>

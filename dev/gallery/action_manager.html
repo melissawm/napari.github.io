@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -772,26 +772,26 @@ v0.6.0. It is considered an &quot;implementation detail&quot; of the napari
 application, not part of the napari viewer model. If your use case
 requires access to qt_viewer, please open an issue to discuss.
   layer_buttons = viewer.window.qt_viewer.layerButtons
-calling &lt;function bind_shortcut at 0x7f6b3193dbd0&gt;
-calling &lt;function register_action at 0x7f6b3193dcf0&gt;
-calling &lt;function bind_button at 0x7f6b3193db40&gt;
+calling &lt;function bind_button at 0x7f49b4ddc5e0&gt;
+calling &lt;function bind_shortcut at 0x7f49b4ddc670&gt;
+calling &lt;function register_action at 0x7f49b4ddc790&gt;
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/random.html#random.shuffle" title="random.shuffle" class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/random.html#random.shuffle" title="random.shuffle" class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
 
-<span class="kn">import</span> <span class="nn">napari</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_viewer_buttons</span> <span class="kn">import</span> <span class="n">QtViewerPushButton</span>
-<span class="kn">from</span> <span class="nn">napari.components</span> <span class="kn">import</span> <a href="../api/napari.components.ViewerModel.html#napari.components.ViewerModel" title="napari.components.ViewerModel" class="sphx-glr-backref-module-napari-components sphx-glr-backref-type-py-class"><span class="n">ViewerModel</span></a>
-<span class="kn">from</span> <span class="nn">napari.utils.action_manager</span> <span class="kn">import</span> <span class="n">action_manager</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_viewer_buttons</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtViewerPushButton</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.components</span><span class="w"> </span><span class="kn">import</span> <a href="../api/napari.components.ViewerModel.html#napari.components.ViewerModel" title="napari.components.ViewerModel" class="sphx-glr-backref-module-napari-components sphx-glr-backref-type-py-class"><span class="n">ViewerModel</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
 
 
-<span class="k">def</span> <span class="nf">rotate45</span><span class="p">(</span><a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span></a><span class="p">:</span> <a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class"><span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span></a><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rotate45</span><span class="p">(</span><a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span></a><span class="p">:</span> <a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class"><span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span></a><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rotate layer 0 of the viewer by 45º</span>
 
@@ -806,7 +806,7 @@ calling &lt;function bind_button at 0x7f6b3193db40&gt;
 <span class="sd">    infer that we need an instance of viewer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">angle</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">pi</span></a> <span class="o">/</span> <span class="mi">4</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.cos.html#numpy.cos" title="numpy.cos" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">cos</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.sin.html#numpy.sin" title="numpy.sin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">sin</span></a>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.cos.html#numpy.cos" title="numpy.cos" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">cos</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.sin.html#numpy.sin" title="numpy.sin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">sin</span></a>
 
     <span class="n">r</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.cos.html#numpy.cos" title="numpy.cos" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">cos</span></a><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.sin.html#numpy.sin" title="numpy.sin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">sin</span></a><span class="p">(</span><span class="n">angle</span><span class="p">)],</span> <span class="p">[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.sin.html#numpy.sin" title="numpy.sin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">sin</span></a><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.cos.html#numpy.cos" title="numpy.cos" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">cos</span></a><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
     <span class="n">layer</span> <span class="o">=</span> <a href="../api/napari.components.LayerList.html#napari.components.LayerList" title="napari.components.LayerList" class="sphx-glr-backref-module-napari-components sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -825,7 +825,7 @@ calling &lt;function bind_button at 0x7f6b3193db40&gt;
 <span class="n">layer_buttons</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">insertWidget</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">rot_button</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">register_action</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">register_action</span><span class="p">():</span>
     <span class="c1"># Here we pass ViewerModel as the KeymapProvider as we want it to handle the shortcuts.</span>
     <span class="c1"># we could also pass none and bind the shortcuts at the window level - though we</span>
     <span class="c1"># are trying to not change the KeymapProvider API too much for now.</span>
@@ -842,14 +842,14 @@ calling &lt;function bind_button at 0x7f6b3193db40&gt;
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">bind_shortcut</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bind_shortcut</span><span class="p">():</span>
     <span class="c1"># note that the tooltip of the corresponding button will be updated to</span>
     <span class="c1"># remove the shortcut.</span>
     <span class="n">action_manager</span><span class="o">.</span><span class="n">unbind_shortcut</span><span class="p">(</span><span class="s1">&#39;napari:reset_view&#39;</span><span class="p">)</span>  <span class="c1"># Control-R</span>
     <span class="n">action_manager</span><span class="o">.</span><span class="n">bind_shortcut</span><span class="p">(</span><span class="s1">&#39;napari:rotate45&#39;</span><span class="p">,</span> <span class="s1">&#39;Control-R&#39;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">bind_button</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bind_button</span><span class="p">():</span>
     <span class="n">action_manager</span><span class="o">.</span><span class="n">bind_button</span><span class="p">(</span><span class="s1">&#39;napari:rotate45&#39;</span><span class="p">,</span> <span class="n">rot_button</span><span class="p">)</span>
 
 

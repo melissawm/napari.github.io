@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -586,7 +586,7 @@ npe2</label><div class="sd-tab-content docutils">
 <span class="n">ReaderFunction</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">PathOrPaths</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">LayerData</span><span class="p">]]</span>
 
 
-<span class="k">def</span> <span class="nf">get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="s2">&quot;PathOrPaths&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ReaderFunction&quot;</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="s2">&quot;PathOrPaths&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ReaderFunction&quot;</span><span class="p">]:</span>
     <span class="c1"># If we recognize the format, we return the actual reader function</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.xyz&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">xyz_file_reader</span>
@@ -594,7 +594,7 @@ npe2</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">xyz_file_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="s2">&quot;PathOrPaths&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;LayerData&quot;</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">xyz_file_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="s2">&quot;PathOrPaths&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;LayerData&quot;</span><span class="p">]:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># somehow read data from path</span>
     <span class="n">layer_attributes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;etc...&quot;</span><span class="p">}</span>
     <span class="k">return</span> <span class="p">[(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer_attributes</span><span class="p">)]</span>
@@ -625,11 +625,11 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 </div>
 <p><strong>python implementation</strong></p>
 <p><a class="reference external" href="https://napari.org/stable/plugins/npe1.html#napari.plugins.hook_specifications.napari_get_reader">hook specification</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 
 
 <span class="nd">@napari_hook_implementation</span>
-<span class="k">def</span> <span class="nf">napari_get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">PathOrPaths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ReaderFunction</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_get_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">PathOrPaths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ReaderFunction</span><span class="p">]:</span>
     <span class="c1"># If we recognize the format, we return the actual reader function</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.xyz&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">xyz_file_reader</span>
@@ -637,7 +637,7 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">xyz_file_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">PathOrPaths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">LayerData</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">xyz_file_reader</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">PathOrPaths</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">LayerData</span><span class="p">]:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># somehow read data from path</span>
     <span class="n">layer_properties</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;etc...&quot;</span><span class="p">}</span>
     <span class="k">return</span> <span class="p">[(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer_properties</span><span class="p">)]</span>
@@ -676,7 +676,7 @@ by the corresponding writer contribution in the manifest).</p>
 <h4>1. single-layer writer<a class="headerlink" href="#single-layer-writer" title="Link to this heading">#</a></h4>
 <p>Single-layer writers will receive a <strong>path</strong>, layer <strong>data</strong>, and a <code class="docutils literal notranslate"><span class="pre">dict</span></code> of layer
 <strong>attributes</strong>, (e.g. <code class="docutils literal notranslate"><span class="pre">{'name':</span> <span class="pre">'My</span> <span class="pre">Layer',</span> <span class="pre">'opacity':</span> <span class="pre">0.6}</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_layer_writer</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">attributes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">single_layer_writer</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">attributes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -691,7 +691,7 @@ by the corresponding writer contribution in the manifest).</p>
 <h4>2. multi-layer writer<a class="headerlink" href="#multi-layer-writer" title="Link to this heading">#</a></h4>
 <p>Multi-layer writers will receive a <strong>path</strong>, and a list of full
 <a class="reference internal" href="#layer-data-tuples"><span class="std std-ref">layer data tuples</span></a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multi_layer_writer</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">layer_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FullLayerData</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">multi_layer_writer</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">layer_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FullLayerData</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -746,7 +746,7 @@ and a <code class="docutils literal notranslate"><span class="pre">vectors</span
 npe2</label><div class="sd-tab-content docutils">
 <p><strong>python implementation</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example_plugin.some_module</span>
-<span class="k">def</span> <span class="nf">write_points</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">layer_data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">attributes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_points</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">layer_data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">attributes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">):</span>
         <span class="o">...</span>  <span class="c1"># save layer_data and attributes to file</span>
 
@@ -780,10 +780,10 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 </div>
 <p><strong>python implementation</strong></p>
 <p><a class="reference external" href="https://napari.org/stable/plugins/npe1.html#single-layers-io">hook specification</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 
 <span class="nd">@napari_hook_implementation</span>
-<span class="k">def</span> <span class="nf">napari_write_points</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_write_points</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write points data and metadata into a path.</span>
 
 <span class="sd">    Parameters</span>
@@ -839,20 +839,20 @@ specification:</p>
 <ol class="arabic">
 <li><p>Provide a <code class="docutils literal notranslate"><span class="pre">class</span></code> object that is a subclass of <code class="docutils literal notranslate"><span class="pre">QtWidgets.QWidget</span></code> or
 <code class="docutils literal notranslate"><span class="pre">magicgui.widgets.Widget</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
 
-<span class="k">class</span> <span class="nc">MyPluginWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;napari.viewer.Viewer&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyPluginWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;napari.viewer.Viewer&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_viewer</span> <span class="o">=</span> <span class="n">viewer</span>
 </pre></div>
 </div>
 </li>
 <li><p>Provide a <code class="docutils literal notranslate"><span class="pre">magicgui.magic_factory</span></code> object:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magic_factory</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="kn">import</span> <span class="n">magic_factory</span>
 
 <span class="nd">@magic_factory</span>
-<span class="k">def</span> <span class="nf">create_widget</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_widget</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -887,15 +887,15 @@ npe2</label><div class="sd-tab-content docutils">
 <span class="n">Widget</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;magicgui.widgets.Widget&quot;</span><span class="p">,</span> <span class="s2">&quot;qtpy.QtWidgets.QWidget&quot;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Any QtWidgets.QWidget or magicgui.widgets.Widget subclass can be used.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s2">&quot;napari.viewer.Viewer&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s2">&quot;napari.viewer.Viewer&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="o">...</span>
 
 <span class="nd">@magic_factory</span>
-<span class="k">def</span> <span class="nf">widget_factory</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">widget_factory</span><span class="p">(</span>
     <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;napari.types.ImageData&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;napari.types.LabelsData&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate thresholded image.</span>
@@ -905,7 +905,7 @@ npe2</label><div class="sd-tab-content docutils">
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">image</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">threshold</span><span class="p">(</span>
     <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;napari.types.ImageData&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;napari.types.LabelsData&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate thresholded image.</span>
@@ -948,18 +948,18 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 </div>
 <p><strong>python implementation</strong></p>
 <p><a class="reference external" href="https://napari.org/stable/plugins/npe1.html#napari.plugins.hook_specifications.napari_experimental_provide_dock_widget">hook_specification</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 
 
-<span class="k">class</span> <span class="nc">AnimationWizard</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s2">&quot;napari.viewer.Viewer&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnimationWizard</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s2">&quot;napari.viewer.Viewer&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="o">...</span>
 
 
 <span class="nd">@magic_factory</span>
-<span class="k">def</span> <span class="nf">widget_factory</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">widget_factory</span><span class="p">(</span>
     <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;napari.types.ImageData&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;napari.types.LabelsData&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate thresholded image.</span>
@@ -970,7 +970,7 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
     <span class="k">return</span> <span class="p">(</span><span class="n">image</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">threshold</span><span class="p">(</span>
     <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;napari.types.ImageData&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;napari.types.LabelsData&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate thresholded image.</span>
@@ -984,12 +984,12 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 <span class="c1"># using special `napari_hook_implementation`-decorated functions.</span>
 
 <span class="nd">@napari_hook_implementation</span>
-<span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">AnimationWizard</span><span class="p">,</span> <span class="n">widget_factory</span><span class="p">]</span>
 
 
 <span class="nd">@napari_hook_implementation</span>
-<span class="k">def</span> <span class="nf">napari_experimental_provide_function</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_function</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">threshold</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1015,7 +1015,7 @@ or <strong>Sample Data Function</strong> that generates layer data on demand.</p
 npe2</label><div class="sd-tab-content docutils">
 <p><strong>python implementation</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example_plugin.some_module</span>
-<span class="k">def</span> <span class="nf">create_fractal</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;LayerData&quot;</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_fractal</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;LayerData&quot;</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;An example of a  Sample Data Function.</span>
 
 <span class="sd">    Note: Sample Data with URIs don&#39;t need python code.</span>
@@ -1051,15 +1051,15 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 </div>
 <p><strong>python implementation</strong></p>
 <p><a class="reference external" href="https://napari.org/stable/plugins/npe1.html#napari.plugins.hook_specifications.napari_provide_sample_data">hook specification</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_implementation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_implementation</span>
 
-<span class="k">def</span> <span class="nf">_generate_random_data</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_generate_random_data</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[(</span><span class="n">data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;random data&#39;</span><span class="p">})]</span>
 
 <span class="nd">@napari_hook_implementation</span>
-<span class="k">def</span> <span class="nf">napari_provide_sample_data</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_provide_sample_data</span><span class="p">():</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;random data&#39;</span><span class="p">:</span> <span class="n">_generate_random_data</span><span class="p">,</span>
         <span class="s1">&#39;random image&#39;</span><span class="p">:</span> <span class="s1">&#39;https://picsum.photos/1024&#39;</span><span class="p">,</span>
@@ -1109,7 +1109,7 @@ layer type is assumed to be <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p>where …</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Sequence</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="n">LayerTypeName</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span>
     <span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">,</span> <span class="s2">&quot;shapes&quot;</span><span class="p">,</span> <span class="s2">&quot;surface&quot;</span><span class="p">,</span> <span class="s2">&quot;tracks&quot;</span><span class="p">,</span> <span class="s2">&quot;vectors&quot;</span>
@@ -1121,12 +1121,12 @@ layer type is assumed to be <code class="docutils literal notranslate"><span cla
 
 
 <span class="c1"># where &quot;ArrayLike&quot; is very roughly ...</span>
-<span class="k">class</span> <span class="nc">ArrayLike</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ArrayLike</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
     <span class="n">shape</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
     <span class="n">ndim</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span>
-    <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span> <span class="o">...</span>
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayLike</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span> <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArrayLike</span><span class="p">:</span> <span class="o">...</span>
 
 <span class="c1"># the main point is that we&#39;re more concerned with structural</span>
 <span class="c1"># typing than literal array types (e.g. numpy, dask, xarray, etc...)</span>
@@ -1136,7 +1136,7 @@ layer type is assumed to be <code class="docutils literal notranslate"><span cla
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <p>Assume that <code class="docutils literal notranslate"><span class="pre">data</span></code> is a numpy array:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
 </pre></div>
 </div>

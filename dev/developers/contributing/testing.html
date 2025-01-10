@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -754,14 +754,14 @@ fixture. <code class="docutils literal notranslate"><span class="pre">qtbot</spa
 <p>Fixtures in pytest can be a little mysterious, since it’s not always
 clear where they are coming from.  The <code class="docutils literal notranslate"><span class="pre">pytest-qt</span></code> <code class="docutils literal notranslate"><span class="pre">qapp</span></code> and <code class="docutils literal notranslate"><span class="pre">qtbot</span></code> fixtures
 can be used in two ways; by adding them to the list of arguments of your test function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="n">qtbot</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">(</span><span class="n">qtbot</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
 <p>or by using pytest’s <code class="docutils literal notranslate"><span class="pre">usefixtures</span></code>, which avoids adding an unused argument to your
 test function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">usefixtures</span><span class="p">(</span><span class="s1">&#39;qtbot&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_something</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -775,7 +775,7 @@ of the test. This can prevents segfaults when running several tests. The
 method is also useful to wait for a desired condition. The example below
 adds a <code class="docutils literal notranslate"><span class="pre">QtDims</span></code> widget, plays the <code class="docutils literal notranslate"><span class="pre">Dims</span></code> and checks that the <code class="docutils literal notranslate"><span class="pre">QtDim</span></code> widget
 is playing before we make any assertions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_something_else</span><span class="p">(</span><span class="n">qtbot</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_something_else</span><span class="p">(</span><span class="n">qtbot</span><span class="p">):</span>
     <span class="n">dims</span> <span class="o">=</span> <span class="n">Dims</span><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ndisplay</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
     <span class="n">view</span> <span class="o">=</span> <span class="n">QtDims</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
     <span class="n">qtbot</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
@@ -795,14 +795,14 @@ as it is defined in <code class="docutils literal notranslate"><span class="pre"
 This class does not provide the same api as the <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewerModel</span></code> class,
 but has an associated <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewerModel</span></code> instance, which can be accessed by the <code class="docutils literal notranslate"><span class="pre">viewer</span></code> attribute.
 Alternatively, you could use the <code class="docutils literal notranslate"><span class="pre">viewer_model</span></code> fixture, which returns this instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewerModel</span></code> class.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="n">qt_viewer</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">(</span><span class="n">qt_viewer</span><span class="p">):</span>
     <span class="n">qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
     <span class="k">assert</span> <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Image&#39;</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="n">qt_viewer</span><span class="p">,</span> <span class="n">viewer_model</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_something</span><span class="p">(</span><span class="n">qt_viewer</span><span class="p">,</span> <span class="n">viewer_model</span><span class="p">):</span>
     <span class="n">viewer_model</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
     <span class="k">assert</span> <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Image&#39;</span>
@@ -812,7 +812,7 @@ Alternatively, you could use the <code class="docutils literal notranslate"><spa
 including hiding and clearing any references to viewer instances.
 If you need to adjust the QtViewer for a given <a class="reference external" href="https://docs.pytest.org/en/stable/how-to/fixtures.html#override-a-fixture-on-a-test-module-level">test file</a> you can use the <code class="docutils literal notranslate"><span class="pre">qt_viewer_</span></code> fixture.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span> <span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
     <span class="c1"># in this file we need to have added data and 3d view for all tests in file</span>
     <span class="n">qt_viewer_</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
     <span class="n">qt_viewer_</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">=</span> <span class="mi">3</span>
@@ -821,7 +821,7 @@ If you need to adjust the QtViewer for a given <a class="reference external" hre
 </div>
 <p>or</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span> <span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">qt_viewer</span><span class="p">(</span><span class="n">qt_viewer_</span><span class="p">):</span>
     <span class="c1"># Make bigger viewer for all tests in file</span>
     <span class="n">qt_viewer_</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">qt_viewer_</span>
@@ -877,17 +877,17 @@ the <cite>napari_plugin_manager.register()</cite> method. By default, True.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">test_adding_shapes</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">test_adding_shapes</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">viewer</span> <span class="o">=</span> <span class="n">make_napari_viewer</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">viewer</span><span class="o">.</span><span class="n">add_shapes</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">test_something_with_plugins</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">test_something_with_plugins</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">viewer</span> <span class="o">=</span> <span class="n">make_napari_viewer</span><span class="p">(</span><span class="n">block_plugin_discovery</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">test_something_with_strict_qt_tests</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">test_something_with_strict_qt_tests</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">viewer</span> <span class="o">=</span> <span class="n">make_napari_viewer</span><span class="p">(</span><span class="n">strict_qt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -907,10 +907,10 @@ This is so they can be excluded and run only during continuous integration (see 
 This is because visibility can take some time to change.</p>
 <p>For example, the following code can be used to check that a widget correctly
 appears after it is created.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
 
 
-<span class="k">def</span> <span class="nf">test_widget_hidden</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_widget_hidden</span><span class="p">(</span><span class="n">make_napari_viewer</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check widget visibility correctly updated after hide.&quot;&quot;&quot;</span>
     <span class="c1"># create viewer and make it visible</span>
     <span class="n">viewer</span> <span class="o">=</span> <span class="n">make_napari_viewer</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

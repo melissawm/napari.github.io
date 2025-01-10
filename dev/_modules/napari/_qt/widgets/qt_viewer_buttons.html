@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -486,12 +486,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for napari._qt.widgets.qt_viewer_buttons</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
-<span class="kn">from</span> <span class="nn">qtpy.QtCore</span> <span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QPoint</span><span class="p">,</span> <span class="n">Qt</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QPoint</span><span class="p">,</span> <span class="n">Qt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">QApplication</span><span class="p">,</span>
     <span class="n">QFormLayout</span><span class="p">,</span>
     <span class="n">QFrame</span><span class="p">,</span>
@@ -502,33 +502,33 @@
     <span class="n">QVBoxLayout</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">napari._qt.dialogs.qt_modal</span> <span class="kn">import</span> <span class="n">QtPopup</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_dims_sorter</span> <span class="kn">import</span> <span class="n">QtDimsSorter</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_spinbox</span> <span class="kn">import</span> <span class="n">QtSpinBox</span>
-<span class="kn">from</span> <span class="nn">napari._qt.widgets.qt_tooltip</span> <span class="kn">import</span> <span class="n">QtToolTipLabel</span>
-<span class="kn">from</span> <span class="nn">napari.utils.action_manager</span> <span class="kn">import</span> <span class="n">action_manager</span>
-<span class="kn">from</span> <span class="nn">napari.utils.misc</span> <span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span><span class="p">,</span> <span class="n">in_python_repl</span>
-<span class="kn">from</span> <span class="nn">napari.utils.translations</span> <span class="kn">import</span> <span class="n">trans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.qt_modal</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtPopup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_dims_sorter</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtDimsSorter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_spinbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtSpinBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_tooltip</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtToolTipLabel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span><span class="p">,</span> <span class="n">in_python_repl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">napari.viewer</span> <span class="kn">import</span> <span class="n">ViewerModel</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">ViewerModel</span>
 
 
-<span class="k">def</span> <span class="nf">add_new_points</span><span class="p">(</span><span class="n">viewer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_new_points</span><span class="p">(</span><span class="n">viewer</span><span class="p">):</span>
     <span class="n">viewer</span><span class="o">.</span><span class="n">add_points</span><span class="p">(</span>
         <span class="n">ndim</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
         <span class="n">scale</span><span class="o">=</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">step</span><span class="p">,</span>
     <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">add_new_shapes</span><span class="p">(</span><span class="n">viewer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_new_shapes</span><span class="p">(</span><span class="n">viewer</span><span class="p">):</span>
     <span class="n">viewer</span><span class="o">.</span><span class="n">add_shapes</span><span class="p">(</span>
         <span class="n">ndim</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
         <span class="n">scale</span><span class="o">=</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">step</span><span class="p">,</span>
     <span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">QtLayerButtons</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QtLayerButtons</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Button controls for napari layers.</span>
 
 <span class="sd">    Parameters</span>
@@ -550,7 +550,7 @@
 <span class="sd">        Napari viewer containing the rendered scene, layers, and controls.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;ViewerModel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;ViewerModel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">viewer</span>
@@ -588,7 +588,7 @@
 
 <div class="viewcode-block" id="QtViewerButtons">
 <a class="viewcode-back" href="../../../../api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons">[docs]</a>
-<span class="k">class</span> <span class="nc">QtViewerButtons</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QtViewerButtons</span><span class="p">(</span><span class="n">QFrame</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Button controls for the napari viewer.</span>
 
 <span class="sd">    Parameters</span>
@@ -614,7 +614,7 @@
 <span class="sd">        Napari viewer containing the rendered scene, layers, and controls.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;ViewerModel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;ViewerModel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">viewer</span>
@@ -653,7 +653,7 @@
         <span class="n">gvb</span><span class="o">.</span><span class="n">customContextMenuRequested</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_open_grid_popup</span><span class="p">)</span>
 
         <span class="nd">@self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">enabled</span><span class="o">.</span><span class="n">connect</span>
-        <span class="k">def</span> <span class="nf">_set_grid_mode_checkstate</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_set_grid_mode_checkstate</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
             <span class="n">gvb</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
         <span class="n">ndb</span> <span class="o">=</span> <span class="n">QtViewerPushButton</span><span class="p">(</span>
@@ -666,7 +666,7 @@
         <span class="n">ndb</span><span class="o">.</span><span class="n">customContextMenuRequested</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_perspective_popup</span><span class="p">)</span>
 
         <span class="nd">@self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span>
-        <span class="k">def</span> <span class="nf">_set_ndisplay_mode_checkstate</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_set_ndisplay_mode_checkstate</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
             <span class="n">ndb</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
 
         <span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
@@ -682,7 +682,7 @@
 
 <div class="viewcode-block" id="QtViewerButtons.eventFilter">
 <a class="viewcode-back" href="../../../../api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.eventFilter">[docs]</a>
-    <span class="k">def</span> <span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qobject</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">eventFilter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qobject</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Have Alt/Option key rotate layers with the transpose button.&quot;&quot;&quot;</span>
         <span class="n">modifiers</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">keyboardModifiers</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span>
@@ -697,7 +697,7 @@
 
 <div class="viewcode-block" id="QtViewerButtons.open_perspective_popup">
 <a class="viewcode-back" href="../../../../api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.open_perspective_popup">[docs]</a>
-    <span class="k">def</span> <span class="nf">open_perspective_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_perspective_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Show a slider to control the viewer `camera.perspective`.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span>
@@ -722,7 +722,7 @@
         <span class="n">pop</span><span class="o">.</span><span class="n">show_above_mouse</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_open_roll_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_roll_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Open a grid popup to manually order the dimensions&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">return</span>
@@ -742,7 +742,7 @@
         <span class="c1"># show popup</span>
         <span class="n">pop</span><span class="o">.</span><span class="n">show_above_mouse</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_open_grid_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_open_grid_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Open grid options pop up widget.&quot;&quot;&quot;</span>
 
         <span class="c1"># widgets</span>
@@ -833,7 +833,7 @@
         <span class="p">)</span>
         <span class="n">shape_help_symbol</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">QPoint</span><span class="p">(</span><span class="o">*</span><span class="n">shape_pos</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">_update_grid_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_grid_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the width value in grid shape.</span>
 
 <span class="sd">        Parameters</span>
@@ -844,7 +844,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_update_grid_stride</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_grid_stride</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update stride in grid settings.</span>
 
 <span class="sd">        Parameters</span>
@@ -855,7 +855,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">stride</span> <span class="o">=</span> <span class="n">value</span>
 
-    <span class="k">def</span> <span class="nf">_update_grid_height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_grid_height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update height value in grid shape.</span>
 
 <span class="sd">        Parameters</span>
@@ -868,9 +868,9 @@
 
 
 
-<span class="k">def</span> <span class="nf">_omit_viewer_args</span><span class="p">(</span><span class="n">constructor</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_omit_viewer_args</span><span class="p">(</span><span class="n">constructor</span><span class="p">):</span>
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">constructor</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
                 <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
@@ -894,7 +894,7 @@
     <span class="k">return</span> <span class="n">_func</span>
 
 
-<span class="k">class</span> <span class="nc">QtViewerPushButton</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QtViewerPushButton</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Push button.</span>
 
 <span class="sd">    Parameters</span>
@@ -910,7 +910,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@_omit_viewer_args</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">button_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">tooltip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>

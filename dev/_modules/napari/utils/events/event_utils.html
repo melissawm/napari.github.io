@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -486,23 +486,23 @@
                 <article class="bd-article">
                   
   <h1>Source code for napari.utils.events.event_utils</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">weakref</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">weakref</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Protocol</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Protocol</span>
 
-    <span class="k">class</span> <span class="nc">Emitter</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span> <span class="o">...</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Emitter</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span> <span class="o">...</span>
 
-        <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span> <span class="o">...</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span> <span class="o">...</span>
 
 
 <div class="viewcode-block" id="disconnect_events">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.html#napari.utils.events.disconnect_events">[docs]</a>
-<span class="k">def</span> <span class="nf">disconnect_events</span><span class="p">(</span><span class="n">emitter</span><span class="p">,</span> <span class="n">listener</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">disconnect_events</span><span class="p">(</span><span class="n">emitter</span><span class="p">,</span> <span class="n">listener</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Disconnect all events between an emitter group and a listener.</span>
 
 <span class="sd">    Parameters</span>
@@ -517,10 +517,10 @@
 
 
 
-<span class="k">def</span> <span class="nf">connect_setattr</span><span class="p">(</span><span class="n">emitter</span><span class="p">:</span> <span class="n">Emitter</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect_setattr</span><span class="p">(</span><span class="n">emitter</span><span class="p">:</span> <span class="n">Emitter</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_cb</span><span class="p">(</span><span class="o">*</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb</span><span class="p">(</span><span class="o">*</span><span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">ob</span> <span class="o">:=</span> <span class="n">ref</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">emitter</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="n">_cb</span><span class="p">)</span>
             <span class="k">return</span>
@@ -537,10 +537,10 @@
     <span class="c1"># weakref.finalize(obj, emitter.disconnect, _cb)</span>
 
 
-<span class="k">def</span> <span class="nf">connect_no_arg</span><span class="p">(</span><span class="n">emitter</span><span class="p">:</span> <span class="n">Emitter</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect_no_arg</span><span class="p">(</span><span class="n">emitter</span><span class="p">:</span> <span class="n">Emitter</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_cb</span><span class="p">(</span><span class="o">*</span><span class="n">_value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb</span><span class="p">(</span><span class="o">*</span><span class="n">_value</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">ob</span> <span class="o">:=</span> <span class="n">ref</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">emitter</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="n">_cb</span><span class="p">)</span>
             <span class="k">return</span>
@@ -551,11 +551,11 @@
     <span class="c1"># weakref.finalize(obj, emitter.disconnect, _cb)</span>
 
 
-<span class="k">def</span> <span class="nf">connect_setattr_value</span><span class="p">(</span><span class="n">emitter</span><span class="p">:</span> <span class="n">Emitter</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect_setattr_value</span><span class="p">(</span><span class="n">emitter</span><span class="p">:</span> <span class="n">Emitter</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;To get value from Event&quot;&quot;&quot;</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_cb</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">ob</span> <span class="o">:=</span> <span class="n">ref</span><span class="p">())</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">emitter</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="n">_cb</span><span class="p">)</span>
             <span class="k">return</span>

@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -822,7 +822,7 @@ module, see <a class="reference external" href="https://greentreesnakes.readthed
 </div>
 <p>A string expression can be converted to a napari <code class="docutils literal notranslate"><span class="pre">Expr</span></code> object with the
 <code class="docutils literal notranslate"><span class="pre">parse_expression</span></code> function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">napari.utils.context</span> <span class="kn">import</span> <span class="n">parse_expression</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_expression</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">expr</span> <span class="o">=</span> <span class="n">parse_expression</span><span class="p">(</span><span class="s2">&quot;x &gt; 5 and y == &#39;hello&#39;&quot;</span><span class="p">)</span>
 
@@ -965,7 +965,7 @@ Contexts</a> below for more).</p>
 declared as class attributes on a <code class="docutils literal notranslate"><span class="pre">ContextNamespace</span></code> class:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># all of the getters here receive an instance of viewer.layers.selection</span>
 
-<span class="k">class</span> <span class="nc">LayerListContextKeys</span><span class="p">(</span><span class="n">ContextNamespace</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LayerListContextKeys</span><span class="p">(</span><span class="n">ContextNamespace</span><span class="p">):</span>
     <span class="n">layers_selection_count</span> <span class="o">=</span> <span class="n">ContextKey</span><span class="p">(</span>
         <span class="n">default_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Number of layers currently selected&quot;</span><span class="p">,</span>
@@ -1033,7 +1033,7 @@ as it allows us to have “sub-contexts” that are children of some parent cont
 Child contexts can access all of the keys of the parent (but not vice-versa).
 For example because a <code class="docutils literal notranslate"><span class="pre">Viewer</span></code> has a <code class="docutils literal notranslate"><span class="pre">LayerList</span></code>, all of the keys in the
 <code class="docutils literal notranslate"><span class="pre">Viewer</span></code> context are available to the <code class="docutils literal notranslate"><span class="pre">LayerList</span></code> context.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">napari.utils.context</span> <span class="kn">import</span> <span class="n">get_context</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_context</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_context</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
 
@@ -1117,7 +1117,7 @@ in <code class="docutils literal notranslate"><span class="pre">LayerListContext
 <h2>Summary: A (rough) full picture<a class="headerlink" href="#summary-a-rough-full-picture" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>napari creates special context “names” using <code class="docutils literal notranslate"><span class="pre">ContextKey</span></code> and <code class="docutils literal notranslate"><span class="pre">ContextNamespace</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LayerListContextKeys</span><span class="p">(</span><span class="n">ContextNamespace</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">LayerListContextKeys</span><span class="p">(</span><span class="n">ContextNamespace</span><span class="p">):</span>
     <span class="n">active_layer_type</span> <span class="o">=</span> <span class="n">ContextKey</span><span class="p">(</span>
         <span class="kc">None</span><span class="p">,</span>
         <span class="s2">&quot;Lowercase name of active layer type, or None of none active.&quot;</span><span class="p">,</span>
@@ -1169,7 +1169,7 @@ context menu might update the items in the menu that are visible and/or enabled:
 updates all of the “action” items in the menu according to their <code class="docutils literal notranslate"><span class="pre">when</span></code>
 clauses (declared internally or externally in steps 3 and 4)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pseudocode</span>
-<span class="k">def</span> <span class="nf">update_from_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_from_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">():</span>
         <span class="n">expression</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">when</span>  <span class="c1"># or however you get the expression</span>
         <span class="n">item</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">expression</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">ctx</span><span class="p">))</span>

@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -603,9 +603,9 @@ observers of the model (such as other classes) can take the appropriate
 action.</p>
 <p>One way this is achieved in napari is via getters and setters. Let’s take
 for example the <code class="docutils literal notranslate"><span class="pre">Dims</span></code> class with a selected few attributes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari.utils.events</span> <span class="kn">import</span> <span class="n">EmitterGroup</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmitterGroup</span>
 
-<span class="k">class</span> <span class="nc">Dims</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Dims</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dimensions object modeling slicing and displaying.</span>
 
 <span class="sd">    Parameters</span>
@@ -614,7 +614,7 @@ for example the <code class="docutils literal notranslate"><span class="pre">Dim
 <span class="sd">        Number of displayed dimensions.</span>
 <span class="sd">    ...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndisplay</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndisplay</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ndisplay</span> <span class="o">=</span> <span class="n">ndisplay</span>
 
         <span class="c1"># an `EmitterGroup` manages a set of `EventEmitters`</span>
@@ -625,12 +625,12 @@ for example the <code class="docutils literal notranslate"><span class="pre">Dim
     <span class="c1"># so that we can emit the appropriate event when that attribute</span>
     <span class="c1"># is changed using the syntax: ``Dim.attribute = new_value``</span>
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">ndisplay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ndisplay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of displayed dimensions.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ndisplay</span>
 
     <span class="nd">@ndisplay</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">ndisplay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ndisplay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ndisplay</span> <span class="o">=</span> <span class="n">value</span>
         <span class="c1"># emit the ndisplay &quot;changed&quot; event</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
@@ -645,7 +645,7 @@ to watch:</p>
 <span class="c1"># define some callback that should respond to changes in the model</span>
 <span class="c1"># if the function takes a single parameter it will receive the event</span>
 <span class="c1"># as first value.</span>
-<span class="k">def</span> <span class="nf">_update_display</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_update_display</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates display for all sliders.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -678,7 +678,7 @@ following features:</p>
 <li><p>event emission after successful attribute assignment</p></li>
 </ul>
 <p>Using <code class="docutils literal notranslate"><span class="pre">EventedModel</span></code> would reduce the above <code class="docutils literal notranslate"><span class="pre">Dim</span></code> class code to:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dim</span><span class="p">(</span><span class="n">EventedModel</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Dim</span><span class="p">(</span><span class="n">EventedModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dimensions object modeling slicing and displaying.</span>
 
 <span class="sd">    Parameters</span>
@@ -693,7 +693,7 @@ following features:</p>
 <p>This <code class="docutils literal notranslate"><span class="pre">Dim</span></code> class will automatically emit an event when one of its attributes
 changes. Other classes interested in the <code class="docutils literal notranslate"><span class="pre">Dim</span></code> class can register a callback
 function that will be executed when an attribute changes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DimsDependentClass</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DimsDependentClass</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that needs to &#39;do something&#39; when Dims attributes change.</span>
 
 <span class="sd">    Parameters</span>
@@ -709,7 +709,7 @@ function that will be executed when an attribute changes.</p>
 <span class="sd">    ...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="n">dims</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_display</span><span class="p">)</span>
 </pre></div>
@@ -731,7 +731,7 @@ GUI.</p>
 <p>For example, below is a code snippet showing the <code class="docutils literal notranslate"><span class="pre">QtDims</span></code> class instantiating
 with a reference to the Python class <code class="docutils literal notranslate"><span class="pre">Dims</span></code> and registering the callback
 <code class="docutils literal notranslate"><span class="pre">_update_display</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QtDims</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">QtDims</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Qt view for the napari Dims model.</span>
 
 <span class="sd">    Parameters</span>
@@ -747,7 +747,7 @@ with a reference to the Python class <code class="docutils literal notranslate">
 <span class="sd">    ...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="n">dims</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_display</span><span class="p">)</span>
 </pre></div>
@@ -760,11 +760,11 @@ informed of any changes to Python models. They achieve this by connecting
 callbacks to Python model events just like Qt models.</p>
 <p>For example, below is a code snippet showing the <code class="docutils literal notranslate"><span class="pre">VispyCamera</span></code> class connecting
 the function <code class="docutils literal notranslate"><span class="pre">_on_ndisplay_change</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VispyCamera</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">VispyCamera</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Vipsy camera for both 2D and 3D rendering.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">:</span> <span class="n">Dims</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="n">dims</span>
         <span class="o">...</span>
 

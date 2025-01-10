@@ -32,7 +32,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -658,16 +658,16 @@ responsive at startup.</p>
 <em>immediately</em> when napari is launched, and we search the entry_point
 <code class="docutils literal notranslate"><span class="pre">mypackage.napari_plugin</span></code> for decorated hook specifications.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># mypackage/napari_plugin.py</span>
-<span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_specification</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span> <span class="nn">my_heavy_dependency_like_tensorflow</span> <span class="kn">import</span> <span class="n">something_amazing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_specification</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_heavy_dependency_like_tensorflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">something_amazing</span>
 
-<span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">something_amazing</span><span class="p">()</span>
 
 <span class="nd">@napari_hook_specification</span>
-<span class="k">def</span> <span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">MyWidget</span>
 </pre></div>
 </div>
@@ -675,14 +675,14 @@ responsive at startup.</p>
 practice is to delay heavy imports until right before they are used.  The
 following slight modification will help napari load much faster:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># mypackage/napari_plugin.py</span>
-<span class="kn">from</span> <span class="nn">napari_plugin_engine</span> <span class="kn">import</span> <span class="n">napari_hook_specification</span>
-<span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_specification</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
 
-<span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># import has been moved here, will happen only after the user</span>
         <span class="c1"># has opened and used this widget.</span>
-        <span class="kn">from</span> <span class="nn">my_heavy_dependency_like_tensorflow</span> <span class="kn">import</span> <span class="n">something_amazing</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">my_heavy_dependency_like_tensorflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">something_amazing</span>
 
         <span class="k">return</span> <span class="n">something_amazing</span><span class="p">()</span>
 </pre></div>
@@ -702,13 +702,13 @@ are strings and not imported.</p>
 <p>If you’d like to maintain IDE type support and autocompletion, you can
 still do so by hiding the napari imports inside of a <code class="xref py py-attr docutils literal notranslate"><span class="pre">typing.TYPE_CHECKING</span></code>
 clause:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-  <span class="kn">import</span> <span class="nn">napari</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
 <span class="nd">@magicgui</span>
-<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">:</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -725,7 +725,7 @@ the process to fail or even leave your plugin in an “installed-but-unuseable�
 state.</p>
 <p>Don’t do this:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_plugin/module.py</span>
-<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="n">data_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_data_in_my_plugin.json&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
@@ -776,10 +776,10 @@ but sometimes a separate window is required.
 The best practice is to use <a class="reference external" href="https://doc.qt.io/qt-5/qdialog.html"><code class="docutils literal notranslate"><span class="pre">QDialog</span></code></a>
 based windows with parent set to widget
 already docked in the viewer.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QSpinBox</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QLabel</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QSpinBox</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QGridLayout</span><span class="p">,</span> <span class="n">QLabel</span>
 
-<span class="k">class</span> <span class="nc">MyInputDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">QWidget</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyInputDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">QWidget</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;My Input Dialog&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">QSpinBox</span><span class="p">()</span>
@@ -796,14 +796,14 @@ already docked in the viewer.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">ok_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cancel_btn</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reject</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s2">&quot;napari.Viewer&quot;</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s2">&quot;napari.Viewer&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span> <span class="o">=</span> <span class="n">viewer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">open_dialog</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Open dialog&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">open_dialog</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_dialog_clicked</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">open_dialog_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_dialog_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># setting parent to self allows the dialog to inherit its</span>
         <span class="c1"># style from the viewer by pass self as argument</span>
         <span class="n">dialog</span> <span class="o">=</span> <span class="n">MyInputDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -817,19 +817,19 @@ inherits from <code class="docutils literal notranslate"><span class="pre">QWidg
 and <a class="reference internal" href="../../api/napari.qt.html#napari.qt.get_stylesheet" title="napari.qt.get_stylesheet"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_stylesheet</span></code></a> functions from the
 <a class="reference internal" href="../../api/napari.qt.html#module-napari.qt" title="napari.qt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">napari.qt</span></code></a> module.</p>
 <p>Here is a <code class="docutils literal notranslate"><span class="pre">magicgui</span></code> example (but could be easily generalised to native <code class="docutils literal notranslate"><span class="pre">qt</span></code> based widgets):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">magicgui</span> <span class="kn">import</span> <span class="n">magicgui</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="kn">import</span> <span class="n">magicgui</span>
 
-<span class="kn">from</span> <span class="nn">napari.qt</span> <span class="kn">import</span> <span class="n">get_current_stylesheet</span>
-<span class="kn">from</span> <span class="nn">napari.settings</span> <span class="kn">import</span> <span class="n">get_settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.qt</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_current_stylesheet</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
 
-<span class="k">def</span> <span class="nf">sample_add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
 <span class="nd">@magicgui</span>
-<span class="k">def</span> <span class="nf">sample_add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="k">def</span> <span class="nf">change_style</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">change_style</span><span class="p">():</span>
     <span class="n">sample_add</span><span class="o">.</span><span class="n">native</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">get_current_stylesheet</span><span class="p">())</span>
 
 

@@ -32,7 +32,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -768,15 +768,15 @@ Jupyter notebook.</p>
 <span id="sphx-glr-gallery-magic-image-arithmetic-py"></span><h1>magicgui Image Arithmetic<a class="headerlink" href="#magicgui-image-arithmetic" title="Link to this heading">#</a></h1>
 <p>Basic example of using magicgui to create an Image Arithmetic GUI in napari.</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/gui.html">gui</a></p>
-<img src="../_images/sphx_glr_magic_image_arithmetic_001.png" srcset="../_images/sphx_glr_magic_image_arithmetic_001.png" alt="magic image arithmetic" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">enum</span>
+<img src="../_images/sphx_glr_magic_image_arithmetic_001.png" srcset="../_images/sphx_glr_magic_image_arithmetic_001.png" alt="magic image arithmetic" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">import</span> <span class="nn">napari</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
 
 <span class="c1"># Enums are a convenient way to get a dropdown menu</span>
-<span class="k">class</span> <span class="nc">Operation</span><span class="p">(</span><a href="https://docs.python.org/3/library/enum.html#enum.Enum" title="enum.Enum" class="sphx-glr-backref-module-enum sphx-glr-backref-type-py-class"><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span></a><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Operation</span><span class="p">(</span><a href="https://docs.python.org/3/library/enum.html#enum.Enum" title="enum.Enum" class="sphx-glr-backref-module-enum sphx-glr-backref-type-py-class"><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span></a><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A set of valid arithmetic operations for image_arithmetic.&quot;&quot;&quot;</span>
 
     <span class="n">add</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">add</span></a>
@@ -795,7 +795,7 @@ Jupyter notebook.</p>
 <span class="c1"># Note: here we use `napari.types.ImageData` as our parameter annotations,</span>
 <span class="c1"># which means our function will be passed layer.data instead of</span>
 <span class="c1"># the full layer instance</span>
-<span class="k">def</span> <span class="nf">image_arithmetic</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">image_arithmetic</span><span class="p">(</span>
     <span class="n">layerA</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">,</span>
     <span class="n">operation</span><span class="p">:</span> <a href="https://docs.python.org/3/library/enum.html#enum.Enum" title="enum.Enum" class="sphx-glr-backref-module-enum sphx-glr-backref-type-py-class"><span class="n">Operation</span></a><span class="p">,</span>
     <span class="n">layerB</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">,</span>
