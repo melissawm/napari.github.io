@@ -32,7 +32,7 @@
   <link href="../../../dev/_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../dev/_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../dev/_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../../dev/_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../dev/_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../../dev/_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../dev/_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../dev/_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../../dev/_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -616,13 +616,13 @@ of the “layerlist context” menu, with a <code class="docutils literal notran
 maintenance much easier (and provides autocompletion in an IDE!). However, there is
 currently intention to use plain strings for command <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code> to simplify the
 <code class="docutils literal notranslate"><span class="pre">Action</span></code> definitions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">app_model.types</span> <span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">KeyMod</span><span class="p">,</span> <span class="n">KeyCode</span>
-<span class="kn">from</span> <span class="nn">napari._app_model.constants</span> <span class="kn">import</span> <span class="n">CommandId</span><span class="p">,</span> <span class="n">MenuId</span><span class="p">,</span> <span class="n">MenuGroup</span>
-<span class="kn">from</span> <span class="nn">napari._app_model.context</span> <span class="kn">import</span> <span class="n">LayerListContextKeys</span> <span class="k">as</span> <span class="n">LLCK</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">app_model.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">KeyMod</span><span class="p">,</span> <span class="n">KeyCode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommandId</span><span class="p">,</span> <span class="n">MenuId</span><span class="p">,</span> <span class="n">MenuGroup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">LayerListContextKeys</span> <span class="k">as</span> <span class="n">LLCK</span>
 
 
 <span class="c1"># `layers` will be injected later when this action is invoked</span>
-<span class="k">def</span> <span class="nf">split_rgb_layer</span><span class="p">(</span><span class="n">layers</span><span class="p">:</span> <span class="s1">&#39;LayerList&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">split_rgb_layer</span><span class="p">(</span><span class="n">layers</span><span class="p">:</span> <span class="s1">&#39;LayerList&#39;</span><span class="p">):</span>
     <span class="o">...</span>
 
 
@@ -649,7 +649,7 @@ is essentially a shortcut for registering objects with the following registries;
 currently only be registered once though this MAY change in the future if a need arises.</p>
 <p>The code below shows how to register the <code class="docutils literal notranslate"><span class="pre">action</span></code> defined above with the napari
 singleton <code class="docutils literal notranslate"><span class="pre">app</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari._app_model</span> <span class="kn">import</span> <span class="n">get_app_model</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_app_model</span>
 
 
 <span class="n">get_app_model</span><span class="p">()</span><span class="o">.</span><span class="n">register_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
@@ -753,8 +753,8 @@ of clickable buttons that execute a command). For example, the mode buttons in
 each of the layer controls could be represented as menus with a set of commands.</p>
 <p>One of the benefits of the abstraction provided by <code class="docutils literal notranslate"><span class="pre">app-model</span></code> is that actual Qt
 Menu objects become simple to construct:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">app_model.backends.qt</span> <span class="kn">import</span> <span class="n">QModelMenu</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">napari._app_model.constants</span> <span class="kn">import</span> <span class="n">MenuId</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">app_model.backends.qt</span><span class="w"> </span><span class="kn">import</span> <span class="n">QModelMenu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">MenuId</span>
 
 <span class="go"># create a QMenu with all of the commands registered in the</span>
 <span class="go"># layerlist context menu</span>
@@ -825,7 +825,7 @@ as <code class="docutils literal notranslate"><span class="pre">Cmd+K</span></co
 <p>They will provide independence from
 vispy’s key codes, and have a nice <code class="docutils literal notranslate"><span class="pre">IntEnum</span></code> API that allows for declaration of
 keybindings in a namespaced way that avoids usage of strings:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">app_model.types</span> <span class="kn">import</span> <span class="n">KeyCode</span><span class="p">,</span> <span class="n">KeyMod</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">app_model.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyCode</span><span class="p">,</span> <span class="n">KeyMod</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ctrl_m</span> <span class="o">=</span> <span class="n">KeyMod</span><span class="o">.</span><span class="n">CtrlCmd</span> <span class="o">|</span> <span class="n">KeyCode</span><span class="o">.</span><span class="n">KeyM</span>
 
@@ -890,7 +890,7 @@ details.</p>
 <p>A user/plugin provides a function, using the <code class="docutils literal notranslate"><span class="pre">Points</span></code> annotation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># some user provided function declares a need</span>
 <span class="c1"># for Points by using type annotations.</span>
-<span class="k">def</span> <span class="nf">process_points</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="s1">&#39;Points&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_points</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="s1">&#39;Points&#39;</span><span class="p">):</span>
     <span class="c1"># do something with points</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -905,12 +905,12 @@ instead of command execution time.</p>
 current viewer, if one present (returning <code class="docutils literal notranslate"><span class="pre">None</span></code> if not). It is
 registered in the <code class="docutils literal notranslate"><span class="pre">app.injection_store</span></code> via <code class="docutils literal notranslate"><span class="pre">app.injection_store.register_provider</span></code>.
 Processors can be registered in the same way.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari._app_model</span> <span class="kn">import</span> <span class="n">get_app_model</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_app_model</span>
 
 <span class="c1"># return annotation indicates what this provider provides</span>
-<span class="k">def</span> <span class="nf">provide_points</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Points&#39;</span><span class="p">]:</span>
-    <span class="kn">import</span> <span class="nn">napari.viewer</span>
-    <span class="kn">from</span> <span class="nn">napari.layers</span> <span class="kn">import</span> <span class="n">Points</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">provide_points</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Points&#39;</span><span class="p">]:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">napari.viewer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Points</span>
 
     <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">current_viewer</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">viewer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

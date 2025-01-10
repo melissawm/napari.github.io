@@ -32,7 +32,7 @@
   <link href="../../dev/_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../dev/_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../dev/_static/pygments.css?v=8f9ffe49" />
+    <link rel="stylesheet" type="text/css" href="../../dev/_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../dev/_static/css/napari-sphinx-theme.css?v=5b765ca9" />
     <link rel="stylesheet" type="text/css" href="../../dev/_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../dev/_static/copybutton.css?v=76b2166b" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../dev/_static/documentation_options.js?v=24a8def0"></script>
+    <script src="../../dev/_static/documentation_options.js?v=5eef82a5"></script>
     <script src="../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -650,19 +650,19 @@ cutting down on any unnecessary complexities.</p>
 <li><p>(autoset) <code class="docutils literal notranslate"><span class="pre">block_rule</span></code> is enabled if <code class="docutils literal notranslate"><span class="pre">command_id</span> <span class="pre">==</span> <span class="pre">''</span></code> and disables all key bindings of their weight and below</p></li>
 <li><p>(autoset) <code class="docutils literal notranslate"><span class="pre">negate_rule</span></code> is enabled if <code class="docutils literal notranslate"><span class="pre">command_id</span></code> is prefixed with <code class="docutils literal notranslate"><span class="pre">-</span></code> and disables all key bindings of their weight and below with the same sequence bound to this command</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 
-<span class="kn">from</span> <span class="nn">app_model.expressions</span> <span class="kn">import</span> <span class="n">Expr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app_model.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Expr</span>
 
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">KeyBindingEntry</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyBindingEntry</span><span class="p">:</span>
     <span class="n">command_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">weight</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">when</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Expr</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">block_rule</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">negate_rule</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">block_rule</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">negate_rule</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">command_id</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 </pre></div>
@@ -716,9 +716,9 @@ cutting down on any unnecessary complexities.</p>
 <h3>Direct conflicts<a class="headerlink" href="#direct-conflicts" title="Link to this heading">#</a></h3>
 <p>When two key bindings share the same key sequence, they are considered to be in direct conflict. They are sorted first according to their weight, then whether they are a blocking rule, whether they are a negate rule, and otherwise, based on their insertion order. This is done in ascending order such that higher weights and blocking/negate rules are moved further down the list.</p>
 <p>Key bindings will automatically be assigned weights depending on who set them, prioritizing default ones the least and user-set ones the most:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntEnum</span>
 
-<span class="k">class</span> <span class="nc">KeyBindingWeights</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyBindingWeights</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
     <span class="n">CORE</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">PLUGIN</span> <span class="o">=</span> <span class="mi">300</span>
     <span class="n">USER</span> <span class="o">=</span> <span class="mi">500</span>
@@ -763,7 +763,7 @@ conflicts with another key binding</p></li>
 <h3>Finding a match<a class="headerlink" href="#finding-a-match" title="Link to this heading">#</a></h3>
 <p>When checking if an active key binding matches the entered key sequence, the resolver will fetch the pre-sorted list of direct conflicts and check if the last entry is active using its <code class="docutils literal notranslate"><span class="pre">when</span></code> property, moving to the next entry if it is not. When it encounters a blocking rule, it will return no match, and for a negate rule, it will store the affected command in an ignore list and continue to the next entry. If no special rules are present, it will return a match if the command is not in an ignore list, otherwise continuing to the next entry, and so on, until no more entries remain.</p>
 <p>In pseudo-code this reads as:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_active_match</span><span class="p">(</span><span class="n">entries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_active_match</span><span class="p">(</span><span class="n">entries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">]:</span>
     <span class="n">ignored_commands</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">entries</span><span class="p">):</span>
@@ -791,13 +791,13 @@ conflicts with another key binding</p></li>
 </pre></div>
 </div>
 <p>Due to the ability of key sequences to be encoded as 32-bit integers, bitwise operations can be performed to determine certain properties of these sequences:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_shift</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">has_shift</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">key</span> <span class="o">&amp;</span> <span class="n">KeyMod</span><span class="o">.</span><span class="n">Shift</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">starts_with_ctrl_cmd_x</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">starts_with_ctrl_cmd_x</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">key</span> <span class="o">&amp;</span> <span class="mh">0x0000FFFF</span> <span class="o">==</span> <span class="p">(</span><span class="n">KeyMod</span><span class="o">.</span><span class="n">CtrlCmd</span> <span class="o">|</span> <span class="n">KeyCode</span><span class="o">.</span><span class="n">KeyX</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">multi_part</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multi_part</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">key</span> <span class="o">&gt;</span> <span class="mh">0x0000FFFF</span>
 </pre></div>
 </div>
@@ -828,23 +828,23 @@ conflicts with another key binding</p></li>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">KEY_MOD_MASK</span> <span class="o">=</span> <span class="mh">0x00000F00</span>
 <span class="n">PART_0_MASK</span> <span class="o">=</span> <span class="mh">0x0000FFFF</span>
 
-<span class="k">def</span> <span class="nf">create_conflict_filter</span><span class="p">(</span><span class="n">conflict_key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_conflict_filter</span><span class="p">(</span><span class="n">conflict_key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">conflict_key</span> <span class="o">&amp;</span> <span class="n">KEY_MOD_MASK</span> <span class="o">==</span> <span class="n">conflict_key</span><span class="p">:</span>
         <span class="c1"># only comprised of modifier keys in first part</span>
-        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">key</span> <span class="o">!=</span> <span class="n">conflict_key</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">&amp;</span> <span class="n">conflict_key</span>
     <span class="k">elif</span> <span class="n">conflict_key</span> <span class="o">&lt;=</span> <span class="n">PART_0_MASK</span><span class="p">:</span>
         <span class="c1"># one-part key sequence</span>
-        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">key</span> <span class="o">&gt;</span> <span class="n">PART_0_MASK</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">&amp;</span> <span class="n">PART_0_MASK</span> <span class="o">==</span> <span class="n">conflict_key</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># don&#39;t handle anything more complex</span>
-        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">NotImplemented</span>
 
     <span class="k">return</span> <span class="n">inner</span>
 
-<span class="k">def</span> <span class="nf">has_conflicts</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">keymap</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">has_conflicts</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">keymap</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="n">conflict_filter</span> <span class="o">=</span> <span class="n">create_conflict_filter</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">entries</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">conflict_filter</span><span class="p">,</span> <span class="n">keymap</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
@@ -858,21 +858,21 @@ conflicts with another key binding</p></li>
 <section id="completing-the-dispatch">
 <h3>Completing the dispatch<a class="headerlink" href="#completing-the-dispatch" title="Link to this heading">#</a></h3>
 <p>Putting everything together, the following pseudo-code represents the logic of key binding dispatch:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 
-<span class="kn">from</span> <span class="nn">app_model.types</span> <span class="kn">import</span> <span class="n">KeyBinding</span><span class="p">,</span> <span class="n">KeyCode</span><span class="p">,</span> <span class="n">KeyMod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app_model.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyBinding</span><span class="p">,</span> <span class="n">KeyCode</span><span class="p">,</span> <span class="n">KeyMod</span>
 
 <span class="n">VALID_KEYS</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyCode</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">PRESS_HOLD_DELAY_MS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span>
 
-<span class="k">class</span> <span class="nc">KeyBindingDispatcher</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyBindingDispatcher</span><span class="p">:</span>
     <span class="n">keymap</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">]]</span>
     <span class="n">is_prefix</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">prefix</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">timer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Timer</span><span class="p">]</span>
     <span class="n">active_combo</span><span class="p">:</span> <span class="nb">int</span>
     <span class="o">...</span>
-    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mods</span><span class="p">:</span> <span class="n">KeyMod</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">KeyCode</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mods</span><span class="p">:</span> <span class="n">KeyMod</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">KeyCode</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_prefix</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">active_combo</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">:</span>
@@ -919,7 +919,7 @@ conflicts with another key binding</p></li>
                     <span class="k">return</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">exec_press</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">command_id</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_key_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mods</span><span class="p">:</span> <span class="n">KeyMod</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">KeyCode</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_key_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mods</span><span class="p">:</span> <span class="n">KeyMod</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">KeyCode</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_combo</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_prefix</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_combo</span>
@@ -966,12 +966,12 @@ conflicts with another key binding</p></li>
 <p>While <code class="docutils literal notranslate"><span class="pre">keymap</span></code> and <code class="docutils literal notranslate"><span class="pre">class_keymap</span></code> are unlikely to be commonly used, <code class="docutils literal notranslate"><span class="pre">bind_key</span></code> is, and thus will receive proper deprecation and continue to work by creating an equivalent entry in the new key binding dispatch system.</p>
 <p>For example, following is how a user might have defined a key binding for an <code class="docutils literal notranslate"><span class="pre">Image</span></code> layer:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@Image</span><span class="o">.</span><span class="n">bind_key</span><span class="p">(</span><span class="s1">&#39;Control-C&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
 <p>An entry would be created equivalent to:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">Image</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">Image</span><span class="p">):</span>
     <span class="k">yield from</span> <span class="n">foo</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
 <span class="n">action</span> <span class="o">=</span> <span class="n">Action</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">foo</span><span class="o">.</span><span class="vm">__qualname__</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">foo</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">wrapper</span><span class="p">)</span>
@@ -998,17 +998,17 @@ conflicts with another key binding</p></li>
 </figcaption>
 </figure>
 <p>This effectively breaks the key sequences of the key bindings into their respective components, as in <a class="reference internal" href="#fig-1"><span class="std std-ref">Fig. 1</span></a>, and can be represented with a fairly simple data structure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">app_model.types</span> <span class="kn">import</span> <span class="n">KeyBinding</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">app_model.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyBinding</span>
 
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">KeyBinding</span>
     <span class="n">root</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">KeyBindingEntry</span><span class="p">]</span>
     <span class="n">children</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">KeyCode</span><span class="p">,</span> <span class="n">Node</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>To check if a key binding has an indirect conflict, the children of the node can be recursively searched depth-first:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_active_children</span><span class="p">(</span><span class="n">children</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">KeyCode</span><span class="p">,</span> <span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">has_active_children</span><span class="p">(</span><span class="n">children</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">KeyCode</span><span class="p">,</span> <span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">find_active_match</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">root</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
