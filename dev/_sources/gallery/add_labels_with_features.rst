@@ -36,8 +36,19 @@ Display a labels layer with various features
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/runner/work/docs/docs/napari/examples/add_labels_with_features.py:24: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
+      bw = closing(image > thresh, square(4))
 
 
+
+
+
+
+|
 
 .. code-block:: Python
 

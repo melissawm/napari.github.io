@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=a629c8af"></script>
+    <script src="../_static/documentation_options.js?v=b80772bb"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -769,7 +769,14 @@ Jupyter notebook.</p>
 <p>Display a labels layer above of an image layer using the <code class="docutils literal notranslate"><span class="pre">add_labels</span></code> and
 <code class="docutils literal notranslate"><span class="pre">add_image</span></code> APIs</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/layers.html">layers</a><span>, </span><a class="reference external" href="../_tags/visualization-basic.html">visualization-basic</a></p>
-<img src="../_images/sphx_glr_add_labels_001.png" srcset="../_images/sphx_glr_add_labels_001.png" alt="add labels" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
+<img src="../_images/sphx_glr_add_labels_001.png" srcset="../_images/sphx_glr_add_labels_001.png" alt="add labels" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/docs/docs/napari/examples/add_labels.py:22: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
+  bw = closing(image &gt; thresh, square(4))
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">threshold_otsu</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.measure</span><span class="w"> </span><span class="kn">import</span> <span class="n">label</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.morphology</span><span class="w"> </span><span class="kn">import</span> <span class="n">closing</span><span class="p">,</span> <span class="n">remove_small_objects</span><span class="p">,</span> <span class="n">square</span>
