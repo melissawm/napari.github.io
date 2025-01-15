@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=681ea8a3"></script>
+    <script src="../_static/documentation_options.js?v=99815721"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -675,61 +675,64 @@ ndisplay is 2 or 3. By default None</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.export_figure" title="napari.Viewer.export_figure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_figure</span></code></a>([path, scale_factor, flash])</p></td>
 <td><p>Export an image of the full extent of the displayed layer data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_orm</span></code>(obj)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.export_rois" title="napari.Viewer.export_rois"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_rois</span></code></a>(rois[, paths, scale])</p></td>
+<td><p>Export the given rectangular rois to specified file paths.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_orm</span></code>(obj)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.json" title="napari.Viewer.json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">json</span></code></a>(**kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.json" title="napari.Viewer.json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">json</span></code></a>(**kwargs)</p></td>
 <td><p>Serialize to json.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.open" title="napari.Viewer.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(path, *[, stack, plugin, layer_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.open" title="napari.Viewer.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(path, *[, stack, plugin, layer_type])</p></td>
 <td><p>Open a path or list of paths with plugins, and add layers to viewer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.open_sample" title="napari.Viewer.open_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_sample</span></code></a>(plugin, sample[, reader_plugin])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.open_sample" title="napari.Viewer.open_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_sample</span></code></a>(plugin, sample[, reader_plugin])</p></td>
 <td><p>Open <cite>sample</cite> from <cite>plugin</cite> and add it to the viewer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_file</span></code>(path, *[, content_type, ...])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_file</span></code>(path, *[, content_type, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_obj</span></code>(obj)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_obj</span></code>(obj)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_raw</span></code>(b, *[, content_type, encoding, ...])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_raw</span></code>(b, *[, content_type, encoding, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.reset" title="napari.Viewer.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.reset" title="napari.Viewer.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Reset the state of the model to default values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.reset_view" title="napari.Viewer.reset_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_view</span></code></a>(*[, margin, reset_camera_angle])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.reset_view" title="napari.Viewer.reset_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_view</span></code></a>(*[, margin, reset_camera_angle])</p></td>
 <td><p>Reset the camera view.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rounded_division</span></code>(min_val, max_val, precision)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rounded_division</span></code>(min_val, max_val, precision)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema</span></code>([by_alias, ref_template])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema</span></code>([by_alias, ref_template])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_json</span></code>(*[, by_alias, ref_template])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_json</span></code>(*[, by_alias, ref_template])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.screenshot" title="napari.Viewer.screenshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">screenshot</span></code></a>([path, size, scale, canvas_only, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.screenshot" title="napari.Viewer.screenshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">screenshot</span></code></a>([path, size, scale, canvas_only, ...])</p></td>
 <td><p>Take currently displayed screen and convert to an image array.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.show" title="napari.Viewer.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(*[, block])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.show" title="napari.Viewer.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(*[, block])</p></td>
 <td><p>Resize, show, and raise the viewer window.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.update" title="napari.Viewer.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(values[, recurse])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.update" title="napari.Viewer.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(values[, recurse])</p></td>
 <td><p>Update a model in place.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.update_console" title="napari.Viewer.update_console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_console</span></code></a>(variables)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.update_console" title="napari.Viewer.update_console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_console</span></code></a>(variables)</p></td>
 <td><p>Update console's namespace with desired variables.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.update_forward_refs" title="napari.Viewer.update_forward_refs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_forward_refs</span></code></a>(**localns)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.update_forward_refs" title="napari.Viewer.update_forward_refs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_forward_refs</span></code></a>(**localns)</p></td>
 <td><p>Try to update ForwardRefs on fields based on this Model, globalns and localns.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.update_status_from_cursor" title="napari.Viewer.update_status_from_cursor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_status_from_cursor</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.update_status_from_cursor" title="napari.Viewer.update_status_from_cursor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_status_from_cursor</span></code></a>()</p></td>
 <td><p>Update the status and tooltip from the cursor position.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code>(value)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code>(value)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1597,6 +1600,39 @@ upper-left corner of the rendered region.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="napari.Viewer.export_rois">
+<span class="sig-name descname"><span class="pre">export_rois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rois</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/viewer.html#Viewer.export_rois"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.Viewer.export_rois" title="Link to this definition">#</a></dt>
+<dd><p>Export the given rectangular rois to specified file paths.</p>
+<p>Iteratively take a screenshot of each given roi. Note that 3D rois
+or taking rois when number of dimensions displayed in the viewer
+canvas is 3, is currently not supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rois</strong> (<em>numpy array</em>) – A list of arrays with each having shape (4, 2) representing a
+rectangular roi.</p></li>
+<li><p><strong>paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Where to save the rois. If a string or a Path, a directory will
+be created if it does not exist yet and screenshots will be saved
+with filename <cite>roi_{n}.png</cite> where n is the nth roi. If paths is
+a list of either string or paths, these need to be the full paths
+of where to store each individual roi. In this case
+the length of the list and the number of rois must match.
+If None, the screenshots will only be returned
+and not saved to disk.</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – Scale factor used to increase resolution of canvas for the screenshot.
+By default, uses the displayed scale.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>screenshot_list</strong> – The list containing all the screenshots.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="napari.Viewer.json">
 <span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#napari.Viewer.json" title="Link to this definition">#</a></dt>
 <dd><p>Serialize to json.</p>
@@ -1843,6 +1879,7 @@ callers frame.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.enums_as_values"><code class="docutils literal notranslate"><span class="pre">Viewer.enums_as_values()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.experimental"><code class="docutils literal notranslate"><span class="pre">Viewer.experimental</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.export_figure"><code class="docutils literal notranslate"><span class="pre">Viewer.export_figure()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.export_rois"><code class="docutils literal notranslate"><span class="pre">Viewer.export_rois()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.json"><code class="docutils literal notranslate"><span class="pre">Viewer.json()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.open"><code class="docutils literal notranslate"><span class="pre">Viewer.open()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.open_sample"><code class="docutils literal notranslate"><span class="pre">Viewer.open_sample()</span></code></a></li>

@@ -13,6 +13,7 @@ caption: With this tag
 ../gallery/affine_transforms.rst
 ../gallery/dynamic-projections-dask.rst
 ../gallery/export_figure.rst
+../gallery/export_rois.rst
 ../gallery/nD_multiscale_image.rst
 ../gallery/nD_multiscale_image_non_uniform.rst
 ../gallery/points-over-time.rst

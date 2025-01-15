@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=681ea8a3"></script>
+    <script src="../_static/documentation_options.js?v=99815721"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -695,22 +695,25 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.export_figure" title="napari.window.Window.export_figure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_figure</span></code></a>([path, scale, flash])</p></td>
 <td><p>Export an image of the full extent of the displayed layer data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.geometry" title="napari.window.Window.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.export_rois" title="napari.window.Window.export_rois"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_rois</span></code></a>(rois[, paths, scale])</p></td>
+<td><p>Export the given rectangular rois to specified file paths.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.geometry" title="napari.window.Window.geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry</span></code></a>()</p></td>
 <td><p>Get the geometry of the widget</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.remove_dock_widget" title="napari.window.Window.remove_dock_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_dock_widget</span></code></a>(widget[, menu])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.remove_dock_widget" title="napari.window.Window.remove_dock_widget"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_dock_widget</span></code></a>(widget[, menu])</p></td>
 <td><p>Removes specified dock widget.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.resize" title="napari.window.Window.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(width, height)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.resize" title="napari.window.Window.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(width, height)</p></td>
 <td><p>Resize the window.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.screenshot" title="napari.window.Window.screenshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">screenshot</span></code></a>([path, size, scale, flash, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.screenshot" title="napari.window.Window.screenshot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">screenshot</span></code></a>([path, size, scale, flash, ...])</p></td>
 <td><p>Take currently displayed viewer and convert to an image array.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.set_geometry" title="napari.window.Window.set_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_geometry</span></code></a>(left, top, width, height)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.set_geometry" title="napari.window.Window.set_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_geometry</span></code></a>(left, top, width, height)</p></td>
 <td><p>Set the geometry of the widget</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.window.Window.show" title="napari.window.Window.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(*[, block])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.window.Window.show" title="napari.window.Window.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(*[, block])</p></td>
 <td><p>Resize, show, and bring forward the window.</p></td>
 </tr>
 </tbody>
@@ -879,6 +882,41 @@ upper-left corner of the rendered region.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="napari.window.Window.export_rois">
+<span class="sig-name descname"><span class="pre">export_rois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rois</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.2)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/_qt/qt_main_window.html#Window.export_rois"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.window.Window.export_rois" title="Link to this definition">#</a></dt>
+<dd><p>Export the given rectangular rois to specified file paths.</p>
+<p>For each shape, moves the camera to the center of the shape
+and adjust the canvas size to fit the shape.
+Note: The shape height and width can be of type float.
+However, the canvas size only accepts a tuple of integers.
+This can result in slight misalignment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rois</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>np.ndarray</em><em>]</em>) – A list of arrays  with each being of shape (4, 2) representing
+a rectangular roi.</p></li>
+<li><p><strong>paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>Path</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>Path</em><em>]</em><em>, </em><em>optional</em>) – Where to save the rois. If a string or a Path, a directory will
+be created if it does not exist yet and screenshots will be
+saved with filename <cite>roi_{n}.png</cite> where n is the nth roi. If
+paths is a list of either string or paths, these need to be the
+full paths of where to store each individual roi. In this case
+the length of the list and the number of rois must match.
+If None, the screenshots will only be returned and not saved
+to disk.</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><em>optional</em>) – Scale factor used to increase resolution of canvas for the screenshot.
+By default, uses the displayed scale.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>screenshot_list</strong> – The list with roi screenshots.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="napari.window.Window.geometry">
 <span class="sig-name descname"><span class="pre">geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/napari/_qt/qt_main_window.html#Window.geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.window.Window.geometry" title="Link to this definition">#</a></dt>
 <dd><p>Get the geometry of the widget</p>
@@ -934,7 +972,7 @@ from menu.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Filename for saving screenshot image.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>Path</em>) – Filename for saving screenshot image.</p></li>
 <li><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em> (</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>)</em>) – Size (resolution) of the screenshot. By default, the currently displayed size.
 Only used if <cite>canvas_only</cite> is True.</p></li>
 <li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Scale factor used to increase resolution of canvas for the screenshot.
@@ -1048,6 +1086,7 @@ upper-left corner of the rendered region.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.clipboard"><code class="docutils literal notranslate"><span class="pre">Window.clipboard()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.close"><code class="docutils literal notranslate"><span class="pre">Window.close()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.export_figure"><code class="docutils literal notranslate"><span class="pre">Window.export_figure()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.export_rois"><code class="docutils literal notranslate"><span class="pre">Window.export_rois()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.geometry"><code class="docutils literal notranslate"><span class="pre">Window.geometry()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.remove_dock_widget"><code class="docutils literal notranslate"><span class="pre">Window.remove_dock_widget()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.window.Window.resize"><code class="docutils literal notranslate"><span class="pre">Window.resize()</span></code></a></li>

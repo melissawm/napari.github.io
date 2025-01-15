@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=681ea8a3"></script>
+    <script src="../../../_static/documentation_options.js?v=99815721"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -498,6 +498,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
@@ -569,6 +570,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">perf</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._proxies</span><span class="w"> </span><span class="kn">import</span> <span class="n">PublicOnlyProxy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_center_bbox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imsave</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">in_ipython</span><span class="p">,</span>
@@ -580,13 +582,13 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.theme</span><span class="w"> </span><span class="kn">import</span> <span class="n">_themes</span><span class="p">,</span> <span class="n">get_system_theme</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
-<span class="n">_sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
-
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">magicgui.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">Widget</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QImage</span>
 
     <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span>
+
+<span class="n">_sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 
 
 <span class="n">MenuStr</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span>
@@ -2265,6 +2267,96 @@
         <span class="k">return</span> <span class="n">img</span></div>
 
 
+<div class="viewcode-block" id="Window.export_rois">
+<a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.export_rois">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_rois</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">rois</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the given rectangular rois to specified file paths.</span>
+
+<span class="sd">        For each shape, moves the camera to the center of the shape</span>
+<span class="sd">        and adjust the canvas size to fit the shape.</span>
+<span class="sd">        Note: The shape height and width can be of type float.</span>
+<span class="sd">        However, the canvas size only accepts a tuple of integers.</span>
+<span class="sd">        This can result in slight misalignment.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        rois: list[np.ndarray]</span>
+<span class="sd">            A list of arrays  with each being of shape (4, 2) representing</span>
+<span class="sd">            a rectangular roi.</span>
+<span class="sd">        paths: str, Path, list[str, Path], optional</span>
+<span class="sd">            Where to save the rois. If a string or a Path, a directory will</span>
+<span class="sd">            be created if it does not exist yet and screenshots will be</span>
+<span class="sd">            saved with filename `roi_{n}.png` where n is the nth roi. If</span>
+<span class="sd">            paths is a list of either string or paths, these need to be the</span>
+<span class="sd">            full paths of where to store each individual roi. In this case</span>
+<span class="sd">            the length of the list and the number of rois must match.</span>
+<span class="sd">            If None, the screenshots will only be returned and not saved</span>
+<span class="sd">            to disk.</span>
+<span class="sd">        scale: float, optional</span>
+<span class="sd">            Scale factor used to increase resolution of canvas for the screenshot.</span>
+<span class="sd">            By default, uses the displayed scale.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        screenshot_list: list</span>
+<span class="sd">            The list with roi screenshots.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">paths</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rois</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;The number of file paths does not match the number of ROI shapes&#39;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">)):</span>
+            <span class="n">storage_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+            <span class="n">storage_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">storage_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;roi_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">.png&#39;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rois</span><span class="p">))]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;export_rois&#39; is not implemented for 3D view.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">screenshot_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">camera</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span>
+        <span class="n">start_camera_center</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">center</span>
+        <span class="n">start_camera_zoom</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span>
+        <span class="n">canvas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">canvas</span>
+        <span class="n">prev_size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="n">visible_dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">displayed</span><span class="p">)</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">step</span><span class="p">[</span><span class="n">visible_dims</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rois</span><span class="p">):</span>
+            <span class="n">center_coord</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">get_center_bbox</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+            <span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center_coord</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="n">step</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="n">step</span><span class="p">))</span>
+
+            <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">step</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">if</span> <span class="n">paths</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">screenshot_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">canvas_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">prev_size</span>
+        <span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">start_camera_center</span>
+        <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">start_camera_zoom</span>
+
+        <span class="k">return</span> <span class="n">screenshot_list</span></div>
+
+
 <div class="viewcode-block" id="Window.screenshot">
 <a class="viewcode-back" href="../../../api/napari.window.Window.html#napari.qt.Window.screenshot">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">screenshot</span><span class="p">(</span>
@@ -2274,7 +2366,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        path : str</span>
+<span class="sd">        path : str, Path</span>
 <span class="sd">            Filename for saving screenshot image.</span>
 <span class="sd">        size : tuple (int, int)</span>
 <span class="sd">            Size (resolution) of the screenshot. By default, the currently displayed size.</span>

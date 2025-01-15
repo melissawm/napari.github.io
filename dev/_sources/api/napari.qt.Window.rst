@@ -38,6 +38,9 @@ napari.qt.Window
       ~Window.export_figure
    
    
+      ~Window.export_rois
+   
+   
       ~Window.geometry
    
    

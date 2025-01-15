@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=681ea8a3"></script>
+    <script src="../../_static/documentation_options.js?v=99815721"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -487,7 +487,8 @@
                   
   <h1>Source code for napari.viewer</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">weakref</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakSet</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mgui</span>
@@ -497,7 +498,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_magicgui</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events.event_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">disconnect_events</span>
 
-<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">typing</span><span class="o">.</span><span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="c1"># helpful for IDE support</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.qt_main_window</span><span class="w"> </span><span class="kn">import</span> <span class="n">Window</span>
 
@@ -637,6 +638,57 @@
             <span class="n">scale</span><span class="o">=</span><span class="n">scale_factor</span><span class="p">,</span>
             <span class="n">flash</span><span class="o">=</span><span class="n">flash</span><span class="p">,</span>
         <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Viewer.export_rois">
+<a class="viewcode-back" href="../../api/napari.Viewer.html#napari.Viewer.export_rois">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_rois</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">rois</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the given rectangular rois to specified file paths.</span>
+
+<span class="sd">        Iteratively take a screenshot of each given roi. Note that 3D rois</span>
+<span class="sd">        or taking rois when number of dimensions displayed in the viewer</span>
+<span class="sd">        canvas is 3, is currently not supported.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        rois: numpy array</span>
+<span class="sd">            A list of arrays with each having shape (4, 2) representing a</span>
+<span class="sd">            rectangular roi.</span>
+<span class="sd">        paths: str, Path, list[str, Path], optional</span>
+<span class="sd">            Where to save the rois. If a string or a Path, a directory will</span>
+<span class="sd">            be created if it does not exist yet and screenshots will be saved</span>
+<span class="sd">            with filename `roi_{n}.png` where n is the nth roi. If paths is</span>
+<span class="sd">            a list of either string or paths, these need to be the full paths</span>
+<span class="sd">            of where to store each individual roi. In this case</span>
+<span class="sd">            the length of the list and the number of rois must match.</span>
+<span class="sd">            If None, the screenshots will only be returned</span>
+<span class="sd">            and not saved to disk.</span>
+<span class="sd">        scale: float, optional</span>
+<span class="sd">            Scale factor used to increase resolution of canvas for the screenshot.</span>
+<span class="sd">            By default, uses the displayed scale.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        screenshot_list: list</span>
+<span class="sd">            The list containing all the screenshots.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Check to see if roi has shape (n,2,2)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">rois</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;ROI found with invalid shape, all rois must have shape (4, 2), i.e. have 4 corners defined in 2 &#39;</span>
+                <span class="s1">&#39;dimensions. 3D is not supported.&#39;</span>
+            <span class="p">)</span>
+
+        <span class="n">screenshot_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">export_rois</span><span class="p">(</span>
+            <span class="n">rois</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">screenshot_list</span></div>
 
 
 <div class="viewcode-block" id="Viewer.screenshot">

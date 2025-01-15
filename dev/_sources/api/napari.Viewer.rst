@@ -65,6 +65,9 @@ napari.Viewer
       ~Viewer.export_figure
    
    
+      ~Viewer.export_rois
+   
+   
       ~Viewer.from_orm
    
    
