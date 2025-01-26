@@ -68,6 +68,7 @@ graph LR
 	click napari._qt.layer_controls.qt_vectors_controls "https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_vectors_controls.py" _blank
 	napari._qt.qt_main_window(napari._qt.qt_main_window)
 	napari._qt.qt_main_window --> napari._qt.qt_viewer
+	napari._qt.qt_main_window --> napari._qt.widgets.qt_command_palette
 	napari._qt.qt_main_window --> napari._qt.widgets.qt_viewer_dock_widget
 	napari._qt.qt_main_window --> napari.viewer
 	click napari._qt.qt_main_window "https://github.com/napari/napari/tree/main/napari/_qt/qt_main_window.py" _blank
@@ -78,6 +79,9 @@ graph LR
 	click napari._qt.qt_viewer "https://github.com/napari/napari/tree/main/napari/_qt/qt_viewer.py" _blank
 	napari._qt.widgets.qt_color_swatch(napari._qt.widgets.qt_color_swatch)
 	click napari._qt.widgets.qt_color_swatch "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_color_swatch.py" _blank
+	napari._qt.widgets.qt_command_palette(napari._qt.widgets.qt_command_palette)
+	napari._qt.widgets.qt_command_palette --> napari._qt.qt_main_window
+	click napari._qt.widgets.qt_command_palette "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_command_palette.py" _blank
 	napari._qt.widgets.qt_mode_buttons(napari._qt.widgets.qt_mode_buttons)
 	click napari._qt.widgets.qt_mode_buttons "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_mode_buttons.py" _blank
 	napari._qt.widgets.qt_range_slider_popup(napari._qt.widgets.qt_range_slider_popup)
@@ -122,6 +126,7 @@ graph LR
 	class module.napari._qt.layer_controls subgraphs
 	subgraph module.napari._qt.widgets[napari._qt.widgets]
 		 napari._qt.widgets.qt_color_swatch
+		 napari._qt.widgets.qt_command_palette
 		 napari._qt.widgets.qt_mode_buttons
 		 napari._qt.widgets.qt_range_slider_popup
 		 napari._qt.widgets.qt_splash_screen
@@ -138,27 +143,28 @@ napari/
 ├─layers/
 │ └─__init__.py
 ├─_qt/
-│ ├─qt_viewer.py
-│ ├─layer_controls/
-│ │ ├─qt_image_controls.py
-│ │ ├─qt_tracks_controls.py
-│ │ ├─qt_labels_controls.py
-│ │ ├─qt_layer_controls_container.py
-│ │ ├─qt_colormap_combobox.py
-│ │ ├─__init__.py
-│ │ ├─qt_vectors_controls.py
-│ │ ├─qt_image_controls_base.py
-│ │ ├─qt_shapes_controls.py
-│ │ ├─qt_surface_controls.py
-│ │ ├─qt_layer_controls_base.py
-│ │ └─qt_points_controls.py
-│ ├─__init__.py
+│ ├─qt_main_window.py
 │ ├─widgets/
-│ │ ├─qt_color_swatch.py
-│ │ ├─qt_splash_screen.py
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_mode_buttons.py
 │ │ ├─qt_range_slider_popup.py
-│ │ ├─qt_viewer_dock_widget.py
-│ │ └─qt_mode_buttons.py
-│ └─qt_main_window.py
+│ │ ├─qt_splash_screen.py
+│ │ ├─qt_color_swatch.py
+│ │ └─qt_viewer_dock_widget.py
+│ ├─qt_viewer.py
+│ ├─__init__.py
+│ └─layer_controls/
+│   ├─qt_points_controls.py
+│   ├─qt_layer_controls_container.py
+│   ├─qt_labels_controls.py
+│   ├─qt_image_controls_base.py
+│   ├─qt_colormap_combobox.py
+│   ├─qt_shapes_controls.py
+│   ├─qt_vectors_controls.py
+│   ├─qt_surface_controls.py
+│   ├─qt_image_controls.py
+│   ├─qt_layer_controls_base.py
+│   ├─qt_tracks_controls.py
+│   └─__init__.py
 └─viewer.py
 ```

@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=aae333c8"></script>
+    <script src="../../../_static/documentation_options.js?v=2cfc752d"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.6';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.5.6" />
+  <meta name="docsearch:version" content="dev" />
   </head>
   
   
@@ -592,6 +592,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.qt_viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtViewer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.threads.status_checker</span><span class="w"> </span><span class="kn">import</span> <span class="n">StatusChecker</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">QImg2array</span><span class="p">,</span> <span class="n">qbytearray_to_str</span><span class="p">,</span> <span class="n">str_to_qbytearray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_command_palette</span><span class="w"> </span><span class="kn">import</span> <span class="n">QCommandPalette</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_viewer_dock_widget</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">_SHORTCUT_DEPRECATION_STRING</span><span class="p">,</span>
     <span class="n">QtViewerDockWidget</span><span class="p">,</span>
@@ -736,6 +737,8 @@ window.addEventListener("load", load);
         <span class="n">settings</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">update_status_based_on_layer</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_toggle_status_thread</span>
         <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command_palette</span> <span class="o">=</span> <span class="n">QCommandPalette</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_status_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">Event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
@@ -1518,6 +1521,15 @@ window.addEventListener("load", load);
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">toggle_menubar_visibility</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">toggle_menubar_visibility</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_main_menu_shortcut</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="n">toggle_menubar_visibility</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_command_palette</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle the visibility of the command palette.&quot;&quot;&quot;</span>
+        <span class="n">palette</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">_command_palette</span>
+        <span class="k">if</span> <span class="n">palette</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span>
+            <span class="n">palette</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">palette</span><span class="o">.</span><span class="n">update_context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="p">)</span>
+            <span class="n">palette</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_toggle_fullscreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Toggle fullscreen mode.&quot;&quot;&quot;</span>

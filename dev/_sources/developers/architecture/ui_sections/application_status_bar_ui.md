@@ -14,11 +14,15 @@ graph LR
 	napari._qt.qt_main_window(napari._qt.qt_main_window)
 	napari._qt.qt_main_window --> napari._qt.dialogs.qt_activity_dialog
 	napari._qt.qt_main_window --> napari._qt.threads.status_checker
+	napari._qt.qt_main_window --> napari._qt.widgets.qt_command_palette
 	napari._qt.qt_main_window --> napari._qt.widgets.qt_viewer_status_bar
 	napari._qt.qt_main_window --> napari.viewer
 	click napari._qt.qt_main_window "https://github.com/napari/napari/tree/main/napari/_qt/qt_main_window.py" _blank
 	napari._qt.threads.status_checker(napari._qt.threads.status_checker)
 	click napari._qt.threads.status_checker "https://github.com/napari/napari/tree/main/napari/_qt/threads/status_checker.py" _blank
+	napari._qt.widgets.qt_command_palette(napari._qt.widgets.qt_command_palette)
+	napari._qt.widgets.qt_command_palette --> napari._qt.qt_main_window
+	click napari._qt.widgets.qt_command_palette "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_command_palette.py" _blank
 	napari._qt.widgets.qt_progress_bar(napari._qt.widgets.qt_progress_bar)
 	napari._qt.widgets.qt_progress_bar --> napari.utils.progress
 	click napari._qt.widgets.qt_progress_bar "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_progress_bar.py" _blank
@@ -50,6 +54,7 @@ graph LR
 	end
 	class module.napari._qt.threads subgraphs
 	subgraph module.napari._qt.widgets[napari._qt.widgets]
+		 napari._qt.widgets.qt_command_palette
 		 napari._qt.widgets.qt_progress_bar
 		 napari._qt.widgets.qt_viewer_status_bar
 	end
@@ -66,15 +71,16 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─__init__.py
-│ ├─widgets/
-│ │ ├─qt_progress_bar.py
-│ │ └─qt_viewer_status_bar.py
 │ ├─qt_main_window.py
-│ ├─threads/
-│ │ └─status_checker.py
-│ └─dialogs/
-│   └─qt_activity_dialog.py
+│ ├─dialogs/
+│ │ └─qt_activity_dialog.py
+│ ├─widgets/
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ └─qt_progress_bar.py
+│ ├─__init__.py
+│ └─threads/
+│   └─status_checker.py
 ├─utils/
 │ └─progress.py
 └─viewer.py

@@ -84,6 +84,7 @@ graph LR
 	napari._qt.qt_main_window --> napari._qt.dialogs.preferences_dialog
 	napari._qt.qt_main_window --> napari._qt.dialogs.screenshot_dialog
 	napari._qt.qt_main_window --> napari._qt.qt_viewer
+	napari._qt.qt_main_window --> napari._qt.widgets.qt_command_palette
 	napari._qt.qt_main_window --> napari.viewer
 	click napari._qt.qt_main_window "https://github.com/napari/napari/tree/main/napari/_qt/qt_main_window.py" _blank
 	napari._qt.qt_viewer(napari._qt.qt_viewer)
@@ -94,6 +95,9 @@ graph LR
 	napari._qt.qthreading(napari._qt.qthreading)
 	napari._qt.qthreading --> napari._qt._qapp_model.injection._qprocessors
 	click napari._qt.qthreading "https://github.com/napari/napari/tree/main/napari/_qt/qthreading.py" _blank
+	napari._qt.widgets.qt_command_palette(napari._qt.widgets.qt_command_palette)
+	napari._qt.widgets.qt_command_palette --> napari._qt.qt_main_window
+	click napari._qt.widgets.qt_command_palette "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_command_palette.py" _blank
 	napari._qt.widgets.qt_message_popup(napari._qt.widgets.qt_message_popup)
 	click napari._qt.widgets.qt_message_popup "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_message_popup.py" _blank
 	napari._qt.widgets.qt_viewer_buttons(napari._qt.widgets.qt_viewer_buttons)
@@ -147,6 +151,7 @@ graph LR
 	end
 	class module.napari._qt subgraphs
 	subgraph module.napari._qt.widgets[napari._qt.widgets]
+		 napari._qt.widgets.qt_command_palette
 		 napari._qt.widgets.qt_message_popup
 		 napari._qt.widgets.qt_viewer_buttons
 	end
@@ -159,35 +164,36 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─qt_viewer.py
-│ ├─qthreading.py
-│ ├─__init__.py
+│ ├─qt_main_window.py
 │ ├─_qapp_model/
 │ │ ├─qactions/
-│ │ │ ├─_view.py
 │ │ │ ├─_file.py
-│ │ │ ├─_window.py
-│ │ │ ├─_help.py
-│ │ │ ├─__init__.py
-│ │ │ ├─_toggle_action.py
-│ │ │ ├─_layerlist_context.py
 │ │ │ ├─_layers_actions.py
 │ │ │ ├─_plugins.py
-│ │ │ └─_debug.py
+│ │ │ ├─_layerlist_context.py
+│ │ │ ├─_toggle_action.py
+│ │ │ ├─_help.py
+│ │ │ ├─_view.py
+│ │ │ ├─_debug.py
+│ │ │ ├─__init__.py
+│ │ │ └─_window.py
 │ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
+│ │   ├─_qprocessors.py
+│ │   └─_qproviders.py
+│ ├─qthreading.py
+│ ├─dialogs/
+│ │ ├─qt_modal.py
+│ │ ├─qt_about.py
+│ │ ├─qt_reader_dialog.py
+│ │ ├─screenshot_dialog.py
+│ │ ├─qt_plugin_report.py
+│ │ ├─preferences_dialog.py
+│ │ └─confirm_close_dialog.py
 │ ├─widgets/
-│ │ ├─qt_viewer_buttons.py
-│ │ └─qt_message_popup.py
-│ ├─qt_main_window.py
-│ └─dialogs/
-│   ├─confirm_close_dialog.py
-│   ├─qt_about.py
-│   ├─preferences_dialog.py
-│   ├─qt_modal.py
-│   ├─screenshot_dialog.py
-│   ├─qt_plugin_report.py
-│   └─qt_reader_dialog.py
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_message_popup.py
+│ │ └─qt_viewer_buttons.py
+│ ├─qt_viewer.py
+│ └─__init__.py
 └─viewer.py
 ```
