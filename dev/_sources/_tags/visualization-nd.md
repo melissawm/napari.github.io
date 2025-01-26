@@ -14,6 +14,7 @@ caption: With this tag
 ../gallery/image-points-3d.rst
 ../gallery/image_custom_kernel.rst
 ../gallery/labels3d.rst
+../gallery/layer_bounding_box.rst
 ../gallery/mixed-dimensions-labels.rst
 ../gallery/nD_image.rst
 ../gallery/nD_labels.rst

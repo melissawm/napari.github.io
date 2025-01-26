@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=2cfc752d"></script>
+    <script src="_static/documentation_options.js?v=bf50ca6e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -564,7 +564,7 @@
 <li class="toctree-l4"><a class="reference internal" href="gallery/vortex.html">Visualizing optical flow in napari</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/visualization-advanced.html">visualization-advanced (17)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/visualization-advanced.html">visualization-advanced (19)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="gallery/3D_paths.html">3D Paths</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/3Dimage_plane_rendering.html">3D image plane rendering</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/add_multiscale_image.html">Add multiscale image</a></li>
@@ -573,6 +573,8 @@
 <li class="toctree-l4"><a class="reference internal" href="gallery/dynamic-projections-dask.html">Dynamic projections dask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/export_figure.html">Export Figure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/export_rois.html">Export regions of interest (ROIs) to png</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/image_border.html">Layer Bounding Box (Border) Overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/layer_bounding_box.html">3D Layer Bounding Box Overlay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/nD_multiscale_image.html">nD multiscale image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/nD_multiscale_image_non_uniform.html">nD multiscale image non-uniform</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/points-over-time.html">Points over time</a></li>
@@ -609,7 +611,7 @@
 <li class="toctree-l4"><a class="reference internal" href="gallery/tracks_2d.html">Tracks 2D</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/visualization-nd.html">visualization-nD (21)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/visualization-nd.html">visualization-nD (22)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="gallery/add-points-3d.html">Add points 3D</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/add_3D_image.html">Add 3D image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/add_points_on_nD_shapes.html">Add points on nD shapes</a></li>
@@ -618,6 +620,7 @@
 <li class="toctree-l4"><a class="reference internal" href="gallery/image-points-3d.html">Image points 3D</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/image_custom_kernel.html">Custom image interpolation kernels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/labels3d.html">Labels 3D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/layer_bounding_box.html">3D Layer Bounding Box Overlay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/mixed-dimensions-labels.html">Mixed dimensions labels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/nD_image.html">nD image</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/nD_labels.html">nD labels</a></li>
@@ -767,7 +770,10 @@ on using napari in Jupyter notebooks.</p>
 <li class="toctree-l1"><a class="reference internal" href="_tags/tagsindex.html">Tags</a></li>
 </ul>
 </div>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Display two vectors layers ontop of a 4-D image layer. One of the vectors layers is 3D and &quot;sliced&quot; with a different set of vectors appearing on different 3D slices. Another is 2D and &quot;broadcast&quot; with the same vectors appearing on each slice."><img alt="" src="_images/sphx_glr_3D_paths_thumb.png" />
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Display multiple layer types in 3D and add a bounding box overlay to each layer."><img alt="" src="_images/sphx_glr_layer_bounding_box_thumb.png" />
+<p><a class="reference internal" href="gallery/layer_bounding_box.html#sphx-glr-gallery-layer-bounding-box-py"><span class="std std-ref">3D Layer Bounding Box Overlay</span></a></p>
+  <div class="sphx-glr-thumbnail-title">3D Layer Bounding Box Overlay</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Display two vectors layers ontop of a 4-D image layer. One of the vectors layers is 3D and &quot;sliced&quot; with a different set of vectors appearing on different 3D slices. Another is 2D and &quot;broadcast&quot; with the same vectors appearing on each slice."><img alt="" src="_images/sphx_glr_3D_paths_thumb.png" />
 <p><a class="reference internal" href="gallery/3D_paths.html#sphx-glr-gallery-3d-paths-py"><span class="std std-ref">3D Paths</span></a></p>
   <div class="sphx-glr-thumbnail-title">3D Paths</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Display one 3D image layer and display it as a plane with a simple widget for modifying plane parameters."><img alt="" src="_images/sphx_glr_3Dimage_plane_rendering_thumb.png" />
@@ -905,6 +911,9 @@ on using napari in Jupyter notebooks.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="View 3D labels."><img alt="" src="_images/sphx_glr_labels3d_thumb.png" />
 <p><a class="reference internal" href="gallery/labels3d.html#sphx-glr-gallery-labels3d-py"><span class="std std-ref">Labels 3D</span></a></p>
   <div class="sphx-glr-thumbnail-title">Labels 3D</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Display an image in napari and add a bounding box overlay (a border) at the edges of the layer."><img alt="" src="_images/sphx_glr_image_border_thumb.png" />
+<p><a class="reference internal" href="gallery/image_border.html#sphx-glr-gallery-image-border-py"><span class="std std-ref">Layer Bounding Box (Border) Overlay</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Layer Bounding Box (Border) Overlay</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Display multiple image layers using the add_image API and then reorder them using the layers swap method and remove one"><img alt="" src="_images/sphx_glr_layers_thumb.png" />
 <p><a class="reference internal" href="gallery/layers.html#sphx-glr-gallery-layers-py"><span class="std std-ref">Layers</span></a></p>
   <div class="sphx-glr-thumbnail-title">Layers</div>

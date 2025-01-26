@@ -14,6 +14,8 @@ caption: With this tag
 ../gallery/dynamic-projections-dask.rst
 ../gallery/export_figure.rst
 ../gallery/export_rois.rst
+../gallery/image_border.rst
+../gallery/layer_bounding_box.rst
 ../gallery/nD_multiscale_image.rst
 ../gallery/nD_multiscale_image_non_uniform.rst
 ../gallery/points-over-time.rst

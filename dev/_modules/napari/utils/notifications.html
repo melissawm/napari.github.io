@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=2cfc752d"></script>
+    <script src="../../../_static/documentation_options.js?v=bf50ca6e"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -791,13 +791,9 @@ window.addEventListener("load", load);
 <span class="sd">        threading.excepthook to display any message in the UI,</span>
 <span class="sd">        storing the previous hooks to be restored if necessary.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">threading</span><span class="p">,</span> <span class="s1">&#39;excepthook&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="c1"># TODO: we might want to display the additional thread information</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_originals_thread_except_hooks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">excepthook</span><span class="p">)</span>
-            <span class="n">threading</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receive_thread_error</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># Patch for Python &lt; 3.8</span>
-            <span class="n">_setup_thread_excepthook</span><span class="p">()</span>
+        <span class="c1"># TODO: we might want to display the additional thread information</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_originals_thread_except_hooks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">excepthook</span><span class="p">)</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receive_thread_error</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_originals_except_hooks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_showwarnings_hooks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">warnings</span><span class="o">.</span><span class="n">showwarning</span><span class="p">)</span>
@@ -812,9 +808,7 @@ window.addEventListener("load", load);
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Remove hooks installed by `install_hooks` and restore previous hooks.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">threading</span><span class="p">,</span> <span class="s1">&#39;excepthook&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="c1"># `threading.excepthook` available only for Python &gt;= 3.8</span>
-            <span class="n">threading</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_originals_thread_except_hooks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">threading</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_originals_thread_except_hooks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 
         <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_originals_except_hooks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">showwarning</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_showwarnings_hooks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></div>
@@ -953,28 +947,6 @@ window.addEventListener("load", load);
         <span class="c1"># this will likely get silenced by QT.</span>
         <span class="k">raise</span></div>
 
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_setup_thread_excepthook</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Workaround for `sys.excepthook` thread bug from:</span>
-<span class="sd">    http://bugs.python.org/issue1230540</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">_init</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">_run</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run</span>
-
-        <span class="k">def</span><span class="w"> </span><span class="nf">run_with_except_hook</span><span class="p">(</span><span class="o">*</span><span class="n">args2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs2</span><span class="p">):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">_run</span><span class="p">(</span><span class="o">*</span><span class="n">args2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs2</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># noqa BLE001</span>
-                <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">run</span> <span class="o">=</span> <span class="n">run_with_except_hook</span>
-
-    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">init</span>
 </pre></div>
 
                 </article>
