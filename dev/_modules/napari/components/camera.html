@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=9c7a8241"></script>
+    <script src="../../../_static/documentation_options.js?v=e08b7034"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -590,7 +590,9 @@ window.addEventListener("load", load);
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ang</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">angles</span><span class="p">)</span>
         <span class="n">view_direction</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="c1"># z has a negative sign for the right-handed reference frame</span>
+            <span class="c1"># flip (#7488)</span>
+            <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
             <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
             <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
         <span class="p">)</span>
@@ -608,7 +610,9 @@ window.addEventListener("load", load);
             <span class="n">seq</span><span class="o">=</span><span class="s1">&#39;yzx&#39;</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">angles</span><span class="p">,</span> <span class="n">degrees</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="n">rotation_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="c1"># z has a negative sign for the right-handed reference frame</span>
+            <span class="c1"># flip (#7488)</span>
+            <span class="o">-</span><span class="n">rotation_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
             <span class="n">rotation_matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
             <span class="n">rotation_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
         <span class="p">)</span>
@@ -651,14 +655,22 @@ window.addEventListener("load", load);
             <span class="mi">0</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">view_direction_along_y_axis</span> <span class="ow">and</span> <span class="n">up_direction_along_y_axis</span><span class="p">:</span>
-            <span class="n">up_direction</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># align up direction along z axis</span>
+            <span class="n">up_direction</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># align up direction along z axis</span>
 
-        <span class="c1"># xyz ordering for vispy, normalise vectors for rotation matrix</span>
-        <span class="n">view_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">view_direction</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># xyz ordering for vispy</span>
+        <span class="n">view_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">view_direction</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># flip z axis for right-handed frame</span>
+        <span class="n">view_vector</span> <span class="o">*=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># normalise vector for rotation matrix</span>
         <span class="n">view_vector</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">view_vector</span><span class="p">)</span>
 
-        <span class="n">up_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">up_direction</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># xyz ordering for vispy</span>
+        <span class="n">up_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">up_direction</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># flip z axis for right-handed frame</span>
+        <span class="n">up_vector</span> <span class="o">*=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># ??? why a cross product here?</span>
         <span class="n">up_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">view_vector</span><span class="p">,</span> <span class="n">up_vector</span><span class="p">)</span>
+        <span class="c1"># normalise vector for rotation matrix</span>
         <span class="n">up_vector</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">up_vector</span><span class="p">)</span>
 
         <span class="c1"># explicit check for parallel view direction and up direction</span>
