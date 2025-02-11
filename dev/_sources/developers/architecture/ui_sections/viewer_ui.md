@@ -258,62 +258,62 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
-├─_qt/
-│ ├─_qapp_model/
-│ │ ├─qactions/
-│ │ │ ├─__init__.py
-│ │ │ ├─_debug.py
-│ │ │ └─_layerlist_context.py
-│ │ └─injection/
-│ │   ├─__init__.py
-│ │   └─_qprocessors.py
-│ ├─threads/
+├─components/
+│ ├─_viewer_key_bindings.py
+│ ├─tooltip.py
+│ ├─_viewer_constants.py
+│ ├─layerlist.py
+│ ├─cursor.py
+│ ├─viewer_model.py
+│ ├─camera.py
+│ ├─_layer_slicer.py
+│ ├─overlays/
+│ │ ├─brush_circle.py
+│ │ ├─scale_bar.py
+│ │ ├─axes.py
+│ │ ├─bounding_box.py
+│ │ ├─base.py
+│ │ ├─text.py
+│ │ ├─interaction_box.py
 │ │ ├─__init__.py
-│ │ └─status_checker.py
-│ ├─layer_controls/
-│ │ └─__init__.py
-│ ├─qthreading.py
-│ ├─containers/
-│ │ └─__init__.py
-│ ├─dialogs/
-│ │ └─__init__.py
-│ ├─qt_viewer.py
-│ ├─utils.py
-│ ├─qt_main_window.py
-│ └─widgets/
-│   ├─qt_tooltip.py
-│   ├─qt_viewer_buttons.py
-│   ├─qt_dims.py
-│   ├─qt_dims_slider.py
-│   ├─qt_viewer_dock_widget.py
-│   ├─qt_command_palette.py
-│   ├─qt_welcome.py
-│   ├─qt_scrollbar.py
-│   ├─qt_spinbox.py
-│   ├─qt_dims_sorter.py
-│   └─qt_viewer_status_bar.py
+│ │ └─labels_polygon.py
+│ ├─grid.py
+│ ├─_viewer_mouse_bindings.py
+│ └─dims.py
 ├─layers/
 │ └─__init__.py
-└─components/
-  ├─grid.py
-  ├─_layer_slicer.py
-  ├─camera.py
-  ├─_viewer_mouse_bindings.py
-  ├─cursor.py
-  ├─viewer_model.py
-  ├─dims.py
-  ├─overlays/
-  │ ├─interaction_box.py
-  │ ├─__init__.py
-  │ ├─axes.py
-  │ ├─base.py
-  │ ├─bounding_box.py
-  │ ├─brush_circle.py
-  │ ├─labels_polygon.py
-  │ ├─scale_bar.py
-  │ └─text.py
-  ├─tooltip.py
-  ├─_viewer_constants.py
-  ├─layerlist.py
-  └─_viewer_key_bindings.py
+└─_qt/
+  ├─qt_main_window.py
+  ├─_qapp_model/
+  │ ├─qactions/
+  │ │ ├─_layerlist_context.py
+  │ │ ├─_debug.py
+  │ │ └─__init__.py
+  │ └─injection/
+  │   ├─_qprocessors.py
+  │   └─__init__.py
+  ├─qthreading.py
+  ├─dialogs/
+  │ └─__init__.py
+  ├─widgets/
+  │ ├─qt_dims.py
+  │ ├─qt_command_palette.py
+  │ ├─qt_spinbox.py
+  │ ├─qt_viewer_status_bar.py
+  │ ├─qt_dims_slider.py
+  │ ├─qt_tooltip.py
+  │ ├─qt_dims_sorter.py
+  │ ├─qt_scrollbar.py
+  │ ├─qt_welcome.py
+  │ ├─qt_viewer_buttons.py
+  │ └─qt_viewer_dock_widget.py
+  ├─containers/
+  │ └─__init__.py
+  ├─qt_viewer.py
+  ├─utils.py
+  ├─layer_controls/
+  │ └─__init__.py
+  └─threads/
+    ├─status_checker.py
+    └─__init__.py
 ```
