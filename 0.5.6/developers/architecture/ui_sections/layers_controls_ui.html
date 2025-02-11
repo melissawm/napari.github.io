@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../dev/_static/documentation_options.js?v=2404b4ff"></script>
+    <script src="../../../../dev/_static/documentation_options.js?v=386e3ec5"></script>
     <script src="../../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -747,33 +747,33 @@ window.addEventListener("load", load);
 <section id="source-code-directory-layout-related-to-modules-inside-napari">
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
-├─layers/
-│ └─__init__.py
+├─viewer.py
 ├─_qt/
-│ ├─qt_main_window.py
-│ ├─widgets/
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_mode_buttons.py
-│ │ ├─qt_range_slider_popup.py
-│ │ ├─qt_splash_screen.py
-│ │ ├─qt_color_swatch.py
-│ │ └─qt_viewer_dock_widget.py
-│ ├─qt_viewer.py
 │ ├─__init__.py
-│ └─layer_controls/
-│   ├─qt_points_controls.py
-│   ├─qt_layer_controls_container.py
-│   ├─qt_labels_controls.py
-│   ├─qt_image_controls_base.py
-│   ├─qt_colormap_combobox.py
-│   ├─qt_shapes_controls.py
-│   ├─qt_vectors_controls.py
-│   ├─qt_surface_controls.py
-│   ├─qt_image_controls.py
-│   ├─qt_layer_controls_base.py
-│   ├─qt_tracks_controls.py
-│   └─__init__.py
-└─viewer.py
+│ ├─layer_controls/
+│ │ ├─qt_labels_controls.py
+│ │ ├─qt_layer_controls_base.py
+│ │ ├─__init__.py
+│ │ ├─qt_points_controls.py
+│ │ ├─qt_vectors_controls.py
+│ │ ├─qt_tracks_controls.py
+│ │ ├─qt_image_controls.py
+│ │ ├─qt_surface_controls.py
+│ │ ├─qt_shapes_controls.py
+│ │ ├─qt_image_controls_base.py
+│ │ ├─qt_layer_controls_container.py
+│ │ └─qt_colormap_combobox.py
+│ ├─qt_viewer.py
+│ ├─qt_main_window.py
+│ └─widgets/
+│   ├─qt_range_slider_popup.py
+│   ├─qt_mode_buttons.py
+│   ├─qt_splash_screen.py
+│   ├─qt_viewer_dock_widget.py
+│   ├─qt_command_palette.py
+│   └─qt_color_swatch.py
+└─layers/
+  └─__init__.py
 </pre></div>
 </div>
 </section>
