@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=3200cd16"></script>
+    <script src="../_static/documentation_options.js?v=01bb7ad3"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -618,8 +618,13 @@ will displayed as a rich image in the jupyter notebook.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>viewer</strong> (<a class="reference internal" href="napari.Viewer.html#napari.Viewer" title="napari.Viewer"><em>napari.Viewer</em></a>) – The napari viewer.</p></li>
-<li><p><strong>canvas_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – If True includes the napari viewer frame in the screenshot,
-otherwise just includes the canvas. By default, True.</p></li>
+<li><p><strong>canvas_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – If False include the napari viewer frame in the screenshot,
+and if True then take screenshot of just the image display canvas.
+By default, False.</p></li>
+<li><p><strong>alt_text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – Image description alternative text, for screenreader accessibility.
+Good alt-text describes the image and any text within the image
+in no more than three short, complete sentences.
+By default, None.</p></li>
 </ul>
 </dd>
 </dl>
@@ -631,8 +636,8 @@ otherwise just includes the canvas. By default, True.</p></li>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">view_image</span><span class="p">(</span><span class="n">chelsea</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;chelsea-the-cat&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nbscreenshot</span><span class="p">(</span><span class="n">viewer</span><span class="p">)</span>
-<span class="go"># screenshot just the canvas with the napari viewer framing it</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nbscreenshot</span><span class="p">(</span><span class="n">viewer</span><span class="p">,</span> <span class="n">canvas_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go"># screenshot just the canvas without the napari viewer framing it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbscreenshot</span><span class="p">(</span><span class="n">viewer</span><span class="p">,</span> <span class="n">canvas_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Methods</p>
