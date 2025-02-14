@@ -124,7 +124,6 @@ napari.layers.Shapes
 
    .. autosummary::
    
-      ~Shapes.ModeCallable
       ~Shapes.affine
       ~Shapes.axis_labels
       ~Shapes.blending

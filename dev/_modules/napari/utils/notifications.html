@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -529,11 +529,10 @@ window.addEventListener("load", load);
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">auto</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">TracebackType</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span><span class="p">,</span> <span class="n">EventEmitter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringEnum</span>
@@ -625,9 +624,7 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">severity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
-            <span class="nb">str</span><span class="p">,</span> <span class="n">NotificationSeverity</span>
-        <span class="p">]</span> <span class="o">=</span> <span class="n">NotificationSeverity</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+        <span class="n">severity</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">NotificationSeverity</span> <span class="o">=</span> <span class="n">NotificationSeverity</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
         <span class="n">actions</span><span class="p">:</span> <span class="n">ActionSequence</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -759,7 +756,7 @@ window.addEventListener("load", load);
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Notification</span><span class="p">]</span>
-    <span class="n">_instance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NotificationManager</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_instance</span><span class="p">:</span> <span class="n">NotificationManager</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Notification</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -823,8 +820,8 @@ window.addEventListener("load", load);
         <span class="n">args</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span>
             <span class="nb">type</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span>
             <span class="ne">BaseException</span><span class="p">,</span>
-            <span class="n">Optional</span><span class="p">[</span><span class="n">TracebackType</span><span class="p">],</span>
-            <span class="n">Optional</span><span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">],</span>
+            <span class="n">TracebackType</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">receive_error</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
@@ -833,8 +830,8 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">exctype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">],</span>
         <span class="n">value</span><span class="p">:</span> <span class="ne">BaseException</span><span class="p">,</span>
-        <span class="n">traceback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TracebackType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">thread</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">traceback</span><span class="p">:</span> <span class="n">TracebackType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">thread</span><span class="p">:</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="ne">KeyboardInterrupt</span><span class="p">):</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s1">&#39;Closed by KeyboardInterrupt&#39;</span><span class="p">)</span>

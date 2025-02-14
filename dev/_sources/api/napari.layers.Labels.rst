@@ -106,7 +106,6 @@ napari.layers.Labels
 
    .. autosummary::
    
-      ~Labels.ModeCallable
       ~Labels.affine
       ~Labels.axis_labels
       ~Labels.blending

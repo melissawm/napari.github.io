@@ -79,7 +79,6 @@ napari.layers.Vectors
 
    .. autosummary::
    
-      ~Vectors.ModeCallable
       ~Vectors.affine
       ~Vectors.axis_labels
       ~Vectors.blending

@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -523,11 +523,9 @@ window.addEventListener("load", load);
                   
   <h1>Source code for napari.utils.events.containers._typed</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">MutableSequence</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">MutableSequence</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
     <span class="n">TypeVar</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
     <span class="n">overload</span><span class="p">,</span>
@@ -573,8 +571,8 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">basetype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">],</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">(),</span>
-        <span class="n">lookup</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">_L</span><span class="p">],</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">_T</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="n">_T</span><span class="p">,</span> <span class="n">_L</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">basetype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(),</span>
+        <span class="n">lookup</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">_L</span><span class="p">],</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">_T</span><span class="p">],</span> <span class="n">_T</span> <span class="o">|</span> <span class="n">_L</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">lookup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">lookup</span> <span class="o">=</span> <span class="p">{}</span>
@@ -729,9 +727,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="TypedMutableSequence.index">
 <a class="viewcode-back" href="../../../../../api/napari.utils.events.TypedMutableSequence.html#napari.utils.events.TypedMutableSequence.index">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">_L</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">_L</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return first index of value.</span>
 
 <span class="sd">        Parameters</span>
@@ -777,7 +773,7 @@ window.addEventListener("load", load);
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_iter_indices</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Iter indices from start to stop.</span>
 

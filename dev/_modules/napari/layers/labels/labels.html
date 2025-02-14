@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -525,14 +525,11 @@ window.addEventListener("load", load);
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Callable</span><span class="p">,</span>
     <span class="n">ClassVar</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
-    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -989,7 +986,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iso_gradient_mode</span><span class="p">)</span>
 
     <span class="nd">@iso_gradient_mode</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">iso_gradient_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">IsoCategoricalGradientMode</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">iso_gradient_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">IsoCategoricalGradientMode</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_iso_gradient_mode</span> <span class="o">=</span> <span class="n">IsoCategoricalGradientMode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">iso_gradient_mode</span><span class="p">()</span>
 
@@ -1045,7 +1042,7 @@ window.addEventListener("load", load);
         <span class="p">)</span>
         <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">brush_size</span> <span class="o">*</span> <span class="n">min_scale</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">new_colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">new_colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">32</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -1094,12 +1091,12 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">LayerDataProtocol</span><span class="p">,</span> <span class="n">MultiScaleData</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LayerDataProtocol</span> <span class="o">|</span> <span class="n">MultiScaleData</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;array: Image data.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
 
     <span class="nd">@data</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">LayerDataProtocol</span><span class="p">,</span> <span class="n">MultiScaleData</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">LayerDataProtocol</span> <span class="o">|</span> <span class="n">MultiScaleData</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_int_labels</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1128,7 +1125,7 @@ window.addEventListener("load", load);
     <span class="nd">@features</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+        <span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_table</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_label_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_label_index</span><span class="p">()</span>
@@ -1389,7 +1386,7 @@ window.addEventListener("load", load);
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_contour</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the contour of a given label array within the specified data slice.</span>
 
 <span class="sd">        Parameters</span>
@@ -1427,12 +1424,12 @@ window.addEventListener("load", load);
         <span class="c1"># Remove the latest one-pixel border from the result</span>
         <span class="n">delta_slice</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="nb">slice</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_slice</span><span class="p">,</span> <span class="n">expanded_slice</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_slice</span><span class="p">,</span> <span class="n">expanded_slice</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">sliced_labels</span><span class="p">[</span><span class="n">delta_slice</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_raw_to_displayed</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">data_slice</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Determine displayed image from a saved raw image and a saved seed.</span>
 
@@ -1987,7 +1984,9 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
                 <span class="p">[</span>
                     <span class="nb">slice</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">s2</span><span class="o">.</span><span class="n">start</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">s2</span><span class="o">.</span><span class="n">stop</span><span class="p">))</span>
-                    <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">updated_slice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                        <span class="n">updated_slice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_updated_slice</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="p">)</span>
                 <span class="p">]</span>
             <span class="p">)</span>
 
@@ -2005,10 +2004,10 @@ window.addEventListener("load", load);
 <a class="viewcode-back" href="../../../../api/napari.layers.Labels.html#napari.layers.Labels.get_status">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_status</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">position</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">position</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">view_direction</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">dims_displayed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">view_direction</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">world</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Status message information of the data at a coordinate position.</span>
@@ -2066,8 +2065,8 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">position</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">view_direction</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">dims_displayed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">view_direction</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">world</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2105,8 +2104,8 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">position</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">view_direction</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">dims_displayed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">view_direction</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">world</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

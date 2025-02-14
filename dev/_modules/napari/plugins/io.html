@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -529,7 +529,7 @@ window.addEventListener("load", load);
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">HookImplementation</span><span class="p">,</span> <span class="n">PluginCallError</span>
 
@@ -541,14 +541,16 @@ window.addEventListener("load", load);
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
     <span class="kn">from</span><span class="w"> </span><span class="nn">npe2.manifest.contributions</span><span class="w"> </span><span class="kn">import</span> <span class="n">WriterContribution</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_data_with_plugins</span><span class="p">(</span>
     <span class="n">paths</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">PathLike</span><span class="p">],</span>
-    <span class="n">plugin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">plugin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">stack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">LayerData</span><span class="p">]],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">HookImplementation</span><span class="p">]]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">LayerData</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">HookImplementation</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Iterate reader hooks and return first non-None LayerData or None.</span>
 
 <span class="sd">    This function returns as soon as the path has been read successfully,</span>
@@ -597,7 +599,7 @@ window.addEventListener("load", load);
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">stack</span><span class="p">:</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-    <span class="n">hookimpl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">HookImplementation</span><span class="p">]</span>
+    <span class="n">hookimpl</span><span class="p">:</span> <span class="n">HookImplementation</span> <span class="o">|</span> <span class="kc">None</span>
 
     <span class="n">res</span> <span class="o">=</span> <span class="n">_npe2</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">plugin</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="n">stack</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -709,8 +711,8 @@ window.addEventListener("load", load);
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">layers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Layer</span><span class="p">],</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">plugin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">_writer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">plugin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">_writer</span><span class="p">:</span> <span class="n">WriterContribution</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write list of layers or individual layer to a path using writer plugins.</span>
 
@@ -827,8 +829,8 @@ window.addEventListener("load", load);
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">layers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Layer</span><span class="p">],</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">plugin_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">_writer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">_writer</span><span class="p">:</span> <span class="n">WriterContribution</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write data from multiple layers data with a plugin.</span>
 
@@ -880,7 +882,7 @@ window.addEventListener("load", load);
     <span class="n">layer_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">as_layer_data_tuple</span><span class="p">()</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
     <span class="n">layer_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">ld</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">ld</span> <span class="ow">in</span> <span class="n">layer_data</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_name</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_name</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">):</span>
         <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">plugin_name</span> <span class="o">=</span> <span class="n">plugin_manager</span><span class="o">.</span><span class="n">get_writer_for_extension</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
 
@@ -941,9 +943,9 @@ window.addEventListener("load", load);
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">layer</span><span class="p">:</span> <span class="n">Layer</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">plugin_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">_writer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+    <span class="n">plugin_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">_writer</span><span class="p">:</span> <span class="n">WriterContribution</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write single layer data with a plugin.</span>
 
 <span class="sd">    If ``plugin_name`` is not provided then we just directly call</span>
@@ -992,7 +994,7 @@ window.addEventListener("load", load);
         <span class="n">plugin_manager</span><span class="o">.</span><span class="n">hook</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;napari_write_</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">_type_string</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_name</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plugin_name</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">):</span>
         <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">plugin_name</span> <span class="o">=</span> <span class="n">plugin_manager</span><span class="o">.</span><span class="n">get_writer_for_extension</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
 
@@ -1009,12 +1011,12 @@ window.addEventListener("load", load);
         <span class="p">)</span>
 
     <span class="c1"># Call the hook_caller</span>
-    <span class="n">written_path</span> <span class="o">=</span> <span class="n">hook_caller</span><span class="p">(</span>
+    <span class="n">written_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">hook_caller</span><span class="p">(</span>
         <span class="n">_plugin</span><span class="o">=</span><span class="n">plugin_name</span><span class="p">,</span>
         <span class="n">path</span><span class="o">=</span><span class="n">abspath_or_url</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
         <span class="n">data</span><span class="o">=</span><span class="n">layer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
         <span class="n">meta</span><span class="o">=</span><span class="n">layer</span><span class="o">.</span><span class="n">_get_state</span><span class="p">(),</span>
-    <span class="p">)</span>  <span class="c1"># type: Optional[str]</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">written_path</span><span class="p">,</span> <span class="n">plugin_name</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 

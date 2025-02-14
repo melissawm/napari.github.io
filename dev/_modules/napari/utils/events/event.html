@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -578,11 +578,10 @@ window.addEventListener("load", load);
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">weakref</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Callable</span><span class="p">,</span>
     <span class="n">Generic</span><span class="p">,</span>
     <span class="n">Literal</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
@@ -817,18 +816,18 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">source</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">type_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">type_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">event_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="n">Event</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># connected callbacks</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Callback</span><span class="p">,</span> <span class="n">CallbackRef</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Callback</span> <span class="o">|</span> <span class="n">CallbackRef</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># used when connecting new callbacks at specific positions</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_callback_refs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callback_refs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_callback_pass_event</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="c1"># count number of times this emitter is blocked for each callback.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_blocked</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_block_counter</span><span class="p">:</span> <span class="n">_WeakCounter</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">]]</span> <span class="o">=</span> <span class="n">_WeakCounter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_blocked</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_block_counter</span><span class="p">:</span> <span class="n">_WeakCounter</span><span class="p">[</span><span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">_WeakCounter</span><span class="p">()</span>
 
         <span class="c1"># used to detect emitter loops</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_emitting</span> <span class="o">=</span> <span class="kc">False</span>
@@ -885,12 +884,12 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">_print_callback_errors</span> <span class="o">=</span> <span class="n">val</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">callback_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">callback_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The set of callback references&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_callback_refs</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Callback</span><span class="p">,</span> <span class="n">CallbackRef</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Callback</span> <span class="o">|</span> <span class="n">CallbackRef</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The set of callbacks&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">)</span>
 
@@ -905,9 +904,7 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_is_core_callback</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">CallbackRef</span><span class="p">,</span> <span class="n">Callback</span><span class="p">],</span> <span class="n">core</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_is_core_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">CallbackRef</span> <span class="o">|</span> <span class="n">Callback</span><span class="p">,</span> <span class="n">core</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check if the callback is a core callback</span>
 
@@ -940,10 +937,10 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">callback</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callback</span><span class="p">,</span> <span class="n">CallbackRef</span><span class="p">,</span> <span class="n">CallbackStr</span><span class="p">,</span> <span class="s1">&#39;EventEmitter&#39;</span><span class="p">],</span>
-        <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">ref</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">position</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;last&#39;</span><span class="p">,</span>
-        <span class="n">before</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">]],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">after</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">]],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">before</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">after</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">until</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;EventEmitter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect this emitter to a new callback.</span>
@@ -1007,7 +1004,7 @@ window.addEventListener("load", load);
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="c1"># deal with the ref</span>
-        <span class="n">_ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="n">_ref</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">ref</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
@@ -1067,7 +1064,9 @@ window.addEventListener("load", load);
                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">criteria</span><span class="p">:</span>
                     <span class="n">count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
                         <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cn</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span>
-                        <span class="k">for</span> <span class="n">cn</span><span class="p">,</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">callback_refs</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">cn</span><span class="p">,</span> <span class="n">cc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                            <span class="n">callback_refs</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+                        <span class="p">)</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="n">count</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -1083,7 +1082,7 @@ window.addEventListener("load", load);
                 <span class="n">matches</span> <span class="o">=</span> <span class="p">[</span>
                     <span class="n">ci</span>
                     <span class="k">for</span> <span class="n">ci</span><span class="p">,</span> <span class="p">(</span><span class="n">cn</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
-                        <span class="nb">zip</span><span class="p">(</span><span class="n">callback_refs</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">)</span>
+                        <span class="nb">zip</span><span class="p">(</span><span class="n">callback_refs</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="p">)</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">cc</span> <span class="ow">in</span> <span class="n">criteria</span> <span class="ow">or</span> <span class="n">cn</span> <span class="ow">in</span> <span class="n">criteria</span><span class="p">)</span>
                 <span class="p">]</span>
@@ -1114,7 +1113,7 @@ window.addEventListener("load", load);
 <div class="viewcode-block" id="EventEmitter.disconnect">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EventEmitter.html#napari.utils.events.EventEmitter.disconnect">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callback</span><span class="p">,</span> <span class="n">CallbackRef</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="n">CallbackRef</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">object</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Disconnect a callback from this emitter.</span>
 
@@ -1125,7 +1124,7 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_callback_refs</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_callback_pass_event</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="p">(</span><span class="n">Callable</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">Callable</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">):</span>
             <span class="n">callback</span><span class="p">,</span> <span class="n">_pass_event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_cb</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">callback</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span>
                 <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
@@ -1202,9 +1201,7 @@ window.addEventListener("load", load);
             <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">signature</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
         <span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize_cb</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">callback</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">CallbackRef</span><span class="p">,</span> <span class="n">Callback</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize_cb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">CallbackRef</span> <span class="o">|</span> <span class="n">Callback</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
         <span class="c1"># dereference methods into a (self, method_name) pair so that we can</span>
         <span class="c1"># make the connection without making a strong reference to the</span>
         <span class="c1"># instance.</span>
@@ -1268,7 +1265,7 @@ window.addEventListener("load", load);
 
             <span class="n">rem</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CallbackRef</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">cb</span><span class="p">,</span> <span class="n">pass_event</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callback_pass_event</span><span class="p">[:]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">[:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callback_pass_event</span><span class="p">[:],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">):</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
                     <span class="n">obj</span> <span class="o">=</span> <span class="n">cb</span><span class="p">[</span><span class="mi">0</span><span class="p">]()</span>
@@ -1317,7 +1314,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="n">event</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_invoke_callback</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callback</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">]],</span> <span class="n">event</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">],</span> <span class="n">event</span><span class="p">:</span> <span class="n">Event</span> <span class="o">|</span> <span class="kc">None</span>
     <span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1364,7 +1361,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="EventEmitter.blocked">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EventEmitter.html#napari.utils.events.EventEmitter.blocked">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">blocked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">blocked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return boolean indicating whether the emitter is blocked for</span>
 <span class="sd">        the given callback.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1373,7 +1370,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="EventEmitter.block">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EventEmitter.html#napari.utils.events.EventEmitter.block">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Block this emitter. Any attempts to emit an event while blocked</span>
 <span class="sd">        will be silently ignored. If *callback* is given, then the emitter</span>
 <span class="sd">        is only blocked for that specific callback.</span>
@@ -1386,7 +1383,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="EventEmitter.unblock">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EventEmitter.html#napari.utils.events.EventEmitter.unblock">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">unblock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unblock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Unblock this emitter. See :func:`event.EventEmitter.block`.</span>
 
 <span class="sd">        Note: Use of ``unblock(None)`` only reverses the effect of</span>
@@ -1411,7 +1408,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="EventEmitter.blocker">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EventEmitter.html#napari.utils.events.EventEmitter.blocker">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">blocker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">blocker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an EventBlocker to be used in &#39;with&#39; statements</span>
 
 <span class="sd">        Notes</span>
@@ -1513,7 +1510,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">source</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">auto_connect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">emitters</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">],</span> <span class="n">EventEmitter</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="o">**</span><span class="n">emitters</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">|</span> <span class="n">EventEmitter</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">EventEmitter</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
 
@@ -1536,7 +1533,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_emitters</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">emitter</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">],</span> <span class="n">EventEmitter</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">emitter</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">|</span> <span class="n">EventEmitter</span> <span class="o">|</span> <span class="kc">None</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Alias for EmitterGroup.add(name=emitter)</span>
@@ -1547,8 +1544,8 @@ window.addEventListener("load", load);
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EmitterGroup.html#napari.utils.events.EmitterGroup.add">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">auto_connect</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">],</span> <span class="n">EventEmitter</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">auto_connect</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">|</span> <span class="n">EventEmitter</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add one or more EventEmitter instances to this emitter group.</span>
 <span class="sd">        Each keyword argument may be specified as either an EventEmitter</span>
@@ -1667,10 +1664,10 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">callback</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callback</span><span class="p">,</span> <span class="n">CallbackRef</span><span class="p">,</span> <span class="n">EventEmitter</span><span class="p">,</span> <span class="s1">&#39;EmitterGroup&#39;</span><span class="p">],</span>
-        <span class="n">ref</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">ref</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">position</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span>
-        <span class="n">before</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">]],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">after</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">]],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">before</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">after</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Callback</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect the callback to the event group. The callback will receive</span>
 <span class="sd">        events from *all* of the emitters in the group.</span>
@@ -1686,7 +1683,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="EmitterGroup.disconnect">
 <a class="viewcode-back" href="../../../../api/napari.utils.events.EmitterGroup.html#napari.utils.events.EmitterGroup.disconnect">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callback</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callback</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Disconnect the callback from this group. See</span>
 <span class="sd">        :func:`connect() &lt;vispy.event.EmitterGroup.connect&gt;` and</span>
 <span class="sd">        :func:`EventEmitter.connect() &lt;vispy.event.EventEmitter.connect&gt;` for</span>

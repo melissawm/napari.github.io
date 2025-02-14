@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -528,7 +528,6 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
     <span class="n">TypeVar</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -589,8 +588,8 @@ window.addEventListener("load", load);
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_emit_change</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">added</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="n">_T</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">removed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="n">_T</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">added</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">removed</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># provides a hook for subclasses to update internal state before emit</span>
         <span class="k">if</span> <span class="n">added</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>

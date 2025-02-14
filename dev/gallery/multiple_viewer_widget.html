@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -778,7 +778,6 @@ Switching to 3D display will only impact the main viewer.</p>
 current dims point (<cite>viewer.dims.point</cite>).</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/gui.html">gui</a></p>
 <img src="../_images/sphx_glr_multiple_viewer_widget_001.png" srcset="../_images/sphx_glr_multiple_viewer_widget_001.png" alt="multiple viewer widget" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/copy.html#copy.deepcopy" title="copy.deepcopy" class="sphx-glr-backref-module-copy sphx-glr-backref-type-py-function"><span class="n">deepcopy</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/typing.html#typing.Optional" title="typing.Optional" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Optional</span></a>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qt</span>
@@ -841,7 +840,7 @@ current dims point (<cite>viewer.dims.point</cite>).</p>
             <span class="p">[</span>
                 <span class="nb">max</span><span class="p">(</span><span class="n">min_</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">max_</span><span class="p">))</span> <span class="o">/</span> <span class="n">step</span>
                 <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="p">(</span><span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
-                    <span class="n">viewer_model</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">viewer_model</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">range</span>
+                    <span class="n">viewer_model</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">viewer_model</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
                 <span class="p">)</span>
             <span class="p">]</span>
         <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -891,8 +890,8 @@ current dims point (<cite>viewer.dims.point</cite>).</p>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
         <span class="n">stack</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-        <span class="n">plugin</span><span class="p">:</span> <a href="https://docs.python.org/3/library/typing.html#typing.Optional" title="typing.Optional" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Optional</span></a><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">layer_type</span><span class="p">:</span> <a href="https://docs.python.org/3/library/typing.html#typing.Optional" title="typing.Optional" class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data"><span class="n">Optional</span></a><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">plugin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">layer_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;for drag and drop open files&quot;&quot;&quot;</span>

@@ -31,7 +31,7 @@ current dims point (`viewer.dims.point`).
 
 .. tags:: gui
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-440
+.. GENERATED FROM PYTHON SOURCE LINES 14-439
 
 
 
@@ -48,7 +48,6 @@ current dims point (`viewer.dims.point`).
 
 
     from copy import deepcopy
-    from typing import Optional
 
     import numpy as np
     from qtpy.QtCore import Qt
@@ -111,7 +110,7 @@ current dims point (`viewer.dims.point`).
                 [
                     max(min_, min(p, max_)) / step
                     for p, (min_, max_, step) in zip(
-                        viewer_model.cursor.position, viewer_model.dims.range
+                        viewer_model.cursor.position, viewer_model.dims.range, strict=False
                     )
                 ]
             ).astype(int)
@@ -161,8 +160,8 @@ current dims point (`viewer.dims.point`).
             self,
             filenames: list,
             stack: bool,
-            plugin: Optional[str] = None,
-            layer_type: Optional[str] = None,
+            plugin: str | None = None,
+            layer_type: str | None = None,
             **kwargs,
         ):
             """for drag and drop open files"""

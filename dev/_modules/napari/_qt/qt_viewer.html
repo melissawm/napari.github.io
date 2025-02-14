@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -535,8 +535,6 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
-    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">weakref</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakSet</span><span class="p">,</span> <span class="n">ref</span>
 
@@ -594,7 +592,7 @@ window.addEventListener("load", load);
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_npe2_decode_selected_filter</span><span class="p">(</span>
     <span class="n">ext_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">selected_filter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">writers</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WriterContribution</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WriterContribution</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine the writer that should be invoked to save data.</span>
 
 <span class="sd">    When npe2 can be imported, resolves a selected file extension</span>
@@ -606,6 +604,7 @@ window.addEventListener("load", load);
     <span class="k">for</span> <span class="n">entry</span><span class="p">,</span> <span class="n">writer</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
         <span class="n">ext_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;;&#39;</span><span class="p">),</span>
         <span class="n">writers</span><span class="p">,</span>
+        <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">selected_filter</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">writer</span>
@@ -836,7 +835,7 @@ window.addEventListener("load", load);
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_dask_cache_settings</span><span class="p">(</span>
-        <span class="n">dask_setting</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">DaskSettings</span><span class="p">,</span> <span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dask_setting</span><span class="p">:</span> <span class="n">DaskSettings</span> <span class="o">|</span> <span class="n">Event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update dask cache to match settings.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">dask_setting</span><span class="p">:</span>
@@ -1037,7 +1036,7 @@ window.addEventListener("load", load);
 <span class="sd">            give (list/tuple/str) then the variable values looked up in the</span>
 <span class="sd">            callers frame.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">vlist</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1067,7 +1066,7 @@ window.addEventListener("load", load);
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;List: items to push to console when instantiated.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_console_backlog</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtConsole</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtConsole</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to setup console.</span>
 
 <span class="sd">        Returns</span>
@@ -1519,10 +1518,10 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">_qt_open</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">filenames</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-        <span class="n">stack</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]],</span>
+        <span class="n">stack</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
         <span class="n">choose_plugin</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">plugin</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">layer_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">plugin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">layer_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Open files, potentially popping reader dialog for plugin selection.</span>
@@ -1790,7 +1789,7 @@ window.addEventListener("load", load);
     <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.experimental.remote</span><span class="w"> </span><span class="kn">import</span> <span class="n">RemoteManager</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_create_qt_poll</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">camera</span><span class="p">:</span> <span class="n">Camera</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">QtPoll</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_qt_poll</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">camera</span><span class="p">:</span> <span class="n">Camera</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtPoll</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create and return a QtPoll instance, if needed.</span>
 
 <span class="sd">    Create a QtPoll instance for the monitor.</span>
@@ -1821,9 +1820,7 @@ window.addEventListener("load", load);
     <span class="k">return</span> <span class="n">qt_poll</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_create_remote_manager</span><span class="p">(</span>
-    <span class="n">layers</span><span class="p">:</span> <span class="n">LayerList</span><span class="p">,</span> <span class="n">qt_poll</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RemoteManager</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_remote_manager</span><span class="p">(</span><span class="n">layers</span><span class="p">:</span> <span class="n">LayerList</span><span class="p">,</span> <span class="n">qt_poll</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RemoteManager</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create and return a RemoteManager instance, if we need one.</span>
 
 <span class="sd">    Parameters</span>

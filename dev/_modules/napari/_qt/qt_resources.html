@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -523,7 +523,6 @@ window.addEventListener("load", load);
                   
   <h1>Source code for napari._qt.qt_resources</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.qt_resources._svg</span><span class="w"> </span><span class="kn">import</span> <span class="n">QColoredSVGIcon</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
@@ -538,9 +537,9 @@ window.addEventListener("load", load);
 <div class="viewcode-block" id="get_stylesheet">
 <a class="viewcode-back" href="../../../api/napari.qt.html#napari.qt.get_stylesheet">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_stylesheet</span><span class="p">(</span>
-    <span class="n">theme_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">extra</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">extra_variables</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">theme_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">extra</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">extra_variables</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Combine all qss files into single, possibly pre-themed, style string.</span>
 
@@ -587,7 +586,7 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="get_current_stylesheet">
 <a class="viewcode-back" href="../../../api/napari.qt.html#napari.qt.get_current_stylesheet">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_current_stylesheet</span><span class="p">(</span><span class="n">extra</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_current_stylesheet</span><span class="p">(</span><span class="n">extra</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the current stylesheet base on settings. This is wrapper around</span>
 <span class="sd">    :py:func:`get_stylesheet` that takes the current theme base on settings.</span>

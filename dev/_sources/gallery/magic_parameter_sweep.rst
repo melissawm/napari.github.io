@@ -30,7 +30,7 @@ It demonstrates:
 
 .. tags:: gui
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-54
+.. GENERATED FROM PYTHON SOURCE LINES 13-53
 
 
 
@@ -45,7 +45,6 @@ It demonstrates:
 
 .. code-block:: Python
 
-    import typing
     from typing import Annotated
 
     import skimage.data
@@ -69,7 +68,7 @@ It demonstrates:
         layer: 'napari.layers.Image',
         sigma: Annotated[float, {'widget_type': 'FloatSlider', 'max': 6}] = 1.0,
         mode: Annotated[str, {'choices': ['reflect', 'constant', 'nearest', 'mirror', 'wrap']}]='nearest',
-    ) -> 'typing.Optional[napari.types.ImageData]':
+    ) -> 'napari.types.ImageData | None':
         """Apply a gaussian blur to ``layer``."""
         if layer:
             return skimage.filters.gaussian(layer.data, sigma=sigma, mode=mode)

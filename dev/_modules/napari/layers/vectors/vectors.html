@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -524,7 +524,7 @@ window.addEventListener("load", load);
   <h1>Source code for napari.layers.vectors.vectors</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -822,7 +822,7 @@ window.addEventListener("load", load);
         <span class="c1"># Data containing vectors in the currently viewed slice</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_view_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_view_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_view_alphas</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_view_alphas</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="mf">1.0</span>
 
         <span class="c1"># now that everything is set up, make the layer visible (if set to visible)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
@@ -885,7 +885,7 @@ window.addEventListener("load", load);
     <span class="nd">@features</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+        <span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_table</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">num_data</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span><span class="o">.</span><span class="n">color_properties</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -929,7 +929,7 @@ window.addEventListener("load", load);
 
     <span class="nd">@feature_defaults</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">feature_defaults</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_table</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">defaults</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">feature_defaults</span><span class="p">()</span>
@@ -1097,7 +1097,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span><span class="o">.</span><span class="n">color_mode</span>
 
     <span class="nd">@edge_color_mode</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ColorMode</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ColorMode</span><span class="p">):</span>
         <span class="n">edge_color_mode</span> <span class="o">=</span> <span class="n">ColorMode</span><span class="p">(</span><span class="n">edge_color_mode</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">edge_color_mode</span> <span class="o">==</span> <span class="n">ColorMode</span><span class="o">.</span><span class="n">DIRECT</span><span class="p">:</span>
@@ -1157,7 +1157,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span><span class="o">.</span><span class="n">categorical_colormap</span><span class="o">.</span><span class="n">fallback_color</span><span class="o">.</span><span class="n">values</span>
 
     <span class="nd">@edge_color_cycle</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_cycle</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_cycle</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span><span class="o">.</span><span class="n">categorical_colormap</span> <span class="o">=</span> <span class="n">edge_color_cycle</span>
 
     <span class="nd">@property</span>
@@ -1184,7 +1184,7 @@ window.addEventListener("load", load);
 
     <span class="nd">@edge_contrast_limits</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">edge_contrast_limits</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span><span class="o">.</span><span class="n">contrast_limits</span> <span class="o">=</span> <span class="n">contrast_limits</span>
 
@@ -1307,13 +1307,13 @@ window.addEventListener("load", load);
                 <span class="n">downsampled</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_thumbnail_shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
             <span class="p">)</span>
             <span class="n">edge_colors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">thumbnail_color_indices</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">ec</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">downsampled</span><span class="p">,</span> <span class="n">edge_colors</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">ec</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">downsampled</span><span class="p">,</span> <span class="n">edge_colors</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
                 <span class="n">start</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">stop</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">))))</span>
                 <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">step</span><span class="p">)</span>
                 <span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stop</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">step</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
                     <span class="n">colormapped</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">ec</span>
             <span class="n">colormapped</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">colormapped</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">opacity</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">uint8</span>

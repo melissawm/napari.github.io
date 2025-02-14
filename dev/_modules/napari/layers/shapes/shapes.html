@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -523,15 +523,13 @@ window.addEventListener("load", load);
                   
   <h1>Source code for napari.layers.shapes.shapes</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cycle</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Any</span><span class="p">,</span>
-    <span class="n">Callable</span><span class="p">,</span>
     <span class="n">ClassVar</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
-    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1074,7 +1072,7 @@ window.addEventListener("load", load);
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value_stored</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_moving_value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_moving_value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_data</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_data_stored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_selected_data_history</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -1313,7 +1311,7 @@ window.addEventListener("load", load);
     <span class="nd">@features</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">features</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
+        <span class="n">features</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_table</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">num_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nshapes</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_face_color_property</span> <span class="ow">and</span> <span class="p">(</span>
@@ -1355,7 +1353,7 @@ window.addEventListener("load", load);
 
     <span class="nd">@feature_defaults</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">feature_defaults</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_table</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span><span class="n">defaults</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">current_properties</span><span class="p">()</span>
@@ -1490,6 +1488,7 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_view</span><span class="o">.</span><span class="n">edge_color</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_view</span><span class="o">.</span><span class="n">face_color</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_view</span><span class="o">.</span><span class="n">z_indices</span><span class="p">,</span>
+            <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_shapes_to_view</span><span class="p">(</span><span class="n">shape_inputs</span><span class="p">,</span> <span class="n">new_data_view</span><span class="p">)</span>
@@ -1517,7 +1516,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge_color_cycle_values</span>
 
     <span class="nd">@edge_color_cycle</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_cycle</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_cycle</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_color_cycle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">edge_color_cycle</span><span class="p">),</span> <span class="s1">&#39;edge&#39;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -1536,7 +1535,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">_edge_colormap</span> <span class="o">=</span> <span class="n">ensure_colormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">edge_contrast_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edge_contrast_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;None, (float, float): contrast limits for mapping</span>
 <span class="sd">        the edge_color colormap property to 0 and 1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1544,7 +1543,7 @@ window.addEventListener("load", load);
 
     <span class="nd">@edge_contrast_limits</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">edge_contrast_limits</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edge_contrast_limits</span> <span class="o">=</span> <span class="n">contrast_limits</span>
 
@@ -1561,7 +1560,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_edge_color_mode</span><span class="p">)</span>
 
     <span class="nd">@edge_color_mode</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ColorMode</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edge_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_color_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ColorMode</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_color_mode</span><span class="p">(</span><span class="n">edge_color_mode</span><span class="p">,</span> <span class="s1">&#39;edge&#39;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -1583,7 +1582,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_face_color_cycle_values</span>
 
     <span class="nd">@face_color_cycle</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">face_color_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_color_cycle</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cycle</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">face_color_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_color_cycle</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">cycle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_color_cycle</span><span class="p">(</span><span class="n">face_color_cycle</span><span class="p">,</span> <span class="s1">&#39;face&#39;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -1602,7 +1601,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">_face_colormap</span> <span class="o">=</span> <span class="n">ensure_colormap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">face_contrast_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">face_contrast_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;None, (float, float) : clims for mapping the face_color</span>
 <span class="sd">        colormap property to 0 and 1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1610,7 +1609,7 @@ window.addEventListener("load", load);
 
     <span class="nd">@face_contrast_limits</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">face_contrast_limits</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">contrast_limits</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_face_contrast_limits</span> <span class="o">=</span> <span class="n">contrast_limits</span>
 
@@ -1630,9 +1629,7 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">face_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">face_color_mode</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_color_mode</span><span class="p">(</span><span class="n">face_color_mode</span><span class="p">,</span> <span class="s1">&#39;face&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_set_color_mode</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">color_mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ColorMode</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_color_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color_mode</span><span class="p">:</span> <span class="n">ColorMode</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the face_color_mode or edge_color_mode property</span>
 
 <span class="sd">        Parameters</span>
@@ -1690,7 +1687,7 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">refresh_colors</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_set_color_cycle</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">color_cycle</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cycle</span><span class="p">],</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">color_cycle</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">cycle</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the face_color_cycle or edge_color_cycle property</span>
 
@@ -1999,7 +1996,9 @@ window.addEventListener("load", load);
                 <span class="n">color_cycle</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s1">_color_cycle&#39;</span><span class="p">)</span>
                 <span class="n">color_cycle_map</span> <span class="o">=</span> <span class="p">{</span>
                     <span class="n">k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">transform_color</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
-                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">color_properties</span><span class="p">),</span> <span class="n">color_cycle</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">color_properties</span><span class="p">),</span> <span class="n">color_cycle</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="p">)</span>
                 <span class="p">}</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s1">_color_cycle_map&#39;</span><span class="p">,</span> <span class="n">color_cycle_map</span><span class="p">)</span>
 
@@ -2112,7 +2111,7 @@ window.addEventListener("load", load);
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;determines if the new color argument is for directly setting or cycle/colormap&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">color</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -2240,7 +2239,7 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
 
     <span class="nd">@mode</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Mode</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Mode</span><span class="p">):</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode_setter_helper</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">:</span>
             <span class="k">return</span>
@@ -2861,6 +2860,7 @@ window.addEventListener("load", load);
                 <span class="n">transformed_edge_color</span><span class="p">,</span>
                 <span class="n">transformed_face_color</span><span class="p">,</span>
                 <span class="n">ensure_iterable</span><span class="p">(</span><span class="n">z_index</span><span class="p">),</span>
+                <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_shapes_to_view</span><span class="p">(</span><span class="n">shape_inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_view</span><span class="p">)</span>
@@ -2890,7 +2890,7 @@ window.addEventListener("load", load);
             <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">ec</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">shape_inputs</span>
         <span class="p">)</span>
 
-        <span class="n">shapes</span><span class="p">,</span> <span class="n">edge_colors</span><span class="p">,</span> <span class="n">face_colors</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">sh_inp</span><span class="p">))</span>
+        <span class="n">shapes</span><span class="p">,</span> <span class="n">edge_colors</span><span class="p">,</span> <span class="n">face_colors</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">sh_inp</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
         <span class="c1"># Add all shapes at once (faster than adding them one by one)</span>
         <span class="n">data_view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
@@ -2985,7 +2985,7 @@ window.addEventListener("load", load);
 <span class="sd">            the box, and the last point is the location of the rotation handle</span>
 <span class="sd">            that can be used to rotate the box</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">set</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">set</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">box</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -3334,7 +3334,7 @@ window.addEventListener("load", load);
 <span class="sd">        center : list</span>
 <span class="sd">            coordinates of center of rotation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="n">scale</span> <span class="o">=</span> <span class="p">[</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">]</span>
         <span class="n">box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected_box</span> <span class="o">-</span> <span class="n">center</span>
         <span class="n">box</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">box</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
@@ -3444,7 +3444,7 @@ window.addEventListener("load", load);
         <span class="n">start_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
         <span class="n">end_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
         <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the layer data value along a ray</span>
 
 <span class="sd">        Parameters</span>
@@ -3476,7 +3476,7 @@ window.addEventListener("load", load);
         <span class="n">start_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
         <span class="n">end_point</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
         <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="kc">None</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the shape index and intersection point of the first shape</span>
 <span class="sd">        (i.e., closest to start_point) along the specified 3D line segment.</span>
 
@@ -3533,7 +3533,7 @@ window.addEventListener("load", load);
         <span class="n">position</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
         <span class="n">view_direction</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
         <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the shape index and intersection point of the first shape</span>
 <span class="sd">        (i.e., closest to start_point) &quot;under&quot; a mouse click.</span>
 

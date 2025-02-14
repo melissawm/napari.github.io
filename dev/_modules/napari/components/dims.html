@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=c2ddcc5a"></script>
+    <script src="../../../_static/documentation_options.js?v=8a59c4af"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -528,8 +528,6 @@ window.addEventListener("load", load);
     <span class="n">Any</span><span class="p">,</span>
     <span class="n">Literal</span><span class="p">,</span>
     <span class="n">NamedTuple</span><span class="p">,</span>
-    <span class="n">Optional</span><span class="p">,</span>
-    <span class="n">Union</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -699,7 +697,7 @@ window.addEventListener("load", load);
         <span class="c1"># ensure point is limited to range</span>
         <span class="n">updated</span><span class="p">[</span><span class="s1">&#39;point&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">pt</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">updated</span><span class="p">[</span><span class="s1">&#39;range&#39;</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">pt</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="n">updated</span><span class="p">[</span><span class="s1">&#39;range&#39;</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
 
         <span class="n">updated</span><span class="p">[</span><span class="s1">&#39;margin_left&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ensure_len</span><span class="p">(</span>
@@ -782,28 +780,30 @@ window.addEventListener("load", load);
             <span class="n">RangeTuple</span><span class="p">(</span>
                 <span class="n">rng</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">rng</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="n">rng</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">nsteps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
             <span class="p">)</span>
-            <span class="k">for</span> <span class="n">rng</span><span class="p">,</span> <span class="n">nsteps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">rng</span><span class="p">,</span> <span class="n">nsteps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">current_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">point</span> <span class="o">-</span> <span class="n">rng</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">step</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)))</span>
-            <span class="k">for</span> <span class="n">point</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">point</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
 
     <span class="nd">@current_step</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">current_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="n">rng</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">point</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">step</span>
-            <span class="k">for</span> <span class="n">point</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">point</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">thickness</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="n">left</span> <span class="o">+</span> <span class="n">right</span>
-            <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">margin_left</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin_right</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">margin_left</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin_right</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
         <span class="p">)</span>
 
     <span class="nd">@thickness</span><span class="o">.</span><span class="n">setter</span>
@@ -828,10 +828,8 @@ window.addEventListener("load", load);
 <a class="viewcode-back" href="../../../api/napari.components.Dims.html#napari.components.Dims.set_range">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_range</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
-        <span class="n">_range</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
-            <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span>
-        <span class="p">],</span>
+        <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">_range</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]],</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets ranges (min, max, step) for the given dimensions.</span>
 
@@ -847,7 +845,7 @@ window.addEventListener("load", load);
             <span class="n">axis</span><span class="p">,</span> <span class="n">_range</span><span class="p">,</span> <span class="n">value_is_sequence</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
         <span class="n">full_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">full_range</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">full_range</span><span class="p">)</span></div>
 
@@ -856,8 +854,8 @@ window.addEventListener("load", load);
 <a class="viewcode-back" href="../../../api/napari.components.Dims.html#napari.components.Dims.set_point">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_point</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
-        <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+        <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets point to slice dimension in world coordinates.</span>
 
@@ -872,22 +870,22 @@ window.addEventListener("load", load);
             <span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">value_is_sequence</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
         <span class="n">full_point</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">full_point</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">full_point</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">set_current_step</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
-        <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
+        <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="p">):</span>
         <span class="n">axis</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sanitize_input</span><span class="p">(</span>
             <span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">value_is_sequence</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
         <span class="n">range_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
         <span class="n">value_world</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">rng</span> <span class="o">=</span> <span class="n">range_</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span>
             <span class="n">value_world</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">val</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_point</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">value_world</span><span class="p">)</span>
@@ -896,8 +894,8 @@ window.addEventListener("load", load);
 <a class="viewcode-back" href="../../../api/napari.components.Dims.html#napari.components.Dims.set_axis_label">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_axis_label</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
-        <span class="n">label</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets new axis labels for the given axes.</span>
 
@@ -912,7 +910,7 @@ window.addEventListener("load", load);
             <span class="n">axis</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">value_is_sequence</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
         <span class="n">full_axis_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis_labels</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">full_axis_labels</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axis_labels</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">full_axis_labels</span><span class="p">)</span></div>
 
@@ -945,7 +943,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_increment_dims_right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_increment_dims_right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Increment dimensions to the right along given axis, or last used axis if None</span>
 
 <span class="sd">        Parameters</span>
@@ -957,7 +955,7 @@ window.addEventListener("load", load);
             <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_used</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_current_step</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_step</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_increment_dims_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_increment_dims_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Increment dimensions to the left along given axis, or last used axis if None</span>
 
 <span class="sd">        Parameters</span>
