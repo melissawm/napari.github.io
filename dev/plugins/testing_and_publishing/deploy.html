@@ -580,16 +580,13 @@ PyPI</a> after which it will be installable using <code class="docutils literal 
 in the builtin plugin installer dialog.</p>
 <p>If you used the <a class="reference internal" href="../advanced_topics/npe1.html#napari-plugin-template"><span class="std std-ref">napari plugin template</span></a>, you can also
 <a class="reference external" href="https://github.com/napari/napari-plugin-template#set-up-automatic-deployments">setup automated deployments</a> on GitHub for every tagged commit.</p>
-<div class="admonition-what-about-conda admonition">
-<p class="admonition-title">What about conda?</p>
-<p>While you are free to distribute your plugin on anaconda cloud in addition to
-or instead of PyPI, the built-in napari plugin installer doesn’t currently install
-from conda. In this case, you may guide your users to install your package on the
-command line using conda in your readme or documentation.</p>
-<p>A future version of napari and the napari stand-alone application may support
-directly installing from conda. As such, publishing to conda-forge can be a good
-idea. Checkout <a class="reference internal" href="../virtual_environment_docs/2-deploying-your-plugin.html#deploying-to-anaconda"><span class="std std-ref">deploying to anaconda</span></a> for more details.</p>
+<div class="attention admonition">
+<p class="admonition-title">conda-forge</p>
+<p>You can also deploy your plugin to conda-forge. Check out <a class="reference internal" href="../virtual_environment_docs/2-deploying-your-plugin.html#deploying-to-conda-forge"><span class="std std-ref">deploying to conda-forge</span></a> for more
+details on how to do that.</p>
 </div>
+<p>The <a class="reference external" href="https://napari.org/napari-plugin-manager/">napari-plugin-manager</a> can be used to install plugins deployed to both
+PyPI and conda-forge.</p>
 <p>When you are ready for users, announce your plugin on the <a class="reference external" href="https://forum.image.sc/tag/napari">Image.sc
 forum</a>.</p>
 </section>
