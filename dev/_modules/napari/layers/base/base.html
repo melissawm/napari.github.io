@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=29bd16c3"></script>
+    <script src="../../../../_static/documentation_options.js?v=9584b26b"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -2761,13 +2761,18 @@ window.addEventListener("load", load);
             <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="n">source_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_source_info</span><span class="p">()</span>
+        <span class="c1"># use self._translate_grid to adjust layer origin in grid mode</span>
         <span class="k">if</span> <span class="n">position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">source_info</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_layer_coords_status</span><span class="p">(</span>
-                <span class="n">position</span><span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="p">:],</span> <span class="n">value</span>
+                <span class="c1"># position may be higher-dimensional due to other</span>
+                <span class="c1"># layers in the viewer, but self._translate_grid already</span>
+                <span class="c1"># has the correct dimensionality</span>
+                <span class="n">position</span><span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="p">:]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_translate_grid</span><span class="p">,</span>
+                <span class="n">value</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">source_info</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_layer_coords_status</span><span class="p">(</span>
-                <span class="n">position</span><span class="p">,</span> <span class="n">value</span>
+                <span class="n">position</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_translate_grid</span><span class="p">,</span> <span class="n">value</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">source_info</span></div>
 
