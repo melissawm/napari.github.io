@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9584b26b"></script>
+    <script src="../_static/documentation_options.js?v=d1b64ab3"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -589,33 +589,17 @@
 <td><p>If grid is enabled or not.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.tooltip.events.visible</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.grid.events.spacing</span></code></p></td>
+<td><p>Spacing between grid layers, as a proportion of the average of the height and width of the extent of layers in world coordinates after slicing. A value of 0.0 will have the grid layers touching each other. Positive values will space the layers apart, and negative values will overlap the layers.  .. versionadded:: 0.6.0     <code class="docutils literal notranslate"><span class="pre">spacing</span></code> was added in 0.6.0.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ConstrainedFloatValue</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.tooltip.events.visible</span></code></p></td>
 <td><p>If tooltip is visible or not.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.tooltip.events.text</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.tooltip.events.text</span></code></p></td>
 <td><p>text of tooltip</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.help</span></code></p></td>
-<td><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.status</span></code></p></td>
-<td><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Union</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.theme</span></code></p></td>
-<td><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.title</span></code></p></td>
-<td><p>The title of the viewer window.</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.mouse_over_canvas</span></code></p></td>
-<td><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.help</span></code></p></td>
 <td><p></p></td>
@@ -630,10 +614,30 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.title</span></code></p></td>
-<td><p>The title of the viewer window. By default ‘napari’.</p></td>
+<td><p>The title of the viewer window.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.mouse_over_canvas</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.help</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.status</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Union</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.theme</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.title</span></code></p></td>
+<td><p>The title of the viewer window. By default ‘napari’.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewer.events.mouse_over_canvas</span></code></p></td>
 <td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
