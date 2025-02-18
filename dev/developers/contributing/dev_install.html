@@ -637,6 +637,13 @@ a Qt backend installed or if you use an experimental backend like PySide6:</p>
 </pre></div>
 </div>
 <p>Note that in this last case you will need to install your Qt backend separately.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In all of the above cases, you may wish to include the <code class="docutils literal notranslate"><span class="pre">optional</span></code> dependency group,
+in addition to <code class="docutils literal notranslate"><span class="pre">dev</span></code>, by using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">&quot;.[dev,</span> <span class="pre">optional]&quot;</span></code>, for example.
+The <code class="docutils literal notranslate"><span class="pre">optional</span></code> dependency group includes <code class="docutils literal notranslate"><span class="pre">numba</span></code> and other performance packages that are
+included with the typical end-user <code class="docutils literal notranslate"><span class="pre">napari[all]</span></code> installation.</p>
+</div>
 </li>
 <li><p>We use <a class="reference external" href="https://pre-commit.com"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> to format code with
 <a class="reference external" href="https://docs.astral.sh/ruff/formatter/"><code class="docutils literal notranslate"><span class="pre">ruff-format</span></code></a> and lint with
