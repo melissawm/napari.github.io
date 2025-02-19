@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=c93fe55a"></script>
+    <script src="../../../_static/documentation_options.js?v=26d0e269"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -575,9 +575,11 @@ window.addEventListener("load", load);
 <span class="sd">    moved : (index: int, new_index: int, value: T)</span>
 <span class="sd">        emitted after ``value`` is moved from ``index`` to ``new_index``</span>
 <span class="sd">    changed : (index: int, old_value: T, value: T)</span>
-<span class="sd">        emitted when item at ``index`` is changed from ``old_value`` to ``value``</span>
+<span class="sd">        emitted when item at ``index`` is changed from ``old_value`` to</span>
+<span class="sd">        ``value``</span>
 <span class="sd">    changed &lt;OVERLOAD&gt; : (index: slice, old_value: List[_T], value: List[_T])</span>
-<span class="sd">        emitted when item at ``index`` is changed from ``old_value`` to ``value``</span>
+<span class="sd">        emitted when items at ``index``es are changed from ``old_value`` to</span>
+<span class="sd">        ``value``</span>
 <span class="sd">    reordered : (value: self)</span>
 <span class="sd">        emitted when the list is reordered (eg. moved/reversed).</span>
 <span class="sd">    selection.events.changed : (added: Set[_T], removed: Set[_T])</span>
@@ -587,6 +589,49 @@ window.addEventListener("load", load);
 <span class="sd">        emitted when the current item has changed.</span>
 <span class="sd">    selection.events._current : (value: _T)</span>
 <span class="sd">        emitted when the current item has changed. (Private event)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+
+<span class="sd">    Note that ``changed`` events are only emitted when an element of the</span>
+<span class="sd">    list changes, *not* when the list itself changes (for example when items</span>
+<span class="sd">    are added or removed). For example, ``layerlist.append(layer)`` will emit</span>
+<span class="sd">    an ``inserted`` event. ``layerlist[idx] = layer`` *will* emit a ``changed``</span>
+<span class="sd">    event.</span>
+
+<span class="sd">    However, the layerlist does not have a way of detecting when an object in</span>
+<span class="sd">    the list is modified in-place. Therefore, although</span>
+<span class="sd">    ``layerlist[idx].scale = [2, 1, 1]`` changes the *value* of the layer at</span>
+<span class="sd">    position ``idx``, a ``changed`` event will not be emitted.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; import napari</span>
+<span class="sd">    &gt;&gt;&gt; from skimage.data import astronaut</span>
+<span class="sd">    &gt;&gt;&gt; viewer = napari.Viewer()</span>
+<span class="sd">    &gt;&gt;&gt; event_list = []</span>
+
+<span class="sd">    Connect to the event list:</span>
+
+<span class="sd">    &gt;&gt;&gt; viewer.layers.events.connect(event_list.append)</span>
+<span class="sd">    &lt;built-in method append of list object at 0x7fc225764780&gt;</span>
+
+<span class="sd">    &gt;&gt;&gt; viewer.add_image(astronaut())</span>
+<span class="sd">    &lt;Image layer &#39;Image&#39; at 0x7f0fe7fa9e90&gt;</span>
+<span class="sd">    &gt;&gt;&gt; viewer.add_points()</span>
+<span class="sd">    &lt;Points layer &#39;Points&#39; at 0x7f102f962350&gt;</span>
+<span class="sd">    &gt;&gt;&gt; viewer.layers</span>
+<span class="sd">    [&lt;Image layer &#39;Image&#39; at 0x7f0fe7fa9e90&gt;, &lt;Points layer &#39;Points&#39; at 0x7f102f962350&gt;]</span>
+
+<span class="sd">    Inspecting the list of events, we see:</span>
+
+<span class="sd">    &gt;&gt;&gt; event_list[0].type</span>
+<span class="sd">    &#39;inserting&#39;</span>
+<span class="sd">    &gt;&gt;&gt; viewer.layers.pop(1)</span>
+<span class="sd">    &lt;Points layer &#39;Points&#39; at 0x7f102f962350&gt;</span>
+<span class="sd">    &gt;&gt;&gt; event_list[-1].type</span>
+<span class="sd">    &#39;removed&#39;</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -929,19 +974,36 @@ window.addEventListener("load", load);
         <span class="nb">getattr</span><span class="p">(</span><span class="n">_link_layers</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="n">layers</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">changed</span><span class="p">(</span><span class="n">added</span><span class="o">=</span><span class="p">{},</span> <span class="n">removed</span><span class="o">=</span><span class="p">{})</span>
 
+<div class="viewcode-block" id="LayerList.link_layers">
+<a class="viewcode-back" href="../../../api/napari.components.LayerList.html#napari.components.LayerList.link_layers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">link_layers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Layer</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">attributes</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link_layers</span><span class="p">(</span><span class="s1">&#39;link_layers&#39;</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Links the selected layers.</span>
 
+<span class="sd">        Once layers are linked, any action performed on one layer will be</span>
+<span class="sd">        performed on all linked layers at the same time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link_layers</span><span class="p">(</span><span class="s1">&#39;link_layers&#39;</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LayerList.unlink_layers">
+<a class="viewcode-back" href="../../../api/napari.components.LayerList.html#napari.components.LayerList.unlink_layers">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">unlink_layers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">layers</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Layer</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">attributes</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link_layers</span><span class="p">(</span><span class="s1">&#39;unlink_layers&#39;</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unlinks previously linked layers.</span>
+
+<span class="sd">        Changes to one of the layer&#39;s properties no longer result in the same</span>
+<span class="sd">        changes to the previously linked layers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link_layers</span><span class="p">(</span><span class="s1">&#39;unlink_layers&#39;</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="LayerList.save">
 <a class="viewcode-back" href="../../../api/napari.components.LayerList.html#napari.components.LayerList.save">[docs]</a>

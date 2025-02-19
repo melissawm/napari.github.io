@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=c93fe55a"></script>
+    <script src="../_static/documentation_options.js?v=26d0e269"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -626,8 +626,10 @@
 <li><p><strong>removed</strong> (<em>(index: int, value: T)</em>) – emitted after <code class="docutils literal notranslate"><span class="pre">value</span></code> is removed at <code class="docutils literal notranslate"><span class="pre">index</span></code></p></li>
 <li><p><strong>moving</strong> (<em>(index: int, new_index: int)</em>) – emitted before an item is moved from <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">new_index</span></code></p></li>
 <li><p><strong>moved</strong> (<em>(index: int, new_index: int, value: T)</em>) – emitted after <code class="docutils literal notranslate"><span class="pre">value</span></code> is moved from <code class="docutils literal notranslate"><span class="pre">index</span></code> to <code class="docutils literal notranslate"><span class="pre">new_index</span></code></p></li>
-<li><p><strong>changed</strong> (<em>(index: int, old_value: T, value: T)</em>) – emitted when item at <code class="docutils literal notranslate"><span class="pre">index</span></code> is changed from <code class="docutils literal notranslate"><span class="pre">old_value</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code></p></li>
-<li><p><strong>changed &lt;OVERLOAD&gt;</strong> (<em>(index: slice, old_value: List[_T], value: List[_T])</em>) – emitted when item at <code class="docutils literal notranslate"><span class="pre">index</span></code> is changed from <code class="docutils literal notranslate"><span class="pre">old_value</span></code> to <code class="docutils literal notranslate"><span class="pre">value</span></code></p></li>
+<li><p><strong>changed</strong> (<em>(index: int, old_value: T, value: T)</em>) – emitted when item at <code class="docutils literal notranslate"><span class="pre">index</span></code> is changed from <code class="docutils literal notranslate"><span class="pre">old_value</span></code> to
+<code class="docutils literal notranslate"><span class="pre">value</span></code></p></li>
+<li><p><strong>changed &lt;OVERLOAD&gt;</strong> (<em>(index: slice, old_value: List[_T], value: List[_T])</em>) – emitted when items at <code class="docutils literal notranslate"><span class="pre">index``es</span> <span class="pre">are</span> <span class="pre">changed</span> <span class="pre">from</span> <span class="pre">``old_value</span></code> to
+<code class="docutils literal notranslate"><span class="pre">value</span></code></p></li>
 <li><p><strong>reordered</strong> (<em>(value: self)</em>) – emitted when the list is reordered (eg. moved/reversed).</p></li>
 <li><p><strong>selection.events.changed</strong> (<em>(added: Set[_T], removed: Set[_T])</em>) – emitted when the set changes, includes item(s) that have been added
 and/or removed from the set.</p></li>
@@ -636,6 +638,45 @@ and/or removed from the set.</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">changed</span></code> events are only emitted when an element of the
+list changes, <em>not</em> when the list itself changes (for example when items
+are added or removed). For example, <code class="docutils literal notranslate"><span class="pre">layerlist.append(layer)</span></code> will emit
+an <code class="docutils literal notranslate"><span class="pre">inserted</span></code> event. <code class="docutils literal notranslate"><span class="pre">layerlist[idx]</span> <span class="pre">=</span> <span class="pre">layer</span></code> <em>will</em> emit a <code class="docutils literal notranslate"><span class="pre">changed</span></code>
+event.</p>
+<p>However, the layerlist does not have a way of detecting when an object in
+the list is modified in-place. Therefore, although
+<code class="docutils literal notranslate"><span class="pre">layerlist[idx].scale</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">1]</span></code> changes the <em>value</em> of the layer at
+position <code class="docutils literal notranslate"><span class="pre">idx</span></code>, a <code class="docutils literal notranslate"><span class="pre">changed</span></code> event will not be emitted.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">skimage.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">astronaut</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">event_list</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Connect to the event list:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">event_list</span><span class="o">.</span><span class="n">append</span><span class="p">)</span>
+<span class="go">&lt;built-in method append of list object at 0x7fc225764780&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">astronaut</span><span class="p">())</span>
+<span class="go">&lt;Image layer &#39;Image&#39; at 0x7f0fe7fa9e90&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">add_points</span><span class="p">()</span>
+<span class="go">&lt;Points layer &#39;Points&#39; at 0x7f102f962350&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span>
+<span class="go">[&lt;Image layer &#39;Image&#39; at 0x7f0fe7fa9e90&gt;, &lt;Points layer &#39;Points&#39; at 0x7f102f962350&gt;]</span>
+</pre></div>
+</div>
+<p>Inspecting the list of events, we see:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">event_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span>
+<span class="go">&#39;inserting&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Points layer &#39;Points&#39; at 0x7f102f962350&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">event_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span>
+<span class="go">&#39;removed&#39;</span>
+</pre></div>
+</div>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
@@ -663,8 +704,8 @@ and/or removed from the set.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.components.LayerList.insert" title="napari.components.LayerList.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(index, value)</p></td>
 <td><p>Insert <code class="docutils literal notranslate"><span class="pre">value</span></code> before index.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">link_layers</span></code>([layers, attributes])</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.components.LayerList.link_layers" title="napari.components.LayerList.link_layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">link_layers</span></code></a>([layers, attributes])</p></td>
+<td><p>Links the selected layers.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.components.LayerList.move" title="napari.components.LayerList.move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move</span></code></a>(src_index[, dest_index])</p></td>
 <td><p>Insert object at <code class="docutils literal notranslate"><span class="pre">src_index</span></code> before <code class="docutils literal notranslate"><span class="pre">dest_index</span></code>.</p></td>
@@ -702,8 +743,8 @@ and/or removed from the set.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.components.LayerList.toggle_selected_visibility" title="napari.components.LayerList.toggle_selected_visibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toggle_selected_visibility</span></code></a>()</p></td>
 <td><p>Toggle visibility of selected layers</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlink_layers</span></code>([layers, attributes])</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.components.LayerList.unlink_layers" title="napari.components.LayerList.unlink_layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unlink_layers</span></code></a>([layers, attributes])</p></td>
+<td><p>Unlinks previously linked layers.</p></td>
 </tr>
 </tbody>
 </table>
@@ -810,6 +851,14 @@ using the corresponding lookup converter function.</p></li>
 <dt class="sig sig-object py" id="napari.components.LayerList.insert">
 <span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="napari.layers.Layer.html#napari.layers.Layer" title="napari.layers.base.base.Layer"><span class="pre">Layer</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/components/layerlist.html#LayerList.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.components.LayerList.insert" title="Link to this definition">#</a></dt>
 <dd><p>Insert <code class="docutils literal notranslate"><span class="pre">value</span></code> before index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="napari.components.LayerList.link_layers">
+<span class="sig-name descname"><span class="pre">link_layers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="napari.layers.Layer.html#napari.layers.Layer" title="napari.layers.base.base.Layer"><span class="pre">Layer</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/components/layerlist.html#LayerList.link_layers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.components.LayerList.link_layers" title="Link to this definition">#</a></dt>
+<dd><p>Links the selected layers.</p>
+<p>Once layers are linked, any action performed on one layer will be
+performed on all linked layers at the same time.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -997,6 +1046,14 @@ through to find the first one that can save the data.</p></li>
 <dd><p>Toggle visibility of selected layers</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="napari.components.LayerList.unlink_layers">
+<span class="sig-name descname"><span class="pre">unlink_layers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="napari.layers.Layer.html#napari.layers.Layer" title="napari.layers.base.base.Layer"><span class="pre">Layer</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/napari/components/layerlist.html#LayerList.unlink_layers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#napari.components.LayerList.unlink_layers" title="Link to this definition">#</a></dt>
+<dd><p>Unlinks previously linked layers.</p>
+<p>Changes to one of the layer’s properties no longer result in the same
+changes to the previously linked layers.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1058,6 +1115,7 @@ through to find the first one that can save the data.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.get_extent"><code class="docutils literal notranslate"><span class="pre">LayerList.get_extent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.index"><code class="docutils literal notranslate"><span class="pre">LayerList.index()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.insert"><code class="docutils literal notranslate"><span class="pre">LayerList.insert()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.link_layers"><code class="docutils literal notranslate"><span class="pre">LayerList.link_layers()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.move"><code class="docutils literal notranslate"><span class="pre">LayerList.move()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.move_multiple"><code class="docutils literal notranslate"><span class="pre">LayerList.move_multiple()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.move_selected"><code class="docutils literal notranslate"><span class="pre">LayerList.move_selected()</span></code></a></li>
@@ -1072,6 +1130,7 @@ through to find the first one that can save the data.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.select_previous"><code class="docutils literal notranslate"><span class="pre">LayerList.select_previous()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.selection"><code class="docutils literal notranslate"><span class="pre">LayerList.selection</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.toggle_selected_visibility"><code class="docutils literal notranslate"><span class="pre">LayerList.toggle_selected_visibility()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.LayerList.unlink_layers"><code class="docutils literal notranslate"><span class="pre">LayerList.unlink_layers()</span></code></a></li>
 </ul>
 </li>
 </ul>
