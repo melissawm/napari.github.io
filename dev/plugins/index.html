@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=d9b939df"></script>
+    <script src="../_static/documentation_options.js?v=e6e4e7ab"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -535,9 +535,21 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="plugins">
 <span id="plugins-index"></span><h1>Plugins<a class="headerlink" href="#plugins" title="Link to this heading">#</a></h1>
-<p>Plugins are a powerful way to extend the functionality of napari and share these extensions with the community.
-While scripts and widgets can also be used to extend napari, plugins offer the most convenient method for publicly sharing additional features.</p>
-<p>Check out the user focused content to guide you through installing and using napari plugins, or the developer focused content to start creating your own plugins for napari.</p>
+<p>Plugins extend napari’s functionality, allowing for customization and sharing with the community.
+While you can use scripts and widgets to extend napari, plugins provide great flexibility.
+Existing plugins extend napari to add:</p>
+<ul class="simple">
+<li><p>support for import and export of image and related data types.</p></li>
+<li><p>support for working with specialized data formats.</p></li>
+<li><p>domain specific features, including microscopy, climate, geoscience, and more.
+Share and discover napari plugins on <a class="reference external" href="https://napari-hub.org">napari hub</a>,
+<a class="reference external" href="https://pypi.org/search/?q=napari">PyPI</a>, or <a class="reference external" href="https://conda-forge.org/packages/">conda-forge</a>.
+Interested in creating a plugin? A <a class="reference external" href="https://github.com/napari/napari-plugin-template">napari-plugin-template</a>,
+a <a class="reference external" href="https://copier.readthedocs.io/en/stable/">copier</a> template, bootstraps authoring
+<a class="reference external" href="https://github.com/napari/npe2">npe</a>-based napari plugins.</p></li>
+</ul>
+<p>Check out the user focused guides for installing and using napari plugins, or plugin developer guides to start
+creating your own napari plugins.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
@@ -558,7 +570,7 @@ Start using plugins</div>
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Finding and installing plugins</div>
-<p class="sd-card-text">How to find and install plugins from the napari plugin installer or napari hub.</p>
+<p class="sd-card-text">How to find and install plugins using the napari plugin installer or napari hub.</p>
 </div>
 <a class="sd-stretched-link sd-hide-link-text reference internal" href="start_using_plugins/finding_and_installing_plugins.html#find-and-install-plugins"><span class="std std-ref">Finding and installing plugins</span></a></div>
 </div>
@@ -597,7 +609,7 @@ Virtual environments and useful tools</div>
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Testing and publishing</div>
-<p class="sd-card-text">How to test your plugin works and how to publish it to PyPI,
+<p class="sd-card-text">How to test your plugin works and how to publish it,
 along with some tips for making your plugin easy to find.</p>
 </div>
 <a class="sd-stretched-link sd-hide-link-text reference internal" href="testing_and_publishing/index.html#plugin-test-deploy"><span class="std std-ref">Testing and publishing</span></a></div>

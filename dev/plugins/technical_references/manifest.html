@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d9b939df"></script>
+    <script src="../../_static/documentation_options.js?v=e6e4e7ab"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -591,7 +591,7 @@ your package metadata:</p>
 <td><p>The path to a square PNG icon of at least 128x128 pixels (256x256 for Retina screens). May be one of: <ul><li>a secure (https) URL </li><li>a path relative to the manifest file, (must be shipped in the sdist)</li><li>a string in the format <code class="docutils literal notranslate"><span class="pre">{package}:{resource}</span></code>, where <code class="docutils literal notranslate"><span class="pre">package</span></code> and <code class="docutils literal notranslate"><span class="pre">resource</span></code> are arguments to <code class="docutils literal notranslate"><span class="pre">importlib.resources.path(package,</span> <span class="pre">resource)</span></code>, (e.g. <code class="docutils literal notranslate"><span class="pre">top_module.some_folder:my_logo.png</span></code>).</li></ul></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">categories</span></code></p></td>
-<td><p>A list of categories that this plugin belongs to. This is used to help users discover your plugin. Allowed values: <code class="docutils literal notranslate"><span class="pre">[Acquisition,</span> <span class="pre">Annotation,</span> <span class="pre">Dataset,</span> <span class="pre">Image</span> <span class="pre">Processing,</span> <span class="pre">IO,</span> <span class="pre">Measurement,</span> <span class="pre">Segmentation,</span> <span class="pre">Simulation,</span> <span class="pre">Themes,</span> <span class="pre">Transformations,</span> <span class="pre">Utilities,</span> <span class="pre">Visualization]</span></code></p></td>
+<td><p>A list of categories that this plugin belongs to. This is used to help users discover your plugin. Allowed values: <code class="docutils literal notranslate"><span class="pre">[Acquisition,</span> <span class="pre">Annotation,</span> <span class="pre">Dataset,</span> <span class="pre">Image</span> <span class="pre">Processing,</span> <span class="pre">IO,</span> <span class="pre">Measurement,</span> <span class="pre">Registration,</span> <span class="pre">Segmentation,</span> <span class="pre">Simulation,</span> <span class="pre">Themes,</span> <span class="pre">Transformations,</span> <span class="pre">Utilities,</span> <span class="pre">Visualization]</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema_version</span></code></p></td>
 <td><p>A SemVer compatible version string matching the napari plugin schema version that the plugin is compatible with.</p></td>
@@ -631,7 +631,7 @@ manifest formats, though YAML is the “default” and more common format.</p>
 yaml</label><div class="sd-tab-content docutils">
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin</span>
 <span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example Plugin</span>
-<span class="nt">schema_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2.0</span>
+<span class="nt">schema_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2.1</span>
 <span class="nt">contributions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.hello_world</span>
@@ -705,7 +705,7 @@ yaml</label><div class="sd-tab-content docutils">
 toml</label><div class="sd-tab-content docutils">
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example-plugin&quot;</span>
 <span class="n">display_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Example Plugin&quot;</span>
-<span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span>
+<span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.2.1&quot;</span>
 
 <span class="k">[contributions]</span>
 <span class="n">widgets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>

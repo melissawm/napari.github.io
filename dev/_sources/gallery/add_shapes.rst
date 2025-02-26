@@ -28,7 +28,7 @@ your shapes.
 
 .. tags:: visualization-basic
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-105
+.. GENERATED FROM PYTHON SOURCE LINES 11-104
 
 
 
@@ -89,7 +89,6 @@ your shapes.
                 [307, 507],
                 [349, 510],
                 [352, 369],
-                [330, 366],
                 [330, 366],
             ]
         ),

@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d9b939df"></script>
+    <script src="../../_static/documentation_options.js?v=e6e4e7ab"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -563,7 +563,8 @@ that accepts a path (<code class="docutils literal notranslate"><span class="pre
 <li><p>returns a <em>new function</em> (a <code class="docutils literal notranslate"><span class="pre">ReaderFunction</span></code>) that is capable of doing the reading.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">ReaderFunction</span></code> will be passed the same path (or list of paths) and
-is expected to return a list of <a class="reference internal" href="#layer-data-tuples"><span class="std std-ref">LayerData tuples</span></a>.</p>
+is expected to return a list containing <a class="reference internal" href="#layer-data-tuples"><span class="std std-ref">LayerData tuples</span></a> or
+a fully instantiated napari <code class="docutils literal notranslate"><span class="pre">Layer</span></code> objects like <code class="docutils literal notranslate"><span class="pre">Image</span></code> or <code class="docutils literal notranslate"><span class="pre">Labels</span></code>.</p>
 <p>In the rare case that a reader plugin would like to “claim” a file, but <em>not</em>
 actually add any data to the viewer, the <code class="docutils literal notranslate"><span class="pre">ReaderFunction</span></code> may return
 the special value <code class="docutils literal notranslate"><span class="pre">[(None,)]</span></code>.</p>
@@ -869,7 +870,7 @@ field in the <a class="reference internal" href="../technical_references/contrib
 <p>For more examples see <a class="reference internal" href="../../howtos/extending/magicgui.html#creating-widgets"><span class="std std-ref">Creating widgets</span></a> and
 <a class="reference external" href="https://napari.org/stable/_tags/gui.html">GUI gallery examples</a> (only a subset
 involve widgets). Additionally,
-<a class="reference external" href="https://github.com/napari/cookiecutter-napari-plugin">cookiecutter-napari-plugin</a>
+<a class="reference external" href="https://github.com/napari/napari-plugin-template">napari-plugin-template</a>
 has more robust widget examples that you can adapt to your needs.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
