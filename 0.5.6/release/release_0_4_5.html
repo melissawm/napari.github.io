@@ -776,7 +776,7 @@ which can be seen at <a class="reference external" href="https://napari.org/docs
 <a class="reference external" href="https://napari.org/docs/0.4.5/">https://napari.org/docs/0.4.5/</a> . We’ll be continuing to reorganize the
 <a class="reference external" href="http://napari.org">napari.org</a> website to create a more integrate feel with documentation and tutorials living
 together. You can read more about our website reorganization in (#764).</p>
-<p>We’ve also added exprimental support for the ability to link attribute in layers which could
+<p>We’ve also added experimental support for the ability to link attribute in layers which could
 be useful for synchronizing attribute values across layers, for example to
 set matching contrast limits for multiple channels (#2226).</p>
 </section>
@@ -805,7 +805,7 @@ set matching contrast limits for multiple channels (#2226).</p>
 <ul class="simple">
 <li><p>Fix show/ hide plugin widgets (#2173)</p></li>
 <li><p>Fix bug with modification of <code class="docutils literal notranslate"><span class="pre">AVAILABLE_COLORMAPS</span></code> when iterating over it  (#2193)</p></li>
-<li><p>Prevent monitor information refering to one of first issues (#2214)</p></li>
+<li><p>Prevent monitor information referring to one of first issues (#2214)</p></li>
 <li><p>Fix close procedure (#2220)</p></li>
 <li><p>Update <code class="docutils literal notranslate"><span class="pre">napari.run</span></code>, prevent double-blocking (#2225)</p></li>
 </ul>
@@ -819,7 +819,7 @@ set matching contrast limits for multiple channels (#2226).</p>
 <section id="api-changes">
 <h2>API Changes<a class="headerlink" href="#api-changes" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Removed github searching for plugin discovery, instead the <code class="docutils literal notranslate"><span class="pre">Framework</span> <span class="pre">::</span> <span class="pre">napari</span></code> classifer should be used (#2228)</p></li>
+<li><p>Removed github searching for plugin discovery, instead the <code class="docutils literal notranslate"><span class="pre">Framework</span> <span class="pre">::</span> <span class="pre">napari</span></code> classifier should be used (#2228)</p></li>
 <li><p>Removed evented_dataclass, instead the <code class="docutils literal notranslate"><span class="pre">EventedModel</span></code> should be used (#2236)</p></li>
 <li><p>The deprecated <code class="docutils literal notranslate"><span class="pre">Viewer.interactive</span></code> parameter has been removed, instead you should use <code class="docutils literal notranslate"><span class="pre">Viewer.camera.interactive</span></code> (#2198)</p></li>
 <li><p>The deprecated <code class="docutils literal notranslate"><span class="pre">Viewer.palette</span></code> attribute has been removed. To access the palette you can get it using <code class="docutils literal notranslate"><span class="pre">napari.utils.theme.register_theme</span></code> dictionary using the <code class="docutils literal notranslate"><span class="pre">viewer.theme</span></code> as the key (#2198)</p></li>
