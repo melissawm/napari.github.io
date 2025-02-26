@@ -259,61 +259,61 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─qt_viewer.py
 │ ├─_qapp_model/
 │ │ ├─qactions/
-│ │ │ ├─_debug.py
 │ │ │ ├─__init__.py
+│ │ │ ├─_debug.py
 │ │ │ └─_layerlist_context.py
 │ │ └─injection/
 │ │   ├─__init__.py
 │ │   └─_qprocessors.py
-│ ├─layer_controls/
-│ │ └─__init__.py
-│ ├─qt_main_window.py
-│ ├─dialogs/
-│ │ └─__init__.py
-│ ├─widgets/
-│ │ ├─qt_welcome.py
-│ │ ├─qt_dims_slider.py
-│ │ ├─qt_viewer_dock_widget.py
-│ │ ├─qt_scrollbar.py
-│ │ ├─qt_dims_sorter.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_spinbox.py
-│ │ ├─qt_dims.py
-│ │ ├─qt_tooltip.py
-│ │ └─qt_viewer_buttons.py
-│ ├─utils.py
-│ ├─qthreading.py
 │ ├─threads/
 │ │ ├─__init__.py
 │ │ └─status_checker.py
-│ └─containers/
-│   └─__init__.py
+│ ├─layer_controls/
+│ │ └─__init__.py
+│ ├─qthreading.py
+│ ├─containers/
+│ │ └─__init__.py
+│ ├─dialogs/
+│ │ └─__init__.py
+│ ├─qt_viewer.py
+│ ├─utils.py
+│ ├─qt_main_window.py
+│ └─widgets/
+│   ├─qt_tooltip.py
+│   ├─qt_viewer_buttons.py
+│   ├─qt_dims.py
+│   ├─qt_dims_slider.py
+│   ├─qt_viewer_dock_widget.py
+│   ├─qt_command_palette.py
+│   ├─qt_welcome.py
+│   ├─qt_scrollbar.py
+│   ├─qt_spinbox.py
+│   ├─qt_dims_sorter.py
+│   └─qt_viewer_status_bar.py
 ├─layers/
 │ └─__init__.py
 └─components/
-  ├─viewer_model.py
-  ├─_viewer_mouse_bindings.py
-  ├─_layer_slicer.py
-  ├─cursor.py
-  ├─camera.py
-  ├─tooltip.py
   ├─grid.py
+  ├─_layer_slicer.py
+  ├─camera.py
+  ├─_viewer_mouse_bindings.py
+  ├─cursor.py
+  ├─viewer_model.py
   ├─dims.py
-  ├─_viewer_key_bindings.py
+  ├─overlays/
+  │ ├─interaction_box.py
+  │ ├─__init__.py
+  │ ├─axes.py
+  │ ├─base.py
+  │ ├─bounding_box.py
+  │ ├─brush_circle.py
+  │ ├─labels_polygon.py
+  │ ├─scale_bar.py
+  │ └─text.py
+  ├─tooltip.py
   ├─_viewer_constants.py
   ├─layerlist.py
-  └─overlays/
-    ├─axes.py
-    ├─bounding_box.py
-    ├─base.py
-    ├─interaction_box.py
-    ├─brush_circle.py
-    ├─text.py
-    ├─__init__.py
-    ├─scale_bar.py
-    └─labels_polygon.py
+  └─_viewer_key_bindings.py
 ```

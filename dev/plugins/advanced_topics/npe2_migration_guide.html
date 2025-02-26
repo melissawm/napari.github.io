@@ -585,8 +585,8 @@ Options:
 </pre></div>
 </div>
 </section>
-<section id="ensure-your-plugin-is-intalled-in-your-environment">
-<h3>2. Ensure your plugin is intalled in your environment<a class="headerlink" href="#ensure-your-plugin-is-intalled-in-your-environment" title="Link to this heading">#</a></h3>
+<section id="ensure-your-plugin-is-installed-in-your-environment">
+<h3>2. Ensure your plugin is installed in your environment<a class="headerlink" href="#ensure-your-plugin-is-installed-in-your-environment" title="Link to this heading">#</a></h3>
 <p>This step is critical: your first-generation plugin <em>must</em> be installed
 in your currently active environment for <code class="docutils literal notranslate"><span class="pre">npe2</span> <span class="pre">convert</span></code> to find it.</p>
 <p>Typically this will look something like:</p>
@@ -657,7 +657,7 @@ you need.  If you are still struggling with a specific conversion after using
 <a class="reference internal" href="../building_a_plugin/guides.html#plugin-contribution-guides"><span class="std std-ref">guides</span></a>, this section may be of help.</em></p>
 </div></blockquote>
 <p>Existing <code class="docutils literal notranslate"><span class="pre">napari-plugin-engine</span></code> plugins expose functionality via <em>hook
-implementations</em>. These are functions decorated to indicate they fullfil a
+implementations</em>. These are functions decorated to indicate they fulfil a
 <em>hook specification</em> described by napari. Though there are some exceptions,
 most <em>hook implementations</em> can be straightforwardly mapped to npe2 <a class="reference internal" href="../technical_references/contributions.html#contributions-ref"><span class="std std-ref">contributions</span></a></p>
 <p><code class="docutils literal notranslate"><span class="pre">npe2</span></code> provides a command-line tool that will generate plugin manifests by
@@ -792,7 +792,7 @@ that function.</p>
 function actually instantiating the widget. It accepts only one argument: a
 napari <code class="docutils literal notranslate"><span class="pre">Viewer</span></code> proxy instance. The proxy restricts access to some <code class="docutils literal notranslate"><span class="pre">Viewer</span></code>
 functionality like private methods.</p>
-<p>Similarly <code class="docutils literal notranslate"><span class="pre">napari_experimental_provide_function</span></code> hooks return ane or more
+<p>Similarly <code class="docutils literal notranslate"><span class="pre">napari_experimental_provide_function</span></code> hooks return one or more
 functions to be wrapped with <a class="reference external" href="https://napari.org/magicgui">magicgui</a>. In <code class="docutils literal notranslate"><span class="pre">npe2</span></code>, each of these functions
 should be added as a <code class="docutils literal notranslate"><span class="pre">Command</span></code> contribution with an associated <code class="docutils literal notranslate"><span class="pre">Widget</span></code>
 contribution. For each of these <code class="docutils literal notranslate"><span class="pre">Widget</span></code> contributions, the manifest
@@ -1039,7 +1039,7 @@ adaptor will be removed.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migrating-using-the-npe2-command-line-tool">Migrating using the <code class="docutils literal notranslate"><span class="pre">npe2</span></code> command line tool</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-npe2">1. Install <code class="docutils literal notranslate"><span class="pre">npe2</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-your-plugin-is-intalled-in-your-environment">2. Ensure your plugin is intalled in your environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-your-plugin-is-installed-in-your-environment">2. Ensure your plugin is installed in your environment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-your-plugin-with-npe2-convert">3. Convert your plugin with <code class="docutils literal notranslate"><span class="pre">npe2</span> <span class="pre">convert</span></code></a></li>
 </ul>
 </li>

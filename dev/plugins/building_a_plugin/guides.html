@@ -1078,7 +1078,7 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 </section>
 <section id="the-layerdata-tuple">
 <span id="layer-data-tuples"></span><h2>The LayerData tuple<a class="headerlink" href="#the-layerdata-tuple" title="Link to this heading">#</a></h2>
-<p>When transfering data to and from plugins, napari does not pass <code class="docutils literal notranslate"><span class="pre">Layer</span></code> objects
+<p>When transferring data to and from plugins, napari does not pass <code class="docutils literal notranslate"><span class="pre">Layer</span></code> objects
 directly. Instead, it passes (mostly) pure-python and array-like types,
 deconstructed into a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> that we refer to as a <code class="docutils literal notranslate"><span class="pre">LayerData</span></code> tuple.  This type shows
 up often in plugins and is explained here.</p>
@@ -1147,7 +1147,7 @@ layer type is assumed to be <code class="docutils literal notranslate"><span cla
 <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">{})</span>
 <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;image&#39;</span><span class="p">)</span>
 
-<span class="c1"># provide kwargs for image contructor</span>
+<span class="c1"># provide kwargs for image constructor</span>
 <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;My Image&#39;</span><span class="p">,</span> <span class="s1">&#39;colormap&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">})</span>
 
 <span class="c1"># labels layer instead of image:</span>

@@ -621,7 +621,7 @@ Dropping into the debugger will open the built in <a class="reference external" 
 </section>
 <section id="write-a-script-to-setup-the-plugin-without-user-interaction">
 <h3>Write a script to setup the plugin without user interaction<a class="headerlink" href="#write-a-script-to-setup-the-plugin-without-user-interaction" title="Link to this heading">#</a></h3>
-<p>Writing a setup script reproducibly places your napari viewer at the state of problems, without having to perform user interaction in the GUI to get back to the problem state. Launching napari and your plugin from a script can often allow you to use your IDE’s built in debugging tools, as long as both your plugin and napari itself are installed in editable mode in your enviroment.</p>
+<p>Writing a setup script reproducibly places your napari viewer at the state of problems, without having to perform user interaction in the GUI to get back to the problem state. Launching napari and your plugin from a script can often allow you to use your IDE’s built in debugging tools, as long as both your plugin and napari itself are installed in editable mode in your environment.</p>
 </section>
 <section id="isolate-the-plugin-functionality-from-napari">
 <h3>Isolate the plugin functionality from napari<a class="headerlink" href="#isolate-the-plugin-functionality-from-napari" title="Link to this heading">#</a></h3>
@@ -852,7 +852,7 @@ DEBUG: 20/09/2022 05:59:23 PM The input string was (logging): fast
 it may be connected with setting some viewer/layers properties outside main thread.
 Because of the limitations of the Qt library, such interactions with napari may lead to a crash.</p>
 <p>To test if this is the case, you can use the <code class="docutils literal notranslate"><span class="pre">NAPARI_ENSURE_PLUGIN_MAIN_THREAD</span></code> environment variable to help debug the issue.</p>
-<p>Set the environement variable: <code class="docutils literal notranslate"><span class="pre">NAPARI_ENSURE_PLUGIN_MAIN_THREAD=1</span></code>, then start napari and run your plugin.</p>
+<p>Set the environment variable: <code class="docutils literal notranslate"><span class="pre">NAPARI_ENSURE_PLUGIN_MAIN_THREAD=1</span></code>, then start napari and run your plugin.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">NAPARI_ENSURE_PLUGIN_MAIN_THREAD</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>napari
 </pre></div>
 </div>

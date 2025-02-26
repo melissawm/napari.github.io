@@ -604,12 +604,12 @@ execution and data transfer easier to follow everywhere (see e.g.
 viewing on-disk datasets that can be naturally sliced along one axis (e.g. a
 time series) <em>and where loading one slice is fast</em>. However, when the loading
 is slow, the napari UI itself becomes slow, sometimes to the point of being
-unusable. We now have experimental, opt-in support for asyncronous rendering
+unusable. We now have experimental, opt-in support for asynchronous rendering
 for sliced images, as well as for multiscale 2D data. In the 0.4 series of
 releases, we aim to bring this functionality out of experimental status, as
 well as extend it to other layer types and multiscale 3D data.</p></li>
 <li><p><strong>Improving the performance of operations on in-memory data</strong>. Even when data is loaded in memory, some operations, such as label and shape painting or slicing along large numbers of points can be slow. We will continue developing our <a class="reference internal" href="../developers/contributing/performance/benchmarks.html#napari-benchmarks"><span class="std std-ref">benchmark suite</span></a> and work to integrate it into our development process. See the <a class="reference external" href="https://github.com/napari/napari/labels/performance"><code class="docutils literal notranslate"><span class="pre">performance</span></code> label</a> for a current list of issues related to performance.</p></li>
-<li><p>Add <strong>physical coordinates</strong>. We now have a world coordinate system and transforms that can move between data coordinates, world coordinates, and the canvas where things are rendered; however, we still don’t have a concept of phyiscal units. See <a class="reference external" href="https://github.com/napari/napari/issues/1701">#1701</a> for additional discussion.</p></li>
+<li><p>Add <strong>physical coordinates</strong>. We now have a world coordinate system and transforms that can move between data coordinates, world coordinates, and the canvas where things are rendered; however, we still don’t have a concept of physical units. See <a class="reference external" href="https://github.com/napari/napari/issues/1701">#1701</a> for additional discussion.</p></li>
 <li><p>Support for persistent settings
 <a class="reference external" href="https://github.com/napari/napari/pull/1183">#1183</a> to allow <strong>saving of
 preferences</strong> between launches of the viewer. This is particularly important
