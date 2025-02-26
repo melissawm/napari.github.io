@@ -509,7 +509,7 @@ napari.qt.QtViewerButtons
       ~QtViewerButtons.objectName
    
    
-      ~QtViewerButtons.open_perspective_popup
+      ~QtViewerButtons.open_ndisplay_camera_popup
    
    
       ~QtViewerButtons.overrideWindowFlags

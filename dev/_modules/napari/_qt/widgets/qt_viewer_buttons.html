@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=e6e4e7ab"></script>
+    <script src="../../../../_static/documentation_options.js?v=850711a1"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -535,9 +535,9 @@ window.addEventListener("load", load);
     <span class="n">QHBoxLayout</span><span class="p">,</span>
     <span class="n">QLabel</span><span class="p">,</span>
     <span class="n">QPushButton</span><span class="p">,</span>
-    <span class="n">QSlider</span><span class="p">,</span>
     <span class="n">QVBoxLayout</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">superqt</span><span class="w"> </span><span class="kn">import</span> <span class="n">QLabeledDoubleSlider</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.qt_modal</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtPopup</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_dims_sorter</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtDimsSorter</span>
@@ -548,6 +548,8 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
     <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">ViewerModel</span>
 
 
@@ -621,6 +623,36 @@ window.addEventListener("load", load);
         <span class="n">layout</span><span class="o">.</span><span class="n">addStretch</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">deleteButton</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">labeled_double_slider</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">parent</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">value_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">decimals</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">callback</span><span class="p">:</span> <span class="s1">&#39;Callable&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QLabeledDoubleSlider</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a labeled double slider widget.&quot;&quot;&quot;</span>
+    <span class="n">slider</span> <span class="o">=</span> <span class="n">QLabeledDoubleSlider</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="n">slider</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">slider</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="o">*</span><span class="n">value_range</span><span class="p">)</span>
+    <span class="n">slider</span><span class="o">.</span><span class="n">setDecimals</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span>
+    <span class="n">slider</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">slider</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">help_tooltip</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">parent</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">object_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;help_label&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QtToolTipLabel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a help tooltip widget.&quot;&quot;&quot;</span>
+    <span class="n">help_symbol</span> <span class="o">=</span> <span class="n">QtToolTipLabel</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+    <span class="n">help_symbol</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="n">object_name</span><span class="p">)</span>
+    <span class="n">help_symbol</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">help_symbol</span>
 
 
 <div class="viewcode-block" id="QtViewerButtons">
@@ -700,7 +732,7 @@ window.addEventListener("load", load);
         <span class="n">ndb</span><span class="o">.</span><span class="n">setCheckable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">ndb</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">ndb</span><span class="o">.</span><span class="n">setContextMenuPolicy</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">ContextMenuPolicy</span><span class="o">.</span><span class="n">CustomContextMenu</span><span class="p">)</span>
-        <span class="n">ndb</span><span class="o">.</span><span class="n">customContextMenuRequested</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_perspective_popup</span><span class="p">)</span>
+        <span class="n">ndb</span><span class="o">.</span><span class="n">customContextMenuRequested</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_ndisplay_camera_popup</span><span class="p">)</span>
 
         <span class="nd">@self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">_set_ndisplay_mode_checkstate</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
@@ -732,32 +764,164 @@ window.addEventListener("load", load);
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="QtViewerButtons.open_perspective_popup">
-<a class="viewcode-back" href="../../../../api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.open_perspective_popup">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">open_perspective_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show a slider to control the viewer `camera.perspective`.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="k">return</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_position_popup_inside_viewer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">popup</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span> <span class="n">button</span><span class="p">:</span> <span class="n">QPushButton</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Position the popup so that it remains with the viewer.</span>
 
-        <span class="c1"># make slider connected to perspective parameter</span>
-        <span class="n">sld</span> <span class="o">=</span> <span class="n">QSlider</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Orientation</span><span class="o">.</span><span class="n">Horizontal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-        <span class="n">sld</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">perspective</span><span class="p">)))</span>
-        <span class="n">sld</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">perspective</span><span class="p">))</span>
-        <span class="n">sld</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-            <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="p">,</span> <span class="s1">&#39;perspective&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="sd">        Use the location of the button as a reference and place the popup</span>
+<span class="sd">        above it. move_to will adjust the position if the popup is too close</span>
+<span class="sd">        to the edge of the screen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">button_rect</span> <span class="o">=</span> <span class="n">button</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span>
+        <span class="n">button_pos</span> <span class="o">=</span> <span class="n">button</span><span class="o">.</span><span class="n">mapToGlobal</span><span class="p">(</span><span class="n">button_rect</span><span class="o">.</span><span class="n">topLeft</span><span class="p">())</span>
+        <span class="n">popup</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">button_pos</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span>
+                <span class="n">button_pos</span><span class="o">.</span><span class="n">y</span><span class="p">()</span> <span class="o">-</span> <span class="n">popup</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">()</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="n">popup</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span>
+                <span class="n">popup</span><span class="o">.</span><span class="n">sizeHint</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">(),</span>
+            <span class="p">)</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">perspective_slider</span> <span class="o">=</span> <span class="n">sld</span>
+        <span class="n">popup</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-        <span class="c1"># make layout</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_3d_camera_controls</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">popup</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span>
+        <span class="n">form_layout</span><span class="p">:</span> <span class="n">QFormLayout</span><span class="p">,</span>
+        <span class="n">help_layout</span><span class="p">:</span> <span class="n">QVBoxLayout</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add 3D camera controls to the popup.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span> <span class="o">=</span> <span class="n">labeled_double_slider</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">perspective</span><span class="p">,</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
+            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_perspective</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">perspective_help_symbol</span> <span class="o">=</span> <span class="n">help_tooltip</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Controls perspective projection strength. 0 is orthographic, larger values increase perspective effect.&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rx</span> <span class="o">=</span> <span class="n">labeled_double_slider</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span>
+            <span class="n">callback</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_angles</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ry</span> <span class="o">=</span> <span class="n">labeled_double_slider</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">89</span><span class="p">),</span>
+            <span class="n">callback</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_angles</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rz</span> <span class="o">=</span> <span class="n">labeled_double_slider</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span>
+            <span class="n">callback</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_angles</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="n">angle_help_symbol</span> <span class="o">=</span> <span class="n">help_tooltip</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Controls the rotation angles around each axis in degrees.&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Perspective:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span>
+        <span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Angles    X:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rx</span><span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;             Y:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ry</span><span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;             Z:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rz</span><span class="p">)</span>
+
+        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">perspective_help_symbol</span><span class="p">)</span>
+        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">angle_help_symbol</span><span class="p">)</span>
+        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>  <span class="c1"># blank space</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_shared_camera_controls</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">popup</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span>
+        <span class="n">form_layout</span><span class="p">:</span> <span class="n">QFormLayout</span><span class="p">,</span>
+        <span class="n">help_layout</span><span class="p">:</span> <span class="n">QVBoxLayout</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add shared camera controls to the popup.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">labeled_double_slider</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span><span class="p">,</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_zoom</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">zoom_help_symbol</span> <span class="o">=</span> <span class="n">help_tooltip</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Controls zoom level of the camera. Larger values zoom in, smaller values zoom out.&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Zoom:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">)</span>
+        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">zoom_help_symbol</span><span class="p">)</span>
+
+<div class="viewcode-block" id="QtViewerButtons.open_ndisplay_camera_popup">
+<a class="viewcode-back" href="../../../../api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.open_ndisplay_camera_popup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_ndisplay_camera_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show controls for camera settings based on ndisplay mode.&quot;&quot;&quot;</span>
+        <span class="n">popup</span> <span class="o">=</span> <span class="n">QtPopup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">form_layout</span> <span class="o">=</span> <span class="n">QFormLayout</span><span class="p">()</span>
+        <span class="n">help_layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_shared_camera_controls</span><span class="p">(</span><span class="n">popup</span><span class="p">,</span> <span class="n">form_layout</span><span class="p">,</span> <span class="n">help_layout</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_add_3d_camera_controls</span><span class="p">(</span><span class="n">popup</span><span class="p">,</span> <span class="n">form_layout</span><span class="p">,</span> <span class="n">help_layout</span><span class="p">)</span>
+
         <span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
-        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Perspective&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="p">))</span>
-        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">sld</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">form_layout</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">help_layout</span><span class="p">)</span>
+        <span class="n">popup</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
 
-        <span class="c1"># popup and show</span>
-        <span class="n">pop</span> <span class="o">=</span> <span class="n">QtPopup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">pop</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-        <span class="n">pop</span><span class="o">.</span><span class="n">show_above_mouse</span><span class="p">()</span></div>
+        <span class="c1"># Reposition popup, must be done after all widgets are added</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position_popup_inside_viewer</span><span class="p">(</span><span class="n">popup</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndisplayButton</span><span class="p">)</span></div>
 
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_camera_angles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the camera angles.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        idx : int</span>
+<span class="sd">            Index of the angle to update. In the order of (rx, ry, rz).</span>
+<span class="sd">        value : float</span>
+<span class="sd">            New angle value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">angles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span><span class="p">)</span>
+        <span class="n">angles</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the camera zoom.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : float</span>
+<span class="sd">            New camera.zoom value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_perspective</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the camera perspective.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : float</span>
+<span class="sd">            New camera.perspective value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">perspective</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_open_roll_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Open a grid popup to manually order the dimensions&quot;&quot;&quot;</span>
