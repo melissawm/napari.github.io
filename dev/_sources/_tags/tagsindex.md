@@ -12,8 +12,8 @@ experimental (9) <experimental>
 gui (16) <gui>
 historical (4) <historical>
 interactivity (5) <interactivity>
-layers (6) <layers>
+layers (7) <layers>
 visualization-advanced (19) <visualization-advanced>
-visualization-basic (22) <visualization-basic>
+visualization-basic (23) <visualization-basic>
 visualization-nD (22) <visualization-nd>
 ```

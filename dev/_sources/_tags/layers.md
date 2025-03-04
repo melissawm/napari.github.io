@@ -11,5 +11,6 @@ caption: With this tag
 ../gallery/add_3D_image.rst
 ../gallery/add_labels.rst
 ../gallery/add_labels_with_features.rst
+../gallery/glasbey-colormap.rst
 ../gallery/vortex.rst
 ```

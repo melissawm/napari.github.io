@@ -65,6 +65,8 @@ graph LR
 	click napari._qt.dialogs.qt_reader_dialog "https://github.com/napari/napari/tree/main/napari/_qt/dialogs/qt_reader_dialog.py" _blank
 	napari._qt.dialogs.screenshot_dialog(napari._qt.dialogs.screenshot_dialog)
 	click napari._qt.dialogs.screenshot_dialog "https://github.com/napari/napari/tree/main/napari/_qt/dialogs/screenshot_dialog.py" _blank
+	napari._qt.dialogs.shimmed_plugin_dialog(napari._qt.dialogs.shimmed_plugin_dialog)
+	click napari._qt.dialogs.shimmed_plugin_dialog "https://github.com/napari/napari/tree/main/napari/_qt/dialogs/shimmed_plugin_dialog.py" _blank
 	napari._qt.qt_main_window(napari._qt.qt_main_window)
 	napari._qt.qt_main_window --> napari._qt._qapp_model.qactions
 	napari._qt.qt_main_window --> napari._qt._qapp_model.qactions._debug
@@ -73,6 +75,7 @@ graph LR
 	napari._qt.qt_main_window --> napari._qt.dialogs.qt_activity_dialog
 	napari._qt.qt_main_window --> napari._qt.dialogs.qt_notification
 	napari._qt.qt_main_window --> napari._qt.dialogs.screenshot_dialog
+	napari._qt.qt_main_window --> napari._qt.dialogs.shimmed_plugin_dialog
 	napari._qt.qt_main_window --> napari._qt.qt_viewer
 	napari._qt.qt_main_window --> napari._qt.utils
 	napari._qt.qt_main_window --> napari._qt.widgets.qt_command_palette
@@ -182,6 +185,7 @@ graph LR
 		 napari._qt.dialogs.qt_plugin_report
 		 napari._qt.dialogs.qt_reader_dialog
 		 napari._qt.dialogs.screenshot_dialog
+		 napari._qt.dialogs.shimmed_plugin_dialog
 	end
 	class module.napari._qt.dialogs subgraphs
 	subgraph module.napari._qt[napari._qt]
@@ -245,6 +249,7 @@ napari/
 │ │   └─_qprocessors.py
 │ ├─qt_main_window.py
 │ ├─dialogs/
+│ │ ├─shimmed_plugin_dialog.py
 │ │ ├─qt_about.py
 │ │ ├─qt_activity_dialog.py
 │ │ ├─preferences_dialog.py
