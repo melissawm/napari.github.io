@@ -25,4 +25,5 @@ caption: With this tag
 ../gallery/tracks_3d.rst
 ../gallery/tracks_3d_with_graph.rst
 ../gallery/vortex.rst
+../gallery/xarray-latlon-timeseries.rst
 ```
