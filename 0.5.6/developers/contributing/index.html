@@ -566,7 +566,7 @@
 <p>We welcome your contributions! Here you will find a guide to the contribution
 workflow and tips for contributing to napari.
 If you are looking to learn more about the napari code base, see the <a class="reference internal" href="../architecture/index.html#architecture-index"><span class="std std-ref">napari architecture guide</span></a>.
-Do not hesitate to <a class="reference internal" href="../index.html#contact"><span class="std std-ref">contact</span></a> us if you have any queries.</p>
+Please <a class="reference internal" href="../index.html#contact"><span class="std std-ref">contact</span></a> us if you have any queries.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To contribute to our blog, the <a class="reference external" href="https://napari.org/island-dispatch">Island Dispatch</a>, check out <a class="github reference external" href="https://github.com/napari/island-dispatch">napari/island-dispatch</a>.</p>
@@ -574,8 +574,13 @@ Do not hesitate to <a class="reference internal" href="../index.html#contact"><s
 <section id="contributing-workflow">
 <h2>Contributing workflow<a class="headerlink" href="#contributing-workflow" title="Link to this heading">#</a></h2>
 <p>napari development occurs primarily on GitHub. If you are new to GitHub we recommend checking out the detailed <a class="reference external" href="https://docs.github.com/en">Github Docs</a>.</p>
+<section id="set-up-a-local-development-environment">
+<h3>Set up a local development environment<a class="headerlink" href="#set-up-a-local-development-environment" title="Link to this heading">#</a></h3>
 <p>The first step to make changes to napari is to
 set up a <a class="reference internal" href="dev_install.html#dev-installation"><span class="std std-ref">napari development installation</span></a>.</p>
+</section>
+<section id="make-changes-and-submit-a-pull-request">
+<h3>Make changes and submit a pull request<a class="headerlink" href="#make-changes-and-submit-a-pull-request" title="Link to this heading">#</a></h3>
 <p>You can then use git to save your changes and open a
 <a class="reference external" href="https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project">pull-request</a> (PR) via the following steps:</p>
 <ol class="arabic simple">
@@ -617,33 +622,31 @@ ensure you are pushing to the correct remote:</p>
 <p>You can then make a
 <a class="reference external" href="https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-a-pull-request">PR</a> to <code class="docutils literal notranslate"><span class="pre">napari</span></code>’s <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
 </section>
-<section id="napari-contribution-guides">
-<h2>napari contribution guides<a class="headerlink" href="#napari-contribution-guides" title="Link to this heading">#</a></h2>
-<section id="translations">
-<h3>Translations<a class="headerlink" href="#translations" title="Link to this heading">#</a></h3>
-<p>Starting with version 0.4.7 offers the possibility of installing language packs,
-enabling the user interface to be displayed in different languages. This means that all
-user interface strings need to use the <code class="xref py py-func docutils literal notranslate"><span class="pre">trans()</span></code> helper
-function.
-See the <a class="reference internal" href="translations.html"><span class="doc std std-doc">translations</span></a> guide for more.</p>
+<section id="respond-to-pull-request-review">
+<h3>Respond to pull request review<a class="headerlink" href="#respond-to-pull-request-review" title="Link to this heading">#</a></h3>
+<p>Continuous integration will provide initial feedback on your PR by running the
+tests and code quality checks. Please correct any errors found by the automated tests.</p>
+<p>Core developers and community members will review your suggested changes and
+provide feedback. Your next step would be to make any necessary updates to
+your PR.</p>
 </section>
-<section id="tests">
-<h3>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h3>
-<p>We use unit tests, integration tests, and functional tests to ensure that
-napari works as intended. Writing tests for new code is a critical part of
-keeping napari maintainable as it grows.</p>
-<p>We have dedicated documentation on <a class="reference internal" href="testing.html#napari-testing"><span class="std std-ref">testing</span></a> that we recommend you
-read as you’re working on your first contribution.</p>
+<section id="acceptance-of-the-pull-request">
+<h3>Acceptance of the pull request<a class="headerlink" href="#acceptance-of-the-pull-request" title="Link to this heading">#</a></h3>
+<p>After a core developer approves your PR, the PR will be merged into the main codebase.</p>
 </section>
-<section id="automation-and-ci">
-<h3>Automation and CI<a class="headerlink" href="#automation-and-ci" title="Link to this heading">#</a></h3>
-<p>We use GitHub Actions to automate our continuous integration and project workflows.
-The <a class="reference external" href="https://github.com/napari/napari/blob/main/.github/CONTRIBUTING.md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code> doc in the <code class="docutils literal notranslate"><span class="pre">.github</span></code> directory</a>
-highlights basics about the GitHub Actions used in the project.</p>
-<p>We also automate <a class="reference external" href="https://napari.org/stable/developers/contributing/documentation/docs_deployment.html">deployment of our documentation and website</a>.</p>
 </section>
-<section id="adding-icons">
-<h3>Adding icons<a class="headerlink" href="#adding-icons" title="Link to this heading">#</a></h3>
+<section id="contribution-guides">
+<h2>Contribution guides<a class="headerlink" href="#contribution-guides" title="Link to this heading">#</a></h2>
+<p>Contributions can be made in different areas of the project.
+These guides should help you begin contributing to a specific project area.</p>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
+<p>See <a class="reference internal" href="documentation/index.html#contributing-docs"><span class="std std-ref">Contributing Documentation</span></a> for information on how to contribute documentation.</p>
+</section>
+<section id="ui">
+<h3>UI<a class="headerlink" href="#ui" title="Link to this heading">#</a></h3>
+<section id="icons">
+<h4>Icons<a class="headerlink" href="#icons" title="Link to this heading">#</a></h4>
 <p>If you want to add a new icon to the app, make the icon in whatever program you
 like and add it to <code class="docutils literal notranslate"><span class="pre">napari/resources/icons/</span></code>.  Icons must be in <code class="docutils literal notranslate"><span class="pre">.svg</span></code> format.</p>
 <p>Icons are automatically built into a Qt resource file that is imported when
@@ -663,6 +666,32 @@ example:</p>
 </pre></div>
 </div>
 </section>
+<section id="translations">
+<h4>Translations<a class="headerlink" href="#translations" title="Link to this heading">#</a></h4>
+<p>Starting with version 0.4.7 offers the possibility of installing language packs,
+enabling the user interface to be displayed in different languages. This means that all
+user interface strings need to use the <code class="xref py py-func docutils literal notranslate"><span class="pre">trans()</span></code> helper
+function.
+See the <a class="reference internal" href="translations.html"><span class="doc std std-doc">translations</span></a> guide for more.</p>
+</section>
+</section>
+<section id="api">
+<h3>API<a class="headerlink" href="#api" title="Link to this heading">#</a></h3>
+<p>If you are changing an existing API or adding a new one, make sure you update
+the corresponding docstring to contain the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">versionadded::</span></code> or
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">versionchanged::</span></code> directive. For more information see the
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#describing-changes-between-versions">Sphinx documentation</a>.
+Please also consider documenting any major features/changes in our
+<a class="reference internal" href="../../tutorials/index.html#tutorials"><span class="std std-ref">tutorials</span></a> and other <a class="reference internal" href="../../usage.html#usage"><span class="std std-ref">usage documentation</span></a>.</p>
+</section>
+<section id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h3>
+<p>We use unit tests, integration tests, and functional tests to ensure that
+napari works as intended. Writing tests for new code is a critical part of
+keeping napari maintainable as it grows.</p>
+<p>We have dedicated documentation on <a class="reference internal" href="testing.html#napari-testing"><span class="std std-ref">testing</span></a> that we recommend you
+read as you’re working on your first contribution.</p>
+</section>
 <section id="performance">
 <h3>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h3>
 <p>Performance related PRs should include a benchmark in order to clearly depict the
@@ -672,18 +701,12 @@ also include benchmarks to show the new feature is not too slow but this is less
 poor performance, <a class="reference external" href="https://docs.python.org/3/c-api/init.html#profiling" title="Python 3.13"><span class="xref myst">profiling</span></a> and <a class="reference internal" href="../../howtos/perfmon.html#napari-perfmon"><span class="std std-ref">performance monitoring</span></a> can help
 identify the cause and where to optimize.</p>
 </section>
-<section id="api-changes">
-<h3>API Changes<a class="headerlink" href="#api-changes" title="Link to this heading">#</a></h3>
-<p>If you are changing an existing API or adding a new one, make sure you update
-the corresponding docstring to contain the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">versionadded::</span></code> or
-<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">versionchanged::</span></code> directive. For more information see the
-<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#describing-changes-between-versions">Sphinx documentation</a>.
-Please also consider documenting any major features/changes in our
-<a class="reference internal" href="../../tutorials/index.html#tutorials"><span class="std std-ref">tutorials</span></a> and other <a class="reference internal" href="../../usage.html#usage"><span class="std std-ref">usage documentation</span></a>.</p>
-</section>
-<section id="contributing-documentation">
-<h3>Contributing documentation<a class="headerlink" href="#contributing-documentation" title="Link to this heading">#</a></h3>
-<p>See <a class="reference internal" href="documentation/index.html#contributing-docs"><span class="std std-ref">Contributing Documentation</span></a> for information on how to contribute documentation.</p>
+<section id="automation-and-ci">
+<h3>Automation and CI<a class="headerlink" href="#automation-and-ci" title="Link to this heading">#</a></h3>
+<p>We use GitHub Actions to automate our continuous integration and project workflows.
+The <a class="reference external" href="https://github.com/napari/napari/blob/main/.github/CONTRIBUTING.md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code> doc in the <code class="docutils literal notranslate"><span class="pre">.github</span></code> directory</a>
+highlights basics about the GitHub Actions used in the project.</p>
+<p>We also automate <a class="reference external" href="https://napari.org/stable/developers/contributing/documentation/docs_deployment.html">deployment of our documentation and website</a>.</p>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -737,15 +760,24 @@ Please also consider documenting any major features/changes in our
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-workflow">Contributing workflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#napari-contribution-guides">napari contribution guides</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#translations">Translations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-workflow">Contributing workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-local-development-environment">Set up a local development environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-changes-and-submit-a-pull-request">Make changes and submit a pull request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#respond-to-pull-request-review">Respond to pull request review</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-of-the-pull-request">Acceptance of the pull request</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-guides">Contribution guides</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ui">UI</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#icons">Icons</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#translations">Translations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automation-and-ci">Automation and CI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-icons">Adding icons</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-changes">API Changes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-documentation">Contributing documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automation-and-ci">Automation and CI</a></li>
 </ul>
 </li>
 </ul>
