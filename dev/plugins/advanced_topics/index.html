@@ -469,6 +469,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Advanced Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="npe2_migration_guide.html">Migration to <code class="docutils literal notranslate"><span class="pre">npe2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="adapted_plugin_guide.html">Changes to the plugin engine in 0.6.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="npe1.html">First generation plugins (<em>Deprecated</em>)</a></li>
 </ul>
 </details></li>
@@ -539,6 +540,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-topics">
 <h1>Advanced Topics<a class="headerlink" href="#advanced-topics" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In napari 0.6.0 we have made some changes to napari’s default behaviour when validating legacy “npe1” plugins.
+You may see a warning when starting <code class="docutils literal notranslate"><span class="pre">napari</span></code> if you have legacy “npe1” plugins installed.
+You can learn more about this change in the <a class="reference internal" href="adapted_plugin_guide.html#adapted-plugin-guide"><span class="std std-ref">Changes to the plugin engine in 0.6.0</span></a> document.</p>
+</div>
 <p>Some plugin developers may find more <strong>in-depth, technical information</strong> helpful. This section describes topics, such as:</p>
 <ul class="simple">
 <li><p>specifications for napari’s plugin ecosystem using the plugin engine <code class="docutils literal notranslate"><span class="pre">npe2</span></code>.</p></li>
