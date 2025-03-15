@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=ffbaf3e5"></script>
+    <script src="../../../../_static/documentation_options.js?v=f58a2bde"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.0a0" />
   </head>
   
   
@@ -224,37 +224,6 @@ window.addEventListener("load", load);
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
-  </a>
-</li>
-
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -373,27 +342,6 @@ window.addEventListener("load", load);
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://napari-hub.org">
     napari hub
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
   </a>
 </li>
 
@@ -587,7 +535,9 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringEnum</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.mouse_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="n">MousemapProvider</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.naming</span><span class="w"> </span><span class="kn">import</span> <span class="n">magic_name</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.status_messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_layer_coords_status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.status_messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">generate_layer_status_strings</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Affine</span><span class="p">,</span> <span class="n">CompositeAffine</span><span class="p">,</span> <span class="n">TransformChain</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
@@ -2726,7 +2676,8 @@ window.addEventListener("load", load);
         <span class="n">view_direction</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">dims_displayed</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">world</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">value</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Status message information of the data at a coordinate position.</span>
 
@@ -2743,12 +2694,16 @@ window.addEventListener("load", load);
 <span class="sd">        world : bool</span>
 <span class="sd">            If True the position is taken to be in world coordinates</span>
 <span class="sd">            and converted into data coordinates. False by default.</span>
+<span class="sd">        value : Any</span>
+<span class="sd">            Pre-computed value. In some cases,</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        source_info : dict</span>
+<span class="sd">        status_dict : dict</span>
 <span class="sd">            Dictionary containing a information that can be used as a status update.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">status_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_source_info</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
         <span class="k">if</span> <span class="n">position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span>
@@ -2757,24 +2712,23 @@ window.addEventListener("load", load);
                 <span class="n">dims_displayed</span><span class="o">=</span><span class="n">dims_displayed</span><span class="p">,</span>
                 <span class="n">world</span><span class="o">=</span><span class="n">world</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="n">source_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_source_info</span><span class="p">()</span>
-        <span class="c1"># use self._translate_grid to adjust layer origin in grid mode</span>
-        <span class="k">if</span> <span class="n">position</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">source_info</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_layer_coords_status</span><span class="p">(</span>
+            <span class="n">coords_str</span><span class="p">,</span> <span class="n">value_str</span> <span class="o">=</span> <span class="n">generate_layer_status_strings</span><span class="p">(</span>
                 <span class="c1"># position may be higher-dimensional due to other</span>
                 <span class="c1"># layers in the viewer, but self._translate_grid already</span>
-                <span class="c1"># has the correct dimensionality</span>
+                <span class="c1"># has the correct dimensionality. We subtract translate_grid</span>
+                <span class="c1"># so that the coordinates are valid for the layer, regardless</span>
+                <span class="c1"># of grid display.</span>
                 <span class="n">position</span><span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="p">:]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_translate_grid</span><span class="p">,</span>
                 <span class="n">value</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">source_info</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_layer_coords_status</span><span class="p">(</span>
-                <span class="n">position</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_translate_grid</span><span class="p">,</span> <span class="n">value</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="n">source_info</span></div>
+            <span class="n">coords_str</span><span class="p">,</span> <span class="n">value_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="n">status_dict</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;: &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">coords_str</span><span class="p">,</span> <span class="n">value_str</span><span class="p">))</span>
+        <span class="n">status_dict</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coords_str</span>
+        <span class="n">status_dict</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value_str</span>
+
+        <span class="k">return</span> <span class="n">status_dict</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_tooltip_text</span><span class="p">(</span>

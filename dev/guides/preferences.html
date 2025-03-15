@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=ffbaf3e5"></script>
+    <script src="../_static/documentation_options.js?v=f58a2bde"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="napari performance" href="performance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.0a0" />
   </head>
   
   
@@ -193,37 +193,6 @@
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
-  </a>
-</li>
-
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -344,27 +313,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://napari-hub.org">
     napari hub
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
   </a>
 </li>
 
@@ -652,6 +600,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release/index.html">Release notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release/release_0_6_0.html">napari 0.6.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release/release_0_5_6.html">napari 0.5.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release/release_0_5_5.html">napari 0.5.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release/release_0_5_4.html">napari 0.5.4</a></li>
@@ -771,7 +720,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="preferences">
 <span id="napari-preferences"></span><h1>Preferences<a class="headerlink" href="#preferences" title="Link to this heading">#</a></h1>
 <p>Starting with version 0.4.6, napari provides persistent settings.</p>
-<p>Settings are managed by getting the global settings object:</p>
+<p>Settings are managed by getting the global settings object and modifying settings:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
 
 <span class="n">settings</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span>
@@ -779,11 +728,49 @@
 <span class="n">settings</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;dark&#39;</span>
 </pre></div>
 </div>
+<section id="reset-to-defaults-via-cli">
+<h2>Reset to defaults via CLI<a class="headerlink" href="#reset-to-defaults-via-cli" title="Link to this heading">#</a></h2>
+<p>To reset all napari settings to the default values:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>napari<span class="w"> </span>--reset
+</pre></div>
+</div>
+</section>
+<section id="the-preferences-dialog">
+<h2>The preferences dialog<a class="headerlink" href="#the-preferences-dialog" title="Link to this heading">#</a></h2>
+<p>Starting with version 0.4.6, napari provides a preferences dialog to manage
+some of the provided options.</p>
+<section id="application">
+<h3>Application<a class="headerlink" href="#application" title="Link to this heading">#</a></h3>
+<p><img alt="application" src="../_images/preferences-application.png" /></p>
+</section>
+<section id="appearance">
+<h3>Appearance<a class="headerlink" href="#appearance" title="Link to this heading">#</a></h3>
+<p><img alt="appearance" src="../_images/preferences-appearance.png" /></p>
+</section>
+<section id="plugins">
+<h3>Plugins<a class="headerlink" href="#plugins" title="Link to this heading">#</a></h3>
+<p><img alt="plugins" src="../_images/preferences-plugins.png" /></p>
+</section>
+<section id="shortcuts">
+<h3>Shortcuts<a class="headerlink" href="#shortcuts" title="Link to this heading">#</a></h3>
+<p><img alt="shortcuts" src="../_images/preferences-shortcuts.png" /></p>
+</section>
+<section id="experimental">
+<h3>Experimental<a class="headerlink" href="#experimental" title="Link to this heading">#</a></h3>
+<p><img alt="experimental" src="../_images/preferences-experimental.png" /></p>
+</section>
+<section id="reset-to-defaults-via-ui">
+<h3>Reset to defaults via UI<a class="headerlink" href="#reset-to-defaults-via-ui" title="Link to this heading">#</a></h3>
+<p>To reset the preferences click on the <code class="docutils literal notranslate"><span class="pre">Restore</span> <span class="pre">defaults</span></code> button and continue
+by clicking on <code class="docutils literal notranslate"><span class="pre">Restore</span></code>.</p>
+<p><img alt="" src="../_images/preferences-reset.png" /></p>
+</section>
+</section>
 <section id="sections">
 <h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
 <p>The settings are grouped by sections and napari core provides the following:</p>
-<section id="application">
-<h3>APPLICATION<a class="headerlink" href="#application" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>APPLICATION<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Main application settings.</p>
 <section id="brush-size-on-mouse-move-modifiers">
 <h4>Brush size on mouse move modifiers<a class="headerlink" href="#brush-size-on-mouse-move-modifiers" title="Link to this heading">#</a></h4>
@@ -821,7 +808,7 @@
 <ul class="simple">
 <li><p><small>Access programmatically with <code class="docutils literal notranslate"><span class="pre">SETTINGS.application.dask</span></code>.</small></p></li>
 <li><p><small>Type: <code class="docutils literal notranslate"><span class="pre">DaskSettings</span></code>.</small></p></li>
-<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">DaskSettings(enabled=True,</span> <span class="pre">cache=4.191691776)</span></code>.</small></p></li>
+<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">DaskSettings(enabled=True,</span> <span class="pre">cache=4.191690752)</span></code>.</small></p></li>
 <li><p><small>UI: This setting can be configured via the preferences dialog.</small></p></li>
 </ul>
 </section>
@@ -1054,8 +1041,8 @@
 </ul>
 </section>
 </section>
-<section id="appearance">
-<h3>APPEARANCE<a class="headerlink" href="#appearance" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>APPEARANCE<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>User interface appearance settings.</p>
 <section id="font-size">
 <h4>Font size<a class="headerlink" href="#font-size" title="Link to this heading">#</a></h4>
@@ -1108,8 +1095,8 @@
 </ul>
 </section>
 </section>
-<section id="plugins">
-<h3>PLUGINS<a class="headerlink" href="#plugins" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>PLUGINS<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Plugins settings.</p>
 <section id="shimmed-plugins-already-warned">
 <h4>Shimmed plugins already warned<a class="headerlink" href="#shimmed-plugins-already-warned" title="Link to this heading">#</a></h4>
@@ -1183,22 +1170,22 @@ like an npe2 plugin (with delayed imports, etc…)</em></p>
 </ul>
 </section>
 </section>
-<section id="shortcuts">
-<h3>SHORTCUTS<a class="headerlink" href="#shortcuts" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>SHORTCUTS<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Shortcut settings.</p>
-<section id="id1">
-<h4>shortcuts<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<section id="id5">
+<h4>shortcuts<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p><em>Set keyboard shortcuts for actions.</em></p>
 <ul class="simple">
 <li><p><small>Access programmatically with <code class="docutils literal notranslate"><span class="pre">SETTINGS.shortcuts.shortcuts</span></code>.</small></p></li>
 <li><p><small>Type: <code class="docutils literal notranslate"><span class="pre">Mapping[str,</span> <span class="pre">list[app_model.types._keys._keybindings.KeyBinding]]</span></code>.</small></p></li>
-<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">{'napari:toggle_console_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3250:</span> <span class="pre">Ctrl+Shift+C&gt;],</span> <span class="pre">'napari:reset_scroll_progress':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3160:</span> <span class="pre">Ctrl&gt;],</span> <span class="pre">'napari:toggle_ndisplay':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a2ec0:</span> <span class="pre">Ctrl+Y&gt;],</span> <span class="pre">'napari:toggle_theme':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a2d70:</span> <span class="pre">Ctrl+Shift+T&gt;],</span> <span class="pre">'napari:reset_view':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3190:</span> <span class="pre">Ctrl+R&gt;],</span> <span class="pre">'napari:delete_selected_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a32e0:</span> <span class="pre">Ctrl+Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3370:</span> <span class="pre">Ctrl+Backspace&gt;],</span> <span class="pre">'napari:show_shortcuts':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3400:</span> <span class="pre">Ctrl+Alt+/&gt;],</span> <span class="pre">'napari:increment_dims_left':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3490:</span> <span class="pre">Left&gt;],</span> <span class="pre">'napari:increment_dims_right':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3520:</span> <span class="pre">Right&gt;],</span> <span class="pre">'napari:focus_axes_up':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a35b0:</span> <span class="pre">Alt+Up&gt;],</span> <span class="pre">'napari:focus_axes_down':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3640:</span> <span class="pre">Alt+Down&gt;],</span> <span class="pre">'napari:roll_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a36d0:</span> <span class="pre">Ctrl+E&gt;],</span> <span class="pre">'napari:transpose_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3760:</span> <span class="pre">Ctrl+T&gt;],</span> <span class="pre">'napari:rotate_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a37c0:</span> <span class="pre">Ctrl+Alt+T&gt;],</span> <span class="pre">'napari:toggle_grid':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3820:</span> <span class="pre">Ctrl+G&gt;],</span> <span class="pre">'napari:toggle_selected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a38b0:</span> <span class="pre">V&gt;],</span> <span class="pre">'napari:toggle_unselected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3940:</span> <span class="pre">Shift+V&gt;],</span> <span class="pre">'napari:show_only_layer_above':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a39a0:</span> <span class="pre">Shift+Alt+Up&gt;],</span> <span class="pre">'napari:show_only_layer_below':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3a00:</span> <span class="pre">Shift+Alt+Down&gt;],</span> <span class="pre">'napari:hold_for_pan_zoom':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3a60:</span> <span class="pre">Space&gt;],</span> <span class="pre">'napari:activate_labels_erase_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3af0:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3b80:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_labels_paint_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3be0:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3c70:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_labels_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3d00:</span> <span class="pre">3&gt;],</span> <span class="pre">'napari:activate_labels_fill_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3d90:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3e20:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:activate_labels_picker_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3eb0:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5839a0:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_labels_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d583a90:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d583e50:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_labels_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d583cd0:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:new_label':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d583d30:</span> <span class="pre">M&gt;],</span> <span class="pre">'napari:swap_selected_and_background_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d583fd0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:decrease_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d583ee0:</span> <span class="pre">-&gt;],</span> <span class="pre">'napari:increase_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a30a0:</span> <span class="pre">=&gt;],</span> <span class="pre">'napari:decrease_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3f40:</span> <span class="pre">[&gt;],</span> <span class="pre">'napari:increase_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5a3fd0:</span> <span class="pre">]&gt;],</span> <span class="pre">'napari:toggle_preserve_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c00a0:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:reset_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0130:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:complete_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c01c0:</span> <span class="pre">Enter&gt;],</span> <span class="pre">'napari:activate_points_add_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0250:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c02b0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_points_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0310:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0370:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_points_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0400:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0460:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_points_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c04c0:</span> <span class="pre">5&gt;],</span> <span class="pre">'napari:select_all_in_slice':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0520:</span> <span class="pre">A&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c05b0:</span> <span class="pre">Ctrl+A&gt;],</span> <span class="pre">'napari:select_all_data':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0610:</span> <span class="pre">Shift+A&gt;],</span> <span class="pre">'napari:delete_selected_points':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0670:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c06d0:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0730:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:activate_add_rectangle_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0790:</span> <span class="pre">R&gt;],</span> <span class="pre">'napari:activate_add_ellipse_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c07f0:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_add_line_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0850:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_add_path_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c08b0:</span> <span class="pre">T&gt;],</span> <span class="pre">'napari:activate_add_polyline_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0910:</span> <span class="pre">Shift+L&gt;],</span> <span class="pre">'napari:activate_add_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0970:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_add_polygon_lasso_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c09d0:</span> <span class="pre">Shift+P&gt;],</span> <span class="pre">'napari:activate_direct_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0a30:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0a90:</span> <span class="pre">D&gt;],</span> <span class="pre">'napari:activate_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0b20:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0b80:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_shapes_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0be0:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0c40:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_shapes_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0ca0:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:activate_vertex_insert_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0d00:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0d60:</span> <span class="pre">I&gt;],</span> <span class="pre">'napari:activate_vertex_remove_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0df0:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0e50:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:copy_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0eb0:</span> <span class="pre">Ctrl+C&gt;],</span> <span class="pre">'napari:paste_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0f10:</span> <span class="pre">Ctrl+V&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_front':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0f70:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_back':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c0fd0:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:select_all_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1030:</span> <span class="pre">A&gt;],</span> <span class="pre">'napari:delete_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1090:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c10f0:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1150:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:finish_drawing_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c11b0:</span> <span class="pre">Enter&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1210:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_x':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1270:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_y':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c12d0:</span> <span class="pre">Y&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_z':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1330:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_view_direction':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1390:</span> <span class="pre">O&gt;],</span> <span class="pre">'napari:activate_image_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1420:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_image_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1480:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_vectors_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c14e0:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_vectors_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1540:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_tracks_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c15a0:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_tracks_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1600:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_surface_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c1660:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_surface_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7fe04d5c16c0:</span> <span class="pre">2&gt;]}</span></code>.</small></p></li>
+<li><p><small>Default: <code class="docutils literal notranslate"><span class="pre">{'napari:toggle_console_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b580:</span> <span class="pre">Ctrl+Shift+C&gt;],</span> <span class="pre">'napari:reset_scroll_progress':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b490:</span> <span class="pre">Ctrl&gt;],</span> <span class="pre">'napari:toggle_ndisplay':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b1f0:</span> <span class="pre">Ctrl+Y&gt;],</span> <span class="pre">'napari:toggle_theme':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b0a0:</span> <span class="pre">Ctrl+Shift+T&gt;],</span> <span class="pre">'napari:reset_view':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b4c0:</span> <span class="pre">Ctrl+R&gt;],</span> <span class="pre">'napari:delete_selected_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b610:</span> <span class="pre">Ctrl+Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b6a0:</span> <span class="pre">Ctrl+Backspace&gt;],</span> <span class="pre">'napari:show_shortcuts':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b730:</span> <span class="pre">Ctrl+Alt+/&gt;],</span> <span class="pre">'napari:increment_dims_left':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b7c0:</span> <span class="pre">Left&gt;],</span> <span class="pre">'napari:increment_dims_right':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b850:</span> <span class="pre">Right&gt;],</span> <span class="pre">'napari:focus_axes_up':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b8e0:</span> <span class="pre">Alt+Up&gt;],</span> <span class="pre">'napari:focus_axes_down':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89b970:</span> <span class="pre">Alt+Down&gt;],</span> <span class="pre">'napari:roll_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89ba00:</span> <span class="pre">Ctrl+E&gt;],</span> <span class="pre">'napari:transpose_axes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89ba90:</span> <span class="pre">Ctrl+T&gt;],</span> <span class="pre">'napari:rotate_layers':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89baf0:</span> <span class="pre">Ctrl+Alt+T&gt;],</span> <span class="pre">'napari:toggle_grid':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bb50:</span> <span class="pre">Ctrl+G&gt;],</span> <span class="pre">'napari:toggle_selected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bbe0:</span> <span class="pre">V&gt;],</span> <span class="pre">'napari:toggle_unselected_visibility':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bc70:</span> <span class="pre">Shift+V&gt;],</span> <span class="pre">'napari:show_only_layer_above':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bcd0:</span> <span class="pre">Shift+Alt+Up&gt;],</span> <span class="pre">'napari:show_only_layer_below':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bd30:</span> <span class="pre">Shift+Alt+Down&gt;],</span> <span class="pre">'napari:hold_for_pan_zoom':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bd90:</span> <span class="pre">Space&gt;],</span> <span class="pre">'napari:activate_labels_erase_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89be20:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89beb0:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_labels_paint_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bf10:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae89bfa0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_labels_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8070:</span> <span class="pre">3&gt;],</span> <span class="pre">'napari:activate_labels_fill_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8100:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8190:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:activate_labels_picker_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8220:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3850:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_labels_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3a60:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3ac0:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_labels_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3ee0:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:new_label':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3a30:</span> <span class="pre">M&gt;],</span> <span class="pre">'napari:swap_selected_and_background_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3dc0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:decrease_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3fa0:</span> <span class="pre">-&gt;],</span> <span class="pre">'napari:increase_label_id':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44aebe3fd0:</span> <span class="pre">=&gt;],</span> <span class="pre">'napari:decrease_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b82b0:</span> <span class="pre">[&gt;],</span> <span class="pre">'napari:increase_brush_size':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8340:</span> <span class="pre">]&gt;],</span> <span class="pre">'napari:toggle_preserve_labels':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b83d0:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:reset_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8460:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:complete_polygon':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b84f0:</span> <span class="pre">Enter&gt;],</span> <span class="pre">'napari:activate_points_add_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8580:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b85e0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_points_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8640:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b86a0:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_points_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8730:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8790:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_points_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b87f0:</span> <span class="pre">5&gt;],</span> <span class="pre">'napari:select_all_in_slice':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8850:</span> <span class="pre">A&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b88e0:</span> <span class="pre">Ctrl+A&gt;],</span> <span class="pre">'napari:select_all_data':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8940:</span> <span class="pre">Shift+A&gt;],</span> <span class="pre">'napari:delete_selected_points':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b89a0:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8a00:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8a60:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:activate_add_rectangle_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8ac0:</span> <span class="pre">R&gt;],</span> <span class="pre">'napari:activate_add_ellipse_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8b20:</span> <span class="pre">E&gt;],</span> <span class="pre">'napari:activate_add_line_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8b80:</span> <span class="pre">L&gt;],</span> <span class="pre">'napari:activate_add_path_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8be0:</span> <span class="pre">T&gt;],</span> <span class="pre">'napari:activate_add_polyline_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8c40:</span> <span class="pre">Shift+L&gt;],</span> <span class="pre">'napari:activate_add_polygon_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8ca0:</span> <span class="pre">P&gt;],</span> <span class="pre">'napari:activate_add_polygon_lasso_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8d00:</span> <span class="pre">Shift+P&gt;],</span> <span class="pre">'napari:activate_direct_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8d60:</span> <span class="pre">4&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8dc0:</span> <span class="pre">D&gt;],</span> <span class="pre">'napari:activate_select_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8e50:</span> <span class="pre">5&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8eb0:</span> <span class="pre">S&gt;],</span> <span class="pre">'napari:activate_shapes_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8f10:</span> <span class="pre">6&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8f70:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:activate_shapes_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b8fd0:</span> <span class="pre">7&gt;],</span> <span class="pre">'napari:activate_vertex_insert_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9030:</span> <span class="pre">2&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9090:</span> <span class="pre">I&gt;],</span> <span class="pre">'napari:activate_vertex_remove_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9120:</span> <span class="pre">1&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9180:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:copy_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b91e0:</span> <span class="pre">Ctrl+C&gt;],</span> <span class="pre">'napari:paste_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9240:</span> <span class="pre">Ctrl+V&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_front':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b92a0:</span> <span class="pre">F&gt;],</span> <span class="pre">'napari:move_shapes_selection_to_back':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9300:</span> <span class="pre">B&gt;],</span> <span class="pre">'napari:select_all_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9360:</span> <span class="pre">A&gt;],</span> <span class="pre">'napari:delete_selected_shapes':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b93c0:</span> <span class="pre">3&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9420:</span> <span class="pre">Delete&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9480:</span> <span class="pre">Backspace&gt;],</span> <span class="pre">'napari:finish_drawing_shape':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b94e0:</span> <span class="pre">Enter&gt;,</span> <span class="pre">&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9540:</span> <span class="pre">Escape&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_x':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b95a0:</span> <span class="pre">X&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_y':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9600:</span> <span class="pre">Y&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_z':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9660:</span> <span class="pre">Z&gt;],</span> <span class="pre">'napari:orient_plane_normal_along_view_direction':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b96c0:</span> <span class="pre">O&gt;],</span> <span class="pre">'napari:activate_image_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9750:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_image_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b97b0:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_vectors_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9810:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_vectors_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9870:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_tracks_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b98d0:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_tracks_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9930:</span> <span class="pre">2&gt;],</span> <span class="pre">'napari:activate_surface_pan_zoom_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b9990:</span> <span class="pre">1&gt;],</span> <span class="pre">'napari:activate_surface_transform_mode':</span> <span class="pre">[&lt;KeyBinding</span> <span class="pre">at</span> <span class="pre">0x7f44ae8b99f0:</span> <span class="pre">2&gt;]}</span></code>.</small></p></li>
 <li><p><small>UI: This setting can be configured via the preferences dialog.</small></p></li>
 </ul>
 </section>
 </section>
-<section id="experimental">
-<h3>EXPERIMENTAL<a class="headerlink" href="#experimental" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>EXPERIMENTAL<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>Experimental settings.</p>
 <section id="render-images-asynchronously">
 <h4>Render Images Asynchronously<a class="headerlink" href="#render-images-asynchronously" title="Link to this heading">#</a></h4>
@@ -1265,52 +1252,6 @@ Setting this to 0 keeps all vertices of a given polygon or path.</em></p>
 </section>
 </section>
 </section>
-<section id="changing-settings-programmatically">
-<h2>Changing settings programmatically<a class="headerlink" href="#changing-settings-programmatically" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">SETTINGS</span>
-
-<span class="n">SETTINGS</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="s2">&quot;light&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="reset-to-defaults-via-cli">
-<h2>Reset to defaults via CLI<a class="headerlink" href="#reset-to-defaults-via-cli" title="Link to this heading">#</a></h2>
-<p>To reset all napari settings to the default values:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>napari<span class="w"> </span>--reset
-</pre></div>
-</div>
-</section>
-<section id="the-preferences-dialog">
-<h2>The preferences dialog<a class="headerlink" href="#the-preferences-dialog" title="Link to this heading">#</a></h2>
-<p>Starting with version 0.4.6, napari provides a preferences dialog to manage
-some of the provided options.</p>
-<section id="id2">
-<h3>Application<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p><img alt="application" src="../_images/preferences-application.png" /></p>
-</section>
-<section id="id3">
-<h3>Appearance<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p><img alt="appearance" src="../_images/preferences-appearance.png" /></p>
-</section>
-<section id="id4">
-<h3>Plugins<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><img alt="plugins" src="../_images/preferences-plugins.png" /></p>
-</section>
-<section id="id5">
-<h3>Shortcuts<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p><img alt="shortcuts" src="../_images/preferences-shortcuts.png" /></p>
-</section>
-<section id="id6">
-<h3>Experimental<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p><img alt="experimental" src="../_images/preferences-experimental.png" /></p>
-</section>
-<section id="reset-to-defaults-via-ui">
-<h3>Reset to defaults via UI<a class="headerlink" href="#reset-to-defaults-via-ui" title="Link to this heading">#</a></h3>
-<p>To reset the preferences click on the <code class="docutils literal notranslate"><span class="pre">Restore</span> <span class="pre">defaults</span></code> button and continue
-by clicking on <code class="docutils literal notranslate"><span class="pre">Restore</span></code>.</p>
-<p><img alt="" src="../_images/preferences-reset.png" /></p>
-</section>
-</section>
 </section>
 
 
@@ -1360,8 +1301,18 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-to-defaults-via-cli">Reset to defaults via CLI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preferences-dialog">The preferences dialog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appearance">Appearance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins">Plugins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortcuts">Shortcuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental">Experimental</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-to-defaults-via-ui">Reset to defaults via UI</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application">APPLICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">APPLICATION</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#brush-size-on-mouse-move-modifiers">Brush size on mouse move modifiers</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confirm-window-or-application-closing">Confirm window or application closing</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#console-notification-level">Console notification level</a></li>
@@ -1392,7 +1343,7 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#show-status-bar">Show status bar</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appearance">APPEARANCE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">APPEARANCE</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size">Font size</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight">Highlight</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#show-layer-tooltips">Show layer tooltips</a></li>
@@ -1400,7 +1351,7 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#update-status-based-on-layer">Update status based on layer</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins">PLUGINS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">PLUGINS</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shimmed-plugins-already-warned">Shimmed plugins already warned</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-sort-order">Plugin sort order</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disabled-plugins">Disabled plugins</a></li>
@@ -1410,11 +1361,11 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-npe2-adaptor">Use npe2 adaptor</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortcuts">SHORTCUTS</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">shortcuts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">SHORTCUTS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">shortcuts</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental">EXPERIMENTAL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">EXPERIMENTAL</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#render-images-asynchronously">Render Images Asynchronously</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-autoswapping-rendering-buffers">Enable autoswapping rendering buffers.</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-c-code-to-speed-up-creation-and-updates-of-shapes-layers-requires-optional-dependencies">Use C++ code to speed up creation and updates of Shapes layers(requires optional dependencies)</a></li>
@@ -1423,17 +1374,6 @@ by clicking on <code class="docutils literal notranslate"><span class="pre">Rest
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shapes-polygon-lasso-and-path-rdp-epsilon">Shapes polygon lasso and path RDP epsilon</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-settings-programmatically">Changing settings programmatically</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-to-defaults-via-cli">Reset to defaults via CLI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preferences-dialog">The preferences dialog</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Application</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Appearance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Plugins</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Shortcuts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Experimental</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-to-defaults-via-ui">Reset to defaults via UI</a></li>
 </ul>
 </li>
 </ul>

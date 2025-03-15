@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=ffbaf3e5"></script>
+    <script src="_static/documentation_options.js?v=f58a2bde"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="Sample databases" href="further-resources/sample_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.0a0" />
   </head>
   
   
@@ -193,37 +193,6 @@
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
-  </a>
-</li>
-
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -344,27 +313,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://napari-hub.org">
     napari hub
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
   </a>
 </li>
 
@@ -652,6 +600,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="release/index.html">Release notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="release/release_0_6_0.html">napari 0.6.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release/release_0_5_6.html">napari 0.5.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release/release_0_5_5.html">napari 0.5.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release/release_0_5_4.html">napari 0.5.4</a></li>
@@ -773,6 +722,20 @@ If you are facing an error that is not covered by this page, please check existi
 please open a new issue.</p>
 <section id="known-issues">
 <h2>Known issues<a class="headerlink" href="#known-issues" title="Link to this heading">#</a></h2>
+<section id="installed-plugin-doesn-t-show-up-in-plugins-menu">
+<h3>Installed plugin doesn’t show up in <code class="docutils literal notranslate"><span class="pre">Plugins</span></code> menu<a class="headerlink" href="#installed-plugin-doesn-t-show-up-in-plugins-menu" title="Link to this heading">#</a></h3>
+<p>Installed <code class="docutils literal notranslate"><span class="pre">npe2</span></code> plugins (this is most plugins!) are not loaded until you restart <code class="docutils literal notranslate"><span class="pre">napari</span></code>. Try restarting the viewer
+and see whether this resolves your issue.</p>
+</section>
+<section id="plugin-options-missing">
+<h3>Plugin options missing<a class="headerlink" href="#plugin-options-missing" title="Link to this heading">#</a></h3>
+<p>If you’ve installed a plugin, restarted <code class="docutils literal notranslate"><span class="pre">napari</span></code>, and some of the plugin’s options are missing e.g. there is no <code class="docutils literal notranslate"><span class="pre">Tools</span></code>
+menu or you’re trying to save layers and can’t find the plugin in the listed writers, you might have an auto-converted
+plugin using the deprecated <code class="docutils literal notranslate"><span class="pre">npe1</span></code> engine.</p>
+<p>Try turning off the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">npe2</span> <span class="pre">adaptor</span></code> setting under <code class="docutils literal notranslate"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Plugins</span> <span class="pre">-&gt;</span> <span class="pre">Use</span> <span class="pre">npe2</span> <span class="pre">adaptor</span></code> and restarting napari.
+This setting will be removed in version <code class="docutils literal notranslate"><span class="pre">0.7.0</span></code> of napari, so reach out to the plugin developer to update their plugin.</p>
+<p>Learn more about this in the <a class="reference internal" href="plugins/advanced_topics/adapted_plugin_guide.html#adapted-plugin-guide"><span class="std std-ref">adapted plugin guide</span></a>.</p>
+</section>
 <section id="resetting-preferences-and-settings">
 <h3>Resetting preferences and settings<a class="headerlink" href="#resetting-preferences-and-settings" title="Link to this heading">#</a></h3>
 <p>Changing napari versions—updating or downgrading—within an environment can cause issues with settings.  These issues can
@@ -856,6 +819,8 @@ permissions. Try setting <code class="docutils literal notranslate"><span class=
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issues">Known issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installed-plugin-doesn-t-show-up-in-plugins-menu">Installed plugin doesn’t show up in <code class="docutils literal notranslate"><span class="pre">Plugins</span></code> menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-options-missing">Plugin options missing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resetting-preferences-and-settings">Resetting preferences and settings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#torch-rosetta-napari-crashes-python">torch + rosetta + napari crashes Python</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-napari-has-no-attribute-viewer">“module napari has no attribute Viewer”</a></li>

@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=ffbaf3e5"></script>
+    <script src="../../../../_static/documentation_options.js?v=f58a2bde"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.0a0" />
   </head>
   
   
@@ -224,37 +224,6 @@ window.addEventListener("load", load);
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
-  </a>
-</li>
-
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -373,27 +342,6 @@ window.addEventListener("load", load);
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://napari-hub.org">
     napari hub
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
   </a>
 </li>
 
@@ -523,6 +471,7 @@ window.addEventListener("load", load);
                   
   <h1>Source code for napari._qt.widgets.qt_viewer_buttons</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">EnumMeta</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
@@ -536,19 +485,29 @@ window.addEventListener("load", load);
     <span class="n">QLabel</span><span class="p">,</span>
     <span class="n">QPushButton</span><span class="p">,</span>
     <span class="n">QVBoxLayout</span><span class="p">,</span>
+    <span class="n">QWidget</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">superqt</span><span class="w"> </span><span class="kn">import</span> <span class="n">QLabeledDoubleSlider</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">superqt</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEnumComboBox</span><span class="p">,</span> <span class="n">QLabeledDoubleSlider</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.dialogs.qt_modal</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtPopup</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_dims_sorter</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtDimsSorter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_spinbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtSpinBox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_tooltip</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtToolTipLabel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.camera</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DepthAxisOrientation</span><span class="p">,</span>
+    <span class="n">DepthAxisOrientationStr</span><span class="p">,</span>
+    <span class="n">HorizontalAxisOrientation</span><span class="p">,</span>
+    <span class="n">HorizontalAxisOrientationStr</span><span class="p">,</span>
+    <span class="n">VerticalAxisOrientation</span><span class="p">,</span>
+    <span class="n">VerticalAxisOrientationStr</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span><span class="p">,</span> <span class="n">in_python_repl</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
     <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">ViewerModel</span>
 
@@ -640,6 +599,20 @@ window.addEventListener("load", load);
     <span class="n">slider</span><span class="o">.</span><span class="n">setDecimals</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span>
     <span class="n">slider</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">slider</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">enum_combobox</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">parent</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span>
+    <span class="n">enum_class</span><span class="p">:</span> <span class="n">EnumMeta</span><span class="p">,</span>
+    <span class="n">current_enum</span><span class="p">:</span> <span class="n">Enum</span><span class="p">,</span>
+    <span class="n">callback</span><span class="p">:</span> <span class="s1">&#39;Callable[[],Any] | Callable[[Enum],Any]&#39;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QEnumComboBox</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an enum combobox widget.&quot;&quot;&quot;</span>
+    <span class="n">combo</span> <span class="o">=</span> <span class="n">QEnumComboBox</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">enum_class</span><span class="o">=</span><span class="n">enum_class</span><span class="p">)</span>
+    <span class="n">combo</span><span class="o">.</span><span class="n">setCurrentEnum</span><span class="p">(</span><span class="n">current_enum</span><span class="p">)</span>
+    <span class="n">combo</span><span class="o">.</span><span class="n">currentEnumChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">combo</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">help_tooltip</span><span class="p">(</span>
@@ -831,11 +804,11 @@ window.addEventListener("load", load);
         <span class="p">)</span>
 
         <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span>
-            <span class="mi">1</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Perspective:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span>
+            <span class="mi">2</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Perspective:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span>
         <span class="p">)</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Angles    X:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rx</span><span class="p">)</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;             Y:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ry</span><span class="p">)</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;             Z:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rz</span><span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Angles    X:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rx</span><span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;             Y:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ry</span><span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;             Z:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rz</span><span class="p">)</span>
 
         <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">perspective_help_symbol</span><span class="p">)</span>
         <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">angle_help_symbol</span><span class="p">)</span>
@@ -861,8 +834,70 @@ window.addEventListener("load", load);
             <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Controls zoom level of the camera. Larger values zoom in, smaller values zoom out.&#39;</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Zoom:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">)</span>
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Zoom:&#39;</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">)</span>
         <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">zoom_help_symbol</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_orientation_controls</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">popup</span><span class="p">:</span> <span class="n">QtPopup</span><span class="p">,</span>
+        <span class="n">form_layout</span><span class="p">:</span> <span class="n">QFormLayout</span><span class="p">,</span>
+        <span class="n">help_layout</span><span class="p">:</span> <span class="n">QVBoxLayout</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add orientation controls to the popup.&quot;&quot;&quot;</span>
+        <span class="n">orientation_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">orientation_layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">orientation_widget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">(</span><span class="n">popup</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertical_combo</span> <span class="o">=</span> <span class="n">enum_combobox</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">enum_class</span><span class="o">=</span><span class="n">VerticalAxisOrientation</span><span class="p">,</span>
+            <span class="n">current_enum</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">orientation</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">callback</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_update_orientation</span><span class="p">,</span> <span class="n">VerticalAxisOrientation</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">horizontal_combo</span> <span class="o">=</span> <span class="n">enum_combobox</span><span class="p">(</span>
+            <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+            <span class="n">enum_class</span><span class="o">=</span><span class="n">HorizontalAxisOrientation</span><span class="p">,</span>
+            <span class="n">current_enum</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">orientation</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="n">callback</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_update_orientation</span><span class="p">,</span> <span class="n">HorizontalAxisOrientation</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">orientation_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertical_combo</span><span class="p">)</span>
+            <span class="n">orientation_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">horizontal_combo</span><span class="p">)</span>
+            <span class="n">orientation_help_symbol</span> <span class="o">=</span> <span class="n">help_tooltip</span><span class="p">(</span>
+                <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Controls the orientation of the vertical and horizontal camera axes.&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">depth_combo</span> <span class="o">=</span> <span class="n">enum_combobox</span><span class="p">(</span>
+                <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+                <span class="n">enum_class</span><span class="o">=</span><span class="n">DepthAxisOrientation</span><span class="p">,</span>
+                <span class="n">current_enum</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">orientation</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">callback</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_update_orientation</span><span class="p">,</span> <span class="n">DepthAxisOrientation</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+            <span class="n">orientation_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">depth_combo</span><span class="p">)</span>
+            <span class="n">orientation_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertical_combo</span><span class="p">)</span>
+            <span class="n">orientation_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">horizontal_combo</span><span class="p">)</span>
+            <span class="n">orientation_help_symbol</span> <span class="o">=</span> <span class="n">help_tooltip</span><span class="p">(</span>
+                <span class="n">parent</span><span class="o">=</span><span class="n">popup</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Controls the orientation of the depth, vertical, and horizontal camera axes.&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">orientation_widget</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">orientation_layout</span><span class="p">)</span>
+
+        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Orientation:&#39;</span><span class="p">)),</span> <span class="n">orientation_widget</span>
+        <span class="p">)</span>
+        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">orientation_help_symbol</span><span class="p">)</span>
 
 <div class="viewcode-block" id="QtViewerButtons.open_ndisplay_camera_popup">
 <a class="viewcode-back" href="../../../../api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.open_ndisplay_camera_popup">[docs]</a>
@@ -871,6 +906,8 @@ window.addEventListener("load", load);
         <span class="n">popup</span> <span class="o">=</span> <span class="n">QtPopup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">form_layout</span> <span class="o">=</span> <span class="n">QFormLayout</span><span class="p">()</span>
         <span class="n">help_layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_orientation_controls</span><span class="p">(</span><span class="n">popup</span><span class="p">,</span> <span class="n">form_layout</span><span class="p">,</span> <span class="n">help_layout</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_shared_camera_controls</span><span class="p">(</span><span class="n">popup</span><span class="p">,</span> <span class="n">form_layout</span><span class="p">,</span> <span class="n">help_layout</span><span class="p">)</span>
 
@@ -885,6 +922,38 @@ window.addEventListener("load", load);
         <span class="c1"># Reposition popup, must be done after all widgets are added</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_position_popup_inside_viewer</span><span class="p">(</span><span class="n">popup</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndisplayButton</span><span class="p">)</span></div>
 
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_orientation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">orientation_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span>
+            <span class="n">DepthAxisOrientation</span>
+            <span class="o">|</span> <span class="n">VerticalAxisOrientation</span>
+            <span class="o">|</span> <span class="n">HorizontalAxisOrientation</span>
+        <span class="p">],</span>
+        <span class="n">orientation_value</span><span class="p">:</span> <span class="p">(</span>
+            <span class="n">DepthAxisOrientationStr</span>
+            <span class="o">|</span> <span class="n">VerticalAxisOrientationStr</span>
+            <span class="o">|</span> <span class="n">HorizontalAxisOrientationStr</span>
+        <span class="p">),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the orientation of the camera.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        orientation_type : type[DepthAxisOrientation | VerticalAxisOrientation | HorizontalAxisOrientation]</span>
+<span class="sd">            The orientation type (which implies the position/axis) to update.</span>
+<span class="sd">        value : DepthAxisOrientationStr | VerticalAxisOrientationStr | HorizontalAxisOrientationStr</span>
+<span class="sd">            New orientation value for the updated axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">DepthAxisOrientation</span><span class="p">,</span>
+            <span class="n">VerticalAxisOrientation</span><span class="p">,</span>
+            <span class="n">HorizontalAxisOrientation</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">axis_to_update</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">orientation_type</span><span class="p">)</span>
+        <span class="n">new_orientation</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span>
+        <span class="n">new_orientation</span><span class="p">[</span><span class="n">axis_to_update</span><span class="p">]</span> <span class="o">=</span> <span class="n">orientation_type</span><span class="p">(</span><span class="n">orientation_value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">new_orientation</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_camera_angles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the camera angles.</span>
