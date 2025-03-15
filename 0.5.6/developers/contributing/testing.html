@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../dev/_static/documentation_options.js?v=ffbaf3e5"></script>
+    <script src="../../../dev/_static/documentation_options.js?v=f58a2bde"></script>
     <script src="../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/../dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.6';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -69,7 +69,7 @@
     <link rel="prev" title="Setting up a development installation" href="dev_install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.0a0" />
   </head>
   
   
@@ -192,37 +192,6 @@
   </a>
 </li>
 
-            <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false"
-                aria-controls="pst-nav-more-links">
-                    More
-                </button>
-                <ul id="pst-nav-more-links" class="dropdown-menu">
-                    
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
-  </a>
-</li>
-
-                </ul>
-            </li>
-            
   </ul>
 </nav></div>
       
@@ -343,27 +312,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://napari-hub.org">
     napari hub
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/island-dispatch">
-    Island Dispatch
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.zulipchat.com">
-    Community chat
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://napari.org/napari-workshop-template">
-    workshop template
   </a>
 </li>
 
@@ -634,6 +582,11 @@ available globally to all of <code class="docutils literal notranslate"><span cl
 available globally to all of <code class="docutils literal notranslate"><span class="pre">napari</span></code> <strong>and</strong> to all tests in the same environment
 that <code class="docutils literal notranslate"><span class="pre">napari</span></code> is in (as this file is exported).</p></li>
 </ul>
+<p>One often used fixture is <code class="docutils literal notranslate"><span class="pre">make_napari_viewer</span></code>. This fixture can take an argument <code class="docutils literal notranslate"><span class="pre">show</span></code>
+which is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. In case your test depends on rendering of the viewer,
+it should be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This is, for example, the case when testing a screenshot
+functionality. Otherwise, it is best to set the argument to <code class="docutils literal notranslate"><span class="pre">False</span></code> to prevent the viewer
+from fully rendering.</p>
 <p>There are also fixtures for testing the <code class="docutils literal notranslate"><span class="pre">napari</span></code> builtin plugin (provides contributions
 that come builtin with <code class="docutils literal notranslate"><span class="pre">napari</span></code>).
 These live in
