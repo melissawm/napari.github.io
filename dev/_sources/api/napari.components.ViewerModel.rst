@@ -83,9 +83,6 @@ napari.components.ViewerModel
       ~ViewerModel.reset_view
    
    
-      ~ViewerModel.rounded_division
-   
-   
       ~ViewerModel.schema
    
    

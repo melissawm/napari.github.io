@@ -95,9 +95,6 @@ napari.Viewer
       ~Viewer.reset_view
    
    
-      ~Viewer.rounded_division
-   
-   
       ~Viewer.schema
    
    

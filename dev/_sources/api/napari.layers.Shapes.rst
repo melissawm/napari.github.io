@@ -153,7 +153,6 @@ napari.layers.Shapes
       ~Shapes.feature_defaults
       ~Shapes.features
       ~Shapes.help
-      ~Shapes.interactive
       ~Shapes.keymap
       ~Shapes.loaded
       ~Shapes.metadata

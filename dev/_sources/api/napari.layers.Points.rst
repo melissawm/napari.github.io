@@ -137,7 +137,6 @@ napari.layers.Points
       ~Points.feature_defaults
       ~Points.features
       ~Points.help
-      ~Points.interactive
       ~Points.keymap
       ~Points.loaded
       ~Points.metadata

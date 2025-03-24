@@ -88,7 +88,6 @@ napari.layers.Layer
       ~Layer.experimental_clipping_planes
       ~Layer.extent
       ~Layer.help
-      ~Layer.interactive
       ~Layer.keymap
       ~Layer.loaded
       ~Layer.metadata

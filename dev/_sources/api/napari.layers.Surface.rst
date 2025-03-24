@@ -103,7 +103,6 @@ napari.layers.Surface
       ~Surface.features
       ~Surface.gamma
       ~Surface.help
-      ~Surface.interactive
       ~Surface.keymap
       ~Surface.loaded
       ~Surface.metadata

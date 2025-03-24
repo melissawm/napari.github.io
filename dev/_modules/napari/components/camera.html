@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=8c649440"></script>
+    <script src="../../../_static/documentation_options.js?v=9adf5145"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -470,8 +470,7 @@ window.addEventListener("load", load);
                 <article class="bd-article">
                   
   <h1>Source code for napari.components.camera</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">auto</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">auto</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -533,10 +532,6 @@ window.addEventListener("load", load);
 <span class="sd">        sets of Euler angles may lead to the same view.</span>
 <span class="sd">    perspective : float</span>
 <span class="sd">        Perspective (aka &quot;field of view&quot; in vispy) of the camera (if 3D).</span>
-<span class="sd">    interactive : bool</span>
-<span class="sd">        If the camera mouse pan/zoom is enabled or not.</span>
-<span class="sd">        This attribute is deprecated since 0.5.0 and should not be used.</span>
-<span class="sd">        Use the mouse_pan and mouse_zoom attributes instead.</span>
 <span class="sd">    mouse_pan : bool</span>
 <span class="sd">        If the camera interactive panning with the mouse is enabled or not.</span>
 <span class="sd">    mouse_zoom : bool</span>
@@ -748,24 +743,7 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">orientation</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
             <span class="n">VerticalAxisOrientation</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
             <span class="n">HorizontalAxisOrientation</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-        <span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s1">&#39;`Camera.interactive` is deprecated since 0.5.0 and will be removed in 0.6.0.&#39;</span><span class="p">,</span>
-            <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span>
-
-    <span class="nd">@interactive</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interactive</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s1">&#39;`Camera.interactive` is deprecated since 0.5.0 and will be removed in 0.6.0.&#39;</span><span class="p">,</span>
-            <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="o">=</span> <span class="n">interactive</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span> <span class="o">=</span> <span class="n">interactive</span></div>
+        <span class="p">)</span></div>
 
 </pre></div>
 

@@ -106,7 +106,6 @@ napari.layers.Image
       ~Image.extent
       ~Image.gamma
       ~Image.help
-      ~Image.interactive
       ~Image.interpolation
       ~Image.interpolation2d
       ~Image.interpolation3d

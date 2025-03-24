@@ -80,7 +80,6 @@ napari.components.Camera
    .. autosummary::
    
       ~Camera.events
-      ~Camera.interactive
       ~Camera.orientation2d
       ~Camera.up_direction
       ~Camera.view_direction
