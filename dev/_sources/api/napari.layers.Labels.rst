@@ -149,6 +149,7 @@ napari.layers.Labels
       ~Labels.rendering
       ~Labels.rotate
       ~Labels.scale
+      ~Labels.scale_factor
       ~Labels.selected_label
       ~Labels.shear
       ~Labels.show_selected_label

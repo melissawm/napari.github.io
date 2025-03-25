@@ -153,6 +153,7 @@ napari.layers.Points
       ~Points.property_choices
       ~Points.rotate
       ~Points.scale
+      ~Points.scale_factor
       ~Points.selected_data
       ~Points.shading
       ~Points.shear

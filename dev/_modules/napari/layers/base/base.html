@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=f0a76ca4"></script>
+    <script src="../../../../_static/documentation_options.js?v=a21eff93"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -845,7 +845,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_pan</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_zoom</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">multiscale</span> <span class="o">=</span> <span class="n">multiscale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_experimental_clipping_planes</span> <span class="o">=</span> <span class="n">ClippingPlaneList</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeclass</span><span class="p">(</span><span class="s1">&#39;pan_zoom&#39;</span><span class="p">)</span>
@@ -943,6 +943,7 @@ window.addEventListener("load", load);
             <span class="n">reload</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">rotate</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">scale</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">scale_factor</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">set_data</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">shear</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">status</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
@@ -1326,6 +1327,17 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">_transforms</span><span class="p">[</span><span class="s1">&#39;data2physical&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">scale</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;float: Conversion factor from canvas coordinates to image coordinates.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span>
+
+    <span class="nd">@scale_factor</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">!=</span> <span class="n">scale_factor</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">=</span> <span class="n">scale_factor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">scale_factor</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">:</span>

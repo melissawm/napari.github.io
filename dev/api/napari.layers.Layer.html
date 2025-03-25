@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f0a76ca4"></script>
+    <script src="../_static/documentation_options.js?v=a21eff93"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1119,25 +1119,28 @@ of a viewer.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#id13" title="napari.layers.Layer.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Anisotropy factors to scale data into world coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id14" title="napari.layers.Layer.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id14" title="napari.layers.Layer.scale_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_factor</span></code></a></p></td>
+<td><p>Conversion factor from canvas coordinates to image coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id15" title="napari.layers.Layer.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
 <td><p>Shear matrix in world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Layer.source" title="napari.layers.Layer.source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Layer.source" title="napari.layers.Layer.source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id15" title="napari.layers.Layer.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id16" title="napari.layers.Layer.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
 <td><p>Integer array of thumbnail for the layer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id16" title="napari.layers.Layer.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id17" title="napari.layers.Layer.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
 <td><p>Factors to shift the layer by in units of world coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id17" title="napari.layers.Layer.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id18" title="napari.layers.Layer.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
 <td><p>Unique ID of the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id18" title="napari.layers.Layer.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id19" title="napari.layers.Layer.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
 <td><p>List of units for the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id19" title="napari.layers.Layer.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id20" title="napari.layers.Layer.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
 <td><p>Whether the visual is currently being displayed.</p></td>
 </tr>
 </tbody>
@@ -1653,7 +1656,18 @@ through to find the first one that can save the data.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id14">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shear</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span></em><a class="headerlink" href="#id14" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale_factor</span></span><a class="headerlink" href="#id14" title="Link to this definition">#</a></dt>
+<dd><p>Conversion factor from canvas coordinates to image coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shear</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span></em><a class="headerlink" href="#id15" title="Link to this definition">#</a></dt>
 <dd><p>Shear matrix in world coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -1663,8 +1677,8 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id15">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">thumbnail</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">np.uint8</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id15" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">thumbnail</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span><span class="p"><span class="pre">[</span></span><span class="pre">np.uint8</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id16" title="Link to this definition">#</a></dt>
 <dd><p>Integer array of thumbnail for the layer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -1674,8 +1688,8 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id16">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span></em><a class="headerlink" href="#id16" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id17">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span></em><a class="headerlink" href="#id17" title="Link to this definition">#</a></dt>
 <dd><p>Factors to shift the layer by in units of world coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -1685,22 +1699,22 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id17">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unique_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable" title="(in Python v3.13)"><span class="pre">Hashable</span></a></em><a class="headerlink" href="#id17" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id18">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unique_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Hashable" title="(in Python v3.13)"><span class="pre">Hashable</span></a></em><a class="headerlink" href="#id18" title="Link to this definition">#</a></dt>
 <dd><p>Unique ID of the layer.</p>
 <p>This is guaranteed to be unique to this specific layer instance
 over the lifetime of the program.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id18">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Unit</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id18" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id19">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Unit</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id19" title="Link to this definition">#</a></dt>
 <dd><p>List of units for the layer.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id19">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visible</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#id19" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="id20">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">visible</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#id20" title="Link to this definition">#</a></dt>
 <dd><p>Whether the visual is currently being displayed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -1836,12 +1850,13 @@ dimensions will be used.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><code class="docutils literal notranslate"><span class="pre">Layer.rotate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Layer.save"><code class="docutils literal notranslate"><span class="pre">Layer.save()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">Layer.scale</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">Layer.shear</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">Layer.thumbnail</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><code class="docutils literal notranslate"><span class="pre">Layer.translate</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><code class="docutils literal notranslate"><span class="pre">Layer.unique_id</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><code class="docutils literal notranslate"><span class="pre">Layer.units</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><code class="docutils literal notranslate"><span class="pre">Layer.visible</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">Layer.scale_factor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><code class="docutils literal notranslate"><span class="pre">Layer.shear</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><code class="docutils literal notranslate"><span class="pre">Layer.thumbnail</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><code class="docutils literal notranslate"><span class="pre">Layer.translate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><code class="docutils literal notranslate"><span class="pre">Layer.unique_id</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><code class="docutils literal notranslate"><span class="pre">Layer.units</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><code class="docutils literal notranslate"><span class="pre">Layer.visible</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Layer.world_to_data"><code class="docutils literal notranslate"><span class="pre">Layer.world_to_data()</span></code></a></li>
 </ul>
 </li>

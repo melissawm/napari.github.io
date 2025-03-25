@@ -115,6 +115,7 @@ napari.layers.Tracks
       ~Tracks.properties_to_color_by
       ~Tracks.rotate
       ~Tracks.scale
+      ~Tracks.scale_factor
       ~Tracks.shear
       ~Tracks.source
       ~Tracks.tail_length

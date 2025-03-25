@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f0a76ca4"></script>
+    <script src="../_static/documentation_options.js?v=a21eff93"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -825,46 +825,49 @@ If not provided, the default units are assumed to be pixels.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.scale" title="napari.layers.Tracks.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Anisotropy factors to scale data into world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.shear" title="napari.layers.Tracks.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.scale_factor" title="napari.layers.Tracks.scale_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_factor</span></code></a></p></td>
+<td><p>Conversion factor from canvas coordinates to image coordinates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.shear" title="napari.layers.Tracks.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
 <td><p>Shear matrix in world coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.tail_length" title="napari.layers.Tracks.tail_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_length</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.tail_length" title="napari.layers.Tracks.tail_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_length</span></code></a></p></td>
 <td><p>Width for all vectors in pixels.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.tail_width" title="napari.layers.Tracks.tail_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_width</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.tail_width" title="napari.layers.Tracks.tail_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tail_width</span></code></a></p></td>
 <td><p>Width for all vectors in pixels.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.thumbnail" title="napari.layers.Tracks.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.thumbnail" title="napari.layers.Tracks.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
 <td><p>Integer array of thumbnail for the layer</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_colors" title="napari.layers.Tracks.track_colors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_colors</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_colors" title="napari.layers.Tracks.track_colors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_colors</span></code></a></p></td>
 <td><p>return the vertex colors according to the currently selected property</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_connex" title="napari.layers.Tracks.track_connex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_connex</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_connex" title="napari.layers.Tracks.track_connex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_connex</span></code></a></p></td>
 <td><p>vertex connections for drawing track lines</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_labels" title="napari.layers.Tracks.track_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_labels</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_labels" title="napari.layers.Tracks.track_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_labels</span></code></a></p></td>
 <td><p>return track labels at the current time</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_times" title="napari.layers.Tracks.track_times"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_times</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.track_times" title="napari.layers.Tracks.track_times"><code class="xref py py-obj docutils literal notranslate"><span class="pre">track_times</span></code></a></p></td>
 <td><p>time points associated with each track vertex</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.translate" title="napari.layers.Tracks.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.translate" title="napari.layers.Tracks.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
 <td><p>Factors to shift the layer by in units of world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.unique_id" title="napari.layers.Tracks.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.unique_id" title="napari.layers.Tracks.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
 <td><p>Unique ID of the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.units" title="napari.layers.Tracks.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.units" title="napari.layers.Tracks.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
 <td><p>List of units for the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.use_fade" title="napari.layers.Tracks.use_fade"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_fade</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.use_fade" title="napari.layers.Tracks.use_fade"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_fade</span></code></a></p></td>
 <td><p>toggle whether we fade the tail of the track, depending on whether the time dimension is displayed</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Tracks.visible" title="napari.layers.Tracks.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Tracks.visible" title="napari.layers.Tracks.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
 <td><p>Whether the visual is currently being displayed.</p></td>
 </tr>
 </tbody>
@@ -1473,6 +1476,17 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="napari.layers.Tracks.scale_factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale_factor</span></span><a class="headerlink" href="#napari.layers.Tracks.scale_factor" title="Link to this definition">#</a></dt>
+<dd><p>Conversion factor from canvas coordinates to image coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="napari.layers.Tracks.shear">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shear</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">npt.NDArray</span></em><a class="headerlink" href="#napari.layers.Tracks.shear" title="Link to this definition">#</a></dt>
 <dd><p>Shear matrix in world coordinates.</p>
@@ -1695,6 +1709,7 @@ dimensions will be used.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.rotate"><code class="docutils literal notranslate"><span class="pre">Tracks.rotate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.save"><code class="docutils literal notranslate"><span class="pre">Tracks.save()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.scale"><code class="docutils literal notranslate"><span class="pre">Tracks.scale</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.scale_factor"><code class="docutils literal notranslate"><span class="pre">Tracks.scale_factor</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.shear"><code class="docutils literal notranslate"><span class="pre">Tracks.shear</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.tail_length"><code class="docutils literal notranslate"><span class="pre">Tracks.tail_length</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Tracks.tail_width"><code class="docutils literal notranslate"><span class="pre">Tracks.tail_width</span></code></a></li>

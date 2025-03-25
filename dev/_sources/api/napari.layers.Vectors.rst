@@ -115,6 +115,7 @@ napari.layers.Vectors
       ~Vectors.property_choices
       ~Vectors.rotate
       ~Vectors.scale
+      ~Vectors.scale_factor
       ~Vectors.shear
       ~Vectors.source
       ~Vectors.thumbnail

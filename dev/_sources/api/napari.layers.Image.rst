@@ -124,6 +124,7 @@ napari.layers.Image
       ~Image.rendering
       ~Image.rotate
       ~Image.scale
+      ~Image.scale_factor
       ~Image.shear
       ~Image.source
       ~Image.thumbnail

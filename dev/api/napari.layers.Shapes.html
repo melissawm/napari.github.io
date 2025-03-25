@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f0a76ca4"></script>
+    <script src="../_static/documentation_options.js?v=a21eff93"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1209,37 +1209,40 @@ won’t update during interactive events</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Shapes.scale" title="napari.layers.Shapes.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Anisotropy factors to scale data into world coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id13" title="napari.layers.Shapes.selected_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selected_data</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Shapes.scale_factor" title="napari.layers.Shapes.scale_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_factor</span></code></a></p></td>
+<td><p>Conversion factor from canvas coordinates to image coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id13" title="napari.layers.Shapes.selected_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selected_data</span></code></a></p></td>
 <td><p>set of currently selected shapes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id14" title="napari.layers.Shapes.shape_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape_type</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id14" title="napari.layers.Shapes.shape_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape_type</span></code></a></p></td>
 <td><p>name of shape type for each shape.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Shapes.shear" title="napari.layers.Shapes.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Shapes.shear" title="napari.layers.Shapes.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
 <td><p>Shear matrix in world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id15" title="napari.layers.Shapes.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id15" title="napari.layers.Shapes.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text</span></code></a></p></td>
 <td><p>The TextManager object containing the text properties</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Shapes.thumbnail" title="napari.layers.Shapes.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Shapes.thumbnail" title="napari.layers.Shapes.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
 <td><p>Integer array of thumbnail for the layer</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Shapes.translate" title="napari.layers.Shapes.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Shapes.translate" title="napari.layers.Shapes.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
 <td><p>Factors to shift the layer by in units of world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Shapes.unique_id" title="napari.layers.Shapes.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Shapes.unique_id" title="napari.layers.Shapes.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
 <td><p>Unique ID of the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id16" title="napari.layers.Shapes.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id16" title="napari.layers.Shapes.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
 <td><p>List of units for the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Shapes.visible" title="napari.layers.Shapes.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Shapes.visible" title="napari.layers.Shapes.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
 <td><p>Whether the visual is currently being displayed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id17" title="napari.layers.Shapes.z_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_index</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id17" title="napari.layers.Shapes.z_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_index</span></code></a></p></td>
 <td><p>z_index for each shape.</p></td>
 </tr>
 </tbody>
@@ -2321,6 +2324,17 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="napari.layers.Shapes.scale_factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale_factor</span></span><a class="headerlink" href="#napari.layers.Shapes.scale_factor" title="Link to this definition">#</a></dt>
+<dd><p>Conversion factor from canvas coordinates to image coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="id13">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selected_data</span></span><a class="headerlink" href="#id13" title="Link to this definition">#</a></dt>
 <dd><p>set of currently selected shapes.</p>
@@ -2612,6 +2626,7 @@ dimensions will be used.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Shapes.rotate"><code class="docutils literal notranslate"><span class="pre">Shapes.rotate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Shapes.save"><code class="docutils literal notranslate"><span class="pre">Shapes.save()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Shapes.scale"><code class="docutils literal notranslate"><span class="pre">Shapes.scale</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Shapes.scale_factor"><code class="docutils literal notranslate"><span class="pre">Shapes.scale_factor</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">Shapes.selected_data</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">Shapes.shape_type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Shapes.shear"><code class="docutils literal notranslate"><span class="pre">Shapes.shear</span></code></a></li>

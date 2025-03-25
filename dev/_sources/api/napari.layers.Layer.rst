@@ -100,6 +100,7 @@ napari.layers.Layer
       ~Layer.projection_mode
       ~Layer.rotate
       ~Layer.scale
+      ~Layer.scale_factor
       ~Layer.shear
       ~Layer.source
       ~Layer.thumbnail

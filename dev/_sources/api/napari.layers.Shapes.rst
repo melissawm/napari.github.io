@@ -168,6 +168,7 @@ napari.layers.Shapes
       ~Shapes.property_choices
       ~Shapes.rotate
       ~Shapes.scale
+      ~Shapes.scale_factor
       ~Shapes.selected_data
       ~Shapes.shape_type
       ~Shapes.shear
