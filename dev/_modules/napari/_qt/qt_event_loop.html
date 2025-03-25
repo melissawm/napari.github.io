@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=9adf5145"></script>
+    <script src="../../../_static/documentation_options.js?v=e7d857e4"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -474,7 +474,6 @@ window.addEventListener("load", load);
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">cast</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
 
@@ -782,56 +781,6 @@ window.addEventListener("load", load);
         <span class="n">monitor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="gui_qt">
-<a class="viewcode-back" href="../../../api/napari.html#napari.gui_qt">[docs]</a>
-<span class="nd">@contextmanager</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">gui_qt</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">startup_logo</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gui_exceptions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start a Qt event loop in which to run the application.</span>
-
-<span class="sd">    NOTE: This context manager is deprecated!. Prefer using :func:`napari.run`.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    startup_logo : bool, optional</span>
-<span class="sd">        Show a splash screen with the napari logo during startup.</span>
-<span class="sd">    gui_exceptions : bool, optional</span>
-<span class="sd">        Whether to show uncaught exceptions in the GUI, by default they will be</span>
-<span class="sd">        shown in the console that launched the event loop.</span>
-<span class="sd">    force : bool, optional</span>
-<span class="sd">        Force the application event_loop to start, even if there are no top</span>
-<span class="sd">        level widgets to show.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    This context manager is not needed if running napari within an interactive</span>
-<span class="sd">    IPython session. In this case, use the ``%gui qt`` magic command, or start</span>
-<span class="sd">    IPython with the Qt GUI event loop enabled by default by using</span>
-<span class="sd">    ``ipython --gui=qt``.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">warn</span><span class="p">(</span>
-        <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The &#39;gui_qt()&#39; context manager is deprecated.</span><span class="se">\n</span><span class="s2">If you are running napari from a script, please use &#39;napari.run()&#39; as follows:</span><span class="se">\n\n</span><span class="s2">    import napari</span><span class="se">\n\n</span><span class="s2">    viewer = napari.Viewer()  # no prior setup needed</span><span class="se">\n</span><span class="s2">    # other code using the viewer...</span><span class="se">\n</span><span class="s2">    napari.run()</span><span class="se">\n\n</span><span class="s2">In IPython or Jupyter, &#39;napari.run()&#39; is not necessary. napari will automatically</span><span class="se">\n</span><span class="s2">start an interactive event loop for you: </span><span class="se">\n\n</span><span class="s2">    import napari</span><span class="se">\n</span><span class="s2">    viewer = napari.Viewer()  # that&#39;s it!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="p">),</span>
-        <span class="ne">FutureWarning</span><span class="p">,</span>
-        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">app</span> <span class="o">=</span> <span class="n">get_app</span><span class="p">()</span>
-    <span class="n">splash</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">startup_logo</span> <span class="ow">and</span> <span class="n">app</span><span class="o">.</span><span class="n">applicationName</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;napari&#39;</span><span class="p">:</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_splash_screen</span><span class="w"> </span><span class="kn">import</span> <span class="n">NapariSplashScreen</span>
-
-        <span class="n">splash</span> <span class="o">=</span> <span class="n">NapariSplashScreen</span><span class="p">()</span>
-        <span class="n">splash</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">app</span>
-    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># noqa: BLE001</span>
-        <span class="n">notification_manager</span><span class="o">.</span><span class="n">receive_error</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
-    <span class="n">run</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">gui_exceptions</span><span class="o">=</span><span class="n">gui_exceptions</span><span class="p">,</span> <span class="n">_func_name</span><span class="o">=</span><span class="s1">&#39;gui_qt&#39;</span><span class="p">)</span></div>
-
-
-
 <span class="k">def</span><span class="w"> </span><span class="nf">_ipython_has_eventloop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if IPython %gui qt is active.</span>
 
@@ -898,8 +847,8 @@ window.addEventListener("load", load);
 <span class="sd">        This function will prevent calling `exec_()` if the application already</span>
 <span class="sd">        has at least ``max_loop_level`` event loops running.  By default, 1.</span>
 <span class="sd">    _func_name : str, optional</span>
-<span class="sd">        name of calling function, by default &#39;run&#39;.  This is only here to</span>
-<span class="sd">        provide functions like `gui_qt` a way to inject their name into the</span>
+<span class="sd">        name of calling function, by default &#39;run&#39;.  This is here to</span>
+<span class="sd">        provide functions a way to inject their name into the</span>
 <span class="sd">        warning message.</span>
 
 <span class="sd">    Raises</span>

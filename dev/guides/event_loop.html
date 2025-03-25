@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9adf5145"></script>
+    <script src="../_static/documentation_options.js?v=e7d857e4"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -879,30 +879,6 @@ automatically behind the scenes when you create a viewer with
 
 <span class="n">napari</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  <span class="c1"># This will call `app.exec_()` and start the event loop.</span>
 </pre></div>
-</div>
-<div class="caution admonition" id="gui-qt-deprecated">
-<p class="admonition-title">What about <code class="docutils literal notranslate"><span class="pre">napari.gui_qt</span></code>?</p>
-<p><strong><a class="reference internal" href="../api/napari.html#napari.gui_qt" title="napari.gui_qt"><code class="xref py py-func docutils literal notranslate"><span class="pre">napari.gui_qt()</span></code></a> was deprecated in version 0.4.8.</strong></p>
-<p>The autocreation of the <code class="docutils literal notranslate"><span class="pre">QApplication</span></code> instance and the <a class="reference internal" href="../api/napari.html#napari.run" title="napari.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">napari.run()</span></code></a>
-function was introduced in
-<a class="reference external" href="https://github.com/napari/napari/pull/2056">PR#2056</a>, and released in <a class="reference external" href="https://github.com/napari/napari/releases/tag/v0.4.3">version
-0.4.3</a>.  Prior to that,
-all napari examples included this <code class="docutils literal notranslate"><span class="pre">gui_qt()</span></code> context manager:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># deprecated</span>
-<span class="k">with</span> <span class="n">napari</span><span class="o">.</span><span class="n">gui_qt</span><span class="p">():</span>
-    <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>On entering the context, <code class="docutils literal notranslate"><span class="pre">gui_qt</span></code> would create a <code class="docutils literal notranslate"><span class="pre">QApplication</span></code>, and on exiting
-the context, it would start the event loop (the two critical steps <a class="reference internal" href="#qt-applications-event-loops-and-widgets">mentioned
-above</a>).</p>
-<p>Unlike a typical context manager, however, it did not actually <em>destroy</em> the
-<code class="docutils literal notranslate"><span class="pre">QApplication</span></code> (since it may still be needed in the same session)… and future
-calls to <code class="docutils literal notranslate"><span class="pre">gui_qt</span></code> were only needed to start the event loop.  By auto-creating
-the <code class="docutils literal notranslate"><span class="pre">QApplication</span></code> during <a class="reference internal" href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Viewer</span></code></a> creation, introducing the
-explicit <a class="reference internal" href="../api/napari.html#napari.run" title="napari.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">napari.run()</span></code></a> function, and using the <a class="reference internal" href="#in-ipython-or-jupyter-notebook">integrated IPython event
-loop</a> when applicable, we hope to simplify the
-usage of napari.</p>
 </div>
 <p>Now that you have an understanding of how napari creates the event loop, you may
 wish to learn more about <a class="reference internal" href="../howtos/extending/connecting_events.html#connecting-events"><span class="std std-ref">hooking up your own callbacks</span></a>
