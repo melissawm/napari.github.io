@@ -110,8 +110,6 @@ napari.layers.Points
       ~Points.class_keymap
       ~Points.current_border_color
       ~Points.current_border_width
-      ~Points.current_edge_color
-      ~Points.current_edge_width
       ~Points.current_face_color
       ~Points.current_properties
       ~Points.current_size
@@ -119,13 +117,6 @@ napari.layers.Points
       ~Points.cursor
       ~Points.cursor_size
       ~Points.data
-      ~Points.edge_color
-      ~Points.edge_color_cycle
-      ~Points.edge_color_mode
-      ~Points.edge_colormap
-      ~Points.edge_contrast_limits
-      ~Points.edge_width
-      ~Points.edge_width_is_relative
       ~Points.editable
       ~Points.experimental_clipping_planes
       ~Points.extent

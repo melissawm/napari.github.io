@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=a21eff93"></script>
+    <script src="../../../../_static/documentation_options.js?v=67265d67"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -525,9 +525,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.colormaps.standardize_color</span><span class="w"> </span><span class="kn">import</span> <span class="n">hex_to_name</span><span class="p">,</span> <span class="n">rgb_to_hex</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events.custom_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Array</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events.migrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deprecation_warning_event</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">project_points_onto_plane</span><span class="p">,</span> <span class="n">rotate_points</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.migrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_deprecated_property</span><span class="p">,</span> <span class="n">rename_argument</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Affine</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
@@ -828,36 +826,6 @@ window.addEventListener("load", load);
     <span class="c1"># If more points are present then they are randomly subsampled</span>
     <span class="n">_max_points_thumbnail</span> <span class="o">=</span> <span class="mi">1024</span>
 
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="s1">&#39;edge_width&#39;</span><span class="p">,</span> <span class="s1">&#39;border_width&#39;</span><span class="p">,</span> <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span>
-    <span class="p">)</span>
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="s1">&#39;edge_width_is_relative&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;border_width_is_relative&#39;</span><span class="p">,</span>
-        <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span>
-        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="s1">&#39;edge_color&#39;</span><span class="p">,</span> <span class="s1">&#39;border_color&#39;</span><span class="p">,</span> <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span>
-    <span class="p">)</span>
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="s1">&#39;edge_color_cycle&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;border_color_cycle&#39;</span><span class="p">,</span>
-        <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span>
-        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="s1">&#39;edge_colormap&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;border_colormap&#39;</span><span class="p">,</span>
-        <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span>
-        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="s1">&#39;edge_contrast_limits&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;border_contrast_limits&#39;</span><span class="p">,</span>
-        <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span>
-        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -982,28 +950,6 @@ window.addEventListener("load", load);
             <span class="n">feature_defaults</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">deprecated_events</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">[</span>
-            <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_width&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;current_</span><span class="si">{}</span><span class="s1">_width&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_width_is_relative&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_color&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;current_</span><span class="si">{}</span><span class="s1">_color&#39;</span><span class="p">,</span>
-        <span class="p">]:</span>
-            <span class="n">old_attr</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">)</span>
-            <span class="n">new_attr</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;border&#39;</span><span class="p">)</span>
-            <span class="n">old_emitter</span> <span class="o">=</span> <span class="n">deprecation_warning_event</span><span class="p">(</span>
-                <span class="s1">&#39;layer.events&#39;</span><span class="p">,</span>
-                <span class="n">old_attr</span><span class="p">,</span>
-                <span class="n">new_attr</span><span class="p">,</span>
-                <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span>
-                <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">new_attr</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">old_emitter</span><span class="p">)</span>
-            <span class="n">deprecated_events</span><span class="p">[</span><span class="n">old_attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_emitter</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">**</span><span class="n">deprecated_events</span><span class="p">)</span>
-
         <span class="c1"># Save the point coordinates</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -1088,30 +1034,6 @@ window.addEventListener("load", load);
 
         <span class="c1"># Trigger generation of view slice and thumbnail</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_add_deprecated_properties</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds deprecated properties to class.&quot;&quot;&quot;</span>
-        <span class="n">deprecated_properties</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;edge_width&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;edge_width_is_relative&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;current_edge_width&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;edge_color&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;edge_color_cycle&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;edge_colormap&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;edge_contrast_limits&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;current_edge_color&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;edge_color_mode&#39;</span><span class="p">,</span>
-        <span class="p">]</span>
-        <span class="k">for</span> <span class="n">old_property</span> <span class="ow">in</span> <span class="n">deprecated_properties</span><span class="p">:</span>
-            <span class="n">new_property</span> <span class="o">=</span> <span class="n">old_property</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="s1">&#39;border&#39;</span><span class="p">)</span>
-            <span class="n">add_deprecated_property</span><span class="p">(</span>
-                <span class="bp">cls</span><span class="p">,</span>
-                <span class="n">old_property</span><span class="p">,</span>
-                <span class="n">new_property</span><span class="p">,</span>
-                <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.5.0&#39;</span><span class="p">,</span>
-                <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-            <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -1469,29 +1391,12 @@ window.addEventListener("load", load);
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="c1"># deprecated anisotropic sizes; extra check should be removed in future version</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span>
-                    <span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                        <span class="s1">&#39;Size is not compatible for broadcasting&#39;</span><span class="p">,</span>
-                        <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="p">)</span>
-                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                    <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                        <span class="s1">&#39;Since 0.4.18 point sizes must be isotropic; the average from each dimension will be&#39;</span>
-                        <span class="s1">&#39; used instead. This will become an error in version 0.6.0.&#39;</span><span class="p">,</span>
-                        <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="p">),</span>
-                    <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;Size is not compatible for broadcasting (may be anisotropic)&#39;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="p">)</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="c1"># TODO: technically not needed to cleat the non-augmented extent... maybe it&#39;s fine like this to avoid complexity</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">highlight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -1503,15 +1408,6 @@ window.addEventListener("load", load);
     <span class="nd">@current_size</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">current_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                    <span class="s1">&#39;Since 0.4.18 point sizes must be isotropic; the average from each dimension will be used instead. &#39;</span>
-                    <span class="s1">&#39;This will become an error in version 0.6.0.&#39;</span><span class="p">,</span>
-                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="p">),</span>
-                <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-            <span class="p">)</span>
             <span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
@@ -2990,9 +2886,6 @@ window.addEventListener("load", load);
             <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">value</span><span class="p">],</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">value</span><span class="p">]))</span>
         <span class="p">]</span></div>
 
-
-
-<span class="n">Points</span><span class="o">.</span><span class="n">_add_deprecated_properties</span><span class="p">()</span>
 </pre></div>
 
                 </article>
