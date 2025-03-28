@@ -81,7 +81,6 @@ napari.layers.Tracks
       ~Tracks.blending
       ~Tracks.bounding_box
       ~Tracks.class_keymap
-      ~Tracks.colomaps_dict
       ~Tracks.color_by
       ~Tracks.colormap
       ~Tracks.colormaps_dict

@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=04a08c24"></script>
+    <script src="../../../_static/documentation_options.js?v=3c5e0ef9"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -734,7 +734,7 @@ window.addEventListener("load", load);
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">current_step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">point</span> <span class="o">-</span> <span class="n">rng</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">step</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)))</span>
+            <span class="nb">round</span><span class="p">((</span><span class="n">point</span> <span class="o">-</span> <span class="n">rng</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">step</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">point</span><span class="p">,</span> <span class="n">rng</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">point</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
 

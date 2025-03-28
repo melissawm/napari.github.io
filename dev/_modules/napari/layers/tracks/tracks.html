@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=04a08c24"></script>
+    <script src="../../../../_static/documentation_options.js?v=3c5e0ef9"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1049,10 +1049,8 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">colormaps_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Colormap</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colormaps_dict</span>
 
-    <span class="c1"># Ignored type because mypy doesn&#39;t recognise colormaps_dict as a property</span>
-    <span class="c1"># TODO: investigate and fix this - not sure why this is the case?</span>
-    <span class="nd">@colormaps_dict</span><span class="o">.</span><span class="n">setter</span>  <span class="c1"># type: ignore[attr-defined]</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">colomaps_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colormaps_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Colormap</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nd">@colormaps_dict</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">colormaps_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colormaps_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Colormap</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># validate the dictionary entries?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_colormaps_dict</span> <span class="o">=</span> <span class="n">colormaps_dict</span>
 
