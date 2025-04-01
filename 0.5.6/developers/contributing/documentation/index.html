@@ -798,25 +798,53 @@ for the continuous integration workflow to finish building the documentation.</p
 </div>
 <section id="building-locally">
 <span id="build-docs-locally"></span><h3>3.1. Building locally<a class="headerlink" href="#building-locally" title="Link to this heading">#</a></h3>
-<p>To build the documentation locally from scratch, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> from the root
-of your local clone of the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> repository (assuming you’ve installed
-napari with the <a class="reference internal" href="#prerequisites"><span class="std std-ref">docs prerequisites</span></a>).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
-</pre></div>
-</div>
-<p>If the changes you have made to documentation don’t involve changing the napari gallery,
-you can speed up this build by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html-noplot</span></code> instead. This will skip the
-gallery build, which involves launching up napari and rendering all the examples.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html-noplot
-</pre></div>
-</div>
-<p>The rendered HTML will be placed in <code class="docutils literal notranslate"><span class="pre">docs/_build/html</span></code>. Find <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in this
-folder and drag it into a browser to preview the website with your new document.
-You can also run this Python one-liner to deploy a quick local server on
+<p>To build the documentation locally we use the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Make_(software)"><code class="docutils literal notranslate"><span class="pre">make</span></code> tool</a> to execute
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/"><code class="docutils literal notranslate"><span class="pre">sphinx</span></code></a> builds, as defined in the
+<code class="docutils literal notranslate"><span class="pre">Makefile</span></code> at the root of the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository.</p>
+<p>Once the build is completed rendered HTML will be placed in <code class="docutils literal notranslate"><span class="pre">docs/_build/html</span></code>.
+Find <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in this folder and drag it into a browser to preview the
+website with your new document.</p>
+<p>You can also run this Python one-liner to deploy a quick local server on
 <a class="reference external" href="http://localhost:8000">http://localhost:8000</a>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span>--directory<span class="w"> </span>docs/_build/html
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The entire build process pulls together files from multiple sources and can be
+time consuoming, with a full build taking upwards of 20 minutes. Additionally,
+building the examples gallery, as well as executing notebook cells will
+repeatedly launch <code class="docutils literal notranslate"><span class="pre">napari</span></code>, resulting in flashing windows.</p>
+<p>As a result, there are several partial-build options available in addition to
+a full build that only build certain parts of the full documentation build.
+Depending on what you want to contribute, <strong>you may never need to run the full
+build locally</strong>. For example, maybe you don’t want to build the examples gallery
+or you only want to edit copy and not run the notebook cells or only want to
+edit a single napari example. See <a class="reference internal" href="#building-what-you-need">Building what you need</a>
+for details.</p>
+</div>
+<section id="running-a-full-build">
+<h4>Running a full build<a class="headerlink" href="#running-a-full-build" title="Link to this heading">#</a></h4>
+<p>To run a full documentation build from scratch, matching what is deployed
+at <a class="reference external" href="https://napari.org">napari.org</a>, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>from the root of your local clone of the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> repository (assuming you’ve installed
+napari with the <a class="reference internal" href="#prerequisites"><span class="std std-ref">docs prerequisites</span></a>). Note this can take upwards of 20 minutes
+and will repeatedly pop up napari viewers as examples and notebook cells are executed.</p>
+<p>If the changes you have made to documentation don’t involve the gallery of napari examples,
+which are in the <code class="docutils literal notranslate"><span class="pre">examples</span></code> directory in the <code class="docutils literal notranslate"><span class="pre">napari</span></code> repository, you can speed up this
+build by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html-noplot
+</pre></div>
+</div>
+<p>This will skip the gallery build, which involves launching up napari and rendering
+all the examples, but it will still build all of the other content, including the
+<a class="reference internal" href="../../architecture/ui_sections/index.html#ui-sections"><span class="std std-ref">UI architecture diagrams</span></a>, <a class="reference internal" href="../../../guides/events_reference.html#events-reference"><span class="std std-ref">events reference</span></a>, and
+<a class="reference internal" href="../../../guides/preferences.html#napari-preferences"><span class="std std-ref">preferences</span></a>, which are generated from sources in the <code class="docutils literal notranslate"><span class="pre">napari</span></code>
+repository. This will also run all notebook cells.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> command above assumes you have a local clone of the
@@ -844,34 +872,130 @@ folder structure is</p>
 </pre></div>
 </div>
 </div>
-<div class="tip admonition">
+<div class="tip admonition" id="live-builds">
 <p class="admonition-title">Update documentation on file change</p>
-<p>There’s another <code class="docutils literal notranslate"><span class="pre">make</span></code> task you can use for live previews while editing docs:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w"> </span>html-live
-<span class="c1"># or for faster reloads:</span>
-$<span class="w"> </span>make<span class="w"> </span>html-live<span class="w"> </span><span class="nv">SPHINXOPTS</span><span class="o">=</span><span class="s2">&quot;-j4&quot;</span>
-</pre></div>
-</div>
-<p>The first run will take a bit longer and a few napari instances will pop up
-here and there, but the successive ones (triggered automatically every time
-you save a file under <code class="docutils literal notranslate"><span class="pre">docs/</span></code>) will be faster!
-The browser preview will open up automatically at <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>,
-no need for further action! Edit the documents at will, and the browser will
-auto-reload.
+<p>We’ve provided several build variants with <code class="docutils literal notranslate"><span class="pre">-live</span></code> that will use
+<a class="reference external" href="https://github.com/sphinx-doc/sphinx-autobuild">sphinx-autobuild</a>.
+When using these <code class="docutils literal notranslate"><span class="pre">make</span></code> variants, when you save a file, re-builds
+of the changed file will be triggered automatically and will be faster,
+because not everything will be built from scratch. Further, a browser preview
+will open up automatically at <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>, no need for further action!
+Edit the documents at will, and the browser will auto-reload.
 Once you are done with the live previews, you can exit via <kbd>Ctrl</kbd>+<kbd>C</kbd>
 on your terminal.</p>
+<p>For example, if you are not editing the gallery examples in the napari repository,
+but otherwise want a full build, then you can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html-noplot-live
+</pre></div>
+</div>
+<p>The first run will be a full build (without the gallery) so a number of napari
+instances will pop up, but then when re-building on save only edited files will
+be rebuilt.</p>
+<p>For faster reloads, you can try:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html-live<span class="w"> </span><span class="nv">SPHINXOPTS</span><span class="o">=</span><span class="s2">&quot;-j4&quot;</span>
+</pre></div>
+</div>
+<p>Note: using <code class="docutils literal notranslate"><span class="pre">-j4</span></code> will parallelize the build over 4 cores and can result in crashes.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you have <a class="reference external" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">xvfb</a>
 installed on your system, you can also run a “headless GUI” build by using the
 <code class="docutils literal notranslate"><span class="pre">docs-xvfb</span></code> command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w"> </span>docs-xvfb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs-xvfb
 </pre></div>
 </div>
 <p>This will prevent all but the first napari window from being shown during the docs
 build.</p>
 </div>
+</section>
+<section id="building-what-you-need">
+<h4>Building what you need<a class="headerlink" href="#building-what-you-need" title="Link to this heading">#</a></h4>
+<p><strong>If you only want to edit materials in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository, including
+notebook code cell outputs (e.g. any of the tutorials), but you don’t need any
+of the external materials built</strong>, then you can use the <code class="docutils literal notranslate"><span class="pre">docs</span></code> build variant. Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs-live
+</pre></div>
+</div>
+<p>Note that this will still execute the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository notebook code cells,
+resulting in napari windows popping up repeatedly. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
+variant</span></a> will open a browser preview and auto-rebuild any pages you edit.</p>
+<p><strong>If you you only want to edit copy in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository and don’t need any
+of the external materials built nor the notebook cell outputs</strong>, then you can use one
+of the <code class="docutils literal notranslate"><span class="pre">slim</span></code> builds. Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slim
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimfast
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimfast-live
+</pre></div>
+</div>
+<p>These will not build any of the external content (such as the gallery) and will
+not execute code cells. <code class="docutils literal notranslate"><span class="pre">slimfast</span></code> will run the build in parallel, which can be
+significantly faster on multi-core machines (under a minute), while <code class="docutils literal notranslate"><span class="pre">slimfast-live</span></code>
+will open a browser preview and auto-rebuild any pages you edit.
+See <a class="reference internal" href="#live-builds"><span class="std std-ref">the <code class="docutils literal notranslate"><span class="pre">-live</span></code> builds note</span></a>.</p>
+<p><strong>If you are working on the napari examples and want to build the whole examples
+gallery, but not other external content nor the <code class="docutils literal notranslate"><span class="pre">docs</span></code> notebook cell outputs</strong>,
+then you can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery-live
+</pre></div>
+</div>
+<p>These builds will build the documentation with the entire gallery. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
+variant</span></a> will will open a browser preview and auto-rebuild any pages you edit.</p>
+<p><strong>If you want to work on a single example Python script in the napari repository
+<code class="docutils literal notranslate"><span class="pre">examples</span></code> directory</strong>, you can build the documentation with just a chosen example by
+specifying it by name. For example, to build the <code class="docutils literal notranslate"><span class="pre">vortex.py</span></code> example, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery-vortex
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery-live-vortex
+</pre></div>
+</div>
+<p>This will only execute and build the single chosen example. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
+variant</span></a> will open a browser preview and auto-rebuild the single example or
+any other <code class="docutils literal notranslate"><span class="pre">docs</span></code> pages on edit, but it will not run any other code cells.</p>
+</section>
+<section id="additional-utilities-in-the-makefile">
+<h4>Additional utilities in the Makefile<a class="headerlink" href="#additional-utilities-in-the-makefile" title="Link to this heading">#</a></h4>
+<p>To clean up (delete) generated content, including auto-generated <code class="docutils literal notranslate"><span class="pre">.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">.md</span></code> files,
+as well as the <code class="docutils literal notranslate"><span class="pre">html</span></code> files, you can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean
+</pre></div>
+</div>
+<p>Running this is a good idea if you have not built the documentation in a long
+time and there may have been significant changes to the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository, e.g.
+changes to the table of contents or layout.</p>
+<p>To clean up the files generated for the examples gallery, you can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean-gallery
+</pre></div>
+</div>
+<p>Running this is a good idea if you have not built the documentation in a long
+time and there may have been significant changes to the <code class="docutils literal notranslate"><span class="pre">napari</span></code> examples.</p>
+<p>To generate the source files from the napari repository, including the
+<a class="reference internal" href="../../architecture/ui_sections/index.html#ui-sections"><span class="std std-ref">UI architecture diagrams</span></a>, <a class="reference internal" href="../../../guides/events_reference.html#events-reference"><span class="std std-ref">events reference</span></a>, and
+<a class="reference internal" href="../../../guides/preferences.html#napari-preferences"><span class="std std-ref">preferences</span></a>, you can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>prep-docs
+</pre></div>
+</div>
+<p>Note that this is can take upwards of 10 minutes! Run this if you are interested
+in building the external resources or editing the scripts that generate them in
+<code class="docutils literal notranslate"><span class="pre">docs/docs/_scripts</span></code>. In most cases <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">prep-stubs</span></code> will suffice, which will
+generate place-holder stub files for the external content.</p>
+</section>
 </section>
 <section id="view-in-github-pull-request">
 <span id="doc-view-ci"></span><h3>3.2. View in GitHub Pull Request<a class="headerlink" href="#view-in-github-pull-request" title="Link to this heading">#</a></h3>
@@ -1139,7 +1263,12 @@ block is present in all contributed examples.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-table-of-contents-toc">2. Update the table of contents (TOC)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-your-document">3. Preview your document</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-locally">3.1. Building locally</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-locally">3.1. Building locally</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-full-build">Running a full build</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#building-what-you-need">Building what you need</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-utilities-in-the-makefile">Additional utilities in the Makefile</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-in-github-pull-request">3.2. View in GitHub Pull Request</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-on-circleci">Preview on CircleCI</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-documentation-artifact">Download documentation artifact</a></li>
