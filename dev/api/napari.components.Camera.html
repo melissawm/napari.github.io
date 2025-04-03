@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=0b7a9739"></script>
+    <script src="../_static/documentation_options.js?v=35996a8d"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -723,13 +723,16 @@ sets of Euler angles may lead to the same view.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">events</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">orientation2d</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.components.Camera.handedness" title="napari.components.Camera.handedness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handedness</span></code></a></p></td>
+<td><p>Right or left-handedness of the current orientation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">orientation2d</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.components.Camera.up_direction" title="napari.components.Camera.up_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">up_direction</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.components.Camera.up_direction" title="napari.components.Camera.up_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">up_direction</span></code></a></p></td>
 <td><p>3D direction vector pointing up on the canvas.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.components.Camera.view_direction" title="napari.components.Camera.view_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view_direction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.components.Camera.view_direction" title="napari.components.Camera.view_direction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view_direction</span></code></a></p></td>
 <td><p>3D view direction vector of the camera.</p></td>
 </tr>
 </tbody>
@@ -820,6 +823,12 @@ the new model: you should trust this data</p></li>
 by default <cite>True</cite></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="napari.components.Camera.handedness">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handedness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Handedness</span></em><a class="headerlink" href="#napari.components.Camera.handedness" title="Link to this definition">#</a></dt>
+<dd><p>Right or left-handedness of the current orientation.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -966,6 +975,7 @@ system for three currently displayed dimensions.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.copy"><code class="docutils literal notranslate"><span class="pre">Camera.copy()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.dict"><code class="docutils literal notranslate"><span class="pre">Camera.dict()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.enums_as_values"><code class="docutils literal notranslate"><span class="pre">Camera.enums_as_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.handedness"><code class="docutils literal notranslate"><span class="pre">Camera.handedness</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.json"><code class="docutils literal notranslate"><span class="pre">Camera.json()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.reset"><code class="docutils literal notranslate"><span class="pre">Camera.reset()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.components.Camera.set_view_direction"><code class="docutils literal notranslate"><span class="pre">Camera.set_view_direction()</span></code></a></li>
