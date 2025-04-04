@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=35996a8d"></script>
+    <script src="../../../../_static/documentation_options.js?v=46f096a1"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -475,7 +475,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">QPoint</span><span class="p">,</span> <span class="n">Qt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QEvent</span><span class="p">,</span> <span class="n">Qt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">QApplication</span><span class="p">,</span>
     <span class="n">QDoubleSpinBox</span><span class="p">,</span>
@@ -1044,7 +1044,6 @@ window.addEventListener("load", load);
         <span class="n">shape_help_symbol</span> <span class="o">=</span> <span class="n">QtToolTipLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">stride_help_symbol</span> <span class="o">=</span> <span class="n">QtToolTipLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">spacing_help_symbol</span> <span class="o">=</span> <span class="n">QtToolTipLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">blank</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># helps with placing help symbols.</span>
 
         <span class="n">shape_help_msg</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
             <span class="s1">&#39;Number of rows and columns in the grid. A value of -1 for either or both of width and height will trigger an auto calculation of the necessary grid shape to appropriately fill all the layers at the appropriate stride. 0 is not a valid entry.&#39;</span>
@@ -1119,37 +1118,25 @@ window.addEventListener("load", load);
         <span class="n">spacing_help_symbol</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="n">spacing_help_msg</span><span class="p">)</span>
 
         <span class="c1"># layout</span>
-        <span class="n">form_layout</span> <span class="o">=</span> <span class="n">QFormLayout</span><span class="p">()</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid stride:&#39;</span><span class="p">)),</span> <span class="n">grid_stride</span><span class="p">)</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid width:&#39;</span><span class="p">)),</span> <span class="n">grid_width</span><span class="p">)</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid height:&#39;</span><span class="p">)),</span> <span class="n">grid_height</span><span class="p">)</span>
-        <span class="n">form_layout</span><span class="o">.</span><span class="n">insertRow</span><span class="p">(</span>
-            <span class="mi">3</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid spacing:&#39;</span><span class="p">)),</span> <span class="n">grid_spacing</span>
-        <span class="p">)</span>
+        <span class="n">grid_layout</span> <span class="o">=</span> <span class="n">QGridLayout</span><span class="p">()</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid stride:&#39;</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">grid_stride</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">stride_help_symbol</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-        <span class="n">help_layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
-        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">stride_help_symbol</span><span class="p">)</span>
-        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">blank</span><span class="p">)</span>
-        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">shape_help_symbol</span><span class="p">)</span>
-        <span class="n">help_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">spacing_help_symbol</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid width:&#39;</span><span class="p">)),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">grid_width</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
-        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">form_layout</span><span class="p">)</span>
-        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">help_layout</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">shape_help_symbol</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Span rows</span>
 
-        <span class="n">popup</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid height:&#39;</span><span class="p">)),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">grid_height</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Grid spacing:&#39;</span><span class="p">)),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">grid_spacing</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">grid_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">spacing_help_symbol</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">popup</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">grid_layout</span><span class="p">)</span>
         <span class="n">popup</span><span class="o">.</span><span class="n">show_above_mouse</span><span class="p">()</span>
-
-        <span class="c1"># adjust placement of shape help symbol.  Must be done last</span>
-        <span class="c1"># in order for this movement to happen.</span>
-        <span class="n">delta_x</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">delta_y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>
-        <span class="n">shape_pos</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">shape_help_symbol</span><span class="o">.</span><span class="n">x</span><span class="p">()</span> <span class="o">+</span> <span class="n">delta_x</span><span class="p">,</span>
-            <span class="n">shape_help_symbol</span><span class="o">.</span><span class="n">y</span><span class="p">()</span> <span class="o">+</span> <span class="n">delta_y</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">shape_help_symbol</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">QPoint</span><span class="p">(</span><span class="o">*</span><span class="n">shape_pos</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_grid_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the width value in grid shape.</span>
