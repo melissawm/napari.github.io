@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=dc8cf958"></script>
+    <script src="../../../_static/documentation_options.js?v=ef9ce536"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -739,36 +739,6 @@ window.addEventListener("load", load);
 
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Rectangular  vispy viewbox widget in which a subscene is rendered. Access directly within the QtViewer will</span>
-<span class="sd">        become deprecated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Access to QtViewer.view is deprecated since 0.5.0 and will be removed in the napari 0.6.0. Change to QtViewer.canvas.view instead.&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">view</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">camera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        The Vispy camera class which contains both the 2d and 3d camera used to describe the perspective by which a</span>
-<span class="sd">        scene is viewed and interacted with. Access directly within the QtViewer will become deprecated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Access to QtViewer.camera will become deprecated in the 0.6.0. Change to QtViewer.canvas.camera instead.&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">camera</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_dask_cache_settings</span><span class="p">(</span>
