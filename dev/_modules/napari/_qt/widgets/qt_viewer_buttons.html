@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=ef9ce536"></script>
+    <script src="../../../../_static/documentation_options.js?v=a9a68e5c"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -492,7 +492,8 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_dims_sorter</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtDimsSorter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_spinbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtSpinBox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.widgets.qt_tooltip</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtToolTipLabel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.camera</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.camera_orientations</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DepthAxisOrientation</span><span class="p">,</span>
     <span class="n">DepthAxisOrientationStr</span><span class="p">,</span>
     <span class="n">HorizontalAxisOrientation</span><span class="p">,</span>
@@ -500,7 +501,6 @@ window.addEventListener("load", load);
     <span class="n">VerticalAxisOrientation</span><span class="p">,</span>
     <span class="n">VerticalAxisOrientationStr</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">in_ipython</span><span class="p">,</span> <span class="n">in_jupyter</span><span class="p">,</span> <span class="n">in_python_repl</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
