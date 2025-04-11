@@ -14,5 +14,6 @@ caption: With this tag
 ../gallery/scale_bar.rst
 ../gallery/spherical_points.rst
 ../gallery/surface_normals_wireframe.rst
+../gallery/surface_timeseries.rst
 ../gallery/viewer_fps_label.rst
 ```
