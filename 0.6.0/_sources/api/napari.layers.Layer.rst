@@ -88,7 +88,6 @@ napari.layers.Layer
       ~Layer.experimental_clipping_planes
       ~Layer.extent
       ~Layer.help
-      ~Layer.interactive
       ~Layer.keymap
       ~Layer.loaded
       ~Layer.metadata
@@ -101,6 +100,7 @@ napari.layers.Layer
       ~Layer.projection_mode
       ~Layer.rotate
       ~Layer.scale
+      ~Layer.scale_factor
       ~Layer.shear
       ~Layer.source
       ~Layer.thumbnail

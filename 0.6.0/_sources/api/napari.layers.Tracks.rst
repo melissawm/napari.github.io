@@ -81,7 +81,6 @@ napari.layers.Tracks
       ~Tracks.blending
       ~Tracks.bounding_box
       ~Tracks.class_keymap
-      ~Tracks.colomaps_dict
       ~Tracks.color_by
       ~Tracks.colormap
       ~Tracks.colormaps_dict
@@ -101,7 +100,6 @@ napari.layers.Tracks
       ~Tracks.graph_times
       ~Tracks.head_length
       ~Tracks.help
-      ~Tracks.interactive
       ~Tracks.keymap
       ~Tracks.loaded
       ~Tracks.metadata
@@ -116,6 +114,7 @@ napari.layers.Tracks
       ~Tracks.properties_to_color_by
       ~Tracks.rotate
       ~Tracks.scale
+      ~Tracks.scale_factor
       ~Tracks.shear
       ~Tracks.source
       ~Tracks.tail_length

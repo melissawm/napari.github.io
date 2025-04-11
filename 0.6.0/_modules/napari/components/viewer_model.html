@@ -31,8 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../../../_static/documentation_options.js?v=024f356b"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -558,7 +558,6 @@ window.addEventListener("load", load);
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events.event</span><span class="w"> </span><span class="kn">import</span> <span class="n">WarningEmitter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.key_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeymapProvider</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.migrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">rename_argument</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.mouse_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="n">MousemapProvider</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.progress</span><span class="w"> </span><span class="kn">import</span> <span class="n">progress</span>
@@ -708,6 +707,17 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">_tooltip_visible_update</span>
         <span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_orientation</span><span class="p">()</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">depth_axis_orientation</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_orientation</span>
+        <span class="p">)</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">vertical_axis_orientation</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_orientation</span>
+        <span class="p">)</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">horizontal_axis_orientation</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_camera_orientation</span>
+        <span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_viewer_grid</span><span class="p">()</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">grid_stride</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_update_viewer_grid</span>
@@ -736,12 +746,12 @@ window.addEventListener("load", load);
         <span class="p">)</span>
 
         <span class="c1"># Connect events</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reset_view</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_grid_change</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_layers</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reset_view</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_layers</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reset_view</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">point</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_layers</span><span class="p">)</span>
         <span class="c1"># FIXME: the next line is a temporary workaround. With #5522 and #5751 Dims.point became</span>
         <span class="c1">#        the source of truth, and is now defined in world space. This exposed an existing</span>
@@ -785,6 +795,16 @@ window.addEventListener("load", load);
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_tooltip_visible_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tooltip</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_camera_orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update camera orientation based on settings.&quot;&quot;&quot;</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">depth_axis_orientation</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">vertical_axis_orientation</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">horizontal_axis_orientation</span><span class="p">,</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_viewer_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Keep viewer grid settings up to date with settings values.&quot;&quot;&quot;</span>
@@ -867,15 +887,88 @@ window.addEventListener("load", load);
     <span class="k">def</span><span class="w"> </span><span class="nf">reset_view</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">reset_camera_angle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the camera view.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the camera and fit the current layers to the canvas.</span>
+
+<span class="sd">        Resets the angles of the camera, adjust the camera zoom,</span>
+<span class="sd">        and centers the view so that all layers are visible,</span>
+<span class="sd">        accounting for the current grid mode and margin.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        margin : float in [0, 1)</span>
 <span class="sd">            Margin as fraction of the canvas, showing blank space around the</span>
-<span class="sd">            data.</span>
+<span class="sd">            data. Default is 0.05 (5% of the canvas).</span>
+<span class="sd">        reset_camera_angle : bool</span>
+<span class="sd">            Whether to reset the camera angles to (0, 0, 90) before fitting</span>
+<span class="sd">            to view. Default is True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">reset_camera_angle</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="ViewerModel.fit_to_view">
+<a class="viewcode-back" href="../../../api/napari.components.ViewerModel.html#napari.components.ViewerModel.fit_to_view">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit_to_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the current data view to the canvas.</span>
+
+<span class="sd">        Adjusts the camera zoom and centers the view so that all visible layers</span>
+<span class="sd">        are within the canvas, accounting for the current grid mode and margin.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        margin : float in [0, 1)</span>
+<span class="sd">            Margin as fraction of the canvas, showing blank space around the</span>
+<span class="sd">            data. Default is 0.05 (5% of the canvas).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get the scene parameters, including the total_size of the grid</span>
+        <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scene_parameters</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_view_center</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span><span class="p">)</span>
+
+        <span class="n">scale_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scale_factor</span><span class="p">(</span><span class="n">margin</span><span class="p">)</span>
+
+        <span class="c1"># Set camera zoom based on ndisplay</span>
+        <span class="c1"># zoom is defined as the number of canvas pixels per world pixel</span>
+        <span class="c1"># The default value used below will zoom such that the whole field</span>
+        <span class="c1"># of view will occupy 95% of the canvas on the most filled axis</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scene_size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_2d_camera_zoom</span><span class="p">(</span>
+                <span class="n">total_size</span><span class="p">,</span> <span class="n">scale_factor</span>
+            <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_3d_camera_zoom</span><span class="p">(</span>
+                <span class="n">extent</span><span class="p">,</span> <span class="n">total_size</span><span class="p">,</span> <span class="n">scale_factor</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Emit a reset view event, which is no longer used internally, but</span>
+        <span class="c1"># which maybe useful for building on napari.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">reset_view</span><span class="p">(</span>
+            <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+            <span class="n">zoom</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span><span class="p">,</span>
+            <span class="n">angles</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_scene_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the scene parameters for the current grid mode.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        extent : array, shape (2, D)</span>
+<span class="sd">            An array with the min/max coordinate values of the layers</span>
+<span class="sd">            First row is min values, second row is max values.</span>
+<span class="sd">        scene_size : array, shape (D,)</span>
+<span class="sd">            Size of the bounding box containing all layers.</span>
+<span class="sd">        corner : array, shape (D,)</span>
+<span class="sd">            Minimum coordinate values of the bounding box (i.e. extent[0]).</span>
+<span class="sd">        total_size : array, shape (D,)</span>
+<span class="sd">            Total size of the scene including grid spacing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sliced_extent_world_augmented</span>
         <span class="n">scene_size</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">corner</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -891,8 +984,14 @@ window.addEventListener("load", load);
             <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">spacing</span>
             <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
         <span class="p">)</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">scene_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">total_spacing</span>
-        <span class="n">center_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">2</span><span class="p">))[</span>
+        <span class="n">total_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">scene_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">total_spacing</span>
+
+        <span class="k">return</span> <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_view_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the center of the view based on the total size.&quot;&quot;&quot;</span>
+
+        <span class="n">center_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">total_size</span><span class="p">,</span> <span class="mi">2</span><span class="p">))[</span>
             <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="p">:</span>
         <span class="p">]</span>
         <span class="n">center</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
@@ -903,40 +1002,92 @@ window.addEventListener("load", load);
             <span class="p">),</span>
         <span class="p">)</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">center</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
-        <span class="c1"># zoom is defined as the number of canvas pixels per world pixel</span>
-        <span class="c1"># The default value used below will zoom such that the whole field</span>
-        <span class="c1"># of view will occupy 95% of the canvas on the most filled axis</span>
+        <span class="k">return</span> <span class="n">center</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the scale factor for camera zoom with a valid margin.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">margin</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">margin</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                    <span class="s1">&#39;margin must be between 0 and 1; got </span><span class="si">{margin}</span><span class="s1"> instead.&#39;</span><span class="p">,</span>
-                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">,</span>
-                <span class="p">)</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">margin</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                <span class="s1">&#39;margin must be between 0 and 1; got </span><span class="si">{margin}</span><span class="s1"> instead.&#39;</span><span class="p">,</span>
+                <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
-            <span class="n">scale</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span>
-            <span class="p">)</span>
-        <span class="k">if</span> <span class="n">reset_camera_angle</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">)</span>
 
-        <span class="c1"># Emit a reset view event, which is no longer used internally, but</span>
-        <span class="c1"># which maybe useful for building on napari.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">reset_view</span><span class="p">(</span>
-            <span class="n">center</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
-            <span class="n">zoom</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span><span class="p">,</span>
-            <span class="n">angles</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span><span class="p">,</span>
-        <span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_2d_camera_zoom</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">total_size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the camera zoom for 2D view.&quot;&quot;&quot;</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">total_size</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+        <span class="n">scale</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span><span class="p">)</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_3d_camera_zoom</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">extent</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">total_size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the zoom such that the minimum of the bounding box fits the canvas.&quot;&quot;&quot;</span>
+        <span class="n">grid_extent</span> <span class="o">=</span> <span class="n">extent</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># calculate max coords with grid spacing included</span>
+        <span class="n">grid_extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">total_size</span>
+
+        <span class="n">bounding_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_bounding_box</span><span class="p">(</span>
+            <span class="n">extent</span><span class="o">=</span><span class="n">grid_extent</span><span class="p">,</span>
+            <span class="n">view_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">view_direction</span><span class="p">,</span>
+            <span class="n">up_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">up_direction</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">bounding_box</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_bounding_box</span><span class="p">(</span>
+        <span class="n">extent</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">view_direction</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="n">up_direction</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the bounding box of the rotated extent.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        extent : array, shape (2, D)</span>
+<span class="sd">            An array with shape (2, D) where D is the number of dimensions.</span>
+<span class="sd">            The min/max coordinate values of the layers in world coordinates.</span>
+<span class="sd">            First row contains minimum values, second row contains maximum</span>
+<span class="sd">            values.</span>
+<span class="sd">        view_direction : 3-tuple of float</span>
+<span class="sd">            3D view direction vector of the camera.</span>
+<span class="sd">        up_direction : 3-tuple of float</span>
+<span class="sd">            3D direction vector pointing up on the canvas.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bounding_box : array, shape (2,)</span>
+<span class="sd">            The bounding box of the rotated extent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># calculate the difference between the min and max values of the extent</span>
+        <span class="c1"># to know the size, and then squeeze the (1,D) array to (D) as</span>
+        <span class="c1"># required for dot product</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># if the size vector is (2,) and the camera vector is (3,)</span>
+        <span class="c1"># add a very small thickness to the size vector in the Z position</span>
+        <span class="c1"># to make sure the cross product is valid, and no division by zero</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">view_direction</span><span class="p">):</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">)</span>
+
+        <span class="c1"># get the &quot;rightward&quot; direction that is perpendicular to the view and up directions</span>
+        <span class="n">right_direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">view_direction</span><span class="p">,</span> <span class="n">up_direction</span><span class="p">)</span>
+
+        <span class="c1"># project the size vector onto the up and right directions to get the</span>
+        <span class="c1"># displayed height and width.</span>
+        <span class="c1"># size = [Z Y X] ; direction = [a b c]</span>
+        <span class="c1"># size · direction =  Za + Yb + Xc = distance of size vector in given direction</span>
+        <span class="n">displayed_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">up_direction</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">displayed_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">right_direction</span><span class="p">),</span> <span class="n">size</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">displayed_height</span><span class="p">,</span> <span class="n">displayed_width</span><span class="p">])</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_new_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create new labels layer filling full world coordinates space.&quot;&quot;&quot;</span>
@@ -1005,17 +1156,6 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">mouse_zoom</span> <span class="o">=</span> <span class="n">active_layer</span><span class="o">.</span><span class="n">mouse_zoom</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update_status_from_cursor</span><span class="p">()</span>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">rounded_division</span><span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Viewer.rounded_division is deprecated since v0.4.18 and will be removed in 0.6.0.&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="nb">int</span><span class="p">(((</span><span class="n">min_val</span> <span class="o">+</span> <span class="n">max_val</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">precision</span><span class="p">)</span> <span class="o">*</span> <span class="n">precision</span>
-
     <span class="k">def</span><span class="w"> </span><span class="nf">_on_layers_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1070,6 +1210,28 @@ window.addEventListener("load", load);
         <span class="n">selection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">selection</span>
         <span class="n">active</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">active</span>
 
+        <span class="c1"># Compute the tooltip first since it is always needed.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tooltip</span><span class="o">.</span><span class="n">visible</span> <span class="ow">and</span> <span class="n">active</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">active</span><span class="o">.</span><span class="n">_loaded</span><span class="p">:</span>
+            <span class="n">tooltip_text</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">_get_tooltip_text</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span><span class="p">),</span>
+                <span class="n">view_direction</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">_view_direction</span><span class="p">),</span>
+                <span class="n">dims_displayed</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">displayed</span><span class="p">),</span>
+                <span class="n">world</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># If there is an active layer and a single selection, calculate status using &quot;the classic way&quot;.</span>
+        <span class="c1"># Then return the status and the tooltip.</span>
+        <span class="k">if</span> <span class="n">active</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">active</span><span class="o">.</span><span class="n">_loaded</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span><span class="p">,</span>
+                <span class="n">view_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">_view_direction</span><span class="p">,</span>
+                <span class="n">dims_displayed</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">displayed</span><span class="p">),</span>
+                <span class="n">world</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">status</span><span class="p">,</span> <span class="n">tooltip_text</span>
+
+        <span class="c1"># Otherwise, return the layer status of multiple selected layers</span>
+        <span class="c1"># or gridded layers as well as the tooltip.</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
             <span class="k">if</span> <span class="p">(</span>
                 <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">visible</span>
@@ -1110,14 +1272,6 @@ window.addEventListener("load", load);
             <span class="n">status_str</span> <span class="o">=</span> <span class="s1">&#39;[empty]&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">status_str</span> <span class="o">=</span> <span class="s1">&#39;Ready&#39;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tooltip</span><span class="o">.</span><span class="n">visible</span> <span class="ow">and</span> <span class="n">active</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">active</span><span class="o">.</span><span class="n">_loaded</span><span class="p">:</span>
-            <span class="n">tooltip_text</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">_get_tooltip_text</span><span class="p">(</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span><span class="p">),</span>
-                <span class="n">view_direction</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">_view_direction</span><span class="p">),</span>
-                <span class="n">dims_displayed</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">displayed</span><span class="p">),</span>
-                <span class="n">world</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">status_str</span><span class="p">,</span> <span class="n">tooltip_text</span>
 
@@ -1315,12 +1469,6 @@ window.addEventListener("load", load);
 
 <div class="viewcode-block" id="ViewerModel.add_image">
 <a class="viewcode-back" href="../../../api/napari.components.ViewerModel.html#napari.components.ViewerModel.add_image">[docs]</a>
-    <span class="nd">@rename_argument</span><span class="p">(</span>
-        <span class="n">from_name</span><span class="o">=</span><span class="s1">&#39;interpolation&#39;</span><span class="p">,</span>
-        <span class="n">to_name</span><span class="o">=</span><span class="s1">&#39;interpolation2d&#39;</span><span class="p">,</span>
-        <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.6.0&#39;</span><span class="p">,</span>
-        <span class="n">since_version</span><span class="o">=</span><span class="s1">&#39;0.4.17&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_image</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>

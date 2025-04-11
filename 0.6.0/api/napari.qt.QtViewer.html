@@ -34,8 +34,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../_static/documentation_options.js?v=024f356b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="napari.qt.QtToolTipLabel" href="napari.qt.QtToolTipLabel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -385,6 +385,9 @@
 </form></div>
         <div class="sidebar-primary-item">
 <nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="caption" role="heading" aria-level="1">
+    <span class="caption-text">Section Navigation</span>
+  </p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.layers.html">napari.layers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -490,7 +493,29 @@
 <li class="toctree-l1"><a class="reference internal" href="view_layer.html">Viewing a Layer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Misc</a></li>
 </ul>
-</div>
+<p class="caption" role="heading" aria-level="2">
+      <span class="caption-text">Resources</span>
+    </p>
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l1">
+          <a class="reference internal" href="community/meeting_schedule.html">Community calendar</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.zulipchat.com/">Community chat</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference internal" href="troubleshooting.html">Troubleshooting</a>
+      </li>
+      <li class="toctree-l1">
+          
+          <a class="reference internal" href="release/release_0_6_0.html">Latest release notes</a>
+          
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.org/island-dispatch">Blog</a>
+      </li>
+    </ul>
+  </div>
 </nav></div>
     </div>
   
@@ -1810,12 +1835,6 @@ have a custom canvas here.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">WinPanel</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.qt.QtViewer.camera" title="napari.qt.QtViewer.camera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">camera</span></code></a></p></td>
-<td><p>The Vispy camera class which contains both the 2d and 3d camera used to describe the perspective by which a scene is viewed and interacted with.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">chunk_receiver</span></code></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.qt.QtViewer.console" title="napari.qt.QtViewer.console"><code class="xref py py-obj docutils literal notranslate"><span class="pre">console</span></code></a></p></td>
 <td><p>iPython console terminal integrated into the napari GUI.</p></td>
 </tr>
@@ -1861,19 +1880,16 @@ have a custom canvas here.</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">staticMetaObject</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.qt.QtViewer.view" title="napari.qt.QtViewer.view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">view</span></code></a></p></td>
-<td><p>Rectangular  vispy viewbox widget in which a subscene is rendered.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.qt.QtViewer.viewerButtons" title="napari.qt.QtViewer.viewerButtons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewerButtons</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.qt.QtViewer.viewerButtons" title="napari.qt.QtViewer.viewerButtons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewerButtons</span></code></a></p></td>
 <td><p>Button controls for the napari viewer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowIconChanged</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowIconChanged</span></code></p></td>
 <td><p>int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowIconTextChanged</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowIconTextChanged</span></code></p></td>
 <td><p>int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowTitleChanged</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowTitleChanged</span></code></p></td>
 <td><p>int = ..., arguments: Sequence = ...) -&gt; PYQT_SIGNAL</p></td>
 </tr>
 </tbody>
@@ -2007,13 +2023,6 @@ callers frame.</p>
 <dt class="sig sig-object py" id="napari.qt.QtViewer.blockSignals">
 <span class="sig-name descname"><span class="pre">blockSignals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#napari.qt.QtViewer.blockSignals" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="napari.qt.QtViewer.camera">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">camera</span></span><a class="headerlink" href="#napari.qt.QtViewer.camera" title="Link to this definition">#</a></dt>
-<dd><p>The Vispy camera class which contains both the 2d and 3d camera used to describe the perspective by which a
-scene is viewed and interacted with. Access directly within the QtViewer will become deprecated.</p>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="napari.qt.QtViewer.changeEvent">
@@ -3791,13 +3800,6 @@ upper-left corner of the rendered region.</p>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="napari.qt.QtViewer.view">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">view</span></span><a class="headerlink" href="#napari.qt.QtViewer.view" title="Link to this definition">#</a></dt>
-<dd><p>Rectangular  vispy viewbox widget in which a subscene is rendered. Access directly within the QtViewer will
-become deprecated.</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="napari.qt.QtViewer.viewerButtons">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">viewerButtons</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons" title="napari._qt.widgets.qt_viewer_buttons.QtViewerButtons"><span class="pre">QtViewerButtons</span></a></em><a class="headerlink" href="#napari.qt.QtViewer.viewerButtons" title="Link to this definition">#</a></dt>
 <dd><p>Button controls for the napari viewer.</p>
@@ -3989,7 +3991,6 @@ become deprecated.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.backgroundRole"><code class="docutils literal notranslate"><span class="pre">QtViewer.backgroundRole()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.baseSize"><code class="docutils literal notranslate"><span class="pre">QtViewer.baseSize()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.blockSignals"><code class="docutils literal notranslate"><span class="pre">QtViewer.blockSignals()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.camera"><code class="docutils literal notranslate"><span class="pre">QtViewer.camera</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.changeEvent"><code class="docutils literal notranslate"><span class="pre">QtViewer.changeEvent()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.childAt"><code class="docutils literal notranslate"><span class="pre">QtViewer.childAt()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.childEvent"><code class="docutils literal notranslate"><span class="pre">QtViewer.childEvent()</span></code></a></li>
@@ -4315,7 +4316,6 @@ become deprecated.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.updateGeometry"><code class="docutils literal notranslate"><span class="pre">QtViewer.updateGeometry()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.updateMicroFocus"><code class="docutils literal notranslate"><span class="pre">QtViewer.updateMicroFocus()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.updatesEnabled"><code class="docutils literal notranslate"><span class="pre">QtViewer.updatesEnabled()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.view"><code class="docutils literal notranslate"><span class="pre">QtViewer.view</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.viewerButtons"><code class="docutils literal notranslate"><span class="pre">QtViewer.viewerButtons</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.visibleRegion"><code class="docutils literal notranslate"><span class="pre">QtViewer.visibleRegion()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.qt.QtViewer.whatsThis"><code class="docutils literal notranslate"><span class="pre">QtViewer.whatsThis()</span></code></a></li>

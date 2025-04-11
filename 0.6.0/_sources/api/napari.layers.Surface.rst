@@ -103,7 +103,6 @@ napari.layers.Surface
       ~Surface.features
       ~Surface.gamma
       ~Surface.help
-      ~Surface.interactive
       ~Surface.keymap
       ~Surface.loaded
       ~Surface.metadata
@@ -117,6 +116,7 @@ napari.layers.Surface
       ~Surface.projection_mode
       ~Surface.rotate
       ~Surface.scale
+      ~Surface.scale_factor
       ~Surface.shading
       ~Surface.shear
       ~Surface.source

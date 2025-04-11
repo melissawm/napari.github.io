@@ -86,8 +86,6 @@ graph LR
 	click napari._qt.widgets.qt_mode_buttons "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_mode_buttons.py" _blank
 	napari._qt.widgets.qt_range_slider_popup(napari._qt.widgets.qt_range_slider_popup)
 	click napari._qt.widgets.qt_range_slider_popup "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_range_slider_popup.py" _blank
-	napari._qt.widgets.qt_splash_screen(napari._qt.widgets.qt_splash_screen)
-	click napari._qt.widgets.qt_splash_screen "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_splash_screen.py" _blank
 	napari._qt.widgets.qt_viewer_dock_widget(napari._qt.widgets.qt_viewer_dock_widget)
 	napari._qt.widgets.qt_viewer_dock_widget --> napari._qt.qt_viewer
 	napari._qt.widgets.qt_viewer_dock_widget --> napari.viewer
@@ -129,7 +127,6 @@ graph LR
 		 napari._qt.widgets.qt_command_palette
 		 napari._qt.widgets.qt_mode_buttons
 		 napari._qt.widgets.qt_range_slider_popup
-		 napari._qt.widgets.qt_splash_screen
 		 napari._qt.widgets.qt_viewer_dock_widget
 	end
 	class module.napari._qt.widgets subgraphs
@@ -161,8 +158,7 @@ napari/
 │ │ ├─qt_mode_buttons.py
 │ │ ├─qt_command_palette.py
 │ │ ├─qt_range_slider_popup.py
-│ │ ├─qt_color_swatch.py
-│ │ └─qt_splash_screen.py
+│ │ └─qt_color_swatch.py
 │ └─__init__.py
 ├─layers/
 │ └─__init__.py

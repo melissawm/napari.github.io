@@ -13,7 +13,7 @@ gui (15) <gui>
 historical (4) <historical>
 interactivity (5) <interactivity>
 layers (8) <layers>
-visualization-advanced (20) <visualization-advanced>
+visualization-advanced (21) <visualization-advanced>
 visualization-basic (23) <visualization-basic>
 visualization-nD (22) <visualization-nd>
 xarray (1) <xarray>

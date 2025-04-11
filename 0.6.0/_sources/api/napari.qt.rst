@@ -28,7 +28,6 @@
 
    
    .. autofunction:: create_worker
-   .. autofunction:: get_app
    .. autofunction:: get_current_stylesheet
    .. autofunction:: get_qapp
    .. autofunction:: get_stylesheet

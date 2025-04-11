@@ -34,8 +34,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../_static/documentation_options.js?v=024f356b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="napari" href="napari.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -385,6 +385,9 @@
 </form></div>
         <div class="sidebar-primary-item">
 <nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="caption" role="heading" aria-level="1">
+    <span class="caption-text">Section Navigation</span>
+  </p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.layers.html">napari.layers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -490,7 +493,29 @@
 <li class="toctree-l1"><a class="reference internal" href="view_layer.html">Viewing a Layer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Misc</a></li>
 </ul>
-</div>
+<p class="caption" role="heading" aria-level="2">
+      <span class="caption-text">Resources</span>
+    </p>
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l1">
+          <a class="reference internal" href="community/meeting_schedule.html">Community calendar</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.zulipchat.com/">Community chat</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference internal" href="troubleshooting.html">Troubleshooting</a>
+      </li>
+      <li class="toctree-l1">
+          
+          <a class="reference internal" href="release/release_0_6_0.html">Latest release notes</a>
+          
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.org/island-dispatch">Blog</a>
+      </li>
+    </ul>
+  </div>
 </nav></div>
     </div>
   
@@ -629,35 +654,35 @@ ndisplay is 2 or 3. By default None</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.export_rois" title="napari.Viewer.export_rois"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_rois</span></code></a>(rois[, paths, scale])</p></td>
 <td><p>Export the given rectangular rois to specified file paths.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_orm</span></code>(obj)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.fit_to_view" title="napari.Viewer.fit_to_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_to_view</span></code></a>(*[, margin])</p></td>
+<td><p>Fit the current data view to the canvas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_orm</span></code>(obj)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.json" title="napari.Viewer.json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">json</span></code></a>(**kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.json" title="napari.Viewer.json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">json</span></code></a>(**kwargs)</p></td>
 <td><p>Serialize to json.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.open" title="napari.Viewer.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(path, *[, stack, plugin, layer_type])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.open" title="napari.Viewer.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(path, *[, stack, plugin, layer_type])</p></td>
 <td><p>Open a path or list of paths with plugins, and add layers to viewer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.open_sample" title="napari.Viewer.open_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_sample</span></code></a>(plugin, sample[, reader_plugin])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.open_sample" title="napari.Viewer.open_sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_sample</span></code></a>(plugin, sample[, reader_plugin])</p></td>
 <td><p>Open <cite>sample</cite> from <cite>plugin</cite> and add it to the viewer.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_file</span></code>(path, *[, content_type, ...])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_file</span></code>(path, *[, content_type, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_obj</span></code>(obj)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_obj</span></code>(obj)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_raw</span></code>(b, *[, content_type, encoding, ...])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_raw</span></code>(b, *[, content_type, encoding, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.reset" title="napari.Viewer.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.reset" title="napari.Viewer.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Reset the state of the model to default values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.Viewer.reset_view" title="napari.Viewer.reset_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_view</span></code></a>(*[, margin, reset_camera_angle])</p></td>
-<td><p>Reset the camera view.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rounded_division</span></code>(min_val, max_val, precision)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.Viewer.reset_view" title="napari.Viewer.reset_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_view</span></code></a>(*[, margin, reset_camera_angle])</p></td>
+<td><p>Reset the camera and fit the current layers to the canvas.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema</span></code>([by_alias, ref_template])</p></td>
 <td><p></p></td>
@@ -1584,6 +1609,20 @@ By default, uses the displayed scale.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="napari.Viewer.fit_to_view">
+<span class="sig-name descname"><span class="pre">fit_to_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#napari.Viewer.fit_to_view" title="Link to this definition">#</a></dt>
+<dd><p>Fit the current data view to the canvas.</p>
+<p>Adjusts the camera zoom and centers the view so that all visible layers
+are within the canvas, accounting for the current grid mode and margin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>)</em>) – Margin as fraction of the canvas, showing blank space around the
+data. Default is 0.05 (5% of the canvas).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="napari.Viewer.json">
 <span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#napari.Viewer.json" title="Link to this definition">#</a></dt>
 <dd><p>Serialize to json.</p>
@@ -1669,11 +1708,18 @@ not match the sample data loader.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="napari.Viewer.reset_view">
 <span class="sig-name descname"><span class="pre">reset_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_camera_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#napari.Viewer.reset_view" title="Link to this definition">#</a></dt>
-<dd><p>Reset the camera view.</p>
+<dd><p>Reset the camera and fit the current layers to the canvas.</p>
+<p>Resets the angles of the camera, adjust the camera zoom,
+and centers the view so that all layers are visible,
+accounting for the current grid mode and margin.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>)</em>) – Margin as fraction of the canvas, showing blank space around the
-data.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>)</em>) – Margin as fraction of the canvas, showing blank space around the
+data. Default is 0.05 (5% of the canvas).</p></li>
+<li><p><strong>reset_camera_angle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to reset the camera angles to (0, 0, 90) before fitting
+to view. Default is True.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1831,6 +1877,7 @@ callers frame.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.experimental"><code class="docutils literal notranslate"><span class="pre">Viewer.experimental</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.export_figure"><code class="docutils literal notranslate"><span class="pre">Viewer.export_figure()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.export_rois"><code class="docutils literal notranslate"><span class="pre">Viewer.export_rois()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.fit_to_view"><code class="docutils literal notranslate"><span class="pre">Viewer.fit_to_view()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.json"><code class="docutils literal notranslate"><span class="pre">Viewer.json()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.open"><code class="docutils literal notranslate"><span class="pre">Viewer.open()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.Viewer.open_sample"><code class="docutils literal notranslate"><span class="pre">Viewer.open_sample()</span></code></a></li>

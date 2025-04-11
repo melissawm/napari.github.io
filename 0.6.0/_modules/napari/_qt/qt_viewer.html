@@ -31,8 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../../../_static/documentation_options.js?v=024f356b"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -740,47 +740,6 @@ window.addEventListener("load", load);
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Rectangular  vispy viewbox widget in which a subscene is rendered. Access directly within the QtViewer will</span>
-<span class="sd">        become deprecated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Access to QtViewer.view is deprecated since 0.5.0 and will be removed in the napari 0.6.0. Change to QtViewer.canvas.view instead.&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">view</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">camera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        The Vispy camera class which contains both the 2d and 3d camera used to describe the perspective by which a</span>
-<span class="sd">        scene is viewed and interacted with. Access directly within the QtViewer will become deprecated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Access to QtViewer.camera will become deprecated in the 0.6.0. Change to QtViewer.canvas.camera instead.&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">camera</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">chunk_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;QtViewer.chunk_receiver is deprecated in version 0.5 and will be removed in a later version. &#39;</span>
-                <span class="s1">&#39;More generally the old approach to async loading was removed in version 0.5 so this value is always None. &#39;</span>
-                <span class="s1">&#39;If you need to specifically use the old approach, continue to use the latest 0.4 release.&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">DeprecationWarning</span><span class="p">,</span>
-        <span class="p">)</span>
-
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_dask_cache_settings</span><span class="p">(</span>
         <span class="n">dask_setting</span><span class="p">:</span> <span class="n">DaskSettings</span> <span class="o">|</span> <span class="n">Event</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -995,7 +954,7 @@ window.addEventListener("load", load);
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">vdict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">f_globals</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">f_locals</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-                    <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;napari&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="s1">&#39;Could not get variable </span><span class="si">%s</span><span class="s1"> from </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">name</span><span class="p">,</span>
                         <span class="n">cf</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span>
@@ -1101,7 +1060,9 @@ window.addEventListener("load", load);
 <span class="sd">        This only gets triggered on the async slicing path.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">responses</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">weakref</span><span class="o">.</span><span class="n">ReferenceType</span><span class="p">[</span><span class="n">Layer</span><span class="p">],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;QtViewer._on_slice_ready: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">responses</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;napari&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s1">&#39;QtViewer._on_slice_ready: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">responses</span>
+        <span class="p">)</span>
         <span class="k">for</span> <span class="n">weak_layer</span><span class="p">,</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">layer</span> <span class="o">:=</span> <span class="n">weak_layer</span><span class="p">():</span>
                 <span class="c1"># Update the layer slice state to temporarily support behavior</span>
@@ -1301,7 +1262,7 @@ window.addEventListener("load", load);
                 <span class="k">else</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
             <span class="p">),</span>
         <span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;napari&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
             <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
                 <span class="s1">&#39;QFileDialog - filename: </span><span class="si">{filename}</span><span class="s1"> &#39;</span>
                 <span class="s1">&#39;selected_filter: </span><span class="si">{selected_filter}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -1318,7 +1279,7 @@ window.addEventListener("load", load);
                 <span class="n">saved</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
                     <span class="n">filename</span><span class="p">,</span> <span class="n">selected</span><span class="o">=</span><span class="n">selected</span><span class="p">,</span> <span class="n">_writer</span><span class="o">=</span><span class="n">writer</span>
                 <span class="p">)</span>
-                <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Saved </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">saved</span><span class="p">)</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;napari&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Saved </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">saved</span><span class="p">)</span>
                 <span class="n">error_messages</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">wa</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">saved</span><span class="p">:</span>

@@ -153,7 +153,6 @@ napari.layers.Shapes
       ~Shapes.feature_defaults
       ~Shapes.features
       ~Shapes.help
-      ~Shapes.interactive
       ~Shapes.keymap
       ~Shapes.loaded
       ~Shapes.metadata
@@ -169,6 +168,7 @@ napari.layers.Shapes
       ~Shapes.property_choices
       ~Shapes.rotate
       ~Shapes.scale
+      ~Shapes.scale_factor
       ~Shapes.selected_data
       ~Shapes.shape_type
       ~Shapes.shear

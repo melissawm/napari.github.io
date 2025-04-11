@@ -99,7 +99,6 @@ napari.layers.Vectors
       ~Vectors.feature_defaults
       ~Vectors.features
       ~Vectors.help
-      ~Vectors.interactive
       ~Vectors.keymap
       ~Vectors.length
       ~Vectors.loaded
@@ -116,6 +115,7 @@ napari.layers.Vectors
       ~Vectors.property_choices
       ~Vectors.rotate
       ~Vectors.scale
+      ~Vectors.scale_factor
       ~Vectors.shear
       ~Vectors.source
       ~Vectors.thumbnail

@@ -56,6 +56,9 @@ napari.components.ViewerModel
       ~ViewerModel.enums_as_values
    
    
+      ~ViewerModel.fit_to_view
+   
+   
       ~ViewerModel.from_orm
    
    
@@ -81,9 +84,6 @@ napari.components.ViewerModel
    
    
       ~ViewerModel.reset_view
-   
-   
-      ~ViewerModel.rounded_division
    
    
       ~ViewerModel.schema

@@ -31,8 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../../../_static/documentation_options.js?v=024f356b"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -470,48 +470,27 @@ window.addEventListener("load", load);
                 <article class="bd-article">
                   
   <h1>Source code for napari.components.camera</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">auto</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span> <span class="k">as</span> <span class="n">R</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._pydantic_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">validator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.camera_orientations</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DEFAULT_ORIENTATION_TYPED</span><span class="p">,</span>
+    <span class="n">DepthAxisOrientation</span><span class="p">,</span>
+    <span class="n">Handedness</span><span class="p">,</span>
+    <span class="n">HorizontalAxisOrientation</span><span class="p">,</span>
+    <span class="n">HorizontalAxisOrientationStr</span><span class="p">,</span>
+    <span class="n">VerticalAxisOrientation</span><span class="p">,</span>
+    <span class="n">VerticalAxisOrientationStr</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventedModel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringEnum</span><span class="p">,</span> <span class="n">ensure_n_tuple</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensure_n_tuple</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.translations</span><span class="w"> </span><span class="kn">import</span> <span class="n">trans</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">npt</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">VerticalAxisOrientation</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
-    <span class="n">UP</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">DOWN</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">HorizontalAxisOrientation</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
-    <span class="n">LEFT</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">RIGHT</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">DepthAxisOrientation</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
-    <span class="n">AWAY</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">TOWARDS</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-
-
-<span class="n">VerticalAxisOrientationStr</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">]</span>
-<span class="n">HorizontalAxisOrientationStr</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]</span>
-<span class="n">DepthAxisOrientationStr</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;away&#39;</span><span class="p">,</span> <span class="s1">&#39;torwards&#39;</span><span class="p">]</span>
-
-
-<span class="n">DEFAULT_ORIENTATION_TYPED</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">DepthAxisOrientation</span><span class="o">.</span><span class="n">TOWARDS</span><span class="p">,</span>
-    <span class="n">VerticalAxisOrientation</span><span class="o">.</span><span class="n">DOWN</span><span class="p">,</span>
-    <span class="n">HorizontalAxisOrientation</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">DEFAULT_ORIENTATION</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">DEFAULT_ORIENTATION_TYPED</span><span class="p">))</span>
 
 
 <div class="viewcode-block" id="Camera">
@@ -533,10 +512,6 @@ window.addEventListener("load", load);
 <span class="sd">        sets of Euler angles may lead to the same view.</span>
 <span class="sd">    perspective : float</span>
 <span class="sd">        Perspective (aka &quot;field of view&quot; in vispy) of the camera (if 3D).</span>
-<span class="sd">    interactive : bool</span>
-<span class="sd">        If the camera mouse pan/zoom is enabled or not.</span>
-<span class="sd">        This attribute is deprecated since 0.5.0 and should not be used.</span>
-<span class="sd">        Use the mouse_pan and mouse_zoom attributes instead.</span>
 <span class="sd">    mouse_pan : bool</span>
 <span class="sd">        If the camera interactive panning with the mouse is enabled or not.</span>
 <span class="sd">    mouse_zoom : bool</span>
@@ -751,21 +726,17 @@ window.addEventListener("load", load);
         <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s1">&#39;`Camera.interactive` is deprecated since 0.5.0 and will be removed in 0.6.0.&#39;</span><span class="p">,</span>
-            <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span>
-
-    <span class="nd">@interactive</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interactive</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s1">&#39;`Camera.interactive` is deprecated since 0.5.0 and will be removed in 0.6.0.&#39;</span><span class="p">,</span>
-            <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="o">=</span> <span class="n">interactive</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span> <span class="o">=</span> <span class="n">interactive</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handedness</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Handedness</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Right or left-handedness of the current orientation.&quot;&quot;&quot;</span>
+        <span class="c1"># we know default orientation is right-handed, so an odd number of</span>
+        <span class="c1"># differences from default means left-handed.</span>
+        <span class="n">diffs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">orientation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">DEFAULT_ORIENTATION_TYPED</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Handedness</span><span class="o">.</span><span class="n">LEFT</span>
+        <span class="k">return</span> <span class="n">Handedness</span><span class="o">.</span><span class="n">RIGHT</span></div>
 
 </pre></div>
 

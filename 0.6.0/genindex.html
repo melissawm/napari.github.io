@@ -31,8 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="_static/documentation_options.js?v=024f356b"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -1011,11 +1011,7 @@ window.addEventListener("load", load);
       <li><a href="api/napari.components.Camera.html#napari.components.Camera">Camera (class in napari.components)</a>
 </li>
       <li><a href="api/napari.components.ViewerModel.html#napari.components.ViewerModel.camera">camera (napari.components.ViewerModel attribute)</a>
-
-      <ul>
-        <li><a href="api/napari.qt.QtViewer.html#napari.qt.QtViewer.camera">(napari.qt.QtViewer property)</a>
 </li>
-      </ul></li>
       <li><a href="api/napari.utils.cancelable_progress.html#napari.utils.cancelable_progress.cancel">cancel() (napari.utils.cancelable_progress method)</a>
 </li>
       <li><a href="api/napari.utils.cancelable_progress.html#napari.utils.cancelable_progress">cancelable_progress (class in napari.utils)</a>
@@ -1280,8 +1276,6 @@ window.addEventListener("load", load);
         <li><a href="api/napari.Viewer.html#napari.Viewer.construct">(napari.Viewer class method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.contentsMargins">contentsMargins() (napari.qt.QtToolTipLabel method)</a>
 
       <ul>
@@ -1290,6 +1284,8 @@ window.addEventListener("load", load);
         <li><a href="api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.contentsMargins">(napari.qt.QtViewerButtons method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.contentsRect">contentsRect() (napari.qt.QtToolTipLabel method)</a>
 
       <ul>
@@ -2264,6 +2260,12 @@ window.addEventListener("load", load);
         <li><a href="api/napari.qt.threading.WorkerBaseSignals.html#napari.qt.threading.WorkerBaseSignals.findChildren">(napari.qt.threading.WorkerBaseSignals method)</a>
 </li>
       </ul></li>
+      <li><a href="api/napari.components.ViewerModel.html#napari.components.ViewerModel.fit_to_view">fit_to_view() (napari.components.ViewerModel method)</a>
+
+      <ul>
+        <li><a href="api/napari.Viewer.html#napari.Viewer.fit_to_view">(napari.Viewer method)</a>
+</li>
+      </ul></li>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.focusInEvent">focusInEvent() (napari.qt.QtToolTipLabel method)</a>
 
       <ul>
@@ -2272,6 +2274,8 @@ window.addEventListener("load", load);
         <li><a href="api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.focusInEvent">(napari.qt.QtViewerButtons method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.focusNextChild">focusNextChild() (napari.qt.QtToolTipLabel method)</a>
 
       <ul>
@@ -2280,8 +2284,6 @@ window.addEventListener("load", load);
         <li><a href="api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.focusNextChild">(napari.qt.QtViewerButtons method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.focusNextPrevChild">focusNextPrevChild() (napari.qt.QtToolTipLabel method)</a>
 
       <ul>
@@ -2458,8 +2460,6 @@ window.addEventListener("load", load);
         <li><a href="api/napari.utils.events.EventedDict.html#napari.utils.events.EventedDict.get">(napari.utils.events.EventedDict method)</a>
 </li>
       </ul></li>
-      <li><a href="api/napari.qt.html#napari.qt.get_app">get_app() (in module napari.qt)</a>
-</li>
       <li><a href="api/napari.layers.Labels.html#napari.layers.Labels.get_color">get_color() (napari.layers.Labels method)</a>
 </li>
       <li><a href="api/napari.qt.html#napari.qt.get_current_stylesheet">get_current_stylesheet() (in module napari.qt)</a>
@@ -2604,14 +2604,14 @@ window.addEventListener("load", load);
 </li>
       <li><a href="api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.gridViewButton">gridViewButton (napari.qt.QtViewerButtons attribute)</a>
 </li>
-      <li><a href="api/napari.html#napari.gui_qt">gui_qt() (in module napari)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/napari.components.Camera.html#napari.components.Camera.handedness">handedness (napari.components.Camera property)</a>
+</li>
       <li><a href="api/napari.qt.QtViewer.html#napari.qt.QtViewer.handle">handle() (napari.qt.QtViewer method)</a>
 </li>
       <li><a href="api/napari.utils.events.Event.html#napari.utils.events.Event.handled">handled (napari.utils.events.Event property)</a>
@@ -2880,17 +2880,9 @@ window.addEventListener("load", load);
         <li><a href="api/napari.layers.Shapes.html#napari.layers.Shapes.interaction_box">(napari.layers.Shapes method)</a>
 </li>
       </ul></li>
-      <li><a href="api/napari.components.Camera.html#napari.components.Camera.interactive">interactive (napari.components.Camera attribute)</a>
+      <li><a href="api/napari.utils.Colormap.html#napari.utils.Colormap.interpolation">interpolation (napari.utils.Colormap attribute)</a>
 
       <ul>
-        <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.interactive">(napari.layers.Layer attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="api/napari.layers.Image.html#napari.layers.Image.interpolation">interpolation (napari.layers.Image property)</a>
-
-      <ul>
-        <li><a href="api/napari.utils.Colormap.html#napari.utils.Colormap.interpolation">(napari.utils.Colormap attribute)</a>
-</li>
         <li><a href="api/napari.utils.CyclicLabelColormap.html#napari.utils.CyclicLabelColormap.interpolation">(napari.utils.CyclicLabelColormap attribute)</a>
 </li>
       </ul></li>
@@ -4773,8 +4765,26 @@ window.addEventListener("load", load);
         <li><a href="api/napari.utils.transforms.CompositeAffine.html#napari.utils.transforms.CompositeAffine.scale">(napari.utils.transforms.CompositeAffine property)</a>
 </li>
       </ul></li>
-      <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.scale_factor">scale_factor (napari.layers.Layer attribute)</a>
+      <li><a href="api/napari.layers.Image.html#napari.layers.Image.scale_factor">scale_factor (napari.layers.Image property)</a>
+
+      <ul>
+        <li><a href="api/napari.layers.Labels.html#napari.layers.Labels.scale_factor">(napari.layers.Labels property)</a>
 </li>
+        <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.scale_factor">(napari.layers.Layer attribute)</a>
+</li>
+        <li><a href="api/napari.layers.Layer.html#id14">(napari.layers.Layer property)</a>
+</li>
+        <li><a href="api/napari.layers.Points.html#napari.layers.Points.scale_factor">(napari.layers.Points property)</a>
+</li>
+        <li><a href="api/napari.layers.Shapes.html#napari.layers.Shapes.scale_factor">(napari.layers.Shapes property)</a>
+</li>
+        <li><a href="api/napari.layers.Surface.html#napari.layers.Surface.scale_factor">(napari.layers.Surface property)</a>
+</li>
+        <li><a href="api/napari.layers.Tracks.html#napari.layers.Tracks.scale_factor">(napari.layers.Tracks property)</a>
+</li>
+        <li><a href="api/napari.layers.Vectors.html#napari.layers.Vectors.scale_factor">(napari.layers.Vectors property)</a>
+</li>
+      </ul></li>
       <li><a href="api/napari.utils.transforms.ScaleTranslate.html#napari.utils.transforms.ScaleTranslate">ScaleTranslate (class in napari.utils.transforms)</a>
 </li>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.screen">screen() (napari.qt.QtToolTipLabel method)</a>
@@ -5277,6 +5287,8 @@ window.addEventListener("load", load);
         <li><a href="api/napari.qt.QtViewerButtons.html#napari.qt.QtViewerButtons.setMouseTracking">(napari.qt.QtViewerButtons method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.setMovie">setMovie() (napari.qt.QtToolTipLabel method)</a>
 </li>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.setNum">setNum() (napari.qt.QtToolTipLabel method)</a>
@@ -5293,8 +5305,6 @@ window.addEventListener("load", load);
         <li><a href="api/napari.qt.threading.WorkerBaseSignals.html#napari.qt.threading.WorkerBaseSignals.setObjectName">(napari.qt.threading.WorkerBaseSignals method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/napari.qt.QtViewer.html#napari.qt.QtViewer.setOpaqueResize">setOpaqueResize() (napari.qt.QtViewer method)</a>
 </li>
       <li><a href="api/napari.qt.QtToolTipLabel.html#napari.qt.QtToolTipLabel.setOpenExternalLinks">setOpenExternalLinks() (napari.qt.QtToolTipLabel method)</a>
@@ -5586,7 +5596,7 @@ window.addEventListener("load", load);
 </li>
         <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.shear">(napari.layers.Layer attribute)</a>
 </li>
-        <li><a href="api/napari.layers.Layer.html#id14">(napari.layers.Layer property)</a>
+        <li><a href="api/napari.layers.Layer.html#id15">(napari.layers.Layer property)</a>
 </li>
         <li><a href="api/napari.layers.Points.html#napari.layers.Points.shear">(napari.layers.Points property)</a>
 </li>
@@ -5922,7 +5932,7 @@ window.addEventListener("load", load);
 </li>
         <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.thumbnail">(napari.layers.Layer attribute)</a>
 </li>
-        <li><a href="api/napari.layers.Layer.html#id15">(napari.layers.Layer property)</a>
+        <li><a href="api/napari.layers.Layer.html#id16">(napari.layers.Layer property)</a>
 </li>
         <li><a href="api/napari.layers.Points.html#napari.layers.Points.thumbnail">(napari.layers.Points property)</a>
 </li>
@@ -6016,7 +6026,7 @@ window.addEventListener("load", load);
 </li>
         <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.translate">(napari.layers.Layer attribute)</a>
 </li>
-        <li><a href="api/napari.layers.Layer.html#id16">(napari.layers.Layer property)</a>
+        <li><a href="api/napari.layers.Layer.html#id17">(napari.layers.Layer property)</a>
 </li>
         <li><a href="api/napari.layers.Points.html#napari.layers.Points.translate">(napari.layers.Points property)</a>
 </li>
@@ -6082,7 +6092,7 @@ window.addEventListener("load", load);
 </li>
         <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.unique_id">(napari.layers.Layer attribute)</a>
 </li>
-        <li><a href="api/napari.layers.Layer.html#id17">(napari.layers.Layer property)</a>
+        <li><a href="api/napari.layers.Layer.html#id18">(napari.layers.Layer property)</a>
 </li>
         <li><a href="api/napari.layers.Points.html#napari.layers.Points.unique_id">(napari.layers.Points property)</a>
 </li>
@@ -6106,7 +6116,7 @@ window.addEventListener("load", load);
 </li>
         <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.units">(napari.layers.Layer attribute)</a>
 </li>
-        <li><a href="api/napari.layers.Layer.html#id18">(napari.layers.Layer property)</a>
+        <li><a href="api/napari.layers.Layer.html#id19">(napari.layers.Layer property)</a>
 </li>
         <li><a href="api/napari.layers.Points.html#napari.layers.Points.units">(napari.layers.Points attribute)</a>
 </li>
@@ -6285,8 +6295,6 @@ window.addEventListener("load", load);
 </li>
       <li><a href="api/napari.layers.Surface.html#napari.layers.Surface.vertices">vertices (napari.layers.Surface attribute)</a>
 </li>
-      <li><a href="api/napari.qt.QtViewer.html#napari.qt.QtViewer.view">view (napari.qt.QtViewer property)</a>
-</li>
       <li><a href="api/napari.components.Camera.html#napari.components.Camera.view_direction">view_direction (napari.components.Camera property)</a>
 </li>
       <li><a href="api/napari.html#napari.view_image">view_image() (in module napari)</a>
@@ -6364,7 +6372,7 @@ window.addEventListener("load", load);
 </li>
         <li><a href="api/napari.layers.Layer.html#napari.layers.Layer.visible">(napari.layers.Layer attribute)</a>
 </li>
-        <li><a href="api/napari.layers.Layer.html#id19">(napari.layers.Layer property)</a>
+        <li><a href="api/napari.layers.Layer.html#id20">(napari.layers.Layer property)</a>
 </li>
         <li><a href="api/napari.layers.Points.html#napari.layers.Points.visible">(napari.layers.Points property)</a>
 </li>

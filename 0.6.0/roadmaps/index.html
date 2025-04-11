@@ -34,8 +34,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../_static/documentation_options.js?v=024f356b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="NAP-X — Template and Instructions" href="../naps/template.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -245,6 +245,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -381,6 +385,9 @@
 </form></div>
         <div class="sidebar-primary-item">
 <nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="caption" role="heading" aria-level="1">
+    <span class="caption-text">Section Navigation</span>
+  </p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../developers/contributing/index.html">Contributing guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developers/contributing/dev_install.html">Setting up a development installation</a></li>
@@ -401,9 +408,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../developers/coredev/core_dev_guide.html">Core Developer guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developers/coredev/maintenance.html">Maintenance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developers/coredev/release.html">Release guide</a></li>
-
-
-
 <li class="toctree-l2"><a class="reference internal" href="../developers/coredev/packaging.html">Packaging</a></li>
 </ul>
 </details></li>
@@ -447,7 +451,29 @@
 </ul>
 </details></li>
 </ul>
-</div>
+<p class="caption" role="heading" aria-level="2">
+      <span class="caption-text">Resources</span>
+    </p>
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l1">
+          <a class="reference internal" href="community/meeting_schedule.html">Community calendar</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.zulipchat.com/">Community chat</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference internal" href="troubleshooting.html">Troubleshooting</a>
+      </li>
+      <li class="toctree-l1">
+          
+          <a class="reference internal" href="release/release_0_6_0.html">Latest release notes</a>
+          
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.org/island-dispatch">Blog</a>
+      </li>
+    </ul>
+  </div>
 </nav></div>
     </div>
   
@@ -508,15 +534,23 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="roadmaps">
 <span id="id1"></span><h1>Roadmaps<a class="headerlink" href="#roadmaps" title="Link to this heading">#</a></h1>
-<p>The current <code class="docutils literal notranslate"><span class="pre">napari</span></code> roadmap can be seen in the following GitHub board: <a class="reference external" href="https://github.com/orgs/napari/projects/24/views/2?pane=info">napari global roadmap</a></p>
-<p>This roadmap captures the current priorities of the napari core developer team. It is revisited every six months.</p>
-<hr class="docutils" />
-<p>You can see past roadmaps below.</p>
+<p>The <a class="reference external" href="https://github.com/orgs/napari/projects/24/views/2?pane=info"><strong>napari global roadmap</strong></a> is hosted on a Github Project board. This roadmap captures the current priorities of the napari core developer team. It is revisited every six months.</p>
+<section id="for-contributors">
+<h2>For contributors<a class="headerlink" href="#for-contributors" title="Link to this heading">#</a></h2>
+<p>If a particular roadmap item is important to you and you want to help make it happen sooner, please <a class="reference external" href="https://napari.zulipchat.com/">chat with us</a>! You can help by <a class="reference external" href="https://napari.org/dev/developers/index.html">contributing code or documentation</a></p>
+</section>
+<section id="for-funders">
+<h2>For funders<a class="headerlink" href="#for-funders" title="Link to this heading">#</a></h2>
+<p>If you have the resources and you are interested in bringing one or more of our roadmap items to life, you can write to us at <a class="reference external" href="mailto:napari-steering-council&#37;&#52;&#48;googlegroups&#46;com">napari-steering-council<span>&#64;</span>googlegroups<span>&#46;</span>com</a> and donate on our <a class="reference external" href="https://numfocus.org/donate-to-napari">NumFOCUS page</a>. For a limited time, CZI will kindly <a class="reference external" href="https://chanzuckerberg.com/science/programs-resources/imaging/napari/seeding-sustainability-for-the-napari-project/">match donations up to a total of $100,000 USD</a>.</p>
+<section id="past-roadmaps">
+<h3>Past Roadmaps<a class="headerlink" href="#past-roadmaps" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="0_4.html"><span class="std std-doc">Roadmap 0.4</span></a></p></li>
 <li><p><a class="reference internal" href="0_3_retrospective.html"><span class="std std-doc">Roadmap 0.3 Retrospective</span></a></p></li>
 <li><p><a class="reference internal" href="0_3.html"><span class="std std-doc">Roadmap 0.3</span></a></p></li>
 </ul>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -555,6 +589,28 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-contributors">For contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-funders">For funders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#past-roadmaps">Past Roadmaps</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

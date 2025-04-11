@@ -1108,8 +1108,6 @@ napari.qt.QtViewer
       ~QtViewer.Sunken
       ~QtViewer.VLine
       ~QtViewer.WinPanel
-      ~QtViewer.camera
-      ~QtViewer.chunk_receiver
       ~QtViewer.console
       ~QtViewer.console_backlog
       ~QtViewer.controls
@@ -1125,7 +1123,6 @@ napari.qt.QtViewer
       ~QtViewer.objectNameChanged
       ~QtViewer.splitterMoved
       ~QtViewer.staticMetaObject
-      ~QtViewer.view
       ~QtViewer.viewerButtons
       ~QtViewer.windowIconChanged
       ~QtViewer.windowIconTextChanged

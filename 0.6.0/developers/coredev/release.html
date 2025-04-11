@@ -34,8 +34,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../../_static/documentation_options.js?v=024f356b"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="Maintenance" href="maintenance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -385,6 +385,9 @@
 </form></div>
         <div class="sidebar-primary-item">
 <nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="caption" role="heading" aria-level="1">
+    <span class="caption-text">Section Navigation</span>
+  </p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../contributing/index.html">Contributing guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../contributing/dev_install.html">Setting up a development installation</a></li>
@@ -405,9 +408,6 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="core_dev_guide.html">Core Developer guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Release guide</a></li>
-
-
-
 <li class="toctree-l2"><a class="reference internal" href="packaging.html">Packaging</a></li>
 </ul>
 </details></li>
@@ -451,7 +451,29 @@
 </ul>
 </details></li>
 </ul>
-</div>
+<p class="caption" role="heading" aria-level="2">
+      <span class="caption-text">Resources</span>
+    </p>
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l1">
+          <a class="reference internal" href="community/meeting_schedule.html">Community calendar</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.zulipchat.com/">Community chat</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference internal" href="troubleshooting.html">Troubleshooting</a>
+      </li>
+      <li class="toctree-l1">
+          
+          <a class="reference internal" href="release/release_0_6_0.html">Latest release notes</a>
+          
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.org/island-dispatch">Blog</a>
+      </li>
+    </ul>
+  </div>
 </nav></div>
     </div>
   
@@ -515,20 +537,31 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="release-guide">
 <span id="napari-release"></span><h1>Release guide<a class="headerlink" href="#release-guide" title="Link to this heading">#</a></h1>
-<p>This guide documents <code class="docutils literal notranslate"><span class="pre">napari</span></code>’s release process. Most required tools mentioned here are in <a class="github reference external" href="https://github.com/napari/napari-release-tools">napari/napari-release-tools</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="timeline">
-<h1>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h1>
-<p>Currently, we are releasing a new napari version every 2-3 weeks. Release candidates are made available as a reasonableness check for 1-24h before the full release is published: since the release cadence is so high, any new bugs can be quickly rectified, and more quickly identified by making a full release.</p>
-<p>When major API changes and deprecations happen, we will provide longer release candidate cycles to ensure proper testing by the community.</p>
-<p>The latest release candidate can be installed with</p>
+<p>This guide documents <code class="docutils literal notranslate"><span class="pre">napari</span></code>’s release process as of 0.6.0.
+Most required tools mentioned here are in <a class="github reference external" href="https://github.com/napari/napari-release-tools">napari/napari-release-tools</a>.</p>
+<section id="timeline">
+<h2>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h2>
+<p>Currently, we are releasing a major version every six to twelve months.
+We plan minor napari version releases every 1-2 months.
+We will ship bug fix releases as needed.</p>
+<p>Prior to major and minor releases, we will have a release testing cycle with
+alpha prereleases and release candidates. All will be made available to the
+community for testing. The length of time between these prereleases will
+depend on the size of the release and feedback received. A conservative estimate
+is one week between each prerelease.</p>
+<p>The latest prerelease (alpha or release candidate) can be installed with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--pre</span> <span class="pre">napari</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--pre</span> <span class="pre">napari</span></code></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note: the <code class="docutils literal notranslate"><span class="pre">--pre</span></code> in the above commands will install prereleases of napari and all dependencies! This may result in errors or warnings. If this happens, you can instead install napari without <code class="docutils literal notranslate"><span class="pre">--pre</span></code>, but instead specify <code class="docutils literal notranslate"><span class="pre">a0</span></code> in the installation. For example, for a prerelease of a hypothetical <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code> version of napari, you would install <code class="docutils literal notranslate"><span class="pre">&quot;napari&gt;=1.0.0a0&quot;</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code> with the actual version you are interested in.</p>
+</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="release-management">
-<h1>Release management<a class="headerlink" href="#release-management" title="Link to this heading">#</a></h1>
+<section id="release-management">
+<h2>Release management<a class="headerlink" href="#release-management" title="Link to this heading">#</a></h2>
 <p>The release will be coordinated by a release manager whose responsibilities include the following.</p>
-<section id="one-week-before-release">
-<h2>One week before release<a class="headerlink" href="#one-week-before-release" title="Link to this heading">#</a></h2>
+<section id="step-1-preparing-for-the-release">
+<h3>Step 1: Preparing for the release<a class="headerlink" href="#step-1-preparing-for-the-release" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Look through currently open PRs and get a sense of what would be good to merge before the first release candidate. Set milestones appropriately;</p></li>
 <li><p>Ensure <code class="docutils literal notranslate"><span class="pre">conda-recipe/meta.yaml</span></code> in <code class="docutils literal notranslate"><span class="pre">napari/packaging</span></code> is up-to-date (e.g. <code class="docutils literal notranslate"><span class="pre">run</span></code> dependencies match <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> requirements);</p></li>
@@ -536,8 +569,8 @@
 </ul>
 <p>At this stage, bug fixes and features that are close to landing should be prioritized. The release manager will follow up with PR authors, reviewing and merging as needed. New features should wait until after release.</p>
 </section>
-<section id="days-before-release">
-<h2>1-2 days before release<a class="headerlink" href="#days-before-release" title="Link to this heading">#</a></h2>
+<section id="step-2-generating-release-notes">
+<h3>Step 2: Generating release notes<a class="headerlink" href="#step-2-generating-release-notes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Add a header and highlights section to the <a class="reference external" href="https://github.com/napari/napari-release-tools/tree/main/additional_notes"><code class="docutils literal notranslate"><span class="pre">additional</span> <span class="pre">notes</span></code></a> folder for the given release. Use the <a class="reference external" href="https://github.com/napari/napari/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aopen+label%3Ahighlight">highlight label</a> for the relevant milestone to note which PRs to comment on.</p></li>
 <li><p>Generate release notes with the <a class="reference external" href="https://github.com/napari/napari-release-tools/blob/main/generate_release_notes.py"><code class="docutils literal notranslate"><span class="pre">generate_release_notes.py</span></code> script from napari/napari-release-tools</a>;</p></li>
@@ -545,8 +578,8 @@
 </ul>
 <p>At this point the release manager should ideally be the only person merging PRs on the repo for the next few days before the release.</p>
 </section>
-<section id="id1">
-<h2>1-0 days before release<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="step-3-making-the-prerelease">
+<h3>Step 3: Making the prerelease<a class="headerlink" href="#step-3-making-the-prerelease" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Merge any remaining PRs and update release notes accordingly;</p></li>
 <li><p>Merge release notes;</p></li>
@@ -554,8 +587,8 @@
 <li><p>Announce to release stream on zulip that the first release candidate is available for testing.</p></li>
 </ul>
 </section>
-<section id="the-day-of-release">
-<h2>The day of release<a class="headerlink" href="#the-day-of-release" title="Link to this heading">#</a></h2>
+<section id="step-4-testing-the-prerelease">
+<h3>Step 4: Testing the prerelease<a class="headerlink" href="#step-4-testing-the-prerelease" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Make sure final rc has been tested;</p></li>
 <li><p>Ensure all PRs have been added to release notes;</p></li>
@@ -564,8 +597,8 @@
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="release-process">
-<h1>Release process<a class="headerlink" href="#release-process" title="Link to this heading">#</a></h1>
+<section id="release-procedures">
+<h2>Release procedures<a class="headerlink" href="#release-procedures" title="Link to this heading">#</a></h2>
 <p>Additional <code class="docutils literal notranslate"><span class="pre">release</span></code> dependencies (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.[release]</span></code>, from the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> root folder) are required to complete the release process.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://github.com/napari/napari/blob/main/MANIFEST.in"><code class="docutils literal notranslate"><span class="pre">MANIFEST.in</span></code></a> determines which non-Python files are included.
@@ -577,7 +610,7 @@ This likely has been done already, but if it has not, follow
 <a class="reference external" href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions">this guide</a>
 to add it as a secret.</p>
 <section id="determining-the-version">
-<h2>Determining the version<a class="headerlink" href="#determining-the-version" title="Link to this heading">#</a></h2>
+<h3>Determining the version<a class="headerlink" href="#determining-the-version" title="Link to this heading">#</a></h3>
 <p>The version of <code class="docutils literal notranslate"><span class="pre">napari</span></code> is automatically determined at install time by
 <a class="reference external" href="https://github.com/pypa/setuptools_scm"><code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code></a> from the latest
 <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"><code class="docutils literal notranslate"><span class="pre">git</span></code> tag</a> beginning with
@@ -587,7 +620,7 @@ the new version number. It is likely something like <code class="docutils litera
 release though we need to generate the release notes.</p>
 </section>
 <section id="generating-release-notes">
-<h2>Generating release notes<a class="headerlink" href="#generating-release-notes" title="Link to this heading">#</a></h2>
+<h3>Generating release notes<a class="headerlink" href="#generating-release-notes" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Grab the <code class="docutils literal notranslate"><span class="pre">generate_release_notes.py</span></code> script from the
 <a class="reference external" href="https://github.com/napari/napari-release-tools">napari/napari-release-tools</a>
@@ -611,7 +644,7 @@ consequences. If possible, organize semantically close PRs in groups.</p></li>
 </ol>
 </section>
 <section id="update-constraints-files">
-<h2>Update constraints files<a class="headerlink" href="#update-constraints-files" title="Link to this heading">#</a></h2>
+<h3>Update constraints files<a class="headerlink" href="#update-constraints-files" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">napari</span></code> uses a set of constraints files to prevent test failures due to dependency updates. This also allows for reproducible builds (see <a class="reference internal" href="../contributing/dev_install.html#dev-installation"><span class="std std-ref">Setting up a development installation</span></a>).
 These constraints files need to be updated at least weekly on Monday, and may also be triggered manually by a maintainer. You can find these files at
 <a class="reference external" href="https://github.com/napari/napari/tree/main/resources/constraints">resources/constraints</a>.</p>
@@ -626,7 +659,7 @@ These constraints files need to be updated at least weekly on Monday, and may al
 <p>To see other examples, check out the <a class="reference external" href="https://github.com/napari/napari/blob/main/.github/workflows/upgrade_test_constraints.yml">upgrade test constraints action</a>.</p>
 </section>
 <section id="tagging-the-new-release-candidate">
-<h2>Tagging the new release candidate<a class="headerlink" href="#tagging-the-new-release-candidate" title="Link to this heading">#</a></h2>
+<h3>Tagging the new release candidate<a class="headerlink" href="#tagging-the-new-release-candidate" title="Link to this heading">#</a></h3>
 <p>First we will generate a release candidate, which will contain the letters <code class="docutils literal notranslate"><span class="pre">rc</span></code>.
 Using release candidates allows us to test releases on PyPI without using up the actual
 release number.</p>
@@ -643,7 +676,7 @@ before making the real release.</p>
 <p>You can read more on tagging <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">here</a>.</p>
 </section>
 <section id="testing-the-release-candidate">
-<h2>Testing the release candidate<a class="headerlink" href="#testing-the-release-candidate" title="Link to this heading">#</a></h2>
+<h3>Testing the release candidate<a class="headerlink" href="#testing-the-release-candidate" title="Link to this heading">#</a></h3>
 <p>Our CI automatically makes a release, copying the release notes to the tag and uploading the distribution to PyPI.
 You can trigger this by pushing the new tag to <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>upstream<span class="w"> </span>--tags
@@ -659,7 +692,7 @@ incrementing the number after <code class="docutils literal notranslate"><span c
 <p>Once you are satisfied with the release candidate it is time to generate the actual release.</p>
 </section>
 <section id="generating-the-actual-release">
-<h2>Generating the actual release<a class="headerlink" href="#generating-the-actual-release" title="Link to this heading">#</a></h2>
+<h3>Generating the actual release<a class="headerlink" href="#generating-the-actual-release" title="Link to this heading">#</a></h3>
 <p>To generate the actual release you will now repeat the processes above but now dropping the <code class="docutils literal notranslate"><span class="pre">rc</span></code>.
 For example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>vX.Y.Z<span class="w"> </span>main
@@ -667,6 +700,7 @@ git<span class="w"> </span>push<span class="w"> </span>upstream<span class="w"> 
 </pre></div>
 </div>
 <p>Once the new tag is pushed, the <a class="reference external" href="https://github.com/napari/napari/blob/main/.github/workflows/make_release.yml"><code class="docutils literal notranslate"><span class="pre">make_release.yml</span></code> workflow</a> will be triggered, using the <a class="reference external" href="https://github.com/pypa/gh-action-pypi-publish">PyPI Publish action</a> to publish the new napari version to PyPI using <a class="reference external" href="https://docs.pypi.org/trusted-publishers/">Trusted Publishers</a>.</p>
+</section>
 </section>
 <section id="conda-forge-packages">
 <h2>conda-forge packages<a class="headerlink" href="#conda-forge-packages" title="Link to this heading">#</a></h2>
@@ -731,8 +765,10 @@ To do so, we can submit a PR to <code class="docutils literal notranslate"><span
 <p>Please make sure a correct build for the problematic release is available before (or shortly after) the <code class="docutils literal notranslate"><span class="pre">admin-requests</span></code> PR is merged!</p>
 </section>
 </section>
-<section id="post-release-update-the-documentation">
-<h2>Post release: update the documentation<a class="headerlink" href="#post-release-update-the-documentation" title="Link to this heading">#</a></h2>
+<section id="post-release">
+<h2>Post release<a class="headerlink" href="#post-release" title="Link to this heading">#</a></h2>
+<section id="update-documentation-based-on-user-feedback">
+<h3>Update documentation based on user feedback<a class="headerlink" href="#update-documentation-based-on-user-feedback" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://napari.org">napari docs</a> are versioned, meaning that each release has its own documentation, selected through the version switcher dropdown. Once you tag a new version in the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repo, the <a class="reference external" href="https://github.com/napari/docs/blob/main/.github/workflows/build_and_deploy.yml"><code class="docutils literal notranslate"><span class="pre">build_and_deploy.yml</span></code> workflow</a> will automatically create a new folder for this version number in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the <code class="docutils literal notranslate"><span class="pre">napari/napari.github.io</span></code> repo.</p>
 <p>Next, you need to do the following:</p>
 <ol class="arabic simple">
@@ -749,6 +785,13 @@ git<span class="w"> </span>push
 <ol class="arabic simple" start="2">
 <li><p>In the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> repo, update the <a class="reference external" href="https://github.com/napari/docs/blob/main/docs/_static/version_switcher.json"><code class="docutils literal notranslate"><span class="pre">docs/_static/version_switcher.json</span></code> file</a> so that <code class="docutils literal notranslate"><span class="pre">stable</span></code> points to the right version. The active version switcher is read from the file in the <code class="docutils literal notranslate"><span class="pre">dev</span></code> folder, so this can be done as the last step in the process.</p></li>
 </ol>
+</section>
+<section id="plan-a-bug-release">
+<h3>Plan a bug release<a class="headerlink" href="#plan-a-bug-release" title="Link to this heading">#</a></h3>
+<p>If any critical bugs are found in the release, a bug release should be planned.
+This will be a minor release with the bug fixes and no new features.
+The release manager should coordinate with the maintainers to ensure that the bug release is made in a timely manner.</p>
+</section>
 </section>
 </section>
 
@@ -799,33 +842,35 @@ git<span class="w"> </span>push
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Release guide</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#release-management">Release management</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-week-before-release">One week before release</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#days-before-release">1-2 days before release</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1-0 days before release</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-day-of-release">The day of release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-management">Release management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-preparing-for-the-release">Step 1: Preparing for the release</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-generating-release-notes">Step 2: Generating release notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-making-the-prerelease">Step 3: Making the prerelease</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-testing-the-prerelease">Step 4: Testing the prerelease</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#release-process">Release process</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-the-version">Determining the version</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-release-notes">Generating release notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-constraints-files">Update constraints files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tagging-the-new-release-candidate">Tagging the new release candidate</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-release-candidate">Testing the release candidate</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-the-actual-release">Generating the actual release</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-procedures">Release procedures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-the-version">Determining the version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-release-notes">Generating release notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-constraints-files">Update constraints files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tagging-the-new-release-candidate">Tagging the new release candidate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-release-candidate">Testing the release candidate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-the-actual-release">Generating the actual release</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-forge-packages">conda-forge packages</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-releases">New releases</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patch-dependencies-of-previous-releases">Patch dependencies of previous releases</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broken-packages">Broken packages</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-release-update-the-documentation">Post release: update the documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-release">Post release</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-documentation-based-on-user-feedback">Update documentation based on user feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-a-bug-release">Plan a bug release</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>

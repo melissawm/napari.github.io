@@ -31,8 +31,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../../../../_static/documentation_options.js?v=024f356b"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -101,7 +101,7 @@ window.addEventListener("load", load);
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -478,7 +478,6 @@ window.addEventListener("load", load);
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
@@ -525,7 +524,6 @@ window.addEventListener("load", load);
     <span class="n">get_layers</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmitterGroup</span><span class="p">,</span> <span class="n">Event</span><span class="p">,</span> <span class="n">EventedDict</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events.event</span><span class="w"> </span><span class="kn">import</span> <span class="n">WarningEmitter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">find_front_back_face</span><span class="p">,</span>
     <span class="n">intersect_line_with_axis_aligned_bounding_box_3d</span><span class="p">,</span>
@@ -705,10 +703,6 @@ window.addEventListener("load", load);
 <span class="sd">        Size of cursor if custom. None yields default size</span>
 <span class="sd">    help : str</span>
 <span class="sd">        Displayed in status bar bottom right.</span>
-<span class="sd">    interactive : bool</span>
-<span class="sd">        Determine if canvas pan/zoom interactivity is enabled.</span>
-<span class="sd">        This attribute is deprecated since 0.5.0 and should not be used.</span>
-<span class="sd">        Use the mouse_pan and mouse_zoom attributes instead.</span>
 <span class="sd">    mouse_pan : bool</span>
 <span class="sd">        Determine if canvas interactive panning is enabled with the mouse.</span>
 <span class="sd">    mouse_zoom : bool</span>
@@ -851,7 +845,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_pan</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_zoom</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">multiscale</span> <span class="o">=</span> <span class="n">multiscale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_experimental_clipping_planes</span> <span class="o">=</span> <span class="n">ClippingPlaneList</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeclass</span><span class="p">(</span><span class="s1">&#39;pan_zoom&#39;</span><span class="p">)</span>
@@ -949,6 +943,7 @@ window.addEventListener("load", load);
             <span class="n">reload</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">rotate</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">scale</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
+            <span class="n">scale_factor</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">set_data</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">shear</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">status</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
@@ -956,13 +951,6 @@ window.addEventListener("load", load);
             <span class="n">translate</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">units</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">visible</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-            <span class="n">interactive</span><span class="o">=</span><span class="n">WarningEmitter</span><span class="p">(</span>
-                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                    <span class="s1">&#39;layer.events.interactive is deprecated since 0.4.18 and will be removed in 0.6.0. Please use layer.events.mouse_pan and layer.events.mouse_zoom&#39;</span><span class="p">,</span>
-                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="p">),</span>
-                <span class="n">type_name</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span>
-            <span class="p">),</span>
             <span class="n">_extent_augmented</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
             <span class="n">_overlays</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
         <span class="p">)</span>
@@ -1341,6 +1329,17 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">scale</span><span class="p">()</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;float: Conversion factor from canvas coordinates to image coordinates.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span>
+
+    <span class="nd">@scale_factor</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">!=</span> <span class="n">scale_factor</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">=</span> <span class="n">scale_factor</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">scale_factor</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;array: Factors to shift the layer by in units of world coordinates.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transforms</span><span class="p">[</span><span class="s1">&#39;data2physical&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">translate</span>
@@ -1647,30 +1646,6 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">help</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="n">help_text</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Layer.interactive is deprecated since napari 0.4.18 and will be removed in 0.6.0. Please use Layer.mouse_pan and Layer.mouse_zoom instead&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span>
-
-    <span class="nd">@interactive</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interactive</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                <span class="s1">&#39;Layer.interactive is deprecated since napari 0.4.18 and will be removed in 0.6.0. Please use Layer.mouse_pan and Layer.mouse_zoom instead&#39;</span>
-            <span class="p">),</span>
-            <span class="ne">FutureWarning</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">interactive</span><span class="o">.</span><span class="n">blocker</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="o">=</span> <span class="n">interactive</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span> <span class="o">=</span> <span class="n">interactive</span>
-
-    <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mouse_pan</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;bool: Determine if canvas interactive panning is enabled with the mouse.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_pan</span>
@@ -1681,9 +1656,6 @@ window.addEventListener("load", load);
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_pan</span> <span class="o">=</span> <span class="n">mouse_pan</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_pan</span><span class="p">(</span><span class="n">mouse_pan</span><span class="o">=</span><span class="n">mouse_pan</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
-            <span class="n">interactive</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span>
-        <span class="p">)</span>  <span class="c1"># Deprecated since 0.5.0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mouse_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -1696,9 +1668,6 @@ window.addEventListener("load", load);
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mouse_zoom</span> <span class="o">=</span> <span class="n">mouse_zoom</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_zoom</span><span class="p">(</span><span class="n">mouse_zoom</span><span class="o">=</span><span class="n">mouse_zoom</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
-            <span class="n">interactive</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mouse_pan</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">mouse_zoom</span>
-        <span class="p">)</span>  <span class="c1"># Deprecated since 0.5.0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cursor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

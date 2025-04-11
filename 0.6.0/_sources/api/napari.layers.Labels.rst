@@ -130,7 +130,6 @@ napari.layers.Labels
       ~Labels.extent
       ~Labels.features
       ~Labels.help
-      ~Labels.interactive
       ~Labels.iso_gradient_mode
       ~Labels.keymap
       ~Labels.level_shapes
@@ -150,6 +149,7 @@ napari.layers.Labels
       ~Labels.rendering
       ~Labels.rotate
       ~Labels.scale
+      ~Labels.scale_factor
       ~Labels.selected_label
       ~Labels.shear
       ~Labels.show_selected_label

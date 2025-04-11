@@ -34,8 +34,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d8568271" />
     <link rel="stylesheet" type="text/css" href="../_static/css/napari-sphinx-theme.css?v=9775df95" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -49,7 +49,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=f58a2bde"></script>
+    <script src="../_static/documentation_options.js?v=024f356b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +60,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -70,7 +70,7 @@
     <link rel="prev" title="napari.layers.Layer" href="napari.layers.Layer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.6.0a0" />
+  <meta name="docsearch:version" content="0.6.0" />
   </head>
   
   
@@ -385,6 +385,9 @@
 </form></div>
         <div class="sidebar-primary-item">
 <nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="caption" role="heading" aria-level="1">
+    <span class="caption-text">Section Navigation</span>
+  </p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="napari.layers.html">napari.layers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -490,7 +493,29 @@
 <li class="toctree-l1"><a class="reference internal" href="view_layer.html">Viewing a Layer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Misc</a></li>
 </ul>
-</div>
+<p class="caption" role="heading" aria-level="2">
+      <span class="caption-text">Resources</span>
+    </p>
+    <ul class="nav bd-sidenav">
+      <li class="toctree-l1">
+          <a class="reference internal" href="community/meeting_schedule.html">Community calendar</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.zulipchat.com/">Community chat</a>
+      </li>
+      <li class="toctree-l1">
+          <a class="reference internal" href="troubleshooting.html">Troubleshooting</a>
+      </li>
+      <li class="toctree-l1">
+          
+          <a class="reference internal" href="release/release_0_6_0.html">Latest release notes</a>
+          
+      </li>
+      <li class="toctree-l1">
+          <a class="reference external" href="https://napari.org/island-dispatch">Blog</a>
+      </li>
+    </ul>
+  </div>
 </nav></div>
     </div>
   
@@ -1195,12 +1220,6 @@ None after dragging is done.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#id11" title="napari.layers.Points.current_border_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_border_width</span></code></a></p></td>
 <td><p>border_width of marker for the next added point.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_edge_color</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_edge_width</span></code></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#id12" title="napari.layers.Points.current_face_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_face_color</span></code></a></p></td>
 <td><p>Face color of marker for the next added point or the selected point(s).</p></td>
 </tr>
@@ -1222,62 +1241,38 @@ None after dragging is done.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#id15" title="napari.layers.Points.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
 <td><p>coordinates for N points in D dimensions.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_color</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_color_cycle</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_color_mode</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_colormap</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_contrast_limits</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_width</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_width_is_relative</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.editable" title="napari.layers.Points.editable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.editable" title="napari.layers.Points.editable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">editable</span></code></a></p></td>
 <td><p>Whether the current layer data is editable from the viewer.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">experimental_clipping_planes</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">experimental_clipping_planes</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.extent" title="napari.layers.Points.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.extent" title="napari.layers.Points.extent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extent</span></code></a></p></td>
 <td><p>Extent of layer in data and world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id16" title="napari.layers.Points.face_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_color</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id16" title="napari.layers.Points.face_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_color</span></code></a></p></td>
 <td><p>Array of RGBA face colors for each point</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id17" title="napari.layers.Points.face_color_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_color_cycle</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id17" title="napari.layers.Points.face_color_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_color_cycle</span></code></a></p></td>
 <td><p>Color cycle for face_color Can be a list of colors defined by name, RGB or RGBA</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id18" title="napari.layers.Points.face_color_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_color_mode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id18" title="napari.layers.Points.face_color_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_color_mode</span></code></a></p></td>
 <td><p>Face color setting mode</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id19" title="napari.layers.Points.face_colormap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_colormap</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id19" title="napari.layers.Points.face_colormap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_colormap</span></code></a></p></td>
 <td><p>Return the colormap to be applied to a property to get the face color.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id20" title="napari.layers.Points.face_contrast_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_contrast_limits</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id20" title="napari.layers.Points.face_contrast_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">face_contrast_limits</span></code></a></p></td>
 <td><p>clims for mapping the face_color colormap property to 0 and 1</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id21" title="napari.layers.Points.feature_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_defaults</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id21" title="napari.layers.Points.feature_defaults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_defaults</span></code></a></p></td>
 <td><p>Dataframe-like with one row of feature default values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id22" title="napari.layers.Points.features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">features</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id22" title="napari.layers.Points.features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">features</span></code></a></p></td>
 <td><p>Dataframe-like features table.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.help" title="napari.layers.Points.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">help</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.help" title="napari.layers.Points.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">help</span></code></a></p></td>
 <td><p>displayed in status bar bottom right.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">interactive</span></code></p></td>
-<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keymap</span></code></p></td>
 <td><p></p></td>
@@ -1327,43 +1322,46 @@ None after dragging is done.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.scale" title="napari.layers.Points.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a></p></td>
 <td><p>Anisotropy factors to scale data into world coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id26" title="napari.layers.Points.selected_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selected_data</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.scale_factor" title="napari.layers.Points.scale_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_factor</span></code></a></p></td>
+<td><p>Conversion factor from canvas coordinates to image coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#id26" title="napari.layers.Points.selected_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selected_data</span></code></a></p></td>
 <td><p>set of currently selected points.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id27" title="napari.layers.Points.shading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shading</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id27" title="napari.layers.Points.shading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shading</span></code></a></p></td>
 <td><p>shading mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.shear" title="napari.layers.Points.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.shear" title="napari.layers.Points.shear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shear</span></code></a></p></td>
 <td><p>Shear matrix in world coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id28" title="napari.layers.Points.shown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shown</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id28" title="napari.layers.Points.shown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shown</span></code></a></p></td>
 <td><p>Boolean array determining which points to show</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id29" title="napari.layers.Points.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id29" title="napari.layers.Points.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
 <td><p>size of all N points.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id30" title="napari.layers.Points.symbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbol</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id30" title="napari.layers.Points.symbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbol</span></code></a></p></td>
 <td><p>symbol used for all point markers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id31" title="napari.layers.Points.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id31" title="napari.layers.Points.text"><code class="xref py py-obj docutils literal notranslate"><span class="pre">text</span></code></a></p></td>
 <td><p>the TextManager object containing containing the text properties</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.thumbnail" title="napari.layers.Points.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.thumbnail" title="napari.layers.Points.thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thumbnail</span></code></a></p></td>
 <td><p>Integer array of thumbnail for the layer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.translate" title="napari.layers.Points.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.translate" title="napari.layers.Points.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">translate</span></code></a></p></td>
 <td><p>Factors to shift the layer by in units of world coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.unique_id" title="napari.layers.Points.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.unique_id" title="napari.layers.Points.unique_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_id</span></code></a></p></td>
 <td><p>Unique ID of the layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#id32" title="napari.layers.Points.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#id32" title="napari.layers.Points.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
 <td><p>List of units for the layer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.layers.Points.visible" title="napari.layers.Points.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.layers.Points.visible" title="napari.layers.Points.visible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visible</span></code></a></p></td>
 <td><p>Whether the visual is currently being displayed.</p></td>
 </tr>
 </tbody>
@@ -2227,6 +2225,17 @@ through to find the first one that can save the data.</p></li>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="napari.layers.Points.scale_factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale_factor</span></span><a class="headerlink" href="#napari.layers.Points.scale_factor" title="Link to this definition">#</a></dt>
+<dd><p>Conversion factor from canvas coordinates to image coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="id26">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selected_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Selection</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id26" title="Link to this definition">#</a></dt>
 <dd><p>set of currently selected points.</p>
@@ -2530,6 +2539,7 @@ dimensions will be used.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Points.rotate"><code class="docutils literal notranslate"><span class="pre">Points.rotate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Points.save"><code class="docutils literal notranslate"><span class="pre">Points.save()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Points.scale"><code class="docutils literal notranslate"><span class="pre">Points.scale</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Points.scale_factor"><code class="docutils literal notranslate"><span class="pre">Points.scale_factor</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"><code class="docutils literal notranslate"><span class="pre">Points.selected_data</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"><code class="docutils literal notranslate"><span class="pre">Points.shading</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#napari.layers.Points.shear"><code class="docutils literal notranslate"><span class="pre">Points.shear</span></code></a></li>

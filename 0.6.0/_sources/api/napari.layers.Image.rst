@@ -106,8 +106,6 @@ napari.layers.Image
       ~Image.extent
       ~Image.gamma
       ~Image.help
-      ~Image.interactive
-      ~Image.interpolation
       ~Image.interpolation2d
       ~Image.interpolation3d
       ~Image.iso_threshold
@@ -126,6 +124,7 @@ napari.layers.Image
       ~Image.rendering
       ~Image.rotate
       ~Image.scale
+      ~Image.scale_factor
       ~Image.shear
       ~Image.source
       ~Image.thumbnail
