@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=a9a68e5c"></script>
+    <script src="../../../../_static/documentation_options.js?v=f125ad0c"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -908,6 +908,8 @@ window.addEventListener("load", load);
         <span class="n">handedness</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">handedness</span>
         <span class="n">tooltip_text</span> <span class="o">=</span> <span class="p">(</span>
             <span class="s1">&#39;Controls the orientation of the depth, vertical, and horizontal camera axes.</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;Default is right-handed (towards, down, right).</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="s1">&#39;Default prior to 0.6.0 was left-handed (away, down, right).</span><span class="se">\n</span><span class="s1">&#39;</span>
             <span class="sa">f</span><span class="s1">&#39;Currently orientation is </span><span class="si">{</span><span class="n">handedness</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s1">-handed.&#39;</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">orientation_help_symbol</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="n">tooltip_text</span><span class="p">)</span>
