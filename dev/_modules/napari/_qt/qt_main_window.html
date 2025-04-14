@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=7efd2c57"></script>
+    <script src="../../../_static/documentation_options.js?v=84bdf2fb"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -968,7 +968,8 @@ window.addEventListener("load", load);
         <span class="k">if</span> <span class="p">(</span>
             <span class="ow">not</span> <span class="n">confirm_need_local</span>
             <span class="ow">or</span> <span class="ow">not</span> <span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">confirm_close_window</span>
-            <span class="ow">or</span> <span class="n">ConfirmCloseDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quit_app</span><span class="p">)</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span> <span class="o">==</span> <span class="n">QDialog</span><span class="o">.</span><span class="n">Accepted</span>
+            <span class="ow">or</span> <span class="n">ConfirmCloseDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quit_app</span><span class="p">)</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+            <span class="o">==</span> <span class="n">QDialog</span><span class="o">.</span><span class="n">DialogCode</span><span class="o">.</span><span class="n">Accepted</span>
         <span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_quit_app</span> <span class="o">=</span> <span class="n">quit_app</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_is_close_dialog</span><span class="p">[</span><span class="n">quit_app</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
