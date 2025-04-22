@@ -46,19 +46,19 @@ Display a surface timeseries using data from nilearn
     /home/runner/nilearn_data/nki_enhanced_surface
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8470/pheno_nki_nilearn.csv ...
-    [fetch_single_file]  ...done. (0 seconds, 0 min)
+    [fetch_single_file]  ...done. (1 seconds, 0 min)
 
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8261/A00028185_rh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [_chunk_report_] Downloaded 24444928 of 42412120 bytes (57.6%%,    0.7s 
+    [_chunk_report_] Downloaded 24297472 of 42412120 bytes (57.3%%,    0.7s 
     remaining)
     [fetch_single_file]  ...done. (2 seconds, 0 min)
 
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8260/A00028185_lh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [_chunk_report_] Downloaded 26902528 of 42402060 bytes (63.4%%,    0.6s 
+    [_chunk_report_] Downloaded 24723456 of 42402060 bytes (58.3%%,    0.7s 
     remaining)
     [fetch_single_file]  ...done. (2 seconds, 0 min)
 
