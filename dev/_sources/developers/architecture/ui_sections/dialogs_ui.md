@@ -240,57 +240,57 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─qt_viewer.py
+│ ├─qt_main_window.py
+│ ├─_qplugins/
+│ │ └─_qnpe2.py
 │ ├─_qapp_model/
+│ │ ├─_menus.py
 │ │ ├─qactions/
+│ │ │ ├─_debug.py
 │ │ │ ├─_help.py
 │ │ │ ├─_plugins.py
-│ │ │ ├─_debug.py
-│ │ │ ├─__init__.py
-│ │ │ └─_file.py
-│ │ ├─_menus.py
+│ │ │ ├─_file.py
+│ │ │ └─__init__.py
 │ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ ├─qt_main_window.py
+│ │   ├─_qprocessors.py
+│ │   └─_qproviders.py
 │ ├─dialogs/
 │ │ ├─shimmed_plugin_dialog.py
 │ │ ├─qt_about.py
-│ │ ├─qt_activity_dialog.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_notification.py
-│ │ ├─screenshot_dialog.py
 │ │ ├─qt_reader_dialog.py
+│ │ ├─qt_plugin_report.py
 │ │ ├─qt_modal.py
-│ │ ├─confirm_close_dialog.py
-│ │ └─qt_plugin_report.py
-│ ├─widgets/
-│ │ ├─qt_logger.py
-│ │ ├─qt_dims_slider.py
-│ │ ├─qt_font_size.py
-│ │ ├─qt_plugin_sorter.py
-│ │ ├─qt_scrollbar.py
-│ │ ├─qt_progress_bar.py
-│ │ ├─qt_dims_sorter.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_highlight_preview.py
-│ │ ├─qt_spinbox.py
-│ │ ├─qt_dims.py
-│ │ ├─qt_color_swatch.py
-│ │ ├─qt_extension2reader.py
-│ │ └─qt_tooltip.py
+│ │ ├─qt_notification.py
+│ │ ├─preferences_dialog.py
+│ │ ├─qt_activity_dialog.py
+│ │ ├─screenshot_dialog.py
+│ │ └─confirm_close_dialog.py
 │ ├─utils.py
-│ └─_qplugins/
-│   └─_qnpe2.py
+│ ├─qt_viewer.py
+│ └─widgets/
+│   ├─qt_command_palette.py
+│   ├─qt_tooltip.py
+│   ├─qt_plugin_sorter.py
+│   ├─qt_color_swatch.py
+│   ├─qt_logger.py
+│   ├─qt_spinbox.py
+│   ├─qt_dims_sorter.py
+│   ├─qt_progress_bar.py
+│   ├─qt_scrollbar.py
+│   ├─qt_font_size.py
+│   ├─qt_highlight_preview.py
+│   ├─qt_dims.py
+│   ├─qt_extension2reader.py
+│   ├─qt_viewer_status_bar.py
+│   └─qt_dims_slider.py
 └─_vendor/
   └─qt_json_builder/
     ├─qt_jsonschema_form/
-    │ ├─widgets.py
     │ ├─form.py
+    │ ├─defaults.py
     │ ├─signal.py
+    │ ├─widgets.py
     │ ├─utils.py
-    │ ├─__init__.py
-    │ └─defaults.py
+    │ └─__init__.py
     └─__init__.py
 ```
