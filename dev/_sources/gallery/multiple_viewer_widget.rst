@@ -41,8 +41,18 @@ current dims point (`viewer.dims.point`).
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Attribute Qt::AA_ShareOpenGLContexts must be set before QCoreApplication is created.
 
 
+
+
+
+
+|
 
 .. code-block:: Python
 

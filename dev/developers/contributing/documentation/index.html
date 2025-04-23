@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=5c24e134"></script>
+    <script src="../../../_static/documentation_options.js?v=132f0102"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -585,10 +585,32 @@ by either <a class="reference external" href="https://docs.github.com/en/reposit
 or <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files">editing an existing file</a>
 on the <a class="reference external" href="https://github.com/napari/docs">napari/docs</a> GitHub repository.
 It’s best if you first <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">fork</a> the <a class="reference external" href="https://github.com/napari/docs">napari/docs</a> repository to your own GitHub account, create a <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository#creating-a-branch">feature branch</a>, upload/create/edit files through the GitHub web interface, and then <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">open a pull request from your fork</a> back to <a class="reference external" href="https://github.com/napari/docs">napari-docs</a>.</p>
-<p>You will also be able to <a class="reference internal" href="#doc-view-ci"><span class="std std-ref">preview the documentation</span></a> as it would appear on <a class="reference external" href="https://napari.org/dev">napari.org</a> by
-using the <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">the</span> <span class="pre">rendered</span> <span class="pre">docs</span> <span class="pre">here!</span></code> action at the bottom of your PR which will go to a preview site on <a class="reference external" href="https://circleci.com/">CircleCI</a>.
-A member of the maintenance
-team will help with updating the <a class="reference external" href="https://napari.org/dev">napari.org</a> table of contents where necessary (by placing a reference to your new file in <a class="reference internal" href="#update-toc"><span class="std std-ref">docs/_toc.yml</span></a>) and making sure your documentation has built correctly.</p>
+<p>When you submit your PR, CI will kick off several jobs, including generation of a preview of
+the documentation. By default, CI will use the <code class="docutils literal notranslate"><span class="pre">slimfast</span></code> build (“make target”), which
+doesn’t build any content from outside the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository or run any <code class="docutils literal notranslate"><span class="pre">docs</span></code> notebook cells.
+This is great for seeing the copy and formatting. If you want to preview other elements,
+you can trigger more complete builds by commenting on the PR with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@napari</span><span class="o">-</span><span class="n">bot</span> <span class="n">make</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> can be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code> : a full build, just like <a class="reference external" href="http://napari.org">napari.org</a> live</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html-noplot</span></code> : a full build, but without the gallery examples from <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs</span></code> : only the content from <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code>, with notebook code cells executed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slimfast</span></code> : the default, only the content from <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code>, without code cell execution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slimgallery</span></code> : <code class="docutils literal notranslate"><span class="pre">slimfast</span></code>, but also builds the gallery examples from <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code></p></li>
+</ul>
+<p>For more information about these targets see the <a class="reference internal" href="#build-docs-locally"><span class="std std-ref">“building locally”</span></a> section
+of the documentation, including the part on <a class="reference internal" href="#building-what-you-need">specialized builds</a>.</p>
+<p>Once the jobs complete you will also be able to <a class="reference internal" href="#doc-view-ci"><span class="std std-ref">preview the documentation</span></a> by
+using the <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">the</span> <span class="pre">rendered</span> <span class="pre">docs</span> <span class="pre">here!</span></code> action at the bottom of your PR, which will go to a
+preview website on <a class="reference external" href="https://circleci.com/">CircleCI</a>. Alternatively, you can download a zip file
+of <a class="reference internal" href="#download-documentation-artifact">the build artifact</a> and open the html files directly in your browser. For a build triggered by a comment, use
+the “Triggered Docs Artifact Build” link.</p>
+<p>If needed, a member of the maintenance team will help with updating the <a class="reference external" href="https://napari.org/dev">napari.org</a>
+table of contents where necessary (by placing a reference to your new file in <a class="reference internal" href="#update-toc"><span class="std std-ref">docs/_toc.yml</span></a>)
+and making sure your documentation has built correctly.</p>
 </section>
 <section id="prerequisites-for-a-local-setup-to-contribute-to-the-napari-documentation">
 <span id="prerequisites"></span><h2>Prerequisites for a local setup to contribute to the napari documentation<a class="headerlink" href="#prerequisites-for-a-local-setup-to-contribute-to-the-napari-documentation" title="Link to this heading">#</a></h2>

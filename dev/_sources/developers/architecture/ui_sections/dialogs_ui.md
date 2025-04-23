@@ -33,6 +33,7 @@ graph LR
 	napari._qt._qapp_model.qactions._help(napari._qt._qapp_model.qactions._help)
 	napari._qt._qapp_model.qactions._help --> napari._qt.dialogs.qt_about
 	napari._qt._qapp_model.qactions._help --> napari._qt.qt_main_window
+	napari._qt._qapp_model.qactions._help --> napari._qt.widgets.qt_logger
 	click napari._qt._qapp_model.qactions._help "https://github.com/napari/napari/tree/main/napari/_qt/_qapp_model/qactions/_help.py" _blank
 	napari._qt._qapp_model.qactions._plugins(napari._qt._qapp_model.qactions._plugins)
 	napari._qt._qapp_model.qactions._plugins --> napari._qt.dialogs.qt_plugin_report
@@ -113,6 +114,9 @@ graph LR
 	napari._qt.widgets.qt_highlight_preview(napari._qt.widgets.qt_highlight_preview)
 	napari._qt.widgets.qt_highlight_preview --> napari._qt.widgets.qt_color_swatch
 	click napari._qt.widgets.qt_highlight_preview "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_highlight_preview.py" _blank
+	napari._qt.widgets.qt_logger(napari._qt.widgets.qt_logger)
+	napari._qt.widgets.qt_logger --> napari._qt.dialogs.qt_about
+	click napari._qt.widgets.qt_logger "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_logger.py" _blank
 	napari._qt.widgets.qt_plugin_sorter(napari._qt.widgets.qt_plugin_sorter)
 	napari._qt.widgets.qt_plugin_sorter --> napari._qt.utils
 	napari._qt.widgets.qt_plugin_sorter --> napari._qt.widgets.qt_tooltip
@@ -203,6 +207,7 @@ graph LR
 		 napari._qt.widgets.qt_extension2reader
 		 napari._qt.widgets.qt_font_size
 		 napari._qt.widgets.qt_highlight_preview
+		 napari._qt.widgets.qt_logger
 		 napari._qt.widgets.qt_plugin_sorter
 		 napari._qt.widgets.qt_progress_bar
 		 napari._qt.widgets.qt_scrollbar
@@ -235,56 +240,57 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─qt_viewer.py
+│ ├─qt_main_window.py
+│ ├─_qplugins/
+│ │ └─_qnpe2.py
 │ ├─_qapp_model/
+│ │ ├─_menus.py
 │ │ ├─qactions/
+│ │ │ ├─_debug.py
 │ │ │ ├─_help.py
 │ │ │ ├─_plugins.py
-│ │ │ ├─_debug.py
-│ │ │ ├─__init__.py
-│ │ │ └─_file.py
-│ │ ├─_menus.py
+│ │ │ ├─_file.py
+│ │ │ └─__init__.py
 │ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ ├─qt_main_window.py
+│ │   ├─_qprocessors.py
+│ │   └─_qproviders.py
 │ ├─dialogs/
 │ │ ├─shimmed_plugin_dialog.py
 │ │ ├─qt_about.py
-│ │ ├─qt_activity_dialog.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_notification.py
-│ │ ├─screenshot_dialog.py
 │ │ ├─qt_reader_dialog.py
+│ │ ├─qt_plugin_report.py
 │ │ ├─qt_modal.py
-│ │ ├─confirm_close_dialog.py
-│ │ └─qt_plugin_report.py
-│ ├─widgets/
-│ │ ├─qt_dims_slider.py
-│ │ ├─qt_font_size.py
-│ │ ├─qt_plugin_sorter.py
-│ │ ├─qt_scrollbar.py
-│ │ ├─qt_progress_bar.py
-│ │ ├─qt_dims_sorter.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_highlight_preview.py
-│ │ ├─qt_spinbox.py
-│ │ ├─qt_dims.py
-│ │ ├─qt_color_swatch.py
-│ │ ├─qt_extension2reader.py
-│ │ └─qt_tooltip.py
+│ │ ├─qt_notification.py
+│ │ ├─preferences_dialog.py
+│ │ ├─qt_activity_dialog.py
+│ │ ├─screenshot_dialog.py
+│ │ └─confirm_close_dialog.py
 │ ├─utils.py
-│ └─_qplugins/
-│   └─_qnpe2.py
+│ ├─qt_viewer.py
+│ └─widgets/
+│   ├─qt_command_palette.py
+│   ├─qt_tooltip.py
+│   ├─qt_plugin_sorter.py
+│   ├─qt_color_swatch.py
+│   ├─qt_logger.py
+│   ├─qt_spinbox.py
+│   ├─qt_dims_sorter.py
+│   ├─qt_progress_bar.py
+│   ├─qt_scrollbar.py
+│   ├─qt_font_size.py
+│   ├─qt_highlight_preview.py
+│   ├─qt_dims.py
+│   ├─qt_extension2reader.py
+│   ├─qt_viewer_status_bar.py
+│   └─qt_dims_slider.py
 └─_vendor/
   └─qt_json_builder/
     ├─qt_jsonschema_form/
-    │ ├─widgets.py
     │ ├─form.py
+    │ ├─defaults.py
     │ ├─signal.py
+    │ ├─widgets.py
     │ ├─utils.py
-    │ ├─__init__.py
-    │ └─defaults.py
+    │ └─__init__.py
     └─__init__.py
 ```
