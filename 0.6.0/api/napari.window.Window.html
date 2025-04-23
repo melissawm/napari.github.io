@@ -9,7 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/svg+xml" href="../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../_static/favicon/logo-noborder-180.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="napari.window.Window" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://napari.org/api/napari.window.Window.html" />
+<meta property="og:site_name" content="napari" />
+<meta property="og:image" content="https://napari.org/_static/opengraph_image.png" />
+<meta property="og:image:alt" content="napari" />
+
     <title>napari.window.Window &#8212; napari</title>
   
   
@@ -49,7 +55,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=024f356b"></script>
+    <script src="../_static/documentation_options.js?v=f8b872aa"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +66,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -834,8 +840,7 @@ By default, True.</p></li>
 <p>This function finds a tight boundary around the data, resets the view
 around that boundary (and, when scale=1, such that 1 captured pixel is
 equivalent to one data pixel), takes a screenshot, then restores the
-previous zoom and canvas sizes. Currently, only works when 2 dimensions
-are displayed.</p>
+previous zoom and canvas sizes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

@@ -9,7 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/svg+xml" href="../../../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../../../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/favicon/logo-noborder-180.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="Application menus" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://napari.org/developers/architecture/ui_sections/application_menus_ui.html" />
+<meta property="og:site_name" content="napari" />
+<meta property="og:description" content="Dependencies diagram (related napari modules): Source code directory layout (related to modules inside napari):" />
+<meta property="og:image" content="https://napari.org/_static/opengraph_image.png" />
+<meta property="og:image:alt" content="napari" />
+<meta name="description" content="Dependencies diagram (related napari modules): Source code directory layout (related to modules inside napari):" />
+
     <title>Application menus &#8212; napari</title>
   
   
@@ -49,7 +57,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=024f356b"></script>
+    <script src="../../../_static/documentation_options.js?v=f8b872aa"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -96,7 +104,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -619,6 +627,7 @@ window.addEventListener("load", load);
 	napari._qt._qapp_model.qactions._help(napari._qt._qapp_model.qactions._help)
 	napari._qt._qapp_model.qactions._help --&gt; napari._qt.dialogs.qt_about
 	napari._qt._qapp_model.qactions._help --&gt; napari._qt.qt_main_window
+	napari._qt._qapp_model.qactions._help --&gt; napari._qt.widgets.qt_logger
 	click napari._qt._qapp_model.qactions._help &quot;https://github.com/napari/napari/tree/main/napari/_qt/_qapp_model/qactions/_help.py&quot; _blank
 	napari._qt._qapp_model.qactions._layerlist_context(napari._qt._qapp_model.qactions._layerlist_context)
 	click napari._qt._qapp_model.qactions._layerlist_context &quot;https://github.com/napari/napari/tree/main/napari/_qt/_qapp_model/qactions/_layerlist_context.py&quot; _blank
@@ -679,6 +688,9 @@ window.addEventListener("load", load);
 	napari._qt.widgets.qt_command_palette(napari._qt.widgets.qt_command_palette)
 	napari._qt.widgets.qt_command_palette --&gt; napari._qt.qt_main_window
 	click napari._qt.widgets.qt_command_palette &quot;https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_command_palette.py&quot; _blank
+	napari._qt.widgets.qt_logger(napari._qt.widgets.qt_logger)
+	napari._qt.widgets.qt_logger --&gt; napari._qt.dialogs.qt_about
+	click napari._qt.widgets.qt_logger &quot;https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_logger.py&quot; _blank
 	napari._qt.widgets.qt_viewer_buttons(napari._qt.widgets.qt_viewer_buttons)
 	napari._qt.widgets.qt_viewer_buttons --&gt; napari._qt.dialogs.qt_modal
 	napari._qt.widgets.qt_viewer_buttons --&gt; napari.viewer
@@ -732,6 +744,7 @@ window.addEventListener("load", load);
 	class module.napari._qt subgraphs
 	subgraph module.napari._qt.widgets[napari._qt.widgets]
 		 napari._qt.widgets.qt_command_palette
+		 napari._qt.widgets.qt_logger
 		 napari._qt.widgets.qt_viewer_buttons
 	end
 	class module.napari._qt.widgets subgraphs
@@ -742,39 +755,40 @@ window.addEventListener("load", load);
 <section id="source-code-directory-layout-related-to-modules-inside-napari">
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
-├─_qt/
-│ ├─qt_viewer.py
-│ ├─_qapp_model/
-│ │ ├─qactions/
-│ │ │ ├─_window.py
-│ │ │ ├─_help.py
-│ │ │ ├─_plugins.py
-│ │ │ ├─_layers_actions.py
-│ │ │ ├─_toggle_action.py
-│ │ │ ├─_view.py
-│ │ │ ├─_debug.py
-│ │ │ ├─__init__.py
-│ │ │ ├─_file.py
-│ │ │ └─_layerlist_context.py
-│ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ ├─qt_main_window.py
-│ ├─dialogs/
-│ │ ├─shimmed_plugin_dialog.py
-│ │ ├─qt_about.py
-│ │ ├─preferences_dialog.py
-│ │ ├─screenshot_dialog.py
-│ │ ├─qt_reader_dialog.py
-│ │ ├─qt_modal.py
-│ │ ├─confirm_close_dialog.py
-│ │ └─qt_plugin_report.py
-│ ├─widgets/
-│ │ ├─qt_command_palette.py
-│ │ └─qt_viewer_buttons.py
-│ ├─__init__.py
-│ └─qthreading.py
-└─viewer.py
+├─viewer.py
+└─_qt/
+  ├─qt_main_window.py
+  ├─qthreading.py
+  ├─_qapp_model/
+  │ ├─qactions/
+  │ │ ├─_layers_actions.py
+  │ │ ├─_layerlist_context.py
+  │ │ ├─_debug.py
+  │ │ ├─_window.py
+  │ │ ├─_toggle_action.py
+  │ │ ├─_help.py
+  │ │ ├─_view.py
+  │ │ ├─_plugins.py
+  │ │ ├─_file.py
+  │ │ └─__init__.py
+  │ └─injection/
+  │   ├─_qprocessors.py
+  │   └─_qproviders.py
+  ├─dialogs/
+  │ ├─shimmed_plugin_dialog.py
+  │ ├─qt_about.py
+  │ ├─qt_reader_dialog.py
+  │ ├─qt_plugin_report.py
+  │ ├─qt_modal.py
+  │ ├─preferences_dialog.py
+  │ ├─screenshot_dialog.py
+  │ └─confirm_close_dialog.py
+  ├─qt_viewer.py
+  ├─widgets/
+  │ ├─qt_command_palette.py
+  │ ├─qt_logger.py
+  │ └─qt_viewer_buttons.py
+  └─__init__.py
 </pre></div>
 </div>
 </section>

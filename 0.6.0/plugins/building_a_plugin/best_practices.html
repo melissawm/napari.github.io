@@ -9,8 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/svg+xml" href="../../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/favicon/logo-noborder-180.png" type="image/png">
-    <title>Best practices &#8212; napari</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="Best practices for plugin developers" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://napari.org/plugins/building_a_plugin/best_practices.html" />
+<meta property="og:site_name" content="napari" />
+<meta property="og:description" content="There are a number of good and bad practices that may not be immediately obvious when developing a plugin. This page covers some known practices that could affect the ability to install or use your plugin effectively. Don’t include napari[all], PySide2, PyQt5 or PyQt6 in your plugin’s default dep..." />
+<meta property="og:image" content="https://napari.org/_static/opengraph_image.png" />
+<meta property="og:image:alt" content="napari" />
+<meta name="description" content="There are a number of good and bad practices that may not be immediately obvious when developing a plugin. This page covers some known practices that could affect the ability to install or use your plugin effectively. Don’t include napari[all], PySide2, PyQt5 or PyQt6 in your plugin’s default dep..." />
+
+    <title>Best practices for plugin developers &#8212; napari</title>
   
   
   
@@ -49,7 +57,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=024f356b"></script>
+    <script src="../../_static/documentation_options.js?v=f8b872aa"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -60,7 +68,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -394,7 +402,7 @@
 <li class="toctree-l2"><a class="reference internal" href="first_plugin.html">Your first plugin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides.html">Plugin contributions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debug_plugins.html">Debugging during plugin development</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Best practices</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Best practices for plugin developers</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../virtual_environment_docs/index.html">Tools and tips when building napari plugins or: firehose of stuff I wish I knew earlier</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../virtual_environment_docs/1-virtual-environments.html">Virtual environments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../virtual_environment_docs/2-deploying-your-plugin.html">Deploying your plugin</a></li>
@@ -497,7 +505,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Building a plugin</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Best practices</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Best practices for plugin developers</span></li>
   </ul>
 </nav>
 </div>
@@ -514,42 +522,70 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="best-practices">
-<span id="id1"></span><h1>Best practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="best-practices-for-plugin-developers">
+<span id="best-practices"></span><h1>Best practices for plugin developers<a class="headerlink" href="#best-practices-for-plugin-developers" title="Link to this heading">#</a></h1>
 <p>There are a number of good and bad practices that may not be immediately obvious
 when developing a plugin.  This page covers some known practices that could
 affect the ability to install or use your plugin effectively.</p>
-<section id="don-t-include-pyside2-or-pyqt5-in-your-plugin-s-dependencies">
-<span id="best-practices-no-qt-backend"></span><h2>Don’t include <code class="docutils literal notranslate"><span class="pre">PySide2</span></code> or <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> in your plugin’s dependencies.<a class="headerlink" href="#don-t-include-pyside2-or-pyqt5-in-your-plugin-s-dependencies" title="Link to this heading">#</a></h2>
-<p><em>This is important!</em></p>
+<section id="don-t-include-napari-all-pyside2-pyqt5-or-pyqt6-in-your-plugin-s-default-dependencies">
+<span id="best-practices-no-qt-backend"></span><h2>Don’t include <code class="docutils literal notranslate"><span class="pre">napari[all]</span></code>, <code class="docutils literal notranslate"><span class="pre">PySide2</span></code>, <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> or <code class="docutils literal notranslate"><span class="pre">PyQt6</span></code> in your plugin’s default dependencies.<a class="headerlink" href="#don-t-include-napari-all-pyside2-pyqt5-or-pyqt6-in-your-plugin-s-default-dependencies" title="Link to this heading">#</a></h2>
+<p><em>This is important! Avoid including any form of Qt in your plugin’s dependencies!</em></p>
 <p>Napari supports <em>both</em> PyQt and PySide backends for Qt.  It is up to the
-end-user to choose which one they want. If they installed napari with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">napari[all]</span></code>, then the <code class="docutils literal notranslate"><span class="pre">[all]</span></code> extra will (currently) install <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code>
-for them from pypi.  If they installed via <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">napari</span></code>, then they’ll
-have <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code>, but via anaconda cloud instead of pypi. Lastly, they may have
-installed napari with PySide2.</p>
-<p>Here’s what can go wrong if you <em>also</em> declare one of these backends in the
-<code class="docutils literal notranslate"><span class="pre">install_requires</span></code> section of your plugin metadata:</p>
-<ul>
-<li><p>If they installed via <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">napari</span></code> and then they install your plugin
-via <code class="docutils literal notranslate"><span class="pre">pip</span></code> (or via the builtin plugin installer, which currently uses <code class="docutils literal notranslate"><span class="pre">pip</span></code>),
-then there <em>will</em> be a binary incompatibility between their conda <code class="docutils literal notranslate"><span class="pre">pyqt</span></code>
-installation, and the new pip “<code class="docutils literal notranslate"><span class="pre">PyQt5</span></code>” installation. <em>This will very likely
+end-user to choose which one they want. If they installed napari with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">napari[all]</span></code>, then this includes <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> from PyPI as the default backend.
+If they installed via <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">napari</span> <span class="pre">pyqt</span></code>, then they’ll have <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code>,
+but from conda-forge instead of PyPI. Meanwhile, the napari bundle installs with PySide2.
+Users are also free to install PyQt6, which is fully supported, or the
+experimental PySide6 backend.</p>
+<p>Here’s what can go wrong if you <em>also</em> declare one of these backends <strong>or napari[all]</strong>
+in the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code>/<code class="docutils literal notranslate"><span class="pre">install_requires</span></code> section of your plugin metadata:</p>
+<ul class="simple">
+<li><p>If they installed via <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">napari</span> <span class="pre">pyqt</span></code> and then they install your plugin
+via <code class="docutils literal notranslate"><span class="pre">pip</span></code> (or vice versa) then there <em>will</em> be a binary incompatibility between the
+conda <code class="docutils literal notranslate"><span class="pre">pyqt</span></code> installation, and the <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> installation from PyPI. <em>This will very likely
 lead to a broken environment, forcing the user to re-create their entire
 environment and re-install napari</em>. This is an unfortunate consequence of
-<a class="reference external" href="https://github.com/ContinuumIO/anaconda-issues/issues/1554">package naming
-decisions</a>, and
-it’s not something napari can fix.</p></li>
-<li><p>Alternatively, they may end up with <em>both</em> PyQt and PySide in their
-environment, and while that’s not always guaranteed to break things, it can
-lead to unexpected and difficult to debug problems.</p></li>
-<li><p><strong>Don’t import from PyQt5 or PySide2 in your plugin: use <code class="docutils literal notranslate"><span class="pre">qtpy</span></code>.</strong></p>
-<p>If you use <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PyQt5</span> <span class="pre">import</span> <span class="pre">QtCore</span></code> (or similar) in your plugin, but the
-end-user has chosen to use <code class="docutils literal notranslate"><span class="pre">PySide2</span></code> for their Qt backend — or vice versa —
-then your plugin will fail to import.  Instead use <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">qtpy</span> <span class="pre">import</span>&#160;&#160; <span class="pre">QtCore</span></code>.  <code class="docutils literal notranslate"><span class="pre">qtpy</span></code> is a <a class="reference external" href="https://github.com/spyder-ide/qtpy">Qt compatibility
-layer</a> that will import from whatever
-backend is installed in the environment.</p>
-</li>
+<a class="reference external" href="https://github.com/ContinuumIO/anaconda-issues/issues/1554">package naming decisions</a>,
+and it’s not something napari can fix.</p></li>
+<li><p>Alternatively, they may end up with some combination of <em>both</em> PyQt5, PyQt6, PySide2,
+and PySide6 in their environment: the Qt backend they had installed and the one your
+plugin installed as a dependency. This is will not <em>always</em> to break things, but
+it will lead to unexpected and difficult to debug problems.</p></li>
+<li><p>Both of the above cases are most likely to happen with the built-in GUI napari plugin manager,
+which will install your plugin plus the base dependencies. As a result, this frequently
+occurs with the bundle app. Trying to fix these issues is almost impossible for GUI centric
+users, leaving them the only recourse of re-installing.</p></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ol class="arabic">
+<li><p>You can still include a specific Qt backend in optional <code class="docutils literal notranslate"><span class="pre">dev</span></code> or <code class="docutils literal notranslate"><span class="pre">testing</span></code> dependencies!
+Just <em>don’t</em> include a specific Qt backend (or <code class="docutils literal notranslate"><span class="pre">napari[all]</span></code>, which currently includes PyQt5)
+in your base dependencies.</p></li>
+<li><p>You can include an optional <code class="docutils literal notranslate"><span class="pre">all</span></code> dependency on <code class="docutils literal notranslate"><span class="pre">napari[all]</span></code> to mimic the simple,
+command line installation in a fresh environment. In <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> this would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">project</span><span class="o">.</span><span class="n">optional</span><span class="o">-</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="nb">all</span> <span class="o">=</span> <span class="p">[</span><span class="n">napari</span><span class="p">[</span><span class="s2">&quot;all]&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And then your plugin could be installed with napari and the default Qt backend using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>my_plugin<span class="o">[</span>all<span class="o">]</span>
+</pre></div>
+</div>
+<p>Meanwhile, the napari plugin manager will still just install your plugin without the Qt
+dependency.</p>
+</li>
+</ol>
+</div>
+</section>
+<section id="don-t-import-from-any-specific-qt-backend-e-g-pyqt5-pyside2-etc-in-your-plugin-use-qtpy">
+<h2>Don’t import from any specific Qt backend (e.g. PyQt5, PySide2, etc.) in your plugin: use <code class="docutils literal notranslate"><span class="pre">qtpy</span></code><a class="headerlink" href="#don-t-import-from-any-specific-qt-backend-e-g-pyqt5-pyside2-etc-in-your-plugin-use-qtpy" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>If you use `from PyQt5 import QtCore` (or similar) in your plugin, but the
+end-user has chosen to use `PySide2` for their Qt backend — or vice versa —
+then your plugin will fail to import.  Instead use `from qtpy import
+QtCore`.  `qtpy` is a [Qt compatibility layer](https://github.com/spyder-ide/qtpy)
+that will import from whatever backend is installed in the environment.
+</pre></div>
+</div>
 </section>
 <section id="try-not-to-depend-on-packages-that-require-c-compilation-if-these-packages-do-not-offer-wheels">
 <h2>Try not to depend on packages that require C compilation if these packages do not offer wheels<a class="headerlink" href="#try-not-to-depend-on-packages-that-require-c-compilation-if-these-packages-do-not-offer-wheels" title="Link to this heading">#</a></h2>
@@ -589,77 +625,23 @@ offers wheels, you’ll see one or more files ending in <code class="docutils li
 that doesn’t have any C extensions…</p>
 </li>
 <li><p><em>How do I know if one of my dependencies uses C Extensions?</em></p>
-<p>There’s no one right way, but more often than not, if a package uses C
-extensions, the <code class="docutils literal notranslate"><span class="pre">setup()</span></code> function in their <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file will use the
+<p>First, look for the presence of C or C++ in the “Languages” side-bar
+of the repository. Otherwise, there’s no one right way, but more often than not,
+if a package uses C extensions, then their <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file will use the
 <a class="reference external" href="https://docs.python.org/3.11/distutils/setupscript.html#describing-extension-modules"><code class="docutils literal notranslate"><span class="pre">ext_modules</span></code>
-argument</a>.
-(for example, <a class="reference external" href="https://github.com/pytorch/pytorch/blob/master/setup.py#L914">see here in
-pytorch</a>)</p>
+argument</a>.</p>
 </li>
 </ul>
 <div class="admonition-what-about-conda admonition">
 <p class="admonition-title">What about conda?</p>
 <p><strong>conda</strong> also distributes &amp; installs pre-compiled packages, though they aren’t
-wheels.  While this is definitely a fine way to install binary dependencies in a
-reliable way, the built-in napari plugin installer doesn’t currently work with
-conda.  If your dependency is only available on conda, but does not offer
-wheels,you <em>may</em> guide your users in using conda to install your package or one
-of your dependencies.  Just know that it may not work with the built-in plugin
-installer.</p>
+wheels.  We encourage you to make your plugins
+<a class="reference internal" href="../virtual_environment_docs/2-deploying-your-plugin.html#deploying-to-conda-forge"><span class="std std-ref">available on conda-forge</span></a>, which
+is a great way to handle binary dependencies in a reliable way. The built-in
+<a class="reference external" href="https://napari.org/napari-plugin-manager">napari plugin manager</a> currently
+supports installing plugins from both PyPI and conda-forge, with the default matching
+the source of the napari installation.</p>
 </div>
-</section>
-<section id="don-t-import-heavy-dependencies-at-the-top-of-your-module">
-<h2>Don’t import heavy dependencies at the top of your module<a class="headerlink" href="#don-t-import-heavy-dependencies-at-the-top-of-your-module" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This point will be less relevant when we move to the second generation
-<a class="reference external" href="https://github.com/napari/napari/issues/3115">manifest-based plugin
-declaration</a>, but it’s still a
-good idea to delay importing your plugin-specific dependencies and modules until
-<em>after</em> your hookspec has been called.  This helps napari stay quick and
-responsive at startup.</p>
-</div>
-<p>Consider the following example plugin:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[options.entry_points]</span>
-<span class="na">napari.plugin</span><span class="w"> </span><span class="o">=</span>
-<span class="w">  </span><span class="na">plugin-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">mypackage.napari_plugin</span>
-</pre></div>
-</div>
-<p>In this example, <code class="docutils literal notranslate"><span class="pre">my_heavy_dependency_like_tensorflow</span></code> will be imported
-<em>immediately</em> when napari is launched, and we search the entry_point
-<code class="docutils literal notranslate"><span class="pre">mypackage.napari_plugin</span></code> for decorated hook specifications.</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># mypackage/napari_plugin.py</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_specification</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">my_heavy_dependency_like_tensorflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">something_amazing</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">something_amazing</span><span class="p">()</span>
-
-<span class="nd">@napari_hook_specification</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">MyWidget</span>
-</pre></div>
-</div>
-<p>This can deterioate the end-user experience, and make napari feel slugish. Best
-practice is to delay heavy imports until right before they are used.  The
-following slight modification will help napari load much faster:</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># mypackage/napari_plugin.py</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_specification</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># import has been moved here, will happen only after the user</span>
-        <span class="c1"># has opened and used this widget.</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">my_heavy_dependency_like_tensorflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">something_amazing</span>
-
-        <span class="k">return</span> <span class="n">something_amazing</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>(again, the second gen napari plugin engine will help improve this situation,
-but it’s still a good idea!)</p>
 </section>
 <section id="don-t-require-napari-if-not-necessary">
 <span id="best-practice-napari-type"></span><h2>Don’t require <code class="docutils literal notranslate"><span class="pre">napari</span></code> if not necessary<a class="headerlink" href="#don-t-require-napari-if-not-necessary" title="Link to this heading">#</a></h2>
@@ -692,7 +674,7 @@ development environment, you will still get all the type inference.</p>
 databases.  As a napari plugin it’s particularly important to do this (and
 especially for Windows users).  If someone tries to use the built-in plugin
 manager to <em>uninstall</em> your plugin, open file handles and resources may cause
-the process to fail or even leave your plugin in an “installed-but-unuseable”
+the process to fail or even leave your plugin in an “installed-but-unusable”
 state.</p>
 <p>Don’t do this:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_plugin/module.py</span>
@@ -884,6 +866,59 @@ Others will prevent it entirely… Be mindful and check the requirements before 
 The license details in your project metadata should also include this information!</p>
 </div>
 </section>
+<section id="outdated-npe1-only-don-t-import-heavy-dependencies-at-the-top-of-your-module">
+<h2>Outdated, npe1 only: Don’t import heavy dependencies at the top of your module<a class="headerlink" href="#outdated-npe1-only-don-t-import-heavy-dependencies-at-the-top-of-your-module" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This point will be less relevant when we move to the second generation
+<a class="reference external" href="https://github.com/napari/napari/issues/3115">manifest-based plugin
+declaration</a>, but it’s still a
+good idea to delay importing your plugin-specific dependencies and modules until
+<em>after</em> your hookspec has been called.  This helps napari stay quick and
+responsive at startup.</p>
+</div>
+<p>Consider the following example plugin:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[options.entry_points]</span>
+<span class="na">napari.plugin</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="na">plugin-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">mypackage.napari_plugin</span>
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">my_heavy_dependency_like_tensorflow</span></code> will be imported
+<em>immediately</em> when napari is launched, and we search the entry_point
+<code class="docutils literal notranslate"><span class="pre">mypackage.napari_plugin</span></code> for decorated hook specifications.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># mypackage/napari_plugin.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_specification</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_heavy_dependency_like_tensorflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">something_amazing</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">something_amazing</span><span class="p">()</span>
+
+<span class="nd">@napari_hook_specification</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">napari_experimental_provide_dock_widget</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">MyWidget</span>
+</pre></div>
+</div>
+<p>This can deterioate the end-user experience, and make napari feel slugish. Best
+practice is to delay heavy imports until right before they are used.  The
+following slight modification will help napari load much faster:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># mypackage/napari_plugin.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari_plugin_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">napari_hook_specification</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_something_amazing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># import has been moved here, will happen only after the user</span>
+        <span class="c1"># has opened and used this widget.</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">my_heavy_dependency_like_tensorflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">something_amazing</span>
+
+        <span class="k">return</span> <span class="n">something_amazing</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(again, the second gen napari plugin engine will help improve this situation,
+but it’s still a good idea!)</p>
+</section>
 </section>
 
 
@@ -933,9 +968,9 @@ The license details in your project metadata should also include this informatio
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-include-pyside2-or-pyqt5-in-your-plugin-s-dependencies">Don’t include <code class="docutils literal notranslate"><span class="pre">PySide2</span></code> or <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> in your plugin’s dependencies.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-include-napari-all-pyside2-pyqt5-or-pyqt6-in-your-plugin-s-default-dependencies">Don’t include <code class="docutils literal notranslate"><span class="pre">napari[all]</span></code>, <code class="docutils literal notranslate"><span class="pre">PySide2</span></code>, <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> or <code class="docutils literal notranslate"><span class="pre">PyQt6</span></code> in your plugin’s default dependencies.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-import-from-any-specific-qt-backend-e-g-pyqt5-pyside2-etc-in-your-plugin-use-qtpy">Don’t import from any specific Qt backend (e.g. PyQt5, PySide2, etc.) in your plugin: use <code class="docutils literal notranslate"><span class="pre">qtpy</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-not-to-depend-on-packages-that-require-c-compilation-if-these-packages-do-not-offer-wheels">Try not to depend on packages that require C compilation if these packages do not offer wheels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-import-heavy-dependencies-at-the-top-of-your-module">Don’t import heavy dependencies at the top of your module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-require-napari-if-not-necessary">Don’t require <code class="docutils literal notranslate"><span class="pre">napari</span></code> if not necessary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#don-t-leave-resources-open">Don’t leave resources open</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-extensive-tests-for-your-plugin">Write extensive tests for your plugin!</a><ul class="nav section-nav flex-column">
@@ -945,6 +980,7 @@ The license details in your project metadata should also include this informatio
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-style-for-additional-windows-in-your-plugin">Set style for additional windows in your plugin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-package-your-tests-as-a-top-level-package">Do not package your tests as a top-level package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-issues-when-including-code-from-3rd-parties">License issues when including code from 3rd parties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outdated-npe1-only-don-t-import-heavy-dependencies-at-the-top-of-your-module">Outdated, npe1 only: Don’t import heavy dependencies at the top of your module</a></li>
 </ul>
   </nav></div>
 

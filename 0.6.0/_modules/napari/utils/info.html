@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=024f356b"></script>
+    <script src="../../../_static/documentation_options.js?v=f8b872aa"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0a1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -473,9 +473,11 @@ window.addEventListener("load", load);
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">contextlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">importlib.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">PackageNotFoundError</span><span class="p">,</span> <span class="n">version</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
@@ -543,6 +545,29 @@ window.addEventListener("load", load);
     <span class="k">return</span> <span class="s1">&#39;&#39;</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">_napari_from_conda</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Try to check if napari was installed using conda.</span>
+
+<span class="sd">    This is done by checking for the presence of a conda metadata json file</span>
+<span class="sd">    in the current environment&#39;s conda-meta directory.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the main napari application is installed via conda, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Check for napari-related conda metadata files</span>
+    <span class="n">napari_conda_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="s1">&#39;conda-meta&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;napari-*.json&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Match only the napari package by using napari-&lt;version&gt;.json</span>
+    <span class="c1"># This is to exclude plugins napari-svg, etc.</span>
+    <span class="n">napari_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^napari-\d+(\.\d+)*.*\.json$&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">napari_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">napari_conda_files</span><span class="p">)</span>
+
+
 <div class="viewcode-block" id="sys_info">
 <a class="viewcode-back" href="../../../api/napari.utils.html#napari.sys_info">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">sys_info</span><span class="p">(</span><span class="n">as_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -554,10 +579,10 @@ window.addEventListener("load", load);
 <span class="sd">        if True, info will be returned as HTML, suitable for a QTextEdit widget</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sys_version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;napari&lt;/b&gt;: </span><span class="si">{</span><span class="n">napari</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
-        <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Platform&lt;/b&gt;: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">platform</span><span class="p">()</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
-    <span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;napari&lt;/b&gt;: </span><span class="si">{</span><span class="n">napari</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">if</span> <span class="n">_napari_from_conda</span><span class="p">():</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39; (from conda)&#39;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&lt;br&gt;&lt;b&gt;Platform&lt;/b&gt;: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">platform</span><span class="p">()</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
 
     <span class="n">__sys_name</span> <span class="o">=</span> <span class="n">_sys_name</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">__sys_name</span><span class="p">:</span>
@@ -607,6 +632,13 @@ window.addEventListener("load", load);
 
     <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&lt;b&gt;OpenGL:&lt;/b&gt;&lt;br&gt;&#39;</span>
 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">OpenGL.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">pyopengl_version</span>
+
+        <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - PyOpenGL: </span><span class="si">{</span><span class="n">pyopengl_version</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;  - PyOpenGL: Import failed&lt;br&gt;&#39;</span>
+
     <span class="k">if</span> <span class="n">loaded</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;vispy&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">napari._vispy.utils.gl</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_max_texture_sizes</span>
 
@@ -643,6 +675,8 @@ window.addEventListener("load", load);
         <span class="p">(</span><span class="s1">&#39;numba&#39;</span><span class="p">,</span> <span class="s1">&#39;numba&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;triangle&#39;</span><span class="p">,</span> <span class="s1">&#39;triangle&#39;</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;napari_plugin_manager&#39;</span><span class="p">,</span> <span class="s1">&#39;napari-plugin-manager&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;bermuda&#39;</span><span class="p">,</span> <span class="s1">&#39;bermuda&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;PartSegCore_compiled_backend&#39;</span><span class="p">,</span> <span class="s1">&#39;PartSegCore&#39;</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="k">for</span> <span class="n">module</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">optional_modules</span><span class="p">:</span>
