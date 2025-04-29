@@ -1023,6 +1023,7 @@ the rendered results in only two minutes!
 <li><p>Fix dump settings (<a class="reference external" href="https://github.com/napari/napari/pull/7808">#7808</a>)</p></li>
 <li><p>[bugfix] ensure erasing and fill work with swap and preserve labels (<a class="reference external" href="https://github.com/napari/napari/pull/7816">#7816</a>)</p></li>
 <li><p>fix <code class="docutils literal notranslate"><span class="pre">ScalarField._get_value_3d</span></code> to return information about data level for multiscale (<a class="reference external" href="https://github.com/napari/napari/pull/7849">#7849</a>)</p></li>
+<li><p>Use  weak reference to slider in <code class="docutils literal notranslate"><span class="pre">AnimationThread</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7866">#7866</a>)</p></li>
 </ul>
 </section>
 <section id="api-changes">
@@ -1055,6 +1056,8 @@ the rendered results in only two minutes!
 <li><p>Add PyQt6 info to Qt bindings check ImportError message (<a class="reference external" href="https://github.com/napari/napari/pull/7804">#7804</a>)</p></li>
 <li><p>Update readme badge from NEP 29 to scientific python ecosystem coordination SPEC 0 (<a class="reference external" href="https://github.com/napari/napari/pull/7811">#7811</a>)</p></li>
 <li><p>Add sphinx opengraph dependency to docs for better social media preview (<a class="reference external" href="https://github.com/napari/napari/pull/7814">#7814</a>)</p></li>
+<li><p>Gallery: use colors from the South African flag to draw SA (<a class="reference external" href="https://github.com/napari/napari/pull/7859">#7859</a>)</p></li>
+<li><p>Update CITATION.cff for 0.6.0 (<a class="reference external" href="https://github.com/napari/napari/pull/7860">#7860</a>)</p></li>
 <li><p>Update finding and installing plugin docs (<a class="reference external" href="https://github.com/napari/docs/pull/541">docs#541</a>)</p></li>
 <li><p>Rename Gallery to Examples (<a class="reference external" href="https://github.com/napari/docs/pull/560">docs#560</a>)</p></li>
 <li><p>Update BlueSky link to our actual account (not masto bridge) (<a class="reference external" href="https://github.com/napari/docs/pull/564">docs#564</a>)</p></li>
@@ -1068,7 +1071,6 @@ the rendered results in only two minutes!
 <li><p>Edit user plugin installation page to simplify instructions (<a class="reference external" href="https://github.com/napari/docs/pull/586">docs#586</a>)</p></li>
 <li><p>Untab the plugin users and plugin developers grids (<a class="reference external" href="https://github.com/napari/docs/pull/593">docs#593</a>)</p></li>
 <li><p>Add guidance document for adapted npe1 plugins (<a class="reference external" href="https://github.com/napari/docs/pull/597">docs#597</a>)</p></li>
-<li><p>Re-add empty cli image for installation tutorial (<a class="reference external" href="https://github.com/napari/docs/pull/598">docs#598</a>)</p></li>
 <li><p>Updates to the makefile, contribution guide, and README for the napari[docs] installation (<a class="reference external" href="https://github.com/napari/docs/pull/602">docs#602</a>)</p></li>
 <li><p>Add cards to the Advanced Topics landing page for plugins (<a class="reference external" href="https://github.com/napari/docs/pull/603">docs#603</a>)</p></li>
 <li><p>Reorganize plugin landing page and remove redundant index file (<a class="reference external" href="https://github.com/napari/docs/pull/609">docs#609</a>)</p></li>
@@ -1097,6 +1099,9 @@ the rendered results in only two minutes!
 <li><p>Update 0.6.0 release notes with more complete highlights and more PRs (<a class="reference external" href="https://github.com/napari/docs/pull/665">docs#665</a>)</p></li>
 <li><p>Improve social media preview with OpenGraph (<a class="reference external" href="https://github.com/napari/docs/pull/667">docs#667</a>)</p></li>
 <li><p>Update plugin best practices (<a class="reference external" href="https://github.com/napari/docs/pull/668">docs#668</a>)</p></li>
+<li><p>Update 0.6.0 release notes some more (<a class="reference external" href="https://github.com/napari/docs/pull/677">docs#677</a>)</p></li>
+<li><p>Add command palette to the Quick start guide and Viewer tutorial (<a class="reference external" href="https://github.com/napari/docs/pull/683">docs#683</a>)</p></li>
+<li><p>More 0.6.0 release note updates (<a class="reference external" href="https://github.com/napari/docs/pull/686">docs#686</a>)</p></li>
 </ul>
 </section>
 <section id="other-pull-requests">
@@ -1186,6 +1191,9 @@ the rendered results in only two minutes!
 <li><p>Use OIDC authorization only for push and pull requests from the same repository  (<a class="reference external" href="https://github.com/napari/napari/pull/7837">#7837</a>)</p></li>
 <li><p>[maint] Add pyopenGL version to napari info (<a class="reference external" href="https://github.com/napari/napari/pull/7838">#7838</a>)</p></li>
 <li><p>[maint] Add whether napari was installed using conda to napari info (<a class="reference external" href="https://github.com/napari/napari/pull/7844">#7844</a>)</p></li>
+<li><p>[maint, enh] Add experimental settings status to napari –info (<a class="reference external" href="https://github.com/napari/napari/pull/7857">#7857</a>)</p></li>
+<li><p>Update napari-sphinx-theme constraint to 0.7.0 (<a class="reference external" href="https://github.com/napari/napari/pull/7861">#7861</a>)</p></li>
+<li><p>[<a class="reference external" href="http://pre-commit.ci">pre-commit.ci</a>] pre-commit autoupdate (<a class="reference external" href="https://github.com/napari/napari/pull/7867">#7867</a>)</p></li>
 <li><p>Add codespell support (config, workflow to detect/not fix) and make it fix few typos (<a class="reference external" href="https://github.com/napari/docs/pull/587">docs#587</a>)</p></li>
 <li><p>Update CircleCI config.yml to use napari docs and gallery dependency groups (<a class="reference external" href="https://github.com/napari/docs/pull/590">docs#590</a>)</p></li>
 <li><p>Update build_and_deploy.yml to use napari docs dependency group (<a class="reference external" href="https://github.com/napari/docs/pull/591">docs#591</a>)</p></li>
