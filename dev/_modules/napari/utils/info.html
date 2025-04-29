@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=874d4c99"></script>
+    <script src="../../../_static/documentation_options.js?v=854a6239"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -685,15 +685,32 @@ window.addEventListener("load", load);
         <span class="k">except</span> <span class="n">PackageNotFoundError</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> not installed&lt;br&gt;&#39;</span>
 
-    <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&lt;b&gt;Settings path:&lt;/b&gt;&lt;br&gt;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
 
-        <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">config_path</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">_async_setting</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">async_</span><span class="p">)</span>
+        <span class="n">_autoswap_buffers</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">autoswap_buffers</span><span class="p">)</span>
+        <span class="n">_triangulation_backend</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">triangulation_backend</span>
+        <span class="p">)</span>
+        <span class="n">_config_path</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">config_path</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._appdirs</span><span class="w"> </span><span class="kn">import</span> <span class="n">user_config_dir</span>
 
-        <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NAPARI_CONFIG&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">user_config_dir</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">_async_setting</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NAPARI_ASYNC&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">))</span>
+        <span class="n">_autoswap_buffers</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NAPARI_AUTOSWAP&#39;</span><span class="p">,</span> <span class="s1">&#39;False&#39;</span><span class="p">))</span>
+        <span class="n">_triangulation_backend</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NAPARI_TRIANGULATION_BACKEND&#39;</span><span class="p">,</span> <span class="s1">&#39;Fastest available&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">_config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NAPARI_CONFIG&#39;</span><span class="p">,</span> <span class="n">user_config_dir</span><span class="p">())</span>
+
+    <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&lt;b&gt;Experimental Settings:&lt;/b&gt;&lt;br&gt;&#39;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - Async: </span><span class="si">{</span><span class="n">_async_setting</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - Autoswap buffers: </span><span class="si">{</span><span class="n">_autoswap_buffers</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - Triangulation backend: </span><span class="si">{</span><span class="n">_triangulation_backend</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
+
+    <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&lt;b&gt;Settings path:&lt;/b&gt;&lt;br&gt;&#39;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">_config_path</span><span class="si">}</span><span class="s1">&#39;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">as_html</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
