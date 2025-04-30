@@ -116,6 +116,9 @@ The image below has the areas of the viewer labeled:
 :::{admonition} Tip: Right click advanced option indicator
 :class: tip
 If you see a button with a chevron mark in the lower right corner, it means you can click it with the right mouse button to bring up more advanced options!
+
+![buttons with right click indicators](../../_static/images/button-right-click-indicator.png)
+
 :::
 
 We'll go through each of these in the next sections.
@@ -149,13 +152,20 @@ The **canvas** is in the center of the viewer and contains the visual display of
 ```{raw} html
 <figure>
   <video width="100%" controls autoplay loop muted playsinline>
-    <source src="../../_static/images/viewer_pan_zoom.webm" type="video/webm" />
-    <source src="../../_static/images/viewer_pan_zoom.mp4" type="video/mp4" />
-    <img src="../../_static/images/viewer_pan_zoom.png"
+    <source src="../../_static/images/viewer-pan-zoom.webm" type="video/webm" />
+    <source src="../../_static/images/viewer-pan-zoom.mp4" type="video/mp4" />
+    <img src="../../_static/images/viewer-pan-zoom.jpg"
       title="Your browser does not support the video tag"
       alt="Demo of pan and zoom functionality in napari."
     >
   </video>
+
+  <caption>
+  <a href="https://noirlab.edu/public/images/noirlab2501a">Data source.<a>
+    Credit: Dark Energy Survey/DOE/FNAL/DECam/CTIO/NOIRLab/NSF/AURA <br>
+    Image processing: R. Colombari & M. Zamani (NSF NOIRLab)
+  </caption>
+
 </figure>
 ```
 
