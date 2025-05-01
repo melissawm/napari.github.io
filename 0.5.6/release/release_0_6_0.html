@@ -13,10 +13,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://napari.org/release/release_0_6_0.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="Wed, Apr 30, 2025 🚧 These notes are under construction while in pre-release 🚧 We’re happy to announce the release of napari 0.6.0! The right-handed release! This release features major changes so read on to see how they might affect you! napari is a fast, interactive, multi-dimensional image view..." />
+<meta property="og:description" content="Thu, May 01, 2025 We’re happy to announce the release of napari 0.6.0! The right-handed release! This release features major changes so read on to see how they might affect you! napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and ..." />
 <meta property="og:image" content="https://napari.org/../dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="Wed, Apr 30, 2025 🚧 These notes are under construction while in pre-release 🚧 We’re happy to announce the release of napari 0.6.0! The right-handed release! This release features major changes so read on to see how they might affect you! napari is a fast, interactive, multi-dimensional image view..." />
+<meta name="description" content="Thu, May 01, 2025 We’re happy to announce the release of napari 0.6.0! The right-handed release! This release features major changes so read on to see how they might affect you! napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and ..." />
 
     <title>napari 0.6.0 &#8212; napari</title>
   
@@ -755,8 +755,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="napari-0-6-0">
 <h1>napari 0.6.0<a class="headerlink" href="#napari-0-6-0" title="Link to this heading">#</a></h1>
-<p><em>Wed, Apr 30, 2025</em></p>
-<p>🚧 <em>These notes are under construction while in pre-release</em> 🚧</p>
+<p><em>Thu, May 01, 2025</em></p>
 <p>We’re happy to announce the release of napari 0.6.0! The right-handed release! This release features major changes so read on to see how they might affect you!</p>
 <p>napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and analyzing multi-dimensional images. It’s built on Qt (for the GUI), VisPy (for performant GPU-based rendering), and the scientific Python stack (NumPy, SciPy, and friends).</p>
 <p>For more information, examples, and documentation, please visit our website: <a class="reference external" href="https://napari.org/">https://napari.org/</a></p>
@@ -1026,6 +1025,8 @@ the rendered results in only two minutes!
 <li><p>[bugfix] ensure erasing and fill work with swap and preserve labels (<a class="reference external" href="https://github.com/napari/napari/pull/7816">#7816</a>)</p></li>
 <li><p>fix <code class="docutils literal notranslate"><span class="pre">ScalarField._get_value_3d</span></code> to return information about data level for multiscale (<a class="reference external" href="https://github.com/napari/napari/pull/7849">#7849</a>)</p></li>
 <li><p>Use  weak reference to slider in <code class="docutils literal notranslate"><span class="pre">AnimationThread</span></code> (<a class="reference external" href="https://github.com/napari/napari/pull/7866">#7866</a>)</p></li>
+<li><p>Patch <code class="docutils literal notranslate"><span class="pre">CONDA_EXE</span></code> environment variable to valid conda path (<a class="reference external" href="https://github.com/napari/napari/pull/7869">#7869</a>)</p></li>
+<li><p>Compare slice_key array instead of value for use with 4+D data (<a class="reference external" href="https://github.com/napari/napari/pull/7879">#7879</a>)</p></li>
 </ul>
 </section>
 <section id="api-changes">
@@ -1060,6 +1061,7 @@ the rendered results in only two minutes!
 <li><p>Add sphinx opengraph dependency to docs for better social media preview (<a class="reference external" href="https://github.com/napari/napari/pull/7814">#7814</a>)</p></li>
 <li><p>Gallery: use colors from the South African flag to draw SA (<a class="reference external" href="https://github.com/napari/napari/pull/7859">#7859</a>)</p></li>
 <li><p>Update CITATION.cff for 0.6.0 (<a class="reference external" href="https://github.com/napari/napari/pull/7860">#7860</a>)</p></li>
+<li><p>Add Constantin Aronssohn to citation.cff (<a class="reference external" href="https://github.com/napari/napari/pull/7873">#7873</a>)</p></li>
 <li><p>Update finding and installing plugin docs (<a class="reference external" href="https://github.com/napari/docs/pull/541">docs#541</a>)</p></li>
 <li><p>Rename Gallery to Examples (<a class="reference external" href="https://github.com/napari/docs/pull/560">docs#560</a>)</p></li>
 <li><p>Update BlueSky link to our actual account (not masto bridge) (<a class="reference external" href="https://github.com/napari/docs/pull/564">docs#564</a>)</p></li>
@@ -1104,6 +1106,12 @@ the rendered results in only two minutes!
 <li><p>Update 0.6.0 release notes some more (<a class="reference external" href="https://github.com/napari/docs/pull/677">docs#677</a>)</p></li>
 <li><p>Add command palette to the Quick start guide and Viewer tutorial (<a class="reference external" href="https://github.com/napari/docs/pull/683">docs#683</a>)</p></li>
 <li><p>More 0.6.0 release note updates (<a class="reference external" href="https://github.com/napari/docs/pull/686">docs#686</a>)</p></li>
+<li><p>Add triangulation guide (<a class="reference external" href="https://github.com/napari/docs/pull/688">docs#688</a>)</p></li>
+<li><p>Update button screenshots in viewer tutorial (<a class="reference external" href="https://github.com/napari/docs/pull/690">docs#690</a>)</p></li>
+<li><p>Add image highlighting right-click indicators in viewer tutorial (<a class="reference external" href="https://github.com/napari/docs/pull/691">docs#691</a>)</p></li>
+<li><p>Update pan-zoom video with new UI, better data, and better framerate (<a class="reference external" href="https://github.com/napari/docs/pull/692">docs#692</a>)</p></li>
+<li><p>Add handedness guide and link from viewer tutorial (<a class="reference external" href="https://github.com/napari/docs/pull/695">docs#695</a>)</p></li>
+<li><p>Final release notes for 0.6.0 (<a class="reference external" href="https://github.com/napari/docs/pull/696">docs#696</a>)</p></li>
 </ul>
 </section>
 <section id="other-pull-requests">
@@ -1196,6 +1204,8 @@ the rendered results in only two minutes!
 <li><p>[maint, enh] Add experimental settings status to napari –info (<a class="reference external" href="https://github.com/napari/napari/pull/7857">#7857</a>)</p></li>
 <li><p>Update napari-sphinx-theme constraint to 0.7.0 (<a class="reference external" href="https://github.com/napari/napari/pull/7861">#7861</a>)</p></li>
 <li><p>[<a class="reference external" href="http://pre-commit.ci">pre-commit.ci</a>] pre-commit autoupdate (<a class="reference external" href="https://github.com/napari/napari/pull/7867">#7867</a>)</p></li>
+<li><p>[Maint] Update dockerfile for napari 0.6.0 (<a class="reference external" href="https://github.com/napari/napari/pull/7872">#7872</a>)</p></li>
+<li><p>Add bermuda and triangle to docs dependencies (<a class="reference external" href="https://github.com/napari/napari/pull/7875">#7875</a>)</p></li>
 <li><p>Add codespell support (config, workflow to detect/not fix) and make it fix few typos (<a class="reference external" href="https://github.com/napari/docs/pull/587">docs#587</a>)</p></li>
 <li><p>Update CircleCI config.yml to use napari docs and gallery dependency groups (<a class="reference external" href="https://github.com/napari/docs/pull/590">docs#590</a>)</p></li>
 <li><p>Update build_and_deploy.yml to use napari docs dependency group (<a class="reference external" href="https://github.com/napari/docs/pull/591">docs#591</a>)</p></li>
@@ -1211,6 +1221,7 @@ the rendered results in only two minutes!
 <li><p>[bugfix] fix prep_docs logic to ensure npe2 files are written, but not over-written (<a class="reference external" href="https://github.com/napari/docs/pull/671">docs#671</a>)</p></li>
 <li><p>Update circleci cimg base to 3.10.17 which includes uv (<a class="reference external" href="https://github.com/napari/docs/pull/673">docs#673</a>)</p></li>
 <li><p>Update Makefile to use -WT –keep-going for CI make targets (<a class="reference external" href="https://github.com/napari/docs/pull/675">docs#675</a>)</p></li>
+<li><p>Always upload build artifacts in build_docs.yml workflow (<a class="reference external" href="https://github.com/napari/docs/pull/694">docs#694</a>)</p></li>
 </ul>
 </section>
 <section id="authors-added-to-this-release-alphabetical">
