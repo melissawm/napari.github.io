@@ -46,31 +46,21 @@ Display a surface timeseries using data from nilearn
     /home/runner/nilearn_data/nki_enhanced_surface
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8470/pheno_nki_nilearn.csv ...
-    [fetch_single_file]  ...done. (0 seconds, 0 min)
+    [fetch_single_file]  ...done. (1 seconds, 0 min)
 
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8261/A00028185_rh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [_chunk_report_] Downloaded 9576448 of 42412120 bytes (22.6%%,    3.7s 
+    [_chunk_report_] Downloaded 27049984 of 42412120 bytes (63.8%%,    0.6s 
     remaining)
-    [_chunk_report_] Downloaded 20586496 of 42412120 bytes (48.5%%,    2.2s 
-    remaining)
-    [_chunk_report_] Downloaded 31850496 of 42412120 bytes (75.1%%,    1.0s 
-    remaining)
-    [fetch_single_file]  ...done. (5 seconds, 0 min)
+    [fetch_single_file]  ...done. (2 seconds, 0 min)
 
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8260/A00028185_lh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [_chunk_report_] Downloaded 8765440 of 42402060 bytes (20.7%%,    3.9s 
+    [_chunk_report_] Downloaded 26984448 of 42402060 bytes (63.6%%,    0.6s 
     remaining)
-    [_chunk_report_] Downloaded 18259968 of 42402060 bytes (43.1%%,    2.7s 
-    remaining)
-    [_chunk_report_] Downloaded 27918336 of 42402060 bytes (65.8%%,    1.6s 
-    remaining)
-    [_chunk_report_] Downloaded 42287104 of 42402060 bytes (99.7%%,    0.0s 
-    remaining)
-    [fetch_single_file]  ...done. (4 seconds, 0 min)
+    [fetch_single_file]  ...done. (2 seconds, 0 min)
 
 
 
@@ -120,11 +110,6 @@ Display a surface timeseries using data from nilearn
 
     if __name__ == '__main__':
         napari.run()
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 11.523 seconds)
 
 
 .. _sphx_glr_download_gallery_surface_timeseries.py:
