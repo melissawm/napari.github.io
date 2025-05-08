@@ -243,54 +243,54 @@ napari/
 │ ├─qt_main_window.py
 │ ├─_qplugins/
 │ │ └─_qnpe2.py
-│ ├─_qapp_model/
-│ │ ├─_menus.py
-│ │ ├─qactions/
-│ │ │ ├─_debug.py
-│ │ │ ├─_help.py
-│ │ │ ├─_plugins.py
-│ │ │ ├─_file.py
-│ │ │ └─__init__.py
-│ │ └─injection/
-│ │   ├─_qprocessors.py
-│ │   └─_qproviders.py
 │ ├─dialogs/
-│ │ ├─shimmed_plugin_dialog.py
 │ │ ├─qt_about.py
-│ │ ├─qt_reader_dialog.py
-│ │ ├─qt_plugin_report.py
-│ │ ├─qt_modal.py
 │ │ ├─qt_notification.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_activity_dialog.py
+│ │ ├─shimmed_plugin_dialog.py
 │ │ ├─screenshot_dialog.py
-│ │ └─confirm_close_dialog.py
+│ │ ├─preferences_dialog.py
+│ │ ├─qt_modal.py
+│ │ ├─qt_plugin_report.py
+│ │ ├─qt_reader_dialog.py
+│ │ ├─confirm_close_dialog.py
+│ │ └─qt_activity_dialog.py
 │ ├─utils.py
 │ ├─qt_viewer.py
-│ └─widgets/
-│   ├─qt_command_palette.py
-│   ├─qt_tooltip.py
-│   ├─qt_plugin_sorter.py
-│   ├─qt_color_swatch.py
-│   ├─qt_logger.py
-│   ├─qt_spinbox.py
-│   ├─qt_dims_sorter.py
-│   ├─qt_progress_bar.py
-│   ├─qt_scrollbar.py
-│   ├─qt_font_size.py
-│   ├─qt_highlight_preview.py
-│   ├─qt_dims.py
-│   ├─qt_extension2reader.py
-│   ├─qt_viewer_status_bar.py
-│   └─qt_dims_slider.py
+│ ├─widgets/
+│ │ ├─qt_font_size.py
+│ │ ├─qt_highlight_preview.py
+│ │ ├─qt_dims_slider.py
+│ │ ├─qt_progress_bar.py
+│ │ ├─qt_plugin_sorter.py
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ ├─qt_dims.py
+│ │ ├─qt_dims_sorter.py
+│ │ ├─qt_extension2reader.py
+│ │ ├─qt_color_swatch.py
+│ │ ├─qt_logger.py
+│ │ ├─qt_scrollbar.py
+│ │ ├─qt_spinbox.py
+│ │ └─qt_tooltip.py
+│ └─_qapp_model/
+│   ├─_menus.py
+│   ├─injection/
+│   │ ├─_qprocessors.py
+│   │ └─_qproviders.py
+│   └─qactions/
+│     ├─_debug.py
+│     ├─__init__.py
+│     ├─_help.py
+│     ├─_file.py
+│     └─_plugins.py
 └─_vendor/
   └─qt_json_builder/
     ├─qt_jsonschema_form/
+    │ ├─widgets.py
     │ ├─form.py
     │ ├─defaults.py
     │ ├─signal.py
-    │ ├─widgets.py
-    │ ├─utils.py
-    │ └─__init__.py
+    │ ├─__init__.py
+    │ └─utils.py
     └─__init__.py
 ```

@@ -259,61 +259,61 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─qt_main_window.py
-│ ├─layer_controls/
-│ │ └─__init__.py
-│ ├─qthreading.py
 │ ├─containers/
 │ │ └─__init__.py
-│ ├─_qapp_model/
-│ │ ├─qactions/
-│ │ │ ├─_layerlist_context.py
-│ │ │ ├─_debug.py
-│ │ │ └─__init__.py
-│ │ └─injection/
-│ │   ├─_qprocessors.py
-│ │   └─__init__.py
+│ ├─qt_main_window.py
+│ ├─qthreading.py
+│ ├─dialogs/
+│ │ └─__init__.py
+│ ├─layer_controls/
+│ │ └─__init__.py
 │ ├─threads/
 │ │ ├─status_checker.py
 │ │ └─__init__.py
-│ ├─dialogs/
-│ │ └─__init__.py
 │ ├─utils.py
 │ ├─qt_viewer.py
-│ └─widgets/
-│   ├─qt_command_palette.py
-│   ├─qt_tooltip.py
-│   ├─qt_spinbox.py
-│   ├─qt_dims_sorter.py
-│   ├─qt_viewer_buttons.py
-│   ├─qt_scrollbar.py
-│   ├─qt_dims.py
-│   ├─qt_viewer_dock_widget.py
-│   ├─qt_welcome.py
-│   ├─qt_viewer_status_bar.py
-│   └─qt_dims_slider.py
-├─components/
-│ ├─viewer_model.py
-│ ├─layerlist.py
-│ ├─grid.py
-│ ├─cursor.py
-│ ├─_layer_slicer.py
-│ ├─_viewer_key_bindings.py
-│ ├─_viewer_constants.py
-│ ├─dims.py
-│ ├─_viewer_mouse_bindings.py
-│ ├─camera.py
-│ ├─tooltip.py
-│ └─overlays/
-│   ├─brush_circle.py
-│   ├─scale_bar.py
-│   ├─interaction_box.py
-│   ├─axes.py
-│   ├─labels_polygon.py
-│   ├─text.py
-│   ├─base.py
-│   ├─bounding_box.py
-│   └─__init__.py
-└─layers/
-  └─__init__.py
+│ ├─widgets/
+│ │ ├─qt_dims_slider.py
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_welcome.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ ├─qt_dims.py
+│ │ ├─qt_viewer_dock_widget.py
+│ │ ├─qt_dims_sorter.py
+│ │ ├─qt_viewer_buttons.py
+│ │ ├─qt_scrollbar.py
+│ │ ├─qt_spinbox.py
+│ │ └─qt_tooltip.py
+│ └─_qapp_model/
+│   ├─injection/
+│   │ ├─_qprocessors.py
+│   │ └─__init__.py
+│   └─qactions/
+│     ├─_debug.py
+│     ├─_layerlist_context.py
+│     └─__init__.py
+├─layers/
+│ └─__init__.py
+└─components/
+  ├─grid.py
+  ├─_viewer_key_bindings.py
+  ├─_viewer_mouse_bindings.py
+  ├─cursor.py
+  ├─_viewer_constants.py
+  ├─overlays/
+  │ ├─axes.py
+  │ ├─brush_circle.py
+  │ ├─text.py
+  │ ├─labels_polygon.py
+  │ ├─scale_bar.py
+  │ ├─interaction_box.py
+  │ ├─__init__.py
+  │ ├─base.py
+  │ └─bounding_box.py
+  ├─camera.py
+  ├─_layer_slicer.py
+  ├─viewer_model.py
+  ├─dims.py
+  ├─layerlist.py
+  └─tooltip.py
 ```
