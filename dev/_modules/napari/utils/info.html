@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=598a390d"></script>
+    <script src="../../../_static/documentation_options.js?v=eac375aa"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -568,6 +568,18 @@ window.addEventListener("load", load);
     <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">napari_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">napari_conda_files</span><span class="p">)</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">get_launch_command</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the information how the program was launched.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The command used to launch the program.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+
 <div class="viewcode-block" id="sys_info">
 <a class="viewcode-back" href="../../../api/napari.utils.html#napari.sys_info">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">sys_info</span><span class="p">(</span><span class="n">as_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -711,6 +723,9 @@ window.addEventListener("load", load);
 
     <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&lt;b&gt;Settings path:&lt;/b&gt;&lt;br&gt;&#39;</span>
     <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">_config_path</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="n">text</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&lt;b&gt;Launch command&lt;/b&gt;&lt;br&gt;&#39;</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">get_launch_command</span><span class="p">()</span><span class="si">}</span><span class="s1">&lt;br&gt;&#39;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">as_html</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
