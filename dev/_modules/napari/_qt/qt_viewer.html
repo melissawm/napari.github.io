@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=eac375aa"></script>
+    <script src="../../../_static/documentation_options.js?v=ff1e8ea6"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1075,8 +1075,12 @@ window.addEventListener("load", load);
                 <span class="c1"># `set_data` notifies the corresponding vispy layer of the new</span>
                 <span class="c1"># slice.</span>
                 <span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">set_data</span><span class="p">()</span>
-                <span class="n">layer</span><span class="o">.</span><span class="n">_update_thumbnail</span><span class="p">()</span>
-                <span class="n">layer</span><span class="o">.</span><span class="n">_set_highlight</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">_refresh_sync</span><span class="p">(</span>
+                    <span class="n">data_displayed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">thumbnail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">highlight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">extent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_on_active_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;When active layer changes change keymap handler.&quot;&quot;&quot;</span>

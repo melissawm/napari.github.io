@@ -171,7 +171,7 @@ in two viewers to show both colormaps.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.877 seconds)
+   **Total running time of the script:** (0 minutes 11.117 seconds)
 
 
 .. _sphx_glr_download_gallery_glasbey-colormap.py:
