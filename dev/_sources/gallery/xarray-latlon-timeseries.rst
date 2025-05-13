@@ -120,11 +120,6 @@ before displaying it in napari.
         napari.run()
 
 
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 18.005 seconds)
-
-
 .. _sphx_glr_download_gallery_xarray-latlon-timeseries.py:
 
 .. only:: html
