@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=555d589a"></script>
+    <script src="../../../../_static/documentation_options.js?v=7022cec6"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -486,7 +486,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari._pydantic_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">PrivateAttr</span><span class="p">,</span> <span class="n">validator</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorArray</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorArray</span><span class="p">,</span> <span class="n">ColorValue</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.colormaps</span><span class="w"> </span><span class="kn">import</span> <span class="n">_accelerated_cmap</span> <span class="k">as</span> <span class="n">_accel_cmap</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.colormaps.colorbars</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_colorbar</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.colormaps.standardize_color</span><span class="w"> </span><span class="kn">import</span> <span class="n">transform_color</span>
@@ -534,6 +534,12 @@ window.addEventListener("load", load);
 <span class="sd">        &#39;zero&#39;. If &#39;linear&#39;, ncontrols = ncolors (one</span>
 <span class="sd">        color per control point). If &#39;zero&#39;, ncontrols</span>
 <span class="sd">        = ncolors+1 (one color per bin).</span>
+<span class="sd">    nan_color : ColorValue</span>
+<span class="sd">        Mapping for NaN values. Equivalent to matplotlib&#39;s `bad_color`</span>
+<span class="sd">    high_color : ColorValue</span>
+<span class="sd">        Mapping for values equal to or greater than 1.</span>
+<span class="sd">    low_color : ColorValue</span>
+<span class="sd">        Mapping for values equal to or less than 0.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># fields</span>
@@ -542,6 +548,9 @@ window.addEventListener("load", load);
     <span class="n">_display_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">PrivateAttr</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">interpolation</span><span class="p">:</span> <span class="n">ColormapInterpolationMode</span> <span class="o">=</span> <span class="n">ColormapInterpolationMode</span><span class="o">.</span><span class="n">LINEAR</span>
     <span class="n">controls</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">cast</span><span class="p">(</span><span class="n">Array</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">nan_color</span><span class="p">:</span> <span class="n">ColorValue</span> <span class="o">=</span> <span class="n">ColorValue</span><span class="p">(</span><span class="s1">&#39;transparent&#39;</span><span class="p">)</span>
+    <span class="n">high_color</span><span class="p">:</span> <span class="n">ColorValue</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">low_color</span><span class="p">:</span> <span class="n">ColorValue</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">display_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span>
@@ -600,9 +609,6 @@ window.addEventListener("load", load);
 
         <span class="k">return</span> <span class="n">v</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">yield from</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controls</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolation</span><span class="p">)</span>
-
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">)</span>
 
@@ -631,6 +637,14 @@ window.addEventListener("load", load);
                     <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="p">)</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="c1"># map NaNs, lows, and highs</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">nan_color</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">high_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">values</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high_color</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">values</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_color</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">cols</span>
 
