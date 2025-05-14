@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../dev/_static/documentation_options.js?v=8f46d5e5"></script>
+    <script src="../../../../dev/_static/documentation_options.js?v=04624746"></script>
     <script src="../../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -104,7 +104,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/../dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.1rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -113,7 +113,7 @@ window.addEventListener("load", load);
     <link rel="prev" title="Layers list" href="layers_list_ui.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.1" />
   </head>
   
   
@@ -509,7 +509,7 @@ window.addEventListener("load", load);
       </li>
       <li class="toctree-l1">
           
-          <a class="reference internal" href="../../../release/index.html">Release notes</a>
+          <a class="reference internal" href="../../../release/release_0_6_1.html">Latest release notes</a>
           
       </li>
       <li class="toctree-l1">
@@ -843,64 +843,64 @@ window.addEventListener("load", load);
 <section id="source-code-directory-layout-related-to-modules-inside-napari">
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
+├─layers/
+│ └─__init__.py
 ├─_qt/
+│ ├─qthreading.py
+│ ├─widgets/
+│ │ ├─qt_dims.py
+│ │ ├─qt_welcome.py
+│ │ ├─qt_viewer_buttons.py
+│ │ ├─qt_scrollbar.py
+│ │ ├─qt_spinbox.py
+│ │ ├─qt_dims_sorter.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ ├─qt_tooltip.py
+│ │ ├─qt_dims_slider.py
+│ │ ├─qt_command_palette.py
+│ │ └─qt_viewer_dock_widget.py
+│ ├─qt_main_window.py
+│ ├─qt_viewer.py
 │ ├─containers/
 │ │ └─__init__.py
-│ ├─qt_main_window.py
-│ ├─qthreading.py
 │ ├─dialogs/
 │ │ └─__init__.py
 │ ├─layer_controls/
 │ │ └─__init__.py
-│ ├─threads/
-│ │ ├─status_checker.py
-│ │ └─__init__.py
 │ ├─utils.py
-│ ├─qt_viewer.py
-│ ├─widgets/
-│ │ ├─qt_dims_slider.py
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_welcome.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ ├─qt_dims.py
-│ │ ├─qt_viewer_dock_widget.py
-│ │ ├─qt_dims_sorter.py
-│ │ ├─qt_viewer_buttons.py
-│ │ ├─qt_scrollbar.py
-│ │ ├─qt_spinbox.py
-│ │ └─qt_tooltip.py
-│ └─_qapp_model/
-│   ├─injection/
-│   │ ├─_qprocessors.py
-│   │ └─__init__.py
-│   └─qactions/
-│     ├─_debug.py
-│     ├─_layerlist_context.py
-│     └─__init__.py
-├─layers/
-│ └─__init__.py
+│ ├─_qapp_model/
+│ │ ├─qactions/
+│ │ │ ├─__init__.py
+│ │ │ ├─_debug.py
+│ │ │ └─_layerlist_context.py
+│ │ └─injection/
+│ │   ├─__init__.py
+│ │   └─_qprocessors.py
+│ └─threads/
+│   ├─__init__.py
+│   └─status_checker.py
 └─components/
-  ├─grid.py
-  ├─_viewer_key_bindings.py
-  ├─_viewer_mouse_bindings.py
   ├─cursor.py
+  ├─_viewer_key_bindings.py
+  ├─layerlist.py
   ├─_viewer_constants.py
+  ├─camera.py
+  ├─grid.py
+  ├─tooltip.py
   ├─overlays/
+  │ ├─base.py
+  │ ├─__init__.py
+  │ ├─bounding_box.py
+  │ ├─interaction_box.py
+  │ ├─text.py
+  │ ├─scale_bar.py
   │ ├─axes.py
   │ ├─brush_circle.py
-  │ ├─text.py
-  │ ├─labels_polygon.py
-  │ ├─scale_bar.py
-  │ ├─interaction_box.py
-  │ ├─__init__.py
-  │ ├─base.py
-  │ └─bounding_box.py
-  ├─camera.py
-  ├─_layer_slicer.py
+  │ └─labels_polygon.py
   ├─viewer_model.py
   ├─dims.py
-  ├─layerlist.py
-  └─tooltip.py
+  ├─_viewer_mouse_bindings.py
+  └─_layer_slicer.py
 </pre></div>
 </div>
 </section>
