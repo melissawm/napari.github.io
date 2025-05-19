@@ -13,10 +13,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://napari.org/release/release_0_6_1.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="⚠️ Note: these release notes are still in draft while 0.6.1 is in release candidate testing. ⚠️ Wed, May 14, 2025 We’re happy to announce the release of napari 0.6.1! This release is a follow-up to 0.6.0, with a few bug fixes and new features. napari is a fast, interactive, multi-dimensional imag..." />
+<meta property="og:description" content="Tue, May 20, 2025 We’re happy to announce the release of napari 0.6.1! This release is a follow-up to 0.6.0, with a few bug fixes and new features. napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and analyzing multi-dimensional im..." />
 <meta property="og:image" content="https://napari.org/dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="⚠️ Note: these release notes are still in draft while 0.6.1 is in release candidate testing. ⚠️ Wed, May 14, 2025 We’re happy to announce the release of napari 0.6.1! This release is a follow-up to 0.6.0, with a few bug fixes and new features. napari is a fast, interactive, multi-dimensional imag..." />
+<meta name="description" content="Tue, May 20, 2025 We’re happy to announce the release of napari 0.6.1! This release is a follow-up to 0.6.0, with a few bug fixes and new features. napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and analyzing multi-dimensional im..." />
 
     <title>napari 0.6.1 &#8212; napari</title>
   
@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=d99b1470"></script>
+    <script src="../_static/documentation_options.js?v=c75c62d8"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -68,7 +68,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.1rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -78,7 +78,7 @@
     <link rel="prev" title="Release notes" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.1" />
   </head>
   
   
@@ -686,7 +686,7 @@
       </li>
       <li class="toctree-l1">
           
-          <a class="reference internal" href="index.html">Release notes</a>
+          <a class="reference internal" href="#">Latest release notes</a>
           
       </li>
       <li class="toctree-l1">
@@ -757,23 +757,24 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="napari-0-6-1">
 <h1>napari 0.6.1<a class="headerlink" href="#napari-0-6-1" title="Link to this heading">#</a></h1>
-<p>⚠️ <em>Note: these release notes are still in draft while 0.6.1 is in release candidate testing.</em> ⚠️</p>
-<p><em>Wed, May 14, 2025</em></p>
-<p>We’re happy to announce the release of napari 0.6.1!
-This release is a follow-up to 0.6.0, with a few bug fixes and new features.</p>
+<p><em>Tue, May 20, 2025</em></p>
+<p>We’re happy to announce the release of napari 0.6.1! This release is a follow-up to 0.6.0, with a few bug fixes and new features.</p>
 <p>napari is a fast, interactive, multi-dimensional image viewer for Python. It’s designed for exploring, annotating, and analyzing multi-dimensional images. It’s built on Qt (for the GUI), VisPy (for performant GPU-based rendering), and the scientific Python stack (NumPy, SciPy, and friends).</p>
 <p>For more information, examples, and documentation, please visit our website: <a class="reference external" href="https://napari.org/">https://napari.org/</a></p>
 <section id="highlights">
 <h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 <section id="the-hilo-colormap">
 <h3>The HiLo👋 Colormap!<a class="headerlink" href="#the-hilo-colormap" title="Link to this heading">#</a></h3>
-<p>Introducing the HiLo colormap to napari! 🎨
-This much-loved colormap (LUT) is like grayscale, except it displays values at or above the maximum contrast limit as red 🔴
-and values at or below the minimum contrast limit as blue 🔵.
-In the scientific imaging world, the HiLo colormap is often used to assess overexposed (saturated) ☀️ and underexposed (dark) 🌑 regions in images.
+<p>Introducing the HiLo colormap to napari! 🎨 This much-loved colormap (LUT) is like grayscale, except it displays values at or above the maximum contrast limit as red 🔴 and values at or below the minimum contrast limit as blue 🔵. In the scientific imaging world, the HiLo colormap is often used to assess overexposed (saturated) ☀️ and underexposed (dark) 🌑 regions in images.
 Enjoy this animation of the HiLo colormap in action! 👇
 <img alt="HiLo colormap animation" src="https://github.com/user-attachments/assets/b77e98b4-3f9c-437a-b169-2444544ee454" /></p>
-<p>The HiLo colormap is now available as a result of the dependency bump to VisPy 0.15.0 <a class="reference external" href="https://github.com/napari/napari/pull/7846">#7846</a>, which will soon unlock even more great new features in the coming napari releases.</p>
+<p>The HiLo colormap is now available as a result of the dependency bump to VisPy 0.15.0 <a class="reference external" href="https://github.com/napari/napari/pull/7846">(#7846)</a>, which will soon unlock even more great new features in the coming napari releases.</p>
+</section>
+<section id="the-dims-widget-shines-brighter">
+<h3>The <code class="docutils literal notranslate"><span class="pre">dims</span></code> widget shines brighter! ✨<a class="headerlink" href="#the-dims-widget-shines-brighter" title="Link to this heading">#</a></h3>
+<p>Have you ever tried to use the <code class="docutils literal notranslate"><span class="pre">dims</span></code> pop-up widget (accessed by right clicking on the third viewer button) and found it to not work as expected? As part of our bugfixes <a class="reference external" href="https://github.com/napari/napari/pull/7937">#7937</a> , the <code class="docutils literal notranslate"><span class="pre">dims</span></code> widget will continue to interact as expected. The widget is now available in 3D view!
+❓Did you know that the <code class="docutils literal notranslate"><span class="pre">dims</span></code> widget allows you to rename the axis labels of your data?
+<img alt="dims popup widget" src="https://github.com/user-attachments/assets/3b38462b-8fe2-47b2-be02-66a714d18d8f" /></p>
 </section>
 </section>
 <section id="new-features">
@@ -789,6 +790,7 @@ Enjoy this animation of the HiLo colormap in action! 👇
 <ul class="simple">
 <li><p>Copy units from layer to layer (<a class="reference external" href="https://github.com/napari/napari/pull/7727">#7727</a>)</p></li>
 <li><p>Check return value is valid LayerDataTuple (<a class="reference external" href="https://github.com/napari/napari/pull/7851">#7851</a>)</p></li>
+<li><p>Fix broken dims order popup and add to 3D (<a class="reference external" href="https://github.com/napari/napari/pull/7937">#7937</a>)</p></li>
 </ul>
 </section>
 <section id="bug-fixes">
@@ -798,6 +800,10 @@ Enjoy this animation of the HiLo colormap in action! 👇
 <li><p>Do not expose vispy BaseColormaps (<a class="reference external" href="https://github.com/napari/napari/pull/7858">#7858</a>)</p></li>
 <li><p>Properly determine dtype for view of Labels (<a class="reference external" href="https://github.com/napari/napari/pull/7883">#7883</a>)</p></li>
 <li><p>Prevent Shapes corruption when drawing tiny polygons with lasso (<a class="reference external" href="https://github.com/napari/napari/pull/7914">#7914</a>)</p></li>
+<li><p>Better refresh extent on async slicing (<a class="reference external" href="https://github.com/napari/napari/pull/7925">#7925</a>)</p></li>
+<li><p>Fix async refresh extent (<a class="reference external" href="https://github.com/napari/napari/pull/7929">#7929</a>)</p></li>
+<li><p>Mark key events as handled when processed (<a class="reference external" href="https://github.com/napari/napari/pull/7933">#7933</a>)</p></li>
+<li><p>Fix broken dims order popup and add to 3D (<a class="reference external" href="https://github.com/napari/napari/pull/7937">#7937</a>)</p></li>
 </ul>
 </section>
 <section id="documentation">
@@ -809,6 +815,9 @@ Enjoy this animation of the HiLo colormap in action! 👇
 <li><p>Draft release notes for 0.6.1 (<a class="reference external" href="https://github.com/napari/docs/pull/704">docs#704</a>)</p></li>
 <li><p>release 0.6.1 notes update (<a class="reference external" href="https://github.com/napari/docs/pull/706">docs#706</a>)</p></li>
 <li><p>Fix release notes header for 0.6.1 (<a class="reference external" href="https://github.com/napari/docs/pull/707">docs#707</a>)</p></li>
+<li><p>Update release notes for 0.6.1 (<a class="reference external" href="https://github.com/napari/docs/pull/708">docs#708</a>)</p></li>
+<li><p>Update <a class="reference external" href="http://viewer.md">viewer.md</a> to mention that you can rename axes using the roll dims popup (<a class="reference external" href="https://github.com/napari/docs/pull/709">docs#709</a>)</p></li>
+<li><p>0.6.1 full release notes (<a class="reference external" href="https://github.com/napari/docs/pull/712">docs#712</a>)</p></li>
 </ul>
 </section>
 <section id="other-pull-requests">
@@ -908,6 +917,7 @@ Enjoy this animation of the HiLo colormap in action! 👇
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hilo-colormap">The HiLo👋 Colormap!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dims-widget-shines-brighter">The <code class="docutils literal notranslate"><span class="pre">dims</span></code> widget shines brighter! ✨</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New Features</a></li>
