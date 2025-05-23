@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=d075647d"></script>
+    <script src="../../../_static/documentation_options.js?v=ab29ba3e"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1436,10 +1436,6 @@ window.addEventListener("load", load);
         <span class="c1"># Disconnect all connections from layer</span>
         <span class="n">disconnect_events</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
         <span class="n">disconnect_events</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
-
-        <span class="c1"># Clean up overlays</span>
-        <span class="k">for</span> <span class="n">overlay</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">_overlays</span><span class="p">):</span>
-            <span class="k">del</span> <span class="n">layer</span><span class="o">.</span><span class="n">_overlays</span><span class="p">[</span><span class="n">overlay</span><span class="p">]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_on_layers_change</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_on_grid_change</span><span class="p">()</span>

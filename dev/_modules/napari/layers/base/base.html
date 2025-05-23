@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=d075647d"></script>
+    <script src="../../../../_static/documentation_options.js?v=ab29ba3e"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -963,10 +963,6 @@ window.addEventListener("load", load);
                 <span class="s1">&#39;bounding_box&#39;</span><span class="p">:</span> <span class="n">BoundingBoxOverlay</span><span class="p">(),</span>
             <span class="p">}</span>
         <span class="p">)</span>
-
-        <span class="c1"># TODO: we try to avoid inner event connection, but this might be the only way</span>
-        <span class="c1">#       until we figure out nested evented objects</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_overlays</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">_overlays</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Post init hook for subclasses to use.&quot;&quot;&quot;</span>
