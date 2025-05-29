@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=d84cfa3e"></script>
+    <script src="../../../_static/documentation_options.js?v=28e827b3"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -556,7 +556,6 @@ window.addEventListener("load", load);
     <span class="n">EventedModel</span><span class="p">,</span>
     <span class="n">disconnect_events</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events.event</span><span class="w"> </span><span class="kn">import</span> <span class="n">WarningEmitter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.key_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeymapProvider</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.misc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensure_list_of_layer_data_tuple</span><span class="p">,</span> <span class="n">is_sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.mouse_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="n">MousemapProvider</span>
@@ -733,17 +732,9 @@ window.addEventListener("load", load);
         <span class="p">)</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">async_</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_async</span><span class="p">)</span>
 
-        <span class="c1"># Add extra events - ideally these will be removed too!</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">layers_change</span><span class="o">=</span><span class="n">WarningEmitter</span><span class="p">(</span>
-                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-                    <span class="s1">&#39;This event will be removed in 0.5.0. Please use viewer.layers.events instead&#39;</span><span class="p">,</span>
-                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="p">),</span>
-                <span class="n">type_name</span><span class="o">=</span><span class="s1">&#39;layers_change&#39;</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">reset_view</span><span class="o">=</span><span class="n">Event</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="c1"># Add extra reset_view event. Ideally this should be removed in the</span>
+        <span class="c1"># future.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">reset_view</span><span class="o">=</span><span class="n">Event</span><span class="p">)</span>
 
         <span class="c1"># Connect events</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">)</span>
@@ -1174,7 +1165,6 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
                 <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dim_diff</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">layers_change</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_update_mouse_pan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the viewer interactive mouse panning&quot;&quot;&quot;</span>
