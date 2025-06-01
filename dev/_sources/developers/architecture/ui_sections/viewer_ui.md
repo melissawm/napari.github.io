@@ -258,62 +258,62 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
-├─layers/
-│ └─__init__.py
+├─components/
+│ ├─viewer_model.py
+│ ├─overlays/
+│ │ ├─bounding_box.py
+│ │ ├─base.py
+│ │ ├─__init__.py
+│ │ ├─axes.py
+│ │ ├─brush_circle.py
+│ │ ├─text.py
+│ │ ├─interaction_box.py
+│ │ ├─labels_polygon.py
+│ │ └─scale_bar.py
+│ ├─cursor.py
+│ ├─tooltip.py
+│ ├─grid.py
+│ ├─dims.py
+│ ├─_viewer_constants.py
+│ ├─_layer_slicer.py
+│ ├─layerlist.py
+│ ├─_viewer_mouse_bindings.py
+│ ├─_viewer_key_bindings.py
+│ └─camera.py
 ├─_qt/
-│ ├─qthreading.py
 │ ├─widgets/
-│ │ ├─qt_dims.py
-│ │ ├─qt_welcome.py
-│ │ ├─qt_viewer_buttons.py
-│ │ ├─qt_scrollbar.py
 │ │ ├─qt_spinbox.py
-│ │ ├─qt_dims_sorter.py
+│ │ ├─qt_viewer_buttons.py
+│ │ ├─qt_welcome.py
 │ │ ├─qt_viewer_status_bar.py
 │ │ ├─qt_tooltip.py
-│ │ ├─qt_dims_slider.py
 │ │ ├─qt_command_palette.py
-│ │ └─qt_viewer_dock_widget.py
-│ ├─qt_main_window.py
-│ ├─qt_viewer.py
-│ ├─containers/
-│ │ └─__init__.py
-│ ├─dialogs/
-│ │ └─__init__.py
+│ │ ├─qt_dims.py
+│ │ ├─qt_dims_slider.py
+│ │ ├─qt_viewer_dock_widget.py
+│ │ ├─qt_scrollbar.py
+│ │ └─qt_dims_sorter.py
 │ ├─layer_controls/
 │ │ └─__init__.py
+│ ├─containers/
+│ │ └─__init__.py
 │ ├─utils.py
+│ ├─qt_main_window.py
+│ ├─qthreading.py
+│ ├─dialogs/
+│ │ └─__init__.py
+│ ├─threads/
+│ │ ├─__init__.py
+│ │ └─status_checker.py
 │ ├─_qapp_model/
 │ │ ├─qactions/
+│ │ │ ├─_layerlist_context.py
 │ │ │ ├─__init__.py
-│ │ │ ├─_debug.py
-│ │ │ └─_layerlist_context.py
+│ │ │ └─_debug.py
 │ │ └─injection/
 │ │   ├─__init__.py
 │ │   └─_qprocessors.py
-│ └─threads/
-│   ├─__init__.py
-│   └─status_checker.py
-└─components/
-  ├─cursor.py
-  ├─_viewer_key_bindings.py
-  ├─layerlist.py
-  ├─_viewer_constants.py
-  ├─camera.py
-  ├─grid.py
-  ├─tooltip.py
-  ├─overlays/
-  │ ├─base.py
-  │ ├─__init__.py
-  │ ├─bounding_box.py
-  │ ├─interaction_box.py
-  │ ├─text.py
-  │ ├─scale_bar.py
-  │ ├─axes.py
-  │ ├─brush_circle.py
-  │ └─labels_polygon.py
-  ├─viewer_model.py
-  ├─dims.py
-  ├─_viewer_mouse_bindings.py
-  └─_layer_slicer.py
+│ └─qt_viewer.py
+└─layers/
+  └─__init__.py
 ```

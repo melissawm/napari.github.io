@@ -137,30 +137,30 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
-├─layers/
-│ └─__init__.py
 ├─viewer.py
-└─_qt/
-  ├─widgets/
-  │ ├─qt_range_slider_popup.py
-  │ ├─qt_mode_buttons.py
-  │ ├─qt_color_swatch.py
-  │ ├─qt_command_palette.py
-  │ └─qt_viewer_dock_widget.py
-  ├─__init__.py
-  ├─qt_main_window.py
-  ├─qt_viewer.py
-  └─layer_controls/
-    ├─qt_tracks_controls.py
-    ├─__init__.py
-    ├─qt_points_controls.py
-    ├─qt_layer_controls_base.py
-    ├─qt_shapes_controls.py
-    ├─qt_layer_controls_container.py
-    ├─qt_colormap_combobox.py
-    ├─qt_image_controls.py
-    ├─qt_image_controls_base.py
-    ├─qt_labels_controls.py
-    ├─qt_surface_controls.py
-    └─qt_vectors_controls.py
+├─_qt/
+│ ├─widgets/
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_mode_buttons.py
+│ │ ├─qt_range_slider_popup.py
+│ │ ├─qt_color_swatch.py
+│ │ └─qt_viewer_dock_widget.py
+│ ├─layer_controls/
+│ │ ├─qt_image_controls_base.py
+│ │ ├─qt_shapes_controls.py
+│ │ ├─qt_surface_controls.py
+│ │ ├─qt_tracks_controls.py
+│ │ ├─__init__.py
+│ │ ├─qt_colormap_combobox.py
+│ │ ├─qt_vectors_controls.py
+│ │ ├─qt_image_controls.py
+│ │ ├─qt_layer_controls_base.py
+│ │ ├─qt_labels_controls.py
+│ │ ├─qt_points_controls.py
+│ │ └─qt_layer_controls_container.py
+│ ├─qt_main_window.py
+│ ├─__init__.py
+│ └─qt_viewer.py
+└─layers/
+  └─__init__.py
 ```

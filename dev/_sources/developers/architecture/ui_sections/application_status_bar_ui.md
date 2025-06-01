@@ -82,11 +82,11 @@ napari/
   │ ├─qt_viewer_status_bar.py
   │ ├─qt_command_palette.py
   │ └─qt_progress_bar.py
-  ├─__init__.py
   ├─qt_main_window.py
+  ├─__init__.py
   ├─dialogs/
-  │ ├─shimmed_plugin_dialog.py
-  │ └─qt_activity_dialog.py
+  │ ├─qt_activity_dialog.py
+  │ └─shimmed_plugin_dialog.py
   └─threads/
     └─status_checker.py
 ```
