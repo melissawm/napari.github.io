@@ -51,12 +51,26 @@ Display a surface timeseries using data from nilearn
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8261/A00028185_rh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [fetch_single_file]  ...done. (1 seconds, 0 min)
+    [_chunk_report_] Downloaded 7684096 of 42412120 bytes (18.1%%,    4.5s 
+    remaining)
+    [_chunk_report_] Downloaded 24625152 of 42412120 bytes (58.1%%,    1.5s 
+    remaining)
+    [_chunk_report_] Downloaded 36093952 of 42412120 bytes (85.1%%,    0.5s 
+    remaining)
+    [fetch_single_file]  ...done. (4 seconds, 0 min)
 
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8260/A00028185_lh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [fetch_single_file]  ...done. (1 seconds, 0 min)
+    [_chunk_report_] Downloaded 5201920 of 42402060 bytes (12.3%%,    7.2s 
+    remaining)
+    [_chunk_report_] Downloaded 15802368 of 42402060 bytes (37.3%%,    3.4s 
+    remaining)
+    [_chunk_report_] Downloaded 26165248 of 42402060 bytes (61.7%%,    1.9s 
+    remaining)
+    [_chunk_report_] Downloaded 38387712 of 42402060 bytes (90.5%%,    0.4s 
+    remaining)
+    [fetch_single_file]  ...done. (5 seconds, 0 min)
 
 
 
@@ -106,6 +120,11 @@ Display a surface timeseries using data from nilearn
 
     if __name__ == '__main__':
         napari.run()
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** (0 minutes 12.927 seconds)
 
 
 .. _sphx_glr_download_gallery_surface_timeseries.py:
