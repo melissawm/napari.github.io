@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=11dc62b2"></script>
+    <script src="../../../_static/documentation_options.js?v=967317bc"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -2508,7 +2508,7 @@ window.addEventListener("load", load);
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_instantiate_dock_widget</span><span class="p">(</span><span class="n">wdg_cls</span><span class="p">,</span> <span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">):</span>
     <span class="c1"># if the signature is looking a for a napari viewer, pass it.</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span><span class="p">,</span> <span class="n">ViewerModel</span>
 
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">try</span><span class="p">:</span>
@@ -2521,7 +2521,14 @@ window.addEventListener("load", load);
             <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;napari_viewer&#39;</span><span class="p">:</span>
                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;napari_viewer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PublicOnlyProxy</span><span class="p">(</span><span class="n">viewer</span><span class="p">)</span>
                 <span class="k">break</span>
-            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">annotation</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;napari.viewer.Viewer&#39;</span><span class="p">,</span> <span class="n">Viewer</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">annotation</span> <span class="ow">in</span> <span class="p">(</span>
+                <span class="s1">&#39;napari.viewer.Viewer&#39;</span><span class="p">,</span>
+                <span class="n">Viewer</span><span class="p">,</span>
+                <span class="s1">&#39;napari.viewer.ViewerModel&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;napari.components.ViewerModel&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;napari.components.viewer_model.ViewerModel&#39;</span><span class="p">,</span>
+                <span class="n">ViewerModel</span><span class="p">,</span>
+            <span class="p">):</span>
                 <span class="n">kwargs</span><span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">PublicOnlyProxy</span><span class="p">(</span><span class="n">viewer</span><span class="p">)</span>
                 <span class="k">break</span>
             <span class="c1"># cannot look for param.kind == param.VAR_KEYWORD because</span>
