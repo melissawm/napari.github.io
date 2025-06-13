@@ -51,16 +51,14 @@ Display a surface timeseries using data from nilearn
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8261/A00028185_rh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [_chunk_report_] Downloaded 14008320 of 42412120 bytes (33.0%%,    2.1s 
+    [_chunk_report_] Downloaded 26746880 of 42412120 bytes (63.1%%,    0.6s 
     remaining)
-    [_chunk_report_] Downloaded 34324480 of 42412120 bytes (80.9%%,    0.5s 
-    remaining)
-    [fetch_single_file]  ...done. (3 seconds, 0 min)
+    [fetch_single_file]  ...done. (2 seconds, 0 min)
 
     [fetch_single_file] Downloading data from 
     https://www.nitrc.org/frs/download.php/8260/A00028185_lh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [_chunk_report_] Downloaded 19464192 of 42402060 bytes (45.9%%,    1.2s 
+    [_chunk_report_] Downloaded 27041792 of 42402060 bytes (63.8%%,    0.6s 
     remaining)
     [fetch_single_file]  ...done. (2 seconds, 0 min)
 
