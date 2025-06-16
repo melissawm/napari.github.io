@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=76f3879e"></script>
+    <script src="../../../_static/documentation_options.js?v=5ad8d117"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -481,7 +481,7 @@ window.addEventListener("load", load);
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
@@ -554,7 +554,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.plugins._npe2</span><span class="w"> </span><span class="kn">import</span> <span class="n">index_npe1_adapters</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">perf</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._proxies</span><span class="w"> </span><span class="kn">import</span> <span class="n">PublicOnlyProxy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._proxies</span><span class="w"> </span><span class="kn">import</span> <span class="n">MappingProxy</span><span class="p">,</span> <span class="n">PublicOnlyProxy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_center_bbox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">imsave</span>
@@ -1170,7 +1170,7 @@ window.addEventListener("load", load);
         <span class="n">qapp</span> <span class="o">=</span> <span class="n">get_qapp</span><span class="p">()</span>
 
         <span class="c1"># Dictionary holding dock widgets</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">QtViewerDockWidget</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">QtViewerDockWidget</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">WeakValueDictionary</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_unnamed_dockwidget_count</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1566,15 +1566,14 @@ window.addEventListener("load", load);
         <span class="k">if</span> <span class="ow">not</span> <span class="n">widget_name</span><span class="p">:</span>
             <span class="c1"># if widget_name wasn&#39;t provided, `get_widget` will have</span>
             <span class="c1"># ensured that there is a single widget available.</span>
-            <span class="n">widget_name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">plugin_manager</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">]))</span>
+            <span class="n">widget_name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+                <span class="nb">iter</span><span class="p">(</span><span class="n">plugin_manager</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">])</span>
+            <span class="p">)</span>
 
         <span class="n">full_name</span> <span class="o">=</span> <span class="n">plugin_menu_item_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plugin_name</span><span class="p">,</span> <span class="n">widget_name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">:</span>
-            <span class="n">dock_widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">[</span><span class="n">full_name</span><span class="p">]</span>
-            <span class="n">wdg</span> <span class="o">=</span> <span class="n">dock_widget</span><span class="o">.</span><span class="n">widget</span><span class="p">()</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">wdg</span><span class="p">,</span> <span class="s1">&#39;_magic_widget&#39;</span><span class="p">):</span>
-                <span class="n">wdg</span> <span class="o">=</span> <span class="n">wdg</span><span class="o">.</span><span class="n">_magic_widget</span>
-            <span class="k">return</span> <span class="n">dock_widget</span><span class="p">,</span> <span class="n">wdg</span>
+        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">:</span>
+            <span class="n">dock_widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">[</span><span class="n">full_name</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">dock_widget</span><span class="p">,</span> <span class="n">dock_widget</span><span class="o">.</span><span class="n">inner_widget</span><span class="p">()</span>
 
         <span class="n">wdg</span> <span class="o">=</span> <span class="n">_instantiate_dock_widget</span><span class="p">(</span>
             <span class="n">widget_class</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="s1">&#39;Viewer&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="p">)</span>
@@ -1601,7 +1600,7 @@ window.addEventListener("load", load);
 <span class="sd">            returned, otherwise a ValueError will be raised, by default None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">full_name</span> <span class="o">=</span> <span class="n">plugin_menu_item_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">plugin_name</span><span class="p">,</span> <span class="n">widget_name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">full_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">func</span> <span class="o">=</span> <span class="n">plugin_manager</span><span class="o">.</span><span class="n">_function_widgets</span><span class="p">[</span><span class="n">plugin_name</span><span class="p">][</span><span class="n">widget_name</span><span class="p">]</span>
@@ -1718,10 +1717,38 @@ window.addEventListener("load", load);
             <span class="n">layers_events</span><span class="o">.</span><span class="n">reordered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">reset_choices</span><span class="p">)</span>
 
         <span class="c1"># Add dock widget to dictionary</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">[</span><span class="n">dock_widget</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">dock_widget</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">[</span><span class="n">dock_widget</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">dock_widget</span>
 
         <span class="k">return</span> <span class="n">dock_widget</span></div>
 
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_dock_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">QtViewerDockWidget</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Access `_wrapped_dock_widgets` with warning.</span>
+
+<span class="sd">        Before napari 0.6.2, ``_wrapped_dock_widgets`` was just</span>
+<span class="sd">        ``_dock_widgets``. Even though it was private, many</span>
+<span class="sd">        resources pointed to its use, as there was no public alternative.</span>
+<span class="sd">        Now that `dock_widgets` is provided, we want to make sure</span>
+<span class="sd">        that people stop using the private `_dock_widgets`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># As many plugins uses `_dock_widget` to access one widget from the</span>
+        <span class="c1"># other widget we should keep this name for a longer period</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s1">&#39;The `_dock_widgets` property is private and should not be used in any plugin code. &#39;</span>
+            <span class="s1">&#39;Please use the `dock_widgets` property instead.&#39;</span><span class="p">,</span>
+            <span class="ne">FutureWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dock_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;QWidget | Widget&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read only mapping of widgets docked in napari window.</span>
+
+<span class="sd">        For wrapping QtViewerDockWidget use `dock_widgets` property.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">InnerWidgetMappingProxy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_add_viewer_dock_widget</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1785,11 +1812,11 @@ window.addEventListener("load", load);
         <span class="n">dock_widget</span><span class="o">.</span><span class="n">setFloating</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_remove_dock_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">widget_name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="n">widget_name</span><span class="p">:</span>
                 <span class="c1"># remove this widget</span>
-                <span class="n">widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="p">[</span><span class="n">widget_name</span><span class="p">]</span>
+                <span class="n">widget</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="p">[</span><span class="n">widget_name</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">remove_dock_widget</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Window.remove_dock_widget">
@@ -1810,7 +1837,7 @@ window.addEventListener("load", load);
 <span class="sd">            from menu.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">widget</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">dw</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+            <span class="k">for</span> <span class="n">dw</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">remove_dock_widget</span><span class="p">(</span><span class="n">dw</span><span class="p">)</span>
             <span class="k">return</span>
 
@@ -1838,7 +1865,7 @@ window.addEventListener("load", load);
             <span class="n">menu</span><span class="o">.</span><span class="n">removeAction</span><span class="p">(</span><span class="n">_dw</span><span class="o">.</span><span class="n">toggleViewAction</span><span class="p">())</span>
 
         <span class="c1"># Remove dock widget from dictionary</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dock_widgets</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">_dw</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_dock_widgets</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">_dw</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
         <span class="c1"># Deleting the dock widget means any references to it will no longer</span>
         <span class="c1"># work but it&#39;s not really useful anyway, since the inner widget has</span>
@@ -2536,6 +2563,30 @@ window.addEventListener("load", load);
 
     <span class="c1"># instantiate the widget</span>
     <span class="k">return</span> <span class="n">wdg_cls</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InnerWidgetMappingProxy</span><span class="p">(</span><span class="n">MappingProxy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A proxy for the inner widget of a QDockWidget.</span>
+
+<span class="sd">    This is used to allow access to the inner widget of a QDockWidget</span>
+<span class="sd">    without exposing the QDockWidget itself.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;QWidget | Widget&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the inner widget of the QDockWidget.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">inner_widget</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a dict-like mapping of widget names to widget class names.&quot;&quot;&quot;</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">!r}</span><span class="s1">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">inner_widget</span><span class="p">()</span><span class="si">!r}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">items</span><span class="p">:</span>
+            <span class="n">indent</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">  &#39;</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> </span><span class="se">{{\n</span><span class="s1">  </span><span class="si">{</span><span class="n">indent</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="si">}</span><span class="se">\n}}</span><span class="s1">&gt;&#39;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> </span><span class="se">{{}}</span><span class="s1">&gt;&#39;</span>
 </pre></div>
 
                 </article>
