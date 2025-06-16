@@ -64,6 +64,7 @@ graph LR
 	napari._qt.threads.status_checker(napari._qt.threads.status_checker)
 	click napari._qt.threads.status_checker "https://github.com/napari/napari/tree/main/napari/_qt/threads/status_checker.py" _blank
 	napari._qt.utils(napari._qt.utils)
+	napari._qt.utils --> napari._qt.qt_main_window
 	click napari._qt.utils "https://github.com/napari/napari/tree/main/napari/_qt/utils.py" _blank
 	napari._qt.widgets.qt_command_palette(napari._qt.widgets.qt_command_palette)
 	napari._qt.widgets.qt_command_palette --> napari._qt.qt_main_window

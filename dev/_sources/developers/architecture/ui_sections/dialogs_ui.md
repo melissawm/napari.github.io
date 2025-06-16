@@ -89,6 +89,7 @@ graph LR
 	napari._qt.qt_viewer --> napari._qt.widgets.qt_dims
 	click napari._qt.qt_viewer "https://github.com/napari/napari/tree/main/napari/_qt/qt_viewer.py" _blank
 	napari._qt.utils(napari._qt.utils)
+	napari._qt.utils --> napari._qt.qt_main_window
 	click napari._qt.utils "https://github.com/napari/napari/tree/main/napari/_qt/utils.py" _blank
 	napari._qt.widgets.qt_color_swatch(napari._qt.widgets.qt_color_swatch)
 	napari._qt.widgets.qt_color_swatch --> napari._qt.dialogs.qt_modal
