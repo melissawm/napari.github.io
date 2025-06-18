@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=98ca66ad"></script>
+    <script src="../../../../_static/documentation_options.js?v=16c0c50d"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1237,6 +1237,7 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset_editable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_on_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selected</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
         <span class="c1"># this method is slated for removal.  don&#39;t add anything new.</span>
@@ -2614,7 +2615,8 @@ window.addEventListener("load", load);
                     <span class="n">action</span><span class="o">=</span><span class="n">ActionType</span><span class="o">.</span><span class="n">ADDED</span><span class="p">,</span>
                     <span class="n">data_indices</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,),</span>
                     <span class="n">vertex_indices</span><span class="o">=</span><span class="p">((),),</span>
-                <span class="p">)</span></div>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">features</span><span class="p">()</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_init_shapes</span><span class="p">(</span>
@@ -3279,6 +3281,7 @@ window.addEventListener("load", load);
                 <span class="p">),</span>
                 <span class="n">vertex_indices</span><span class="o">=</span><span class="p">((),),</span>
             <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">selected_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_finish_drawing</span><span class="p">()</span></div>
 
@@ -3623,6 +3626,7 @@ window.addEventListener("load", load);
             <span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">move_to_front</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Shapes.to_masks">
 <a class="viewcode-back" href="../../../../api/napari.layers.Shapes.html#napari.layers.Shapes.to_masks">[docs]</a>

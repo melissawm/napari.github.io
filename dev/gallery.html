@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=98ca66ad"></script>
+    <script src="_static/documentation_options.js?v=16c0c50d"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -483,12 +483,21 @@
 <li class="toctree-l4"><a class="reference internal" href="gallery/viewer_fps_label.html">Viewer FPS label</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/gui.html">gui (15)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/features-table.html">features-table (5)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="gallery/add_labels_with_features.html">Add labels with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/add_points_with_features.html">Add points with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/add_shapes_with_features.html">Add shapes with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/features_table_widget.html">Features table widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/nD_points_with_features.html">nD points with features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="_tags/gui.html">gui (16)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="gallery/3Dimage_plane_rendering.html">3D image plane rendering</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/action_manager.html">Action manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/bbox_annotator.html">bbox annotator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/custom_key_bindings.html">Custom key bindings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/custom_mouse_functions.html">Custom mouse functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gallery/features_table_widget.html">Features table widget</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/fourier_transform_playground.html">Fourier transform playground</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/get_current_viewer.html">Get current viewer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gallery/image_custom_kernel.html">Custom image interpolation kernels</a></li>
@@ -883,6 +892,9 @@ on using napari in Jupyter notebooks.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Display multiple layer types one of them representing ROIs, add scale bar, and export unscaled and scaled rois. The scale bar will always be within the screenshot of the ROI."><img alt="" src="_images/sphx_glr_export_rois_thumb.png" />
 <p><a class="reference internal" href="gallery/export_rois.html#sphx-glr-gallery-export-rois-py"><span class="std std-ref">Export regions of interest (ROIs) to png</span></a></p>
   <div class="sphx-glr-thumbnail-title">Export regions of interest (ROIs) to png</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Visualize and interact with the features of a layer via the builtin Features table widget. The widget can be used to navigate, edit, select, copy/paste, and save the features of a compatible layer (such as Points, Labels or Shapes). Selection is synchronized between the table widget and the data. When selecting rows in the table widget, the corresponding data will be selected on the layer. When selecting data on the layer, the corresponding row in the table widget will be selected. on the layer and viceversa."><img alt="" src="_images/sphx_glr_features_table_widget_thumb.png" />
+<p><a class="reference internal" href="gallery/features_table_widget.html#sphx-glr-gallery-features-table-widget-py"><span class="std std-ref">Features table widget</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Features table widget</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Generate an image by adding arbitrary 2D sine waves and observe how the fourier transform&#x27;s real and imaginary components are affected by the changes. Threading is used to smoothly animate the waves."><img alt="" src="_images/sphx_glr_fourier_transform_playground_thumb.png" />
 <p><a class="reference internal" href="gallery/fourier_transform_playground.html#sphx-glr-gallery-fourier-transform-playground-py"><span class="std std-ref">Fourier transform playground</span></a></p>
   <div class="sphx-glr-thumbnail-title">Fourier transform playground</div>
@@ -937,7 +949,7 @@ on using napari in Jupyter notebooks.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Overlay a 3D segmentation on a 4D time series."><img alt="" src="_images/sphx_glr_mixed-dimensions-labels_thumb.png" />
 <p><a class="reference internal" href="gallery/mixed-dimensions-labels.html#sphx-glr-gallery-mixed-dimensions-labels-py"><span class="std std-ref">Mixed dimensions labels</span></a></p>
   <div class="sphx-glr-thumbnail-title">Mixed dimensions labels</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example updating the status bar with line profile info while dragging lines around in a shapes layer."><img alt="" src="_images/sphx_glr_mouse_drag_callback_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use a mouse drag callback in Napari to compute and print the average intensity along line shapes as they are moved."><img alt="" src="_images/sphx_glr_mouse_drag_callback_thumb.png" />
 <p><a class="reference internal" href="gallery/mouse_drag_callback.html#sphx-glr-gallery-mouse-drag-callback-py"><span class="std std-ref">Mouse drag callback</span></a></p>
   <div class="sphx-glr-thumbnail-title">Mouse drag callback</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This is an example of how to have more than one viewer in the same napari window. Additional viewers state will be synchronized with the main viewer. Switching to 3D display will only impact the main viewer."><img alt="" src="_images/sphx_glr_multiple_viewer_widget_thumb.png" />

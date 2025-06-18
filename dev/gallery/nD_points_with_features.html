@@ -13,10 +13,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://napari.org/gallery/nD_points_with_features.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="Display one points layer ontop of one 4-D image layer using the add_points and add_image APIs, where the markes are visible as nD objects across the dimensions, specified by their size Tags: visualization-nD Download Jupyter notebook: nD_points_with_features.ipynb Download Python source code: nD_..." />
+<meta property="og:description" content="Display one points layer ontop of one 4-D image layer using the add_points and add_image APIs, where the markes are visible as nD objects across the dimensions, specified by their size Tags: visualization-nD, features-table Download Jupyter notebook: nD_points_with_features.ipynb Download Python ..." />
 <meta property="og:image" content="https://napari.org/dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="Display one points layer ontop of one 4-D image layer using the add_points and add_image APIs, where the markes are visible as nD objects across the dimensions, specified by their size Tags: visualization-nD Download Jupyter notebook: nD_points_with_features.ipynb Download Python source code: nD_..." />
+<meta name="description" content="Display one points layer ontop of one 4-D image layer using the add_points and add_image APIs, where the markes are visible as nD objects across the dimensions, specified by their size Tags: visualization-nD, features-table Download Jupyter notebook: nD_points_with_features.ipynb Download Python ..." />
 
     <title>nD points with features &#8212; napari</title>
   
@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=98ca66ad"></script>
+    <script src="../_static/documentation_options.js?v=16c0c50d"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,8 +74,8 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="nD shapes" href="nD_shapes.html" />
-    <link rel="prev" title="nD points" href="nD_points.html" />
+    <link rel="next" title="My tags: gui" href="../_tags/gui.html" />
+    <link rel="prev" title="Features table widget" href="features_table_widget.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="dev" />
@@ -483,12 +483,21 @@
 <li class="toctree-l4"><a class="reference internal" href="viewer_fps_label.html">Viewer FPS label</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../_tags/gui.html">gui (15)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../_tags/features-table.html">features-table (5)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="add_labels_with_features.html">Add labels with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="add_points_with_features.html">Add points with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="add_shapes_with_features.html">Add shapes with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="features_table_widget.html">Features table widget</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">nD points with features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../_tags/gui.html">gui (16)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="3Dimage_plane_rendering.html">3D image plane rendering</a></li>
 <li class="toctree-l4"><a class="reference internal" href="action_manager.html">Action manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bbox_annotator.html">bbox annotator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="custom_key_bindings.html">Custom key bindings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="custom_mouse_functions.html">Custom mouse functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="features_table_widget.html">Features table widget</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fourier_transform_playground.html">Fourier transform playground</a></li>
 <li class="toctree-l4"><a class="reference internal" href="get_current_viewer.html">Get current viewer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="image_custom_kernel.html">Custom image interpolation kernels</a></li>
@@ -740,7 +749,7 @@
     <li class="breadcrumb-item"><a href="../_tags/tagsindex.html" class="nav-link">Tags</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../_tags/visualization-nd.html" class="nav-link">My tags: visualization-nD</a></li>
+    <li class="breadcrumb-item"><a href="../_tags/features-table.html" class="nav-link">My tags: features-table</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">nD points with features</span></li>
   </ul>
@@ -770,7 +779,7 @@ Jupyter notebook.</p>
 <p>Display one points layer ontop of one 4-D image layer using the
 add_points and add_image APIs, where the markes are visible as nD objects
 across the dimensions, specified by their size</p>
-<p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/visualization-nd.html">visualization-nD</a></p>
+<p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/visualization-nd.html">visualization-nD</a><span>, </span><a class="reference external" href="../_tags/features-table.html">features-table</a></p>
 <img src="../_images/sphx_glr_nD_points_with_features_001.png" srcset="../_images/sphx_glr_nD_points_with_features_001.png" alt="nD points with features" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
 
@@ -845,20 +854,20 @@ across the dimensions, specified by their size</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="nD_points.html"
+       href="features_table_widget.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">nD points</p>
+        <p class="prev-next-title">Features table widget</p>
       </div>
     </a>
     <a class="right-next"
-       href="nD_shapes.html"
+       href="../_tags/gui.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">nD shapes</p>
+        <p class="prev-next-title">My tags: gui</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

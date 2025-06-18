@@ -11,6 +11,7 @@ caption: With this tag
 ../gallery/bbox_annotator.rst
 ../gallery/custom_key_bindings.rst
 ../gallery/custom_mouse_functions.rst
+../gallery/features_table_widget.rst
 ../gallery/fourier_transform_playground.rst
 ../gallery/get_current_viewer.rst
 ../gallery/image_custom_kernel.rst
