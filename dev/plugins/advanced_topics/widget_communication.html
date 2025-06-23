@@ -9,16 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/svg+xml" href="../../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="In-depth guide to plugin testing" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="Widget communication" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://napari.org/plugins/testing_workshop_docs/index.html" />
+<meta property="og:url" content="https://napari.org/plugins/advanced_topics/widget_communication.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="This is the frontpage for the tutorial developed from the January 2022 workshop on testing. This tutorial will be more meaningful to you if you are familiar with the Python programming language and napari software. These lessons summarize the information in the video and should stand on their own..." />
+<meta property="og:description" content="Sometimes complex workflows require access to other docked widgets, information from other plugins, which may be created by other developers. Access another plugin widget with viewer.window.add_plugin_dock_widget: If a desired plugin widget is already docked in the viewer, calling the add_plugin_..." />
 <meta property="og:image" content="https://napari.org/dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="This is the frontpage for the tutorial developed from the January 2022 workshop on testing. This tutorial will be more meaningful to you if you are familiar with the Python programming language and napari software. These lessons summarize the information in the video and should stand on their own..." />
+<meta name="description" content="Sometimes complex workflows require access to other docked widgets, information from other plugins, which may be created by other developers. Access another plugin widget with viewer.window.add_plugin_dock_widget: If a desired plugin widget is already docked in the viewer, calling the add_plugin_..." />
 
-    <title>In-depth guide to plugin testing &#8212; napari</title>
+    <title>Widget communication &#8212; napari</title>
   
   
   
@@ -64,7 +64,7 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="napari.org" defer="defer" src="https://plausible.io/js/plausible.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'plugins/testing_workshop_docs/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'plugins/advanced_topics/widget_communication';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
@@ -74,8 +74,8 @@
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1: Python’s assert keyword" href="1-pythons-assert-keyword.html" />
-    <link rel="prev" title="Publish your plugin" href="../testing_and_publishing/deploy.html" />
+    <link rel="next" title="Technical references" href="../technical_references/index.html" />
+    <link rel="prev" title="First generation plugins (Deprecated)" href="npe1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="dev" />
@@ -253,6 +253,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -409,24 +413,24 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../testing_and_publishing/index.html">Testing and publishing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../testing_and_publishing/index.html">Testing and publishing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../testing_and_publishing/test.html">Testing guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing_and_publishing/deploy.html">Publish your plugin</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">In-depth guide to plugin testing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="1-pythons-assert-keyword.html">1: Python’s assert keyword</a></li>
-<li class="toctree-l3"><a class="reference internal" href="2-pytest-testing-frameworks.html">2: Pytest testing framework</a></li>
-<li class="toctree-l3"><a class="reference internal" href="3-readers-and-fixtures.html">3: Readers and fixtures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="4-test-coverage.html">4: Test coverage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="testing-resources.html">Testing resources</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../testing_workshop_docs/index.html">In-depth guide to plugin testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing_workshop_docs/1-pythons-assert-keyword.html">1: Python’s assert keyword</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing_workshop_docs/2-pytest-testing-frameworks.html">2: Pytest testing framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing_workshop_docs/3-readers-and-fixtures.html">3: Readers and fixtures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing_workshop_docs/4-test-coverage.html">4: Test coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing_workshop_docs/testing-resources.html">Testing resources</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_topics/index.html">Advanced Topics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_topics/npe2_migration_guide.html">Migration to <code class="docutils literal notranslate"><span class="pre">npe2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_topics/adapted_plugin_guide.html">Changes to the plugin engine in 0.6.0</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_topics/npe1.html">First generation plugins (<em>Deprecated</em>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_topics/widget_communication.html">Widget communication</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Advanced Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="npe2_migration_guide.html">Migration to <code class="docutils literal notranslate"><span class="pre">npe2</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="adapted_plugin_guide.html">Changes to the plugin engine in 0.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npe1.html">First generation plugins (<em>Deprecated</em>)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Widget communication</a></li>
 
 
 
@@ -504,9 +508,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Plugins</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../testing_and_publishing/index.html" class="nav-link">Testing and publishing</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Advanced Topics</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">In-depth guide to plugin testing</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Widget communication</span></li>
   </ul>
 </nav>
 </div>
@@ -523,17 +527,133 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="in-depth-guide-to-plugin-testing">
-<span id="id1"></span><h1>In-depth guide to plugin testing<a class="headerlink" href="#in-depth-guide-to-plugin-testing" title="Link to this heading">#</a></h1>
-<p>This is the frontpage for the tutorial developed from the <a class="reference external" href="https://youtu.be/IsHYnI8Tbfw?list=PLilvrWT8aLuYID3YZ7KddS5ky2SaH4DKK">January 2022 workshop on testing</a>. This tutorial will be more meaningful to you if you are familiar with the Python programming language and napari software. These lessons summarize the information in the video and should stand on their own. The lessons  are listed here with the timings on the video next to each:</p>
-<ul class="simple">
-<li><p>1: <a class="reference internal" href="1-pythons-assert-keyword.html#plugin-testing-workshop-assert"><span class="std std-ref">Python’s assert keyword</span></a> - starts at minute <a class="reference external" href="https://youtu.be/IsHYnI8Tbfw?list=PLilvrWT8aLuYID3YZ7KddS5ky2SaH4DKK&amp;amp;t=333">5:23</a>.</p></li>
-<li><p>2: <a class="reference internal" href="2-pytest-testing-frameworks.html#plugin-testing-workshop-pytest"><span class="std std-ref">Pytest testing framework</span></a> - starts at minute <a class="reference external" href="https://youtu.be/IsHYnI8Tbfw?list=PLilvrWT8aLuYID3YZ7KddS5ky2SaH4DKK&amp;amp;t=561">9:21</a>.</p></li>
-<li><p>3: <a class="reference internal" href="3-readers-and-fixtures.html#plugin-testing-workshop-reader-fixtures"><span class="std std-ref">Readers and fixtures</span></a> - starts at minute <a class="reference external" href="https://youtu.be/IsHYnI8Tbfw?list=PLilvrWT8aLuYID3YZ7KddS5ky2SaH4DKK&amp;amp;t=942">15:42</a>.</p></li>
-<li><p>4: <a class="reference internal" href="4-test-coverage.html#plugin-testing-workshop-coverage"><span class="std std-ref">Test coverage</span></a> - starts at minute <a class="reference external" href="https://youtu.be/IsHYnI8Tbfw?list=PLilvrWT8aLuYID3YZ7KddS5ky2SaH4DKK&amp;amp;t=1706">28:26</a>.</p></li>
-<li><p>Resource links: <a class="reference internal" href="testing-resources.html#plugin-testing-resources"><span class="std std-ref">Testing resources</span></a></p></li>
-</ul>
-<div class="toctree-wrapper compound">
+  <section id="widget-communication">
+<span id="id1"></span><h1>Widget communication<a class="headerlink" href="#widget-communication" title="Link to this heading">#</a></h1>
+<p>Sometimes complex workflows require access to other docked widgets, information from other plugins, which may be created by other developers.</p>
+</section>
+<section id="access-another-plugin-widget-with-viewer-window-add-plugin-dock-widget">
+<h1>Access another plugin widget with <code class="docutils literal notranslate"><span class="pre">viewer.window.add_plugin_dock_widget</span></code><a class="headerlink" href="#access-another-plugin-widget-with-viewer-window-add-plugin-dock-widget" title="Link to this heading">#</a></h1>
+<p>If a desired plugin widget is already docked in the viewer,
+calling the <code class="docutils literal notranslate"><span class="pre">add_plugin_dock_widget</span></code> method will return the existing widget instance.
+If the desired widget is absent, it will be created and added to the viewer.
+<code class="docutils literal notranslate"><span class="pre">add_plugin_dock_widget</span></code> is the most convenient way to access a plugin widget that is required by your plugin.</p>
+</section>
+<section id="access-a-widget-by-name-with-viewer-window-dock-widgets">
+<h1>Access a widget by name with <code class="docutils literal notranslate"><span class="pre">viewer.window.dock_widgets</span></code><a class="headerlink" href="#access-a-widget-by-name-with-viewer-window-dock-widgets" title="Link to this heading">#</a></h1>
+<p>If the goal is to access a target widget, without creating a widget, use the <code class="docutils literal notranslate"><span class="pre">dock_widgets</span></code> property.
+The <code class="docutils literal notranslate"><span class="pre">dock_widgets</span></code> property provides access to a read-only mapping of all docked widgets in the viewer.</p>
+<p>This method returns the widget itself, not the <code class="docutils literal notranslate"><span class="pre">QtViewerDockWidget</span></code> wrapper.</p>
+<p><em>The <code class="docutils literal notranslate"><span class="pre">dock_widgets</span></code> property was added in napari 0.6.2.</em></p>
+</section>
+<section id="widget-name">
+<h1>Widget name<a class="headerlink" href="#widget-name" title="Link to this heading">#</a></h1>
+<p>When a widget is added to the viewer via a plugin contribution (by using a menu or <code class="docutils literal notranslate"><span class="pre">add_plugin_dock_widget</span></code>), it is assigned a name.
+The name is created by concatenating the widget <code class="docutils literal notranslate"><span class="pre">display_name</span></code> from the plugin manifest and the plugin name in parentheses, like this: <code class="docutils literal notranslate"><span class="pre">&quot;Widget</span> <span class="pre">name</span> <span class="pre">(plugin_name)&quot;</span></code>. Note: this is the same name that is shown in the napari menus and the title bar of the widget.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We don’t recommend using the <code class="docutils literal notranslate"><span class="pre">viewer.window._dock_widgets</span></code> attribute to access <code class="docutils literal notranslate"><span class="pre">QtViewerDockWidget</span></code> widgets. This is a private, internal API and may stop working on any release. Please use the above described public API instead.</p>
+</div>
+</section>
+<section id="shared-state-between-widgets">
+<h1>Shared state between widgets<a class="headerlink" href="#shared-state-between-widgets" title="Link to this heading">#</a></h1>
+<p>If you have a need for multiple widgets to share a state, you can use a shared global object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psygnal</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventedModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GlobalState</span><span class="p">(</span><span class="n">EventedModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A global state object that can be shared between widgets.&quot;&quot;&quot;</span>
+    <span class="c1"># Define your shared state attributes here</span>
+    <span class="n">some_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">another_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+    
+
+<span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_global_state</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the global state object, creating it if it does not exist.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">GLOBAL_STATE</span>
+    <span class="k">if</span> <span class="n">GLOBAL_STATE</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="n">GlobalState</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">GLOBAL_STATE</span>
+</pre></div>
+</div>
+<p>If you need to be sure that state is related to a specific viewer, you can use the <code class="docutils literal notranslate"><span class="pre">viewer</span></code> as a dictionary key:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">weakref</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakKeyDictionary</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">psygnal</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventedModel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GlobalState</span><span class="p">(</span><span class="n">EventedModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A global state object that can be shared between widgets.&quot;&quot;&quot;</span>
+    <span class="c1"># Define your shared state attributes here</span>
+    <span class="n">some_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">another_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+
+<span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="n">WeakKeyDictionary</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_global_state</span><span class="p">(</span><span class="n">viewer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the global state object for the given viewer, creating it if it does not exist.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">viewer</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GLOBAL_STATE</span><span class="p">:</span>
+        <span class="n">GLOBAL_STATE</span><span class="p">[</span><span class="n">viewer</span><span class="p">]</span> <span class="o">=</span> <span class="n">GlobalState</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">GLOBAL_STATE</span><span class="p">[</span><span class="n">viewer</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To store state between sessions, you can enhance the <code class="docutils literal notranslate"><span class="pre">get_global_state</span></code> to load state from persistent storage, such as a drive or database.
+To get a location for storing the state, you can use the <code class="docutils literal notranslate"><span class="pre">get_settings().config_path</span></code> to have a path per napari installation.
+Or you can use <a class="reference external" href="https://pypi.org/project/appdirs/"><code class="docutils literal notranslate"><span class="pre">appdirs.user_config_dir</span></code></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">psygnal</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventedModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GlobalState</span><span class="p">(</span><span class="n">EventedModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A global state object that can be shared between widgets.&quot;&quot;&quot;</span>
+    <span class="c1"># Define your shared state attributes here</span>
+    <span class="n">some_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">another_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+
+
+<span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_save_path</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the path to save the global state.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_settings</span>
+
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">get_settings</span><span class="p">()</span><span class="o">.</span><span class="n">config_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;plugin_name&quot;</span> <span class="o">/</span> <span class="s2">&quot;state.json&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_global_state</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the global state object, creating it if it does not exist.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">GLOBAL_STATE</span>
+    <span class="k">if</span> <span class="n">GLOBAL_STATE</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">save_path</span> <span class="o">=</span> <span class="n">get_save_path</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">save_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="c1"># Load the state from the file</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">save_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="n">GlobalState</span><span class="o">.</span><span class="n">model_validate_json</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+            <span class="k">except</span> <span class="n">ValidationError</span><span class="p">:</span>
+                <span class="c1"># If loading fails, create a new global state</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Failed to load global state from file, creating a new one.&quot;</span><span class="p">)</span>
+                <span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="n">GlobalState</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Create a new global state if the file does not exist</span>
+            <span class="n">GLOBAL_STATE</span> <span class="o">=</span> <span class="n">GlobalState</span><span class="p">()</span>
+        <span class="n">GLOBAL_STATE</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">save_global_state</span><span class="p">)</span>  <span class="c1"># Connect the save event to the global state on change</span>
+    <span class="k">return</span> <span class="n">GLOBAL_STATE</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_global_state</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save the global state by serializing it to a file.&quot;&quot;&quot;</span>
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">get_save_path</span><span class="p">()</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">source</span>  <span class="c1"># The source of the event is the global state object</span>
+    <span class="n">save_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Ensure the directory exists</span>
+
+    <span class="k">with</span> <span class="n">save_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">)</span>
+</pre></div>
 </div>
 </section>
 
@@ -548,20 +668,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../testing_and_publishing/deploy.html"
+       href="npe1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Publish your plugin</p>
+        <p class="prev-next-title">First generation plugins (<em>Deprecated</em>)</p>
       </div>
     </a>
     <a class="right-next"
-       href="1-pythons-assert-keyword.html"
+       href="../technical_references/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1: Python’s assert keyword</p>
+        <p class="prev-next-title">Technical references</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -571,6 +691,29 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Widget communication</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-another-plugin-widget-with-viewer-window-add-plugin-dock-widget">Access another plugin widget with <code class="docutils literal notranslate"><span class="pre">viewer.window.add_plugin_dock_widget</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#access-a-widget-by-name-with-viewer-window-dock-widgets">Access a widget by name with <code class="docutils literal notranslate"><span class="pre">viewer.window.dock_widgets</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#widget-name">Widget name</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-state-between-widgets">Shared state between widgets</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
