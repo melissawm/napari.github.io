@@ -13,10 +13,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://napari.org/developers/contributing/documentation/index.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="This guide will teach you how to submit new documents to napari’s usage documentation. Organization of the documentation: The napari documentation is built from multiple sources that are organized into repositories: The main napari documentation is built from sources located at the napari/docs re..." />
+<meta property="og:description" content="This guide will teach you how to contribute to napari’s documentation. To begin contributing, you will need: Some familiarity with git., A GitHub account.. Choose an approach to contributing: Contributing without a local setup: This is a simpler approach that allows you to make small changes to t..." />
 <meta property="og:image" content="https://napari.org/dev/../dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="This guide will teach you how to submit new documents to napari’s usage documentation. Organization of the documentation: The napari documentation is built from multiple sources that are organized into repositories: The main napari documentation is built from sources located at the napari/docs re..." />
+<meta name="description" content="This guide will teach you how to contribute to napari’s documentation. To begin contributing, you will need: Some familiarity with git., A GitHub account.. Choose an approach to contributing: Contributing without a local setup: This is a simpler approach that allows you to make small changes to t..." />
 
     <title>Contributing Documentation &#8212; napari</title>
   
@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../dev/_static/documentation_options.js?v=0924ef50"></script>
+    <script src="../../../../dev/_static/documentation_options.js?v=2cd6ef73"></script>
     <script src="../../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -544,10 +544,33 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="contributing-documentation">
 <span id="contributing-docs"></span><h1>Contributing Documentation<a class="headerlink" href="#contributing-documentation" title="Link to this heading">#</a></h1>
-<p>This guide will teach you how to submit new documents to napari’s usage
-documentation.</p>
+<p>This guide will teach you how to contribute to napari’s documentation.</p>
+<p>To begin contributing, you will need:</p>
+<ul class="simple">
+<li><p>Some familiarity with <a class="reference external" href="https://git-scm.com"><code class="docutils literal notranslate"><span class="pre">git</span></code></a>.</p></li>
+<li><p>A <a class="reference external" href="https://github.com">GitHub</a> account.</p></li>
+</ul>
+<p>Choose an approach to contributing:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#contributing-to-the-napari-documentation-without-a-local-setup"><strong>Contributing without a local setup</strong></a>: This is a simpler approach that allows you
+to make small changes to the documentation without needing to set up a local
+environment. This approach is useful for quick edits or if you are not familiar
+with Git or the command line.</p></li>
+<li><p><a class="reference internal" href="#contributing-to-the-napari-documentation-with-a-local-setup"><strong>Contributing with a local setup</strong></a>: This is the recommended approach if you are
+making significant changes to the documentation, or if you want to preview your
+changes <em>before</em> submitting them. This approach requires a local setup of the
+napari and docs repositories.</p></li>
+</ol>
+<section id="ask-for-guidance">
+<h2>Ask for guidance<a class="headerlink" href="#ask-for-guidance" title="Link to this heading">#</a></h2>
+<p>If you’d like to contribute a brand new document to our usage section, it’s
+worth <a class="reference external" href="https://github.com/napari/docs/issues/new/choose">opening an issue</a>
+on our repository to discuss the content you’d like to see and get some
+early feedback from the community. The napari team can also suggest what type of
+document would be best suited, and whether there are already existing documents
+that could be expanded to include your proposed content.</p>
 <section id="organization-of-the-documentation">
-<h2>Organization of the documentation<a class="headerlink" href="#organization-of-the-documentation" title="Link to this heading">#</a></h2>
+<h3>Organization of the documentation<a class="headerlink" href="#organization-of-the-documentation" title="Link to this heading">#</a></h3>
 <p>The napari documentation is built from multiple sources that are organized into repositories:</p>
 <ol class="arabic simple">
 <li><p>The main napari documentation is built from sources located at the
@@ -573,6 +596,65 @@ Docstrings are written in the <a class="reference external" href="https://www.sp
 and any modifications to them should be submitted to the <a class="reference external" href="https://github.com/napari/napari">napari/napari</a> repository.</p></li>
 <li><p>Importantly, all of the dependencies for building the documentation are in the <a class="reference external" href="https://github.com/napari/napari/blob/main/pyproject.toml">the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> of napari/napari</a> under the optional dependencies <code class="docutils literal notranslate"><span class="pre">docs</span></code> and <code class="docutils literal notranslate"><span class="pre">gallery</span></code>.</p></li>
 </ol>
+</section>
+<section id="what-types-of-documents-can-i-contribute">
+<h3>What types of documents can I contribute?<a class="headerlink" href="#what-types-of-documents-can-i-contribute" title="Link to this heading">#</a></h3>
+<p>Go to the <a class="reference external" href="https://github.com/napari/docs"><code class="docutils literal notranslate"><span class="pre">napari/docs</span></code></a> repo to find examples of documents you might
+want to contribute. The paths are listed in parentheses below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../guides/index.html#explanations"><span class="std std-ref"><strong>Explanations</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/guides"><code class="docutils literal notranslate"><span class="pre">napari/docs/guides</span></code></a>):
+in depth content about napari architecture, development choices and some complex features</p></li>
+<li><p><a class="reference internal" href="../../../tutorials/index.html#tutorials"><span class="std std-ref"><strong>Tutorials</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/tutorials"><code class="docutils literal notranslate"><span class="pre">napari/docs/tutorials</span></code></a>):
+detailed, reproducible step by step guides, usually combining multiple napari features to complete a potentially complex task</p></li>
+<li><p><a class="reference internal" href="../../../howtos/index.html#how-tos"><span class="std std-ref"><strong>How-tos</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/howtos"><code class="docutils literal notranslate"><span class="pre">napari/docs/howtos</span></code></a>):
+simple step by step guides demonstrating the use of common features</p></li>
+<li><p><a class="reference internal" href="../../../tutorials/start_index.html#getting-started"><span class="std std-ref"><strong>Getting started</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/tutorials/fundamentals"><code class="docutils literal notranslate"><span class="pre">napari/docs/tutorials/fundamentals</span></code></a>):
+these documents are a mix of tutorials and how-tos covering the fundamentals of installing and working with napari for beginners</p></li>
+</ul>
+<p>The <a class="reference internal" href="../../../gallery.html#gallery"><span class="std std-ref"><strong>Examples gallery</strong></span></a> sources are in the <a class="reference external" href="https://github.com/napari/napari/tree/main/examples">main <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository</a>
+and show code examples of how to use napari.</p>
+<div class="tip admonition">
+<p class="admonition-title">Plugin documentation</p>
+<p>Some of the source files for the <a class="reference internal" href="../../../plugins/index.html#plugins-index"><span class="std std-ref">Plugin documentation</span></a> are
+autogenerated from sources in the <a class="reference external" href="https://github.com/napari/npe2">napari/npe2</a>
+repository. Any edits should be made in the <code class="docutils literal notranslate"><span class="pre">napari/npe2</span></code> repo, and not to the
+copy you may have in the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> folder. These files’ names start with the
+<code class="docutils literal notranslate"><span class="pre">_npe2_</span></code> prefix and are located under the <code class="docutils literal notranslate"><span class="pre">docs/plugins</span></code> folder. They will be
+generated when the documentation is built and the
+<a class="reference external" href="https://github.com/napari/docs/blob/main/docs/_scripts/prep_docs.py"><code class="docutils literal notranslate"><span class="pre">prep_docs.py</span></code></a>
+script is run. See our
+<a class="reference external" href="https://github.com/napari/docs/blob/main/Makefile">Makefile</a> for more details.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Got materials for a workshop?</p>
+<p>If you already have teaching materials e.g. recordings, slide decks or Jupyter notebooks
+hosted somewhere, you can add links to these on our <a class="reference internal" href="../../../further-resources/napari-workshops.html#workshops"><span class="std std-ref">napari workshops</span></a> page.</p>
+</div>
+</section>
+<section id="formats-and-templates">
+<h3>Formats and templates<a class="headerlink" href="#formats-and-templates" title="Link to this heading">#</a></h3>
+<p>Our goal is that all tutorials and how-tos are easily downloadable and
+executable by our users. This helps ensure that they are reproducible and makes
+them easier to maintain. <a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are a great
+option for our documents, because they allow you to easily combine code and well
+formatted text in markdown and can be executed automatically. However, their
+<a class="reference external" href="https://numpy.org/numpy-tutorials/content/pairing.html#background">raw JSON format</a>
+is not great for version control, so we use <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">MyST Markdown</a>
+documents in our repository and on <a class="reference external" href="https://napari.org">napari.org</a>.</p>
+<p>If you are amending existing documentation, you can do so in your preferred text
+editor. If you wish to add a new tutorial or a how-to, we recommend you use our
+<a class="reference internal" href="docs_template.html#docs-template"><span class="std std-ref">template</span></a>. Inside the template you’ll find handy tips for
+taking screenshots of the viewer, hiding code cells, using style guides and what
+to include in the required prerequisites section.</p>
+<p>To use the template, make a copy of <code class="docutils literal notranslate"><span class="pre">docs/developers/documentation/docs_template.md</span></code>
+and rename it to match your content. You can edit the template directly in
+Jupyter notebook, or in your preferred text editor.</p>
+<div class="tip admonition">
+<p class="admonition-title">Already have a notebook?</p>
+<p>If you have an existing <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> Jupyter notebook that you’d like to contribute, you can convert it to MyST markdown and then edit the <code class="docutils literal notranslate"><span class="pre">.md</span></code> file to prepare it for contributing. For the conversion, you can install the <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">jupytext</span></code> package</a>. Run <code class="docutils literal notranslate"><span class="pre">jupytext</span> <span class="pre">your-notebook.ipynb</span> <span class="pre">--to</span> <span class="pre">myst</span></code> to create a new MyST version of your file,
+<code class="docutils literal notranslate"><span class="pre">your-notebook.md</span></code>. Edit this file to include the relevant sections from the docs template.</p>
+</div>
+</section>
 </section>
 <section id="contributing-to-the-napari-documentation-without-a-local-setup">
 <span id="contributing-without-local-setup"></span><h2>Contributing to the napari documentation without a local setup<a class="headerlink" href="#contributing-to-the-napari-documentation-without-a-local-setup" title="Link to this heading">#</a></h2>
@@ -611,21 +693,12 @@ the “Triggered Docs Artifact Build” link.</p>
 table of contents where necessary (by placing a reference to your new file in <a class="reference internal" href="#update-toc"><span class="std std-ref">docs/_toc.yml</span></a>)
 and making sure your documentation has built correctly.</p>
 </section>
-<section id="prerequisites-for-a-local-setup-to-contribute-to-the-napari-documentation">
-<span id="prerequisites"></span><h2>Prerequisites for a local setup to contribute to the napari documentation<a class="headerlink" href="#prerequisites-for-a-local-setup-to-contribute-to-the-napari-documentation" title="Link to this heading">#</a></h2>
-<p>Prerequisites depend on the type of contribution you wish to make. In general,
-you will require:</p>
-<ul class="simple">
-<li><p>Some familiarity with <a class="reference external" href="https://git-scm.com"><code class="docutils literal notranslate"><span class="pre">git</span></code></a>.</p></li>
-<li><p>A <a class="reference external" href="https://github.com">GitHub</a> account.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The napari documentation is built using <code class="docutils literal notranslate"><span class="pre">make</span></code> which does not work on paths which contain spaces.
-It is important that you clone the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> repository to a path that does not contain spaces.
-For example, <code class="docutils literal notranslate"><span class="pre">C:\Users\myusername\Documents\GitHub\napari-docs</span></code> is a valid path, but <br />
-<code class="docutils literal notranslate"><span class="pre">C:\Users\my</span> <span class="pre">username\Documents\GitHub\napari-docs</span></code> is not.</p>
-</div>
+<section id="contributing-to-the-napari-documentation-with-a-local-setup">
+<h2>Contributing to the napari documentation with a local setup<a class="headerlink" href="#contributing-to-the-napari-documentation-with-a-local-setup" title="Link to this heading">#</a></h2>
+<section id="prerequisites">
+<span id="id1"></span><h3>0. Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<section id="fork-and-clone-the-napari-and-docs-repositories">
+<h4>Fork and clone the napari and docs repositories<a class="headerlink" href="#fork-and-clone-the-napari-and-docs-repositories" title="Link to this heading">#</a></h4>
 <p>You should first <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">fork</a>
 and then clone both the <a class="reference external" href="https://github.com/napari/napari">napari/napari</a> and the <a class="reference external" href="https://github.com/napari/docs">napari/docs</a> repositories to your
 machine. To clone these repositories, you can follow any of the options in the <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">GitHub guide to cloning</a> (if you run into issues refer to <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/troubleshooting-cloning-errors">the troubleshooting guide</a>).
@@ -641,11 +714,22 @@ gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </sp
 a local repository folder named <code class="docutils literal notranslate"><span class="pre">napari-docs</span></code>. Alternately, you could also
 rename the repository when forking <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> to <code class="docutils literal notranslate"><span class="pre">napari-docs</span></code> and then clone it via <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">repo</span> <span class="pre">clone</span> <span class="pre">&lt;your-username&gt;/napari-docs</span></code>.</p>
 </div>
-<p>Next, navigate to your local clone of the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The napari documentation is built using <code class="docutils literal notranslate"><span class="pre">make</span></code> which does not work on paths which contain spaces.
+It is important that you clone the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> repository to a path that does not contain spaces.
+For example, <code class="docutils literal notranslate"><span class="pre">C:\Users\myusername\Documents\GitHub\napari-docs</span></code> is a valid path, but <br />
+<code class="docutils literal notranslate"><span class="pre">C:\Users\my</span> <span class="pre">username\Documents\GitHub\napari-docs</span></code> is not.</p>
+</div>
+</section>
+<section id="set-up-a-developer-installation-of-napari-for-docs-building">
+<h4>Set up a developer installation of napari for docs building<a class="headerlink" href="#set-up-a-developer-installation-of-napari-for-docs-building" title="Link to this heading">#</a></h4>
+<p>Because the API reference documentation (autogenerated from the napari code docstrings), the example gallery, and the documentation dependencies are sourced from the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository, before you can build the documentation locally you will need to install from the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository.</p>
+<p>First, navigate to your local clone of the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>napari
 </pre></div>
 </div>
-<p>Because the API reference documentation (autogenerated from the napari code docstrings), the example gallery, and the documentation dependencies are sourced from the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository, before you can build the documentation locally you will need to install from the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository. You will need:</p>
+<p>You will need:</p>
 <ul>
 <li><p>a clean virtual environment (e.g. <code class="docutils literal notranslate"><span class="pre">conda</span></code>)  with Python 3.10-3.13—remember to activate it!;</p></li>
 <li><p>a from-source, editable installation of napari with the optional <code class="docutils literal notranslate"><span class="pre">docs</span></code> dependencies and a Qt backend. From the <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository directory run, for example:</p>
@@ -665,69 +749,16 @@ rename the repository when forking <code class="docutils literal notranslate"><s
 </div>
 <p>Here you will be able to build the documentation, allowing you to preview your document locally as it would appear on <code class="docutils literal notranslate"><span class="pre">napari.org</span></code>.</p>
 </section>
-<section id="before-you-start">
-<h2>0. Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h2>
-<p>If you’d like to contribute a brand new document to our usage section, it might
-be worth <a class="reference external" href="https://github.com/napari/docs/issues/new/choose">opening an issue</a>
-on our repository first to discuss the content you’d like to see and get some
-early feedback from the community. The napari team can also suggest what type of
-document would be best suited, and whether there are already existing documents
-that could be expanded to include the content you think is lacking.</p>
-<p>Go to your local <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> folder to find examples of documents you might
-want to contribute. The paths are listed in parentheses below.</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../../../guides/index.html#explanations"><span class="std std-ref"><strong>Explanations</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/guides"><code class="docutils literal notranslate"><span class="pre">napari/docs/guides</span></code></a>):
-in depth content about napari architecture, development choices and some complex features</p></li>
-<li><p><a class="reference internal" href="../../../tutorials/index.html#tutorials"><span class="std std-ref"><strong>Tutorials</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/tutorials"><code class="docutils literal notranslate"><span class="pre">napari/docs/tutorials</span></code></a>):
-detailed, reproducible step by step guides, usually combining multiple napari features to complete a potentially complex task</p></li>
-<li><p><a class="reference internal" href="../../../howtos/index.html#how-tos"><span class="std std-ref"><strong>How-tos</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/howtos"><code class="docutils literal notranslate"><span class="pre">napari/docs/howtos</span></code></a>):
-simple step by step guides demonstrating the use of common features</p></li>
-<li><p><a class="reference internal" href="../../../tutorials/start_index.html#getting-started"><span class="std std-ref"><strong>Getting started</strong></span></a> (in <a class="reference external" href="https://github.com/napari/docs/tree/main/docs/tutorials/fundamentals"><code class="docutils literal notranslate"><span class="pre">napari/docs/tutorials/fundamentals</span></code></a>):
-these documents are a mix of tutorials and how-tos covering the fundamentals of installing and working with napari for beginners</p></li>
-</ul>
-<div class="tip admonition">
-<p class="admonition-title">Plugin documentation</p>
-<p>Some of the source files for the <a class="reference internal" href="../../../plugins/index.html#plugins-index"><span class="std std-ref">Plugin documentation</span></a> are
-autogenerated from sources in the <a class="reference external" href="https://github.com/napari/npe2">napari/npe2</a>
-repository. Any edits should be made in the <code class="docutils literal notranslate"><span class="pre">napari/npe2</span></code> repo, and not to the
-copy you may have in the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> folder. These files’ names start with the
-<code class="docutils literal notranslate"><span class="pre">_npe2_</span></code> prefix and are located under the <code class="docutils literal notranslate"><span class="pre">docs/plugins</span></code> folder. They will be
-generated when the documentation is built and the
-<a class="reference external" href="https://github.com/napari/docs/blob/main/docs/_scripts/prep_docs.py"><code class="docutils literal notranslate"><span class="pre">prep_docs.py</span></code></a>
-script is run. See our
-<a class="reference external" href="https://github.com/napari/docs/blob/main/Makefile">Makefile</a> for more details.</p>
-</div>
-<p>The <a class="reference internal" href="../../../gallery.html#gallery"><span class="std std-ref"><strong>Examples gallery</strong></span></a> sources are in the <a class="reference external" href="https://github.com/napari/napari/tree/main/examples">main <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> repository</a>
-and show code examples of how to use napari.</p>
-<div class="tip admonition">
-<p class="admonition-title">Got materials for a workshop?</p>
-<p>If you already have teaching materials e.g. recordings, slide decks or Jupyter notebooks
-hosted somewhere, you can add links to these on our <a class="reference internal" href="../../../further-resources/napari-workshops.html#workshops"><span class="std std-ref">napari workshops</span></a> page.</p>
-</div>
 </section>
 <section id="write-your-documentation">
-<span id="contributing-docs-step-one"></span><h2>1. Write your documentation<a class="headerlink" href="#write-your-documentation" title="Link to this heading">#</a></h2>
-<p>Our goal is that all tutorials and how-tos are easily downloadable and
-executable by our users. This helps ensure that they are reproducible and makes
-them easier to maintain. <a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> are a great
-option for our documents, because they allow you to easily combine code and well
-formatted text in markdown and can be executed automatically. However, their
-<a class="reference external" href="https://numpy.org/numpy-tutorials/content/pairing.html#background">raw JSON format</a>
-is not great for version control, so we use <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">MyST Markdown</a>
-documents in our repository and on <a class="reference external" href="https://napari.org">napari.org</a>.</p>
-<p>If you are amending existing documentation, you can do so in your preferred text
-editor. If you wish to add a new tutorial or a how-to, we recommend you use our
-<a class="reference internal" href="docs_template.html#docs-template"><span class="std std-ref">template</span></a>. Inside the template you’ll find handy tips for
-taking screenshots of the viewer, hiding code cells, using style guides and what
-to include in the required prerequisites section.</p>
-<p>To use the template, make a copy of <code class="docutils literal notranslate"><span class="pre">docs/developers/documentation/docs_template.md</span></code>
-and rename it to match your content. You can edit the template directly in
-Jupyter notebook, or in your preferred text editor.</p>
-<div class="tip admonition">
-<p class="admonition-title">Already have a notebook?</p>
-<p>If you have an existing <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> Jupyter notebook that you’d like to contribute, you can convert it to MyST markdown and then edit the <code class="docutils literal notranslate"><span class="pre">.md</span></code> file to prepare it for contributing. For the conversion, you can install the <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">jupytext</span></code> package</a>. Run <code class="docutils literal notranslate"><span class="pre">jupytext</span> <span class="pre">your-notebook.ipynb</span> <span class="pre">--to</span> <span class="pre">myst</span></code> to create a new MyST version of your file,
-<code class="docutils literal notranslate"><span class="pre">your-notebook.md</span></code>. Edit this file to include the relevant sections from the docs template.</p>
-</div>
+<span id="contributing-docs-step-one"></span><h3>1. Write your documentation<a class="headerlink" href="#write-your-documentation" title="Link to this heading">#</a></h3>
+<p>Depending on the type of contribution you are making, you may be able to skip
+some steps:</p>
+<ul class="simple">
+<li><p>If you are amending an existing document you can skip straight
+to <a class="reference internal" href="#preview-your-document">3. Preview your document</a></p></li>
+<li><p>For all other documentation changes, follow the steps below.</p></li>
+</ul>
 <div class="tip admonition">
 <p class="admonition-title">How to check for broken links</p>
 <p>If you have modified lots of document links, you can check that they all work by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">linkcheck-files</span></code> in the <code class="docutils literal notranslate"><span class="pre">napari/docs</span></code> folder. However, this can take a long time to run, so if you have only modified links in a single document, you can run:</p>
@@ -735,21 +766,11 @@ Jupyter notebook, or in your preferred text editor.</p>
 </pre></div>
 </div>
 </div>
-<section id="next-steps">
-<h3>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h3>
-<p>Depending on the type of contribution you are making, you may be able to skip
-some steps:</p>
-<ul class="simple">
-<li><p>If you are amending an existing document you can skip straight
-to <a class="reference internal" href="#preview-your-document">Step #3 - Preview your document</a></p></li>
-<li><p>For all other documentation changes, follow the steps below.</p></li>
-</ul>
-</section>
 </section>
 <section id="update-the-table-of-contents-toc">
-<span id="update-toc"></span><h2>2. Update the table of contents (TOC)<a class="headerlink" href="#update-the-table-of-contents-toc" title="Link to this heading">#</a></h2>
+<span id="update-toc"></span><h3>2. Update the table of contents (TOC)<a class="headerlink" href="#update-the-table-of-contents-toc" title="Link to this heading">#</a></h3>
 <p>If you are adding a new documentation file, you will need to add your document
-to the correct folder based on its content (see the <a class="reference internal" href="#before-you-start">list above</a>
+to the correct folder based on its content (see the <a class="reference internal" href="#organization-of-the-documentation">list above</a>
 for common locations), and update <code class="docutils literal notranslate"><span class="pre">docs/_toc.yml</span></code>.</p>
 <p>If you’re adding a document
 to an existing group, simply add a new <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">file:</span></code> entry in the appropriate spot. For example, if I wanted to add
@@ -807,7 +828,7 @@ together with an <code class="docutils literal notranslate"><span class="pre">in
 </div>
 </section>
 <section id="preview-your-document">
-<h2>3. Preview your document<a class="headerlink" href="#preview-your-document" title="Link to this heading">#</a></h2>
+<h3>3. Preview your document<a class="headerlink" href="#preview-your-document" title="Link to this heading">#</a></h3>
 <p>If your documentation change includes code, it is important that you ensure
 the code is working and executable. This is why you will need to have a
 development installation of napari installed. <a class="reference internal" href="../../../gallery.html#gallery"><span class="std std-ref">Examples</span></a>
@@ -827,7 +848,7 @@ for the continuous integration workflow to finish building the documentation.</p
 <p>To see the markdown document structure and content change in real-time without building, you can use a MyST markdown preview tool like <a class="reference external" href="https://code.visualstudio.com/">VScode</a> with the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight">MyST extension</a> or <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/live-preview.html#">MyST live preview</a>. This can also help you to spot any markdown formatting errors that may have occurred. However, this MyST markdown preview will have some differences to the final built html documentation due to autogeneration, so it is still important to build and preview the documentation before submitting your pull request.</p>
 </div>
 <section id="building-locally">
-<span id="build-docs-locally"></span><h3>3.1. Building locally<a class="headerlink" href="#building-locally" title="Link to this heading">#</a></h3>
+<span id="build-docs-locally"></span><h4>3.1. Building locally<a class="headerlink" href="#building-locally" title="Link to this heading">#</a></h4>
 <p>To build the documentation locally we use the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Make_(software)"><code class="docutils literal notranslate"><span class="pre">make</span></code> tool</a> to execute
 <a class="reference external" href="https://www.sphinx-doc.org/en/master/"><code class="docutils literal notranslate"><span class="pre">sphinx</span></code></a> builds, as defined in the
@@ -843,7 +864,7 @@ website with your new document.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The entire build process pulls together files from multiple sources and can be
-time consuoming, with a full build taking upwards of 20 minutes. Additionally,
+time consuming, with a full build taking upwards of 20 minutes. Additionally,
 building the examples gallery, as well as executing notebook cells will
 repeatedly launch <code class="docutils literal notranslate"><span class="pre">napari</span></code>, resulting in flashing windows.</p>
 <p>As a result, there are several partial-build options available in addition to
@@ -855,7 +876,7 @@ edit a single napari example. See <a class="reference internal" href="#building-
 for details.</p>
 </div>
 <section id="running-a-full-build">
-<h4>Running a full build<a class="headerlink" href="#running-a-full-build" title="Link to this heading">#</a></h4>
+<h5>Running a full build<a class="headerlink" href="#running-a-full-build" title="Link to this heading">#</a></h5>
 <p>To run a full documentation build from scratch, matching what is deployed
 at <a class="reference external" href="https://napari.org">napari.org</a>, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
@@ -940,67 +961,83 @@ build.</p>
 </div>
 </section>
 <section id="building-what-you-need">
-<h4>Building what you need<a class="headerlink" href="#building-what-you-need" title="Link to this heading">#</a></h4>
-<p><strong>If you only want to edit materials in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository, including
+<span id="id2"></span><h5>Building what you need<a class="headerlink" href="#building-what-you-need" title="Link to this heading">#</a></h5>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">napari/docs and notebooks</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>If you only want to edit materials in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository, including
 notebook code cell outputs (e.g. any of the tutorials), but you don’t need any
-of the external materials built</strong>, then you can use the <code class="docutils literal notranslate"><span class="pre">docs</span></code> build variant. Run:</p>
+of the sources in <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> built</strong>, then you can use the <code class="docutils literal notranslate"><span class="pre">docs</span></code> build variant. Run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs
 </pre></div>
 </div>
-<p>or</p>
+<p class="sd-card-text">or</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs-live
 </pre></div>
 </div>
-<p>Note that this will still execute the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository notebook code cells,
+<p class="sd-card-text">Note that this will still execute the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository notebook code cells,
 resulting in napari windows popping up repeatedly. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
 variant</span></a> will open a browser preview and auto-rebuild any pages you edit.</p>
-<p><strong>If you you only want to edit copy in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository and don’t need any
-of the external materials built nor the notebook cell outputs</strong>, then you can use one
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">napari/docs only</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>If you you only want to edit copy in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> repository and don’t need any
+of the sources in <code class="docutils literal notranslate"><span class="pre">napari/napari</span></code> built nor the notebook cell outputs</strong>, then you can use one
 of the <code class="docutils literal notranslate"><span class="pre">slim</span></code> builds. Run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slim
 </pre></div>
 </div>
-<p>or</p>
+<p class="sd-card-text">or</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimfast
 </pre></div>
 </div>
-<p>or</p>
+<p class="sd-card-text">or</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimfast-live
 </pre></div>
 </div>
-<p>These will not build any of the external content (such as the gallery) and will
+<p class="sd-card-text">These will not build any of the external content (such as the gallery) and will
 not execute code cells. <code class="docutils literal notranslate"><span class="pre">slimfast</span></code> will run the build in parallel, which can be
 significantly faster on multi-core machines (under a minute), while <code class="docutils literal notranslate"><span class="pre">slimfast-live</span></code>
 will open a browser preview and auto-rebuild any pages you edit.
 See <a class="reference internal" href="#live-builds"><span class="std std-ref">the <code class="docutils literal notranslate"><span class="pre">-live</span></code> builds note</span></a>.</p>
-<p><strong>If you are working on the napari examples and want to build the whole examples
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">napari/docs and napari gallery of examples</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>If you are working on the napari examples and want to build the whole examples
 gallery, but not other external content nor the <code class="docutils literal notranslate"><span class="pre">docs</span></code> notebook cell outputs</strong>,
 then you can use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery
 </pre></div>
 </div>
-<p>or</p>
+<p class="sd-card-text">or</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery-live
 </pre></div>
 </div>
-<p>These builds will build the documentation with the entire gallery. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
+<p class="sd-card-text">These builds will build the documentation with the entire gallery. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
 variant</span></a> will will open a browser preview and auto-rebuild any pages you edit.</p>
-<p><strong>If you want to work on a single example Python script in the napari repository
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">napari/docs and a single example in the gallery</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>If you want to work on a single example Python script in the napari repository
 <code class="docutils literal notranslate"><span class="pre">examples</span></code> directory</strong>, you can build the documentation with just a chosen example by
 specifying it by name. For example, to build the <code class="docutils literal notranslate"><span class="pre">vortex.py</span></code> example, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery-vortex
 </pre></div>
 </div>
-<p>or</p>
+<p class="sd-card-text">or</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>slimgallery-live-vortex
 </pre></div>
 </div>
-<p>This will only execute and build the single chosen example. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
+<p class="sd-card-text">This will only execute and build the single chosen example. The <a class="reference internal" href="#live-builds"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">-live</span></code>
 variant</span></a> will open a browser preview and auto-rebuild the single example or
 any other <code class="docutils literal notranslate"><span class="pre">docs</span></code> pages on edit, but it will not run any other code cells.</p>
-</section>
+</div>
+</details></section>
 <section id="additional-utilities-in-the-makefile">
-<h4>Additional utilities in the Makefile<a class="headerlink" href="#additional-utilities-in-the-makefile" title="Link to this heading">#</a></h4>
+<h5>Additional utilities in the Makefile<a class="headerlink" href="#additional-utilities-in-the-makefile" title="Link to this heading">#</a></h5>
 <p>To clean up (delete) generated content, including auto-generated <code class="docutils literal notranslate"><span class="pre">.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">.md</span></code> files,
 as well as the <code class="docutils literal notranslate"><span class="pre">html</span></code> files, you can use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean
@@ -1028,7 +1065,7 @@ generate place-holder stub files for the external content.</p>
 </section>
 </section>
 <section id="view-in-github-pull-request">
-<span id="doc-view-ci"></span><h3>3.2. View in GitHub Pull Request<a class="headerlink" href="#view-in-github-pull-request" title="Link to this heading">#</a></h3>
+<span id="doc-view-ci"></span><h4>3.2. View in GitHub Pull Request<a class="headerlink" href="#view-in-github-pull-request" title="Link to this heading">#</a></h4>
 <p>Alternatively, when you submit your pull request, the
 <a class="reference external" href="https://github.com/napari/docs">napari/docs</a> repository
 continuous integration includes a GitHub action that builds the documentation
@@ -1047,13 +1084,13 @@ complicated, but the built docs will always match what is deployed to
 repository, its continuous integration will only build the docs in CircleCI. Thus
 you will only be able to preview the documentation on CircleCI.</p>
 <section id="preview-on-circleci">
-<h4>Preview on CircleCI<a class="headerlink" href="#preview-on-circleci" title="Link to this heading">#</a></h4>
+<h5>Preview on CircleCI<a class="headerlink" href="#preview-on-circleci" title="Link to this heading">#</a></h5>
 <p>Simply click on <strong>Details</strong> next to the <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">the</span> <span class="pre">rendered</span> <span class="pre">docs</span> <span class="pre">here!</span></code> at the bottom
 of your pull request:</p>
 <p><img alt="CircleCI check is highlighted" src="../../../_images/circleci-link.png" /></p>
 </section>
 <section id="download-documentation-artifact">
-<h4>Download documentation artifact<a class="headerlink" href="#download-documentation-artifact" title="Link to this heading">#</a></h4>
+<span id="id3"></span><h5>Download documentation artifact<a class="headerlink" href="#download-documentation-artifact" title="Link to this heading">#</a></h5>
 <ol class="arabic simple">
 <li><p>Click on <strong>Details</strong> next to
 <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">&amp;</span> <span class="pre">Deploy</span> <span class="pre">PR</span> <span class="pre">Docs</span> <span class="pre">/</span> <span class="pre">Build</span> <span class="pre">&amp;</span> <span class="pre">Upload</span> <span class="pre">Artifact</span> <span class="pre">(pull_request)</span></code>:</p></li>
@@ -1080,16 +1117,17 @@ $<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </spa
 </section>
 </section>
 <section id="submit-your-pull-request">
-<span id="docs-submit-pull-request"></span><h2>4. Submit your pull request<a class="headerlink" href="#submit-your-pull-request" title="Link to this heading">#</a></h2>
+<span id="docs-submit-pull-request"></span><h3>4. Submit your pull request<a class="headerlink" href="#submit-your-pull-request" title="Link to this heading">#</a></h3>
 <p>Once you have written and previewed your document, it’s time to open a pull request to <a class="reference external" href="https://github.com/napari/docs">napari’s docs repository</a> and contribute it to our codebase.</p>
 <p>If you are simply contributing one file (e.g., a tutorial or how-to page) you
 can use the <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository">GitHub web interface to open your pull request</a>. Ensure your
 document is added to the correct folder based on its content (see the
-<a class="reference internal" href="#before-you-start">list above</a> for common locations).</p>
+<a class="reference internal" href="#organization-of-the-documentation">list above</a> for common locations).</p>
 <p>To open a pull request via git and the command line, follow <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github">this guide</a>.
 You can also reach out to us on <a class="reference external" href="https://napari.zulipchat.com/#narrow/stream/212875-general">zulip</a> for assistance!</p>
 <p>Not sure where to place your document or update <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>? Make a best guess and open the pull request - the napari team will
 help you edit your document and find the right spot!</p>
+</section>
 </section>
 <section id="building-the-documentation-on-windows">
 <h2>Building the documentation on Windows<a class="headerlink" href="#building-the-documentation-on-windows" title="Link to this heading">#</a></h2>
@@ -1147,7 +1185,7 @@ We will use Ubuntu for this guide since it is the default WSL distribution, easy
 <li><p>You can test that all of this OpenGL setup is working by running <code class="docutils literal notranslate"><span class="pre">glxgears</span></code> from the Ubuntu terminal. You should see a window with some gears spinning.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">fontconfig</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyqt5-tools</span></code>.</p></li>
-<li><p>Fork the napari docs repository and clone it to the same parent folder as the napari repository (see <a class="reference internal" href="#prerequisites"><span class="std std-ref">Prerequisites for a local setup to contribute to the napari documentation</span></a>). Then navigate to the napari docs folder via <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">napari-docs</span></code>.</p></li>
+<li><p>Fork the napari docs repository and clone it to the same parent folder as the napari repository (see <a class="reference internal" href="#prerequisites"><span class="std std-ref">0. Prerequisites</span></a>). Then navigate to the napari docs folder via <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">napari-docs</span></code>.</p></li>
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">make</span></code> with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">make</span></code>.</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> or other <code class="docutils literal notranslate"><span class="pre">make</span></code> commands to build the documentation.</p></li>
 </ol>
@@ -1283,30 +1321,38 @@ block is present in all contributed examples.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#organization-of-the-documentation">Organization of the documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-for-guidance">Ask for guidance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#organization-of-the-documentation">Organization of the documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-types-of-documents-can-i-contribute">What types of documents can I contribute?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formats-and-templates">Formats and templates</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-to-the-napari-documentation-without-a-local-setup">Contributing to the napari documentation without a local setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-for-a-local-setup-to-contribute-to-the-napari-documentation">Prerequisites for a local setup to contribute to the napari documentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">0. Before you start</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-documentation">1. Write your documentation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-to-the-napari-documentation-with-a-local-setup">Contributing to the napari documentation with a local setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-and-clone-the-napari-and-docs-repositories">Fork and clone the napari and docs repositories</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-developer-installation-of-napari-for-docs-building">Set up a developer installation of napari for docs building</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-table-of-contents-toc">2. Update the table of contents (TOC)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-your-document">3. Preview your document</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-locally">3.1. Building locally</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-full-build">Running a full build</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#building-what-you-need">Building what you need</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-utilities-in-the-makefile">Additional utilities in the Makefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-documentation">1. Write your documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-table-of-contents-toc">2. Update the table of contents (TOC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-your-document">3. Preview your document</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#building-locally">3.1. Building locally</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-full-build">Running a full build</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#building-what-you-need">Building what you need</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-utilities-in-the-makefile">Additional utilities in the Makefile</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-in-github-pull-request">3.2. View in GitHub Pull Request</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-on-circleci">Preview on CircleCI</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-documentation-artifact">Download documentation artifact</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#view-in-github-pull-request">3.2. View in GitHub Pull Request</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-on-circleci">Preview on CircleCI</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#download-documentation-artifact">Download documentation artifact</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-your-pull-request">4. Submit your pull request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-your-pull-request">4. Submit your pull request</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation-on-windows">Building the documentation on Windows</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-bash">Git Bash</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-subsystem-for-linux-wsl">Windows Subsystem for Linux (WSL)</a></li>
