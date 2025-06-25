@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=d6af3ed8"></script>
+    <script src="../../../_static/documentation_options.js?v=9c02ae75"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -2228,7 +2228,7 @@ window.addEventListener("load", load);
         <span class="c1"># Part 2: compute canvas size and view based on parameters</span>
         <span class="k">if</span> <span class="n">fit_to_data_extent</span><span class="p">:</span>
             <span class="c1"># Use the same scene parameter calculations as in viewer_model.fit_to_view</span>
-            <span class="n">extent</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">total_size</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_get_scene_parameters</span><span class="p">()</span>
             <span class="p">)</span>
             <span class="n">extent_scale</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
@@ -2236,14 +2236,14 @@ window.addEventListener("load", load);
             <span class="p">)</span>
 
             <span class="k">if</span> <span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-                <span class="n">total_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_calculate_bounding_box</span><span class="p">(</span>
+                <span class="n">scene_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_calculate_bounding_box</span><span class="p">(</span>
                     <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
                     <span class="n">view_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">view_direction</span><span class="p">,</span>
                     <span class="n">up_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">up_direction</span><span class="p">,</span>
                 <span class="p">)</span>
 
             <span class="c1"># adjust size by the scale, to return the size in real pixels</span>
-            <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">total_size</span> <span class="o">/</span> <span class="n">extent_scale</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">scene_size</span> <span class="o">/</span> <span class="n">extent_scale</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_window</span><span class="o">.</span><span class="n">devicePixelRatio</span><span class="p">()</span>
@@ -2256,10 +2256,16 @@ window.addEventListener("load", load);
 
         <span class="c1"># Part 3: take the screenshot</span>
         <span class="k">if</span> <span class="n">canvas_only</span><span class="p">:</span>
-            <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">fit_to_data_extent</span><span class="p">:</span>
+                <span class="n">grid_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">actual_shape</span><span class="p">(</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">((</span><span class="n">size</span> <span class="o">*</span> <span class="n">grid_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
                 <span class="c1"># tight view around data</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_qt_viewer</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">size</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">img</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>

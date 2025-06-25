@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=d6af3ed8"></script>
+    <script src="../../../_static/documentation_options.js?v=9c02ae75"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -737,8 +737,6 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">reset_view</span><span class="o">=</span><span class="n">Event</span><span class="p">)</span>
 
         <span class="c1"># Connect events</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_grid_change</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_layers</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">ndisplay</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_layers</span><span class="p">)</span>
@@ -757,7 +755,6 @@ window.addEventListener("load", load);
         <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_status_from_cursor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">inserted</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_add_layer</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">removed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_remove_layer</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">reordered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_grid_change</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">reordered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_layers_change</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_active_layer</span><span class="p">)</span>
 
@@ -904,7 +901,7 @@ window.addEventListener("load", load);
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the current data view to the canvas.</span>
 
 <span class="sd">        Adjusts the camera zoom and centers the view so that all visible layers</span>
-<span class="sd">        are within the canvas, accounting for the current grid mode and margin.</span>
+<span class="sd">        are within the canvas.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -912,10 +909,10 @@ window.addEventListener("load", load);
 <span class="sd">            Margin as fraction of the canvas, showing blank space around the</span>
 <span class="sd">            data. Default is 0.05 (5% of the canvas).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Get the scene parameters, including the total_size of the grid</span>
-        <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scene_parameters</span><span class="p">()</span>
+        <span class="c1"># Get the scene parameters</span>
+        <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">corner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scene_parameters</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_view_center</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_view_center</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">)</span>
 
         <span class="n">scale_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scale_factor</span><span class="p">(</span><span class="n">margin</span><span class="p">)</span>
 
@@ -924,17 +921,16 @@ window.addEventListener("load", load);
         <span class="c1"># The default value used below will zoom such that the whole field</span>
         <span class="c1"># of view will occupy 95% of the canvas on the most filled axis</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scene_size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># TODO: does this even ever happen?</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_2d_camera_zoom</span><span class="p">(</span>
-                <span class="n">total_size</span><span class="p">,</span> <span class="n">scale_factor</span>
+                <span class="n">scene_size</span><span class="p">,</span> <span class="n">scale_factor</span>
             <span class="p">)</span>
 
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_3d_camera_zoom</span><span class="p">(</span>
-                <span class="n">extent</span><span class="p">,</span> <span class="n">total_size</span><span class="p">,</span> <span class="n">scale_factor</span>
-            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_3d_camera_zoom</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span>
 
         <span class="c1"># Emit a reset view event, which is no longer used internally, but</span>
         <span class="c1"># which maybe useful for building on napari.</span>
@@ -957,32 +953,17 @@ window.addEventListener("load", load);
 <span class="sd">            Size of the bounding box containing all layers.</span>
 <span class="sd">        corner : array, shape (D,)</span>
 <span class="sd">            Minimum coordinate values of the bounding box (i.e. extent[0]).</span>
-<span class="sd">        total_size : array, shape (D,)</span>
-<span class="sd">            Total size of the scene including grid spacing</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sliced_extent_world_augmented</span>
         <span class="n">scene_size</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">corner</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">grid_size</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">actual_shape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)))</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scene_size</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid_size</span><span class="p">):</span>
-            <span class="n">grid_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scene_size</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span> <span class="o">+</span> <span class="n">grid_size</span>
+        <span class="k">return</span> <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">corner</span>
 
-        <span class="c1"># total spacing accounts for the distance between layers</span>
-        <span class="c1"># results in 0 if not grid mode (grid_size = [1, 1] - 1)</span>
-        <span class="n">total_spacing</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scene_size</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
-            <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">spacing</span>
-            <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="n">total_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">scene_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span> <span class="o">+</span> <span class="n">total_spacing</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_view_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the center of the view based on the scene size.&quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_view_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corner</span><span class="p">,</span> <span class="n">total_size</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the center of the view based on the total size.&quot;&quot;&quot;</span>
-
-        <span class="n">center_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">total_size</span><span class="p">,</span> <span class="mi">2</span><span class="p">))[</span>
+        <span class="n">center_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">corner</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">scene_size</span><span class="p">,</span> <span class="mi">2</span><span class="p">))[</span>
             <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="p">:</span>
         <span class="p">]</span>
         <span class="n">center</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
@@ -1007,30 +988,41 @@ window.addEventListener("load", load);
             <span class="p">)</span>
         <span class="p">)</span>
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_viewbox_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the size of a single viewbox (whether grid is enabled or not).</span>
+
+<span class="sd">        If grid.border_width &gt; 0, that&#39;s accounted for too.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">viewbox_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">enabled</span><span class="p">:</span>
+            <span class="n">grid_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">actual_shape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)))</span>
+            <span class="n">spacing_pixels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">_compute_canvas_spacing</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="c1"># Now calculate actual available space</span>
+            <span class="n">total_gap_space</span> <span class="o">=</span> <span class="n">spacing_pixels</span> <span class="o">*</span> <span class="p">(</span><span class="n">grid_shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">available_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span> <span class="o">-</span> <span class="n">total_gap_space</span>
+            <span class="n">viewbox_size</span> <span class="o">=</span> <span class="n">available_space</span> <span class="o">/</span> <span class="n">grid_shape</span>
+        <span class="k">return</span> <span class="n">viewbox_size</span>
+
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_2d_camera_zoom</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">total_size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the camera zoom for 2D view.&quot;&quot;&quot;</span>
-        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">total_size</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scene_size</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
         <span class="n">scale</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_viewbox_size</span><span class="p">()</span> <span class="o">/</span> <span class="n">scale</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_3d_camera_zoom</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">extent</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">total_size</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">extent</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">float</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the zoom such that the minimum of the bounding box fits the canvas.&quot;&quot;&quot;</span>
-        <span class="n">grid_extent</span> <span class="o">=</span> <span class="n">extent</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="c1"># calculate max coords with grid spacing included</span>
-        <span class="n">grid_extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">total_size</span>
-
         <span class="n">bounding_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_bounding_box</span><span class="p">(</span>
-            <span class="n">extent</span><span class="o">=</span><span class="n">grid_extent</span><span class="p">,</span>
+            <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
             <span class="n">view_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">view_direction</span><span class="p">,</span>
             <span class="n">up_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">up_direction</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">bounding_box</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_viewbox_size</span><span class="p">()</span> <span class="o">/</span> <span class="n">bounding_box</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_bounding_box</span><span class="p">(</span>
@@ -1199,6 +1191,7 @@ window.addEventListener("load", load);
         <span class="n">tooltip_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">selection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">selection</span>
         <span class="n">active</span> <span class="o">=</span> <span class="n">selection</span><span class="o">.</span><span class="n">active</span>
+        <span class="c1"># TODO: this doesn&#39;t work well yet with grid mode (and is broken by wide borders too)</span>
 
         <span class="c1"># Compute the tooltip first since it is always needed.</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tooltip</span><span class="o">.</span><span class="n">visible</span> <span class="ow">and</span> <span class="n">active</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">active</span><span class="o">.</span><span class="n">_loaded</span><span class="p">:</span>
@@ -1276,46 +1269,6 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">help</span> <span class="o">=</span> <span class="n">active</span><span class="o">.</span><span class="n">help</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_on_grid_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Arrange the current layers is a 2D grid.&quot;&quot;&quot;</span>
-        <span class="n">extent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sliced_extent_world_augmented</span>
-        <span class="n">n_layers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
-            <span class="n">i_row</span><span class="p">,</span> <span class="n">i_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">position</span><span class="p">(</span><span class="n">n_layers</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_subplot</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="p">(</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_column</span><span class="p">),</span> <span class="n">extent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">spacing</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_subplot</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">layer</span><span class="p">:</span> <span class="n">Layer</span><span class="p">,</span>
-        <span class="n">position</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-        <span class="n">extent</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-        <span class="n">spacing</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shift a layer to a specified position in a 2D grid.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        layer : napari.layers.Layer</span>
-<span class="sd">            Layer that is to be moved.</span>
-<span class="sd">        position : 2-tuple of int</span>
-<span class="sd">            New position of layer in grid.</span>
-<span class="sd">        extent : array, shape (2, D)</span>
-<span class="sd">            Extent of the world.</span>
-<span class="sd">        spacing : float, optional</span>
-<span class="sd">            Value for spacing between layers. Negative values will</span>
-<span class="sd">            cause layers to overlap. Positive values will cause layers to</span>
-<span class="sd">            have space between them.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">scene_shift</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">position_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-        <span class="c1"># shift the layer in the grid by the extent of the scene</span>
-        <span class="n">translate_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">scene_shift</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span> <span class="n">position_array</span><span class="p">)</span>
-        <span class="c1"># calculate average scene extent, and use for a symmetrical spacing adjustment</span>
-        <span class="n">translate_2d</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scene_shift</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span> <span class="o">*</span> <span class="n">spacing</span> <span class="o">*</span> <span class="n">position_array</span>
-        <span class="n">translate</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">layer</span><span class="o">.</span><span class="n">ndim</span>
-        <span class="n">translate</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">translate_2d</span>
-        <span class="n">layer</span><span class="o">.</span><span class="n">_translate_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">translate</span><span class="p">)</span>
-
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">experimental</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Experimental commands for IPython console.</span>
@@ -1357,9 +1310,8 @@ window.addEventListener("load", load);
             <span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_on_layer_mode_change</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layer_help_from_mode</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
-        <span class="c1"># Update dims and grid model</span>
+        <span class="c1"># Update dims</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_on_layers_change</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_on_grid_change</span><span class="p">()</span>
         <span class="c1"># Slice current layer based on dims</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_layers</span><span class="p">(</span><span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">layer</span><span class="p">])</span>
 
@@ -1428,7 +1380,6 @@ window.addEventListener("load", load);
         <span class="n">disconnect_events</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_on_layers_change</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_on_grid_change</span><span class="p">()</span>
 
 <div class="viewcode-block" id="ViewerModel.add_layer">
 <a class="viewcode-back" href="../../../api/napari.components.ViewerModel.html#napari.components.ViewerModel.add_layer">[docs]</a>

@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=d6af3ed8"></script>
+    <script src="../../../_static/documentation_options.js?v=9c02ae75"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1134,7 +1134,8 @@ window.addEventListener("load", load);
         <span class="c1"># clipping in perspective projection, while still preserving enough</span>
         <span class="c1"># bit depth in the depth buffer to avoid artifacts. See discussion at:</span>
         <span class="c1"># https://github.com/napari/napari/pull/7529#issuecomment-2594203871</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">_3D_camera</span><span class="o">.</span><span class="n">depth_value</span> <span class="o">=</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">diameter</span>
+        <span class="k">for</span> <span class="n">camera</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">camera</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">grid_cameras</span><span class="p">:</span>
+            <span class="n">camera</span><span class="o">.</span><span class="n">_3D_camera</span><span class="o">.</span><span class="n">depth_value</span> <span class="o">=</span> <span class="mi">128</span> <span class="o">*</span> <span class="n">diameter</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_add_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;When a layer is added, set its parent and order.</span>

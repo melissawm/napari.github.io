@@ -50,68 +50,12 @@ Display a surface timeseries using data from nilearn
     [fetch_surf_nki_enhanced] Downloading data from 
     https://www.nitrc.org/frs/download.php/8261/A00028185_rh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [fetch_surf_nki_enhanced] Downloaded 17670144 of 42412120 bytes (41.7%%,    1.4s
-    remaining)
-    [fetch_surf_nki_enhanced]  ...done. (2 seconds, 0 min)
+    [fetch_surf_nki_enhanced]  ...done. (1 seconds, 0 min)
 
     [fetch_surf_nki_enhanced] Downloading data from 
     https://www.nitrc.org/frs/download.php/8260/A00028185_lh_preprocessed_fsaverage5
     _fwhm6.gii ...
-    [fetch_surf_nki_enhanced] Downloaded 253952 of 42402060 bytes (0.6%%,  2.9min 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 671744 of 42402060 bytes (1.6%%,  2.1min 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 1269760 of 42402060 bytes (3.0%%,  1.7min 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 2056192 of 42402060 bytes (4.8%%,  1.3min 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 3006464 of 42402060 bytes (7.1%%,  1.1min 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 3866624 of 42402060 bytes (9.1%%,  1.0min 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 4882432 of 42402060 bytes (11.5%%,   55.4s 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 6078464 of 42402060 bytes (14.3%%,   49.2s 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 7438336 of 42402060 bytes (17.5%%,   43.6s 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 8986624 of 42402060 bytes (21.2%%,   38.2s 
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 10682368 of 42402060 bytes (25.2%%,   33.5s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 12591104 of 42402060 bytes (29.7%%,   29.1s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 14639104 of 42402060 bytes (34.5%%,   25.2s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 16596992 of 42402060 bytes (39.1%%,   22.2s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 17956864 of 42402060 bytes (42.3%%,   20.8s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 19472384 of 42402060 bytes (45.9%%,   19.2s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 20848640 of 42402060 bytes (49.2%%,   17.9s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 22331392 of 42402060 bytes (52.7%%,   16.5s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 23953408 of 42402060 bytes (56.5%%,   14.9s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 25722880 of 42402060 bytes (60.7%%,   13.2s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 27664384 of 42402060 bytes (65.2%%,   11.4s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 29802496 of 42402060 bytes (70.3%%,    9.5s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 32137216 of 42402060 bytes (75.8%%,    7.5s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 34660352 of 42402060 bytes (81.7%%,    5.5s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 37216256 of 42402060 bytes (87.8%%,    3.6s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 39436288 of 42402060 bytes (93.0%%,    2.0s
-    remaining)
-    [fetch_surf_nki_enhanced] Downloaded 41992192 of 42402060 bytes (99.0%%,    0.3s
-    remaining)
-    [fetch_surf_nki_enhanced]  ...done. (28 seconds, 0 min)
+    [fetch_surf_nki_enhanced]  ...done. (1 seconds, 0 min)
 
 
 
@@ -161,11 +105,6 @@ Display a surface timeseries using data from nilearn
 
     if __name__ == '__main__':
         napari.run()
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 33.155 seconds)
 
 
 .. _sphx_glr_download_gallery_surface_timeseries.py:
