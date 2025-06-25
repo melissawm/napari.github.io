@@ -67,6 +67,7 @@ napari.qt.Window
 
    .. autosummary::
    
+      ~Window.dock_widgets
       ~Window.qt_viewer
    
    

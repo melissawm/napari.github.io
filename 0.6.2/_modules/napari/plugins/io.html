@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=32f10b68"></script>
+    <script src="../../../_static/documentation_options.js?v=da7d1f33"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -489,8 +489,6 @@ window.addEventListener("load", load);
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
-
     <span class="kn">from</span><span class="w"> </span><span class="nn">npe2.manifest.contributions</span><span class="w"> </span><span class="kn">import</span> <span class="n">WriterContribution</span>
 
 
@@ -959,7 +957,7 @@ window.addEventListener("load", load);
         <span class="p">)</span>
 
     <span class="c1"># Call the hook_caller</span>
-    <span class="n">written_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">hook_caller</span><span class="p">(</span>
+    <span class="n">written_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">hook_caller</span><span class="p">(</span>
         <span class="n">_plugin</span><span class="o">=</span><span class="n">plugin_name</span><span class="p">,</span>
         <span class="n">path</span><span class="o">=</span><span class="n">abspath_or_url</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
         <span class="n">data</span><span class="o">=</span><span class="n">layer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>

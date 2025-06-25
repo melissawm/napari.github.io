@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=32f10b68"></script>
+    <script src="../../../_static/documentation_options.js?v=da7d1f33"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -104,7 +104,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -489,6 +489,7 @@ window.addEventListener("load", load);
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../roadmaps/index.html">Roadmaps</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/active_roadmap.html">Napari Roadmap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/0_4.html">Roadmap 0.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/0_3_retrospective.html">Roadmap 0.3 Retrospective</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/0_3.html">Roadmap 0.3</a></li>
@@ -753,40 +754,40 @@ window.addEventListener("load", load);
 <section id="source-code-directory-layout-related-to-modules-inside-napari">
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
-├─_qt/
-│ ├─dialogs/
-│ │ ├─qt_about.py
-│ │ ├─shimmed_plugin_dialog.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_reader_dialog.py
-│ │ ├─screenshot_dialog.py
-│ │ ├─confirm_close_dialog.py
-│ │ ├─qt_plugin_report.py
-│ │ └─qt_modal.py
-│ ├─widgets/
-│ │ ├─qt_logger.py
-│ │ ├─qt_viewer_buttons.py
-│ │ └─qt_command_palette.py
-│ ├─qthreading.py
-│ ├─qt_viewer.py
-│ ├─__init__.py
-│ ├─_qapp_model/
-│ │ ├─qactions/
-│ │ │ ├─_file.py
-│ │ │ ├─_toggle_action.py
-│ │ │ ├─_window.py
-│ │ │ ├─_layerlist_context.py
-│ │ │ ├─_layers_actions.py
-│ │ │ ├─_help.py
-│ │ │ ├─_view.py
-│ │ │ ├─__init__.py
-│ │ │ ├─_plugins.py
-│ │ │ └─_debug.py
-│ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ └─qt_main_window.py
-└─viewer.py
+├─viewer.py
+└─_qt/
+  ├─widgets/
+  │ ├─qt_viewer_buttons.py
+  │ ├─qt_logger.py
+  │ └─qt_command_palette.py
+  ├─qt_main_window.py
+  ├─__init__.py
+  ├─qthreading.py
+  ├─dialogs/
+  │ ├─qt_plugin_report.py
+  │ ├─qt_reader_dialog.py
+  │ ├─qt_about.py
+  │ ├─preferences_dialog.py
+  │ ├─confirm_close_dialog.py
+  │ ├─screenshot_dialog.py
+  │ ├─shimmed_plugin_dialog.py
+  │ └─qt_modal.py
+  ├─_qapp_model/
+  │ ├─qactions/
+  │ │ ├─_toggle_action.py
+  │ │ ├─_layers_actions.py
+  │ │ ├─_view.py
+  │ │ ├─_layerlist_context.py
+  │ │ ├─_help.py
+  │ │ ├─__init__.py
+  │ │ ├─_window.py
+  │ │ ├─_debug.py
+  │ │ ├─_file.py
+  │ │ └─_plugins.py
+  │ └─injection/
+  │   ├─_qprocessors.py
+  │   └─_qproviders.py
+  └─qt_viewer.py
 </pre></div>
 </div>
 </section>

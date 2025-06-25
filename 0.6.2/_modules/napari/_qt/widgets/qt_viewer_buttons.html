@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=32f10b68"></script>
+    <script src="../../../../_static/documentation_options.js?v=da7d1f33"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -593,8 +593,8 @@ window.addEventListener("load", load);
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QLabeledDoubleSlider</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a labeled double slider widget.&quot;&quot;&quot;</span>
     <span class="n">slider</span> <span class="o">=</span> <span class="n">QLabeledDoubleSlider</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
-    <span class="n">slider</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">slider</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="o">*</span><span class="n">value_range</span><span class="p">)</span>
+    <span class="n">slider</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">slider</span><span class="o">.</span><span class="n">setDecimals</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span>
     <span class="n">slider</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">slider</span>
@@ -1046,14 +1046,13 @@ window.addEventListener("load", load);
         <span class="p">)</span>
 
         <span class="n">stride_help_msg</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-            <span class="s1">&#39;Number of layers to place in each grid square before moving on to the next square. The default ordering is to place the most visible layer in the top left corner of the grid. A negative stride will cause the order in which the layers are placed in the grid to be reversed. 0 is not a valid entry.&#39;</span>
+            <span class="s1">&#39;Number of layers to place in each grid viewbox before moving on to the next viewbox. The default ordering is to place the most visible layer in the top left corner of the grid. A negative stride will cause the order in which the layers are placed in the grid to be reversed. 0 is not a valid entry.&#39;</span>
         <span class="p">)</span>
 
         <span class="n">spacing_help_msg</span> <span class="o">=</span> <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
-            <span class="s1">&#39;Proportional spacing between grid layers. 0 has the layers touching. Positive values will space the layers apart, and negative values will overlap the layers.&#39;</span>
+            <span class="s1">&#39;Spacing between grid viewboxes. If below 1, interpreted as percentage of the viewbox size, otherwise interpreted as screen pixels. 0 has the layers touching, positive values will space the grid positions apart.&#39;</span>
         <span class="p">)</span>
 
-        <span class="c1"># set up</span>
         <span class="n">stride_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">__fields__</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">type_</span><span class="o">.</span><span class="n">ge</span>
         <span class="n">stride_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">__fields__</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">type_</span><span class="o">.</span><span class="n">le</span>
         <span class="n">stride_not</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">__fields__</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">type_</span><span class="o">.</span><span class="n">ne</span>
@@ -1175,7 +1174,6 @@ window.addEventListener("load", load);
 <span class="sd">        value : float</span>
 <span class="sd">            New grid spacing value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">value</span></div>
 
 

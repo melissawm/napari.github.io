@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=32f10b68"></script>
+    <script src="../../../_static/documentation_options.js?v=da7d1f33"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -1280,7 +1280,7 @@ window.addEventListener("load", load);
 <span class="c1">############################################################################</span>
 
 <span class="c1"># This is a variant on the above pattern, it uses QThread instead of Qrunnable</span>
-<span class="c1"># see https://doc.qt.io/qt-5/threads-technologies.html#comparison-of-solutions</span>
+<span class="c1"># see https://doc.qt.io/qt-6/threads-technologies.html#comparison-of-solutions</span>
 <span class="c1"># (it appears from that table that QRunnable cannot emit or receive signals,</span>
 <span class="c1"># but we circumvent that here with our WorkerBase class that also inherits from</span>
 <span class="c1"># QObject... providing signals/slots).</span>
@@ -1291,7 +1291,7 @@ window.addEventListener("load", load);
 <span class="c1">#</span>
 <span class="c1"># However, a disadvantage is that you have no access to (and therefore less</span>
 <span class="c1"># control over) the QThread itself.  See for example all of the methods</span>
-<span class="c1"># provided on the QThread object: https://doc.qt.io/qt-5/qthread.html</span>
+<span class="c1"># provided on the QThread object: https://doc.qt.io/qt-6/qthread.html</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
 
@@ -1322,7 +1322,7 @@ window.addEventListener("load", load);
 <span class="sd">        standard &quot;single-threaded&quot; signals &amp; slots, note that inter-thread</span>
 <span class="sd">        signals and slots (automatically) use an event-based QueuedConnection, while</span>
 <span class="sd">        intra-thread signals use a DirectConnection. See [Signals and Slots Across</span>
-<span class="sd">        Threads](https://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads&gt;)</span>
+<span class="sd">        Threads](https://doc.qt.io/qt-6/threads-qobject.html#signals-and-slots-across-threads&gt;)</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>

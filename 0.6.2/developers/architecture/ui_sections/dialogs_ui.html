@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=32f10b68"></script>
+    <script src="../../../_static/documentation_options.js?v=da7d1f33"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -104,7 +104,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2a0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -489,6 +489,7 @@ window.addEventListener("load", load);
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../roadmaps/index.html">Roadmaps</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/active_roadmap.html">Napari Roadmap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/0_4.html">Roadmap 0.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/0_3_retrospective.html">Roadmap 0.3 Retrospective</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../roadmaps/0_3.html">Roadmap 0.3</a></li>
@@ -675,6 +676,7 @@ window.addEventListener("load", load);
 	napari._qt.qt_viewer --&gt; napari._qt.widgets.qt_dims
 	click napari._qt.qt_viewer &quot;https://github.com/napari/napari/tree/main/napari/_qt/qt_viewer.py&quot; _blank
 	napari._qt.utils(napari._qt.utils)
+	napari._qt.utils --&gt; napari._qt.qt_main_window
 	click napari._qt.utils &quot;https://github.com/napari/napari/tree/main/napari/_qt/utils.py&quot; _blank
 	napari._qt.widgets.qt_color_swatch(napari._qt.widgets.qt_color_swatch)
 	napari._qt.widgets.qt_color_swatch --&gt; napari._qt.dialogs.qt_modal
@@ -826,58 +828,58 @@ window.addEventListener("load", load);
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
 ├─_qt/
-│ ├─dialogs/
-│ │ ├─qt_activity_dialog.py
-│ │ ├─qt_about.py
-│ │ ├─shimmed_plugin_dialog.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_notification.py
-│ │ ├─qt_reader_dialog.py
-│ │ ├─screenshot_dialog.py
-│ │ ├─confirm_close_dialog.py
-│ │ ├─qt_plugin_report.py
-│ │ └─qt_modal.py
+│ ├─widgets/
+│ │ ├─qt_spinbox.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ ├─qt_logger.py
+│ │ ├─qt_tooltip.py
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_highlight_preview.py
+│ │ ├─qt_font_size.py
+│ │ ├─qt_progress_bar.py
+│ │ ├─qt_color_swatch.py
+│ │ ├─qt_extension2reader.py
+│ │ ├─qt_dims.py
+│ │ ├─qt_dims_slider.py
+│ │ ├─qt_scrollbar.py
+│ │ ├─qt_dims_sorter.py
+│ │ └─qt_plugin_sorter.py
+│ ├─utils.py
+│ ├─qt_main_window.py
 │ ├─_qplugins/
 │ │ └─_qnpe2.py
-│ ├─widgets/
-│ │ ├─qt_color_swatch.py
-│ │ ├─qt_dims.py
-│ │ ├─qt_plugin_sorter.py
-│ │ ├─qt_progress_bar.py
-│ │ ├─qt_dims_slider.py
-│ │ ├─qt_logger.py
-│ │ ├─qt_spinbox.py
-│ │ ├─qt_highlight_preview.py
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_tooltip.py
-│ │ ├─qt_font_size.py
-│ │ ├─qt_scrollbar.py
-│ │ ├─qt_extension2reader.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ └─qt_dims_sorter.py
-│ ├─qt_viewer.py
+│ ├─dialogs/
+│ │ ├─qt_plugin_report.py
+│ │ ├─qt_reader_dialog.py
+│ │ ├─qt_about.py
+│ │ ├─qt_activity_dialog.py
+│ │ ├─preferences_dialog.py
+│ │ ├─qt_notification.py
+│ │ ├─confirm_close_dialog.py
+│ │ ├─screenshot_dialog.py
+│ │ ├─shimmed_plugin_dialog.py
+│ │ └─qt_modal.py
 │ ├─_qapp_model/
 │ │ ├─qactions/
-│ │ │ ├─_file.py
 │ │ │ ├─_help.py
 │ │ │ ├─__init__.py
-│ │ │ ├─_plugins.py
-│ │ │ └─_debug.py
+│ │ │ ├─_debug.py
+│ │ │ ├─_file.py
+│ │ │ └─_plugins.py
 │ │ ├─_menus.py
 │ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ ├─qt_main_window.py
-│ └─utils.py
+│ │   ├─_qprocessors.py
+│ │   └─_qproviders.py
+│ └─qt_viewer.py
 └─_vendor/
   └─qt_json_builder/
     ├─qt_jsonschema_form/
-    │ ├─widgets.py
     │ ├─defaults.py
+    │ ├─utils.py
     │ ├─signal.py
     │ ├─__init__.py
-    │ ├─form.py
-    │ └─utils.py
+    │ ├─widgets.py
+    │ └─form.py
     └─__init__.py
 </pre></div>
 </div>
