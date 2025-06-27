@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=da7d1f33"></script>
+    <script src="../../../_static/documentation_options.js?v=2db80186"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -104,7 +104,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.2rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -661,21 +661,21 @@ window.addEventListener("load", load);
 <section id="source-code-directory-layout-related-to-modules-inside-napari">
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
-├─utils/
-│ └─progress.py
+├─_qt/
+│ ├─dialogs/
+│ │ ├─qt_activity_dialog.py
+│ │ └─shimmed_plugin_dialog.py
+│ ├─widgets/
+│ │ ├─qt_progress_bar.py
+│ │ ├─qt_command_palette.py
+│ │ └─qt_viewer_status_bar.py
+│ ├─threads/
+│ │ └─status_checker.py
+│ ├─__init__.py
+│ └─qt_main_window.py
 ├─viewer.py
-└─_qt/
-  ├─widgets/
-  │ ├─qt_viewer_status_bar.py
-  │ ├─qt_command_palette.py
-  │ └─qt_progress_bar.py
-  ├─qt_main_window.py
-  ├─__init__.py
-  ├─dialogs/
-  │ ├─qt_activity_dialog.py
-  │ └─shimmed_plugin_dialog.py
-  └─threads/
-    └─status_checker.py
+└─utils/
+  └─progress.py
 </pre></div>
 </div>
 </section>
