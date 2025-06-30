@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=df98b200"></script>
+    <script src="_static/documentation_options.js?v=853078ae"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -833,6 +833,25 @@ If you observe this, you should run napari using the native arm64 Python interpr
 permissions. Try setting <code class="docutils literal notranslate"><span class="pre">NUMBA_CACHE_DIR</span></code> to an user-accessible location.</p>
 <p>See <a class="reference external" href="https://github.com/napari/napari/issues/7288">napari#7288</a>.</p>
 </section>
+<section id="mixed-napari-installations">
+<h3>Mixed napari installations<a class="headerlink" href="#mixed-napari-installations" title="Link to this heading">#</a></h3>
+<p>Since napari 0.6.2 we have added a check for the mix of <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/development_mode.html">editable</a> and non-editable napari installations in the same environment.
+This occurs when you install napari using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">path/to/napari</span></code> while napari related files are still
+present in the typical conda installation directory (called <code class="docutils literal notranslate"><span class="pre">site-packages</span></code>).</p>
+<p>Because of how importing in python works, two installations from even slightly different versions of napari
+will often lead to a crash on startup or other unexpected behavior</p>
+<p>If you meet an exception starting from <code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">Mix</span> <span class="pre">of</span> <span class="pre">local</span> <span class="pre">and</span> <span class="pre">non</span> <span class="pre">local</span> <span class="pre">installation</span> <span class="pre">detected.</span></code> you have two options:</p>
+<ol class="arabic simple">
+<li><p>Recreate your environment and install napari from scratch; this is the safest option.
+But you need to know which packages you need to install in your environment. You may use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> to get the list of packages installed in your environment.</p></li>
+<li><p>Remove the non-editable napari installation from your environment.
+In the exception message you will see the path to the non-editable installation.
+For example <code class="docutils literal notranslate"><span class="pre">Path</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">napari</span> <span class="pre">directory:</span> <span class="pre">/home/czaki/.pyenv/versions/3.12.9/envs/napari_3.12/lib/python3.12/site-packages/napari.</span></code>
+You can fix the error by manually deleting the <code class="docutils literal notranslate"><span class="pre">napari</span></code> directory.
+In some rare situations this solution may not fix the environment,
+so you may need to recreate, as described in the first option.</p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -892,6 +911,7 @@ permissions. Try setting <code class="docutils literal notranslate"><span class=
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-napari-has-no-attribute-viewer">“module napari has no attribute Viewer”</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-image-renders-as-all-black-all-white">My image renders as all black/all white</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permissionerror-when-trying-to-launch-napari-on-windows">PermissionError when trying to launch napari on Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-napari-installations">Mixed napari installations</a></li>
 </ul>
 </li>
 </ul>
