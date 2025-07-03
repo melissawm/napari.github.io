@@ -625,6 +625,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="release/index.html">Release notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="release/release_0_6_3.html">napari 0.6.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release/release_0_6_2.html">napari 0.6.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release/release_0_6_1.html">napari 0.6.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release/release_0_6_0.html">napari 0.6.0</a></li>
@@ -837,7 +838,7 @@ permissions. Try setting <code class="docutils literal notranslate"><span class=
 <h3>Mixed napari installations<a class="headerlink" href="#mixed-napari-installations" title="Link to this heading">#</a></h3>
 <p>Since napari 0.6.2 we have added a check for the mix of <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/development_mode.html">editable</a> and non-editable napari installations in the same environment.
 This occurs when you install napari using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">path/to/napari</span></code> while napari related files are still
-present in the typical conda installation directory (called <code class="docutils literal notranslate"><span class="pre">site-packages</span></code>).</p>
+present in the typical Python package installation directory (called <code class="docutils literal notranslate"><span class="pre">site-packages</span></code>).</p>
 <p>Because of how importing in python works, two installations from even slightly different versions of napari
 will often lead to a crash on startup or other unexpected behavior</p>
 <p>If you meet an exception starting from <code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">Mix</span> <span class="pre">of</span> <span class="pre">local</span> <span class="pre">and</span> <span class="pre">non</span> <span class="pre">local</span> <span class="pre">installation</span> <span class="pre">detected.</span></code> you have two options:</p>
