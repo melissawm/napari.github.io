@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=573078c3"></script>
+    <script src="../../../_static/documentation_options.js?v=93c81ed2"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -1313,6 +1313,15 @@ window.addEventListener("load", load);
 <span class="sd">            Flag to indicate whether flash animation should be shown after</span>
 <span class="sd">            the screenshot was captured.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_layer_slicer</span><span class="o">.</span><span class="n">wait_until_idle</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span>
+                <span class="s1">&#39;Slicing was too slow. Wait for all layers to load before taking a screenshot, &#39;</span>
+                <span class="s1">&#39;or disable async slicing in Preferences-&gt;Experimental.&#39;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
         <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>
             <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_flash_animation</span>
