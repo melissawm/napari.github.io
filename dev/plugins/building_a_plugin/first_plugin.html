@@ -13,10 +13,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://napari.org/plugins/building_a_plugin/first_plugin.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="In this tutorial, we’ll step through the fundamental concepts for building a bare minimum “hello napari” plugin from scratch. At the end, we’ll point you to a napari plugin template repository that helps automate the creation of new plugins, and adds a number of conveniences for testing, maintain..." />
+<meta property="og:description" content="In this tutorial, we’ll step through the fundamental concepts for building a bare minimum napari plugin from scratch. At the end, we’ll point you to the napari-plugin-template repository that helps automate the creation of new plugins, and adds a number of conveniences for testing, maintaining, a..." />
 <meta property="og:image" content="https://napari.org/dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="In this tutorial, we’ll step through the fundamental concepts for building a bare minimum “hello napari” plugin from scratch. At the end, we’ll point you to a napari plugin template repository that helps automate the creation of new plugins, and adds a number of conveniences for testing, maintain..." />
+<meta name="description" content="In this tutorial, we’ll step through the fundamental concepts for building a bare minimum napari plugin from scratch. At the end, we’ll point you to the napari-plugin-template repository that helps automate the creation of new plugins, and adds a number of conveniences for testing, maintaining, a..." />
 
     <title>Your first plugin &#8212; napari</title>
   
@@ -530,8 +530,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="your-first-plugin">
 <span id="id1"></span><h1>Your first plugin<a class="headerlink" href="#your-first-plugin" title="Link to this heading">#</a></h1>
 <p>In this tutorial, we’ll step through the fundamental concepts for building a
-<strong>bare minimum</strong> “hello napari” plugin from scratch.</p>
-<p>At the end, we’ll point you to a <a class="reference external" href="https://github.com/napari/napari-plugin-template">napari plugin template
+<strong>bare minimum</strong> napari plugin from scratch.</p>
+<p>At the end, we’ll point you to the <a class="reference external" href="https://github.com/napari/napari-plugin-template">napari-plugin-template
 repository</a> that helps automate the creation of new plugins, and adds a number
 of conveniences for testing, maintaining, and deploying your plugin.</p>
 <div class="important admonition">
@@ -565,54 +565,52 @@ napari to detect the plugin at runtime.</p></li>
 </section>
 <section id="create-a-new-directory">
 <h2>1. Create a new directory<a class="headerlink" href="#create-a-new-directory" title="Link to this heading">#</a></h2>
-<p>Let’s create a new folder called <code class="docutils literal notranslate"><span class="pre">napari-hello</span></code> for your plugin files,
-and navigate into it.</p>
+<p>Let’s create a new folder called <code class="docutils literal notranslate"><span class="pre">napari-hello</span></code> for your plugin files, and navigate into it. We’ll use a <code class="docutils literal notranslate"><span class="pre">src</span></code> layout for the Python package, which is now the recommended practice.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>napari-hello
 <span class="nb">cd</span><span class="w"> </span>napari-hello
+mkdir<span class="w"> </span>src
+mkdir<span class="w"> </span>src/napari_hello
 </pre></div>
 </div>
 </section>
 <section id="add-standard-python-package-metadata-files">
 <h2>2. Add standard Python package metadata files<a class="headerlink" href="#add-standard-python-package-metadata-files" title="Link to this heading">#</a></h2>
-<p>In your root <code class="docutils literal notranslate"><span class="pre">napari-hello</span></code> folder, create a <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> file,
-then create a <code class="docutils literal notranslate"><span class="pre">napari_hello</span></code> directory with a single <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file inside of it.</p>
+<p>In your root <code class="docutils literal notranslate"><span class="pre">napari-hello</span></code> folder, create a <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file, then create
+an empty <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code> file inside <code class="docutils literal notranslate"><span class="pre">src/napari_hello/</span></code>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
 macOS / Linux</label><div class="sd-tab-content docutils">
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>napari_hello
-touch<span class="w"> </span>napari_hello/__init__.py<span class="w"> </span>napari_hello/napari.yaml<span class="w"> </span>pyproject.toml<span class="w"> </span>setup.cfg
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>src/napari_hello/__init__.py<span class="w"> </span>src/napari_hello/napari.yaml<span class="w"> </span>pyproject.toml
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
 Windows</label><div class="sd-tab-content docutils">
-<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">mkdir</span> napari_hello
-<span class="k">copy</span> /b napari_hello\__init__.py +,,
-<span class="k">copy</span> /b napari_hello\napari.yaml +,,
-<span class="k">copy</span> /b pyproject.toml +,,
-<span class="k">copy</span> /b setup.cfg +,,
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> nul <span class="p">&gt;</span> src\napari_hello\__init__.py
+<span class="k">type</span> nul <span class="p">&gt;</span> src\napari_hello\napari.yaml
+<span class="k">type</span> nul <span class="p">&gt;</span> pyproject.toml
 </pre></div>
 </div>
 </div>
 </div>
 <p>Your project should now look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/napari-hello/
-├── napari_hello/
-│   ├── __init__.py
-│   └── napari.yaml
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>~/napari-hello/
+├── src/
+│   └── napari_hello/
+│       ├── __init__.py
+│       └── napari.yaml
 ├── pyproject.toml
-├── setup.cfg
 </pre></div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title"><strong>napari-hello</strong> vs <strong>napari_hello</strong></p>
 <p>You might notice that we used a <strong>dash</strong> in our top level folder, and an
-<strong>underscore</strong> in the inner folder. This is the Python convention:
-<em>distribution packages</em> use dashes, while Python <em>files</em> and <em>modules</em> use
-underscores. Our <em>package</em> is named <code class="docutils literal notranslate"><span class="pre">napari-hello</span></code>, and it includes a
-single top-level module, called <code class="docutils literal notranslate"><span class="pre">napari_hello</span></code>.</p>
+<strong>underscore</strong> in the inner folder. This is the Python convention: <em>distribution
+packages</em> use dashes, while Python <em>files</em> and <em>modules</em> use underscores. Our
+<em>package</em> is named <code class="docutils literal notranslate"><span class="pre">napari-hello</span></code>, and it includes a single top-level module,
+called <code class="docutils literal notranslate"><span class="pre">napari_hello</span></code>.</p>
 <p>You would <em>install</em> this package with</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>napari-hello
 </pre></div>
@@ -622,7 +620,7 @@ single top-level module, called <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 </div>
-<p>Next, we will populate <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></p>
+<p>Next, we will populate <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
 <section id="pyproject-toml">
 <h3><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code><a class="headerlink" href="#pyproject-toml" title="Link to this heading">#</a></h3>
 <div class="admonition note">
@@ -634,29 +632,26 @@ build your package. For more background, see
 <a class="reference external" href="https://snarky.ca/clarifying-pep-518/">Clarifying PEP 518</a> and
 <a class="reference external" href="https://snarky.ca/what-the-heck-is-pyproject-toml/">What the heck is pyproject.toml?</a>.</p>
 </div>
-<p>Here, we declare we want to use <a class="reference external" href="https://setuptools.pypa.io/en/latest/">setuptools</a>
-for packaging our plugin.  Paste the following text into <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span>
+<p>We provide the bare minimum package metadata (name and version),
+along with a <a class="reference external" href="https://pypi.org/classifiers/">PyPI classifier</a> that identifies
+the package as a napari plugin.
+Here, we declare we want to use <a class="reference external" href="https://setuptools.pypa.io/en/latest/">setuptools</a>
+for packaging our plugin. We also need to tell setuptools to look for the package
+in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.
+Paste the following text into <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;napari-hello&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span>
+<span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;Framework :: napari&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">[build-system]</span>
 <span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wheel&quot;</span><span class="p">]</span>
 <span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="setup-cfg">
-<h3><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code><a class="headerlink" href="#setup-cfg" title="Link to this heading">#</a></h3>
-<p>This file is where <a class="reference external" href="https://setuptools.pypa.io/en/latest/">setuptools</a>
-looks for package metadata. Here, we provide the bare minimum package metadata
-(name and version), along with a <a class="reference external" href="https://pypi.org/classifiers/">PyPI classifier</a>
-that identifies the package as a napari plugin.</p>
-<p>Paste the following text into <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[metadata]</span>
-<span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">napari-hello</span>
-<span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.1</span>
-<span class="na">classifiers</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="na">Framework</span><span class="w"> </span><span class="o">:</span><span class="s">: napari</span>
 
-<span class="k">[options]</span>
-<span class="na">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">find:</span>
+<span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>There is a <em>lot</em> more than can go in the package metadata.
@@ -670,8 +665,8 @@ for more.</p>
 some Python code. We’re going to add a
 <a class="reference internal" href="../technical_references/contributions.html#contributions-widgets"><span class="std std-ref">Widget contribution</span></a>
 with a single button that shows a “Hello, world!” message when clicked.</p>
-<section id="add-plugin-functionality-to-napari-hello-init-py">
-<h3>Add plugin functionality to <code class="docutils literal notranslate"><span class="pre">napari_hello/__init__.py</span></code><a class="headerlink" href="#add-plugin-functionality-to-napari-hello-init-py" title="Link to this heading">#</a></h3>
+<section id="add-plugin-functionality-to-src-napari-hello-init-py">
+<h3>Add plugin functionality to <code class="docutils literal notranslate"><span class="pre">src/napari_hello/__init__.py</span></code><a class="headerlink" href="#add-plugin-functionality-to-src-napari-hello-init-py" title="Link to this heading">#</a></h3>
 <p>Copy and paste the following text into the file at <code class="docutils literal notranslate"><span class="pre">napari_hello/__init__.py</span></code>.
 It just uses the napari notifications API to show a message:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.notifications</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_info</span>
@@ -685,8 +680,8 @@ autogeneration capabilities to turn this function into a widget)</em></p>
 </section>
 <section id="add-a-napari-yaml-manifest">
 <h3>Add a <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code> manifest<a class="headerlink" href="#add-a-napari-yaml-manifest" title="Link to this heading">#</a></h3>
-<p>If you haven’t already, create an empty <a class="reference internal" href="../technical_references/manifest.html#plugin-manifest"><span class="std std-ref">plugin manifest</span></a> file at <code class="docutils literal notranslate"><span class="pre">napari_hello/napari.yaml</span></code>
-We will use this file to tell napari:</p>
+<p>If you haven’t already, create an empty <a class="reference internal" href="../technical_references/manifest.html#plugin-manifest"><span class="std std-ref">plugin manifest</span></a> file at
+<code class="docutils literal notranslate"><span class="pre">src/napari_hello/napari.yaml</span></code>. We will use this file to tell napari:</p>
 <ol class="arabic simple">
 <li><p>That our plugin contributes a <a class="reference internal" href="../technical_references/contributions.html#contributions-commands"><span class="std std-ref"><strong>command</strong></span></a>
 (we give the command an ID of <code class="docutils literal notranslate"><span class="pre">napari-hello.say_hi</span></code>. It must start with our plugin
@@ -718,20 +713,21 @@ of the corresponding <code class="docutils literal notranslate"><span class="pre
 <code class="docutils literal notranslate"><span class="pre">&lt;module_name&gt;:&lt;function_name&gt;</span></code>.</p>
 </div>
 </section>
-<section id="update-setup-cfg">
-<h3>Update <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code><a class="headerlink" href="#update-setup-cfg" title="Link to this heading">#</a></h3>
-<p>Lastly, let’s make a few small changes to <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>.</p>
+<section id="update-pyproject-toml">
+<h3>Update <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code><a class="headerlink" href="#update-pyproject-toml" title="Link to this heading">#</a></h3>
+<p>Lastly, we need to make a few changes to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
 <ol class="arabic">
 <li><p>Because we are directly using the <code class="docutils literal notranslate"><span class="pre">napari.utils.notifications</span></code> API in our,
 <code class="docutils literal notranslate"><span class="pre">show_hello_message</span></code> function, we need to add <code class="docutils literal notranslate"><span class="pre">napari</span></code> to our package
-<strong><code class="docutils literal notranslate"><span class="pre">install_requires</span></code></strong>. (You should add <em>all</em> of your package dependencies
-here.  Assume nothing about your user’s environment!  Not even napari.)</p></li>
+<strong><code class="docutils literal notranslate"><span class="pre">install_requires</span></code></strong>. (You should add <em>all</em> of your required package dependencies
+here.  Assume nothing about your user’s environment! Not even napari.)</p></li>
 <li><p>We need to instruct setuptools to <em>include</em> that <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code> file
 when it bundles our package for distribution, by adding
-<strong><code class="docutils literal notranslate"><span class="pre">include_package_data</span> <span class="pre">=</span> <span class="pre">True</span></code></strong> to the <code class="docutils literal notranslate"><span class="pre">[options]</span></code> section.</p></li>
-<li><p>In order for napari to find our plugin when it’s installed in
-the environment, we need to add a <code class="docutils literal notranslate"><span class="pre">napari.manifest</span></code> entry to our
-<strong><code class="docutils literal notranslate"><span class="pre">[options.entry_points]</span></code></strong> that points to the <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code>
+<strong><code class="docutils literal notranslate"><span class="pre">include-package-data</span> <span class="pre">=</span> <span class="pre">True</span></code></strong> to the <code class="docutils literal notranslate"><span class="pre">[tool.setuptools]</span></code> section and pointing
+<code class="docutils literal notranslate"><span class="pre">package-data</span></code> to all <code class="docutils literal notranslate"><span class="pre">yaml</span></code> files.</p></li>
+<li><p>In order for napari to find our plugin when it’s installed, we need to
+add an <strong>entry point</strong> for <code class="docutils literal notranslate"><span class="pre">napari.manifest</span></code> in the <code class="docutils literal notranslate"><span class="pre">[project.entry-points]</span></code> section.
+This tells napari to look for our plugin manifest in the <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code>
 file we added to the <code class="docutils literal notranslate"><span class="pre">napari_hello</span></code> module.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -741,22 +737,30 @@ advertise components it provides to be discovered and used by other code.</p>
 </div>
 </li>
 </ol>
-<p>With the above changes, your final <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> file should look like this:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[metadata]</span>
-<span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">napari-hello</span>
-<span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.1</span>
-<span class="na">classifiers</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="na">Framework</span><span class="w"> </span><span class="o">:</span><span class="s">: napari</span>
+<p>With the above changes, your final <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> should look like this:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;napari-hello&quot;</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span>
+<span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;Framework :: napari&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;napari&quot;</span><span class="p">]</span>
 
-<span class="k">[options]</span>
-<span class="na">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">find:</span>
-<span class="na">include_package_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-<span class="na">install_requires</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="na">napari</span>
+<span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wheel&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
 
-<span class="k">[options.entry_points]</span>
-<span class="na">napari.manifest</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="na">napari-hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">napari_hello:napari.yaml</span>
+<span class="k">[tool.setuptools]</span>
+<span class="n">include-package-data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[tool.setuptools.packages.find]</span>
+<span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+
+<span class="k">[tool.setuptools.package-data]</span>
+<span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*.yaml&quot;</span><span class="p">]</span>
+
+<span class="k">[project.entry-points.</span><span class="s2">&quot;napari.manifest&quot;</span><span class="k">]</span>
+<span class="n">napari-hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;napari_hello:napari.yaml&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -764,21 +768,37 @@ advertise components it provides to be discovered and used by other code.</p>
 <section id="install-your-plugin-and-try-it-out">
 <h2>4. Install your plugin and try it out!<a class="headerlink" href="#install-your-plugin-and-try-it-out" title="Link to this heading">#</a></h2>
 <p>With that, we’re ready to go.  Let’s install our package in the environment
-and then run napari.  Note: we’re using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code> here to install our
+and then run napari. Note: we’re using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code> here to install our
 package (in the current working directory) in <a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_install/#editable-installs">“editable” mode</a>.
 This means that changes we make to our package during development will be
-detected when we re-run napari, without having to run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span></code> again.</p>
+detected when we re-run napari, without having to run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span></code> again.
+In a fresh environment, when you try to run napari, there will be no Qt bindings
+installed. To do so, you can install the default Qt bindings with
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">napari[pyqt]</span></code>. Importantly, your plugin should not depend on a specific Qt backend, read about plugin <a class="reference internal" href="best_practices.html#best-practices"><span class="std std-ref">Best Practices</span></a> to learn more.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>napari<span class="o">[</span>pyqt<span class="o">]</span>
 napari
 </pre></div>
 </div>
 <p>Once napari starts, select <code class="docutils literal notranslate"><span class="pre">napari-hello:</span> <span class="pre">Hello</span> <span class="pre">World</span></code> from the
 <code class="docutils literal notranslate"><span class="pre">Plugins</span></code> menu, then click the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button to see the message.</p>
 </section>
+<section id="optional-build-your-plugin-for-distribution">
+<h2>5. (Optional) Build your plugin for distribution<a class="headerlink" href="#optional-build-your-plugin-for-distribution" title="Link to this heading">#</a></h2>
+<p>You can build a distributable package using the
+<a class="reference external" href="https://pypa-build.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">build</span></code></a> tool.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>build
+</pre></div>
+</div>
+<p>This will create a <code class="docutils literal notranslate"><span class="pre">dist/</span></code> folder containing <code class="docutils literal notranslate"><span class="pre">.whl</span></code> and <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> files,
+which you can upload to <a class="reference external" href="https://pypi.org/">PyPI</a> or share with others.</p>
+<p>However, you may wish to automate distribution of your plugin using Github,
+see below and the <a class="reference internal" href="../testing_and_publishing/deploy.html#plugin-deploy"><span class="std std-ref">Publishing</span></a> guide for more details.</p>
+</section>
 <section id="get-going-quickly-with-the-napari-plugin-template">
 <h2>Get going quickly with the napari plugin template<a class="headerlink" href="#get-going-quickly-with-the-napari-plugin-template" title="Link to this heading">#</a></h2>
 <p>Now that you’ve learned all of the critical steps for creating a plugin,
-you can use our <a class="reference external" href="https://github.com/napari/napari-plugin-template">napari plugin template repository</a>
+you can use our <a class="reference external" href="https://github.com/napari/napari-plugin-template">napari-plugin-template repository</a>
 to get up and running quickly with each new plugin.
 This will ask you a few questions about your new plugin, and
 autogenerate a package structure much like the one above. It additionally
@@ -853,16 +873,16 @@ when you’re ready to share your plugin, see <a class="reference internal" href
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-directory">1. Create a new directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-standard-python-package-metadata-files">2. Add standard Python package metadata files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyproject-toml"><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-cfg"><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-the-plugin">3. Implement the plugin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-plugin-functionality-to-napari-hello-init-py">Add plugin functionality to <code class="docutils literal notranslate"><span class="pre">napari_hello/__init__.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-plugin-functionality-to-src-napari-hello-init-py">Add plugin functionality to <code class="docutils literal notranslate"><span class="pre">src/napari_hello/__init__.py</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-napari-yaml-manifest">Add a <code class="docutils literal notranslate"><span class="pre">napari.yaml</span></code> manifest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-setup-cfg">Update <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-pyproject-toml">Update <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-your-plugin-and-try-it-out">4. Install your plugin and try it out!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-build-your-plugin-for-distribution">5. (Optional) Build your plugin for distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-going-quickly-with-the-napari-plugin-template">Get going quickly with the napari plugin template</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
