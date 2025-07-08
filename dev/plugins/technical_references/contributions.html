@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=29b5bbff"></script>
+    <script src="../../_static/documentation_options.js?v=754e0f81"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -540,6 +540,8 @@ Here is a list of all available <strong>Contributions</strong>:</p>
 <li><p><a class="reference internal" href="#contributions-widgets"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">widgets</span></code></span></a></p></li>
 <li><p><a class="reference internal" href="#contributions-sample-data"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">sample_data</span></code></span></a></p></li>
 <li><p><a class="reference internal" href="#contributions-themes"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">themes</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#contributions-menus"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">menus</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#contributions-submenus"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">submenus</span></code></span></a></p></li>
 </ul>
 <p>You may add as many contributions as you’d like to a single manifest. For
 clarity, the following examples include only the specific contribution that
@@ -822,7 +824,7 @@ toml</label><div class="sd-tab-content docutils">
 for more details on implementing this contribution.</p>
 <p><strong>Fields</strong></p>
 <ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">sample_data.command</span></code></strong> : Identifier of a command that returns layer data tuple.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sample_data.command</span></code></strong> : Identifier of a command that returns layer data tuple. Note that this command cannot return <code class="docutils literal notranslate"><span class="pre">[(None,)]</span></code>.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">sample_data.key</span></code></strong> : A unique key to identify this sample.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">sample_data.display_name</span></code></strong> : String to show in the UI when referring to this sample</p></li>
 </ul>
@@ -969,6 +971,121 @@ toml</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
+<section id="contributions-menus">
+<span id="id7"></span><h2><code class="docutils literal notranslate"><span class="pre">contributions.menus</span></code><a class="headerlink" href="#contributions-menus" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This contribution accepts 2 schema types</p>
+</div>
+<p>Add menu items to existing napari menus.A menu item can be a command, such as open a widget, or a submenu.Using menu items, nested hierarchies can be created within napari menus.This allows you to organize your plugin’s contributions withinnapari’s menu structure.</p>
+<section id="menucommand">
+<h3>1. MenuCommand<a class="headerlink" href="#menucommand" title="Link to this heading">#</a></h3>
+<p>See the <a class="reference internal" href="../building_a_plugin/guides.html#menus-contribution-guide"><span class="std std-ref">Menus Guide</span></a>
+for more details on implementing this contribution.</p>
+<p><strong>Fields</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.command</span></code></strong> : Identifier of the command to execute. The command must be declared in the ‘commands’ section</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.when</span></code></strong> :
+<em>(Optional: default=None).</em>
+Condition which must be true to <em>show</em> this item in the menu. Note that <code class="docutils literal notranslate"><span class="pre">when</span></code> clauses apply to menus and <code class="docutils literal notranslate"><span class="pre">enablement</span></code> clauses to commands. The <code class="docutils literal notranslate"><span class="pre">enablement</span></code> applies to all menus and even keybindings while the <code class="docutils literal notranslate"><span class="pre">when</span></code> only applies to a single menu.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.group</span></code></strong> :
+<em>(Optional: default=None).</em>
+The <code class="docutils literal notranslate"><span class="pre">group</span></code> property defines sorting and grouping of menu items. The <code class="docutils literal notranslate"><span class="pre">'navigation'</span></code> group is special: it will always be sorted to the top/beginning of a menu. By default, the order <em>inside</em> a group depends on the <code class="docutils literal notranslate"><span class="pre">title</span></code>. The group-local order of a menu item can be specified by appending &#64;<int> to the group identifier: e.g. <code class="docutils literal notranslate"><span class="pre">group:</span> <span class="pre">'myGroup&#64;2'</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.alt</span></code></strong> :
+<em>(Optional: default=None).</em>
+Identifier of an alternative command to execute. It will be shown and invoked when pressing Alt while opening a menu.The command must be declared in the ‘commands’ section</p></li>
+</ul>
+</section>
+<section id="submenu">
+<h3>2. Submenu<a class="headerlink" href="#submenu" title="Link to this heading">#</a></h3>
+<p>See the <a class="reference internal" href="../building_a_plugin/guides.html#menus-contribution-guide"><span class="std std-ref">Menus Guide</span></a>
+for more details on implementing this contribution.</p>
+<p><strong>Fields</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.when</span></code></strong> :
+<em>(Optional: default=None).</em>
+Condition which must be true to <em>show</em> this item in the menu. Note that <code class="docutils literal notranslate"><span class="pre">when</span></code> clauses apply to menus and <code class="docutils literal notranslate"><span class="pre">enablement</span></code> clauses to commands. The <code class="docutils literal notranslate"><span class="pre">enablement</span></code> applies to all menus and even keybindings while the <code class="docutils literal notranslate"><span class="pre">when</span></code> only applies to a single menu.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.group</span></code></strong> :
+<em>(Optional: default=None).</em>
+The <code class="docutils literal notranslate"><span class="pre">group</span></code> property defines sorting and grouping of menu items. The <code class="docutils literal notranslate"><span class="pre">'navigation'</span></code> group is special: it will always be sorted to the top/beginning of a menu. By default, the order <em>inside</em> a group depends on the <code class="docutils literal notranslate"><span class="pre">title</span></code>. The group-local order of a menu item can be specified by appending &#64;<int> to the group identifier: e.g. <code class="docutils literal notranslate"><span class="pre">group:</span> <span class="pre">'myGroup&#64;2'</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">menus.submenu</span></code></strong> : Identifier of the submenu to display in this item.The submenu must be declared in the ‘submenus’ -section</p></li>
+</ul>
+</section>
+<section id="menus-example">
+<h3>Menus example<a class="headerlink" href="#menus-example" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-6" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-12">
+yaml</label><div class="sd-tab-content docutils">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">contributions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">menus</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">napari/layers/segment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">submenu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.all_thresholds</span>
+<span class="w">    </span><span class="nt">threshold</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_otsu</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_li</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-6" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-13">
+toml</label><div class="sd-tab-content docutils">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[contributions.menus]</span>
+<span class="s2">&quot;napari/layers/segment&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">submenu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;threshold&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.all_thresholds&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_otsu&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_li&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="contributions-submenus">
+<span id="id8"></span><h2><code class="docutils literal notranslate"><span class="pre">contributions.submenus</span></code><a class="headerlink" href="#contributions-submenus" title="Link to this heading">#</a></h2>
+<p>Contributes a submenu that can contain menu items or other submenus.</p>
+<p>Submenus allow you to organize menu items into hierarchical structures.
+Each submenu defines an id, label, and optional icon that can be
+referenced by menu items to create nested menu structures.</p>
+<p><strong>Fields</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">submenus.id</span></code></strong> : Identifier of the menu to display as a submenu.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">submenus.label</span></code></strong> : The label of the menu item which leads to this submenu.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">submenus.icon</span></code></strong> :
+<em>(Optional: default=None).</em>
+(Optional) Icon which is used to represent the command in the UI. Either a file path, an object with file paths for dark and lightthemes, or a theme icon references, like <code class="docutils literal notranslate"><span class="pre">$(zap)</span></code></p></li>
+</ul>
+<section id="submenus-example">
+<h3>Submenus example<a class="headerlink" href="#submenus-example" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-14" name="sd-tab-set-7" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-14">
+yaml</label><div class="sd-tab-content docutils">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">contributions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">submenus</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thresholding</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-15" name="sd-tab-set-7" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-15">
+toml</label><div class="sd-tab-content docutils">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[contributions]</span>
+<span class="n">submenus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;threshold&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Thresholding&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -1042,6 +1159,16 @@ toml</label><div class="sd-tab-content docutils">
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributions-themes"><code class="docutils literal notranslate"><span class="pre">contributions.themes</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#themes-example">Themes example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributions-menus"><code class="docutils literal notranslate"><span class="pre">contributions.menus</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menucommand">1. MenuCommand</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submenu">2. Submenu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menus-example">Menus example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributions-submenus"><code class="docutils literal notranslate"><span class="pre">contributions.submenus</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submenus-example">Submenus example</a></li>
 </ul>
 </li>
 </ul>

@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=29b5bbff"></script>
+    <script src="../../_static/documentation_options.js?v=754e0f81"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -632,6 +632,15 @@ yaml</label><div class="sd-tab-content docutils">
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.do_threshold</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Perform threshold on image, return new image</span>
 <span class="w">    </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_plugin.some_module:threshold</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_otsu</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Threshold using Otsu&#39;s method</span>
+<span class="w">    </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_plugin.some_module:threshold_otsu</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_li</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Threshold using Li&#39;s method</span>
+<span class="w">    </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_plugin.some_module:threshold_li</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.all_thresholds</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All thresholds</span>
+<span class="w">    </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_plugin.some_module:all_thresholds</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_widget</span>
 <span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Make threshold widget with magic_factory</span>
 <span class="w">    </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example_plugin.some_module:widget_factory</span>
@@ -681,6 +690,16 @@ yaml</label><div class="sd-tab-content docutils">
 <span class="w">      </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#a1ef34&#39;</span>
 <span class="w">      </span><span class="nt">warning</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#f92672&#39;</span>
 <span class="w">      </span><span class="nt">current</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#66d9ef&#39;</span>
+<span class="w">  </span><span class="nt">menus</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">napari/layers/segment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">submenu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.all_thresholds</span>
+<span class="w">    </span><span class="nt">threshold</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_otsu</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-plugin.threshold_li</span>
+<span class="w">  </span><span class="nt">submenus</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thresholding</span>
 </pre></div>
 </div>
 </div>
@@ -696,6 +715,9 @@ toml</label><div class="sd-tab-content docutils">
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.my_widget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">display_name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Wizard&quot;</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_widget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">display_name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Threshold&quot;</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.do_threshold&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">display_name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Threshold&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">autogenerate</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">submenus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;threshold&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Thresholding&quot;</span><span class="w"> </span><span class="p">},</span>
 <span class="p">]</span>
 
 <span class="k">[[contributions.commands]]</span>
@@ -721,6 +743,21 @@ toml</label><div class="sd-tab-content docutils">
 <span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.do_threshold&quot;</span>
 <span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Perform threshold on image, return new image&quot;</span>
 <span class="n">python_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example_plugin.some_module:threshold&quot;</span>
+
+<span class="k">[[contributions.commands]]</span>
+<span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_otsu&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Threshold using Otsu&#39;s method&quot;</span>
+<span class="n">python_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example_plugin.some_module:threshold_otsu&quot;</span>
+
+<span class="k">[[contributions.commands]]</span>
+<span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_li&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Threshold using Li&#39;s method&quot;</span>
+<span class="n">python_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example_plugin.some_module:threshold_li&quot;</span>
+
+<span class="k">[[contributions.commands]]</span>
+<span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.all_thresholds&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;All thresholds&quot;</span>
+<span class="n">python_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example_plugin.some_module:all_thresholds&quot;</span>
 
 <span class="k">[[contributions.commands]]</span>
 <span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_widget&quot;</span>
@@ -776,6 +813,16 @@ toml</label><div class="sd-tab-content docutils">
 <span class="n">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#a1ef34&quot;</span>
 <span class="n">warning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#f92672&quot;</span>
 <span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;#66d9ef&quot;</span>
+
+<span class="k">[contributions.menus]</span>
+<span class="s2">&quot;napari/layers/segment&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">submenu</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;threshold&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.all_thresholds&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_otsu&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;example-plugin.threshold_li&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>

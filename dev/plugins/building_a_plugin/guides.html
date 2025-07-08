@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=29b5bbff"></script>
+    <script src="../../_static/documentation_options.js?v=754e0f81"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -983,6 +983,104 @@ napari-plugin-engine</label><div class="sd-tab-content docutils">
 <hr class="docutils" />
 </section>
 </section>
+<section id="menus">
+<span id="menus-contribution-guide"></span><h2>Menus<a class="headerlink" href="#menus" title="Link to this heading">#</a></h2>
+<p>Menu contributions enable plugin developers to add new items or submenus to <em>existing</em> napari menus, allowing commands to be executed directly through the menu interface. This is a great mechanism for exposing simple commands or widgets that are generally applicable to a wide range of data.</p>
+<section id="menuitem-and-submenu-contributions">
+<h3><code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> and <code class="docutils literal notranslate"><span class="pre">Submenu</span></code> Contributions<a class="headerlink" href="#menuitem-and-submenu-contributions" title="Link to this heading">#</a></h3>
+<p>Menu entries are defined using two primary mechanisms in the plugin manifest:</p>
+<ul class="simple">
+<li><p><strong>MenuItem</strong>: Adds a command to an existing menu location.</p></li>
+<li><p><strong>Submenu</strong>: Creates a new submenu (referenced by ID) that can itself contain menu items or other submenus.</p></li>
+</ul>
+<p>The structure of menu contributions requires first defining a command, then mapping it to a menu location.</p>
+</section>
+<section id="example-thresholding-submenu">
+<h3>Example: Thresholding submenu<a class="headerlink" href="#example-thresholding-submenu" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+manifest</label><div class="sd-tab-content docutils">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo</span>
+<span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Demo plugin</span>
+
+<span class="nt">contributions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo.all_thresholds</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Try All Thresholds</span>
+<span class="w">      </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari_demo:all_thresholds</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo.threshold_otsu</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Otsu Threshold</span>
+<span class="w">      </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari_demo:threshold_otsu</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo.threshold_li</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Li Threshold</span>
+<span class="w">      </span><span class="nt">python_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari_demo:threshold_li</span>
+
+<span class="w">  </span><span class="nt">menus</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">napari/layers/segment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">submenu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo.all_thresholds</span>
+<span class="w">    </span><span class="nt">threshold</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo.threshold_otsu</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napari-demo.threshold_li</span>
+
+<span class="w">  </span><span class="nt">submenus</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">threshold</span>
+<span class="w">      </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thresholding</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+python implementation</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># napari_demo module</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">all_thresholds</span><span class="p">(</span><span class="n">viewer</span><span class="p">:</span> <span class="s1">&#39;napari.viewer.Viewer&#39;</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">threshold_otsu</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.LabelsData&#39;</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">threshold_li</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s1">&#39;napari.types.ImageData&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;napari.types.LabelsData&#39;</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="guidelines">
+<h3>Guidelines<a class="headerlink" href="#guidelines" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Use menus for discoverability</strong>: Menu contributions surface useful plugin functionality in an intuitive way.</p></li>
+<li><p><strong>Separate UI concerns</strong>: Commands exposed via menus should avoid opening dialogs unnecessarily unless the user has selected them.</p></li>
+</ul>
+</section>
+<section id="menu-id-reference">
+<h3>Menu ID Reference<a class="headerlink" href="#menu-id-reference" title="Link to this heading">#</a></h3>
+<p>Here’s the full list of contributable menus. <a class="reference external" href="https://github.com/napari/napari/blob/main/src/napari/_app_model/constants/_menus.py">source</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">napari</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="n">new_layer</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="n">io_utilities</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="n">acquire</span>
+
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">visualize</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">annotate</span>
+
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">data</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">layer_type</span>
+
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">transform</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">measure</span>
+
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="nb">filter</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">register</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">project</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">segment</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">track</span>
+<span class="n">napari</span><span class="o">/</span><span class="n">layers</span><span class="o">/</span><span class="n">classify</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
 <section id="sample-data">
 <span id="sample-data-contribution-guide"></span><h2>Sample Data<a class="headerlink" href="#sample-data" title="Link to this heading">#</a></h2>
 <p>This contribution point allows plugin developers to contribute sample data
@@ -992,11 +1090,14 @@ menu, or via the command line with <code class="docutils literal notranslate"><s
 It can take the form of a <strong>Sample Data URI</strong> that points to a static resource
 (such as a file included in the plugin distribution, or a remote resource),
 or <strong>Sample Data Function</strong> that generates layer data on demand.</p>
+<p>Note that unlike reader contributions, sample data contributions are
+<strong>always</strong> expected to return data, so returning <code class="docutils literal notranslate"><span class="pre">[(None,)]</span></code>
+will cause an error.</p>
 <section id="sample-data-example">
 <h3>Sample Data example<a class="headerlink" href="#sample-data-example" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-6">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
 npe2</label><div class="sd-tab-content docutils">
 <p><strong>python implementation</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example_plugin.some_module</span>
@@ -1027,8 +1128,8 @@ for field details.</p>
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-7">
+<input id="sd-tab-item-9" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
 napari-plugin-engine</label><div class="sd-tab-content docutils">
 <div class="admonition-deprecated admonition">
 <p class="admonition-title">Deprecated!</p>
@@ -1253,6 +1354,13 @@ tuple from a given layer</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets">Widgets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#widget-example">Widget example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menus">Menus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menuitem-and-submenu-contributions"><code class="docutils literal notranslate"><span class="pre">MenuItem</span></code> and <code class="docutils literal notranslate"><span class="pre">Submenu</span></code> Contributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-thresholding-submenu">Example: Thresholding submenu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines">Guidelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menu-id-reference">Menu ID Reference</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-data">Sample Data</a><ul class="nav section-nav flex-column">
