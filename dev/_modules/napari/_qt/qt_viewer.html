@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=43b19fbe"></script>
+    <script src="../../../_static/documentation_options.js?v=18f8dbb9"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -472,6 +472,7 @@ window.addEventListener("load", load);
   <h1>Source code for napari._qt.qt_viewer</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">contextlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
@@ -483,12 +484,13 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Literal</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">weakref</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakSet</span><span class="p">,</span> <span class="n">ref</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QCoreApplication</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QUrl</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QGuiApplication</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QGuiApplication</span><span class="p">,</span> <span class="n">QImage</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qtpy.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QFileDialog</span><span class="p">,</span> <span class="n">QSplitter</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QWidget</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">superqt</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensure_main_thread</span>
 
@@ -513,6 +515,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.settings._application</span><span class="w"> </span><span class="kn">import</span> <span class="n">DaskSettings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">perf</span><span class="p">,</span> <span class="n">resize_dask_cache</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.action_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">action_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_center_bbox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.history</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">get_open_history</span><span class="p">,</span>
     <span class="n">get_save_history</span><span class="p">,</span>
@@ -1304,38 +1307,16 @@ window.addEventListener("load", load);
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_show_welcome_screen</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="o">.</span><span class="n">set_welcome_visible</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Capture a screenshot of the Vispy canvas.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        flash : bool</span>
-<span class="sd">            Flag to indicate whether flash animation should be shown after</span>
-<span class="sd">            the screenshot was captured.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_layer_slicer</span><span class="o">.</span><span class="n">wait_until_idle</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-            <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span>
-                <span class="s1">&#39;Slicing was too slow. Wait for all layers to load before taking a screenshot, &#39;</span>
-                <span class="s1">&#39;or disable async slicing in Preferences-&gt;Experimental.&#39;</span>
-            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-
-        <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>
-            <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_flash_animation</span>
-
-            <span class="c1"># Here we are actually applying the effect to the `_welcome_widget`</span>
-            <span class="c1"># and not # the `native` widget because it does not work on the</span>
-            <span class="c1"># `native` widget. It&#39;s probably because the widget is in a stack</span>
-            <span class="c1"># with the `QtWelcomeWidget`.</span>
-            <span class="n">add_flash_animation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">img</span>
-
 <div class="viewcode-block" id="QtViewer.screenshot">
 <a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.screenshot">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">screenshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">screenshot</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">flash</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">fit_to_data_extent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Take currently displayed screen and convert to an image array.</span>
 
 <span class="sd">        Parameters</span>
@@ -1345,6 +1326,67 @@ window.addEventListener("load", load);
 <span class="sd">        flash : bool</span>
 <span class="sd">            Flag to indicate whether flash animation should be shown after</span>
 <span class="sd">            the screenshot was captured.</span>
+<span class="sd">        size : tuple[int, int]</span>
+<span class="sd">            Size (resolution height x width) of the screenshot.</span>
+<span class="sd">        scale : float</span>
+<span class="sd">            Scale factor used to increase resolution of canvas for the screenshot.</span>
+<span class="sd">            By default, the currently displayed resolution.</span>
+<span class="sd">        fit_to_data_extent: bool</span>
+<span class="sd">            Tightly fit the canvas around the data to prevent margins from</span>
+<span class="sd">            showing in the screenshot. If False, a screenshot of the currently</span>
+<span class="sd">            visible canvas will be generated.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        image : array</span>
+<span class="sd">            Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the</span>
+<span class="sd">            upper-left corner of the rendered region.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">QImg2array</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_screenshot</span><span class="p">(</span>
+                <span class="n">flash</span><span class="o">=</span><span class="n">flash</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+                <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+                <span class="n">fit_to_data_extent</span><span class="o">=</span><span class="n">fit_to_data_extent</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">imsave</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_flash_animation</span>
+
+            <span class="c1"># Here we are actually applying the effect to the `_welcome_widget`</span>
+            <span class="c1"># and not # the `native` widget because it does not work on the</span>
+            <span class="c1"># `native` widget. It&#39;s probably because the widget is in a stack</span>
+            <span class="c1"># with the `QtWelcomeWidget`.</span>
+            <span class="n">add_flash_animation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">img</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_screenshot</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">flash</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">fit_to_data_extent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QImage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take currently displayed screen and convert to an image array.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        flash : bool</span>
+<span class="sd">            Flag to indicate whether flash animation should be shown after</span>
+<span class="sd">            the screenshot was captured.</span>
+<span class="sd">        size : tuple[int, int]</span>
+<span class="sd">            Size (resolution height x width) of the screenshot.</span>
+<span class="sd">        scale : float</span>
+<span class="sd">            Scale factor used to increase resolution of canvas for the screenshot.</span>
+<span class="sd">            By default, the currently displayed resolution.</span>
+<span class="sd">        fit_to_data_extent: bool</span>
+<span class="sd">            Tightly fit the canvas around the data to prevent margins from</span>
+<span class="sd">            showing in the screenshot. If False, a screenshot of the currently</span>
+<span class="sd">            visible canvas will be generated.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1353,10 +1395,85 @@ window.addEventListener("load", load);
 <span class="sd">            upper-left corner of the rendered region.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">img</span> <span class="o">=</span> <span class="n">QImg2array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_screenshot</span><span class="p">(</span><span class="n">flash</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">imsave</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>  <span class="c1"># scikit-image imsave method</span>
-        <span class="k">return</span> <span class="n">img</span></div>
+        <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;screenshot size must be 2 values, got </span><span class="si">{len_size}</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">len_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">size</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_layer_slicer</span><span class="o">.</span><span class="n">wait_until_idle</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span>
+                <span class="s1">&#39;Slicing was too slow. Wait for all layers to load before taking a screenshot, &#39;</span>
+                <span class="s1">&#39;or disable async slicing in Preferences-&gt;Experimental.&#39;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="k">if</span> <span class="n">fit_to_data_extent</span><span class="p">:</span>
+            <span class="c1"># Use the same scene parameter calculations as in viewer_model.fit_to_view</span>
+            <span class="n">ndisplay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span>
+            <span class="n">extent</span><span class="p">,</span> <span class="n">scene_size</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_get_scene_parameters</span><span class="p">()</span>
+            <span class="n">extent_scale</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">step</span><span class="p">[</span><span class="o">-</span><span class="n">ndisplay</span><span class="p">:])</span>
+
+            <span class="k">if</span> <span class="n">ndisplay</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">scene_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">_calculate_bounding_box</span><span class="p">(</span>
+                    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+                    <span class="n">view_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">view_direction</span><span class="p">,</span>
+                    <span class="n">up_direction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">up_direction</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="c1"># adjust size by the scale, to return the size in real pixels</span>
+            <span class="n">grid_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">actual_shape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">))</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">scene_size</span> <span class="o">/</span> <span class="n">extent_scale</span> <span class="o">*</span> <span class="n">grid_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">resize_canvas</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">fit_to_data_extent</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">fit_to_view</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">flash</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_flash_animation</span>
+
+                <span class="c1"># Here we are actually applying the effect to the `_welcome_widget`</span>
+                <span class="c1"># and not # the `native` widget because it does not work on the</span>
+                <span class="c1"># `native` widget. It&#39;s probably because the widget is in a stack</span>
+                <span class="c1"># with the `QtWelcomeWidget`.</span>
+                <span class="n">add_flash_animation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_welcome_widget</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">img</span>
+
+<div class="viewcode-block" id="QtViewer.resize_canvas">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.resize_canvas">[docs]</a>
+    <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resize_canvas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Temporarily, safely, resize the canvas</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        size: (int, int)</span>
+<span class="sd">            New canvas size in pixels. Often calculated based on data size.</span>
+<span class="sd">        scale: float</span>
+<span class="sd">            Scale factor to modify final canvas size.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">canvas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span>
+        <span class="n">prev_size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">camera</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span>
+        <span class="n">old_center</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">center</span>
+        <span class="n">old_zoom</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span>
+        <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">devicePixelRatio</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prev_size</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">prev_size</span>
+            <span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">old_center</span>
+            <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">old_zoom</span></div>
 
 
 <div class="viewcode-block" id="QtViewer.clipboard">
@@ -1703,6 +1820,154 @@ window.addEventListener("load", load);
             <span class="bp">self</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dockConsole</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
         <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="QtViewer.export_rois">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.export_rois">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_rois</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">rois</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">paths</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export the given rectangular rois to specified file paths.</span>
+
+<span class="sd">        For each shape, moves the camera to the center of the shape</span>
+<span class="sd">        and adjust the canvas size to fit the shape.</span>
+<span class="sd">        Note: The shape height and width can be of type float.</span>
+<span class="sd">        However, the canvas size only accepts a tuple of integers.</span>
+<span class="sd">        This can result in slight misalignment.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        rois: list[np.ndarray]</span>
+<span class="sd">            A list of arrays  with each being of shape (4, 2) representing</span>
+<span class="sd">            a rectangular roi.</span>
+<span class="sd">        paths: str, Path, list[str, Path], optional</span>
+<span class="sd">            Where to save the rois. If a string or a Path, a directory will</span>
+<span class="sd">            be created if it does not exist yet and screenshots will be</span>
+<span class="sd">            saved with filename `roi_{n}.png` where n is the nth roi. If</span>
+<span class="sd">            paths is a list of either string or paths, these need to be the</span>
+<span class="sd">            full paths of where to store each individual roi. In this case</span>
+<span class="sd">            the length of the list and the number of rois must match.</span>
+<span class="sd">            If None, the screenshots will only be returned and not saved</span>
+<span class="sd">            to disk.</span>
+<span class="sd">        scale: float, optional</span>
+<span class="sd">            Scale factor used to increase resolution of canvas for the screenshot.</span>
+<span class="sd">            By default, uses the displayed scale.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        screenshot_list: list</span>
+<span class="sd">            The list with roi screenshots.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">rois</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;ROI found with invalid shape, all rois must have shape (4, 2), i.e. have 4 corners defined in 2 &#39;</span>
+                <span class="s1">&#39;dimensions. 3D is not supported.&#39;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">paths</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rois</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;The number of file paths does not match the number of ROI shapes&#39;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="n">storage_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+            <span class="n">storage_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">storage_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;roi_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">.png&#39;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rois</span><span class="p">))]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;export_rois&#39; is not implemented for 3D view.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">screenshot_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">camera</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span>
+        <span class="n">start_camera_center</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">center</span>
+        <span class="n">start_camera_zoom</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span>
+        <span class="n">canvas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span>
+        <span class="n">prev_size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="n">visible_dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">displayed</span><span class="p">)</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">step</span><span class="p">[</span><span class="n">visible_dims</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">roi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rois</span><span class="p">):</span>
+            <span class="n">center_coord</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">get_center_bbox</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+            <span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center_coord</span>
+            <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="n">step</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="n">step</span><span class="p">))</span>
+
+            <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">step</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">if</span> <span class="n">paths</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">screenshot_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">flash</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">prev_size</span>
+        <span class="n">camera</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">start_camera_center</span>
+        <span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">start_camera_zoom</span>
+
+        <span class="k">return</span> <span class="n">screenshot_list</span></div>
+
+
+<div class="viewcode-block" id="QtViewer.export_figure">
+<a class="viewcode-back" href="../../../api/napari.qt.QtViewer.html#napari.qt.QtViewer.export_figure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_figure</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">flash</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export an image of the full extent of the displayed layer data.</span>
+
+<span class="sd">        This function finds a tight boundary around the data, resets the view</span>
+<span class="sd">        around that boundary (and, when scale=1, such that 1 captured pixel is</span>
+<span class="sd">        equivalent to one data pixel), takes a screenshot, then restores the</span>
+<span class="sd">        previous zoom and canvas sizes.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : str, optional</span>
+<span class="sd">            Filename for saving screenshot image.</span>
+<span class="sd">        scale : float</span>
+<span class="sd">            Scale factor used to increase resolution of canvas for the</span>
+<span class="sd">            screenshot. By default, a scale of 1.</span>
+<span class="sd">        flash : bool</span>
+<span class="sd">            Flag to indicate whether flash animation should be shown after</span>
+<span class="sd">            the screenshot was captured.</span>
+<span class="sd">            By default, True.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        image : array</span>
+<span class="sd">            Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the</span>
+<span class="sd">            upper-left corner of the rendered region.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="n">trans</span><span class="o">.</span><span class="n">_</span><span class="p">(</span>
+                    <span class="s1">&#39;Scale must be a float or an int.&#39;</span><span class="p">,</span>
+                    <span class="n">deferred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">img</span> <span class="o">=</span> <span class="n">QImg2array</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_screenshot</span><span class="p">(</span>
+                <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+                <span class="n">flash</span><span class="o">=</span><span class="n">flash</span><span class="p">,</span>
+                <span class="n">fit_to_data_extent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">imsave</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">img</span></div>
 </div>
 
 

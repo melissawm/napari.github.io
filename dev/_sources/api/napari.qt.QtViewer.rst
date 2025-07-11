@@ -203,6 +203,12 @@ napari.qt.QtViewer
       ~QtViewer.eventFilter
    
    
+      ~QtViewer.export_figure
+   
+   
+      ~QtViewer.export_rois
+   
+   
       ~QtViewer.find
    
    
@@ -639,6 +645,9 @@ napari.qt.QtViewer
    
    
       ~QtViewer.resizeEvent
+   
+   
+      ~QtViewer.resize_canvas
    
    
       ~QtViewer.restoreGeometry
