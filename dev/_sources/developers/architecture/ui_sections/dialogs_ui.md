@@ -240,58 +240,58 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
-├─_qt/
-│ ├─dialogs/
-│ │ ├─qt_activity_dialog.py
-│ │ ├─qt_about.py
-│ │ ├─shimmed_plugin_dialog.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_notification.py
-│ │ ├─qt_reader_dialog.py
-│ │ ├─screenshot_dialog.py
-│ │ ├─confirm_close_dialog.py
-│ │ ├─qt_plugin_report.py
-│ │ └─qt_modal.py
-│ ├─_qplugins/
-│ │ └─_qnpe2.py
-│ ├─widgets/
-│ │ ├─qt_color_swatch.py
-│ │ ├─qt_dims.py
-│ │ ├─qt_plugin_sorter.py
-│ │ ├─qt_progress_bar.py
-│ │ ├─qt_dims_slider.py
-│ │ ├─qt_logger.py
-│ │ ├─qt_spinbox.py
-│ │ ├─qt_highlight_preview.py
-│ │ ├─qt_command_palette.py
-│ │ ├─qt_tooltip.py
-│ │ ├─qt_font_size.py
-│ │ ├─qt_scrollbar.py
-│ │ ├─qt_extension2reader.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ └─qt_dims_sorter.py
-│ ├─qt_viewer.py
-│ ├─_qapp_model/
-│ │ ├─qactions/
-│ │ │ ├─_file.py
-│ │ │ ├─_help.py
-│ │ │ ├─__init__.py
-│ │ │ ├─_plugins.py
-│ │ │ └─_debug.py
-│ │ ├─_menus.py
-│ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ ├─qt_main_window.py
-│ └─utils.py
-└─_vendor/
-  └─qt_json_builder/
-    ├─qt_jsonschema_form/
-    │ ├─widgets.py
-    │ ├─defaults.py
-    │ ├─signal.py
-    │ ├─__init__.py
-    │ ├─form.py
-    │ └─utils.py
-    └─__init__.py
+├─_vendor/
+│ └─qt_json_builder/
+│   ├─__init__.py
+│   └─qt_jsonschema_form/
+│     ├─__init__.py
+│     ├─widgets.py
+│     ├─form.py
+│     ├─signal.py
+│     ├─utils.py
+│     └─defaults.py
+└─_qt/
+  ├─widgets/
+  │ ├─qt_font_size.py
+  │ ├─qt_spinbox.py
+  │ ├─qt_logger.py
+  │ ├─qt_highlight_preview.py
+  │ ├─qt_plugin_sorter.py
+  │ ├─qt_progress_bar.py
+  │ ├─qt_dims.py
+  │ ├─qt_scrollbar.py
+  │ ├─qt_color_swatch.py
+  │ ├─qt_tooltip.py
+  │ ├─qt_viewer_status_bar.py
+  │ ├─qt_dims_slider.py
+  │ ├─qt_extension2reader.py
+  │ ├─qt_command_palette.py
+  │ └─qt_dims_sorter.py
+  ├─qt_viewer.py
+  ├─dialogs/
+  │ ├─preferences_dialog.py
+  │ ├─qt_plugin_report.py
+  │ ├─confirm_close_dialog.py
+  │ ├─qt_notification.py
+  │ ├─qt_modal.py
+  │ ├─qt_about.py
+  │ ├─screenshot_dialog.py
+  │ ├─qt_reader_dialog.py
+  │ ├─qt_activity_dialog.py
+  │ └─shimmed_plugin_dialog.py
+  ├─_qplugins/
+  │ └─_qnpe2.py
+  ├─utils.py
+  ├─qt_main_window.py
+  └─_qapp_model/
+    ├─injection/
+    │ ├─_qproviders.py
+    │ └─_qprocessors.py
+    ├─_menus.py
+    └─qactions/
+      ├─__init__.py
+      ├─_help.py
+      ├─_plugins.py
+      ├─_debug.py
+      └─_file.py
 ```

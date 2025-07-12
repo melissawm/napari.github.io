@@ -168,37 +168,37 @@ graph LR
 ```
 napari/
 ├─_qt/
-│ ├─dialogs/
-│ │ ├─qt_about.py
-│ │ ├─shimmed_plugin_dialog.py
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_reader_dialog.py
-│ │ ├─screenshot_dialog.py
-│ │ ├─confirm_close_dialog.py
-│ │ ├─qt_plugin_report.py
-│ │ └─qt_modal.py
 │ ├─widgets/
 │ │ ├─qt_logger.py
 │ │ ├─qt_viewer_buttons.py
 │ │ └─qt_command_palette.py
-│ ├─qthreading.py
 │ ├─qt_viewer.py
+│ ├─dialogs/
+│ │ ├─preferences_dialog.py
+│ │ ├─qt_plugin_report.py
+│ │ ├─confirm_close_dialog.py
+│ │ ├─qt_modal.py
+│ │ ├─qt_about.py
+│ │ ├─screenshot_dialog.py
+│ │ ├─qt_reader_dialog.py
+│ │ └─shimmed_plugin_dialog.py
 │ ├─__init__.py
+│ ├─qt_main_window.py
 │ ├─_qapp_model/
-│ │ ├─qactions/
-│ │ │ ├─_file.py
-│ │ │ ├─_toggle_action.py
-│ │ │ ├─_window.py
-│ │ │ ├─_layerlist_context.py
-│ │ │ ├─_layers_actions.py
-│ │ │ ├─_help.py
-│ │ │ ├─_view.py
-│ │ │ ├─__init__.py
-│ │ │ ├─_plugins.py
-│ │ │ └─_debug.py
-│ │ └─injection/
-│ │   ├─_qproviders.py
-│ │   └─_qprocessors.py
-│ └─qt_main_window.py
+│ │ ├─injection/
+│ │ │ ├─_qproviders.py
+│ │ │ └─_qprocessors.py
+│ │ └─qactions/
+│ │   ├─__init__.py
+│ │   ├─_help.py
+│ │   ├─_toggle_action.py
+│ │   ├─_window.py
+│ │   ├─_view.py
+│ │   ├─_plugins.py
+│ │   ├─_debug.py
+│ │   ├─_file.py
+│ │   ├─_layers_actions.py
+│ │   └─_layerlist_context.py
+│ └─qthreading.py
 └─viewer.py
 ```

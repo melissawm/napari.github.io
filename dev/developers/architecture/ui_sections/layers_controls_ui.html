@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=18f8dbb9"></script>
+    <script src="../../../_static/documentation_options.js?v=4d6acb2d"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -727,32 +727,32 @@ window.addEventListener("load", load);
 <section id="source-code-directory-layout-related-to-modules-inside-napari">
 <h2>Source code directory layout (related to modules inside <code class="docutils literal notranslate"><span class="pre">napari</span></code>)<a class="headerlink" href="#source-code-directory-layout-related-to-modules-inside-napari" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>napari/
-├─layers/
-│ └─__init__.py
 ├─_qt/
-│ ├─layer_controls/
-│ │ ├─qt_surface_controls.py
-│ │ ├─qt_labels_controls.py
-│ │ ├─qt_points_controls.py
-│ │ ├─qt_colormap_combobox.py
-│ │ ├─qt_layer_controls_container.py
-│ │ ├─qt_vectors_controls.py
-│ │ ├─qt_image_controls.py
-│ │ ├─__init__.py
-│ │ ├─qt_shapes_controls.py
-│ │ ├─qt_image_controls_base.py
-│ │ ├─qt_tracks_controls.py
-│ │ └─qt_layer_controls_base.py
 │ ├─widgets/
+│ │ ├─qt_mode_buttons.py
 │ │ ├─qt_color_swatch.py
 │ │ ├─qt_range_slider_popup.py
-│ │ ├─qt_mode_buttons.py
 │ │ ├─qt_command_palette.py
 │ │ └─qt_viewer_dock_widget.py
 │ ├─qt_viewer.py
 │ ├─__init__.py
-│ └─qt_main_window.py
-└─viewer.py
+│ ├─qt_main_window.py
+│ └─layer_controls/
+│   ├─__init__.py
+│   ├─qt_tracks_controls.py
+│   ├─qt_image_controls_base.py
+│   ├─qt_layer_controls_container.py
+│   ├─qt_shapes_controls.py
+│   ├─qt_colormap_combobox.py
+│   ├─qt_vectors_controls.py
+│   ├─qt_points_controls.py
+│   ├─qt_image_controls.py
+│   ├─qt_layer_controls_base.py
+│   ├─qt_labels_controls.py
+│   └─qt_surface_controls.py
+├─viewer.py
+└─layers/
+  └─__init__.py
 </pre></div>
 </div>
 </section>

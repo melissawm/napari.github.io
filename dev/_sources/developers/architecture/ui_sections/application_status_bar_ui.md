@@ -75,18 +75,18 @@ graph LR
 ```
 napari/
 ├─_qt/
+│ ├─widgets/
+│ │ ├─qt_progress_bar.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ └─qt_command_palette.py
 │ ├─dialogs/
 │ │ ├─qt_activity_dialog.py
 │ │ └─shimmed_plugin_dialog.py
-│ ├─widgets/
-│ │ ├─qt_progress_bar.py
-│ │ ├─qt_command_palette.py
-│ │ └─qt_viewer_status_bar.py
+│ ├─__init__.py
 │ ├─threads/
 │ │ └─status_checker.py
-│ ├─__init__.py
 │ └─qt_main_window.py
-├─viewer.py
-└─utils/
-  └─progress.py
+├─utils/
+│ └─progress.py
+└─viewer.py
 ```

@@ -259,62 +259,62 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
+├─_qt/
+│ ├─widgets/
+│ │ ├─qt_spinbox.py
+│ │ ├─qt_dims.py
+│ │ ├─qt_viewer_buttons.py
+│ │ ├─qt_scrollbar.py
+│ │ ├─qt_tooltip.py
+│ │ ├─qt_welcome.py
+│ │ ├─qt_viewer_status_bar.py
+│ │ ├─qt_dims_slider.py
+│ │ ├─qt_command_palette.py
+│ │ ├─qt_dims_sorter.py
+│ │ └─qt_viewer_dock_widget.py
+│ ├─qt_viewer.py
+│ ├─dialogs/
+│ │ └─__init__.py
+│ ├─containers/
+│ │ └─__init__.py
+│ ├─utils.py
+│ ├─threads/
+│ │ ├─__init__.py
+│ │ └─status_checker.py
+│ ├─qt_main_window.py
+│ ├─layer_controls/
+│ │ └─__init__.py
+│ ├─_qapp_model/
+│ │ ├─injection/
+│ │ │ ├─__init__.py
+│ │ │ └─_qprocessors.py
+│ │ └─qactions/
+│ │   ├─__init__.py
+│ │   ├─_debug.py
+│ │   └─_layerlist_context.py
+│ └─qthreading.py
 ├─components/
-│ ├─layerlist.py
-│ ├─_viewer_mouse_bindings.py
 │ ├─tooltip.py
+│ ├─_viewer_constants.py
+│ ├─layerlist.py
 │ ├─overlays/
-│ │ ├─base.py
+│ │ ├─__init__.py
 │ │ ├─labels_polygon.py
+│ │ ├─base.py
+│ │ ├─scale_bar.py
+│ │ ├─brush_circle.py
+│ │ ├─axes.py
 │ │ ├─interaction_box.py
 │ │ ├─bounding_box.py
-│ │ ├─scale_bar.py
-│ │ ├─text.py
-│ │ ├─__init__.py
-│ │ ├─axes.py
-│ │ └─brush_circle.py
+│ │ └─text.py
 │ ├─camera.py
-│ ├─cursor.py
-│ ├─viewer_model.py
 │ ├─_viewer_key_bindings.py
 │ ├─grid.py
-│ ├─_layer_slicer.py
-│ ├─_viewer_constants.py
-│ └─dims.py
-├─layers/
-│ └─__init__.py
-└─_qt/
-  ├─dialogs/
-  │ └─__init__.py
-  ├─layer_controls/
-  │ └─__init__.py
-  ├─widgets/
-  │ ├─qt_dims.py
-  │ ├─qt_dims_slider.py
-  │ ├─qt_spinbox.py
-  │ ├─qt_viewer_buttons.py
-  │ ├─qt_command_palette.py
-  │ ├─qt_viewer_dock_widget.py
-  │ ├─qt_tooltip.py
-  │ ├─qt_welcome.py
-  │ ├─qt_scrollbar.py
-  │ ├─qt_viewer_status_bar.py
-  │ └─qt_dims_sorter.py
-  ├─threads/
-  │ ├─status_checker.py
-  │ └─__init__.py
-  ├─containers/
-  │ └─__init__.py
-  ├─qthreading.py
-  ├─qt_viewer.py
-  ├─_qapp_model/
-  │ ├─qactions/
-  │ │ ├─_layerlist_context.py
-  │ │ ├─__init__.py
-  │ │ └─_debug.py
-  │ └─injection/
-  │   ├─_qprocessors.py
-  │   └─__init__.py
-  ├─qt_main_window.py
-  └─utils.py
+│ ├─cursor.py
+│ ├─dims.py
+│ ├─viewer_model.py
+│ ├─_viewer_mouse_bindings.py
+│ └─_layer_slicer.py
+└─layers/
+  └─__init__.py
 ```
