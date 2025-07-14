@@ -10,6 +10,7 @@ caption: With this tag
 ../gallery/3Dimage_plane_rendering.rst
 ../gallery/add_multiscale_image.rst
 ../gallery/add_vectors_color_by_angle.rst
+../gallery/affine_coffee_cup.rst
 ../gallery/affine_transforms.rst
 ../gallery/dynamic-projections-dask.rst
 ../gallery/export_figure.rst
