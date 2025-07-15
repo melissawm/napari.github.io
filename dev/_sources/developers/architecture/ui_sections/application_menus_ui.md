@@ -36,7 +36,6 @@ graph LR
 	napari._qt._qapp_model.qactions._file(napari._qt._qapp_model.qactions._file)
 	napari._qt._qapp_model.qactions._file --> napari._qt.qt_main_window
 	napari._qt._qapp_model.qactions._file --> napari._qt.qt_viewer
-	napari._qt._qapp_model.qactions._file --> napari._qt.widgets.qt_viewer_buttons
 	click napari._qt._qapp_model.qactions._file "https://github.com/napari/napari/tree/main/napari/_qt/_qapp_model/qactions/_file.py" _blank
 	napari._qt._qapp_model.qactions._help(napari._qt._qapp_model.qactions._help)
 	napari._qt._qapp_model.qactions._help --> napari._qt.dialogs.qt_about
