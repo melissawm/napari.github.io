@@ -28,7 +28,7 @@ your shapes.
 
 .. tags:: visualization-basic
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-63
+.. GENERATED FROM PYTHON SOURCE LINES 11-64
 
 
 
@@ -50,7 +50,8 @@ your shapes.
     import napari
 
     # add the image
-    viewer = napari.view_image(data.camera(), name='photographer')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.camera(), name='photographer')
 
     # create a list of polygons
     polygons = [

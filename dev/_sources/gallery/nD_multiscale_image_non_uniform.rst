@@ -26,7 +26,7 @@ Displays an nD multiscale image
 
 .. tags:: visualization-advanced
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-32
+.. GENERATED FROM PYTHON SOURCE LINES 9-33
 
 
 
@@ -70,7 +70,8 @@ Displays an nD multiscale image
     print('multiscale level shapes: ', [p.shape for p in multiscale])
 
     # add image multiscale
-    viewer = napari.view_image(multiscale, multiscale=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(multiscale, multiscale=True)
 
     if __name__ == '__main__':
         napari.run()

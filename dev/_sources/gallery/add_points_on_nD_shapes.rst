@@ -26,7 +26,7 @@ Add points on nD shapes in 3D using a mouse callback
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-76
+.. GENERATED FROM PYTHON SOURCE LINES 9-75
 
 
 
@@ -71,9 +71,8 @@ Add points on nD shapes in 3D using a mouse callback
     shapes_data = np.array(data)
 
     # add an empty 4d points layer
-    viewer = napari.view_points(ndim=4, size=3)
-    points_layer = viewer.layers[0]
-
+    viewer = napari.Viewer()
+    points_layer = viewer.add_points(ndim=4, size=3)
     # add the shapes layer to the viewer
     features = {'index': [0, 1, 2]}
     for shape_type, mult in {('ellipse', 1), ('rectangle', -1)}:

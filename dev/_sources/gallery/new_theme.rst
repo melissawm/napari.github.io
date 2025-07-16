@@ -26,7 +26,7 @@ Displays an image and sets the theme to new custom theme.
 
 .. tags:: experimental
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-42
+.. GENERATED FROM PYTHON SOURCE LINES 9-43
 
 
 
@@ -59,7 +59,8 @@ Displays an image and sets the theme to new custom theme.
     from napari.utils.theme import available_themes, get_theme, register_theme
 
     # create the viewer with an image
-    viewer = napari.view_image(data.astronaut(), rgb=True, name='astronaut')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True, name='astronaut')
 
     # List themes
     print('Originally themes', available_themes())

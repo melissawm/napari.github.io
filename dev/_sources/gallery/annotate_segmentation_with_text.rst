@@ -29,7 +29,7 @@ https://napari.org/stable/tutorials/segmentation/annotate_segmentation.html
 
 .. tags:: analysis
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-139
+.. GENERATED FROM PYTHON SOURCE LINES 12-140
 
 
 
@@ -166,7 +166,8 @@ https://napari.org/stable/tutorials/segmentation/annotate_segmentation.html
     }
 
     # initialise viewer with coins image
-    viewer = napari.view_image(image, name='coins', rgb=False)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(image, name='coins', rgb=False)
 
     # add the labels
     label_layer = viewer.add_labels(label_image, name='segmentation')

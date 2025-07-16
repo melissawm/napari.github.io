@@ -33,7 +33,7 @@ and then using the weights in the kernel to add up the final fragment value.
 
 .. tags:: gui, visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-83
+.. GENERATED FROM PYTHON SOURCE LINES 17-84
 
 
 
@@ -56,7 +56,8 @@ and then using the weights in the kernel to add up the final fragment value.
 
     import napari
 
-    viewer = napari.view_image(data.astronaut(), rgb=True, interpolation2d='custom')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True, interpolation2d='custom')
 
 
     def gaussian_kernel(size, sigma):

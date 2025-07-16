@@ -26,7 +26,7 @@ Display a 4-D image and points layer and swap the displayed dimensions
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-44
+.. GENERATED FROM PYTHON SOURCE LINES 9-45
 
 
 
@@ -56,7 +56,8 @@ Display a 4-D image and points layer and swap the displayed dimensions
         ],
         axis=0,
     )
-    viewer = napari.view_image(blobs.astype(float))
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs.astype(float))
 
     # add the points
     points = np.array(

@@ -30,7 +30,7 @@ linked layers, all of the other layers follow.
 
 .. tags:: experimental
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-33
+.. GENERATED FROM PYTHON SOURCE LINES 13-34
 
 
 
@@ -50,7 +50,8 @@ linked layers, all of the other layers follow.
     import napari
     from napari.experimental import link_layers
 
-    viewer = napari.view_image(np.random.rand(3, 64, 64), channel_axis=0)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(np.random.rand(3, 64, 64), channel_axis=0)
 
     # link contrast_limits and gamma between all layers in viewer
     # NOTE: you may also omit the second argument to link ALL valid, common

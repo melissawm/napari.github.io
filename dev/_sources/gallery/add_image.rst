@@ -22,11 +22,11 @@
 Add image
 =========
 
-Display one image using the :func:`view_image` API.
+Display one image using the :func:`add_image` API.
 
 .. tags:: visualization-basic
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-19
+.. GENERATED FROM PYTHON SOURCE LINES 9-20
 
 
 
@@ -47,7 +47,8 @@ Display one image using the :func:`view_image` API.
     import napari
 
     # create the viewer with an image
-    viewer = napari.view_image(data.astronaut(), rgb=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True)
 
     if __name__ == '__main__':
         napari.run()

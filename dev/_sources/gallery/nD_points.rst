@@ -28,7 +28,7 @@ across the dimensions, specified by their size
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-44
+.. GENERATED FROM PYTHON SOURCE LINES 11-45
 
 
 
@@ -58,7 +58,8 @@ across the dimensions, specified by their size
         ],
         axis=0,
     )
-    viewer = napari.view_image(blobs.astype(float))
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs.astype(float))
 
     # add the points
     points = np.array(

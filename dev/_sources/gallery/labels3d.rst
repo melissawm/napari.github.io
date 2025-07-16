@@ -50,8 +50,8 @@ View 3D labels.
     import napari
 
     cells3d = data.cells3d()
-
-    viewer = napari.view_image(
+    viewer = napari.Viewer()
+    membranes_layer, nuclei_layer = viewer.add_image(
         cells3d, channel_axis=1, name=['membranes', 'nuclei']
     )
     membrane, nuclei = cells3d.transpose((1, 0, 2, 3)) / np.max(cells3d)

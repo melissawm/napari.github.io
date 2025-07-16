@@ -29,7 +29,7 @@ apprearing on each slice.
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-58
+.. GENERATED FROM PYTHON SOURCE LINES 12-59
 
 
 
@@ -59,7 +59,8 @@ apprearing on each slice.
         ],
         axis=0,
     )
-    viewer = napari.view_image(blobs.astype(float))
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs.astype(float))
 
     # sample vector coord-like data
     n = 200

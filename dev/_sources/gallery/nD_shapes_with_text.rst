@@ -24,7 +24,7 @@ nD shapes with text
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-33
+.. GENERATED FROM PYTHON SOURCE LINES 7-34
 
 
 
@@ -47,7 +47,8 @@ nD shapes with text
         length=100, blob_size_fraction=0.05, n_dim=3, volume_fraction=0.03
     ).astype(float)
 
-    viewer = napari.view_image(blobs.astype(float), ndisplay=3)
+    viewer = napari.Viewer(ndisplay=3)
+    layer = viewer.add_image(blobs.astype(float))
 
     n = 50
     shape = [[[n, 40, 40], [n, 40, 60], [n + 20, 60, 60], [n + 20, 60, 40]]]

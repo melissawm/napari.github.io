@@ -29,7 +29,7 @@ the "gui_qt()" context manager.
 
 .. tags:: historical
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-41
+.. GENERATED FROM PYTHON SOURCE LINES 12-42
 
 
 
@@ -63,7 +63,8 @@ the "gui_qt()" context manager.
 
     import napari
 
-    viewer = napari.view_image(data.astronaut(), rgb=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True)
 
     # You can do anything you would normally do with the viewer object
     # like take a

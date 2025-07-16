@@ -26,7 +26,7 @@ Displays an image and sets the theme to 'light'.
 
 .. tags:: gui
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-22
+.. GENERATED FROM PYTHON SOURCE LINES 9-23
 
 
 
@@ -47,7 +47,8 @@ Displays an image and sets the theme to 'light'.
     import napari
 
     # create the viewer with an image
-    viewer = napari.view_image(data.astronaut(), rgb=True, name='astronaut')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True, name='astronaut')
 
     # set the theme to 'light'
     viewer.theme = 'light'

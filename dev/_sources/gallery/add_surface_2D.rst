@@ -26,7 +26,7 @@ Display a 2D surface
 
 .. tags:: visualization-basic
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-23
+.. GENERATED FROM PYTHON SOURCE LINES 9-24
 
 
 
@@ -51,7 +51,8 @@ Display a 2D surface
     values = np.linspace(0, 1, len(data))
 
     # add the surface
-    viewer = napari.view_surface((data, faces, values))
+    viewer = napari.Viewer()
+    layer = viewer.add_surface((data , faces , values))
 
     if __name__ == '__main__':
         napari.run()

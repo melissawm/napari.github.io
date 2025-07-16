@@ -27,7 +27,7 @@ Display a points layer on top of an image layer using the ``add_points`` and
 
 .. tags:: visualization-basic
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-57
+.. GENERATED FROM PYTHON SOURCE LINES 10-58
 
 
 
@@ -50,7 +50,8 @@ Display a points layer on top of an image layer using the ``add_points`` and
     import napari
 
     # add the image
-    viewer = napari.view_image(rgb2gray(data.astronaut()))
+    viewer = napari.Viewer()
+    layer = viewer.add_image(rgb2gray(data.astronaut()))
     # add the points
     points = np.array([[100, 100], [200, 200], [333, 111]])
     size = np.array([10, 20, 20])

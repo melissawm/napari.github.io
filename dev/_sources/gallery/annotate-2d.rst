@@ -27,7 +27,7 @@ Display one points layer ontop of one image layer using the ``add_points`` and
 
 .. tags:: analysis
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-27
+.. GENERATED FROM PYTHON SOURCE LINES 10-28
 
 
 
@@ -62,7 +62,8 @@ Display one points layer ontop of one image layer using the ``add_points`` and
 
     print('click to add points; close the window when finished.')
 
-    viewer = napari.view_image(data.astronaut(), rgb=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True)
     points = viewer.add_points(np.zeros((0, 2)))
     points.mode = 'add'
 

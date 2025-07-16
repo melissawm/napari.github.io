@@ -24,7 +24,7 @@ Action manager
 
 .. tags:: gui, experimental
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-117
+.. GENERATED FROM PYTHON SOURCE LINES 7-118
 
 
 
@@ -38,14 +38,14 @@ Action manager
 
  .. code-block:: none
 
-    /home/runner/work/docs/docs/napari/examples/action_manager.py:43: FutureWarning: Public access to Window.qt_viewer is deprecated and will be removed in
+    /home/runner/work/docs/docs/napari/examples/action_manager.py:44: FutureWarning: Public access to Window.qt_viewer is deprecated and will be removed in
     v0.7.0. It is considered an "implementation detail" of the napari
     application, not part of the napari viewer model. If your use case
     requires access to qt_viewer, please open an issue to discuss.
       layer_buttons = viewer.window.qt_viewer.layerButtons
-    calling <function bind_shortcut at 0x7fbcf828f2e0>
-    calling <function bind_button at 0x7fbcf828f1c0>
-    calling <function register_action at 0x7fbcf828cdc0>
+    calling <function bind_button at 0x7f1ff1c769e0>
+    calling <function bind_shortcut at 0x7f1ff1c76a70>
+    calling <function register_action at 0x7f1ff1c772e0>
 
 
 
@@ -90,7 +90,8 @@ Action manager
 
 
     # create the viewer with an image
-    viewer = napari.view_image(data.astronaut(), rgb=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True)
 
     layer_buttons = viewer.window.qt_viewer.layerButtons
 

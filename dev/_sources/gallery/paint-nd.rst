@@ -28,7 +28,7 @@ This is useful e.g. when proofreading segmentations within a time series.
 
 .. tags:: analysis
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-34
+.. GENERATED FROM PYTHON SOURCE LINES 11-35
 
 
 
@@ -58,7 +58,8 @@ This is useful e.g. when proofreading segmentations within a time series.
         ],
         axis=0,
     )
-    viewer = napari.view_image(blobs.astype(float), rendering='attenuated_mip')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs.astype(float), rendering='attenuated_mip')
     labels = viewer.add_labels(np.zeros_like(blobs, dtype=np.int32))
     labels.n_edit_dimensions = 3
     labels.brush_size = 15

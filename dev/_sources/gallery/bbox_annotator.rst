@@ -24,7 +24,7 @@ bbox annotator
 
 .. tags:: gui
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-121
+.. GENERATED FROM PYTHON SOURCE LINES 7-122
 
 
 
@@ -123,7 +123,8 @@ bbox annotator
 
 
     # create a viewer with a fake t+2D image
-    viewer = napari.view_image(image)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(image)
 
     # create an empty shapes layer initialized with
     # text set to display the box label

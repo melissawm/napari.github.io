@@ -22,11 +22,11 @@
 nD image
 ========
 
-Display one 4-D image layer using the :func:`view_image` API.
+Display one 4-D image layer using the :func:`add_image` API.
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-28
+.. GENERATED FROM PYTHON SOURCE LINES 9-29
 
 
 
@@ -56,7 +56,8 @@ Display one 4-D image layer using the :func:`view_image` API.
         ],
         axis=0,
     )
-    viewer = napari.view_image(blobs.astype(float))
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs.astype(float))
 
     if __name__ == '__main__':
         napari.run()

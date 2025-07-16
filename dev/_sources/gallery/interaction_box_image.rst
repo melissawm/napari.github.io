@@ -28,7 +28,7 @@ This allows the user to manipulate the image via the interaction box
 
 .. tags:: experimental
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-21
+.. GENERATED FROM PYTHON SOURCE LINES 11-22
 
 
 
@@ -48,7 +48,8 @@ This allows the user to manipulate the image via the interaction box
 
     import napari
 
-    viewer = napari.view_image(data.astronaut(), rgb=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(data.astronaut(), rgb=True)
     viewer.layers.selection.active.mode = 'transform'
 
     if __name__ == '__main__':

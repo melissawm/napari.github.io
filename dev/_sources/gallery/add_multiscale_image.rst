@@ -26,7 +26,7 @@ Displays a multiscale image
 
 .. tags:: visualization-advanced
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-28
+.. GENERATED FROM PYTHON SOURCE LINES 9-29
 
 
 
@@ -66,7 +66,8 @@ Displays a multiscale image
     print('multiscale level shapes: ', [p.shape[:2] for p in multiscale])
 
     # add image multiscale
-    viewer = napari.view_image(multiscale, multiscale=True)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(multiscale, multiscale=True)
 
     if __name__ == '__main__':
         napari.run()

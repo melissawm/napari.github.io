@@ -26,7 +26,7 @@ Display one 4-D image layer using the ``add_image`` API
 
 .. tags:: gui
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-60
+.. GENERATED FROM PYTHON SOURCE LINES 9-61
 
 
 
@@ -50,7 +50,8 @@ Display one 4-D image layer using the ``add_image`` API
         length=128, blob_size_fraction=0.05, n_dim=2, volume_fraction=0.25
     ).astype(float)
 
-    viewer = napari.view_image(blobs, name='blobs')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs, name='blobs')
 
 
     @viewer.bind_key('a')

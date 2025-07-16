@@ -26,7 +26,7 @@ Display a dask array
 
 .. tags:: visualization-nD
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-36
+.. GENERATED FROM PYTHON SOURCE LINES 9-37
 
 
 
@@ -64,7 +64,8 @@ Display a dask array
         ],
         axis=0,
     )
-    viewer = napari.view_image(blobs.astype(float))
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs.astype(float))
 
     if __name__ == '__main__':
         napari.run()

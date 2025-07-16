@@ -52,7 +52,7 @@ them using magicgui.
 
 Part 1: using code to view a specific value.
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-38
+.. GENERATED FROM PYTHON SOURCE LINES 22-39
 
 .. code-block:: Python
 
@@ -67,7 +67,8 @@ Part 1: using code to view a specific value.
         axis=(1, 2),
     )
     blobs_sum = np.sum(blobs_dask_windows, axis=1)
-    viewer = napari.view_image(blobs_sum)
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs_sum)
 
     if __name__ == '__main__':
         napari.run()
@@ -84,11 +85,11 @@ Part 1: using code to view a specific value.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-40
+.. GENERATED FROM PYTHON SOURCE LINES 40-41
 
 Part 2: using magicgui to vary the slice thickness.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-72
+.. GENERATED FROM PYTHON SOURCE LINES 41-74
 
 .. code-block:: Python
 
@@ -118,7 +119,8 @@ Part 2: using magicgui to vary the slice thickness.
         )
 
 
-    viewer = napari.view_image(blobs_dask, colormap='green')
+    viewer = napari.Viewer()
+    layer = viewer.add_image(blobs_dask, colormap='green')
     viewer.window.add_dock_widget(magicgui(sliding_window_mean, auto_call=True))
     viewer.dims.current_step = (32, 0, 0)
 
