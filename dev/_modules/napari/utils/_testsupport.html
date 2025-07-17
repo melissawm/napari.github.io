@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=6811277b"></script>
+    <script src="../../../_static/documentation_options.js?v=f8c2afe2"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -476,6 +476,7 @@ window.addEventListener("load", load);
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">suppress</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">unittest.mock</span><span class="w"> </span><span class="kn">import</span> <span class="n">patch</span>
@@ -638,6 +639,19 @@ window.addEventListener("load", load);
 
     <span class="kn">from</span><span class="w"> </span><span class="nn">napari._app_model._app</span><span class="w"> </span><span class="kn">import</span> <span class="n">NapariApplication</span><span class="p">,</span> <span class="n">_napari_names</span>
 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari._qt._qapp_model.qactions</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_qactions</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">napari.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">_initialize_plugins</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+        <span class="nd">@lru_cache</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">init_qactions</span><span class="p">():</span>
+            <span class="k">pass</span>
+
+        <span class="nd">@lru_cache</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_plugins</span><span class="p">():</span>
+            <span class="k">pass</span>
+
     <span class="n">app</span> <span class="o">=</span> <span class="n">NapariApplication</span><span class="p">(</span><span class="s1">&#39;test_app&#39;</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">injection_store</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="n">_napari_names</span>
     <span class="k">with</span> <span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">NapariApplication</span><span class="p">,</span> <span class="s1">&#39;get_app_model&#39;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="n">app</span><span class="p">):</span>
@@ -645,6 +659,8 @@ window.addEventListener("load", load);
             <span class="k">yield</span> <span class="n">app</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">Application</span><span class="o">.</span><span class="n">destroy</span><span class="p">(</span><span class="s1">&#39;test_app&#39;</span><span class="p">)</span>
+            <span class="n">_initialize_plugins</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>
+            <span class="n">init_qactions</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="make_napari_viewer">

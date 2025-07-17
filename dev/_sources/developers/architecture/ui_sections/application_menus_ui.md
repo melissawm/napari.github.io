@@ -56,7 +56,6 @@ graph LR
 	napari._qt._qapp_model.qactions._view(napari._qt._qapp_model.qactions._view)
 	napari._qt._qapp_model.qactions._view --> napari._qt.qt_main_window
 	napari._qt._qapp_model.qactions._view --> napari._qt.qt_viewer
-	napari._qt._qapp_model.qactions._view --> napari.viewer
 	click napari._qt._qapp_model.qactions._view "https://github.com/napari/napari/tree/main/napari/_qt/_qapp_model/qactions/_view.py" _blank
 	napari._qt._qapp_model.qactions._window(napari._qt._qapp_model.qactions._window)
 	napari._qt._qapp_model.qactions._window --> napari._qt._qapp_model.qactions._toggle_action
