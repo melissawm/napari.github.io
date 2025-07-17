@@ -952,16 +952,35 @@ be rebuilt.</p>
 </div>
 <p>Note: using <code class="docutils literal notranslate"><span class="pre">-j4</span></code> will parallelize the build over 4 cores and can result in crashes.</p>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you have <a class="reference external" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">xvfb</a>
-installed on your system, you can also run a “headless GUI” build by using the
-<code class="docutils literal notranslate"><span class="pre">docs-xvfb</span></code> command:</p>
+<div class="tip admonition">
+<p class="admonition-title">Headless GUI builds</p>
+<p>If you are running a full build, you can run it in a “headless GUI”
+mode, which will prevent napari windows from popping up during the build.</p>
+<ol class="arabic">
+<li><p>If you are using <strong>X11</strong> as your display server and you have
+<a class="reference external" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">xvfb</a>
+installed on your system, you can use the <code class="docutils literal notranslate"><span class="pre">docs-xvfb</span></code> command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs-xvfb
 </pre></div>
 </div>
 <p>This will prevent all but the first napari window from being shown during the docs
 build.</p>
+</li>
+<li><p>If you are using <strong>Wayland</strong> as your display server, and you have <code class="docutils literal notranslate"><span class="pre">xwfb-run</span></code> installed
+on your system (part of the <a class="reference external" href="https://gitlab.freedesktop.org/ofourdan/xwayland-runcan">xwayland-run utilities</a>,
+you can use the <code class="docutils literal notranslate"><span class="pre">docs-xwfb</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs-xwfb
+</pre></div>
+</div>
+<p>Note that you may have to install the <code class="docutils literal notranslate"><span class="pre">xwayland-run</span></code> package manually so that it
+uses the correct Python environment you are using to build the docs. You can do that
+by cloning the sources from <a class="reference external" href="https://gitlab.freedesktop.org/ofourdan/xwayland-run">the xwayland-run GitLab repository</a> and running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>setup<span class="w"> </span>-Dcompositor<span class="o">=</span>weston<span class="w"> </span>--prefix<span class="o">=</span>/path/to/env/<span class="w"> </span>-Dpython.install_env<span class="o">=</span>prefix<span class="w"> </span>.<span class="w"> </span>build
+meson<span class="w"> </span>install<span class="w"> </span>-C<span class="w"> </span>build
+</pre></div>
+</div>
+</li>
+</ol>
 </div>
 </section>
 <section id="building-what-you-need">
