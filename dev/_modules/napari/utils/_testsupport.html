@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=f8c2afe2"></script>
+    <script src="../../../_static/documentation_options.js?v=115d1d56"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -828,12 +828,11 @@ window.addEventListener("load", load);
     <span class="k">else</span><span class="p">:</span>
         <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">getoption</span><span class="p">(</span><span class="n">_SAVE_GRAPH_OPNAME</span><span class="p">):</span>
-        <span class="n">fail_obj_graph</span><span class="p">(</span><span class="n">QtViewer</span><span class="p">)</span>
-
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">rep_call</span><span class="o">.</span><span class="n">failed</span><span class="p">:</span>
         <span class="c1"># IF test failed do not check for leaks</span>
         <span class="n">QtViewer</span><span class="o">.</span><span class="n">_instances</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">getoption</span><span class="p">(</span><span class="n">_SAVE_GRAPH_OPNAME</span><span class="p">):</span>
+        <span class="n">fail_obj_graph</span><span class="p">(</span><span class="n">QtViewer</span><span class="p">)</span>
 
     <span class="n">_do_not_inline_below</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">QtViewer</span><span class="o">.</span><span class="n">_instances</span><span class="p">)</span>
 
