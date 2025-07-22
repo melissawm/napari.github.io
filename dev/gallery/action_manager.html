@@ -445,8 +445,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../guides/index.html">In-depth explanations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guides/event_loop.html">napari event loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/threading.html">Multithreading in napari</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/3D_interactivity.html">3D interactivity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/handedness.html">Axis directions, data, and handedness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/triangulation.html">Triangulation backends for the napari Shapes layer</a></li>
@@ -454,6 +452,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../guides/performance.html">napari performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/preferences.html">Preferences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/contexts_expressions.html">Contexts and Expressions in napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/event_loop.html">napari event loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/threading.html">Multithreading in napari</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/events_reference.html">Events reference</a></li>
 </ul>
 </details></li>
@@ -787,9 +787,9 @@ v0.7.0. It is considered an &quot;implementation detail&quot; of the napari
 application, not part of the napari viewer model. If your use case
 requires access to qt_viewer, please open an issue to discuss.
   layer_buttons = viewer.window.qt_viewer.layerButtons
-calling &lt;function register_action at 0x7fbb07ffb130&gt;
-calling &lt;function bind_shortcut at 0x7fbb07ff8ca0&gt;
-calling &lt;function bind_button at 0x7fbb07ff9ab0&gt;
+calling &lt;function bind_shortcut at 0x7f7da8a1d2d0&gt;
+calling &lt;function bind_button at 0x7f7da8a1c160&gt;
+calling &lt;function register_action at 0x7f7da8a1dd80&gt;
 </pre></div>
 </div>
 <div class="line-block">

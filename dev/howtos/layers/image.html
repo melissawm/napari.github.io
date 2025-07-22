@@ -449,8 +449,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/index.html">In-depth explanations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/event_loop.html">napari event loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/threading.html">Multithreading in napari</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/3D_interactivity.html">3D interactivity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/handedness.html">Axis directions, data, and handedness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/triangulation.html">Triangulation backends for the napari Shapes layer</a></li>
@@ -458,6 +456,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../guides/performance.html">napari performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/preferences.html">Preferences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/contexts_expressions.html">Contexts and Expressions in napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/event_loop.html">napari event loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/threading.html">Multithreading in napari</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/events_reference.html">Events reference</a></li>
 </ul>
 </details></li>
@@ -883,7 +883,7 @@ we’ll mainly use <code class="docutils literal notranslate"><span class="pre">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/645241933.py:5: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/645241933.py:5: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(cells, colormap=&#39;magma&#39;)
 </pre></div>
@@ -1166,12 +1166,12 @@ napari in one line, as shown below:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/233681369.py:7: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/233681369.py:7: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(cells, channel_axis=1)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/233681369.py:10: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/233681369.py:10: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(
 </pre></div>
@@ -1207,7 +1207,7 @@ we are working with an <code class="docutils literal notranslate"><span class="p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/1002676185.py:1: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/1002676185.py:1: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(data.astronaut(), rgb=True)
 </pre></div>
@@ -1294,7 +1294,7 @@ their name. These include:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/3861937824.py:1: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/3861937824.py:1: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(data.moon(), colormap=&#39;red&#39;)
 </pre></div>
@@ -1325,7 +1325,7 @@ black, and color a random array, you can use this example code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/1534987956.py:8: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/1534987956.py:8: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(image, colormap=(&#39;diverging&#39;, cmap))
 </pre></div>
@@ -1383,7 +1383,7 @@ respectively.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8101/2834145270.py:1: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8086/2834145270.py:1: FutureWarning: `napari.view_image` is deprecated and will be removed in napari 0.7.0.
 Use `viewer = napari.Viewer(); viewer.add_image(...)` instead.
   viewer = napari.view_image(data.moon(), name=&#39;moon&#39;)
 </pre></div>
