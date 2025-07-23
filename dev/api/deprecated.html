@@ -9,14 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/svg+xml" href="../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="Viewing a Layer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="Deprecations" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://napari.org/api/view_layer.html" />
+<meta property="og:url" content="https://napari.org/api/deprecated.html" />
 <meta property="og:site_name" content="napari" />
+<meta property="og:description" content="The following modules, view_layers, are deprecated in v0.6 and will be removed in v0.7." />
 <meta property="og:image" content="https://napari.org/dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
+<meta name="description" content="The following modules, view_layers, are deprecated in v0.6 and will be removed in v0.7." />
 
-    <title>Viewing a Layer &#8212; napari</title>
+    <title>Deprecations &#8212; napari</title>
   
   
   
@@ -55,28 +57,28 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=20b0e543"></script>
+    <script src="../_static/documentation_options.js?v=26a72adf"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script data-domain="napari.org" defer="defer" src="https://plausible.io/js/plausible.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/view_layer';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/deprecated';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.3rc0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Misc" href="misc.html" />
-    <link rel="prev" title="Starting the Event Loop" href="event_loop.html" />
+    <link rel="next" title="napari.view_layers" href="napari.view_layers.html" />
+    <link rel="prev" title="Misc" href="misc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="dev" />
+  <meta name="docsearch:version" content="0.6.3" />
   </head>
   
   
@@ -403,7 +405,6 @@
 <li class="toctree-l3"><a class="reference internal" href="napari.layers.Vectors.html">napari.layers.Vectors</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="napari.view_layers.html">napari.view_layers</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.types.html">napari.types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="napari.types.ArrayBase.html">napari.types.ArrayBase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.types.FullLayerData.html">napari.types.FullLayerData</a></li>
@@ -491,9 +492,13 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="event_loop.html">Starting the Event Loop</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Viewing a Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_loop.html">napari.run() - Start the Event Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viewer.html">napari.Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misc.html">Misc</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Deprecations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="napari.view_layers.html">napari.view_layers</a></li>
+</ul>
+</details></li>
 </ul>
 <p class="caption" role="heading" aria-level="2">
       <span class="caption-text">Resources</span>
@@ -510,7 +515,7 @@
       </li>
       <li class="toctree-l1">
           
-          <a class="reference internal" href="../release/index.html">Release notes</a>
+          <a class="reference internal" href="../release/release_0_6_3.html">Latest release notes</a>
           
       </li>
       <li class="toctree-l1">
@@ -562,7 +567,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">API Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Viewing a Layer</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Deprecations</span></li>
   </ul>
 </nav>
 </div>
@@ -579,41 +584,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="viewing-a-layer">
-<h1>Viewing a Layer<a class="headerlink" href="#viewing-a-layer" title="Link to this heading">#</a></h1>
+  <section id="deprecations">
+<h1>Deprecations<a class="headerlink" href="#deprecations" title="Link to this heading">#</a></h1>
+<p>The following modules, <cite>view_layers</cite>, are deprecated in v0.6 and will
+be removed in v0.7.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.html#napari.view_image" title="napari.view_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_image</span></code></a>([data, channel_axis, ...])</p></td>
-<td><p>Create a viewer and add an image layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="napari.html#napari.view_labels" title="napari.view_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_labels</span></code></a>(data, *[, affine, ...])</p></td>
-<td><p>Create a viewer and add a labels layer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.html#napari.view_path" title="napari.view_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_path</span></code></a>(path, *[, stack, plugin, ...])</p></td>
-<td><p>Create a viewer and add a path layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="napari.html#napari.view_points" title="napari.view_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_points</span></code></a>([data, ndim, affine, ...])</p></td>
-<td><p>Create a viewer and add a points layer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.html#napari.view_shapes" title="napari.view_shapes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_shapes</span></code></a>([data, ndim, affine, ...])</p></td>
-<td><p>Create a viewer and add a shapes layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="napari.html#napari.view_surface" title="napari.view_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_surface</span></code></a>(data, *[, affine, ...])</p></td>
-<td><p>Create a viewer and add a surface layer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.html#napari.view_tracks" title="napari.view_tracks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_tracks</span></code></a>(data, *[, affine, ...])</p></td>
-<td><p>Create a viewer and add a tracks layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="napari.html#napari.view_vectors" title="napari.view_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_vectors</span></code></a>([data, affine, ...])</p></td>
-<td><p>Create a viewer and add a vectors layer.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="napari.Viewer.html#napari.Viewer" title="napari.Viewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.Viewer</span></code></a>(*[, title, ndisplay, order, ...])</p></td>
-<td><p>Napari ndarray viewer.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="napari.view_layers.html#module-napari.view_layers" title="napari.view_layers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">napari.view_layers</span></code></a></p></td>
+<td><p>Methods to create a new viewer instance then add a particular layer type.</p></td>
 </tr>
 </tbody>
 </table>
@@ -631,20 +609,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="event_loop.html"
+       href="misc.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Starting the Event Loop</p>
+        <p class="prev-next-title">Misc</p>
       </div>
     </a>
     <a class="right-next"
-       href="misc.html"
+       href="napari.view_layers.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Misc</p>
+        <p class="prev-next-title">napari.view_layers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
