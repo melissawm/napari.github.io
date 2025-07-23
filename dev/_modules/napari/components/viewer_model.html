@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=7517cde5"></script>
+    <script src="../../../_static/documentation_options.js?v=6d064c46"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -498,6 +498,7 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components._viewer_mouse_bindings</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">dims_scroll</span><span class="p">,</span>
     <span class="n">double_click_to_zoom</span><span class="p">,</span>
+    <span class="n">drag_to_zoom</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">Camera</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.cursor</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cursor</span><span class="p">,</span> <span class="n">CursorStyle</span>
@@ -510,6 +511,7 @@ window.addEventListener("load", load);
     <span class="n">Overlay</span><span class="p">,</span>
     <span class="n">ScaleBarOverlay</span><span class="p">,</span>
     <span class="n">TextOverlay</span><span class="p">,</span>
+    <span class="n">ZoomOverlay</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.components.tooltip</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tooltip</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.errors</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
@@ -592,6 +594,7 @@ window.addEventListener("load", load);
     <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">TextOverlay</span><span class="p">,</span>
     <span class="s1">&#39;axes&#39;</span><span class="p">:</span> <span class="n">AxesOverlay</span><span class="p">,</span>
     <span class="s1">&#39;brush_circle&#39;</span><span class="p">:</span> <span class="n">BrushCircleOverlay</span><span class="p">,</span>
+    <span class="s1">&#39;zoom&#39;</span><span class="p">:</span> <span class="n">ZoomOverlay</span><span class="p">,</span>
 <span class="p">}</span>
 
 
@@ -761,6 +764,7 @@ window.addEventListener("load", load);
         <span class="c1"># Add mouse callback</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mouse_wheel_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dims_scroll</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mouse_double_click_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">double_click_to_zoom</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mouse_drag_callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">drag_to_zoom</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_overlays</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">DEFAULT_OVERLAYS</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
 
@@ -776,6 +780,10 @@ window.addEventListener("load", load);
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">text_overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlays</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_zoom_box</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlays</span><span class="p">[</span><span class="s1">&#39;zoom&#39;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_brush_circle_overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -941,7 +949,9 @@ window.addEventListener("load", load);
         <span class="p">)</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_scene_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_scene_parameters</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the scene parameters for the current grid mode.</span>
 
 <span class="sd">        Returns</span>
@@ -1430,7 +1440,7 @@ window.addEventListener("load", load);
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
         <span class="n">plane</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">projection_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+        <span class="n">projection_mode</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
         <span class="n">rendering</span><span class="o">=</span><span class="s1">&#39;mip&#39;</span><span class="p">,</span>
         <span class="n">rgb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">rotate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>

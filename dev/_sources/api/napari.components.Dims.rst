@@ -92,9 +92,12 @@ napari.components.Dims
       ~Dims.displayed
       ~Dims.displayed_order
       ~Dims.events
+      ~Dims.margin_left_step
+      ~Dims.margin_right_step
       ~Dims.not_displayed
       ~Dims.nsteps
       ~Dims.thickness
+      ~Dims.thickness_step
       
       
       

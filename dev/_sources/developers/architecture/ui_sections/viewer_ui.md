@@ -75,12 +75,17 @@ graph LR
 	click napari._qt.widgets.qt_dims "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_dims.py" _blank
 	napari._qt.widgets.qt_dims_slider(napari._qt.widgets.qt_dims_slider)
 	napari._qt.widgets.qt_dims_slider --> napari._qt.dialogs
+	napari._qt.widgets.qt_dims_slider --> napari._qt.utils
+	napari._qt.widgets.qt_dims_slider --> napari._qt.widgets.qt_mirrored_sliders_popup
 	napari._qt.widgets.qt_dims_slider --> napari._qt.widgets.qt_scrollbar
 	click napari._qt.widgets.qt_dims_slider "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_dims_slider.py" _blank
 	napari._qt.widgets.qt_dims_sorter(napari._qt.widgets.qt_dims_sorter)
 	napari._qt.widgets.qt_dims_sorter --> napari._qt.containers
 	napari._qt.widgets.qt_dims_sorter --> napari._qt.widgets.qt_tooltip
 	click napari._qt.widgets.qt_dims_sorter "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_dims_sorter.py" _blank
+	napari._qt.widgets.qt_mirrored_sliders_popup(napari._qt.widgets.qt_mirrored_sliders_popup)
+	napari._qt.widgets.qt_mirrored_sliders_popup --> napari._qt.dialogs
+	click napari._qt.widgets.qt_mirrored_sliders_popup "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_mirrored_sliders_popup.py" _blank
 	napari._qt.widgets.qt_scrollbar(napari._qt.widgets.qt_scrollbar)
 	click napari._qt.widgets.qt_scrollbar "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_scrollbar.py" _blank
 	napari._qt.widgets.qt_spinbox(napari._qt.widgets.qt_spinbox)
@@ -135,6 +140,7 @@ graph LR
 	napari.components.overlays --> napari.components.overlays.labels_polygon
 	napari.components.overlays --> napari.components.overlays.scale_bar
 	napari.components.overlays --> napari.components.overlays.text
+	napari.components.overlays --> napari.components.overlays.zoom
 	click napari.components.overlays "https://github.com/napari/napari/tree/main/napari/components/overlays/__init__.py" _blank
 	napari.components.overlays.axes(napari.components.overlays.axes)
 	napari.components.overlays.axes --> napari.components.overlays.base
@@ -163,6 +169,9 @@ graph LR
 	napari.components.overlays.text(napari.components.overlays.text)
 	napari.components.overlays.text --> napari.components.overlays.base
 	click napari.components.overlays.text "https://github.com/napari/napari/tree/main/napari/components/overlays/text.py" _blank
+	napari.components.overlays.zoom(napari.components.overlays.zoom)
+	napari.components.overlays.zoom --> napari.components.overlays.base
+	click napari.components.overlays.zoom "https://github.com/napari/napari/tree/main/napari/components/overlays/zoom.py" _blank
 	napari.components.tooltip(napari.components.tooltip)
 	click napari.components.tooltip "https://github.com/napari/napari/tree/main/napari/components/tooltip.py" _blank
 	napari.components.viewer_model(napari.components.viewer_model)
@@ -213,6 +222,7 @@ graph LR
 		 napari._qt.widgets.qt_dims
 		 napari._qt.widgets.qt_dims_slider
 		 napari._qt.widgets.qt_dims_sorter
+		 napari._qt.widgets.qt_mirrored_sliders_popup
 		 napari._qt.widgets.qt_scrollbar
 		 napari._qt.widgets.qt_spinbox
 		 napari._qt.widgets.qt_tooltip
@@ -246,6 +256,7 @@ graph LR
 		 napari.components.overlays.labels_polygon
 		 napari.components.overlays.scale_bar
 		 napari.components.overlays.text
+		 napari.components.overlays.zoom
 	end
 	class module.napari.components.overlays subgraphs
 	subgraph module.napari[napari]
@@ -265,6 +276,7 @@ napari/
 │ │ ├─qt_dims.py
 │ │ ├─qt_viewer_buttons.py
 │ │ ├─qt_scrollbar.py
+│ │ ├─qt_mirrored_sliders_popup.py
 │ │ ├─qt_tooltip.py
 │ │ ├─qt_welcome.py
 │ │ ├─qt_viewer_status_bar.py
@@ -301,6 +313,7 @@ napari/
 │ │ ├─__init__.py
 │ │ ├─labels_polygon.py
 │ │ ├─base.py
+│ │ ├─zoom.py
 │ │ ├─scale_bar.py
 │ │ ├─brush_circle.py
 │ │ ├─axes.py

@@ -102,6 +102,7 @@ graph LR
 	click napari._qt.widgets.qt_dims "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_dims.py" _blank
 	napari._qt.widgets.qt_dims_slider(napari._qt.widgets.qt_dims_slider)
 	napari._qt.widgets.qt_dims_slider --> napari._qt.dialogs.qt_modal
+	napari._qt.widgets.qt_dims_slider --> napari._qt.utils
 	napari._qt.widgets.qt_dims_slider --> napari._qt.widgets.qt_scrollbar
 	click napari._qt.widgets.qt_dims_slider "https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_dims_slider.py" _blank
 	napari._qt.widgets.qt_dims_sorter(napari._qt.widgets.qt_dims_sorter)
