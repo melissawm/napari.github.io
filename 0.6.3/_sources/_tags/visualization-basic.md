@@ -21,6 +21,7 @@ caption: With this tag
 ../gallery/add_vectors.rst
 ../gallery/add_vectors_image.rst
 ../gallery/glasbey-colormap.rst
+../gallery/grid_mode.rst
 ../gallery/image_depth.rst
 ../gallery/imshow.rst
 ../gallery/labels-2d.rst
