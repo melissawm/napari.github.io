@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=aef35927"></script>
+    <script src="../../../../_static/documentation_options.js?v=1fae4f64"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -483,6 +483,7 @@ window.addEventListener("load", load);
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers._data_protocols</span><span class="w"> </span><span class="kn">import</span> <span class="n">LayerDataProtocol</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers._multiscale_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiScaleData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers._scalar_field._slice</span><span class="w"> </span><span class="kn">import</span> <span class="n">_ScalarFieldSliceResponse</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers._scalar_field.scalar_field</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarFieldBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.image._image_constants</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">ImageProjectionMode</span><span class="p">,</span>
@@ -491,7 +492,6 @@ window.addEventListener("load", load);
     <span class="n">InterpolationStr</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.image._image_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">guess_rgb</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.image._slice</span><span class="w"> </span><span class="kn">import</span> <span class="n">_ImageSliceResponse</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.intensity_mixin</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntensityVisualizationMixin</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.utils.layer_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">calc_data_range</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._dtype</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_dtype_limits</span><span class="p">,</span> <span class="n">normalize_dtype</span>
@@ -863,7 +863,9 @@ window.addEventListener("load", load);
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">state</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_update_slice_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">_ImageSliceResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_slice_response</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">_ScalarFieldSliceResponse</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keep_auto_contrast</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">raw</span>
             <span class="n">input_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">multiscale</span> <span class="k">else</span> <span class="n">data</span>
