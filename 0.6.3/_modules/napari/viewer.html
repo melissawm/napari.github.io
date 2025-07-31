@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d162346a"></script>
+    <script src="../../_static/documentation_options.js?v=9016ebc6"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.3rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -135,6 +135,7 @@ window.addEventListener("load", load);
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/napari/docs/refs/heads/main/docs/_templates/announcement.html"></aside>
 </div>
 
   
@@ -540,6 +541,32 @@ window.addEventListener("load", load);
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">show</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_instances</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overload __new__ to facilitate temporary monkey-patching.</span>
+
+<span class="sd">        This method simplifies scenarios where temporary patching of `__new__`</span>
+<span class="sd">        is needed—for example, to ensure only one viewer instance exists</span>
+<span class="sd">        when scripts are dropped into the viewer.</span>
+
+<span class="sd">        By default, Python implicitly calls `object.__new__(cls)` with only one argument (`cls`).</span>
+<span class="sd">        However, once `__new__` is explicitly overridden or patched, Python automatically</span>
+<span class="sd">        forwards all constructor arguments (`*args` and `**kwargs`) to it, causing signature mismatches.</span>
+
+<span class="sd">        Thus, directly assigning a patched function like this:</span>
+
+<span class="sd">        &gt;&gt;&gt; old_new = Viewer.__new__</span>
+<span class="sd">        &gt;&gt;&gt; Viewer.__new__ = lambda cls, *args, **kwargs: list(cls._instances)[0]</span>
+<span class="sd">        &gt;&gt;&gt; # code creating a Viewer instance...</span>
+<span class="sd">        &gt;&gt;&gt; Viewer.__new__ = old_new</span>
+
+<span class="sd">        may fail afterward because the restored original `__new__` (typically `object.__new__`)</span>
+<span class="sd">        doesn&#39;t accept extra arguments, raising a TypeError.</span>
+
+<span class="sd">        This explicit override accepts arbitrary arguments but intentionally discards them,</span>
+<span class="sd">        forwarding only the class to `object.__new__`, thus making temporary patching safe and convenient.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
     <span class="c1"># Expose private window publicly. This is needed to keep window off pydantic model</span>
     <span class="nd">@property</span>
