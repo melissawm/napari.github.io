@@ -9,16 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="image/svg+xml" href="../../_static/favicon/logo-silhouette-dark-light.svg" rel="icon">
     <link sizes="any" href="../../_static/favicon/logo-silhouette-192.png" rel="icon" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="How to install napari as a bundled app" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../_static/favicon/logo-noborder-180.png" type="image/png"><meta property="og:title" content="How to install the napari app" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://napari.org/tutorials/fundamentals/installation_bundle_conda.html" />
 <meta property="og:site_name" content="napari" />
-<meta property="og:description" content="napari can be installed as a bundled app on MacOS, Windows, and Linux with a simple one click download and guided installation process. This installation method is best if you mainly want to use napari as a standalone GUI app. However, certain plugins may not be supported. To start, visit the lat..." />
+<meta property="og:description" content="napari can be installed as a bundled app on MacOS, Windows, and Linux with a simple one click download and guided installation process. This installation method is best if you mainly want to use napari as a standalone GUI app. However, certain plugins may not be supported. Prerequisites: This ins..." />
 <meta property="og:image" content="https://napari.org/dev/_static/opengraph_image.png" />
 <meta property="og:image:alt" content="napari" />
-<meta name="description" content="napari can be installed as a bundled app on MacOS, Windows, and Linux with a simple one click download and guided installation process. This installation method is best if you mainly want to use napari as a standalone GUI app. However, certain plugins may not be supported. To start, visit the lat..." />
+<meta name="description" content="napari can be installed as a bundled app on MacOS, Windows, and Linux with a simple one click download and guided installation process. This installation method is best if you mainly want to use napari as a standalone GUI app. However, certain plugins may not be supported. Prerequisites: This ins..." />
 
-    <title>How to install napari as a bundled app &#8212; napari</title>
+    <title>How to install the napari app &#8212; napari</title>
   
   
   
@@ -400,7 +400,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../start_index.html">Getting started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="quick_start.html">Quick start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">How to install napari</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to install napari as a bundled app</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to install the napari app</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html">How to launch napari</a></li>
 <li class="toctree-l2"><a class="reference internal" href="viewer.html">Viewer tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features.html">Feature highlights</a></li>
@@ -757,7 +757,7 @@
     
     <li class="breadcrumb-item"><a href="../start_index.html" class="nav-link">Getting started</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How to install napari as a bundled app</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How to install the napari app</span></li>
   </ul>
 </nav>
 </div>
@@ -774,39 +774,69 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="how-to-install-napari-as-a-bundled-app">
-<h1>How to install napari as a bundled app<a class="headerlink" href="#how-to-install-napari-as-a-bundled-app" title="Link to this heading">#</a></h1>
-<p>napari can be installed as a bundled app on <a class="reference internal" href="#how-to-install-the-macos-bundle">MacOS</a>, <a class="reference internal" href="#how-to-install-the-windows-bundle">Windows</a>, and <a class="reference internal" href="#how-to-install-the-linux-bundle">Linux</a> with a simple one click download and guided installation process. This installation method is best if you mainly want to use napari as a standalone GUI app. However, certain plugins may not be supported.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-install-the-napari-app">
+<h1>How to install the napari app<a class="headerlink" href="#how-to-install-the-napari-app" title="Link to this heading">#</a></h1>
+<p>napari can be installed as a bundled app on <a class="reference internal" href="#macos-bundle">MacOS</a>, <a class="reference internal" href="#windows-bundle">Windows</a>, and <a class="reference internal" href="#linux-bundle">Linux</a> with a simple one click download and guided installation process. This installation method is best if you mainly want to use napari as a standalone GUI app. However, certain plugins may not be supported.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you want to use napari from Python to programmatically interact with the app, please follow the <a class="reference internal" href="installation.html#install-as-python-package-recommended"><span class="std std-ref">Python package installation guide</span></a>. This installation method is recommended to take full advantage of napari’s features and to access additional plugins.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you want to contribute code back into napari, please follow the <a class="reference internal" href="../../developers/contributing/index.html#napari-contributing"><span class="std std-ref">development installation instructions in the contributing guide</span></a>.</p>
-</div>
-<p>To start, visit the <a class="reference external" href="https://github.com/napari/napari/releases/latest">latest napari release page</a> and go to the ‘Assets’ tab and download the file that corresponds to your operating system:</p>
 <ul class="simple">
-<li><p>Windows users will want the <code class="docutils literal notranslate"><span class="pre">*-Windows-x86_64.exe</span></code> installer.</p></li>
-<li><p>For macOS users, it depends on the processor. This can be checked by going to Apple menu &gt; About This Mac.</p>
-<ul>
-<li><p>For Intel processors, download the <code class="docutils literal notranslate"><span class="pre">*-macOS-x86_64.pkg</span></code> installer</p></li>
-<li><p>For Apple processors, download the <code class="docutils literal notranslate"><span class="pre">*-macOS-arm64.pkg</span></code> installer.</p></li>
+<li><p>If you want to use napari within a Python project, please follow the <a class="reference internal" href="installation.html#install-as-python-package-recommended"><span class="std std-ref">Python package installation guide</span></a>.</p></li>
+<li><p>If you want to contribute code back into napari, please follow the <a class="reference internal" href="../../developers/contributing/index.html#napari-contributing"><span class="std std-ref">development installation instructions in the contributing guide</span></a>.</p></li>
 </ul>
-</li>
-<li><p>Linux users will need to choose the <code class="docutils literal notranslate"><span class="pre">*-Linux-x86_64.sh</span></code> installer.</p></li>
-</ul>
-<p><img alt="Cropped screenshot of the GitHub Releases page for napari version 0.4.15. The expanded assets tab shows a number of installers available for different operating systems and architectures. Yellow rectangles highlight the files that correspond to the conda-based installers described in this tutorial." src="../../_images/bundle_02.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are interested in an earlier version of napari, you may access those files by scrolling below the latest release on the <a class="reference external" href="https://github.com/napari/napari/releases">napari release page</a>. The instructions below will work for napari versions 0.4.15 and above.</p>
 </div>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>This installation method does not have any prerequisites.</p>
-<section id="how-to-install-the-macos-bundle">
-<h3>How to install the macOS bundle<a class="headerlink" href="#how-to-install-the-macos-bundle" title="Link to this heading">#</a></h3>
-<p>Once you have downloaded the appropriate macOS package file, you will have a file with a name like <code class="docutils literal notranslate"><span class="pre">napari-0.5.0-macOS-x86_64.pkg</span></code>. Double click this file to open the installer.</p>
+</section>
+<section id="download-and-install-the-napari-app-0-6-4-for-your-operating-system">
+<h2>Download and install the napari app (0.6.4) for your operating system<a class="headerlink" href="#download-and-install-the-napari-app-0-6-4-for-your-operating-system" title="Link to this heading">#</a></h2>
+<p>Click the tile below to jump to the installation instructions for your operating system.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+macOS</div>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#macos-bundle"><span class="std std-ref">How to install the macOS app</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Windows</div>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#windows-bundle"><span class="std std-ref">How to install the Windows app</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Linux</div>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="#linux-bundle"><span class="std std-ref">How to install the Linux app</span></a></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are interested in an earlier version of the napari app, you may access those files by scrolling below the latest release on the <a class="reference external" href="https://github.com/napari/napari/releases">napari GitHub release page</a>. Each release (0.4.15 and above) will have an “Assets” section with the installers for Windows, macOS, and Linux.</p>
+</div>
+</section>
+<section id="how-to-install-the-macos-app">
+<span id="macos-bundle"></span><h2>How to install the macOS app<a class="headerlink" href="#how-to-install-the-macos-app" title="Link to this heading">#</a></h2>
+<p>Download the napari app (0.6.4) for your platform:</p>
+<div class="admonition">
+<p class="admonition-title">macOS Apple Silicon (arm64)</p>
+<p class="rubric" id="download-from-github"><a class="reference external" href="https://github.com/napari/napari/releases/download/v0.6.4/napari-0.6.4-macOS-arm64.pkg">Download from GitHub</a></p>
+</div>
+<div class="admonition">
+<p class="admonition-title">macOS Intel (x86)</p>
+<p class="rubric" id="id1"><a class="reference external" href="https://github.com/napari/napari/releases/download/v0.6.4/napari-0.6.4-macOS-x86_64.pkg">Download from GitHub</a></p>
+</div>
+<p>Once you have downloaded the appropriate macOS package file, you will have a file with a name like <code class="docutils literal notranslate"><span class="pre">napari-0.5.0-macOS-x86_64.pkg</span></code>, but the version number will be 0.6.4.
+Double click this file to open the installer.</p>
 <p><img alt="Cropped screenshot of macOS desktop UI showing the icon of the PKG installer file, and an arrow pointing to the Welcome page in the opened PKG installer." src="../../_images/bundle_04.png" /></p>
 <p>Click ‘Continue’ to open the Software License Agreement.</p>
 <p><img alt="Cropped screenshot of the License page in an opened PKG installer, showing the BSD 3-Clause License text and four buttons: Print, Save, Go Back and Continue." src="../../_images/bundle_06.png" /></p>
@@ -824,18 +854,20 @@
 </div>
 <p>After finishing with no errors, a new page with the text “The installation was successful” will appear, as shown below.</p>
 <p><img alt="Cropped screenshot of the final page of the PKG installer, Summary, reporting &quot;The installation was successful&quot; with a green check mark icon. A blue Close button is available." src="../../_images/bundle_11.png" /></p>
-<p>Click Close to finish. You can now get started using napari! Use Launchpad to open the application.</p>
+<p>Click Close to finish. You can now get started using napari like any macOS application! You can use Launchpad to open it or find it using the Finder, under 🏠 [User directory] &gt; Applications.</p>
 <p><img alt="Montage of two cropped screenshots. On the left, the macOS finder icon and the Launchpad icon, highlighted with a red circle. On the right, the opened launchpad UI showing a 4x4 grid of applications icon, with napari appearing in the bottom right corner." src="../../_images/bundle_13.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The first time you open napari you must use the Launchpad, but in subsequent uses, the napari application should show up in Spotlight search (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⌘</kbd>+<kbd class="kbd docutils literal notranslate">spacebar</kbd></kbd>). The application shortcut will also be available in Finder, under 🏠 [User directory] &gt; Applications.</p>
-</div>
 <p>napari comes installed with sample images from scikit-image. Use the dropdown menu File &gt; Open Sample &gt; napari to open a sample image, or open one of your own images using File &gt; Open or dragging and dropping your image onto the canvas.</p>
 <p>Next check out our <a class="reference internal" href="viewer.html"><span class="std std-doc">tutorial on the viewer</span></a> or explore any of the pages under the <a class="reference internal" href="../../usage.html"><span class="std std-doc">Usage tab</span></a>.</p>
 </section>
-<section id="how-to-install-the-windows-bundle">
-<h3>How to Install the Windows bundle<a class="headerlink" href="#how-to-install-the-windows-bundle" title="Link to this heading">#</a></h3>
-<p>Once you have downloaded the Windows executable file, you will have a file with a name like <code class="docutils literal notranslate"><span class="pre">napari-0.5.0-Windows-x86_64.exe</span></code>. Double click this file to open the napari Setup.</p>
+<section id="how-to-install-the-windows-app">
+<span id="windows-bundle"></span><h2>How to install the Windows app<a class="headerlink" href="#how-to-install-the-windows-app" title="Link to this heading">#</a></h2>
+<p>Download the napari app (0.6.4) for your platform:</p>
+<div class="admonition">
+<p class="admonition-title">Windows (x86_64)</p>
+<p class="rubric" id="id2"><a class="reference external" href="https://github.com/napari/napari/releases/download/v0.6.4/napari-0.6.4-Windows-x86_64.exe">Download from GitHub</a></p>
+</div>
+<p>Once you have downloaded the Windows executable file, you will have a file with a name like <code class="docutils literal notranslate"><span class="pre">napari-0.5.0-Windows-x86_64.exe</span></code>, but the version number will be 0.6.4.
+Double click this file to open the napari Setup.</p>
 <p><img alt="Montage of the napari EXE installer icon with an arrow pointing to the Welcome page of the napari EXE installer on Windows." src="../../_images/bundle_17.png" /></p>
 <p>Click Next to continue and go to the License page. Read the contents and, if you agree, continue by clicking ‘I Agree’.</p>
 <p><img alt="Cropped screenshot of the License Agreement page of the napari EXE installer. A scrollable text area displays the legal text. Three buttons are available: Back, I Agree, and Cancel." src="../../_images/bundle_18.png" /></p>
@@ -851,9 +883,15 @@
 <p>napari comes installed with sample images from scikit-image. Use the dropdown menu File &gt; Open Sample &gt; napari to open a sample image, or open one of your own images using File &gt; Open or dragging and dropping your image onto the canvas.</p>
 <p>Next check out our <a class="reference internal" href="viewer.html"><span class="std std-doc">tutorial on the viewer</span></a> or explore any of the pages under the <a class="reference internal" href="../../usage.html"><span class="std std-doc">Usage tab</span></a>.</p>
 </section>
-<section id="how-to-install-the-linux-bundle">
-<h3>How to Install the Linux bundle<a class="headerlink" href="#how-to-install-the-linux-bundle" title="Link to this heading">#</a></h3>
-<p>Once you have downloaded the Linux SH file, you will have a file with a name like <code class="docutils literal notranslate"><span class="pre">napari-0.5.0-Linux-x86_64.sh</span></code>. Open a new terminal window, navigate to the downloads folder (usually <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Downloads</span></code>) and run the command <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">napari-*-Linux-x86_64.sh</span></code>.</p>
+<section id="how-to-install-the-linux-app">
+<span id="linux-bundle"></span><h2>How to install the Linux app<a class="headerlink" href="#how-to-install-the-linux-app" title="Link to this heading">#</a></h2>
+<p>Download the napari app (0.6.4) for your platform:</p>
+<div class="admonition">
+<p class="admonition-title">Linux (x86_64)</p>
+<p class="rubric" id="id3"><a class="reference external" href="https://github.com/napari/napari/releases/download/v0.6.4/napari-0.6.4-Linux-x86_64.sh">Download from GitHub</a></p>
+</div>
+<p>Once you have downloaded the Linux SH file, you will have a file with a name like <code class="docutils literal notranslate"><span class="pre">napari-0.5.0-Linux-x86_64.sh</span></code>, but the version number will be 0.6.4.
+Open a new terminal window, navigate to the downloads folder (usually <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Downloads</span></code>) and run the command <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">napari-*-Linux-x86_64.sh</span></code>.</p>
 <p><img alt="Montage of the SH installer icon on Ubuntu, with an arrow pointing to an open terminal instance with a pre-typed command that reads 'bash napari-0.4.14.dev73-Linux-x86_64.sh'." src="../../_images/bundle_28.png" /></p>
 <p>Press <kbd class="kbd docutils literal notranslate">Enter</kbd> to display the License Agreement.</p>
 <p><img alt="Cropped screenshot of the default Ubuntu terminal displaying the welcome paragraphs of the text-based installer of napari for Linux systems." src="../../_images/bundle_29.png" /></p>
@@ -869,7 +907,6 @@
 <p><img alt="Full screenshot of the Ubuntu search menu, with the query 'napari', displaying some results which include the application icon for the installed napari." src="../../_images/bundle_35.png" /></p>
 <p>napari comes installed with sample images from scikit-image. Use the dropdown menu File &gt; Open Sample &gt; napari to open a sample image, or open one of your own images using File &gt; Open or dragging and dropping your image onto the canvas.</p>
 <p>Next check out our <a class="reference internal" href="viewer.html"><span class="std std-doc">tutorial on the viewer</span></a> or explore any of the pages under the <a class="reference internal" href="../../usage.html"><span class="std std-doc">Usage tab</span></a>.</p>
-</section>
 </section>
 </section>
 
@@ -920,12 +957,11 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-the-macos-bundle">How to install the macOS bundle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-the-windows-bundle">How to Install the Windows bundle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-the-linux-bundle">How to Install the Linux bundle</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-install-the-napari-app-0-6-4-for-your-operating-system">Download and install the napari app (0.6.4) for your operating system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-the-macos-app">How to install the macOS app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-the-windows-app">How to install the Windows app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-the-linux-app">How to install the Linux app</a></li>
 </ul>
   </nav></div>
 
