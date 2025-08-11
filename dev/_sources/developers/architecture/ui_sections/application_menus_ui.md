@@ -165,38 +165,38 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
-├─_qt/
-│ ├─widgets/
-│ │ ├─qt_logger.py
-│ │ ├─qt_viewer_buttons.py
-│ │ └─qt_command_palette.py
-│ ├─qt_viewer.py
-│ ├─dialogs/
-│ │ ├─preferences_dialog.py
-│ │ ├─qt_plugin_report.py
-│ │ ├─confirm_close_dialog.py
-│ │ ├─qt_modal.py
-│ │ ├─qt_about.py
-│ │ ├─screenshot_dialog.py
-│ │ ├─qt_reader_dialog.py
-│ │ └─shimmed_plugin_dialog.py
-│ ├─__init__.py
-│ ├─qt_main_window.py
-│ ├─_qapp_model/
-│ │ ├─injection/
-│ │ │ ├─_qproviders.py
-│ │ │ └─_qprocessors.py
-│ │ └─qactions/
-│ │   ├─__init__.py
-│ │   ├─_help.py
-│ │   ├─_toggle_action.py
-│ │   ├─_window.py
-│ │   ├─_view.py
-│ │   ├─_plugins.py
-│ │   ├─_debug.py
-│ │   ├─_file.py
-│ │   ├─_layers_actions.py
-│ │   └─_layerlist_context.py
-│ └─qthreading.py
-└─viewer.py
+├─viewer.py
+└─_qt/
+  ├─widgets/
+  │ ├─qt_command_palette.py
+  │ ├─qt_viewer_buttons.py
+  │ └─qt_logger.py
+  ├─qt_main_window.py
+  ├─dialogs/
+  │ ├─shimmed_plugin_dialog.py
+  │ ├─screenshot_dialog.py
+  │ ├─qt_reader_dialog.py
+  │ ├─confirm_close_dialog.py
+  │ ├─qt_modal.py
+  │ ├─preferences_dialog.py
+  │ ├─qt_about.py
+  │ └─qt_plugin_report.py
+  ├─qthreading.py
+  ├─__init__.py
+  ├─qt_viewer.py
+  └─_qapp_model/
+    ├─qactions/
+    │ ├─_view.py
+    │ ├─_plugins.py
+    │ ├─_layerlist_context.py
+    │ ├─_layers_actions.py
+    │ ├─_toggle_action.py
+    │ ├─_window.py
+    │ ├─_debug.py
+    │ ├─_help.py
+    │ ├─_file.py
+    │ └─__init__.py
+    └─injection/
+      ├─_qprocessors.py
+      └─_qproviders.py
 ```

@@ -243,56 +243,56 @@ graph LR
 napari/
 ├─_vendor/
 │ └─qt_json_builder/
-│   ├─__init__.py
-│   └─qt_jsonschema_form/
-│     ├─__init__.py
-│     ├─widgets.py
-│     ├─form.py
-│     ├─signal.py
-│     ├─utils.py
-│     └─defaults.py
+│   ├─qt_jsonschema_form/
+│   │ ├─defaults.py
+│   │ ├─form.py
+│   │ ├─signal.py
+│   │ ├─utils.py
+│   │ ├─widgets.py
+│   │ └─__init__.py
+│   └─__init__.py
 └─_qt/
   ├─widgets/
-  │ ├─qt_font_size.py
-  │ ├─qt_spinbox.py
-  │ ├─qt_logger.py
-  │ ├─qt_highlight_preview.py
   │ ├─qt_plugin_sorter.py
-  │ ├─qt_progress_bar.py
   │ ├─qt_dims.py
-  │ ├─qt_scrollbar.py
+  │ ├─qt_extension2reader.py
+  │ ├─qt_font_size.py
+  │ ├─qt_command_palette.py
   │ ├─qt_color_swatch.py
+  │ ├─qt_spinbox.py
+  │ ├─qt_scrollbar.py
   │ ├─qt_tooltip.py
+  │ ├─qt_progress_bar.py
+  │ ├─qt_highlight_preview.py
+  │ ├─qt_logger.py
   │ ├─qt_viewer_status_bar.py
   │ ├─qt_dims_slider.py
-  │ ├─qt_extension2reader.py
-  │ ├─qt_command_palette.py
   │ └─qt_dims_sorter.py
-  ├─qt_viewer.py
+  ├─qt_main_window.py
   ├─dialogs/
-  │ ├─preferences_dialog.py
-  │ ├─qt_plugin_report.py
-  │ ├─confirm_close_dialog.py
+  │ ├─shimmed_plugin_dialog.py
   │ ├─qt_notification.py
-  │ ├─qt_modal.py
-  │ ├─qt_about.py
+  │ ├─qt_activity_dialog.py
   │ ├─screenshot_dialog.py
   │ ├─qt_reader_dialog.py
-  │ ├─qt_activity_dialog.py
-  │ └─shimmed_plugin_dialog.py
+  │ ├─confirm_close_dialog.py
+  │ ├─qt_modal.py
+  │ ├─preferences_dialog.py
+  │ ├─qt_about.py
+  │ └─qt_plugin_report.py
+  ├─utils.py
   ├─_qplugins/
   │ └─_qnpe2.py
-  ├─utils.py
-  ├─qt_main_window.py
+  ├─qt_viewer.py
   └─_qapp_model/
-    ├─injection/
-    │ ├─_qproviders.py
-    │ └─_qprocessors.py
+    ├─qactions/
+    │ ├─_plugins.py
+    │ ├─_debug.py
+    │ ├─_help.py
+    │ ├─_file.py
+    │ └─__init__.py
     ├─_menus.py
-    └─qactions/
-      ├─__init__.py
-      ├─_help.py
-      ├─_plugins.py
-      ├─_debug.py
-      └─_file.py
+    └─injection/
+      ├─_qprocessors.py
+      └─_qproviders.py
 ```

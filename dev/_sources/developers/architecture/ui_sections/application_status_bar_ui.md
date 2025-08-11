@@ -74,19 +74,19 @@ graph LR
 ### Source code directory layout (related to modules inside `napari`)
 ```
 napari/
+├─viewer.py
 ├─_qt/
 │ ├─widgets/
+│ │ ├─qt_command_palette.py
 │ │ ├─qt_progress_bar.py
-│ │ ├─qt_viewer_status_bar.py
-│ │ └─qt_command_palette.py
-│ ├─dialogs/
-│ │ ├─qt_activity_dialog.py
-│ │ └─shimmed_plugin_dialog.py
-│ ├─__init__.py
+│ │ └─qt_viewer_status_bar.py
+│ ├─qt_main_window.py
 │ ├─threads/
 │ │ └─status_checker.py
-│ └─qt_main_window.py
-├─utils/
-│ └─progress.py
-└─viewer.py
+│ ├─dialogs/
+│ │ ├─shimmed_plugin_dialog.py
+│ │ └─qt_activity_dialog.py
+│ └─__init__.py
+└─utils/
+  └─progress.py
 ```
