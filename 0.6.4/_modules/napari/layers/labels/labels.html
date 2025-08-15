@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=bd32a998"></script>
+    <script src="../../../../_static/documentation_options.js?v=3adeb80e"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -93,7 +93,7 @@ window.addEventListener("load", load);
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.4rc0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.6.4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -510,12 +510,17 @@ window.addEventListener("load", load);
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.labels._labels_utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">expand_slice</span><span class="p">,</span>
     <span class="n">get_contours</span><span class="p">,</span>
+    <span class="n">get_dtype</span><span class="p">,</span>
     <span class="n">indices_in_shape</span><span class="p">,</span>
     <span class="n">interpolate_coordinates</span><span class="p">,</span>
     <span class="n">sphere_indices</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.layers.utils.layer_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_FeatureTable</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._dtype</span><span class="w"> </span><span class="kn">import</span> <span class="n">normalize_dtype</span><span class="p">,</span> <span class="n">vispy_texture_dtype</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._dtype</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_dtype_limits</span><span class="p">,</span>
+    <span class="n">normalize_dtype</span><span class="p">,</span>
+    <span class="n">vispy_texture_dtype</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils._indexing</span><span class="w"> </span><span class="kn">import</span> <span class="n">elements_in_slice</span><span class="p">,</span> <span class="n">index_in_slice</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">napari.utils.colormaps</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">direct_colormap</span><span class="p">,</span>
@@ -1193,6 +1198,15 @@ window.addEventListener("load", load);
             <span class="k">return</span>
         <span class="c1"># when setting the label to the background, store the previous</span>
         <span class="c1"># otherwise, clear it</span>
+        <span class="n">layer_dtype</span> <span class="o">=</span> <span class="n">get_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">dtype_lims</span> <span class="o">=</span> <span class="n">get_dtype_limits</span><span class="p">(</span><span class="n">layer_dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dtype_lims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">selected_label</span> <span class="ow">or</span> <span class="n">dtype_lims</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">selected_label</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">WrongSelectedLabelError</span><span class="p">(</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">layer_dtype</span><span class="p">,</span>
+                <span class="n">value</span><span class="o">=</span><span class="n">selected_label</span><span class="p">,</span>
+                <span class="n">lower_bound</span><span class="o">=</span><span class="n">dtype_lims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">upper_bound</span><span class="o">=</span><span class="n">dtype_lims</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">)</span>
         <span class="k">if</span> <span class="n">selected_label</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">colormap</span><span class="o">.</span><span class="n">background_value</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_prev_selected_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_label</span>
         <span class="k">else</span><span class="p">:</span>
@@ -2118,6 +2132,28 @@ window.addEventListener("load", load);
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WrongSelectedLabelError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the selected label is not in the data array.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">lower_bound</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">upper_bound</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lower_bound</span> <span class="o">=</span> <span class="n">lower_bound</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upper_bound</span> <span class="o">=</span> <span class="n">upper_bound</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;The value </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1"> is out of bounds for dtype </span><span class="si">{</span><span class="n">dtype</span><span class="si">}</span><span class="s1"> that allow for range [</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">)</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">upper_bound</span><span class="p">)</span><span class="si">}</span><span class="s1">].&#39;</span>
+        <span class="k">if</span> <span class="n">message</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 
                 </article>
