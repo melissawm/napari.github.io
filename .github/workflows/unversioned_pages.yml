@@ -40,22 +40,23 @@ jobs:
           cp -Rv ./dev/roadmaps/ ./stable/
           echo "Copy dev/index.html to stable folder"
           cp -v ./dev/index.html ./stable/
-          echo "In stable unversioned folder, find all regular files."
-          echo "If /_static is in file, substitute /../dev/_static by editing in place." 
-          find stable/community/ -type f -exec sed -i 's+/_static+/../dev/_static+g' {} +
-          find stable/developers/ -type f -exec sed -i 's+/_static+/../dev/_static+g' {} +
-          find stable/naps/ -type f -exec sed -i 's+/_static+/../dev/_static+g' {} +
-          find stable/release/ -type f -exec sed -i 's+/_static+/../dev/_static+g' {} +
-          find stable/roadmaps/ -type f -exec sed -i 's+/_static+/../dev/_static+g' {} +
+          echo "In stable unversioned folder, find all regular files;"
+          echo "If /_static is in file, substitute /../dev/_static by editing in place."
+          # Don't touch the line containing DOCUMENTATION_OPTIONS.theme_switcher_json_url"
+          find stable/community/ -type f -exec sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' {} +
+          find stable/developers/ -type f -exec sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' {} +
+          find stable/naps/ -type f -exec sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' {} +
+          find stable/release/ -type f -exec sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' {} +
+          find stable/roadmaps/ -type f -exec sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' {} +
           echo "Find _static and replace with ../dev/_static in the stable/index.html file."
-          sed -i 's+_static+../dev/_static+g' stable/index.html
+          sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' stable/index.html
           echo "Set STABLE environmment variable to the version found in the symlinked stable directory"
           STABLE=$(basename $(readlink -f ./stable))
           echo "Updates the theme switcher version from 'dev' to stable numeric version (e.g. '0.6.3') in all files of the stable directory."
           find stable/ -type f -exec sed -i "s+DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';+DOCUMENTATION_OPTIONS.theme_switcher_version_match = '${STABLE}';+g" {} +
-          echo "For all files in 'stable' directory, set show_version_warning_banner to false"
-          # closes napari/docs#545 ensures that docs copied from dev don't show the unstable version warning
-          find stable/ -type f -exec perl -0777 -i -pe "s/DOCUMENTATION_OPTIONS.show_version_warning_banner =\s*true;/DOCUMENTATION_OPTIONS.show_version_warning_banner = false;/sg" {} +
+          echo "The version warning banner should be on for all versions except stable."
+          echo "TODO: Make this automatic for all future versions i.e. revert this change whenever a new version is released."
+          find stable/ -type f -exec sed -i "s+DOCUMENTATION_OPTIONS.show_version_warning_banner = true;+DOCUMENTATION_OPTIONS.show_version_warning_banner = false;+g" {} +
 
       - name: Commit files
         run: |
