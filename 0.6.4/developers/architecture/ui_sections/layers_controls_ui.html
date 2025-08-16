@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../../../../dev/_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../dev/_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../dev/_static/documentation_options.js?v=931e6077"></script>
+    <script src="../../../../dev/_static/documentation_options.js?v=14bbe3f0"></script>
     <script src="../../../../dev/_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../../dev/_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../dev/_static/clipboard.min.js?v=a7894cd8"></script>
@@ -600,24 +600,26 @@ window.addEventListener("load", load);
 	napari._qt.layer_controls(napari._qt.layer_controls)
 	napari._qt.layer_controls --&gt; napari._qt.layer_controls.qt_layer_controls_container
 	click napari._qt.layer_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/__init__.py&quot; _blank
-	napari._qt.layer_controls.qt_colormap_combobox(napari._qt.layer_controls.qt_colormap_combobox)
-	click napari._qt.layer_controls.qt_colormap_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_colormap_combobox.py&quot; _blank
 	napari._qt.layer_controls.qt_image_controls(napari._qt.layer_controls.qt_image_controls)
 	napari._qt.layer_controls.qt_image_controls --&gt; napari._qt.layer_controls.qt_image_controls_base
+	napari._qt.layer_controls.qt_image_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_image_controls --&gt; napari._qt.layer_controls.widgets._image
 	napari._qt.layer_controls.qt_image_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_image_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_image_controls.py&quot; _blank
 	napari._qt.layer_controls.qt_image_controls_base(napari._qt.layer_controls.qt_image_controls_base)
-	napari._qt.layer_controls.qt_image_controls_base --&gt; napari._qt.layer_controls.qt_colormap_combobox
 	napari._qt.layer_controls.qt_image_controls_base --&gt; napari._qt.layer_controls.qt_layer_controls_base
-	napari._qt.layer_controls.qt_image_controls_base --&gt; napari._qt.widgets.qt_range_slider_popup
+	napari._qt.layer_controls.qt_image_controls_base --&gt; napari._qt.layer_controls.widgets
 	napari._qt.layer_controls.qt_image_controls_base --&gt; napari.layers
 	click napari._qt.layer_controls.qt_image_controls_base &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_image_controls_base.py&quot; _blank
 	napari._qt.layer_controls.qt_labels_controls(napari._qt.layer_controls.qt_labels_controls)
 	napari._qt.layer_controls.qt_labels_controls --&gt; napari._qt.layer_controls.qt_layer_controls_base
+	napari._qt.layer_controls.qt_labels_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_labels_controls --&gt; napari._qt.layer_controls.widgets._labels
 	napari._qt.layer_controls.qt_labels_controls --&gt; napari._qt.widgets.qt_mode_buttons
 	napari._qt.layer_controls.qt_labels_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_labels_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_labels_controls.py&quot; _blank
 	napari._qt.layer_controls.qt_layer_controls_base(napari._qt.layer_controls.qt_layer_controls_base)
+	napari._qt.layer_controls.qt_layer_controls_base --&gt; napari._qt.layer_controls.widgets
 	napari._qt.layer_controls.qt_layer_controls_base --&gt; napari._qt.widgets.qt_mode_buttons
 	napari._qt.layer_controls.qt_layer_controls_base --&gt; napari.layers
 	click napari._qt.layer_controls.qt_layer_controls_base &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_layer_controls_base.py&quot; _blank
@@ -633,29 +635,231 @@ window.addEventListener("load", load);
 	click napari._qt.layer_controls.qt_layer_controls_container &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_layer_controls_container.py&quot; _blank
 	napari._qt.layer_controls.qt_points_controls(napari._qt.layer_controls.qt_points_controls)
 	napari._qt.layer_controls.qt_points_controls --&gt; napari._qt.layer_controls.qt_layer_controls_base
-	napari._qt.layer_controls.qt_points_controls --&gt; napari._qt.widgets.qt_color_swatch
+	napari._qt.layer_controls.qt_points_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_points_controls --&gt; napari._qt.layer_controls.widgets._points
 	napari._qt.layer_controls.qt_points_controls --&gt; napari._qt.widgets.qt_mode_buttons
 	napari._qt.layer_controls.qt_points_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_points_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_points_controls.py&quot; _blank
 	napari._qt.layer_controls.qt_shapes_controls(napari._qt.layer_controls.qt_shapes_controls)
 	napari._qt.layer_controls.qt_shapes_controls --&gt; napari._qt.layer_controls.qt_layer_controls_base
-	napari._qt.layer_controls.qt_shapes_controls --&gt; napari._qt.widgets.qt_color_swatch
+	napari._qt.layer_controls.qt_shapes_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_shapes_controls --&gt; napari._qt.layer_controls.widgets._shapes
 	napari._qt.layer_controls.qt_shapes_controls --&gt; napari._qt.widgets.qt_mode_buttons
 	napari._qt.layer_controls.qt_shapes_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_shapes_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_shapes_controls.py&quot; _blank
 	napari._qt.layer_controls.qt_surface_controls(napari._qt.layer_controls.qt_surface_controls)
 	napari._qt.layer_controls.qt_surface_controls --&gt; napari._qt.layer_controls.qt_image_controls_base
+	napari._qt.layer_controls.qt_surface_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_surface_controls --&gt; napari._qt.layer_controls.widgets._surface
 	napari._qt.layer_controls.qt_surface_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_surface_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_surface_controls.py&quot; _blank
 	napari._qt.layer_controls.qt_tracks_controls(napari._qt.layer_controls.qt_tracks_controls)
 	napari._qt.layer_controls.qt_tracks_controls --&gt; napari._qt.layer_controls.qt_layer_controls_base
+	napari._qt.layer_controls.qt_tracks_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_tracks_controls --&gt; napari._qt.layer_controls.widgets._tracks
 	napari._qt.layer_controls.qt_tracks_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_tracks_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_tracks_controls.py&quot; _blank
 	napari._qt.layer_controls.qt_vectors_controls(napari._qt.layer_controls.qt_vectors_controls)
 	napari._qt.layer_controls.qt_vectors_controls --&gt; napari._qt.layer_controls.qt_layer_controls_base
-	napari._qt.layer_controls.qt_vectors_controls --&gt; napari._qt.widgets.qt_color_swatch
+	napari._qt.layer_controls.qt_vectors_controls --&gt; napari._qt.layer_controls.widgets
+	napari._qt.layer_controls.qt_vectors_controls --&gt; napari._qt.layer_controls.widgets._vectors
 	napari._qt.layer_controls.qt_vectors_controls --&gt; napari.layers
 	click napari._qt.layer_controls.qt_vectors_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/qt_vectors_controls.py&quot; _blank
+	napari._qt.layer_controls.widgets(napari._qt.layer_controls.widgets)
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_colormap_control
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_contrast_limits
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_face_color
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_gamma_slider
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_opacity_blending_controls
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_out_slice_checkbox
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_projection_mode_control
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_text_visibility
+	napari._qt.layer_controls.widgets --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	click napari._qt.layer_controls.widgets &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._image(napari._qt.layer_controls.widgets._image)
+	napari._qt.layer_controls.widgets._image --&gt; napari._qt.layer_controls.widgets._image.qt_depiction_control
+	napari._qt.layer_controls.widgets._image --&gt; napari._qt.layer_controls.widgets._image.qt_interpolation_combobox
+	napari._qt.layer_controls.widgets._image --&gt; napari._qt.layer_controls.widgets._image.qt_render_control
+	click napari._qt.layer_controls.widgets._image &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_image/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._image.qt_depiction_control(napari._qt.layer_controls.widgets._image.qt_depiction_control)
+	napari._qt.layer_controls.widgets._image.qt_depiction_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._image.qt_depiction_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._image.qt_depiction_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_image/qt_depiction_control.py&quot; _blank
+	napari._qt.layer_controls.widgets._image.qt_interpolation_combobox(napari._qt.layer_controls.widgets._image.qt_interpolation_combobox)
+	napari._qt.layer_controls.widgets._image.qt_interpolation_combobox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._image.qt_interpolation_combobox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._image.qt_interpolation_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_image/qt_interpolation_combobox.py&quot; _blank
+	napari._qt.layer_controls.widgets._image.qt_render_control(napari._qt.layer_controls.widgets._image.qt_render_control)
+	napari._qt.layer_controls.widgets._image.qt_render_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._image.qt_render_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._image.qt_render_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_image/qt_render_control.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels(napari._qt.layer_controls.widgets._labels)
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_brush_size_slider
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_contour_spinbox
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_label_color
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox
+	napari._qt.layer_controls.widgets._labels --&gt; napari._qt.layer_controls.widgets._labels.qt_render_control
+	click napari._qt.layer_controls.widgets._labels &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_brush_size_slider(napari._qt.layer_controls.widgets._labels.qt_brush_size_slider)
+	napari._qt.layer_controls.widgets._labels.qt_brush_size_slider --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_brush_size_slider --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_brush_size_slider &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_brush_size_slider.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox(napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox)
+	napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_color_mode_combobox.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox(napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox)
+	napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_contiguous_checkbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_contour_spinbox(napari._qt.layer_controls.widgets._labels.qt_contour_spinbox)
+	napari._qt.layer_controls.widgets._labels.qt_contour_spinbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_contour_spinbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_contour_spinbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_contour_spinbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox(napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox)
+	napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_display_selected_label_checkbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_label_color(napari._qt.layer_controls.widgets._labels.qt_label_color)
+	napari._qt.layer_controls.widgets._labels.qt_label_color --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_label_color --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_label_color &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_label_color.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox(napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox)
+	napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_ndim_spinbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox(napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox)
+	napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_preserve_labels_checkbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._labels.qt_render_control(napari._qt.layer_controls.widgets._labels.qt_render_control)
+	napari._qt.layer_controls.widgets._labels.qt_render_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._labels.qt_render_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._labels.qt_render_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_labels/qt_render_control.py&quot; _blank
+	napari._qt.layer_controls.widgets._points(napari._qt.layer_controls.widgets._points)
+	napari._qt.layer_controls.widgets._points --&gt; napari._qt.layer_controls.widgets._points.qt_border_color
+	napari._qt.layer_controls.widgets._points --&gt; napari._qt.layer_controls.widgets._points.qt_current_size_slider
+	napari._qt.layer_controls.widgets._points --&gt; napari._qt.layer_controls.widgets._points.qt_symbol_combobox
+	click napari._qt.layer_controls.widgets._points &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_points/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._points.qt_border_color(napari._qt.layer_controls.widgets._points.qt_border_color)
+	napari._qt.layer_controls.widgets._points.qt_border_color --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._points.qt_border_color --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._points.qt_border_color &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_points/qt_border_color.py&quot; _blank
+	napari._qt.layer_controls.widgets._points.qt_current_size_slider(napari._qt.layer_controls.widgets._points.qt_current_size_slider)
+	napari._qt.layer_controls.widgets._points.qt_current_size_slider --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._points.qt_current_size_slider --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._points.qt_current_size_slider &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_points/qt_current_size_slider.py&quot; _blank
+	napari._qt.layer_controls.widgets._points.qt_symbol_combobox(napari._qt.layer_controls.widgets._points.qt_symbol_combobox)
+	napari._qt.layer_controls.widgets._points.qt_symbol_combobox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._points.qt_symbol_combobox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._points.qt_symbol_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_points/qt_symbol_combobox.py&quot; _blank
+	napari._qt.layer_controls.widgets._shapes(napari._qt.layer_controls.widgets._shapes)
+	napari._qt.layer_controls.widgets._shapes --&gt; napari._qt.layer_controls.widgets._shapes.qt_edge_color
+	napari._qt.layer_controls.widgets._shapes --&gt; napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider
+	click napari._qt.layer_controls.widgets._shapes &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_shapes/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._shapes.qt_edge_color(napari._qt.layer_controls.widgets._shapes.qt_edge_color)
+	napari._qt.layer_controls.widgets._shapes.qt_edge_color --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._shapes.qt_edge_color --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._shapes.qt_edge_color &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_shapes/qt_edge_color.py&quot; _blank
+	napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider(napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider)
+	napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_shapes/qt_edge_width_slider.py&quot; _blank
+	napari._qt.layer_controls.widgets._surface(napari._qt.layer_controls.widgets._surface)
+	napari._qt.layer_controls.widgets._surface --&gt; napari._qt.layer_controls.widgets._surface.qt_shading_combobox
+	click napari._qt.layer_controls.widgets._surface &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_surface/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._surface.qt_shading_combobox(napari._qt.layer_controls.widgets._surface.qt_shading_combobox)
+	napari._qt.layer_controls.widgets._surface.qt_shading_combobox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._surface.qt_shading_combobox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._surface.qt_shading_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_surface/qt_shading_combobox.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks(napari._qt.layer_controls.widgets._tracks)
+	napari._qt.layer_controls.widgets._tracks --&gt; napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox
+	napari._qt.layer_controls.widgets._tracks --&gt; napari._qt.layer_controls.widgets._tracks.qt_colormap_control
+	napari._qt.layer_controls.widgets._tracks --&gt; napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox
+	napari._qt.layer_controls.widgets._tracks --&gt; napari._qt.layer_controls.widgets._tracks.qt_head_slider
+	napari._qt.layer_controls.widgets._tracks --&gt; napari._qt.layer_controls.widgets._tracks.qt_id_checkbox
+	napari._qt.layer_controls.widgets._tracks --&gt; napari._qt.layer_controls.widgets._tracks.qt_tail_control
+	click napari._qt.layer_controls.widgets._tracks &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox(napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox)
+	napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/qt_color_properties_combobox.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks.qt_colormap_control(napari._qt.layer_controls.widgets._tracks.qt_colormap_control)
+	napari._qt.layer_controls.widgets._tracks.qt_colormap_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._tracks.qt_colormap_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._tracks.qt_colormap_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/qt_colormap_control.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox(napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox)
+	napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/qt_graph_checkbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks.qt_head_slider(napari._qt.layer_controls.widgets._tracks.qt_head_slider)
+	napari._qt.layer_controls.widgets._tracks.qt_head_slider --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._tracks.qt_head_slider --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._tracks.qt_head_slider &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/qt_head_slider.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks.qt_id_checkbox(napari._qt.layer_controls.widgets._tracks.qt_id_checkbox)
+	napari._qt.layer_controls.widgets._tracks.qt_id_checkbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._tracks.qt_id_checkbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._tracks.qt_id_checkbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/qt_id_checkbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._tracks.qt_tail_control(napari._qt.layer_controls.widgets._tracks.qt_tail_control)
+	napari._qt.layer_controls.widgets._tracks.qt_tail_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._tracks.qt_tail_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._tracks.qt_tail_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_tracks/qt_tail_control.py&quot; _blank
+	napari._qt.layer_controls.widgets._vectors(napari._qt.layer_controls.widgets._vectors)
+	napari._qt.layer_controls.widgets._vectors --&gt; napari._qt.layer_controls.widgets._vectors.qt_edge_color
+	napari._qt.layer_controls.widgets._vectors --&gt; napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox
+	napari._qt.layer_controls.widgets._vectors --&gt; napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox
+	click napari._qt.layer_controls.widgets._vectors &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_vectors/__init__.py&quot; _blank
+	napari._qt.layer_controls.widgets._vectors.qt_edge_color(napari._qt.layer_controls.widgets._vectors.qt_edge_color)
+	napari._qt.layer_controls.widgets._vectors.qt_edge_color --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._vectors.qt_edge_color --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._vectors.qt_edge_color &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_vectors/qt_edge_color.py&quot; _blank
+	napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox(napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox)
+	napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_vectors/qt_line_dimension_spinbox.py&quot; _blank
+	napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox(napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox)
+	napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/_vectors/qt_vector_style_combobox.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_colormap_control(napari._qt.layer_controls.widgets.qt_colormap_control)
+	napari._qt.layer_controls.widgets.qt_colormap_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_colormap_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_colormap_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_colormap_control.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_contrast_limits(napari._qt.layer_controls.widgets.qt_contrast_limits)
+	napari._qt.layer_controls.widgets.qt_contrast_limits --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_contrast_limits --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_contrast_limits &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_contrast_limits.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_face_color(napari._qt.layer_controls.widgets.qt_face_color)
+	napari._qt.layer_controls.widgets.qt_face_color --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_face_color --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_face_color &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_face_color.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_gamma_slider(napari._qt.layer_controls.widgets.qt_gamma_slider)
+	napari._qt.layer_controls.widgets.qt_gamma_slider --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_gamma_slider --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_gamma_slider &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_gamma_slider.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_opacity_blending_controls(napari._qt.layer_controls.widgets.qt_opacity_blending_controls)
+	napari._qt.layer_controls.widgets.qt_opacity_blending_controls --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_opacity_blending_controls --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_opacity_blending_controls &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_opacity_blending_controls.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_out_slice_checkbox(napari._qt.layer_controls.widgets.qt_out_slice_checkbox)
+	napari._qt.layer_controls.widgets.qt_out_slice_checkbox --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_out_slice_checkbox --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_out_slice_checkbox &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_out_slice_checkbox.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_projection_mode_control(napari._qt.layer_controls.widgets.qt_projection_mode_control)
+	napari._qt.layer_controls.widgets.qt_projection_mode_control --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_projection_mode_control --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_projection_mode_control &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_projection_mode_control.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_text_visibility(napari._qt.layer_controls.widgets.qt_text_visibility)
+	napari._qt.layer_controls.widgets.qt_text_visibility --&gt; napari._qt.layer_controls.widgets.qt_widget_controls_base
+	napari._qt.layer_controls.widgets.qt_text_visibility --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_text_visibility &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_text_visibility.py&quot; _blank
+	napari._qt.layer_controls.widgets.qt_widget_controls_base(napari._qt.layer_controls.widgets.qt_widget_controls_base)
+	napari._qt.layer_controls.widgets.qt_widget_controls_base --&gt; napari.layers
+	click napari._qt.layer_controls.widgets.qt_widget_controls_base &quot;https://github.com/napari/napari/tree/main/napari/_qt/layer_controls/widgets/qt_widget_controls_base.py&quot; _blank
 	napari._qt.qt_main_window(napari._qt.qt_main_window)
 	napari._qt.qt_main_window --&gt; napari._qt.qt_viewer
 	napari._qt.qt_main_window --&gt; napari._qt.widgets.qt_command_palette
@@ -667,15 +871,11 @@ window.addEventListener("load", load);
 	napari._qt.qt_viewer --&gt; napari._qt.widgets.qt_viewer_dock_widget
 	napari._qt.qt_viewer --&gt; napari.layers
 	click napari._qt.qt_viewer &quot;https://github.com/napari/napari/tree/main/napari/_qt/qt_viewer.py&quot; _blank
-	napari._qt.widgets.qt_color_swatch(napari._qt.widgets.qt_color_swatch)
-	click napari._qt.widgets.qt_color_swatch &quot;https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_color_swatch.py&quot; _blank
 	napari._qt.widgets.qt_command_palette(napari._qt.widgets.qt_command_palette)
 	napari._qt.widgets.qt_command_palette --&gt; napari._qt.qt_main_window
 	click napari._qt.widgets.qt_command_palette &quot;https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_command_palette.py&quot; _blank
 	napari._qt.widgets.qt_mode_buttons(napari._qt.widgets.qt_mode_buttons)
 	click napari._qt.widgets.qt_mode_buttons &quot;https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_mode_buttons.py&quot; _blank
-	napari._qt.widgets.qt_range_slider_popup(napari._qt.widgets.qt_range_slider_popup)
-	click napari._qt.widgets.qt_range_slider_popup &quot;https://github.com/napari/napari/tree/main/napari/_qt/widgets/qt_range_slider_popup.py&quot; _blank
 	napari._qt.widgets.qt_viewer_dock_widget(napari._qt.widgets.qt_viewer_dock_widget)
 	napari._qt.widgets.qt_viewer_dock_widget --&gt; napari._qt.qt_viewer
 	napari._qt.widgets.qt_viewer_dock_widget --&gt; napari.viewer
@@ -699,7 +899,6 @@ window.addEventListener("load", load);
 	end
 	class module.napari._qt subgraphs
 	subgraph module.napari._qt.layer_controls[napari._qt.layer_controls]
-		 napari._qt.layer_controls.qt_colormap_combobox
 		 napari._qt.layer_controls.qt_image_controls
 		 napari._qt.layer_controls.qt_image_controls_base
 		 napari._qt.layer_controls.qt_labels_controls
@@ -710,13 +909,79 @@ window.addEventListener("load", load);
 		 napari._qt.layer_controls.qt_surface_controls
 		 napari._qt.layer_controls.qt_tracks_controls
 		 napari._qt.layer_controls.qt_vectors_controls
+		 napari._qt.layer_controls.widgets
 	end
 	class module.napari._qt.layer_controls subgraphs
+	subgraph module.napari._qt.layer_controls.widgets[napari._qt.layer_controls.widgets]
+		 napari._qt.layer_controls.widgets._image
+		 napari._qt.layer_controls.widgets._labels
+		 napari._qt.layer_controls.widgets._points
+		 napari._qt.layer_controls.widgets._shapes
+		 napari._qt.layer_controls.widgets._surface
+		 napari._qt.layer_controls.widgets._tracks
+		 napari._qt.layer_controls.widgets._vectors
+		 napari._qt.layer_controls.widgets.qt_colormap_control
+		 napari._qt.layer_controls.widgets.qt_contrast_limits
+		 napari._qt.layer_controls.widgets.qt_face_color
+		 napari._qt.layer_controls.widgets.qt_gamma_slider
+		 napari._qt.layer_controls.widgets.qt_opacity_blending_controls
+		 napari._qt.layer_controls.widgets.qt_out_slice_checkbox
+		 napari._qt.layer_controls.widgets.qt_projection_mode_control
+		 napari._qt.layer_controls.widgets.qt_text_visibility
+		 napari._qt.layer_controls.widgets.qt_widget_controls_base
+	end
+	class module.napari._qt.layer_controls.widgets subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._image[napari._qt.layer_controls.widgets._image]
+		 napari._qt.layer_controls.widgets._image.qt_depiction_control
+		 napari._qt.layer_controls.widgets._image.qt_interpolation_combobox
+		 napari._qt.layer_controls.widgets._image.qt_render_control
+	end
+	class module.napari._qt.layer_controls.widgets._image subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._labels[napari._qt.layer_controls.widgets._labels]
+		 napari._qt.layer_controls.widgets._labels.qt_brush_size_slider
+		 napari._qt.layer_controls.widgets._labels.qt_color_mode_combobox
+		 napari._qt.layer_controls.widgets._labels.qt_contiguous_checkbox
+		 napari._qt.layer_controls.widgets._labels.qt_contour_spinbox
+		 napari._qt.layer_controls.widgets._labels.qt_display_selected_label_checkbox
+		 napari._qt.layer_controls.widgets._labels.qt_label_color
+		 napari._qt.layer_controls.widgets._labels.qt_ndim_spinbox
+		 napari._qt.layer_controls.widgets._labels.qt_preserve_labels_checkbox
+		 napari._qt.layer_controls.widgets._labels.qt_render_control
+	end
+	class module.napari._qt.layer_controls.widgets._labels subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._points[napari._qt.layer_controls.widgets._points]
+		 napari._qt.layer_controls.widgets._points.qt_border_color
+		 napari._qt.layer_controls.widgets._points.qt_current_size_slider
+		 napari._qt.layer_controls.widgets._points.qt_symbol_combobox
+	end
+	class module.napari._qt.layer_controls.widgets._points subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._shapes[napari._qt.layer_controls.widgets._shapes]
+		 napari._qt.layer_controls.widgets._shapes.qt_edge_color
+		 napari._qt.layer_controls.widgets._shapes.qt_edge_width_slider
+	end
+	class module.napari._qt.layer_controls.widgets._shapes subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._surface[napari._qt.layer_controls.widgets._surface]
+		 napari._qt.layer_controls.widgets._surface.qt_shading_combobox
+	end
+	class module.napari._qt.layer_controls.widgets._surface subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._tracks[napari._qt.layer_controls.widgets._tracks]
+		 napari._qt.layer_controls.widgets._tracks.qt_color_properties_combobox
+		 napari._qt.layer_controls.widgets._tracks.qt_colormap_control
+		 napari._qt.layer_controls.widgets._tracks.qt_graph_checkbox
+		 napari._qt.layer_controls.widgets._tracks.qt_head_slider
+		 napari._qt.layer_controls.widgets._tracks.qt_id_checkbox
+		 napari._qt.layer_controls.widgets._tracks.qt_tail_control
+	end
+	class module.napari._qt.layer_controls.widgets._tracks subgraphs
+	subgraph module.napari._qt.layer_controls.widgets._vectors[napari._qt.layer_controls.widgets._vectors]
+		 napari._qt.layer_controls.widgets._vectors.qt_edge_color
+		 napari._qt.layer_controls.widgets._vectors.qt_line_dimension_spinbox
+		 napari._qt.layer_controls.widgets._vectors.qt_vector_style_combobox
+	end
+	class module.napari._qt.layer_controls.widgets._vectors subgraphs
 	subgraph module.napari._qt.widgets[napari._qt.widgets]
-		 napari._qt.widgets.qt_color_swatch
 		 napari._qt.widgets.qt_command_palette
 		 napari._qt.widgets.qt_mode_buttons
-		 napari._qt.widgets.qt_range_slider_popup
 		 napari._qt.widgets.qt_viewer_dock_widget
 	end
 	class module.napari._qt.widgets subgraphs
@@ -731,12 +996,62 @@ window.addEventListener("load", load);
 ├─_qt/
 │ ├─widgets/
 │ │ ├─qt_command_palette.py
-│ │ ├─qt_color_swatch.py
 │ │ ├─qt_mode_buttons.py
-│ │ ├─qt_viewer_dock_widget.py
-│ │ └─qt_range_slider_popup.py
+│ │ └─qt_viewer_dock_widget.py
 │ ├─qt_main_window.py
 │ ├─layer_controls/
+│ │ ├─widgets/
+│ │ │ ├─_shapes/
+│ │ │ │ ├─qt_edge_width_slider.py
+│ │ │ │ ├─__init__.py
+│ │ │ │ └─qt_edge_color.py
+│ │ │ ├─qt_projection_mode_control.py
+│ │ │ ├─qt_colormap_control.py
+│ │ │ ├─qt_text_visibility.py
+│ │ │ ├─qt_face_color.py
+│ │ │ ├─qt_contrast_limits.py
+│ │ │ ├─_image/
+│ │ │ │ ├─qt_interpolation_combobox.py
+│ │ │ │ ├─qt_depiction_control.py
+│ │ │ │ ├─qt_render_control.py
+│ │ │ │ └─__init__.py
+│ │ │ ├─_labels/
+│ │ │ │ ├─qt_brush_size_slider.py
+│ │ │ │ ├─qt_color_mode_combobox.py
+│ │ │ │ ├─qt_preserve_labels_checkbox.py
+│ │ │ │ ├─qt_contour_spinbox.py
+│ │ │ │ ├─qt_contiguous_checkbox.py
+│ │ │ │ ├─qt_ndim_spinbox.py
+│ │ │ │ ├─qt_display_selected_label_checkbox.py
+│ │ │ │ ├─qt_label_color.py
+│ │ │ │ ├─qt_render_control.py
+│ │ │ │ └─__init__.py
+│ │ │ ├─_points/
+│ │ │ │ ├─qt_border_color.py
+│ │ │ │ ├─qt_symbol_combobox.py
+│ │ │ │ ├─qt_current_size_slider.py
+│ │ │ │ └─__init__.py
+│ │ │ ├─qt_widget_controls_base.py
+│ │ │ ├─_vectors/
+│ │ │ │ ├─qt_line_dimension_spinbox.py
+│ │ │ │ ├─qt_vector_style_combobox.py
+│ │ │ │ ├─__init__.py
+│ │ │ │ └─qt_edge_color.py
+│ │ │ ├─_surface/
+│ │ │ │ ├─qt_shading_combobox.py
+│ │ │ │ └─__init__.py
+│ │ │ ├─qt_opacity_blending_controls.py
+│ │ │ ├─_tracks/
+│ │ │ │ ├─qt_tail_control.py
+│ │ │ │ ├─qt_colormap_control.py
+│ │ │ │ ├─qt_color_properties_combobox.py
+│ │ │ │ ├─qt_head_slider.py
+│ │ │ │ ├─qt_graph_checkbox.py
+│ │ │ │ ├─qt_id_checkbox.py
+│ │ │ │ └─__init__.py
+│ │ │ ├─qt_gamma_slider.py
+│ │ │ ├─qt_out_slice_checkbox.py
+│ │ │ └─__init__.py
 │ │ ├─qt_layer_controls_base.py
 │ │ ├─qt_layer_controls_container.py
 │ │ ├─qt_tracks_controls.py
@@ -745,7 +1060,6 @@ window.addEventListener("load", load);
 │ │ ├─qt_labels_controls.py
 │ │ ├─qt_vectors_controls.py
 │ │ ├─qt_points_controls.py
-│ │ ├─qt_colormap_combobox.py
 │ │ ├─qt_image_controls.py
 │ │ ├─qt_image_controls_base.py
 │ │ └─__init__.py
