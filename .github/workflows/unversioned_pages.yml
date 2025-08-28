@@ -28,6 +28,7 @@ jobs:
           echo "Unversioned folders: community, developers, naps, release, roadmaps"
           echo "Remove existing `stable` unversioned folders and"
           echo "copy `dev` unversioned folders to `stable`"
+          # unversioned = [community, developers, naps, release, roadmaps]
           rm -rf ./stable/community
           cp -Rv ./dev/community/ ./stable/
           rm -rf ./stable/developers
@@ -50,6 +51,14 @@ jobs:
           find stable/roadmaps/ -type f -exec sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' {} +
           echo "Find _static and replace with ../dev/_static in the stable/index.html file."
           sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' stable/index.html
+          echo "Add metadata to mark unversioned pages"
+          find stable/community/ -type f -exec sed -i '</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/developers/ -type f -exec sed -i '</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/naps/ -type f -exec sed -i '</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/release/ -type f -exec sed -i '</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/roadmaps/ -type f -exec sed -i '</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          echo "Add metadata to stable/index.html file."
+          sed -i '</head>+<meta name="unversioned" content="true" /></head>+g' stable/index.html
           echo "Set STABLE environmment variable to the version found in the symlinked stable directory"
           STABLE=$(basename $(readlink -f ./stable))
           echo "Updates the theme switcher version from 'dev' to stable numeric version (e.g. '0.6.3') in all files of the stable directory."
