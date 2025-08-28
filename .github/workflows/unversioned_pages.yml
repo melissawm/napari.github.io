@@ -29,6 +29,8 @@ jobs:
           echo "Remove existing `stable` unversioned folders and"
           echo "copy `dev` unversioned folders to `stable`"
           # unversioned = [community, developers, naps, release, roadmaps]
+          echo "In dev folder, use showBanner() function"
+          find ./dev/ -type f -exec sed -i 's+DOCUMENTATION_OPTIONS.show_version_warning_banner =\n            true;+DOCUMENTATION_OPTIONS.show_version_warning_banner = showBanner()+g' {} +
           rm -rf ./stable/community
           cp -Rv ./dev/community/ ./stable/
           rm -rf ./stable/developers
