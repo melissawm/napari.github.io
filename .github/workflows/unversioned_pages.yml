@@ -52,13 +52,13 @@ jobs:
           echo "Find _static and replace with ../dev/_static in the stable/index.html file."
           sed -i '/DOCUMENTATION_OPTIONS.theme_switcher_json_url/!s+/_static+/../dev/_static+g' stable/index.html
           echo "Add metadata to mark unversioned pages"
-          find stable/community/ -type f -exec sed -i '\</head\>+\<meta name="unversioned" content="true" /\>\</head\>+g' {} +
-          find stable/developers/ -type f -exec sed -i '\</head\>+\<meta name="unversioned" content="true" /\>\</head\>+g' {} +
-          find stable/naps/ -type f -exec sed -i '\</head\>+\<meta name="unversioned" content="true" /\>\</head\>+g' {} +
-          find stable/release/ -type f -exec sed -i '\</head\>+\<meta name="unversioned" content="true" /\>\</head\>+g' {} +
-          find stable/roadmaps/ -type f -exec sed -i '\</head\>+\<meta name="unversioned" content="true" /\>\</head\>+g' {} +
+          find stable/community/ -type f -exec sed -i 's+</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/developers/ -type f -exec sed -i 's+</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/naps/ -type f -exec sed -i 's+</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/release/ -type f -exec sed -i 's+</head>+<meta name="unversioned" content="true" /></head>+g' {} +
+          find stable/roadmaps/ -type f -exec sed -i 's+</head>+<meta name="unversioned" content="true" /></head>+g' {} +
           echo "Add metadata to stable/index.html file."
-          sed -i '\</head\>+\<meta name="unversioned" content="true" /\>\</head\>+g' stable/index.html
+          sed -i 's+</head>+<meta name="unversioned" content="true" /></head>+g' stable/index.html
           echo "Set STABLE environmment variable to the version found in the symlinked stable directory"
           STABLE=$(basename $(readlink -f ./stable))
           echo "Updates the theme switcher version from 'dev' to stable numeric version (e.g. '0.6.3') in all files of the stable directory."
