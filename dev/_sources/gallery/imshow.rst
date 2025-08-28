@@ -29,17 +29,6 @@ Launch an instance of napari and simultaneously display an image using the
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-24
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_imshow_001.png
-   :alt: imshow
-   :srcset: /gallery/images/sphx_glr_imshow_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

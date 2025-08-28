@@ -28,17 +28,6 @@ Display one image using the :func:`add_image` API.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-20
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_add_image_001.png
-   :alt: add image
-   :srcset: /gallery/images/sphx_glr_add_image_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

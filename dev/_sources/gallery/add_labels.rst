@@ -29,28 +29,6 @@ Display a labels layer above of an image layer using the ``add_labels`` and
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-39
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_add_labels_001.png
-   :alt: add labels
-   :srcset: /gallery/images/sphx_glr_add_labels_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/docs/docs/napari/examples/add_labels.py:22: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
-      bw = closing(image > thresh, square(4))
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
     from skimage import data

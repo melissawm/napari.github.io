@@ -28,17 +28,6 @@ View 3D labels.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-47
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_labels3d_001.png
-   :alt: labels3d
-   :srcset: /gallery/images/sphx_glr_labels3d_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

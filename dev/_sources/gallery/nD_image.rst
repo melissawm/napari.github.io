@@ -28,17 +28,6 @@ Display one 4-D image layer using the :func:`add_image` API.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-29
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_nD_image_001.png
-   :alt: nD image
-   :srcset: /gallery/images/sphx_glr_nD_image_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

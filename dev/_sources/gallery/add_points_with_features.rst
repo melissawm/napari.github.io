@@ -29,17 +29,6 @@ Display a points layer on top of an image layer using the ``add_points`` and
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-69
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_add_points_with_features_001.png
-   :alt: add points with features
-   :srcset: /gallery/images/sphx_glr_add_points_with_features_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

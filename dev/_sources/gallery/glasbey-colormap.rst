@@ -58,12 +58,6 @@ colormap.
     image = data.coins()[50:-50, 50:-50]
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 37-38
 
 First, we segment the image.
@@ -82,12 +76,6 @@ First, we segment the image.
 
     # label image regions
     label_image = label(cleared).astype("uint8")
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 50-53
@@ -110,12 +98,6 @@ lightness and chroma bounds for a less glary look.
             lightness_bounds=(20, 60), chroma_bounds=(40, 50),
             colorblind_safe=True,
             )
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 65-67
@@ -144,34 +126,6 @@ in two viewers to show both colormaps.
 
     if __name__ == '__main__':
         napari.run()
-
-
-
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /gallery/images/sphx_glr_glasbey-colormap_001.png
-          :alt: glasbey colormap
-          :srcset: /gallery/images/sphx_glr_glasbey-colormap_001.png
-          :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /gallery/images/sphx_glr_glasbey-colormap_002.png
-          :alt: glasbey colormap
-          :srcset: /gallery/images/sphx_glr_glasbey-colormap_002.png
-          :class: sphx-glr-multi-img
-
-
-
-
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 14.501 seconds)
 
 
 .. _sphx_glr_download_gallery_glasbey-colormap.py:

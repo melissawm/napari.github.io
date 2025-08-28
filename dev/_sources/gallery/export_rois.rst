@@ -35,17 +35,6 @@ scaled roi screenshots with scale bar and the last 4 display the unscaled roi sc
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-88
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_export_rois_001.png
-   :alt: export rois
-   :srcset: /gallery/images/sphx_glr_export_rois_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 
@@ -120,11 +109,6 @@ scaled roi screenshots with scale bar and the last 4 display the unscaled roi sc
 
     if __name__ == '__main__':
         napari.run()
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 26.779 seconds)
 
 
 .. _sphx_glr_download_gallery_export_rois.py:

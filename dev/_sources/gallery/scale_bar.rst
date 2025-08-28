@@ -28,17 +28,6 @@ Display a 3D volume and the scale bar
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-43
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_scale_bar_001.png
-   :alt: scale bar
-   :srcset: /gallery/images/sphx_glr_scale_bar_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
     from skimage import data

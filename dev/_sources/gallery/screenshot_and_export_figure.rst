@@ -38,17 +38,6 @@ In the final grid state shown below, the first row represents exported images. T
 
 .. GENERATED FROM PYTHON SOURCE LINES 19-101
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_screenshot_and_export_figure_001.png
-   :alt: screenshot and export figure
-   :srcset: /gallery/images/sphx_glr_screenshot_and_export_figure_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 
@@ -133,11 +122,6 @@ In the final grid state shown below, the first row represents exported images. T
 
     if __name__ == '__main__':
         napari.run()
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 10.462 seconds)
 
 
 .. _sphx_glr_download_gallery_screenshot_and_export_figure.py:

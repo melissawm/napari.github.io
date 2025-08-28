@@ -76,12 +76,6 @@ coordinates, and may require resizing the textures to match each other.
     import napari
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 55-57
 
 Download the model
@@ -114,24 +108,6 @@ Download the model
             print(f'using cached {tmp_dir / file_name}')
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    downloading data into /home/runner/.cache/napari-surface-texture-example
-    downloading PocilloporaDamicornisSkin.obj
-      0%|                                              | 0.00/93.8M [00:00<?, ?B/s]      0%|                                      | 34.8k/93.8M [00:00<06:14, 250kB/s]      0%|                                       | 108k/93.8M [00:00<04:00, 390kB/s]      0%|▏                                     | 410k/93.8M [00:00<01:18, 1.19MB/s]      1%|▍                                    | 1.05M/93.8M [00:00<00:32, 2.81MB/s]      2%|▊                                    | 2.16M/93.8M [00:00<00:19, 4.67MB/s]      5%|█▊                                   | 4.59M/93.8M [00:00<00:08, 10.1MB/s]      8%|███                                  | 7.85M/93.8M [00:00<00:05, 16.5MB/s]     12%|████▍                                | 11.3M/93.8M [00:00<00:03, 21.6MB/s]     16%|█████▊                               | 14.9M/93.8M [00:01<00:03, 25.7MB/s]     19%|███████▏                             | 18.2M/93.8M [00:01<00:02, 27.9MB/s]     23%|████████▋                            | 21.9M/93.8M [00:01<00:02, 30.7MB/s]     27%|██████████                           | 25.4M/93.8M [00:01<00:02, 32.0MB/s]     31%|███████████▍                         | 29.0M/93.8M [00:01<00:01, 33.1MB/s]     35%|████████████▊                        | 32.5M/93.8M [00:01<00:01, 33.8MB/s]     38%|██████████████▏                      | 36.0M/93.8M [00:01<00:01, 33.9MB/s]     42%|███████████████▌                     | 39.5M/93.8M [00:01<00:01, 34.4MB/s]     46%|█████████████████                    | 43.1M/93.8M [00:01<00:01, 34.9MB/s]     50%|██████████████████▍                  | 46.7M/93.8M [00:01<00:01, 34.9MB/s]     54%|███████████████████▊                 | 50.2M/93.8M [00:02<00:01, 35.1MB/s]     57%|█████████████████████▏               | 53.8M/93.8M [00:02<00:01, 35.4MB/s]     61%|██████████████████████▊              | 57.7M/93.8M [00:02<00:00, 36.3MB/s]     65%|████████████████████████▏            | 61.3M/93.8M [00:02<00:00, 33.8MB/s]     69%|█████████████████████████▋           | 65.1M/93.8M [00:02<00:00, 35.2MB/s]     73%|███████████████████████████          | 68.7M/93.8M [00:02<00:00, 33.2MB/s]     77%|████████████████████████████▌        | 72.5M/93.8M [00:02<00:00, 34.5MB/s]     81%|█████████████████████████████▉       | 76.0M/93.8M [00:02<00:00, 34.5MB/s]     85%|███████████████████████████████▎     | 79.4M/93.8M [00:02<00:00, 34.3MB/s]     89%|████████████████████████████████▊    | 83.1M/93.8M [00:03<00:00, 34.9MB/s]     92%|██████████████████████████████████▏  | 86.6M/93.8M [00:03<00:00, 32.7MB/s]     96%|███████████████████████████████████▌ | 90.2M/93.8M [00:03<00:00, 33.8MB/s]      0%|                                              | 0.00/93.8M [00:00<?, ?B/s]    100%|██████████████████████████████████████| 93.8M/93.8M [00:00<00:00, 476GB/s]
-    downloading PocilloporaDamicornisSkin_Texture_0.jpg
-      0%|                                              | 0.00/17.3M [00:00<?, ?B/s]      0%|                                      | 14.3k/17.3M [00:00<02:17, 125kB/s]      1%|▏                                     | 92.2k/17.3M [00:00<00:35, 480kB/s]      1%|▌                                      | 245k/17.3M [00:00<00:25, 677kB/s]      4%|█▌                                    | 701k/17.3M [00:00<00:08, 1.89MB/s]      9%|███▎                                 | 1.52M/17.3M [00:00<00:04, 3.83MB/s]     17%|██████▏                              | 2.88M/17.3M [00:00<00:02, 6.80MB/s]     31%|███████████▎                         | 5.30M/17.3M [00:00<00:00, 12.1MB/s]     52%|███████████████████▏                 | 8.95M/17.3M [00:00<00:00, 19.5MB/s]     70%|█████████████████████████▊           | 12.1M/17.3M [00:01<00:00, 23.1MB/s]     89%|█████████████████████████████████    | 15.5M/17.3M [00:01<00:00, 26.3MB/s]      0%|                                              | 0.00/17.3M [00:00<?, ?B/s]    100%|█████████████████████████████████████| 17.3M/17.3M [00:00<00:00, 91.5GB/s]
-    downloading PocilloporaDamicornisSkin_GeneratedMat2.png
-      0%|                                               | 0.00/120k [00:00<?, ?B/s]     10%|███▉                                   | 12.3k/120k [00:00<00:00, 117kB/s]     81%|███████████████████████████████▌       | 97.3k/120k [00:00<00:00, 350kB/s]      0%|                                               | 0.00/120k [00:00<?, ?B/s]    100%|████████████████████████████████████████| 120k/120k [00:00<00:00, 711MB/s]
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 80-86
 
 Load the model
@@ -148,18 +124,6 @@ are also ignored and re-calculated from the faces.
     vertices, faces, _normals, texcoords = read_mesh(tmp_dir / data_files['mesh'])
 
 
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Notice reading .OBJ: material properties are ignored.
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 89-94
 
 Load the textures
@@ -174,12 +138,6 @@ material to fill in  parts of the model lacking photographic texture.
 
     photo_texture = imread(tmp_dir / data_files['Texture_0'])
     generated_texture = imread(tmp_dir / data_files['GeneratedMat2'])
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 98-99
@@ -200,17 +158,6 @@ This is what the texture images look like in 2D:
     axs[1].set_xticks((0, generated_texture.shape[1]), labels=(0.0, 1.0))
     axs[1].set_yticks((0, generated_texture.shape[0]), labels=(0.0, 1.0))
     fig.show()
-
-
-
-
-.. image-sg:: /gallery/images/sphx_glr_surface_multi_texture_001.png
-   :alt: Texture_0 (8192, 8192, 3), GeneratedMat2 (2048, 2048, 4)
-   :srcset: /gallery/images/sphx_glr_surface_multi_texture_001.png
-   :class: sphx-glr-single-img
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 111-116
@@ -239,12 +186,6 @@ texture, but this is not a strict requirement.
     )
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 130-134
 
 Add the layers to a viewer
@@ -266,22 +207,6 @@ sphinx_gallery_thumbnail_number = 2
 
     if __name__ == '__main__':
         napari.run()
-
-
-
-.. image-sg:: /gallery/images/sphx_glr_surface_multi_texture_002.png
-   :alt: surface multi texture
-   :srcset: /gallery/images/sphx_glr_surface_multi_texture_002.png
-   :class: sphx-glr-single-img
-
-
-
-
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 30.160 seconds)
 
 
 .. _sphx_glr_download_gallery_surface_multi_texture.py:

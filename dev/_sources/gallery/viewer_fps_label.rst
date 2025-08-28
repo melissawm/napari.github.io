@@ -28,17 +28,6 @@ Display a 3D volume and the fps label.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-31
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_viewer_fps_label_001.png
-   :alt: viewer fps label
-   :srcset: /gallery/images/sphx_glr_viewer_fps_label_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
     import numpy as np

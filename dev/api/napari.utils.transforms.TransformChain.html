@@ -55,7 +55,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=14bbe3f0"></script>
+    <script src="../_static/documentation_options.js?v=06b5aa6c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,8 +67,10 @@
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = showBanner();
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
         </script>
+    <script src="../_static/unversioned.js?v=a6cbef4f"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="napari.plugins" href="napari.plugins.html" />
@@ -408,11 +410,7 @@
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.types.html">napari.types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="napari.types.ArrayBase.html">napari.types.ArrayBase</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.types.FullLayerData.html">napari.types.FullLayerData</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.types.ReaderFunction.html">napari.types.ReaderFunction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="napari.types.SampleDict.html">napari.types.SampleDict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.types.WidgetCallable.html">napari.types.WidgetCallable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="napari.types.WriterFunction.html">napari.types.WriterFunction</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="napari.utils.html">napari.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -621,16 +619,16 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.extend" title="napari.utils.transforms.TransformChain.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extend</span></code></a>(values)</p></td>
 <td><p>S.extend(iterable) -- extend sequence by appending elements from the iterable</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.index" title="napari.utils.transforms.TransformChain.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(value[, start, stop])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.index" title="napari.utils.transforms.TransformChain.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(value[, start, stop])</p></td>
 <td><p>Return first index of value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.insert" title="napari.utils.transforms.TransformChain.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(index, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.insert" title="napari.utils.transforms.TransformChain.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(index, value)</p></td>
 <td><p>Insert <code class="docutils literal notranslate"><span class="pre">value</span></code> before index.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.move" title="napari.utils.transforms.TransformChain.move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move</span></code></a>(src_index[, dest_index])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.move" title="napari.utils.transforms.TransformChain.move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move</span></code></a>(src_index[, dest_index])</p></td>
 <td><p>Insert object at <code class="docutils literal notranslate"><span class="pre">src_index</span></code> before <code class="docutils literal notranslate"><span class="pre">dest_index</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.move_multiple" title="napari.utils.transforms.TransformChain.move_multiple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_multiple</span></code></a>(sources[, dest_index])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.move_multiple" title="napari.utils.transforms.TransformChain.move_multiple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_multiple</span></code></a>(sources[, dest_index])</p></td>
 <td><p>Move a batch of <cite>sources</cite> indices, to a single destination.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#napari.utils.transforms.TransformChain.pop" title="napari.utils.transforms.TransformChain.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>([index])</p></td>

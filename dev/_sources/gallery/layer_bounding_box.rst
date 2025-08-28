@@ -35,27 +35,6 @@ see :ref:`sphx_glr_gallery_image_border.py`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-64
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_layer_bounding_box_001.png
-   :alt: layer bounding box
-   :srcset: /gallery/images/sphx_glr_layer_bounding_box_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Downloading file 'data/cells3d.tif' from 'https://gitlab.com/scikit-image/data/-/raw/2cdc5ce89b334d28f06a58c9f0ca21aa6992a5ba/cells3d.tif' to '/home/runner/.cache/scikit-image/0.25.2'.
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
 
@@ -106,11 +85,6 @@ see :ref:`sphx_glr_gallery_image_border.py`.
 
     if __name__ == '__main__':
         napari.run()
-
-
-.. rst-class:: sphx-glr-timing
-
-   **Total running time of the script:** (0 minutes 13.451 seconds)
 
 
 .. _sphx_glr_download_gallery_layer_bounding_box.py:

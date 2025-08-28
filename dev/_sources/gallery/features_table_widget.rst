@@ -35,17 +35,6 @@ on the layer and viceversa.
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-40
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_features_table_widget_001.png
-   :alt: features table widget
-   :srcset: /gallery/images/sphx_glr_features_table_widget_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

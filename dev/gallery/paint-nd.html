@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=14bbe3f0"></script>
+    <script src="../_static/documentation_options.js?v=06b5aa6c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,8 +69,10 @@
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = showBanner();
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
         </script>
+    <script src="../_static/unversioned.js?v=a6cbef4f"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="My tags: experimental" href="../_tags/experimental.html" />
@@ -787,12 +789,12 @@ Jupyter notebook.</p>
 <p>Display a 4D labels layer and paint only in 3D.</p>
 <p>This is useful e.g. when proofreading segmentations within a time series.</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/analysis.html">analysis</a></p>
-<img src="../_images/sphx_glr_paint-nd_001.png" srcset="../_images/sphx_glr_paint-nd_001.png" alt="paint nd" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">blobs</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.stack.html#numpy.stack" title="numpy.stack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">stack</span></a><span class="p">(</span>
+<span class="n">blobs</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.stack.html#numpy.stack" title="numpy.stack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">stack</span></a><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">data</span><span class="o">.</span><span class="n">binary_blobs</span><span class="p">(</span>
             <span class="n">length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">blob_size_fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">n_dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">volume_fraction</span><span class="o">=</span><span class="n">f</span>
@@ -801,12 +803,12 @@ Jupyter notebook.</p>
     <span class="p">],</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
-<a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span></a> <span class="o">=</span> <a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class"><span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span></a><span class="p">()</span>
-<a href="../api/napari.layers.Image.html#napari.layers.Image" title="napari.layers.Image" class="sphx-glr-backref-module-napari-layers sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">layer</span></a> <span class="o">=</span> <a href="../api/napari.Viewer.html#napari.Viewer.add_image" title="napari.Viewer.add_image" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-method"><span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">blobs</span></a><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">rendering</span><span class="o">=</span><span class="s1">&#39;attenuated_mip&#39;</span><span class="p">)</span>
-<a href="../api/napari.layers.Labels.html#napari.layers.Labels" title="napari.layers.Labels" class="sphx-glr-backref-module-napari-layers sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a> <span class="o">=</span> <a href="../api/napari.Viewer.html#napari.Viewer.add_labels" title="napari.Viewer.add_labels" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-method"><span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html#numpy.zeros_like" title="numpy.zeros_like" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">blobs</span></a><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.int32" title="numpy.int32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">int32</span></a><span class="p">))</span>
-<a href="../api/napari.layers.Labels.html#napari.layers.Labels.n_edit_dimensions" title="napari.layers.Labels.n_edit_dimensions" class="sphx-glr-backref-module-napari-layers sphx-glr-backref-type-py-attribute"><span class="n">labels</span><span class="o">.</span><span class="n">n_edit_dimensions</span></a> <span class="o">=</span> <span class="mi">3</span>
-<a href="../api/napari.layers.Labels.html#id1" title="napari.layers.Labels.brush_size" class="sphx-glr-backref-module-napari-layers sphx-glr-backref-type-py-property"><span class="n">labels</span><span class="o">.</span><span class="n">brush_size</span></a> <span class="o">=</span> <span class="mi">15</span>
-<a href="../api/napari.layers.Labels.html#id12" title="napari.layers.Labels.mode" class="sphx-glr-backref-module-napari-layers sphx-glr-backref-type-py-property"><span class="n">labels</span><span class="o">.</span><span class="n">mode</span></a> <span class="o">=</span> <span class="s1">&#39;paint&#39;</span>
+<span class="n">viewer</span> <span class="o">=</span> <a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span></a><span class="p">()</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">blobs</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">rendering</span><span class="o">=</span><span class="s1">&#39;attenuated_mip&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html#numpy.zeros_like" title="numpy.zeros_like" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span></a><span class="p">(</span><span class="n">blobs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.int32" title="numpy.int32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">int32</span></a><span class="p">))</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">n_edit_dimensions</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">brush_size</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;paint&#39;</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <a href="../api/napari.html#napari.run" title="napari.run" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-function"><span class="n">napari</span><span class="o">.</span><span class="n">run</span></a><span class="p">()</span>

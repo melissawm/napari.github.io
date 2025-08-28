@@ -32,17 +32,6 @@ intensity profile along each line and prints the results to the terminal in real
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-58
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_mouse_drag_callback_001.png
-   :alt: mouse drag callback
-   :srcset: /gallery/images/sphx_glr_mouse_drag_callback_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

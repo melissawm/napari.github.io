@@ -37,17 +37,6 @@ For an example showing how bounding box extents are visualized, see
 
 .. GENERATED FROM PYTHON SOURCE LINES 18-43
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_image_border_001.png
-   :alt: image border
-   :srcset: /gallery/images/sphx_glr_image_border_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

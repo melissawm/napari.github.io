@@ -30,27 +30,6 @@ To use this example, open napari and drag this file into the viewer.
 
 .. GENERATED FROM PYTHON SOURCE LINES 11-23
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_drag_and_drop_python_code_001.png
-   :alt: drag and drop python code
-   :srcset: /gallery/images/sphx_glr_drag_and_drop_python_code_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    <napari._qt.widgets.qt_viewer_dock_widget.QtViewerDockWidget object at 0x7f7a1608f250>
-
-
-
-
-
-|
-
 .. code-block:: Python
 
     from napari import Viewer

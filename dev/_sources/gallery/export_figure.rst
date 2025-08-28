@@ -32,17 +32,6 @@ To capture the extent of the canvas, instead of the layers, see `viewer.screensh
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-114
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_export_figure_001.png
-   :alt: export figure
-   :srcset: /gallery/images/sphx_glr_export_figure_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

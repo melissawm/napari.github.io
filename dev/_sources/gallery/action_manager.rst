@@ -26,34 +26,6 @@ Action manager
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-118
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_action_manager_001.png
-   :alt: action manager
-   :srcset: /gallery/images/sphx_glr_action_manager_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/docs/docs/napari/examples/action_manager.py:44: FutureWarning: Public access to Window.qt_viewer is deprecated and will be removed in
-    v0.7.0. It is considered an "implementation detail" of the napari
-    application, not part of the napari viewer model. If your use case
-    requires access to qt_viewer, please open an issue to discuss.
-      layer_buttons = viewer.window.qt_viewer.layerButtons
-    calling <function bind_button at 0x7f799452ae60>
-    calling <function register_action at 0x7f799452a0e0>
-    calling <function bind_shortcut at 0x7f799452b760>
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
     from random import shuffle

@@ -28,29 +28,6 @@ Display a 3D mesh with normals and wireframe
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-30
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_surface_normals_wireframe_001.png
-   :alt: surface normals wireframe
-   :srcset: /gallery/images/sphx_glr_surface_normals_wireframe_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Downloading data from https://raw.githubusercontent.com/vispy/demo-data/main/orig/triceratops.obj.gz (141 kB)
-    [..................                      ] 45.52059 | downloading       [....................................    ] 91.04119 / downloading       [........................................] 100.00000 - downloading   
-    File saved as /home/runner/.vispy/data/orig/triceratops.obj.gz.
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
 

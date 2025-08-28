@@ -57,7 +57,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=14bbe3f0"></script>
+    <script src="../_static/documentation_options.js?v=06b5aa6c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,8 +69,10 @@
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://napari.org/dev/_static/version_switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = showBanner();
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
         </script>
+    <script src="../_static/unversioned.js?v=a6cbef4f"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Affine transforms" href="affine_transforms.html" />
@@ -789,35 +791,35 @@ while affine for 2D objects is represented as a 3x3 matrix. For 3D objects the 4
 translate respectively, and by default, affine is set as a 4x4 identity matrix. By modifying the respective values in this matrix,
 which is represented as a numpy array, we can move and adjust objects in the napari viewer.</p>
 <p class="tags"><span>Tags: </span><a class="reference external" href="../_tags/visualization-advanced.html">visualization-advanced</a></p>
-<img src="../_images/sphx_glr_affine_coffee_cup_001.png" srcset="../_images/sphx_glr_affine_coffee_cup_001.png" alt="affine coffee cup" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">meshio</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">meshio</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pooch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">magicgui</span><span class="w"> </span><span class="kn">import</span> <a href="https://pyapp-kit.github.io/magicgui/api/magicgui/#magicgui.magicgui" title="magicgui.magicgui" class="sphx-glr-backref-module-magicgui sphx-glr-backref-type-py-data"><span class="n">magicgui</span></a>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">napari</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cup_path</span></a> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<span class="n">cup_path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/8bitbiscuit/cup_and_creamer/main/cup.stl&quot;</span><span class="p">,</span>
     <span class="n">known_hash</span><span class="o">=</span><span class="s1">&#39;b6162298f86c94ebb276eb5f0544409996a8ee81fff9627a2bd4b71309835014&#39;</span><span class="p">,</span>
 <span class="p">)</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_path</span></a> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<span class="n">creamer_path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/8bitbiscuit/cup_and_creamer/main/creamer.stl&quot;</span><span class="p">,</span>
     <span class="n">known_hash</span><span class="o">=</span><span class="s1">&#39;122256d942694cf40fc1a186a346cda0b31a03fbdec61ea8a351c915f3d0d6ed&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Use meshio to read in stl files</span>
-<span class="n">cup_mesh</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cup_path</span></a><span class="p">)</span>
-<span class="n">creamer_mesh</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_path</span></a><span class="p">)</span>
+<span class="n">cup_mesh</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">cup_path</span><span class="p">)</span>
+<span class="n">creamer_mesh</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">creamer_path</span><span class="p">)</span>
 
 <span class="c1"># Create tuples using the data read in from meshio to be viewed by napari as surfaces</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cup_data</span></a> <span class="o">=</span> <span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cup_mesh</span><span class="o">.</span><span class="n">points</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cup_mesh</span><span class="o">.</span><span class="n">cells</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_data</span></a> <span class="o">=</span> <span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_mesh</span><span class="o">.</span><span class="n">points</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_mesh</span><span class="o">.</span><span class="n">cells</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">cup_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">cup_mesh</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">cup_mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">creamer_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">creamer_mesh</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">creamer_mesh</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
-<a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span></a> <span class="o">=</span> <a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class"><span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span></a><span class="p">()</span>
+<span class="n">viewer</span> <span class="o">=</span> <a href="../api/napari.Viewer.html#napari.Viewer" title="napari.Viewer" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span></a><span class="p">()</span>
 
 <span class="c1"># Define an original affine transformation to be position of surface upon being loaded into viewer</span>
 <span class="c1"># Otherwise both objects would be loaded in on the origin in the viewer by default and be on top of one another</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">og_affine</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span>
+<span class="n">og_affine</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
         <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
@@ -827,9 +829,9 @@ which is represented as a numpy array, we can move and adjust objects in the nap
 <span class="p">)</span>
 
 <span class="c1"># Add in the two surfaces we read using meshio</span>
-<a href="../api/napari.Viewer.html#napari.Viewer.add_surface" title="napari.Viewer.add_surface" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-method"><span class="n">viewer</span><span class="o">.</span><span class="n">add_surface</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cup_data</span></a><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cup&quot;</span><span class="p">)</span>
-<a href="../api/napari.Viewer.html#napari.Viewer.add_surface" title="napari.Viewer.add_surface" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-method"><span class="n">viewer</span><span class="o">.</span><span class="n">add_surface</span></a><span class="p">(</span>
-    <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_data</span></a><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">og_affine</span></a><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">blending</span><span class="o">=</span><span class="s2">&quot;additive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;creamer&quot;</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_surface</span><span class="p">(</span><span class="n">cup_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cup&quot;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_surface</span><span class="p">(</span>
+    <span class="n">creamer_data</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="n">og_affine</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">blending</span><span class="o">=</span><span class="s2">&quot;additive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;creamer&quot;</span>
 <span class="p">)</span>
 
 
@@ -847,20 +849,20 @@ which is represented as a numpy array, we can move and adjust objects in the nap
 
     <span class="c1"># Add a transformed surface with the new affine transform</span>
     <span class="c1"># This surface is identical to the other creamer object, save for the new affine transformation</span>
-    <a href="../api/napari.Viewer.html#napari.Viewer.add_surface" title="napari.Viewer.add_surface" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-method"><span class="n">viewer</span><span class="o">.</span><span class="n">add_surface</span></a><span class="p">(</span>
-        <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">creamer_data</span></a><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="n">new_affine</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">blending</span><span class="o">=</span><span class="s2">&quot;additive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pour&quot;</span>
+    <span class="n">viewer</span><span class="o">.</span><span class="n">add_surface</span><span class="p">(</span>
+        <span class="n">creamer_data</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="n">new_affine</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">blending</span><span class="o">=</span><span class="s2">&quot;additive&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pour&quot;</span>
     <span class="p">)</span>
 
 
 <span class="c1"># Set viewer camera angles and zoom</span>
-<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span></a> <span class="o">=</span> <span class="mi">3</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span></a> <span class="o">=</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">92</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span></a> <span class="o">=</span> <span class="mi">1972</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">angles</span> <span class="o">=</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">92</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">1972</span>
 
 <span class="c1"># Add button to create new layer with transformed object using magicgui</span>
-<a href="../api/napari.components.ViewerModel.html#napari.components.ViewerModel.window" title="napari.components.ViewerModel.window" class="sphx-glr-backref-module-napari-components sphx-glr-backref-type-py-attribute"><span class="n">viewer</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">add_dock_widget</span></a><span class="p">(</span><a href="https://pyapp-kit.github.io/magicgui/api/widgets/FunctionGui/#magicgui.widgets.FunctionGui" title="magicgui.widgets.FunctionGui" class="sphx-glr-backref-module-magicgui-widgets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pour_creamer</span></a><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">add_dock_widget</span><span class="p">(</span><span class="n">pour_creamer</span><span class="p">)</span>
 
-<a href="https://pyapp-kit.github.io/magicgui/api/widgets/FunctionGui/#magicgui.widgets.FunctionGui" title="magicgui.widgets.FunctionGui" class="sphx-glr-backref-module-magicgui-widgets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pour_creamer</span></a><span class="p">()</span>
+<span class="n">pour_creamer</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <a href="../api/napari.html#napari.run" title="napari.run" class="sphx-glr-backref-module-napari sphx-glr-backref-type-py-function"><span class="n">napari</span><span class="o">.</span><span class="n">run</span></a><span class="p">()</span>

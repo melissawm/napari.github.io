@@ -39,32 +39,6 @@ This example demonstrates how surfaces may be colored by:
 
 .. GENERATED FROM PYTHON SOURCE LINES 20-77
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_surface_texture_and_colors_001.png
-   :alt: surface texture and colors
-   :srcset: /gallery/images/sphx_glr_surface_texture_and_colors_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Downloading data from https://raw.githubusercontent.com/vispy/demo-data/main/spot/spot.obj.gz (106 kB)
-    [........................                ] 60.53854 | downloading       [........................................] 100.00000 / downloading   
-    File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
-    Downloading data from https://raw.githubusercontent.com/vispy/demo-data/main/spot/spot.png (77 kB)
-    [.................................       ] 83.27425 | downloading       [........................................] 100.00000 / downloading   
-    File saved as /home/runner/.vispy/data/spot/spot.png.
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
 

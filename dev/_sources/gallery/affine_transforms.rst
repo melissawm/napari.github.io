@@ -28,17 +28,6 @@ Display an image and its corners before and after an affine transform
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-48
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_affine_transforms_001.png
-   :alt: affine transforms
-   :srcset: /gallery/images/sphx_glr_affine_transforms_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
     import numpy as np

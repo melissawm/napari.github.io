@@ -32,17 +32,6 @@ This world scaling is useful when there are many points and the text would other
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-71
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_layer_text_scaling_001.png
-   :alt: layer text scaling
-   :srcset: /gallery/images/sphx_glr_layer_text_scaling_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

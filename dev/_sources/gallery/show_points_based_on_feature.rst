@@ -26,17 +26,6 @@ Show points based on feature
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-38
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_show_points_based_on_feature_001.png
-   :alt: show points based on feature
-   :srcset: /gallery/images/sphx_glr_show_points_based_on_feature_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

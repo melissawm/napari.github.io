@@ -28,28 +28,6 @@ Display a labels layer with various features
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-69
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_add_labels_with_features_001.png
-   :alt: add labels with features
-   :srcset: /gallery/images/sphx_glr_add_labels_with_features_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/docs/docs/napari/examples/add_labels_with_features.py:24: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
-      bw = closing(image > thresh, square(4))
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
 

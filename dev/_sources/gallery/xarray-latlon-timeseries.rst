@@ -34,17 +34,6 @@ before displaying it in napari.
 
 .. GENERATED FROM PYTHON SOURCE LINES 15-86
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_xarray-latlon-timeseries_001.png
-   :alt: xarray latlon timeseries
-   :srcset: /gallery/images/sphx_glr_xarray-latlon-timeseries_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
     import numpy as np

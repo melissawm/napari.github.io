@@ -31,28 +31,6 @@ https://napari.org/stable/tutorials/segmentation/annotate_segmentation.html
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-140
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_annotate_segmentation_with_text_001.png
-   :alt: annotate segmentation with text
-   :srcset: /gallery/images/sphx_glr_annotate_segmentation_with_text_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/docs/docs/napari/examples/annotate_segmentation_with_text.py:38: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
-      bw = closing(image > thresh, square(4))
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
     import numpy as np

@@ -42,12 +42,6 @@ image, visible by moving the slider.
     import napari
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 21-22
 
 First, we load the vortex image as a 3D array. (time, row, column)
@@ -58,12 +52,6 @@ First, we load the vortex image as a 3D array. (time, row, column)
 
 
     vortex_im = np.asarray(vortex())
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 26-29
@@ -80,12 +68,6 @@ the output, which we account for later.)
     u, v = optical_flow_ilk(vortex_im[0], vortex_im[1], radius=15)
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 33-34
 
 Compute the flow magnitude, for visualization.
@@ -96,12 +78,6 @@ Compute the flow magnitude, for visualization.
 
 
     magnitude = np.sqrt(u ** 2 + v ** 2)
-
-
-
-
-
-
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 38-41
@@ -128,12 +104,6 @@ current scikit-image output.
             )
 
 
-
-
-
-
-
-
 .. GENERATED FROM PYTHON SOURCE LINES 55-57
 
 Finally, we create a viewer, and add the vortex frames, the flow
@@ -157,17 +127,6 @@ magnitude, and the vector field.
 
     if __name__ == '__main__':
         napari.run()
-
-
-
-.. image-sg:: /gallery/images/sphx_glr_vortex_001.png
-   :alt: vortex
-   :srcset: /gallery/images/sphx_glr_vortex_001.png
-   :class: sphx-glr-single-img
-
-
-
-
 
 
 .. _sphx_glr_download_gallery_vortex.py:

@@ -31,17 +31,6 @@ which is represented as a numpy array, we can move and adjust objects in the nap
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-88
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_affine_coffee_cup_001.png
-   :alt: affine coffee cup
-   :srcset: /gallery/images/sphx_glr_affine_coffee_cup_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

@@ -28,17 +28,6 @@ Display points overlaid on a 3D image
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-26
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_image-points-3d_001.png
-   :alt: image points 3d
-   :srcset: /gallery/images/sphx_glr_image-points-3d_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
     from skimage import data, feature, filters

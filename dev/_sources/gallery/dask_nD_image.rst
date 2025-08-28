@@ -28,17 +28,6 @@ Display a dask array
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-37
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_dask_nD_image_001.png
-   :alt: dask nD image
-   :srcset: /gallery/images/sphx_glr_dask_nD_image_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

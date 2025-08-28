@@ -33,27 +33,6 @@ current dims point (`viewer.dims.point`).
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-439
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_multiple_viewer_widget_001.png
-   :alt: multiple viewer widget
-   :srcset: /gallery/images/sphx_glr_multiple_viewer_widget_001.png
-   :class: sphx-glr-single-img
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Attribute Qt::AA_ShareOpenGLContexts must be set before QCoreApplication is created.
-
-
-
-
-
-
-|
-
 .. code-block:: Python
 
 

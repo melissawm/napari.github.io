@@ -35,17 +35,6 @@ To include the napari viewer in the screenshot, use `viewer.screenshot(canvas_on
 
 .. GENERATED FROM PYTHON SOURCE LINES 16-135
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_to_screenshot_001.png
-   :alt: to screenshot
-   :srcset: /gallery/images/sphx_glr_to_screenshot_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 

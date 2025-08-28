@@ -31,17 +31,6 @@ scale_bar can also be shown in a gridded manner.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-38
 
-
-
-.. image-sg:: /gallery/images/sphx_glr_grid_mode_001.png
-   :alt: grid mode
-   :srcset: /gallery/images/sphx_glr_grid_mode_001.png
-   :class: sphx-glr-single-img
-
-
-
-
-
 .. code-block:: Python
 
 
